@@ -20,5 +20,9 @@
   "devDependencies": {
     "np": "^6.1.0",
     "pagexray": "^2.5.9"
+  },
+  "np": {
+    "yarn": false,
+    "contents": "src"
   }
 }
