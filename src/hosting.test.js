@@ -15,13 +15,13 @@ describe('hosting', function () {
     har = JSON.parse(fs
       .readFileSync(path.resolve(__dirname, '../data/fixtures/tgwf.har'), 'utf8'))
   });
-  describe('greenDomains', async function () {
+  describe('greenDomainsForPage', async function () {
     it('it returns a list of green domains, when passed a page object', async function () {
       const pages = pagexray.convert(har);
       const pageXrayRun = pages[0];
 
       // TODO find a way to not hit the API each time
-      const greenDomains = await hosting.greenDomains(pageXrayRun);
+      const greenDomains = await hosting.greenDomainsForPage(pageXrayRun);
 
       expect(greenDomains)
         .toHaveLength(10);
@@ -46,4 +46,15 @@ describe('hosting', function () {
       'it returns an empty list, when passed a page object with no green domains'
     );
   });
+  describe('checking a single domain against the local db', async function () {
+    it("tries to use a local database if available ", function () {
+      const res = hosting.check("google.com")
+      expect(res).toEqual(["google.com"])
+    })
+    it("falls back to using the API to check instead")
+  })
+  describe('checking a multiple domains against the local db', async function () {
+    it("tries to use a local database if available")
+    it("falls back to the API when no db is present")
+  })
 });

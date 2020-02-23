@@ -25,6 +25,8 @@
     "yarn": false
   },
   "dependencies": {
+    "better-sqlite3": "^5.4.3",
     "intel": "^1.2.0"
-  }
+  },
+  "database_name": "../url2green.db"
 }
