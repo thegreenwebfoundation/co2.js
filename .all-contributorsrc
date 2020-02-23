@@ -1,0 +1,14 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "co2",
+  "projectOwner": "thegreenwebfoundation",
+  "repoType": "github",
+  "repoHost": "https://github.com"
+}
