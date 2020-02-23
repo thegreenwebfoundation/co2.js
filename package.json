@@ -22,7 +22,6 @@
     "pagexray": "^2.5.9"
   },
   "np": {
-    "yarn": false,
-    "contents": "src"
+    "yarn": false
   }
 }
