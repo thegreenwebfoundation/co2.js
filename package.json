@@ -23,5 +23,8 @@
   },
   "np": {
     "yarn": false
+  },
+  "dependencies": {
+    "intel": "^1.2.0"
   }
 }
