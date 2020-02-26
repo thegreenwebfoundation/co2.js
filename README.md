@@ -4,7 +4,7 @@ We know computers use electricity, and because most of the electricity we use co
 
 The CO2 package from The Green Web Foundation lets you quickly estimate these emissions, to allow people who build digital services to optimise for carbon, the same way we use performance budgets to optimise our software.
 
-It does this by implementing the 1byte model as used by the Shift Project, as introduced in their report on CO3 emission from digital infrastructure, [Lean ICT: for a sober digital][soberDigital], to return a number for the estimated Co2 emissions for the corresponding number of bytes sent over the wire.
+It does this by implementing the 1byte model as used by the Shift Project, as introduced in their report on CO2 emissions from digital infrastructure, [Lean ICT: for a sober digital][soberDigital], to return a number for the estimated CO2 emissions for the corresponding number of bytes sent over the wire.
 
 It is currently used in the web performance tool sitespeed.io, to help developers build greener, more planet friendly digital services.
 
