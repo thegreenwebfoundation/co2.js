@@ -15,7 +15,7 @@ describe('hosting', function () {
     har = JSON.parse(fs
       .readFileSync(path.resolve(__dirname, '../data/fixtures/tgwf.har'), 'utf8'))
   });
-  describe('greenDomainsForPage', async function () {
+  describe('checking all domains on a page object with #checkPage ', async function () {
     it('it returns a list of green domains, when passed a page object', async function () {
       const pages = pagexray.convert(har);
       const pageXrayRun = pages[0];
@@ -46,7 +46,7 @@ describe('hosting', function () {
       'it returns an empty list, when passed a page object with no green domains'
     );
   });
-  describe('checking a single domain against the local db', async function () {
+  describe('checking a single domain with #check', async function () {
     it("tries to use a local database if available ", async function () {
       const res = await hosting.check("google.com")
       expect(res).toEqual(true)
@@ -57,7 +57,7 @@ describe('hosting', function () {
     })
 
   })
-  describe('checking a multiple domains against the local db', async function () {
+  describe('implicitly checking multiple domains with #check', async function () {
     it("tries to use a local database if available", async function () {
       const res = await hosting.check(["google.com", "kochindustries.com"])
       expect(res).toContain("google.com")
@@ -66,6 +66,15 @@ describe('hosting', function () {
       const res = await hosting.check(["google.com", "kochindustries.com"], "incorrectDatabasePath")
       expect(res).toContain("google.com")
     })
-
+  })
+  describe('explicitly checking multiple domains with #checkMulti', async function () {
+    it("tries to use a local database if available", async function () {
+      const res = await hosting.checkMulti(["google.com", "kochindustries.com"])
+      expect(res).toContain("google.com")
+    })
+    it("falls back to the API when no db is present", async function () {
+      const res = await hosting.checkMulti(["google.com", "kochindustries.com"], "incorrectDatabasePath")
+      expect(res).toContain("google.com")
+    })
   })
 });
