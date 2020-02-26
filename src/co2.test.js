@@ -3,8 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const co2 = require('../src/co2');
-// const hosting = require('../src/hosting');
+const co2 = require('./co2');
 const pagexray = require('pagexray');
 
 
@@ -140,59 +139,3 @@ describe('sustainableWeb', function () {
   });
 });
 
-
-
-
-    // describe('hosting', function () {
-    //   let har;
-    //   beforeEach(function () {
-    //     return fs
-    //       .readFileAsync(
-    //         path.resolve(
-    //           __dirname,
-    //           'fixtures',
-    //           'www-thegreenwebfoundation-org.har'
-    //         ),
-    //         'utf8'
-    //       )
-    //       .then(JSON.parse)
-    //       .tap(data => {
-    //         har = data;
-    //       });
-    //   });
-
-    //   describe('greenDomains', async function () {
-    //     it('it returns a list of green domains, when passed a page object', async function () {
-    //       const pages = pagexray.convert(har);
-    //       const pageXrayRun = pages[0];
-
-    //       // TODO find a way to not hit the API each time
-    //       const greenDomains = await hosting.greenDomains(pageXrayRun);
-
-    //       expect(greenDomains)
-    //         .toBe.an('array')
-    //         .of.length(10);
-
-    //       const expectedGreendomains = [
-    //         'thegreenwebfoundation.org',
-    //         'www.thegreenwebfoundation.org',
-    //         'fonts.googleapis.com',
-    //         'ajax.googleapis.com',
-    //         'assets.digitalclimatestrike.net',
-    //         'cdnjs.cloudflare.com',
-    //         'graphite.thegreenwebfoundation.org',
-    //         'analytics.thegreenwebfoundation.org',
-    //         'fonts.gstatic.com',
-    //         'api.thegreenwebfoundation.org'
-    //       ];
-    //       greenDomains.forEach(function (dom) {
-    //         expect(expectedGreendomains).to.include(dom);
-    //       });
-    //     });
-    //     it(
-    //       'it returns an empty list, when passed a page object with no green domains'
-    //     );
-    //   });
-    // });
-  // });
-//
