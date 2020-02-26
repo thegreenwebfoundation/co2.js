@@ -21,7 +21,7 @@ describe('hosting', function () {
       const pageXrayRun = pages[0];
 
       // TODO find a way to not hit the API each time
-      const greenDomains = await hosting.greenDomainsForPage(pageXrayRun);
+      const greenDomains = await hosting.checkPage(pageXrayRun);
 
       expect(greenDomains)
         .toHaveLength(10);
@@ -47,14 +47,25 @@ describe('hosting', function () {
     );
   });
   describe('checking a single domain against the local db', async function () {
-    it("tries to use a local database if available ", function () {
-      const res = hosting.check("google.com")
-      expect(res).toEqual(["google.com"])
+    it("tries to use a local database if available ", async function () {
+      const res = await hosting.check("google.com")
+      expect(res).toEqual(true)
     })
-    it("falls back to using the API to check instead")
+    it("falls back to using the API to check instead", async function () {
+      const res = await hosting.check("google.com", "incorrectDatabasePath")
+      expect(res).toEqual(true)
+    })
+
   })
   describe('checking a multiple domains against the local db', async function () {
-    it("tries to use a local database if available")
-    it("falls back to the API when no db is present")
+    it("tries to use a local database if available", async function () {
+      const res = await hosting.check(["google.com", "kochindustries.com"])
+      expect(res).toContain("google.com")
+    })
+    it("falls back to the API when no db is present", async function () {
+      const res = await hosting.check(["google.com", "kochindustries.com"], "incorrectDatabasePath")
+      expect(res).toContain("google.com")
+    })
+
   })
 });

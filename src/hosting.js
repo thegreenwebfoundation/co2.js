@@ -1,13 +1,9 @@
 'use strict';
 
-const log = require('intel').getLogger('sitespeedio.plugin.sustainable');
+const log = require('debug')('tgwf:hosting');
 const https = require('https');
 
 const Database = require('better-sqlite3');
-// keep the name in package.json so its easy just to chanfe
-const DATABASE_NAME = require('../package').database_name;
-
-console.log(DATABASE_NAME)
 
 function getQ(domains) {
   const q = [];
@@ -17,36 +13,79 @@ function getQ(domains) {
   return q.join(',');
 }
 
-function getDatabase() {
-  // try {
-  return new Database(`./data/${DATABASE_NAME}`, { readonly: true, fileMustExist: true })
-  // } catch (SqliteError) {
-  // return false
-  // }
+function getDatabase(databaseName) {
+
+  if (databaseName) {
+    log(`looking for db at ${databaseName}`)
+    return new Database(`./data/${databaseName}`, { readonly: true, fileMustExist: true })
+  }
+  else {
+    // keep the name in package.json so its easy just to change
+    const DATABASE_NAME = require('../package').database_name;
+    log(`looking for db at ${DATABASE_NAME}`)
+    return new Database(`./data/${DATABASE_NAME}`, { readonly: true, fileMustExist: true })
+  }
 }
 
-function check(domain) {
-  const db = getDatabase();
+function check(domain, dbName) {
+  let db;
 
+  try {
+    db = getDatabase(dbName)
+  }
+  catch (SqliteError) {
+    log(`couldn't find SQlite database at path: ${dbName}`)
+  }
 
+  // is it a single domain or an array of them?
+  if (typeof domain === 'string') {
+    return checkSingleDomain(domain, db)
+  }
+  else {
+    return checkDomains(domain, db)
+  }
+}
 
+function checkSingleDomain(domain, db) {
+  try {
+    return checkInDB(domain, db)
+  }
+  catch {
+    return checkAgainstAPI(domain)
+  }
+}
 
-  if (db) {
-    try {
-      const stmt = db.prepare('SELECT * FROM green_presenting WHERE url = ?');
-      return [stmt.get(domain).url];
+function checkDomains(domains, db) {
+  try {
+    return checkDomainsInDB(domains, db)
+  }
+  catch {
+    return checkDomainsAgainstAPI(domains)
+  }
+}
 
+function checkInDB(domain, db) {
 
-    } finally {
-      if (db) {
-        db.close();
-      }
+  try {
+    const stmt = db.prepare('SELECT * FROM green_presenting WHERE url = ?');
+    return !!stmt.get(domain).green;
+  } finally {
+    if (db) {
+      db.close();
     }
   }
-  // fall back to using the API
-  return checkDomains([domain])
 }
-async function checkDomains(domains) {
+
+async function checkAgainstAPI(domain) {
+  const res = JSON.parse(
+    await getBody(
+      `https://api.thegreenwebfoundation.org/greencheck/${domain}`
+    )
+  );
+  return res.green
+}
+
+async function checkDomainsAgainstAPI(domains) {
   try {
     const allGreenCheckResults = JSON.parse(
       await getBody(
@@ -56,28 +95,33 @@ async function checkDomains(domains) {
       )
     );
 
-    const entries = Object.entries(allGreenCheckResults);
-    // TODO find the preferred way for assigning vars
-    // when making key value pairs , but only using the val
+    return greenDomainsFromResults(allGreenCheckResults)
 
-    /* eslint-disable-next-line */
-    let greenEntries = entries.filter(function ([key, val]) {
-      return val.green;
-    });
-    /* eslint-disable-next-line */
-    return greenEntries.map(function ([key, val]) {
-      return val.url;
-    });
   } catch (e) {
     return [];
   }
 }
 
-function getDomains(domains) {
-  const db = getDatabase();
+function greenDomainsFromResults(greenResults) {
+  const entries = Object.entries(greenResults);
+  let greenEntries = entries.filter(function ([key, val]) {
+    return val.green;
+  });
+
+  return greenEntries.map(function ([key, val]) {
+    return val.url;
+  });
+}
+
+function checkDomainsInDB(domains, db) {
+
   try {
     const stmt = db.prepare(`SELECT * FROM green_presenting WHERE url in (${getQ(domains)})`);
-    return stmt.all(domains);
+
+    res = stmt.all(domains);
+
+    return greenDomainsFromResults(res)
+
   } finally {
     if (db) {
       db.close();
@@ -109,7 +153,7 @@ async function getBody(url) {
     req.end();
   });
 }
-async function greenDomainsForPage(pageXray) {
+async function checkPage(pageXray) {
   const domains = Object.keys(pageXray.domains);
 
   return checkDomains(domains)
@@ -117,6 +161,7 @@ async function greenDomainsForPage(pageXray) {
 }
 
 module.exports = {
-  greenDomainsForPage,
-  check
+  check,
+  checkMulti: checkDomains,
+  checkPage,
 };
