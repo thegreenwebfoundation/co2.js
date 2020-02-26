@@ -82,9 +82,8 @@ describe('sustainableWeb', function () {
       it('shows object listing Co2 for each domain', function () {
         const pages = pagexray.convert(har);
         const pageXrayRun = pages[0];
-        // console.log(Object.keys(pageXrayRun.domains))
         const res = co2.perDomain(pageXrayRun);
-        // console.log(res)
+
         const domains = [
           'thegreenwebfoundation.org',
           'www.thegreenwebfoundation.org',
@@ -98,12 +97,11 @@ describe('sustainableWeb', function () {
           'fonts.gstatic.com',
           'api.thegreenwebfoundation.org'
         ];
-        expect(typeof res).toBe('object');
-        expect(Object.keys(res)).toEqual(domains);
 
-        Object.values(res).forEach(function (val) {
-          expect(typeof val).toBe('number');
-        });
+        for (let obj of res) {
+          expect(domains.indexOf(obj.domain)).toBeGreaterThan(-1);
+          expect(typeof obj.co2).toBe('number');
+        };
       });
       it('shows lower Co2 for green domains', function () {
         const pages = pagexray.convert(har);
@@ -122,9 +120,15 @@ describe('sustainableWeb', function () {
         ];
         const res = co2.perDomain(pageXrayRun);
         const resWithGreen = co2.perDomain(pageXrayRun, greenDomains);
-        greenDomains.forEach(function (domain) {
-          expect(resWithGreen[domain]).toBeLessThan(res[domain]);
-        });
+
+        for (let obj of res) {
+          expect(typeof obj.co2).toBe('number');
+        };
+        for (let obj of greenDomains) {
+          let index = 0
+          expect(resWithGreen[index].co2).toBeLessThan(res[index].co2);
+          index++
+        }
       });
     });
     describe('perContentType', function () {

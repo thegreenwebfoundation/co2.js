@@ -135,7 +135,7 @@ async function getBody(url) {
     // Do async job
     const req = https.get(url, function (res) {
       if (res.statusCode < 200 || res.statusCode >= 300) {
-        log.error(
+        log(
           'Could not get info from the Green Web Foundation API, %s for %s',
           res.statusCode,
           url
@@ -155,7 +155,6 @@ async function getBody(url) {
 }
 async function checkPage(pageXray) {
   const domains = Object.keys(pageXray.domains);
-
   return checkDomains(domains)
 
 }
@@ -164,4 +163,5 @@ module.exports = {
   check,
   checkMulti: checkDomains,
   checkPage,
+  greenDomains: checkDomains,
 };
