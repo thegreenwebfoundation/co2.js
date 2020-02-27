@@ -130,12 +130,12 @@ describe('sustainableWeb', function () {
         }
       });
     });
-    describe('perContentType', function () {
-      test.skip('shows a breakdown of emissions by content type', function () { });
-    });
-    describe('dirtiestResources', function () {
-      it('shows the top 10 resources by CO2 emissions');
-    });
+    // describe('perContentType', function () {
+    //   test.skip('shows a breakdown of emissions by content type');
+    // });
+    // describe('dirtiestResources', function () {
+    //   it.skip('shows the top 10 resources by CO2 emissions');
+    // });
   });
 });
 

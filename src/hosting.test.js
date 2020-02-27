@@ -42,9 +42,9 @@ describe('hosting', function () {
         expect(expectedGreendomains).toContain(dom);
       });
     });
-    it(
-      'it returns an empty list, when passed a page object with no green domains'
-    );
+    // it(
+    //   'it returns an empty list, when passed a page object with no green domains'
+    // );
   });
   describe('checking a single domain with #check', async function () {
     it("tries to use a local database if available ", async function () {
