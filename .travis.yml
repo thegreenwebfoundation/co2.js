@@ -1,0 +1,14 @@
+language: node_js
+node_js: 10
+matrix:
+  include:
+    - name: "Test on Linux"
+      dist: bionic
+    - name: "Test on OS X"
+      os: osx
+      osx_image: xcode11.3  
+    - name: "Test on Windows"
+      os: windows
+
+
+
