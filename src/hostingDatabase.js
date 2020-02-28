@@ -64,7 +64,7 @@ function checkDomainsInDB(domains, db) {
   try {
     const stmt = db.prepare(`SELECT * FROM green_presenting WHERE url in (${getQ(domains)})`)
 
-    res = stmt.all(domains)
+    const res = stmt.all(domains)
 
     return greenDomainsFromResults(res)
 
