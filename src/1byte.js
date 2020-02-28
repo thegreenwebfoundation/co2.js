@@ -13,12 +13,16 @@ const CO2_PER_KWH_IN_DC_GREY = 519;
 //  2. the *making* the device, which is comparitively high.
 
 const KWH_PER_BYTE_IN_DC = 0.00000000072;
+
+// this is probably best left as something users can define, or
+// a weighted average based on total usage.
+// Pull requests gratefully accepted
 const KWH_PER_BYTE_FOR_NETWORK = 0.00000000488;
 
 const KWH_PER_BYTE_FOR_DEVICES = 0.00000000013
-module.export = {
+module.exports = {
   KWH_PER_BYTE_IN_DC,
   KWH_PER_BYTE_FOR_NETWORK,
   KWH_PER_BYTE_FOR_DEVICES,
-  CO2_PER_KWH_NETWORK_GREY
+  CO2_PER_KWH_IN_DC_GREY
 }
