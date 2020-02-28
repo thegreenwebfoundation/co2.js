@@ -9,6 +9,3 @@ matrix:
       osx_image: xcode11.3  
     - name: "Test on Windows"
       os: windows
-
-
-
