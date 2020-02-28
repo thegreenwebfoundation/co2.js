@@ -35,7 +35,7 @@ Because different digital services and websites use different forms of power, th
 const greencheck = require('@tgwf/hosting')
 
 greencheck.check("google.com") // returns true if green, otherwise false
-greencheck.checkMulti(["google.com", "kochindustries.com"]) // returns an array of the green domains, in this case ["google.com"]
+greencheck.check(["google.com", "kochindustries.com"]) // returns an array of the green domains, in this case ["google.com"]
 greencheck.checkPage(["google.com"]) // returns an array of green domains, again in this case, ["google.com"]
 
 ```

@@ -25,7 +25,7 @@ function greenDomainsFromResults(greenResults) {
 
 async function checkPage(pageXray) {
   const domains = Object.keys(pageXray.domains)
-  return checkDomains(domains)
+  return check(domains)
 }
 
 module.exports = {

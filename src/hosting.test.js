@@ -12,7 +12,7 @@ describe('hosting', function () {
     har = JSON.parse(fs
       .readFileSync(path.resolve(__dirname, '../data/fixtures/tgwf.har'), 'utf8'))
   });
-  describe('checking all domains on a page object with #checkPage ', async function () {
+  describe('checking all domains on a page object with #checkPage ', function () {
     it('it returns a list of green domains, when passed a page object', async function () {
       const pages = pagexray.convert(har);
       const pageXrayRun = pages[0];
@@ -43,7 +43,7 @@ describe('hosting', function () {
     //   'it returns an empty list, when passed a page object with no green domains'
     // );
   });
-  describe('checking a single domain with #check', async function () {
+  describe('checking a single domain with #check', function () {
     it("tries to use a local database if available ", async function () {
       const res = await hosting.check("google.com",path.resolve(__dirname, "..", "url2green.test.db"))
       expect(res).toEqual(true)
@@ -54,7 +54,7 @@ describe('hosting', function () {
     })
 
   })
-  describe('implicitly checking multiple domains with #check', async function () {
+  describe('implicitly checking multiple domains with #check', function () {
     it("tries to use a local database if available", async function () {
       const res = await hosting.check(["google.com", "kochindustries.com"], path.resolve(__dirname, "..", "url2green.test.db"))
       expect(res).toContain("google.com")
@@ -64,13 +64,13 @@ describe('hosting', function () {
       expect(res).toContain("google.com")
     })
   })
-  describe('explicitly checking multiple domains with #checkMulti', async function () {
+  describe('explicitly checking multiple domains with #checkMulti', function () {
     it("tries to use a local database if available", async function () {
-      const res = await hosting.checkMulti(["google.com", "kochindustries.com"])
+      const res = await hosting.check(["google.com", "kochindustries.com"],  path.resolve(__dirname, "..", "url2green.test.db"))
       expect(res).toContain("google.com")
     })
     it("use the API", async function () {
-      const res = await hosting.checkMulti(["google.com", "kochindustries.com"])
+      const res = await hosting.check(["google.com", "kochindustries.com"])
       expect(res).toContain("google.com")
     })
   })
