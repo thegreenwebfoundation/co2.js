@@ -44,11 +44,11 @@ describe('hosting', function () {
     // );
   });
   describe('checking a single domain with #check', function () {
-    it("tries to use a local database if available ", async function () {
+    it("tries to use a local database", async function () {
       const res = await hosting.check("google.com",path.resolve(__dirname, "..", "url2green.test.db"))
       expect(res).toEqual(true)
     })
-    it("Use the API instead", async function () {
+    it("use the API instead", async function () {
       const res = await hosting.check("google.com")
       expect(res).toEqual(true)
     })
