@@ -45,22 +45,22 @@ describe('hosting', function () {
   });
   describe('checking a single domain with #check', async function () {
     it("tries to use a local database if available ", async function () {
-      const res = await hosting.check("google.com", "../url2green.test.db")
+      const res = await hosting.check("google.com",path.resolve(__dirname, "..", "url2green.test.db"))
       expect(res).toEqual(true)
     })
-    it("falls back to using the API to check instead", async function () {
-      const res = await hosting.check("google.com", "incorrectDatabasePath")
+    it("Use the API instead", async function () {
+      const res = await hosting.check("google.com")
       expect(res).toEqual(true)
     })
 
   })
   describe('implicitly checking multiple domains with #check', async function () {
     it("tries to use a local database if available", async function () {
-      const res = await hosting.check(["google.com", "kochindustries.com"], "../url2green.test.db")
+      const res = await hosting.check(["google.com", "kochindustries.com"], path.resolve(__dirname, "..", "url2green.test.db"))
       expect(res).toContain("google.com")
     })
-    it("falls back to the API when no db is present", async function () {
-      const res = await hosting.check(["google.com", "kochindustries.com"], "incorrectDatabasePath")
+    it("Use the API", async function () {
+      const res = await hosting.check(["google.com", "kochindustries.com"])
       expect(res).toContain("google.com")
     })
   })
@@ -69,8 +69,8 @@ describe('hosting', function () {
       const res = await hosting.checkMulti(["google.com", "kochindustries.com"])
       expect(res).toContain("google.com")
     })
-    it("falls back to the API when no db is present", async function () {
-      const res = await hosting.checkMulti(["google.com", "kochindustries.com"], "incorrectDatabasePath")
+    it("use the API", async function () {
+      const res = await hosting.checkMulti(["google.com", "kochindustries.com"])
       expect(res).toContain("google.com")
     })
   })
