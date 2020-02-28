@@ -1,10 +1,14 @@
 'use strict';
 
 const url = require('url');
+const oneByte = require('./1byte.js');
 
-// Use the 1byte model for now from the Shift Project, and assume a US grid mix of around 519 g co2 for the time being.
-const CO2_PER_KWH_IN_DC_GREY = 519;
-const CO2_PER_KWH_IN_DC_GREEN = 33;
+const KWH_PER_BYTE_IN_DC = oneByte.KWH_PER_BYTE_IN_DC;
+const KWH_PER_BYTE_FOR_NETWORK = oneByte.KWH_PER_BYTE_FOR_NETWORK
+const CO2_PER_KWH_IN_DC_GREY = oneByte.CO2_PER_KWH_IN_DC_GREY
+
+// this figure is from the IEA's 2018 report for a global average:
+const CO2_PER_KWH_NETWORK_GREY = 495;
 
 // the better way would be do to this with a weighted average of types of RE generation
 // from solar, to wind, to biomass, and hydro and so on, based on how much they
@@ -17,15 +21,8 @@ const CO2_PER_KWH_IN_DC_GREEN = 33;
 // https://twitter.com/mrchrisadams/status/1227972969756086284
 // https://en.wikipedia.org/wiki/Life-cycle_greenhouse-gas_emissions_of_energy_sources
 
-// 33.4, but that's for the UK in 2014/15. Shouldn't be too off though. Probably lower now.
+const CO2_PER_KWH_IN_DC_GREEN = 33;
 
-const CO2_PER_KWH_NETWORK_GREY = 495;
-
-// these are the figures pulled from the 1byte model, there is a
-// third figure to represent carbon emission from *making* the device used to access a site/app but we lieave it out as it relies on
-// us knowing how long it's being used to read content
-const KWH_PER_BYTE_IN_DC = 0.00000000072;
-const KWH_PER_BYTE_FOR_NETWORK = 0.00000000152;
 
 function getCO2PerByte(bytes, green) {
   // return a CO2 figure for energy used to shift the corresponding
