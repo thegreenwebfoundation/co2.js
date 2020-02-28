@@ -29,19 +29,11 @@ function check(domain, dbName) {
 
   // is it a single domain or an array of them?
   if (typeof domain === 'string') {
-    return checkSingleDomain(domain, db)
+    return checkInDB(domain, db)
   }
   else {
-    return checkDomains(domain, db)
+    return checkDomainsInDB(domain, db)
   }
-}
-
-function checkSingleDomain(domain, db) {
-  return checkInDB(domain, db)
-}
-
-function checkDomains(domains, db) {
-  return checkDomainsInDB(domains, db)
 }
 
 function checkInDB(domain, db) {
