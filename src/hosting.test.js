@@ -45,7 +45,7 @@ describe('hosting', function () {
   });
   describe('checking a single domain with #check', function () {
     it("tries to use a local database", async function () {
-      const res = await hosting.check("google.com",path.resolve(__dirname, "..", "url2green.test.db"))
+      const res = await hosting.check("google.com", path.resolve(__dirname, "..", "url2green.test.db"))
       expect(res).toEqual(true)
     })
     it("use the API instead", async function () {
@@ -66,7 +66,7 @@ describe('hosting', function () {
   })
   describe('explicitly checking multiple domains with #checkMulti', function () {
     it("tries to use a local database if available", async function () {
-      const res = await hosting.check(["google.com", "kochindustries.com"],  path.resolve(__dirname, "..", "url2green.test.db"))
+      const res = await hosting.check(["google.com", "kochindustries.com"], path.resolve(__dirname, "..", "url2green.test.db"))
       expect(res).toContain("google.com")
     })
     it("use the API", async function () {

@@ -10,13 +10,13 @@ const pagexray = require('pagexray');
 describe('sustainableWeb', function () {
   describe('co2', function () {
     let har;
-    const TGWF_GREY_VALUE = 0.8193815884799998;
+    const TGWF_GREY_VALUE = 2.0484539712;
     const TGWF_GREEN_VALUE = 0.54704300112;
-    const TGWF_MIXED_VALUE = 0.57128033088;
+    const TGWF_MIXED_VALUE = 1.7485750598399998;
 
     const MILLION = 1000000;
-    const MILLION_GREY = 1.1625599999999998;
-    const MILLION_GREEN = 0.77616;
+    const MILLION_GREY = 2.9064;
+    const MILLION_GREEN = 2.4393599999999998;
 
     beforeEach(function () {
       har = JSON.parse(fs
@@ -31,7 +31,7 @@ describe('sustainableWeb', function () {
       });
 
       it("returns a lower CO2 number for data transfer from domains using entirely 'green' power", function () {
-        expect(co2.perByte(MILLION, false)).toBe(1.1625599999999998);
+        expect(co2.perByte(MILLION, false)).toBe(MILLION_GREY);
         expect(co2.perByte(MILLION, true)).toBe(MILLION_GREEN);
       });
     });
