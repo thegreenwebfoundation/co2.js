@@ -3,11 +3,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const co2 = require('./co2');
 const hosting = require('./hosting');
 const pagexray = require('pagexray');
-
-
 
 describe('hosting', function () {
   let har;
