@@ -28,6 +28,5 @@
   "dependencies": {
     "better-sqlite3": "^5.4.3",
     "debug": "^4.1.1"
-  },
-  "database_name": "../url2green.db"
+  }
 }
