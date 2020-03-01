@@ -25,6 +25,9 @@
   "np": {
     "yarn": false
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "better-sqlite3": "^5.4.3",
     "debug": "^4.1.1"
