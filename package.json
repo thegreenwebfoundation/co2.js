@@ -18,7 +18,7 @@
   "author": "Chris Adams",
   "license": "Apache-2.0",
   "devDependencies": {
-    "np": "^6.1.0",
+    "np": "^5.2.1",
     "pagexray": "^2.5.9",
     "jest": "25.1.0"
   },
