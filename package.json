@@ -4,7 +4,9 @@
   "description": "Work out the co2 of your digital services",
   "main": "src/index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "keywords": [
     "sustainability",
@@ -20,7 +22,12 @@
   "devDependencies": {
     "np": "^5.2.1",
     "pagexray": "^2.5.9",
-    "jest": "25.1.0"
+    "jest": "25.1.0",
+    "eslint": "6.8.0",
+    "prettier": "1.19.1",
+    "eslint-config-prettier": "6.10.0",
+    "eslint-plugin-prettier": "3.1.2",
+    "eslint-plugin-jest": "23.8.1"
   },
   "np": {
     "yarn": false

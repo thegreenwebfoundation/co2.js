@@ -1,11 +1,11 @@
-'use strict';
+"use strict";
 
-const url = require('url');
-const oneByte = require('./1byte.js');
+const url = require("url");
+const oneByte = require("./1byte.js");
 
 const KWH_PER_BYTE_IN_DC = oneByte.KWH_PER_BYTE_IN_DC;
-const KWH_PER_BYTE_FOR_NETWORK = oneByte.KWH_PER_BYTE_FOR_NETWORK
-const CO2_PER_KWH_IN_DC_GREY = oneByte.CO2_PER_KWH_IN_DC_GREY
+const KWH_PER_BYTE_FOR_NETWORK = oneByte.KWH_PER_BYTE_FOR_NETWORK;
+const CO2_PER_KWH_IN_DC_GREY = oneByte.CO2_PER_KWH_IN_DC_GREY;
 
 // this figure is from the IEA's 2018 report for a global average:
 const CO2_PER_KWH_NETWORK_GREY = 495;
@@ -22,7 +22,6 @@ const CO2_PER_KWH_NETWORK_GREY = 495;
 // https://en.wikipedia.org/wiki/Life-cycle_greenhouse-gas_emissions_of_energy_sources
 
 const CO2_PER_KWH_IN_DC_GREEN = 33;
-
 
 function getCO2PerByte(bytes, green) {
   // return a CO2 figure for energy used to shift the corresponding
@@ -63,7 +62,7 @@ function getCO2PerDomain(pageXray, greenDomains) {
       transferSize: pageXray.domains[domain].transferSize
     });
   }
-  co2PerDomain.sort(function (a, b) {
+  co2PerDomain.sort(function(a, b) {
     return b.co2 - a.co2;
   });
 
@@ -111,7 +110,7 @@ function getCO2PerContentType(pageXray, greenDomains) {
       transferSize: co2PerContentType[type].transferSize
     });
   }
-  all.sort(function (a, b) {
+  all.sort(function(a, b) {
     return b.co2 - a.co2;
   });
   return all;
@@ -128,7 +127,7 @@ function dirtiestResources(pageXray, greenDomains) {
     );
     allAssets.push({ url: asset.url, co2: co2ForTransfer, transferSize });
   }
-  allAssets.sort(function (a, b) {
+  allAssets.sort(function(a, b) {
     return b.co2 - a.co2;
   });
 

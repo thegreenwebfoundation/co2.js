@@ -1,0 +1,21 @@
+{
+  "root": true,
+  "env": {
+    "node": true,
+    "es6": true,
+    "jest/globals": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 8
+  },
+  "plugins": ["prettier", "jest"],
+  "extends": "eslint:recommended",
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+      }
+    ],
+    "no-unused-vars": "off"
+  }
+}
