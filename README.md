@@ -19,10 +19,10 @@ It is currently used in the web performance tool [sitespeed.io], to help develop
 
 ```js
 
-const co2 = require('@tgwf/co2')
+const CO2 = require('@tgwf/co2')
 const bytesSent = 1_000_000
-
-estimatedCO2 = co2.perByte(bytesSent)
+const co2Emission = new CO2();
+estimatedCO2 = co2Emission.perByte(bytesSent)
 
 console.log(`Sending a million bytes, had a carbon footprint of ${estimatedCO2.toFixed(3)} grams of CO2`)
 
