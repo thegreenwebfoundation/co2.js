@@ -3,14 +3,14 @@
 const fs = require("fs");
 const path = require("path");
 
-const co2 = require("./co2");
+const CO2 = require("./co2");
 const pagexray = require("pagexray");
 
 describe("sustainableWeb", function() {
   describe("co2", function() {
-    let har;
+    let har, co2;
     const TGWF_GREY_VALUE = 2.0484539712;
-    // const TGWF_GREEN_VALUE = 0.54704300112;
+    const TGWF_GREEN_VALUE = 0.54704300112;
     const TGWF_MIXED_VALUE = 1.7485750598399998;
 
     const MILLION = 1000000;
@@ -18,6 +18,7 @@ describe("sustainableWeb", function() {
     const MILLION_GREEN = 2.4393599999999998;
 
     beforeEach(function() {
+      co2 = new CO2();
       har = JSON.parse(
         fs.readFileSync(
           path.resolve(__dirname, "../data/fixtures/tgwf.har"),
