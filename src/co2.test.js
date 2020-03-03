@@ -11,11 +11,11 @@ describe("sustainableWeb", function() {
     let har, co2;
     const TGWF_GREY_VALUE = 2.0484539712;
     const TGWF_GREEN_VALUE = 0.54704300112;
-    const TGWF_MIXED_VALUE = 1.7485750598399998;
+    const TGWF_MIXED_VALUE = 1.6706517455999996;
 
     const MILLION = 1000000;
     const MILLION_GREY = 2.9064;
-    const MILLION_GREEN = 2.4393599999999998;
+    const MILLION_GREEN = 2.318;
 
     beforeEach(function() {
       co2 = new CO2();
