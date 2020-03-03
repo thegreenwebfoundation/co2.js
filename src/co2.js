@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
-const url = require('url');
-const oneByte = require('./1byte.js');
+const url = require("url");
+const oneByte = require("./1byte.js");
 
 const KWH_PER_BYTE_IN_DC = oneByte.KWH_PER_BYTE_IN_DC;
 const KWH_PER_BYTE_FOR_NETWORK = oneByte.KWH_PER_BYTE_FOR_NETWORK;
