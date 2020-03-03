@@ -5,10 +5,20 @@
   "imageSize": 100,
   "commit": false,
   "contributors": [
+    {
+      "login": "soulgalore",
+      "name": "Peter Hedenskog",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/540757?v=4",
+      "profile": "https://www.peterhedenskog.com",
+      "contributions": [
+        "code"
+      ]
+    }
   ],
   "contributorsPerLine": 7,
-  "projectName": "co2",
+  "projectName": "co2.js",
   "projectOwner": "thegreenwebfoundation",
   "repoType": "github",
-  "repoHost": "https://github.com"
+  "repoHost": "https://github.com",
+  "skipCi": true
 }
