@@ -11,7 +11,22 @@
       "avatar_url": "https://avatars1.githubusercontent.com/u/26165947?v=4",
       "profile": "https://greengumption.co.uk",
       "contributions": [
-        "ideas"
+        "ideas",
+        "question",
+        "review"
+      ]
+    },
+    {
+    "login": "soulgalore",
+      "name": "Peter Hedenskog",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/540757?v=4",
+      "profile": "https://www.peterhedenskog.com",
+      "contributions": [
+        "code",
+        "ideas",
+        "review",
+        "infra",
+        "docs"
       ]
     }
   ],
