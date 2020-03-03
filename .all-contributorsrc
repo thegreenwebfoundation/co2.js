@@ -5,10 +5,20 @@
   "imageSize": 100,
   "commit": false,
   "contributors": [
+    {
+      "login": "JamieBeevor",
+      "name": "JamieB",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/26165947?v=4",
+      "profile": "https://greengumption.co.uk",
+      "contributions": [
+        "ideas"
+      ]
+    }
   ],
   "contributorsPerLine": 7,
-  "projectName": "co2",
+  "projectName": "co2.js",
   "projectOwner": "thegreenwebfoundation",
   "repoType": "github",
-  "repoHost": "https://github.com"
+  "repoHost": "https://github.com",
+  "skipCi": true
 }
