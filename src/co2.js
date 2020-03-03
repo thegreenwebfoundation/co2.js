@@ -8,20 +8,13 @@ const KWH_PER_BYTE_FOR_NETWORK = oneByte.KWH_PER_BYTE_FOR_NETWORK;
 const CO2_PER_KWH_IN_DC_GREY = oneByte.CO2_PER_KWH_IN_DC_GREY;
 
 // this figure is from the IEA's 2018 report for a global average:
-const CO2_PER_KWH_NETWORK_GREY = 495;
+const CO2_PER_KWH_NETWORK_GREY = 475;
 
-// the better way would be do to this with a weighted average of types of RE generation
-// from solar, to wind, to biomass, and hydro and so on, based on how much they
-// are used.
-// For now, let's use a quoted figure from Ecotricity, which quotes OFGEM, the UK regulator
-// and it's better than most quoted figures which pretend there is *no* footprint
-// for RE.
-// More here:
-// https://www.ecotricity.co.uk/layout/set/popup/layout/set/print/for-your-home/britain-s-greenest-energy-company/lifecycle-carbon-emissions
-// https://twitter.com/mrchrisadams/status/1227972969756086284
-// https://en.wikipedia.org/wiki/Life-cycle_greenhouse-gas_emissions_of_energy_sources
-
-const CO2_PER_KWH_IN_DC_GREEN = 33;
+// The IEA figures cover electricity but as far as I can tell, it does not
+// cover life cycle emissions, and the 1byte models appears to do the same
+// so, we use zero emissions for green infra in the DC
+// https://github.com/thegreenwebfoundation/co2.js/issues/2
+const CO2_PER_KWH_IN_DC_GREEN = 0;
 
 class CO2 {
   constructor(options) {
