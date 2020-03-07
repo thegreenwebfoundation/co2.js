@@ -39,5 +39,9 @@
   "dependencies": {
     "better-sqlite3": "^5.4.3",
     "debug": "^4.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thegreenwebfoundation/co2.js.git"
   }
 }
