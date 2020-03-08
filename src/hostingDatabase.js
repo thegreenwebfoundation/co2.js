@@ -1,7 +1,7 @@
 "use strict";
 
 const log = require("debug")("tgwf:hostingDatabase");
-const Database = require("better-sqlite3");
+const sqlite = require("sqlite3");
 
 function getQ(domains) {
   const q = [];
@@ -13,9 +13,9 @@ function getQ(domains) {
 
 function getDatabase(databaseFullPathAndName) {
   log(`looking for db at ${databaseFullPathAndName}`);
-  return new Database(databaseFullPathAndName, {
+  return new sqlite3.Database(databaseFullPathAndName, {
     readonly: true,
-    fileMustExist: true
+    // fileMustExist: true
   });
 }
 
