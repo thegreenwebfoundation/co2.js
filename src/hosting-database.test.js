@@ -10,7 +10,6 @@ const writeFile = promisify(fs.writeFile);
 const unlink = promisify(fs.unlink);
 
 describe("hostingDatabase", function() {
-
   const jsonPath = path.resolve(
     __dirname,
     "..",
@@ -26,10 +25,8 @@ describe("hostingDatabase", function() {
     "url2green.test.db"
   );
 
-
   describe.only("generating a dump of green domains #dump", function() {
     test.only("serialised as a JSON file", async function() {
-
       // generate json
       const res = await hosting.dumpDomains(dbPath, jsonPath);
 
@@ -38,25 +35,22 @@ describe("hostingDatabase", function() {
 
       const parsedDomains = JSON.parse(jsonBuffer);
 
-      expect(parsedDomains.length).toBeGreaterThan(0);
+      expect(parsedDomains.length).toBe(1);
     });
   });
-  // describe("checking a single domain with #check", function () {
-  //   test.skip("tries to use a local database if available ", async function () {
-  //     const res = await hosting.check(
-  //       "google.com",
-  //       path.resolve(__dirname, "..", "url2green.test.db")
-  //     );
-  //     expect(res).toEqual(true);
-  //   });
-  // });
-  // describe("implicitly checking multiple domains with #check", function () {
-  //   test.skip("tries to use a local database if available", async function () {
-  //     const res = await hosting.check(
-  //       ["google.com", "kochindustries.com"],
-  //       path.resolve(__dirname, "..", "url2green.test.db")
-  //     );
-  //     expect(res).toContain("google.com");
-  //   });
-  // });
+  describe("checking a single domain with #check", function() {
+    test.skip("tries to use a local database if available ", async function() {
+      const res = await hosting.check("google.com", dbPath);
+      expect(res).toEqual(true);
+    });
+  });
+  describe("implicitly checking multiple domains with #check", function() {
+    test.skip("tries to use a local database if available", async function() {
+      const res = await hosting.check(
+        ["google.com", "kochindustries.com"],
+        dbPath
+      );
+      expect(res).toContain("google.com");
+    });
+  });
 });
