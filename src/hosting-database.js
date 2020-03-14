@@ -1,7 +1,11 @@
 "use strict";
 
 const log = require("debug")("tgwf:hostingDatabase");
-const sqlite = require("sqlite3");
+const sqlite3 = require("sqlite3");
+const fs = require("fs");
+const { promisify } = require("util");
+const readFile = promisify(fs.readFile);
+const writeFile = promisify(fs.writeFile);
 
 function getQ(domains) {
   const q = [];
@@ -14,7 +18,7 @@ function getQ(domains) {
 function getDatabase(databaseFullPathAndName) {
   log(`looking for db at ${databaseFullPathAndName}`);
   return new sqlite3.Database(databaseFullPathAndName, {
-    readonly: true,
+    readonly: true
     // fileMustExist: true
   });
 }
@@ -39,7 +43,7 @@ function check(domain, dbName) {
 
 function checkInDB(domain, db) {
   try {
-    const stmt = db.prepare("SELECT * FROM green_presenting WHERE url = ?");
+    const stmt = db.get("SELECT * FROM green_presenting WHERE url = ?");
     return !!stmt.get(domain).green;
   } finally {
     if (db) {
@@ -74,7 +78,32 @@ function checkDomainsInDB(domains, db) {
     }
   }
 }
+async function dumpDomains(dbName, filePath) {
+  let db;
+
+  try {
+    db = getDatabase(dbName);
+  } catch (SqliteError) {
+    log(`couldn't find SQlite database at path: ${dbName}`);
+    throw SqliteError;
+  }
+  const parsingCallBack = async function(err, rows) {
+    log(`rows from query: ${rows.length}`);
+
+    const justThedomains = function(row) {
+      return row.url;
+    };
+
+    return await writeFile(filePath, JSON.stringify(rows.map(justThedomains)));
+  };
+  const res = await db.all(
+    "SELECT url FROM green_presenting;",
+    parsingCallBack
+  );
+  return res;
+}
 
 module.exports = {
-  check
+  check,
+  dumpDomains
 };
