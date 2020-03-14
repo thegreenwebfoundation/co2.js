@@ -10,10 +10,25 @@ const writeFile = promisify(fs.writeFile);
 const unlink = promisify(fs.unlink);
 
 describe("hostingDatabase", function() {
+
+  const jsonPath = path.resolve(
+    __dirname,
+    "..",
+    "data",
+    "fixtures",
+    "url2green.test.json"
+  );
+  const dbPath = path.resolve(
+    __dirname,
+    "..",
+    "data",
+    "fixtures",
+    "url2green.test.db"
+  );
+
+
   describe.only("generating a dump of green domains #dump", function() {
     test.only("serialised as a JSON file", async function() {
-      const jsonPath = path.resolve(__dirname, "..", "url2green.json");
-      const dbPath = path.resolve(__dirname, "..", "url2green.db");
 
       // generate json
       const res = await hosting.dumpDomains(dbPath, jsonPath);
@@ -23,7 +38,7 @@ describe("hostingDatabase", function() {
 
       const parsedDomains = JSON.parse(jsonBuffer);
 
-      expect(parsedDomains.length).toBeGreaterThan(1000);
+      expect(parsedDomains.length).toBeGreaterThan(0);
     });
   });
   // describe("checking a single domain with #check", function () {
