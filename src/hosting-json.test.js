@@ -4,7 +4,13 @@ const hosting = require("./hosting-json");
 const path = require("path");
 
 describe("hostingJSON", function() {
-  const jsonPath = path.resolve(__dirname, "..", "url2green.json");
+  const jsonPath = path.resolve(
+    __dirname,
+    "..",
+    "data",
+    "fixtures",
+    "url2green.test.json"
+  );
 
   describe("checking a single domain with #check", function() {
     test("against the list of domains as JSON", async function() {
