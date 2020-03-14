@@ -1,9 +1,8 @@
 "use strict";
 
-// const log = require("debug")("tgwf:hosting");
+const log = require("debug")("tgwf:hosting");
 const hostingAPI = require("./hosting-api");
 const hostingJSON = require("./hosting-json");
-// const hostingDatabase = require("./hostingDatabase");
 
 function check(domain, db) {
   if (db) {

@@ -47,39 +47,18 @@ describe("hosting", function() {
     // );
   });
   describe("checking a single domain with #check", function() {
-    it.skip("tries to use a local database", async function() {
-      const res = await hosting.check(
-        "google.com",
-        path.resolve(__dirname, "..", "url2green.test.db")
-      );
-      expect(res).toEqual(true);
-    });
-    it.skip("use the API instead", async function() {
+    it("use the API instead", async function() {
       const res = await hosting.check("google.com");
       expect(res).toEqual(true);
     });
   });
   describe("implicitly checking multiple domains with #check", function() {
-    it.skip("tries to use a local database if available", async function() {
-      const res = await hosting.check(
-        ["google.com", "kochindustries.com"],
-        path.resolve(__dirname, "..", "url2green.test.db")
-      );
-      expect(res).toContain("google.com");
-    });
     it("Use the API", async function() {
       const res = await hosting.check(["google.com", "kochindustries.com"]);
       expect(res).toContain("google.com");
     });
   });
   describe("explicitly checking multiple domains with #checkMulti", function() {
-    it.skip("tries to use a local database if available", async function() {
-      const res = await hosting.check(
-        ["google.com", "kochindustries.com"],
-        path.resolve(__dirname, "..", "url2green.test.db")
-      );
-      expect(res).toContain("google.com");
-    });
     it("use the API", async function() {
       const res = await hosting.check(["google.com", "kochindustries.com"]);
       expect(res).toContain("google.com");
