@@ -5,9 +5,9 @@ const hostingAPI = require("./hosting-api");
 const hostingJSON = require("./hosting-json");
 // const hostingDatabase = require("./hostingDatabase");
 
-function check(domain, dbName) {
-  if (dbName) {
-    return hostingJSON.check(domain, dbName);
+function check(domain, db) {
+  if (db) {
+    return hostingJSON.check(domain, db);
   } else {
     return hostingAPI.check(domain);
   }
