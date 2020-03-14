@@ -6,12 +6,12 @@ const fs = require("fs");
 const { promisify } = require("util");
 const readFile = promisify(fs.readFile);
 
-async function check(domain, jsonPath) {
-  // TODO we want to memoise this to avoid
-  // repeatedly loading it
+async function loadJSON(jsonPath) {
   const jsonBuffer = await readFile(jsonPath);
-  const db = JSON.parse(jsonBuffer);
+  return JSON.parse(jsonBuffer);
+}
 
+async function check(domain, db) {
   // is it a single domain or an array of them?
   if (typeof domain === "string") {
     return checkInJSON(domain, db);
@@ -50,5 +50,6 @@ function checkDomainsInJSON(domains, db) {
 }
 
 module.exports = {
-  check
+  check,
+  loadJSON
 };
