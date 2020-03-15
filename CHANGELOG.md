@@ -10,6 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Include the new alternative, "Green Byte Model" with the figures after speaking to folks at the IEA and other places.
 
+## ## [0.6.1] - 2020-03-15
+
+### Fixed
+
+- Added the function to load JSON, on the tgwg.hosting object, for use in the sustaiable web sitespeed plugin.
+
 ## [0.6.0] - 2020-03-15
 
 ### Added
