@@ -4,10 +4,28 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+-
+## Unreleased
 
-## [Unreleased]
 
-## [0.5.7] - 2020-03-03
+- Include the new alternative, "Green Byte Model" with the figures after speaking to folks at the IEA and other places.
+
+## [0.6.0] - 2020-03-15
+
+### Added
+
+- Added the hosting-JSON for running local checks against an array instead of SQLite.
+
+### Changed
+
+- Swapped out checking against a sqlite database `hosting-json`in favour of simple array in,
+- Updated conventions for style - using kebab-cases over CamelCase for naming files
+
+### Removed
+
+- Extracted sqlite usage and dependencies into a separate module, `url2green`. This means  you no longer need to compile SQLite on install.
+
+## [0.5.0] - 2020-03-03
 
 ### Changed
 
