@@ -27,11 +27,11 @@ This is open source software, with all the guarantees associated, so if you want
 ```js
 
 const CO2 = require('@tgwf/co2')
-const bytesSent = 1_000_000
+const bytesSent = (1024 * 1024 * 1024)
 const co2Emission = new CO2();
 estimatedCO2 = co2Emission.perByte(bytesSent)
 
-console.log(`Sending a million bytes, had a carbon footprint of ${estimatedCO2.toFixed(3)} grams of CO2`)
+console.log(`Sending a gigabyte, had a carbon footprint of ${estimatedCO2.toFixed(3)} grams of CO2`)
 
 ```
 
@@ -44,22 +44,24 @@ const greencheck = require('@tgwf/hosting')
 // returns true if green, otherwise false
 greencheck.check("google.com")
 
-// returns an array of the green domains, in this case ["google.
-greencheck.check(["google.com", "kochindustries.com"]) com"]
+// returns an array of the green domains, in this case ["google.com"].
+greencheck.check(["google.com", "kochindustries.com"])]
 
 // returns an array of green domains, again in this case, ["google.com"]
 greencheck.checkPage(["google.com"])
 
 ```
 
-Please note, we currently look at just the carbon cost of _generating_ the electricity, similar to how the IEA does, not the full life cycle cost of the energy, which would include things like:
+Please note, we currently look at just the carbon cost of _generating_ the electricity, similar to how the IEA does, not the full life cycle cost of the energy.
 
-- the carbon associated with digging up the fuel
-- the carbon associated with mining the materials to build the power stations, datacentres
+Doign this would include things like:
+
+- the carbon emitted when carryung out activity associated with digging up the fuel
+- the carbon associated with mining the materials to _build_ the power stations, datacentres, and so on
 - the end of life costs
 - the maintenance costs over the life of the datacentres, power generation and end user devices, and the rest of the internet
 
-We'd like to do this, and we know how complicated this is likely to be.
+Life cycle figures do exist, but they are very difficult to do well. If you're interested in contributing to this. we'd love to hear from you.
 
 
 # Licenses
