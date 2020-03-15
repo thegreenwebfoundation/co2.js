@@ -31,5 +31,6 @@ async function checkPage(pageXray) {
 module.exports = {
   check,
   checkPage,
-  greenDomains: greenDomainsFromResults
+  greenDomains: greenDomainsFromResults,
+  loadJSON: hostingJSON.loadJSON
 };
