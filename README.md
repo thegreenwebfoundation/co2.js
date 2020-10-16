@@ -22,7 +22,13 @@ This is open source software, with all the guarantees associated, so if you want
 [tgwf-services]: https://www.thegreenwebfoundation.org/services/
 
 
-## Usage
+## Usage 
+
+### Calculating emissions per byte
+
+#### Server-side
+
+This approach relies on the `fs` module and so can only be used on platforms, like node.js, that support this.
 
 ```js
 
@@ -34,6 +40,23 @@ estimatedCO2 = co2Emission.perByte(bytesSent)
 console.log(`Sending a gigabyte, had a carbon footprint of ${estimatedCO2.toFixed(3)} grams of CO2`)
 
 ```
+
+#### Browser-side
+
+For browser-based solutions, you must import the co2.js submodule directly from `node_modules`. For example, like this:
+
+```js
+
+const CO2 = require('node_modules/@tgwf/co2/src/co2.js')
+const bytesSent = (1024 * 1024 * 1024)
+const co2Emission = new CO2();
+estimatedCO2 = co2Emission.perByte(bytesSent)
+
+console.log(`Sending a gigabyte, had a carbon footprint of ${estimatedCO2.toFixed(3)} grams of CO2`)
+
+```
+
+### Checking for green power
 
 Because different digital services and websites use different forms of power, there is also a module for checking if a domain uses green power or not, and whether the domains linked to on a page use green power as well.
 
@@ -52,11 +75,13 @@ greencheck.checkPage(["google.com"])
 
 ```
 
+### Notes
+
 Please note, we currently look at just the carbon cost of _generating_ the electricity, similar to how the IEA does, not the full life cycle cost of the energy.
 
-Doign this would include things like:
+Doing this would include things like:
 
-- the carbon emitted when carryung out activity associated with digging up the fuel
+- the carbon emitted when carrying out activity associated with digging up the fuel
 - the carbon associated with mining the materials to _build_ the power stations, datacentres, and so on
 - the end of life costs
 - the maintenance costs over the life of the datacentres, power generation and end user devices, and the rest of the internet
