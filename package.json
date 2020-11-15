@@ -12,7 +12,7 @@
     "test": "jest",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "travis": "npm run lint && jest && npm run build"
+    "build:ci": "npm run lint && jest && npm run build"
   },
   "keywords": [
     "sustainability",

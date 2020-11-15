@@ -1,12 +1,12 @@
 language: node_js
 node_js: 10
-script: npm run travis 
+script: npm run build:ci
 matrix:
   include:
     - name: "Test on Linux"
       dist: bionic
     - name: "Test on OS X"
       os: osx
-      osx_image: xcode11.3  
+      osx_image: xcode11.3
     - name: "Test on Windows"
       os: windows
