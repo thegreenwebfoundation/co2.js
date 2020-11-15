@@ -90,3 +90,5 @@ typings/
 # do not track local sqlite db
 url2green.db
 url2green.json
+
+dist

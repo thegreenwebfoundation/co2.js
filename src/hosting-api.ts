@@ -1,9 +1,23 @@
-"use strict";
+/**
+ * TODO: This module uses HTTPS from node, which make it unsuitable for usage in browsers.
+ */
+import https from "https";
 
-const log = require("debug")("tgwf:hostingAPI");
-const https = require("https");
+import debug from "debug";
 
-function check(domain) {
+const log = debug("tgwf:hostingAPI");
+
+export interface GreenCheck {
+  green: boolean;
+  url: string;
+  data: boolean;
+  hostedby?: string;
+  hostedbyid?: number;
+  hostedbywebsite?: string;
+  partner?: any;
+}
+
+function check(domain: string | any) {
   // is it a single domain or an array of them?
   if (typeof domain === "string") {
     return checkAgainstAPI(domain);
@@ -12,14 +26,14 @@ function check(domain) {
   }
 }
 
-async function checkAgainstAPI(domain) {
+async function checkAgainstAPI(domain: string): Promise<boolean> {
   const res = JSON.parse(
     await getBody(`https://api.thegreenwebfoundation.org/greencheck/${domain}`)
   );
   return res.green;
 }
 
-async function checkDomainsAgainstAPI(domains) {
+async function checkDomainsAgainstAPI(domains: string[]) {
   try {
     const allGreenCheckResults = JSON.parse(
       await getBody(
@@ -35,23 +49,27 @@ async function checkDomainsAgainstAPI(domains) {
   }
 }
 
-function greenDomainsFromResults(greenResults) {
+function greenDomainsFromResults(greenResults: GreenCheck): string[] {
   const entries = Object.entries(greenResults);
-  let greenEntries = entries.filter(function([key, val]) {
+  // we could chain this filter with map
+  const greenEntries = entries.filter(function([, val]) {
     return val.green;
   });
 
-  return greenEntries.map(function([key, val]) {
+  return greenEntries.map(function([, val]: GreenCheck[]) {
     return val.url;
   });
 }
 
-async function getBody(url) {
+async function getBody(url: string): Promise<string> {
   // Return new promise
   return new Promise(function(resolve, reject) {
     // Do async job
     const req = https.get(url, function(res) {
-      if (res.statusCode < 200 || res.statusCode >= 300) {
+      if (
+        (res.statusCode && res.statusCode < 200) ||
+        (res.statusCode && res.statusCode >= 300)
+      ) {
         log(
           "Could not get info from the Green Web Foundation API, %s for %s",
           res.statusCode,
@@ -59,7 +77,7 @@ async function getBody(url) {
         );
         return reject(new Error(`Status Code: ${res.statusCode}`));
       }
-      const data = [];
+      const data: any = [];
 
       res.on("data", chunk => {
         data.push(chunk);
@@ -71,6 +89,4 @@ async function getBody(url) {
   });
 }
 
-module.exports = {
-  check
-};
+export { check };

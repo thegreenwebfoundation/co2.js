@@ -1,11 +1,10 @@
-"use strict";
-
-const url = require("url");
-const oneByte = require("./1byte.js");
-
-const KWH_PER_BYTE_IN_DC = oneByte.KWH_PER_BYTE_IN_DC;
-const KWH_PER_BYTE_FOR_NETWORK = oneByte.KWH_PER_BYTE_FOR_NETWORK;
-const CO2_PER_KWH_IN_DC_GREY = oneByte.CO2_PER_KWH_IN_DC_GREY;
+import url from "url";
+import {
+  KWH_PER_BYTE_IN_DC,
+  KWH_PER_BYTE_FOR_NETWORK,
+  CO2_PER_KWH_IN_DC_GREY
+} from "./1byte";
+import { PageXRayResult } from "../types";
 
 // this figure is from the IEA's 2018 report for a global average:
 const CO2_PER_KWH_NETWORK_GREY = 475;
@@ -16,12 +15,13 @@ const CO2_PER_KWH_NETWORK_GREY = 475;
 // https://github.com/thegreenwebfoundation/co2.js/issues/2
 const CO2_PER_KWH_IN_DC_GREEN = 0;
 
-class CO2 {
-  constructor(options) {
+export default class CO2 {
+  options: any;
+  constructor(options?: any) {
     this.options = options;
   }
 
-  perByte(bytes, green) {
+  perByte(bytes: number, green?: boolean): number {
     // return a CO2 figure for energy used to shift the corresponding
     // the data transfer.
 
@@ -45,9 +45,9 @@ class CO2 {
     return bytes * KwHPerByte * CO2_PER_KWH_IN_DC_GREY;
   }
 
-  perDomain(pageXray, greenDomains) {
+  perDomain(pageXray: PageXRayResult, greenDomains: string[]) {
     const co2PerDomain = [];
-    for (let domain of Object.keys(pageXray.domains)) {
+    for (const domain of Object.keys(pageXray.domains)) {
       let co2;
       if (greenDomains && greenDomains.indexOf(domain) > -1) {
         co2 = this.perByte(pageXray.domains[domain].transferSize, true);
@@ -67,7 +67,7 @@ class CO2 {
     return co2PerDomain;
   }
 
-  perPage(pageXray, green) {
+  perPage(pageXray: PageXRayResult, green: string[]) {
     // Accept an xray object, and if we receive a boolean as the second
     // argument, we assume every request we make is sent to a server
     // running on renwewable power.
@@ -77,16 +77,16 @@ class CO2 {
 
     const domainCO2 = this.perDomain(pageXray, green);
     let totalCO2 = 0;
-    for (let domain of domainCO2) {
+    for (const domain of domainCO2) {
       totalCO2 += domain.co2;
     }
     return totalCO2;
   }
 
-  perContentType(pageXray, greenDomains) {
-    const co2PerContentType = {};
-    for (let asset of pageXray.assets) {
-      const domain = url.parse(asset.url).domain;
+  perContentType(pageXray: PageXRayResult, greenDomains: string[]) {
+    const co2PerContentType: any = {};
+    for (const asset of pageXray.assets) {
+      const domain = url.parse(asset.url).hostname || "";
       const transferSize = asset.transferSize;
       const co2ForTransfer = this.perByte(
         transferSize,
@@ -101,7 +101,7 @@ class CO2 {
     }
     // restructure and sort
     const all = [];
-    for (let type of Object.keys(co2PerContentType)) {
+    for (const type of Object.keys(co2PerContentType)) {
       all.push({
         type,
         co2: co2PerContentType[type].co2,
@@ -114,10 +114,10 @@ class CO2 {
     return all;
   }
 
-  dirtiestResources(pageXray, greenDomains) {
+  dirtiestResources(pageXray: PageXRayResult, greenDomains: string[]) {
     const allAssets = [];
-    for (let asset of pageXray.assets) {
-      const domain = url.parse(asset.url).domain;
+    for (const asset of pageXray.assets) {
+      const domain = url.parse(asset.url).hostname || "";
       const transferSize = asset.transferSize;
       const co2ForTransfer = this.perByte(
         transferSize,
@@ -132,12 +132,12 @@ class CO2 {
     return allAssets.slice(0, allAssets.length > 10 ? 10 : allAssets.length);
   }
 
-  perParty(pageXray, greenDomains) {
+  perParty(pageXray: PageXRayResult, greenDomains: string[]) {
     let firstParty = 0;
     let thirdParty = 0;
     // calculate co2 per first/third party
     const firstPartyRegEx = pageXray.firstPartyRegEx;
-    for (let d of Object.keys(pageXray.domains)) {
+    for (const d of Object.keys(pageXray.domains)) {
       if (!d.match(firstPartyRegEx)) {
         thirdParty += this.perByte(
           pageXray.domains[d].transferSize,
@@ -153,5 +153,3 @@ class CO2 {
     return { firstParty, thirdParty };
   }
 }
-
-module.exports = CO2;

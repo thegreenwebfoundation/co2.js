@@ -1,6 +1,4 @@
-"use strict";
-
-const hosting = require("./hosting-api");
+import * as hosting from "./hosting-api";
 
 describe("hostingAPI", function() {
   describe("checking a single domain with #check", function() {
