@@ -1,13 +1,12 @@
-"use strict";
-
-const fs = require("fs");
-const path = require("path");
-
-const hosting = require("./hosting");
-const pagexray = require("pagexray");
+import fs from "fs";
+import path from "path";
+import * as hosting from "./hosting";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import pagexray from "pagexray";
 
 describe("hosting", function() {
-  let har;
+  let har: any;
   beforeEach(function() {
     har = JSON.parse(
       fs.readFileSync(
@@ -22,9 +21,9 @@ describe("hosting", function() {
       const pageXrayRun = pages[0];
 
       // TODO find a way to not hit the API each time
-      const greenDomains = await hosting.checkPage(pageXrayRun);
+      const greenDomains = (await hosting.checkPage(pageXrayRun)) as string[];
 
-      expect(greenDomains).toHaveLength(10);
+      expect(greenDomains).toHaveLength(9);
 
       const expectedGreendomains = [
         "thegreenwebfoundation.org",

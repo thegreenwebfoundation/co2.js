@@ -9,7 +9,7 @@ const CO2_PER_KWH_IN_DC_GREY = 519;
 
 // The device usage figure combines figures for:
 //  1. the usage for devices (which is small proportion of the energy use)
-//  2. the *making* the device, which is comparitively high.
+//  2. the *making* the device, which is comparatively high.
 
 const KWH_PER_BYTE_IN_DC = 0.00000000072;
 
@@ -19,7 +19,7 @@ const KWH_PER_BYTE_IN_DC = 0.00000000072;
 const KWH_PER_BYTE_FOR_NETWORK = 0.00000000488;
 
 const KWH_PER_BYTE_FOR_DEVICES = 0.00000000013;
-module.exports = {
+export {
   KWH_PER_BYTE_IN_DC,
   KWH_PER_BYTE_FOR_NETWORK,
   KWH_PER_BYTE_FOR_DEVICES,

@@ -1,13 +1,13 @@
-"use strict";
-
-const fs = require("fs");
-const path = require("path");
-
-const CO2 = require("./co2");
-const pagexray = require("pagexray");
+import fs from "fs";
+import path from "path";
+import CO2 from "./co2";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import pagexray from "pagexray";
 
 describe("co2", function() {
-  let har, co2;
+  let har: any;
+  let co2: any;
   const TGWF_GREY_VALUE = 2.0484539712;
   const TGWF_GREEN_VALUE = 0.54704300112;
   const TGWF_MIXED_VALUE = 1.6706517455999996;
@@ -47,7 +47,7 @@ describe("co2", function() {
     it("returns lower CO2 for page served from green site", function() {
       const pages = pagexray.convert(har);
       const pageXrayRun = pages[0];
-      let green = [
+      const green = [
         "www.thegreenwebfoundation.org",
         "fonts.googleapis.com",
         "ajax.googleapis.com",
@@ -64,7 +64,7 @@ describe("co2", function() {
       const pages = pagexray.convert(har);
       const pageXrayRun = pages[0];
       // green can be true, or a array containing entries
-      let green = [
+      const green = [
         "www.thegreenwebfoundation.org",
         "fonts.googleapis.com",
         "ajax.googleapis.com",
@@ -98,7 +98,7 @@ describe("co2", function() {
         "api.thegreenwebfoundation.org"
       ];
 
-      for (let obj of res) {
+      for (const obj of res) {
         expect(domains.indexOf(obj.domain)).toBeGreaterThan(-1);
         expect(typeof obj.co2).toBe("number");
       }
@@ -121,10 +121,10 @@ describe("co2", function() {
       const res = co2.perDomain(pageXrayRun);
       const resWithGreen = co2.perDomain(pageXrayRun, greenDomains);
 
-      for (let obj of res) {
+      for (const obj of res) {
         expect(typeof obj.co2).toBe("number");
       }
-      for (let obj of greenDomains) {
+      for (const obj of greenDomains) {
         let index = 0;
         expect(resWithGreen[index].co2).toBeLessThan(res[index].co2);
         index++;

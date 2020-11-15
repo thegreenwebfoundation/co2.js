@@ -1,9 +1,10 @@
-"use strict";
+import debug from "debug";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { hosting } from "@tgwf/url2green";
+import path from "path";
 
-const log = require("debug")("tgwf:url2green:test");
-const { hosting } = require("@tgwf/url2green");
-const path = require("path");
-
+const log = debug("tgwf:url2green:test");
 const dbPath = path.resolve(
   __dirname,
   "..",
