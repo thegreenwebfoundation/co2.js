@@ -4,7 +4,7 @@
 
 We know computers use electricity, and because most of the electricity we use comes from burning fossil fuels to generate, there is an environmental cost to every upload and download we make over the internet.
 
-We cando something about this though. The same way we use performance budgets make apps and website faster and cheaper to run, we can use carbon budgets to make them faster, cheaper and _greener_.
+We can do something about this though. The same way we use performance budgets to make apps and websites faster and cheaper to run, we can use carbon budgets to make them faster, cheaper and _greener_.
 
 The CO2 package from [The Green Web Foundation][tgwf] lets you quickly estimate these emissions, to make measurable improvements as part of your workflow.
 
@@ -22,13 +22,13 @@ This is open source software, with all the guarantees associated, so if you want
 [tgwf-services]: https://www.thegreenwebfoundation.org/services/
 
 
-## Usage 
+## Usage
 
 ### Calculating emissions per byte
 
 #### Server-side
 
-This approach relies on the `fs` module and so can only be used on platforms, like node.js, that support this.
+This approach relies on the `fs` module and so can only be used on platforms, like Node.js, that support this.
 
 ```js
 
@@ -43,7 +43,7 @@ console.log(`Sending a gigabyte, had a carbon footprint of ${estimatedCO2.toFixe
 
 #### Browser-side
 
-For browser-based solutions, you must import the co2.js submodule directly from `node_modules`. For example, like this:
+For browser-based solutions, you must import the `co2.js` submodule directly from `node_modules`. For example, like this:
 
 ```js
 
@@ -77,7 +77,7 @@ greencheck.checkPage(["google.com"])
 
 ### Notes
 
-Please note, we currently look at just the carbon cost of _generating_ the electricity, similar to how the IEA does, not the full life cycle cost of the energy.
+Please note, we currently look at just the carbon cost of _generating_ the electricity, similar to how the [International Energy Agency (IEA)] does, not the full life cycle cost of the energy.
 
 Doing this would include things like:
 
@@ -86,10 +86,11 @@ Doing this would include things like:
 - the end of life costs
 - the maintenance costs over the life of the datacentres, power generation and end user devices, and the rest of the internet
 
-Life cycle figures do exist, but they are very difficult to do well. If you're interested in contributing to this. we'd love to hear from you.
+Life cycle figures do exist, but they are very difficult to do well. If you're interested in contributing to this, we'd love to hear from you.
 
 
 # Licenses
 
 Apache 2.0
 
+[International Energy Agency (IEA)]: https://www.iea.org/
