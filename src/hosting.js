@@ -32,5 +32,5 @@ module.exports = {
   check,
   checkPage,
   greenDomains: greenDomainsFromResults,
-  loadJSON: hostingJSON.loadJSON
+  loadJSON: hostingJSON.loadJSON,
 };

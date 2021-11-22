@@ -22,15 +22,15 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "@tgwf/url2green": "^0.4.0",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.10.0",
-    "eslint-plugin-jest": "^23.8.2",
-    "eslint-plugin-prettier": "^3.1.2",
-    "jest": "^25.1.0",
-    "np": "^5.2.1",
+    "eslint": "^8.3.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jest": "^25.2.4",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^27.3.1",
+    "minimist": "^1.2.5",
+    "np": "^7.6.0",
     "pagexray": "^2.5.9",
-    "prettier": "^1.19.1",
-    "minimist": ">=1.2.2"
+    "prettier": "^2.4.1"
   },
   "np": {
     "yarn": false

@@ -3,5 +3,5 @@ const hosting = require("./hosting");
 
 module.exports = {
   co2,
-  hosting
+  hosting,
 };
