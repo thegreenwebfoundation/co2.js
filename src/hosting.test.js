@@ -36,7 +36,7 @@ describe("hosting", function () {
         "graphite.thegreenwebfoundation.org",
         "analytics.thegreenwebfoundation.org",
         "fonts.gstatic.com",
-        "api.thegreenwebfoundation.org"
+        "api.thegreenwebfoundation.org",
       ];
       greenDomains.forEach(function (dom) {
         expect(expectedGreendomains).toContain(dom);

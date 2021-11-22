@@ -59,7 +59,7 @@ async function getBody(url) {
       }
       const data = [];
 
-      res.on("data", chunk => {
+      res.on("data", (chunk) => {
         data.push(chunk);
       });
 
@@ -70,5 +70,5 @@ async function getBody(url) {
 }
 
 module.exports = {
-  check
+  check,
 };
