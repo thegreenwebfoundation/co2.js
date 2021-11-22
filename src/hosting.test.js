@@ -6,9 +6,9 @@ const path = require("path");
 const hosting = require("./hosting");
 const pagexray = require("pagexray");
 
-describe("hosting", function() {
+describe("hosting", function () {
   let har;
-  beforeEach(function() {
+  beforeEach(function () {
     har = JSON.parse(
       fs.readFileSync(
         path.resolve(__dirname, "../data/fixtures/tgwf.har"),
@@ -16,17 +16,17 @@ describe("hosting", function() {
       )
     );
   });
-  describe("checking all domains on a page object with #checkPage ", function() {
-    it("it returns a list of green domains, when passed a page object", async function() {
+  describe("checking all domains on a page object with #checkPage ", function () {
+    it("it returns a list of green domains, when passed a page object", async function () {
       const pages = pagexray.convert(har);
       const pageXrayRun = pages[0];
 
       // TODO find a way to not hit the API each time
       const greenDomains = await hosting.checkPage(pageXrayRun);
 
-      expect(greenDomains).toHaveLength(10);
-
+      expect(greenDomains).toHaveLength(11);
       const expectedGreendomains = [
+        "maxcdn.bootstrapcdn.com",
         "thegreenwebfoundation.org",
         "www.thegreenwebfoundation.org",
         "fonts.googleapis.com",
@@ -38,7 +38,7 @@ describe("hosting", function() {
         "fonts.gstatic.com",
         "api.thegreenwebfoundation.org"
       ];
-      greenDomains.forEach(function(dom) {
+      greenDomains.forEach(function (dom) {
         expect(expectedGreendomains).toContain(dom);
       });
     });
@@ -46,20 +46,20 @@ describe("hosting", function() {
     //   'it returns an empty list, when passed a page object with no green domains'
     // );
   });
-  describe("checking a single domain with #check", function() {
-    it("use the API instead", async function() {
+  describe("checking a single domain with #check", function () {
+    it("use the API instead", async function () {
       const res = await hosting.check("google.com");
       expect(res).toEqual(true);
     });
   });
-  describe("implicitly checking multiple domains with #check", function() {
-    it("Use the API", async function() {
+  describe("implicitly checking multiple domains with #check", function () {
+    it("Use the API", async function () {
       const res = await hosting.check(["google.com", "kochindustries.com"]);
       expect(res).toContain("google.com");
     });
   });
-  describe("explicitly checking multiple domains with #checkMulti", function() {
-    it("use the API", async function() {
+  describe("explicitly checking multiple domains with #checkMulti", function () {
+    it("use the API", async function () {
       const res = await hosting.check(["google.com", "kochindustries.com"]);
       expect(res).toContain("google.com");
     });
