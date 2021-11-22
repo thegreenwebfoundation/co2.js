@@ -21,7 +21,7 @@
   "author": "Chris Adams",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@tgwf/url2green": "^0.3.0",
+    "@tgwf/url2green": "^0.4.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-jest": "^23.8.2",
