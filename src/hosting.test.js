@@ -29,8 +29,6 @@ describe("hosting", function () {
       const pages = pagexray.convert(har);
       const pageXrayRun = pages[0];
       const db = await hosting.loadJSON(jsonPath);
-
-      // TODO find a way to not hit the API each time
       const greenDomains = await hosting.checkPage(pageXrayRun, db);
 
       expect(greenDomains).toHaveLength(11);
