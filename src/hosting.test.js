@@ -6,6 +6,14 @@ const path = require("path");
 const hosting = require("./hosting");
 const pagexray = require("pagexray");
 
+const jsonPath = path.resolve(
+  __dirname,
+  "..",
+  "data",
+  "fixtures",
+  "url2green.test.json"
+);
+
 describe("hosting", function () {
   let har;
   beforeEach(function () {
@@ -20,9 +28,10 @@ describe("hosting", function () {
     it("it returns a list of green domains, when passed a page object", async function () {
       const pages = pagexray.convert(har);
       const pageXrayRun = pages[0];
+      const db = await hosting.loadJSON(jsonPath);
 
       // TODO find a way to not hit the API each time
-      const greenDomains = await hosting.checkPage(pageXrayRun);
+      const greenDomains = await hosting.checkPage(pageXrayRun, db);
 
       expect(greenDomains).toHaveLength(11);
       const expectedGreendomains = [
@@ -48,19 +57,23 @@ describe("hosting", function () {
   });
   describe("checking a single domain with #check", function () {
     it("use the API instead", async function () {
-      const res = await hosting.check("google.com");
+      const db = await hosting.loadJSON(jsonPath);
+      const res = await hosting.check("google.com", db);
       expect(res).toEqual(true);
     });
   });
   describe("implicitly checking multiple domains with #check", function () {
     it("Use the API", async function () {
-      const res = await hosting.check(["google.com", "kochindustries.com"]);
+      const db = await hosting.loadJSON(jsonPath);
+
+      const res = await hosting.check(["google.com", "kochindustries.com"], db);
       expect(res).toContain("google.com");
     });
   });
   describe("explicitly checking multiple domains with #checkMulti", function () {
     it("use the API", async function () {
-      const res = await hosting.check(["google.com", "kochindustries.com"]);
+      const db = await hosting.loadJSON(jsonPath);
+      const res = await hosting.check(["google.com", "kochindustries.com"], db);
       expect(res).toContain("google.com");
     });
   });
