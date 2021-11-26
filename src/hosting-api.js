@@ -28,7 +28,6 @@ async function checkDomainsAgainstAPI(domains) {
         )}`
       )
     );
-
     return greenDomainsFromResults(allGreenCheckResults);
   } catch (e) {
     return [];
@@ -37,20 +36,19 @@ async function checkDomainsAgainstAPI(domains) {
 
 function greenDomainsFromResults(greenResults) {
   const entries = Object.entries(greenResults);
-  let greenEntries = entries.filter(function([key, val]) {
+  let greenEntries = entries.filter(function ([key, val]) {
     return val.green;
   });
-
-  return greenEntries.map(function([key, val]) {
+  return greenEntries.map(function ([key, val]) {
     return val.url;
   });
 }
 
 async function getBody(url) {
   // Return new promise
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     // Do async job
-    const req = https.get(url, function(res) {
+    const req = https.get(url, function (res) {
       if (res.statusCode < 200 || res.statusCode >= 300) {
         log(
           "Could not get info from the Green Web Foundation API, %s for %s",
@@ -61,7 +59,7 @@ async function getBody(url) {
       }
       const data = [];
 
-      res.on("data", chunk => {
+      res.on("data", (chunk) => {
         data.push(chunk);
       });
 
@@ -72,5 +70,5 @@ async function getBody(url) {
 }
 
 module.exports = {
-  check
+  check,
 };

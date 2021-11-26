@@ -57,10 +57,10 @@ class CO2 {
       co2PerDomain.push({
         domain,
         co2,
-        transferSize: pageXray.domains[domain].transferSize
+        transferSize: pageXray.domains[domain].transferSize,
       });
     }
-    co2PerDomain.sort(function(a, b) {
+    co2PerDomain.sort(function (a, b) {
       return b.co2 - a.co2;
     });
 
@@ -105,10 +105,10 @@ class CO2 {
       all.push({
         type,
         co2: co2PerContentType[type].co2,
-        transferSize: co2PerContentType[type].transferSize
+        transferSize: co2PerContentType[type].transferSize,
       });
     }
-    all.sort(function(a, b) {
+    all.sort(function (a, b) {
       return b.co2 - a.co2;
     });
     return all;
@@ -125,7 +125,7 @@ class CO2 {
       );
       allAssets.push({ url: asset.url, co2: co2ForTransfer, transferSize });
     }
-    allAssets.sort(function(a, b) {
+    allAssets.sort(function (a, b) {
       return b.co2 - a.co2;
     });
 

@@ -48,11 +48,11 @@ function checkInJSON(domain, db) {
 
 function greenDomainsFromResults(greenResults) {
   const entries = Object.entries(greenResults);
-  let greenEntries = entries.filter(function([key, val]) {
+  let greenEntries = entries.filter(function ([key, val]) {
     return val.green;
   });
 
-  return greenEntries.map(function([key, val]) {
+  return greenEntries.map(function ([key, val]) {
     return val.url;
   });
 }
@@ -70,5 +70,5 @@ function checkDomainsInJSON(domains, db) {
 
 module.exports = {
   check,
-  loadJSON
+  loadJSON,
 };

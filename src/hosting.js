@@ -14,23 +14,23 @@ function check(domain, db) {
 
 function greenDomainsFromResults(greenResults) {
   const entries = Object.entries(greenResults);
-  let greenEntries = entries.filter(function([key, val]) {
+  let greenEntries = entries.filter(function ([key, val]) {
     return val.green;
   });
 
-  return greenEntries.map(function([key, val]) {
+  return greenEntries.map(function ([key, val]) {
     return val.url;
   });
 }
 
-async function checkPage(pageXray) {
+async function checkPage(pageXray, db) {
   const domains = Object.keys(pageXray.domains);
-  return check(domains);
+  return check(domains, db);
 }
 
 module.exports = {
   check,
   checkPage,
   greenDomains: greenDomainsFromResults,
-  loadJSON: hostingJSON.loadJSON
+  loadJSON: hostingJSON.loadJSON,
 };

@@ -1,10 +1,11 @@
 # CO2
 
-<img src="https://travis-ci.org/thegreenwebfoundation/co2.js.svg?branch=master" />
+<img src="https://github.com/thegreenwebfoundation/co2.js/actions/workflows/unittests.yml/badge.svg" />
+
 
 We know computers use electricity, and because most of the electricity we use comes from burning fossil fuels to generate, there is an environmental cost to every upload and download we make over the internet.
 
-We cando something about this though. The same way we use performance budgets make apps and website faster and cheaper to run, we can use carbon budgets to make them faster, cheaper and _greener_.
+We cando something about this though.g The same way we use performance budgets make apps and website faster and cheaper to run, we can use carbon budgets to make them faster, cheaper and _greener_.
 
 The CO2 package from [The Green Web Foundation][tgwf] lets you quickly estimate these emissions, to make measurable improvements as part of your workflow.
 
