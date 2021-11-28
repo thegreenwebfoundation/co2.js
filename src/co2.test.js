@@ -28,12 +28,18 @@ describe("co2", function () {
 
   describe("perByte", function () {
     it("returns a CO2 number for data transfer using 'grey' power", function () {
-      expect(co2.perByte(MILLION).toPrecision(5)).toBe(MILLION_GREY.toPrecision(5));
+      expect(co2.perByte(MILLION).toPrecision(5)).toBe(
+        MILLION_GREY.toPrecision(5)
+      );
     });
 
     it("returns a lower CO2 number for data transfer from domains using entirely 'green' power", function () {
-      expect(co2.perByte(MILLION, false).toPrecision(5)).toBe(MILLION_GREY.toPrecision(5));
-      expect(co2.perByte(MILLION, true).toPrecision(5)).toBe(MILLION_GREEN.toPrecision(5));
+      expect(co2.perByte(MILLION, false).toPrecision(5)).toBe(
+        MILLION_GREY.toPrecision(5)
+      );
+      expect(co2.perByte(MILLION, true).toPrecision(5)).toBe(
+        MILLION_GREEN.toPrecision(5)
+      );
     });
   });
 
@@ -42,7 +48,9 @@ describe("co2", function () {
       const pages = pagexray.convert(har);
       const pageXrayRun = pages[0];
 
-      expect(co2.perPage(pageXrayRun).toPrecision(5)).toBe(TGWF_GREY_VALUE.toPrecision(5));
+      expect(co2.perPage(pageXrayRun).toPrecision(5)).toBe(
+        TGWF_GREY_VALUE.toPrecision(5)
+      );
     });
     it("returns lower CO2 for page served from green site", function () {
       const pages = pagexray.convert(har);
@@ -75,7 +83,9 @@ describe("co2", function () {
         "fonts.gstatic.com",
         "api.thegreenwebfoundation.org",
       ];
-      expect(co2.perPage(pageXrayRun, green).toPrecision(5)).toBe(TGWF_MIXED_VALUE.toPrecision(5));
+      expect(co2.perPage(pageXrayRun, green).toPrecision(5)).toBe(
+        TGWF_MIXED_VALUE.toPrecision(5)
+      );
     });
   });
   describe("perDomain", function () {
