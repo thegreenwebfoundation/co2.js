@@ -1,6 +1,6 @@
 {
   "name": "@tgwf/co2",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "description": "Work out the co2 of your digital services",
   "main": "src/index.js",
   "scripts": {
