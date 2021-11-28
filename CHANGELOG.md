@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Update further dependencies
+- Fix embarassing order of magnitude typo in 1byte model (thanks @mstaschik!)
 
 ## Added
 
@@ -22,7 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-
+- The 1bye model will give different numbers now. It's mentioned in `#fixed` but it's worth repeating.
 
 ## [0.7.0] - 2021-11-28
 

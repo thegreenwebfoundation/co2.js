@@ -20,11 +20,12 @@ const KWH_PER_BYTE_IN_DC = 7.2e-11;
 // Web traffic between servers is likely wired networks
 
 const FIXED_NETWORK_WIRED = 4.29e-10;
-const FIXED_NETWORK_WIFI = 1.52e-10
-const FOUR_G_MOBILE = 8.84e-10
+const FIXED_NETWORK_WIFI = 1.52e-10;
+const FOUR_G_MOBILE = 8.84e-10;
 
 // Pull requests gratefully accepted
-const KWH_PER_BYTE_FOR_NETWORK = (FIXED_NETWORK_WIRED + FIXED_NETWORK_WIFI + FOUR_G_MOBILE) / 3;
+const KWH_PER_BYTE_FOR_NETWORK =
+  (FIXED_NETWORK_WIRED + FIXED_NETWORK_WIFI + FOUR_G_MOBILE) / 3;
 
 const KWH_PER_BYTE_FOR_DEVICES = 1.3e-10;
 module.exports = {
