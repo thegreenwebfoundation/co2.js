@@ -5,10 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 -
-## [0.7.0] - 2021-11-22
 
-- Include the new alternative, "Green Byte Model" with the figures after speaking to folks at the IEA and other places.
+## Unreleased
+
+- Include a new alternative, "Green Byte Model" with the figures after speaking to folks at the IEA and other places.
+## [0.7.0] - 2021-11-28
+
+### Fixed
+
+- Update tests to avoid network requests #50
 - Update dependencies across the board
+
+### Changed
+
 - Switch to github actions instead of travis for CI.
 
 ## [0.6.1] - 2020-03-15
