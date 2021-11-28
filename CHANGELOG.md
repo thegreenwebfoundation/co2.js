@@ -9,6 +9,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 
 - Include a new alternative, "Green Byte Model" with the figures after speaking to folks at the IEA and other places.
+
+# [0.8.0] - 2021-11-28
+
+### Fixed
+
+- Update further dependencies
+
+## Added
+
+- Read JSON blob also as gzipped #44 (thanks @soulgalore)
+
+### Changed
+
+
+
 ## [0.7.0] - 2021-11-28
 
 ### Fixed

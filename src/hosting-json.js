@@ -3,18 +3,17 @@
 const log = require("debug")("tgwf:hostingCache");
 const path = require("path");
 const fs = require("fs");
-const zlib = require('zlib');
+const zlib = require("zlib");
 const { promisify } = require("util");
 const readFile = promisify(fs.readFile);
 const gunzip = promisify(zlib.gunzip);
 
-
 async function streamToString(stream) {
   return new Promise((resolve, reject) => {
     const chunks = [];
-    stream.on('error', reject);
-    stream.on('data', chunk => chunks.push(chunk));
-    stream.on('end', () => resolve(Buffer.concat(chunks)));
+    stream.on("error", reject);
+    stream.on("data", (chunk) => chunks.push(chunk));
+    stream.on("end", () => resolve(Buffer.concat(chunks)));
   });
 }
 
@@ -26,7 +25,9 @@ async function getGzippedFileAsJson(jsonPath) {
 }
 
 async function loadJSON(jsonPath) {
-  const jsonBuffer = jsonPath.endsWith('.gz') ? await getGzippedFileAsJson(jsonPath) : await readFile(jsonPath);
+  const jsonBuffer = jsonPath.endsWith(".gz")
+    ? await getGzippedFileAsJson(jsonPath)
+    : await readFile(jsonPath);
   return JSON.parse(jsonBuffer);
 }
 
