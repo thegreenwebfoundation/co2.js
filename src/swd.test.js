@@ -3,18 +3,8 @@ const path = require("path");
 const SWD = require("./swd");
 
 describe("swd", () => {
-  let har, swd;
+  const swd = new SWD();
   const averageWebsiteInBytes = 2257715.2;
-
-  beforeEach(() => {
-    swd = new SWD();
-    har = JSON.parse(
-      fs.readFileSync(
-        path.resolve(__dirname, "../data/fixtures/tgwf.har"),
-        "utf8"
-      )
-    );
-  });
 
   describe("energyPerVisit", function () {
     it("should return a number", () => {

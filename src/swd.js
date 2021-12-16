@@ -3,7 +3,7 @@
 /**
  * Sustainable Web Design
  *
- * Newly update calcualtions and figures from
+ * Newly update calculations and figures from
  * https://sustainablewebdesign.org/calculating-digital-emissions/
  *
  *
