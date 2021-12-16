@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * Sustainable Web Design
@@ -8,8 +8,8 @@
  *
  *
  */
-const { fileSize } = require('./constants');
-const { formatNumber } = require('./helpers');
+const { fileSize } = require("./constants");
+const { formatNumber } = require("./helpers");
 
 const KWH_PER_GB = 0.81;
 const GLOABL_INTENSITY = 475;
