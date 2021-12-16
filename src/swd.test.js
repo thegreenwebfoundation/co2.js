@@ -4,7 +4,7 @@ const SWD = require("./swd");
 
 describe("swd", () => {
   let har, swd;
-  const averageWebsiteInByts = 2257715.2;
+  const averageWebsiteInBytes = 2257715.2;
 
   beforeEach(() => {
     swd = new SWD();
@@ -28,21 +28,21 @@ describe("swd", () => {
 
   describe("emissionsPerVisitInGrams", function () {
     it("should caulate the correct co2 per visit", () => {
-      const averageWebsiteInByts = 2257715.2;
-      const energy = swd.energyPerVisit(averageWebsiteInByts);
+      const averageWebsiteInBytes = 2257715.2;
+      const energy = swd.energyPerVisit(averageWebsiteInBytes);
       expect(swd.emissionsPerVisitInGrams(energy)).toEqual(0.61);
     });
   });
 
   describe("annualEnergyInKwh", function () {
     it("should calculate the correct energy in kWh", () => {
-      expect(swd.annualEnergyInKwh(averageWebsiteInByts)).toBe(27092582400);
+      expect(swd.annualEnergyInKwh(averageWebsiteInBytes)).toBe(27092582400);
     });
   });
 
   describe("annualEmissionsInGrams", function () {
     it("should calculate the corrent energy in grams", () => {
-      expect(swd.annualEmissionsInGrams(averageWebsiteInByts)).toBe(
+      expect(swd.annualEmissionsInGrams(averageWebsiteInBytes)).toBe(
         27092582400
       );
     });
@@ -50,7 +50,7 @@ describe("swd", () => {
 
   describe("annualSegmentEngergy", function () {
     it("should return the correct values", () => {
-      expect(swd.annualSegmentEngergy(averageWebsiteInByts)).toEqual({
+      expect(swd.annualSegmentEngergy(averageWebsiteInBytes)).toEqual({
         consumerDeviceEnergy: 1174011.9,
         dataCenterEnergy: 338657.28,
         networkEnergy: 316080.13,
