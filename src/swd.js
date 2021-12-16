@@ -14,15 +14,21 @@ class SWD {
     this.options = options;
   }
 
-  energyPerVisit(bytes) {
+  energyPerVisit(
+    bytes,
+    kWhPerGb = KWH_PER_GB,
+    returningVisitorPercentage = RETURNING_VISITOR_PERCENTAGE,
+    firstTimeVisitorPercentage = FIRST_TIME_VIEWING_PERCENTAGE,
+    subsiquentLoadPercentage = PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD
+  ) {
     const transferedBytesToGb = bytes / fileSize.GIGABYTE;
 
     return (
-      transferedBytesToGb * KWH_PER_GB * RETURNING_VISITOR_PERCENTAGE +
+      transferedBytesToGb * kWhPerGb * returningVisitorPercentage +
       transferedBytesToGb *
-        KWH_PER_GB *
-        FIRST_TIME_VIEWING_PERCENTAGE *
-        PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD
+        kWhPerGb *
+        firstTimeVisitorPercentage *
+        subsiquentLoadPercentage
     );
   }
 
