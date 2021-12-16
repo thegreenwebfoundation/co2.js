@@ -1,5 +1,13 @@
 'use strict';
 
+/**
+ * Sustainable Web Design
+ *
+ * Newly update calcualtions and figures from
+ * https://sustainablewebdesign.org/calculating-digital-emissions/
+ *
+ *
+ */
 const { fileSize } = require('./constants');
 const { formatNumber } = require('./helpers');
 
