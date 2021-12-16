@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 /**
  * Sustainable Web Design
@@ -8,8 +8,8 @@
  *
  *
  */
-const { fileSize } = require("./constants");
-const { formatNumber } = require("./helpers");
+const { fileSize } = require('./constants');
+const { formatNumber } = require('./helpers');
 
 const KWH_PER_GB = 0.81;
 const GLOABL_INTENSITY = 475;
@@ -22,21 +22,14 @@ class SWD {
     this.options = options;
   }
 
-  energyPerVisit(
-    bytes,
-    kWhPerGb = KWH_PER_GB,
-    returningVisitorPercentage = RETURNING_VISITOR_PERCENTAGE,
-    firstTimeVisitorPercentage = FIRST_TIME_VIEWING_PERCENTAGE,
-    subsiquentLoadPercentage = PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD
-  ) {
+  energyPerVisit(bytes) {
     const transferedBytesToGb = bytes / fileSize.GIGABYTE;
-
     return (
-      transferedBytesToGb * kWhPerGb * returningVisitorPercentage +
+      transferedBytesToGb * KWH_PER_GB * RETURNING_VISITOR_PERCENTAGE +
       transferedBytesToGb *
-        kWhPerGb *
-        firstTimeVisitorPercentage *
-        subsiquentLoadPercentage
+        KWH_PER_GB *
+        FIRST_TIME_VIEWING_PERCENTAGE *
+        PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD
     );
   }
 
