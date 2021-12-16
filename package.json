@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "jest",
+    "test:watch": "jest --watch",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "travis": "npm run lint && jest"
