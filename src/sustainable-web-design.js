@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * Sustainable Web Design
@@ -8,8 +8,8 @@
  *
  *
  */
-const { fileSize } = require('./constants');
-const { formatNumber } = require('./helpers');
+const { fileSize } = require("./constants");
+const { formatNumber } = require("./helpers");
 
 // Taken from: https://sustainablewebdesign.org/calculating-digital-emissions/#:~:text=TWh/EB%20or-,0.81%20kWH/GB,-Carbon%20factor%20(global
 const KWH_PER_GB = 0.81;
