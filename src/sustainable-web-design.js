@@ -13,8 +13,8 @@ const { formatNumber } = require('./helpers');
 
 // Taken from: https://sustainablewebdesign.org/calculating-digital-emissions/#:~:text=TWh/EB%20or-,0.81%20kWH/GB,-Carbon%20factor%20(global
 const KWH_PER_GB = 0.81;
-// Taken from: https://sustainablewebdesign.org/calculating-digital-emissions/#:~:text=intensity%20of%20electricity%20(-,475g/kWh,-).%C2%A0
-const GLOBAL_INTENSITY = 475;
+// Taken from: https://www.iea.org/reports/renewables-2021
+const GLOBAL_INTENSITY = 440;
 // Taken from: https://gitlab.com/wholegrain/carbon-api-2-0/-/blob/master/includes/carbonapi.php
 const FIRST_TIME_VIEWING_PERCENTAGE = 0.25;
 const RETURNING_VISITOR_PERCENTAGE = 0.75;
