@@ -3,24 +3,38 @@
 <img src="https://github.com/thegreenwebfoundation/co2.js/actions/workflows/unittests.yml/badge.svg" />
 
 
-We know computers use electricity, and because most of the electricity we use comes from burning fossil fuels to generate, there is an environmental cost to every upload and download we make over the internet.
+We know computers use electricity, and because most of the electricity we use comes from burning fossil fuels, there is an environmental cost to every upload and download we make over the internet.
 
 We can do something about this though. The same way we use performance budgets to make apps and websites faster and cheaper to run, we can use carbon budgets to make them faster, cheaper and _greener_.
 
 The CO2 package from [The Green Web Foundation][tgwf] lets you quickly estimate these emissions, to make measurable improvements as part of your workflow.
 
-It does this by implementing the 1byte model as used by the Shift Project, as introduced in their report on CO2 emissions from digital infrastructure, [Lean ICT: for a sober digital][soberDigital], to return a number for the estimated CO2 emissions for the corresponding number of bytes sent over the wire.
+### How it works
 
-It is currently used in the web performance tool [sitespeed.io][], to help developers build greener, more planet friendly digital services.
+By default, CO2.js uses the [Sustainable Web Design model][swd] for calculatiing emissions from digital services, which as the name suggests, is designed for helping understand the environmental impact of websites.
+
+This model uses data transfer, one as an indicator for total resource usage, to extrapolate energy usage numbers for the total system, before converting thes eenrgy figures to carbon emissions.
+
+![swd model](./images/swd-energy-usage.png)
+
+
+It is currently used in the web performance tool [sitespeed.io][], [ecoping][], [Websitecarbon.com](websitecarbon), and [ecograder][] to help developers build greener, more planet friendly digital services.
+
+CO2 js offers multiple models, like [the 1byte model from the Shift project][soberdigital]. Depending on your use-case, they may be a better fit for the calculations you intend to do.
 
 If you want to build this kind of environmental information into your own software, and want some advice, we'd be happy to hear from you - please open an issue, remembering to link to your project.
 
 This is open source software, with all the guarantees associated, so if you want professional advice, to a deadline, and you have a budget please see the services offered by the [Green Web Foundation][tgwf-services].
 
+
+[sitespeed.io]: https://sitespeed.io
+[ecoping]: https://ecoping.earth
+[ecograder]: https://ecograder.com
+[websitecarbon]: https://www.websitecarbon.com
+[tgwf]: https://www.thegreenwebfoundation.org
+[tgwf-services]: https://www.thegreenwebfoundation.org/services
+[swd]: https://sustainablewebdesign.org/calculating-digital-emissions
 [soberDigital]: https://theshiftproject.org/en/lean-ict-2/
-[sitespeed.io]: https://sitespeed.io/
-[tgwf]: https://www.thegreenwebfoundation.org/
-[tgwf-services]: https://www.thegreenwebfoundation.org/services/
 
 
 ## Usage

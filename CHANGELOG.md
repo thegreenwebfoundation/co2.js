@@ -8,7 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
-- Include a new alternative, "Green Byte Model" with the figures after speaking to folks at the IEA and other places.
+# [0.9.0] - 2022-03-28
+
+- Implement Sustainable Web Design model [thaks @dryden!]
+-
 
 # [0.8.0] - 2021-11-28
 
