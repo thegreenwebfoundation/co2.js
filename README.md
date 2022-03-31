@@ -92,5 +92,3 @@ greencheck.checkPage(["google.com"])
 # Licenses
 
 Apache 2.0
-
-[International Energy Agency (IEA)]: https://www.iea.org/
