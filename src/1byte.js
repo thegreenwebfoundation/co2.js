@@ -9,9 +9,6 @@ const CO2_PER_KWH_NETWORK_GREY = 475;
 // for renewables still usually include the life cycle emissions
 const CO2_PER_KWH_IN_DC_GREEN = 0;
 
-
-
-
 // the 1 byte model gives figures for energy usage for:
 
 // datacentres
@@ -42,13 +39,12 @@ const KWH_PER_BYTE_FOR_DEVICES = 1.3e-10;
 
 class OneByte {
   constructor(options) {
-    this.options = options
+    this.options = options;
 
-    this.KWH_PER_BYTE_FOR_NETWORK = KWH_PER_BYTE_FOR_NETWORK
+    this.KWH_PER_BYTE_FOR_NETWORK = KWH_PER_BYTE_FOR_NETWORK;
   }
 
   perByte(bytes, green) {
-
     if (bytes < 1) {
       return 0;
     }
@@ -70,7 +66,6 @@ class OneByte {
   }
 }
 
-
 module.exports = {
-  OneByte
+  OneByte,
 };

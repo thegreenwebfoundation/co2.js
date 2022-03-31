@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 
 const CO2 = require("./co2");
-const swd = require("./sustainable-web-design")
+const swd = require("./sustainable-web-design");
 const pagexray = require("pagexray");
 
 describe("co2", () => {
@@ -18,7 +18,6 @@ describe("co2", () => {
   const MILLION_GREEN = 0.23196;
 
   describe("1 byte model", () => {
-
     beforeEach(() => {
       co2 = new CO2();
       har = JSON.parse(
@@ -28,7 +27,6 @@ describe("co2", () => {
         )
       );
     });
-
 
     describe("perByte", () => {
       it("returns a CO2 number for data transfer using 'grey' power", () => {
@@ -145,10 +143,9 @@ describe("co2", () => {
         }
       });
     });
-  })
+  });
 
   describe("Sustainable Web Design model", () => {
-
     beforeEach(() => {
       co2 = new CO2({ model: swd });
       har = JSON.parse(
@@ -157,7 +154,7 @@ describe("co2", () => {
           "utf8"
         )
       );
-    })
+    });
     // for the two models we need to decide how much we leave to the model
     // and how much we leave to CO2 js
     describe("perByte", () => {
@@ -165,9 +162,6 @@ describe("co2", () => {
         // TODO add tesr to check for the existence of a simplest
         // version of the API we support
       });
-
     });
-
-
-  })
+  });
 });
