@@ -14,9 +14,9 @@ const jsonPath = path.resolve(
   "url2green.test.json"
 );
 
-describe("hosting", function () {
+describe("hosting", () => {
   let har;
-  beforeEach(function () {
+  beforeEach(() => {
     har = JSON.parse(
       fs.readFileSync(
         path.resolve(__dirname, "../data/fixtures/tgwf.har"),
@@ -24,8 +24,8 @@ describe("hosting", function () {
       )
     );
   });
-  describe("checking all domains on a page object with #checkPage ", function () {
-    it("it returns a list of green domains, when passed a page object", async function () {
+  describe("checking all domains on a page object with #checkPage ", () => {
+    it("it returns a list of green domains, when passed a page object", async () => {
       const pages = pagexray.convert(har);
       const pageXrayRun = pages[0];
       const db = await hosting.loadJSON(jsonPath);
@@ -53,23 +53,23 @@ describe("hosting", function () {
     //   'it returns an empty list, when passed a page object with no green domains'
     // );
   });
-  describe("checking a single domain with #check", function () {
-    it("use the API instead", async function () {
+  describe("checking a single domain with #check", () => {
+    it("use the API instead", async () => {
       const db = await hosting.loadJSON(jsonPath);
       const res = await hosting.check("google.com", db);
       expect(res).toEqual(true);
     });
   });
-  describe("implicitly checking multiple domains with #check", function () {
-    it("Use the API", async function () {
+  describe("implicitly checking multiple domains with #check", () => {
+    it("Use the API", async () => {
       const db = await hosting.loadJSON(jsonPath);
 
       const res = await hosting.check(["google.com", "kochindustries.com"], db);
       expect(res).toContain("google.com");
     });
   });
-  describe("explicitly checking multiple domains with #checkMulti", function () {
-    it("use the API", async function () {
+  describe("explicitly checking multiple domains with #checkMulti", () => {
+    it("use the API", async () => {
       const db = await hosting.loadJSON(jsonPath);
       const res = await hosting.check(["google.com", "kochindustries.com"], db);
       expect(res).toContain("google.com");
