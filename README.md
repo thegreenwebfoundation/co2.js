@@ -11,20 +11,19 @@ The CO2 package from [The Green Web Foundation][tgwf] lets you quickly estimate 
 
 ### How it works
 
-By default, CO2.js uses the [Sustainable Web Design model][swd] for calculatiing emissions from digital services, which as the name suggests, is designed for helping understand the environmental impact of websites.
+It does this by implementing various models for converting the measurable usage of digital services into a figure for the estimated CO2 emissions.
 
-This model uses data transfer, one as an indicator for total resource usage, to extrapolate energy usage numbers for the total system, before converting thes eenrgy figures to carbon emissions.
+This defaults to the 1byte model as used by the Shift Project, as introduced in their report on CO2 emissions from digital infrastructure, [Lean ICT: for a sober digital][soberDigital], with the [Sustainable Web Design model][swd] as a popular alternative..
 
-![swd model](./images/swd-energy-usage.png)
+For more information, see the documentation [for when to use the different models, with code samples to start you off](./src/readme.md).
 
+### Who uses it
 
 It is currently used in the web performance tool [sitespeed.io][], [ecoping][], [Websitecarbon.com](websitecarbon), and [ecograder][] to help developers build greener, more planet friendly digital services.
 
-CO2 js offers multiple models, like [the 1byte model from the Shift project][soberdigital]. Depending on your use-case, they may be a better fit for the calculations you intend to do.
-
 If you want to build this kind of environmental information into your own software, and want some advice, we'd be happy to hear from you - please open an issue, remembering to link to your project.
 
-This is open source software, with all the guarantees associated, so if you want professional advice, to a deadline, and you have a budget please see the services offered by the [Green Web Foundation][tgwf-services].
+This is open source software, with all the guarantees associated. So if you want professional advice, to a deadline, and you have a budget please see the services offered by the [Green Web Foundation][tgwf-services].
 
 
 [sitespeed.io]: https://sitespeed.io
@@ -43,7 +42,7 @@ This is open source software, with all the guarantees associated, so if you want
 
 #### Server-side
 
-This approach relies on the `fs` module and so can only be used on platforms, like Node.js, that support this.
+This approach relies on the `fs` module and so can only be used on platforms like Node.js, that support this.
 
 ```js
 
@@ -68,7 +67,7 @@ const co2Emission = new CO2();
 estimatedCO2 = co2Emission.perByte(bytesSent)
 
 console.log(`Sending a gigabyte, had a carbon footprint of ${estimatedCO2.toFixed(3)} grams of CO2`)
-
+****
 ```
 
 ### Checking for green power
@@ -89,20 +88,6 @@ greencheck.check(["google.com", "kochindustries.com"])]
 greencheck.checkPage(["google.com"])
 
 ```
-
-### Notes
-
-Please note, we currently look at just the carbon cost of _generating_ the electricity, similar to how the [International Energy Agency (IEA)] does, not the full life cycle cost of the energy.
-
-Doing this would include things like:
-
-- the carbon emitted when carrying out activity associated with digging up the fuel
-- the carbon associated with mining the materials to _build_ the power stations, datacentres, and so on
-- the end of life costs
-- the maintenance costs over the life of the datacentres, power generation and end user devices, and the rest of the internet
-
-Life cycle figures do exist, but they are very difficult to do well. If you're interested in contributing to this, we'd love to hear from you.
-
 
 # Licenses
 
