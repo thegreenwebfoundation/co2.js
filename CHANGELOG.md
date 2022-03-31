@@ -10,8 +10,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 # [0.9.0] - 2022-03-28
 
-- Implement Sustainable Web Design model [thaks @dryden!]
--
+- Added newly implemented Sustainable Web Design model [thaks @dryden!]
+- Added new readme page for using both emissions models
+- Added new source of data to the Sustainable Web Design model from Ember Climate.
+- Fixed various typos.
 
 # [0.8.0] - 2021-11-28
 
