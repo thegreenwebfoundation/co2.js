@@ -8,18 +8,17 @@ class CO2 {
     this.options = options;
 
     // default model
-    this.model = new onebyte.OneByte()
+    this.model = new onebyte.OneByte();
 
     if (options) {
       this.model = new options.model();
     }
-
   }
 
   // return a CO2 figure for energy used to shift the corresponding
   // the data transfer.
   perByte(bytes, green) {
-    return this.model.perByte(bytes, green)
+    return this.model.perByte(bytes, green);
   }
 
   perDomain(pageXray, greenDomains) {

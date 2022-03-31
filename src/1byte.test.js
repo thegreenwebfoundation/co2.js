@@ -9,7 +9,7 @@ describe("onebyte", () => {
       // we have a recurring 333333 afterwards
       // 4.88e-10 is the same as 0.000000000488
       const expected_val = (0.000000000488).toFixed(12);
-      const instance = new oneByte.OneByte()
+      const instance = new oneByte.OneByte();
 
       expect(instance.KWH_PER_BYTE_FOR_NETWORK.toFixed(12)).toBe(expected_val);
     });
