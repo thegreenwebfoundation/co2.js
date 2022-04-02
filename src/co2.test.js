@@ -11,7 +11,6 @@ describe("co2", () => {
   let har, co2;
 
   describe("1 byte model", () => {
-
     const TGWF_GREY_VALUE = 0.20497;
     const TGWF_GREEN_VALUE = 0.54704;
     const TGWF_MIXED_VALUE = 0.16718;
@@ -19,7 +18,6 @@ describe("co2", () => {
     const MILLION = 1000000;
     const MILLION_GREY = 0.29081;
     const MILLION_GREEN = 0.23196;
-
 
     beforeEach(() => {
       co2 = new CO2();
@@ -149,18 +147,16 @@ describe("co2", () => {
   });
 
   describe("Sustainable Web Design model", () => {
-
     // the SWD model should have slightly higher values as
     // we include more of the system in calculations for the
     // same levels of data transfer
     const MILLION = 1000000;
     const MILLION_GREY = 0.33343;
-    const MILLION_GREEN = 0.28908
+    const MILLION_GREEN = 0.28908;
 
     const TGWF_GREY_VALUE = 0.23501;
     const TGWF_GREEN_VALUE = 0.54704;
-    const TGWF_MIXED_VALUE = 0.20652
-
+    const TGWF_MIXED_VALUE = 0.20652;
 
     beforeEach(() => {
       co2 = new CO2({ model: swd });
@@ -174,7 +170,7 @@ describe("co2", () => {
 
     describe("perByte", () => {
       it("returns a CO2 number for data transfer", () => {
-        co2.perByte(MILLION)
+        co2.perByte(MILLION);
         expect(co2.perByte(MILLION).toPrecision(5)).toBe(
           MILLION_GREY.toPrecision(5)
         );
