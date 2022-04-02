@@ -8,11 +8,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+
+
 # [0.9.0] - 2022-03-28
 
-- Added newly implemented Sustainable Web Design model [thaks @dryden!]
+### Added
+
+- Added newly implemented Sustainable Web Design model [thanks @dryden!]
 - Added new readme page for using both emissions models
 - Added new source of data to the Sustainable Web Design model from Ember Climate.
+### Changed
+
+- Changed the CO2 class to accept either the One Byte model or the Sustainable Web Design model
+### Fixed
+
 - Fixed various typos.
 
 # [0.8.0] - 2021-11-28
@@ -28,7 +37,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- The 1bye model will give different numbers now. It's mentioned in `#fixed` but it's worth repeating.
+- The 1byte model will give different numbers now. It's mentioned in `#fixed` but it's worth repeating.
 
 ## [0.7.0] - 2021-11-28
 
@@ -66,9 +75,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Update README
-- Update the emissions figured for green energy after further research on methodology with @@JamieBeevor
-- Incorproate class based CO2 models from @soulgalore
+- Updated README
+- Updated the emissions figured for green energy after further research on methodology with @@JamieBeevor
+- Incorporated class based CO2 models from @soulgalore
 - Credit contributors
 
 
@@ -88,7 +97,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-Add the (currently unused) green byte model.
+Added the (currently unused) green byte model.
 
 ### Changed
 
