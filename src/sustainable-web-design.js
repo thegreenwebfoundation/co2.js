@@ -148,9 +148,16 @@ class SustainableWebDesign {
 
   /**
    * Accept a figure for bytes transferred, and return an object containing figures
-   * per system component, with the caching assumptions applied
+   * per system component, with the caching assumptions applied. This tries to account
+   * for webpages being loaded from a cache by browsers, so if you had a thousand page views,
+   * and tried to work out the energy per visit, the numbers would reflect the reduced amounts
+   * of transfer.
    *
-   * @param {number} bytes - the data transferred in bytes
+   * @param {number} bytes - the data transferred in bytes for loading a webpage
+   * @param {number} firstView - what percentage of visits are loading this page for the first time
+   * @param {number} returnView - what percentage of visits are loading this page for subsequent times
+   * @param {number} dataReloadRatio - what percentage of a page is reloaded on each subsequent page view
+   *
    * @return {object} Object containing the energy in kilowatt hours, keyed by system component
    */
   energyPerVisitByComponent(
