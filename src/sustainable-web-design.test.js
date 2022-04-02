@@ -2,39 +2,36 @@ const SustainableWebDesign = require("./sustainable-web-design");
 
 describe("sustainable web design model", () => {
   const swd = new SustainableWebDesign();
-  const averageWebsiteInBytes = 2_257_715.2;
+  const averageWebsiteInBytes = 2257715.2;
 
   // 950949.64224
 
   // averageWebsite In gigabytes   0.00210266
   // total energy transfer is 0.00170316 watt hours
 
-
   describe("energyPerByteByComponent", () => {
     it("should return a object with numbers for each system component", () => {
-      const groupedEnergy = swd.energyPerByteByComponent(averageWebsiteInBytes)
+      const groupedEnergy = swd.energyPerByteByComponent(averageWebsiteInBytes);
 
-      expect(groupedEnergy.consumerDeviceEnergy).toBeCloseTo(0.00088564, 8)
-      expect(groupedEnergy.networkEnergy).toBeCloseTo(0.00023844, 8)
-      expect(groupedEnergy.productionEnergy).toBeCloseTo(0.0003236, 8)
-      expect(groupedEnergy.dataCenterEnergy).toBeCloseTo(0.00025547, 8)
+      expect(groupedEnergy.consumerDeviceEnergy).toBeCloseTo(0.00088564, 8);
+      expect(groupedEnergy.networkEnergy).toBeCloseTo(0.00023844, 8);
+      expect(groupedEnergy.productionEnergy).toBeCloseTo(0.0003236, 8);
+      expect(groupedEnergy.dataCenterEnergy).toBeCloseTo(0.00025547, 8);
     });
-  })
+  });
 
   describe("energyPerByte", () => {
     it("should return a number in watt hours for the given data transfer in bytes", () => {
-      const energyForTransfer = swd.energyPerByte(averageWebsiteInBytes)
-      expect(energyForTransfer).toBeCloseTo(0.00170316, 7)
-    })
-
-  })
+      const energyForTransfer = swd.energyPerByte(averageWebsiteInBytes);
+      expect(energyForTransfer).toBeCloseTo(0.00170316, 7);
+    });
+  });
 
   describe("perByte", () => {
     it("should return a single number for CO2 emissions", () => {
       expect(typeof swd.perByte(2257715.2)).toBe("number");
-
     });
-  })
+  });
 
   describe("energyPerVisit", function () {
     it("should return a number", () => {
@@ -42,7 +39,9 @@ describe("sustainable web design model", () => {
     });
 
     it("should calculate the correct energy", () => {
-      expect(swd.energyPerVisit(averageWebsiteInBytes)).toBe(0.0004513362121582032);
+      expect(swd.energyPerVisit(averageWebsiteInBytes)).toBe(
+        0.0004513362121582032
+      );
     });
   });
 

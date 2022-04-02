@@ -33,9 +33,6 @@ const FIRST_TIME_VIEWING_PERCENTAGE = 0.25;
 const RETURNING_VISITOR_PERCENTAGE = 0.75;
 const PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD = 0.02;
 
-
-
-
 class SustainableWebDesign {
   constructor(options) {
     this.options = options;
@@ -50,7 +47,6 @@ class SustainableWebDesign {
    * @return {object} Object containing the energy in kilowatt hours, keyed by system component
    */
   energyPerByteByComponent(bytes) {
-
     const transferedBytesToGb = bytes / fileSize.GIGABYTE;
     const energyUsage = transferedBytesToGb * KWH_PER_GB;
 
@@ -60,7 +56,7 @@ class SustainableWebDesign {
       networkEnergy: energyUsage * NETWORK_ENERGY,
       productionEnergy: energyUsage * PRODUCTION_ENERGY,
       dataCenterEnergy: energyUsage * DATACENTER_ENERGY,
-    }
+    };
   }
   /**
    * Accept an object keys by the different system components, and
@@ -71,20 +67,20 @@ class SustainableWebDesign {
    * @return {number} the total number in grams of CO2 equivalent emissions
    */
   co2byComponent(energyBycomponent, carbonIntensity = GLOBAL_INTENSITY) {
-    const co2byComponent = {}
+    const co2byComponent = {};
     for (const [key, value] of Object.entries(energyBycomponent)) {
       // we update the datacentre, as that's what we have information
       // about.
-      if (key === 'dataCenterEnergy') {
-        co2byComponent[key] = value * carbonIntensity
+      if (key === "dataCenterEnergy") {
+        co2byComponent[key] = value * carbonIntensity;
       } else {
         // We don't have info about the device location,
         // nor the network path used, nor the production emissions
         // so we revert to global figures
-        co2byComponent[key] = value * GLOBAL_INTENSITY
+        co2byComponent[key] = value * GLOBAL_INTENSITY;
       }
     }
-    return co2byComponent
+    return co2byComponent;
   }
 
   /**
@@ -98,46 +94,47 @@ class SustainableWebDesign {
    * @return {number} the total number in grams of CO2 equivalent emissions
    */
   perByte(bytes, carbonIntensity = GLOBAL_INTENSITY) {
-    const energyBycomponent = this.energyPerByteByComponent(bytes)
+    const energyBycomponent = this.energyPerByteByComponent(bytes);
 
     // when faced with falsy values, fallback to global intensity
     if (Boolean(carbonIntensity) === false) {
-      carbonIntensity = GLOBAL_INTENSITY
+      carbonIntensity = GLOBAL_INTENSITY;
     }
     // if we have a boolean, we have a green result from the green web checker
     // use the renewables intensity
     if (carbonIntensity === true) {
-      carbonIntensity = RENEWABLES_INTENSITY
+      carbonIntensity = RENEWABLES_INTENSITY;
     }
 
     // otherwise when faced with non numeric values throw an error
-    if (typeof carbonIntensity !== 'number') {
+    if (typeof carbonIntensity !== "number") {
       throw new Error(
         `perByte expects a numeric value or boolean for the carbon intensity value. Received: ${carbonIntensity}`
       );
     }
 
-    const co2byComponent = {}
+    const co2byComponent = {};
     for (const [key, value] of Object.entries(energyBycomponent)) {
       // we update the datacentre, as that's what we have information
       // about.
-      if (key === 'dataCenterEnergy') {
-        co2byComponent[key] = value * carbonIntensity
+      if (key === "dataCenterEnergy") {
+        co2byComponent[key] = value * carbonIntensity;
       } else {
         // We don't have info about the device location,
         // nor the network path used, nor the production emissions
         // so we revert to global figures
-        co2byComponent[key] = value * GLOBAL_INTENSITY
+        co2byComponent[key] = value * GLOBAL_INTENSITY;
       }
     }
 
     // pull out our values…
-    const co2Values = Object.values(co2byComponent)
+    const co2Values = Object.values(co2byComponent);
 
     // so we can return their sum
-    return co2Values.reduce((prevValue, currentValue) => prevValue + currentValue)
+    return co2Values.reduce(
+      (prevValue, currentValue) => prevValue + currentValue
+    );
   }
-
 
   /**
    * Accept a figure for bytes transferred and return the number of kilowatt hours used
@@ -147,13 +144,15 @@ class SustainableWebDesign {
    * @return {number} the number of kilowatt hours used
    */
   energyPerByte(bytes) {
-    const energyByComponent = this.energyPerByteByComponent(bytes)
+    const energyByComponent = this.energyPerByteByComponent(bytes);
 
     // pull out our values…
-    const energyValues = Object.values(energyByComponent)
+    const energyValues = Object.values(energyByComponent);
 
     // so we can return their sum
-    return energyValues.reduce((prevValue, currentValue) => prevValue + currentValue)
+    return energyValues.reduce(
+      (prevValue, currentValue) => prevValue + currentValue
+    );
   }
 
   /**
@@ -163,23 +162,24 @@ class SustainableWebDesign {
    * @param {number} bytes - the data transferred in bytes
    * @return {object} Object containing the energy in kilowatt hours, keyed by system component
    */
-  energyPerVisitByComponent(bytes,
+  energyPerVisitByComponent(
+    bytes,
     firstView = FIRST_TIME_VIEWING_PERCENTAGE,
     returnView = RETURNING_VISITOR_PERCENTAGE,
-    dataReloadRatio = PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD) {
-
-    const energyBycomponent = this.energyPerByteByComponent(bytes)
-    const cacheAdjustedSegmentEnergy = {}
+    dataReloadRatio = PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD
+  ) {
+    const energyBycomponent = this.energyPerByteByComponent(bytes);
+    const cacheAdjustedSegmentEnergy = {};
 
     for (const [key, value] of Object.entries(energyBycomponent)) {
       // represent the first load
-      cacheAdjustedSegmentEnergy[key] = value * firstView
+      cacheAdjustedSegmentEnergy[key] = value * firstView;
 
       // then represent the subsequent load
-      cacheAdjustedSegmentEnergy[key] += value * returnView * dataReloadRatio
+      cacheAdjustedSegmentEnergy[key] += value * returnView * dataReloadRatio;
     }
 
-    return cacheAdjustedSegmentEnergy
+    return cacheAdjustedSegmentEnergy;
   }
 
   /**
@@ -191,10 +191,12 @@ class SustainableWebDesign {
    */
   energyPerVisit(bytes) {
     // fetch the values using the default caching assumptions
-    const energyValues = Object.values(this.energyPerVisitByComponent(bytes))
+    const energyValues = Object.values(this.energyPerVisitByComponent(bytes));
 
     // return the summed of the values to return our single number
-    return energyValues.reduce((prevValue, currentValue) => prevValue + currentValue)
+    return energyValues.reduce(
+      (prevValue, currentValue) => prevValue + currentValue
+    );
   }
 
   emissionsPerVisitInGrams(energyPerVisit, carbonintensity = GLOBAL_INTENSITY) {
