@@ -67,20 +67,20 @@ class SustainableWebDesign {
    * @return {number} the total number in grams of CO2 equivalent emissions
    */
   co2byComponent(energyBycomponent, carbonIntensity = GLOBAL_INTENSITY) {
-    const co2byComponent = {};
+    const returnCO2ByComponent = {};
     for (const [key, value] of Object.entries(energyBycomponent)) {
       // we update the datacentre, as that's what we have information
       // about.
       if (key === "dataCenterEnergy") {
-        co2byComponent[key] = value * carbonIntensity;
+        returnCO2ByComponent[key] = value * carbonIntensity;
       } else {
         // We don't have info about the device location,
         // nor the network path used, nor the production emissions
         // so we revert to global figures
-        co2byComponent[key] = value * GLOBAL_INTENSITY;
+        returnCO2ByComponent[key] = value * GLOBAL_INTENSITY;
       }
     }
-    return co2byComponent;
+    return returnCO2ByComponent;
   }
 
   /**
@@ -113,22 +113,10 @@ class SustainableWebDesign {
       );
     }
 
-    const co2byComponent = {};
-    for (const [key, value] of Object.entries(energyBycomponent)) {
-      // we update the datacentre, as that's what we have information
-      // about.
-      if (key === "dataCenterEnergy") {
-        co2byComponent[key] = value * carbonIntensity;
-      } else {
-        // We don't have info about the device location,
-        // nor the network path used, nor the production emissions
-        // so we revert to global figures
-        co2byComponent[key] = value * GLOBAL_INTENSITY;
-      }
-    }
+    const co2ValuesbyComponent = this.co2byComponent(energyBycomponent, carbonIntensity)
 
     // pull out our values…
-    const co2Values = Object.values(co2byComponent);
+    const co2Values = Object.values(co2ValuesbyComponent);
 
     // so we can return their sum
     return co2Values.reduce(
