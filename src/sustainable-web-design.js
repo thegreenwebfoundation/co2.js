@@ -190,6 +190,8 @@ class SustainableWebDesign {
     );
   }
 
+  // TODO: this method looks like it applies the carbon intensity
+  // change to the *entire* system, not just the datacenter.
   emissionsPerVisitInGrams(energyPerVisit, carbonintensity = GLOBAL_INTENSITY) {
     return formatNumber(energyPerVisit * carbonintensity);
   }
