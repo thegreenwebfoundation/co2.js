@@ -39,7 +39,7 @@ describe("co2", () => {
       });
 
       it("returns a lower CO2 number for data transfer from domains using entirely 'green' power", () => {
-        expect(co2.perByte(MILLION, false).toPrecision(5)).toBe(
+        expect(co2.perByte(MILLION).toPrecision(5)).toBe(
           MILLION_GREY.toPrecision(5)
         );
         expect(co2.perByte(MILLION, true).toPrecision(5)).toBe(
@@ -155,11 +155,11 @@ describe("co2", () => {
     // same levels of data transfer
     const MILLION = 1000000;
     const MILLION_GREY = 0.33343;
-    const MILLION_GREEN = 0.28342
+    const MILLION_GREEN = 0.28908
 
     const TGWF_GREY_VALUE = 0.23501;
     const TGWF_GREEN_VALUE = 0.54704;
-    const TGWF_MIXED_VALUE = 0.20296;
+    const TGWF_MIXED_VALUE = 0.20652
 
 
     beforeEach(() => {
@@ -184,6 +184,7 @@ describe("co2", () => {
         expect(co2.perByte(MILLION, false).toPrecision(5)).toBe(
           MILLION_GREY.toPrecision(5)
         );
+
         expect(co2.perByte(MILLION, true).toPrecision(5)).toBe(
           MILLION_GREEN.toPrecision(5)
         );
