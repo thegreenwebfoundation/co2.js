@@ -100,6 +100,23 @@ class SustainableWebDesign {
   perByte(bytes, carbonIntensity = GLOBAL_INTENSITY) {
     const energyBycomponent = this.energyPerByteByComponent(bytes)
 
+    // when faced with falsy values, fallback to global intensity
+    if (Boolean(carbonIntensity) === false) {
+      carbonIntensity = GLOBAL_INTENSITY
+    }
+    // if we have a boolean, we have a green result from the green web checker
+    // use the renewables intensity
+    if (carbonIntensity === true) {
+      carbonIntensity = RENEWABLES_INTENSITY
+    }
+
+    // otherwise when faced with non numeric values throw an error
+    if (typeof carbonIntensity !== 'number') {
+      throw new Error(
+        `perByte expects a numeric value or boolean for the carbon intensity value. Received: ${carbonIntensity}`
+      );
+    }
+
     const co2byComponent = {}
     for (const [key, value] of Object.entries(energyBycomponent)) {
       // we update the datacentre, as that's what we have information
