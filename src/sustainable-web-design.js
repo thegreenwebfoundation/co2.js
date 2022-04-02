@@ -113,7 +113,10 @@ class SustainableWebDesign {
       );
     }
 
-    const co2ValuesbyComponent = this.co2byComponent(energyBycomponent, carbonIntensity)
+    const co2ValuesbyComponent = this.co2byComponent(
+      energyBycomponent,
+      carbonIntensity
+    );
 
     // pull out our values…
     const co2Values = Object.values(co2ValuesbyComponent);
