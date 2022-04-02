@@ -4,11 +4,6 @@ describe("sustainable web design model", () => {
   const swd = new SustainableWebDesign();
   const averageWebsiteInBytes = 2257715.2;
 
-  // 950949.64224
-
-  // averageWebsite In gigabytes   0.00210266
-  // total energy transfer is 0.00170316 watt hours
-
   describe("energyPerByteByComponent", () => {
     it("should return a object with numbers for each system component", () => {
       const groupedEnergy = swd.energyPerByteByComponent(averageWebsiteInBytes);
@@ -21,7 +16,7 @@ describe("sustainable web design model", () => {
   });
 
   describe("energyPerByte", () => {
-    it("should return a number in watt hours for the given data transfer in bytes", () => {
+    it("should return a number in kilowatt hours for the given data transfer in bytes", () => {
       const energyForTransfer = swd.energyPerByte(averageWebsiteInBytes);
       expect(energyForTransfer).toBeCloseTo(0.00170316, 7);
     });
