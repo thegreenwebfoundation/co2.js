@@ -15,8 +15,17 @@ class CO2 {
     }
   }
 
-  // return a CO2 figure for energy used to shift the corresponding
-  // the data transfer.
+  //
+  //
+  /**
+   * Accept a figure in bytes for data transfer, and a boolean for whether
+   * the domain shows as 'green', and return a CO2 figure for energy used to shift the corresponding
+   * the data transfer.
+   *
+   * @param {number} bytes
+   * @param {boolean} green
+   * @return {number} the amount of CO2 in grammes
+   */
   perByte(bytes, green) {
     return this.model.perByte(bytes, green);
   }
