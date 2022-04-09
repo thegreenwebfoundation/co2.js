@@ -1,11 +1,11 @@
-'use strict';
+"use strict";
 
-const log = require('debug')('tgwf:hostingAPI');
-const fetch = require('cross-fetch');
+const log = require("debug")("tgwf:hostingAPI");
+const fetch = require("cross-fetch");
 
 function check(domain) {
   // is it a single domain or an array of them?
-  if (typeof domain === 'string') {
+  if (typeof domain === "string") {
     return checkAgainstAPI(domain);
   } else {
     return checkDomainsAgainstAPI(domain);
