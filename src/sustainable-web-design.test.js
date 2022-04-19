@@ -34,9 +34,7 @@ describe("sustainable web design model", () => {
     });
 
     it("should calculate the correct energy", () => {
-      expect(swd.energyPerVisit(averageWebsiteInBytes)).toBe(
-        0.0004513362121582032
-      );
+      expect(swd.energyPerVisit(2257715.2)).toBe(0.00048461856768000004);
     });
   });
 
@@ -44,13 +42,13 @@ describe("sustainable web design model", () => {
     it("should calculate the correct co2 per visit", () => {
       const averageWebsiteInBytes = 2257715.2;
       const energy = swd.energyPerVisit(averageWebsiteInBytes);
-      expect(swd.emissionsPerVisitInGrams(energy)).toEqual(0.2);
+      expect(swd.emissionsPerVisitInGrams(energy)).toEqual(0.21);
     });
 
     it("should accept a dynamic KwH value", () => {
       const averageWebsiteInBytes = 2257715.2;
       const energy = swd.energyPerVisit(averageWebsiteInBytes);
-      expect(swd.emissionsPerVisitInGrams(energy, 245)).toEqual(0.11);
+      expect(swd.emissionsPerVisitInGrams(energy, 245)).toEqual(0.12);
     });
   });
 
