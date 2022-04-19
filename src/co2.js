@@ -1,48 +1,33 @@
 "use strict";
 
 const url = require("url");
-const oneByte = require("./1byte.js");
-
-const KWH_PER_BYTE_IN_DC = oneByte.KWH_PER_BYTE_IN_DC;
-const KWH_PER_BYTE_FOR_NETWORK = oneByte.KWH_PER_BYTE_FOR_NETWORK;
-const CO2_PER_KWH_IN_DC_GREY = oneByte.CO2_PER_KWH_IN_DC_GREY;
-
-// this figure is from the IEA's 2018 report for a global average:
-const CO2_PER_KWH_NETWORK_GREY = 475;
-
-// The IEA figures cover electricity but as far as I can tell, it does not
-// cover life cycle emissions, and the 1byte models appears to do the same
-// so, we use zero emissions for green infra in the DC
-// https://github.com/thegreenwebfoundation/co2.js/issues/2
-const CO2_PER_KWH_IN_DC_GREEN = 0;
+const onebyte = require("./1byte.js");
 
 class CO2 {
   constructor(options) {
     this.options = options;
+
+    // default model
+    this.model = new onebyte.OneByte();
+
+    if (options) {
+      this.model = new options.model();
+    }
   }
 
+  //
+  //
+  /**
+   * Accept a figure in bytes for data transfer, and a boolean for whether
+   * the domain shows as 'green', and return a CO2 figure for energy used to shift the corresponding
+   * the data transfer.
+   *
+   * @param {number} bytes
+   * @param {boolean} green
+   * @return {number} the amount of CO2 in grammes
+   */
   perByte(bytes, green) {
-    // return a CO2 figure for energy used to shift the corresponding
-    // the data transfer.
-
-    if (bytes < 1) {
-      return 0;
-    }
-
-    if (green) {
-      // if we have a green datacentre, use the lower figure for renewable energy
-      const Co2ForDC = bytes * KWH_PER_BYTE_IN_DC * CO2_PER_KWH_IN_DC_GREEN;
-
-      // but for the rest of the internet, we can't easily check, so assume
-      // grey for now
-      const Co2forNetwork =
-        bytes * KWH_PER_BYTE_FOR_NETWORK * CO2_PER_KWH_NETWORK_GREY;
-
-      return Co2ForDC + Co2forNetwork;
-    }
-
-    const KwHPerByte = KWH_PER_BYTE_IN_DC + KWH_PER_BYTE_FOR_NETWORK;
-    return bytes * KwHPerByte * CO2_PER_KWH_IN_DC_GREY;
+    return this.model.perByte(bytes, green);
   }
 
   perDomain(pageXray, greenDomains) {
