@@ -1,6 +1,5 @@
 "use strict";
 
-const url = require("url");
 const onebyte = require("./1byte.js");
 
 class CO2 {
@@ -71,7 +70,7 @@ class CO2 {
   perContentType(pageXray, greenDomains) {
     const co2PerContentType = {};
     for (let asset of pageXray.assets) {
-      const domain = url.parse(asset.url).domain;
+      const domain = new URL(asset.url).domain;
       const transferSize = asset.transferSize;
       const co2ForTransfer = this.perByte(
         transferSize,
@@ -102,7 +101,7 @@ class CO2 {
   dirtiestResources(pageXray, greenDomains) {
     const allAssets = [];
     for (let asset of pageXray.assets) {
-      const domain = url.parse(asset.url).domain;
+      const domain = new URL(asset.url).domain;
       const transferSize = asset.transferSize;
       const co2ForTransfer = this.perByte(
         transferSize,
