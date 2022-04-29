@@ -61,7 +61,7 @@ For browser-based solutions, you must import the `co2.js` submodule directly fro
 
 ```js
 
-const CO2 = require('node_modules/@tgwf/co2/src/co2.js')
+const CO2 = require('/@tgwf/co2/src/co2.js')
 const bytesSent = (1024 * 1024 * 1024)
 const co2Emission = new CO2();
 estimatedCO2 = co2Emission.perByte(bytesSent)

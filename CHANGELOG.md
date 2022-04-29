@@ -7,11 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -
 
 ## 
-
 # [0.9.1] Unreleased - 2022-05-
 
 - Fix the incorrect order of FIRST_TIME_VIEWING_PERCENTAGE and RETURNING_VISITOR_PERCENTAGE constants in the SWD model. This will result in **larger** values for calculations using the sustainable web design, and the default caching assumptions.
-
+- Switch from commonjs as a default to use ES6 modules as the default, then using Rollup to output node and web friendly builds.
 
 # [0.9.0] - 2022-03-28
 

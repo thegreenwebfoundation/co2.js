@@ -22,6 +22,10 @@
   "author": "Chris Adams",
   "license": "Apache-2.0",
   "devDependencies": {
+    "@babel/preset-env": "^7.16.11",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-commonjs": "^22.0.0",
+    "@rollup/plugin-node-resolve": "^13.2.1",
     "@tgwf/url2green": "^0.4.0",
     "eslint": "^8.15.0",
     "eslint-config-prettier": "^8.5.0",
@@ -31,7 +35,8 @@
     "nock": "^13.2.4",
     "np": "^7.6.1",
     "pagexray": "^4.4.2",
-    "prettier": "^2.6.2"
+    "prettier": "^2.6.2",
+    "rollup": "^2.70.2",
   },
   "np": {
     "yarn": false
