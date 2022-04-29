@@ -37,6 +37,9 @@
     "pagexray": "^4.4.2",
     "prettier": "^2.6.2",
     "rollup": "^2.70.2",
+    "rollup-jest": "^1.1.3",
+  "jest": {
+    "preset": "rollup-jest"
   },
   "np": {
     "yarn": false

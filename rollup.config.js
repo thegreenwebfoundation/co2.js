@@ -10,7 +10,8 @@ const browserBuild = {
   output: {
     file: 'dist/co2.browser.js',
     format: 'iife',
-    name: "CO2"
+    name: "CO2",
+    exports: "default"
   },
   plugins: [
     resolve(),
@@ -23,7 +24,8 @@ const browserDemoBuild = {
   output: {
     file: 'public/co2.browser.js',
     format: 'iife',
-    name: "CO2"
+    name: "CO2",
+    exports: "default"
   },
   plugins: [
     resolve(),
