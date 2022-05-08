@@ -23,16 +23,15 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "@tgwf/url2green": "^0.4.0",
-    "eslint": "^8.3.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-jest": "^25.2.4",
+    "eslint": "^8.15.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-jest": "^26.1.5",
     "eslint-plugin-prettier": "^4.0.0",
-    "jest": "^27.5.1",
-    "minimist": "^1.2.5",
-    "nock": "^13.2.1",
-    "np": "^7.6.0",
-    "pagexray": "^4.3.1",
-    "prettier": "^2.4.1"
+    "jest": "^28.1.0",
+    "nock": "^13.2.4",
+    "np": "^7.6.1",
+    "pagexray": "^4.4.2",
+    "prettier": "^2.6.2"
   },
   "np": {
     "yarn": false
@@ -41,7 +40,7 @@
     "access": "public"
   },
   "dependencies": {
-    "debug": "^4.1.1"
+    "debug": "^4.3.4"
   },
   "repository": {
     "type": "git",
