@@ -14,13 +14,9 @@ function check(domain, db) {
 
 function greenDomainsFromResults(greenResults) {
   const entries = Object.entries(greenResults);
-  let greenEntries = entries.filter(function ([key, val]) {
-    return val.green;
-  });
+  const greenEntries = entries.filter(([key, val]) => val.green);
 
-  return greenEntries.map(function ([key, val]) {
-    return val.url;
-  });
+  return greenEntries.map(([key, val]) => val.url);
 }
 
 async function checkPage(pageXray, db) {

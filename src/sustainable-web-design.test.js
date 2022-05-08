@@ -28,7 +28,7 @@ describe("sustainable web design model", () => {
     });
   });
 
-  describe("energyPerVisit", function () {
+  describe("energyPerVisit", () => {
     it("should return a number", () => {
       expect(typeof swd.energyPerVisit(averageWebsiteInBytes)).toBe("number");
     });
@@ -40,7 +40,7 @@ describe("sustainable web design model", () => {
     });
   });
 
-  describe("emissionsPerVisitInGrams", function () {
+  describe("emissionsPerVisitInGrams", () => {
     it("should calculate the correct co2 per visit", () => {
       const averageWebsiteInBytes = 2257715.2;
       const energy = swd.energyPerVisit(averageWebsiteInBytes);
@@ -54,13 +54,13 @@ describe("sustainable web design model", () => {
     });
   });
 
-  describe("annualEnergyInKwh", function () {
+  describe("annualEnergyInKwh", () => {
     it("should calculate the correct energy in kWh", () => {
       expect(swd.annualEnergyInKwh(averageWebsiteInBytes)).toBe(27092582400);
     });
   });
 
-  describe("annualEmissionsInGrams", function () {
+  describe("annualEmissionsInGrams", () => {
     it("should calculate the corrent energy in grams", () => {
       expect(swd.annualEmissionsInGrams(averageWebsiteInBytes)).toBe(
         27092582400
@@ -68,7 +68,7 @@ describe("sustainable web design model", () => {
     });
   });
 
-  describe("annualSegmentEnergy", function () {
+  describe("annualSegmentEnergy", () => {
     it("should return the correct values", () => {
       expect(swd.annualSegmentEnergy(averageWebsiteInBytes)).toEqual({
         consumerDeviceEnergy: 1174011.9,
