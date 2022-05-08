@@ -24,8 +24,6 @@ describe("hostingJSON", () => {
       const res = await hosting.check("google.com", db);
       expect(res).toEqual(true);
     });
-  });
-  describe("checking a single domain with #check", () => {
     test("against the list of domains as JSON loaded from a gzipped JSON", async () => {
       const db = await hosting.loadJSON(jsonPathGz);
       const res = await hosting.check("google.com", db);

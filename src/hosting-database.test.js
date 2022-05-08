@@ -14,7 +14,7 @@ const dbPath = path.resolve(
 
 describe("hostingDatabase", () => {
   describe("checking a single domain with #check", () => {
-    test("tries to use a local database if available ", async () => {
+    test("tries to use a local database if available", async () => {
       const res = await hosting.check("google.com", dbPath);
       expect(res).toEqual(true);
     });
