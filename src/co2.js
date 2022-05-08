@@ -45,9 +45,7 @@ class CO2 {
         transferSize: pageXray.domains[domain].transferSize,
       });
     }
-    co2PerDomain.sort(function (a, b) {
-      return b.co2 - a.co2;
-    });
+    co2PerDomain.sort((a, b) => b.co2 - a.co2);
 
     return co2PerDomain;
   }
@@ -93,9 +91,7 @@ class CO2 {
         transferSize: co2PerContentType[type].transferSize,
       });
     }
-    all.sort(function (a, b) {
-      return b.co2 - a.co2;
-    });
+    all.sort((a, b) => b.co2 - a.co2);
     return all;
   }
 
@@ -110,9 +106,7 @@ class CO2 {
       );
       allAssets.push({ url: asset.url, co2: co2ForTransfer, transferSize });
     }
-    allAssets.sort(function (a, b) {
-      return b.co2 - a.co2;
-    });
+    allAssets.sort((a, b) => b.co2 - a.co2);
 
     return allAssets.slice(0, allAssets.length > 10 ? 10 : allAssets.length);
   }

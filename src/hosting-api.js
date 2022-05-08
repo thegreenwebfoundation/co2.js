@@ -36,12 +36,8 @@ async function checkDomainsAgainstAPI(domains) {
 
 function greenDomainsFromResults(greenResults) {
   const entries = Object.entries(greenResults);
-  let greenEntries = entries.filter(function ([key, val]) {
-    return val.green;
-  });
-  return greenEntries.map(function ([key, val]) {
-    return val.url;
-  });
+  const greenEntries = entries.filter(([key, val]) => val.green);
+  return greenEntries.map(([key, val]) => val.url);
 }
 
 async function getBody(url) {
