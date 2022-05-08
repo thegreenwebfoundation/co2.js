@@ -9,7 +9,7 @@
     "ecmaVersion": 8
   },
   "plugins": ["prettier", "jest"],
-  "extends": "eslint:recommended",
+  "extends": ["eslint:recommended", "plugin:jest/recommended"],
   "rules": {
     "prettier/prettier": [
       "error",

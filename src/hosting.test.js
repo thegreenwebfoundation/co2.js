@@ -24,8 +24,8 @@ describe("hosting", () => {
       )
     );
   });
-  describe("checking all domains on a page object with #checkPage ", () => {
-    it("it returns a list of green domains, when passed a page object", async () => {
+  describe("checking all domains on a page object with #checkPage", () => {
+    it("returns a list of green domains, when passed a page object", async () => {
       const pages = pagexray.convert(har);
       const pageXrayRun = pages[0];
       const db = await hosting.loadJSON(jsonPath);
@@ -49,9 +49,6 @@ describe("hosting", () => {
         expect(expectedGreendomains).toContain(dom);
       });
     });
-    // it(
-    //   'it returns an empty list, when passed a page object with no green domains'
-    // );
   });
   describe("checking a single domain with #check", () => {
     it("use the API instead", async () => {
