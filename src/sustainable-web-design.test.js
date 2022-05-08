@@ -42,13 +42,11 @@ describe("sustainable web design model", () => {
 
   describe("emissionsPerVisitInGrams", () => {
     it("should calculate the correct co2 per visit", () => {
-      const averageWebsiteInBytes = 2257715.2;
       const energy = swd.energyPerVisit(averageWebsiteInBytes);
       expect(swd.emissionsPerVisitInGrams(energy)).toEqual(0.2);
     });
 
     it("should accept a dynamic KwH value", () => {
-      const averageWebsiteInBytes = 2257715.2;
       const energy = swd.energyPerVisit(averageWebsiteInBytes);
       expect(swd.emissionsPerVisitInGrams(energy, 245)).toEqual(0.11);
     });
