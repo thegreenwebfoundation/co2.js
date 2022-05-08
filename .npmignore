@@ -1,2 +1,19 @@
+# Development and CI/CD config
+.github
+
+# Optional eslint cache
+.eslintcache
+
+# eslint config
+.eslintrc.json
+
+# Documentation
+images/
+
+# Test files
+src/**/*.test.js
+data/
+
+# Local sqlite db
 url2green.db
 url2green.json
