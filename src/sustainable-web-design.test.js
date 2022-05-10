@@ -38,6 +38,17 @@ describe("sustainable web design model", () => {
         0.0004513362121582032
       );
     });
+
+    it("should match the old calculations", () => {
+      // Test the v0.9.0 updates to the SWD method to identify differences
+      const currentCalculation = swd.energyPerVisit(averageWebsiteInBytes);
+      const oldCalulations = swd.energyPerVisitV8(averageWebsiteInBytes);
+
+      expect(currentCalculation).toBe(0.0004513362121582032);
+      expect(oldCalulations).toBe(0.0004513362121582032);
+
+      expect(oldCalulations).toBe(currentCalculation);
+    });
   });
 
   describe("emissionsPerVisitInGrams", () => {
