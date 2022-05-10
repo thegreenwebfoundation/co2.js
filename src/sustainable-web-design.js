@@ -197,6 +197,18 @@ class SustainableWebDesign {
     );
   }
 
+  energyPerVisitV8(bytes) {
+    const transferedBytesToGb = bytes / fileSize.GIGABYTE;
+
+    return (
+      transferedBytesToGb * KWH_PER_GB * RETURNING_VISITOR_PERCENTAGE +
+      transferedBytesToGb *
+        KWH_PER_GB *
+        FIRST_TIME_VIEWING_PERCENTAGE *
+        PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD
+    );
+  }
+
   // TODO: this method looks like it applies the carbon intensity
   // change to the *entire* system, not just the datacenter.
   emissionsPerVisitInGrams(energyPerVisit, carbonintensity = GLOBAL_INTENSITY) {
