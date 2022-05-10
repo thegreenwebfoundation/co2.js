@@ -197,6 +197,12 @@ class SustainableWebDesign {
     );
   }
 
+  /*
+   * JUST FOR TEST PURPOSES
+   * Testing v0.8.0 => v0.9.0 versions
+   *
+   *
+   */
   energyPerVisitV8(bytes) {
     const transferedBytesToGb = bytes / fileSize.GIGABYTE;
 
