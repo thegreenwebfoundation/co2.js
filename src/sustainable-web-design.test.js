@@ -41,13 +41,17 @@ describe("sustainable web design model", () => {
 
     it("should match the old calculations", () => {
       // Test the v0.9.0 updates to the SWD method to identify differences
-      const currentCalculation = swd.energyPerVisit(averageWebsiteInBytes);
-      const oldCalulations = swd.energyPerVisitV8(averageWebsiteInBytes);
+      const currentEnergyCalc = swd.energyPerVisit(averageWebsiteInBytes);
+      const oldVersionEnergyCalc = swd.energyPerVisitV8(averageWebsiteInBytes);
 
-      expect(currentCalculation).toBe(0.0004513362121582032);
-      expect(oldCalulations).toBe(0.0004513362121582032);
+      expect(currentEnergyCalc).toBe(0.0004513362121582032);
+      expect(oldVersionEnergyCalc).toBe(0.0012858824157714846);
 
-      expect(oldCalulations).toBe(currentCalculation);
+      // Why do these values differ so much?
+      expect(oldVersionEnergyCalc).toBe(currentEnergyCalc);
+
+      expect(swd.emissionsPerVisitInGrams(currentEnergyCalc)).toEqual(0.57);
+      expect(swd.emissionsPerVisitInGrams(oldVersionEnergyCalc)).toEqual(0.2);
     });
   });
 
