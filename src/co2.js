@@ -15,8 +15,6 @@ class CO2 {
     }
   }
 
-  //
-  //
   /**
    * Accept a figure in bytes for data transfer, and a boolean for whether
    * the domain shows as 'green', and return a CO2 figure for energy used to shift the corresponding
