@@ -29,8 +29,8 @@ const RENEWABLES_INTENSITY = 50;
 
 // Taken from: https://gitlab.com/wholegrain/carbon-api-2-0/-/blob/master/includes/carbonapi.php
 
-const FIRST_TIME_VIEWING_PERCENTAGE = 0.25;
-const RETURNING_VISITOR_PERCENTAGE = 0.75;
+const FIRST_TIME_VIEWING_PERCENTAGE = 0.75;
+const RETURNING_VISITOR_PERCENTAGE = 0.25;
 const PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD = 0.02;
 
 class SustainableWebDesign {
