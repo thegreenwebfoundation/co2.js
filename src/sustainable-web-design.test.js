@@ -35,7 +35,7 @@ describe("sustainable web design model", () => {
 
     it("should calculate the correct energy", () => {
       expect(swd.energyPerVisit(averageWebsiteInBytes)).toBe(
-        0.0004513362121582032
+        0.001285882415771485
       );
     });
 
@@ -47,23 +47,22 @@ describe("sustainable web design model", () => {
       // expect(currentEnergyCalc).toBe(0.0004513362121582032);
       // expect(oldVersionEnergyCalc).toBe(0.0012858824157714846);
 
-      // Why do these values differ so much?
-      expect(swd.emissionsPerVisitInGrams(v9currentEnergyCalc)).toEqual(0.2);
-      expect(swd.emissionsPerVisitInGrams(v8VersionEnergyCalc)).toEqual(0.57);
-
-      // expect(oldVersionEnergyCalc).toBe(currentEnergyCalc);
+      // with the constants switched around so the first view is 0.75, now 0.25
+      // we should we the page come back at 0.57g not 0.2
+      expect(swd.emissionsPerVisitInGrams(v9currentEnergyCalc)).toEqual(0.57);
+      expect(swd.emissionsPerVisitInGrams(v8VersionEnergyCalc)).toEqual(0.2);
     });
   });
 
   describe("emissionsPerVisitInGrams", () => {
     it("should calculate the correct co2 per visit", () => {
       const energy = swd.energyPerVisit(averageWebsiteInBytes);
-      expect(swd.emissionsPerVisitInGrams(energy)).toEqual(0.2);
+      expect(swd.emissionsPerVisitInGrams(energy)).toEqual(0.57);
     });
 
     it("should accept a dynamic KwH value", () => {
       const energy = swd.energyPerVisit(averageWebsiteInBytes);
-      expect(swd.emissionsPerVisitInGrams(energy, 245)).toEqual(0.11);
+      expect(swd.emissionsPerVisitInGrams(energy, 245)).toEqual(0.32);
     });
   });
 
