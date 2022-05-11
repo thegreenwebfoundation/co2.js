@@ -147,19 +147,19 @@ class SustainableWebDesign {
   }
 
   /**
-   * Accept a figure for bytes transferred, and return an object containing figures
-   * per system component, with the caching assumptions applied. This tries to account
-   * for webpages being loaded from a cache by browsers, so if you had a thousand page views,
-   * and tried to work out the energy per visit, the numbers would reflect the reduced amounts
-   * of transfer.
-   *
-   * @param {number} bytes - the data transferred in bytes for loading a webpage
-   * @param {number} firstView - what percentage of visits are loading this page for the first time
-   * @param {number} returnView - what percentage of visits are loading this page for subsequent times
-   * @param {number} dataReloadRatio - what percentage of a page is reloaded on each subsequent page view
-   *
-   * @return {object} Object containing the energy in kilowatt hours, keyed by system component
-   */
+     * Accept a figure for bytes transferred, and return an object containing figures
+     * per system component, with the caching assumptions applied. This tries to account
+     * for webpages being loaded from a cache by browsers, so if you had a thousand page views,
+     * and tried to work out the energy per visit, the numbers would reflect the reduced amounts
+     * of transfer.
+     *
+     * @param {number} bytes - the data transferred in bytes for loading a webpage
+     * @param {number} firstView - what percentage of visits are loading this page for the first time
+     * @param {number} returnView - what percentage of visits are loading this page for subsequent times
+     * @param {number} dataReloadRatio - what percentage of a page is reloaded on each subsequent page view
+     *
+     * @return {object} Object containing the energy in kilowatt hours, keyed by system component
+     */
   energyPerVisitByComponent(
     bytes,
     firstView = FIRST_TIME_VIEWING_PERCENTAGE,
@@ -169,13 +169,28 @@ class SustainableWebDesign {
     const energyBycomponent = this.energyPerByteByComponent(bytes);
     const cacheAdjustedSegmentEnergy = {};
 
+
+    console.log({ energyBycomponent })
+    const energyValues = Object.values(energyBycomponent);
+
+    // sanity check that these numbers add back up
+    const v9recombinedNoCaching = energyValues.reduce(
+      (prevValue, currentValue) => prevValue + currentValue
+    );
+
+    // energyBycomponent doesn't apply any caching logic, to should be the
+    // same number as the total in the v8
+    console.log({ v9recombinedNoCaching })
+
+    // for this, we want
     for (const [key, value] of Object.entries(energyBycomponent)) {
       // represent the first load
-      cacheAdjustedSegmentEnergy[key] = value * firstView;
+      cacheAdjustedSegmentEnergy[`${key} - first`] = value * firstView;
 
       // then represent the subsequent load
-      cacheAdjustedSegmentEnergy[key] += value * returnView * dataReloadRatio;
+      cacheAdjustedSegmentEnergy[`${key} - subsequent`] = value * returnView * dataReloadRatio;
     }
+    console.log({ cacheAdjustedSegmentEnergy })
 
     return cacheAdjustedSegmentEnergy;
   }
@@ -189,30 +204,57 @@ class SustainableWebDesign {
    */
   energyPerVisit(bytes) {
     // fetch the values using the default caching assumptions
-    const energyValues = Object.values(this.energyPerVisitByComponent(bytes));
+    // const energyValues = Object.values(this.energyPerVisitByComponent(bytes));
 
-    // return the summed of the values to return our single number
-    return energyValues.reduce(
-      (prevValue, currentValue) => prevValue + currentValue
-    );
+    let v9firstVisits = 0
+    let v9subsequentVisits = 0
+
+    const energyBycomponent = Object.entries(this.energyPerVisitByComponent(bytes))
+
+    for (const [key, val] of energyBycomponent) {
+      if (key.indexOf('first') > 0) {
+        v9firstVisits += val
+      }
+    }
+
+    for (const [key, val] of energyBycomponent) {
+      if (key.indexOf('subsequent') > 0) {
+        v9subsequentVisits += val
+      }
+    }
+
+    console.log({ v9firstVisits })
+    console.log({ v9subsequentVisits })
+    return (v9firstVisits + v9subsequentVisits)
   }
 
   /*
-   * JUST FOR TEST PURPOSES
-   * Testing v0.8.0 => v0.9.0 versions
-   *
-   *
-   */
+  * JUST FOR TEST PURPOSES
+  * Testing v0.8.0 => v0.9.0 versions
+  *
+  *
+  */
   energyPerVisitV8(bytes) {
+    console.log({ bytes })
     const transferedBytesToGb = bytes / fileSize.GIGABYTE;
 
-    return (
-      transferedBytesToGb * KWH_PER_GB * RETURNING_VISITOR_PERCENTAGE +
-      transferedBytesToGb *
-        KWH_PER_GB *
-        FIRST_TIME_VIEWING_PERCENTAGE *
-        PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD
-    );
+    const v8visitWithNoCaching = transferedBytesToGb * KWH_PER_GB
+
+    const v8firstVisit = transferedBytesToGb * KWH_PER_GB * RETURNING_VISITOR_PERCENTAGE
+
+    const v8subsequentVisits = transferedBytesToGb *
+      KWH_PER_GB *
+      FIRST_TIME_VIEWING_PERCENTAGE *
+      PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD
+
+    const v8firstAndSubsequentVisits = v8firstVisit + v8subsequentVisits
+
+    console.log({ v8visitWithNoCaching })
+    console.log({ v8firstVisit })
+    console.log({ v8subsequentVisits })
+    console.log({ v8firstAndSubsequentVisits })
+
+    return (v8firstVisit + v8subsequentVisits)
   }
 
   // TODO: this method looks like it applies the carbon intensity
