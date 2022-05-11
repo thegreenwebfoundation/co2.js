@@ -48,10 +48,10 @@ describe("sustainable web design model", () => {
       expect(oldVersionEnergyCalc).toBe(0.0012858824157714846);
 
       // Why do these values differ so much?
-      expect(oldVersionEnergyCalc).toBe(currentEnergyCalc);
-
       expect(swd.emissionsPerVisitInGrams(currentEnergyCalc)).toEqual(0.57);
       expect(swd.emissionsPerVisitInGrams(oldVersionEnergyCalc)).toEqual(0.2);
+
+      expect(oldVersionEnergyCalc).toBe(currentEnergyCalc);
     });
   });
 
