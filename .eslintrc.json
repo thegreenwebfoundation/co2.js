@@ -6,7 +6,8 @@
     "jest/globals": true
   },
   "parserOptions": {
-    "ecmaVersion": 8
+    "ecmaVersion": 2020,
+    "sourceType": "module"
   },
   "plugins": ["prettier", "jest"],
   "extends": ["eslint:recommended", "plugin:jest/recommended"],
