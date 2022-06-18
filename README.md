@@ -89,6 +89,31 @@ greencheck.checkPage(["google.com"])
 
 ```
 
+-----
+## Extending Runtime support
+
+co2.js targets 'webby' runtimes like browsers and the deno runtime using Web APIs, as having a runtimes like nodejs, that use NodeJS's own APIs for accessing the filesystem, and the commonjs approach for bundling code.
+
+We target:
+
+- node with commonjs
+- node with es6 style imports
+- browsers with es6 style imports
+- deno with es6 style imports
+
+Because the node runtime, *can* make different assumptions about accessing local files for querying caches, but because we *can't* assume fetch is available, we have a different build for node environments - using different implementations of local lookups, and http requests. See `hosting-node.js`
+
+
+
+### todo
+
+- [ ] sample of performing a calculation with node require `const co2 = require('@tgwf/co2')`
+- [ ] sample for node using es6 import `import co2 from '@tgwf/co2/index.js'`
+- [ ] sample for browser build, created by rollup (using an iife?) `<script src="http://cdn/@tgwf/co2/index.js" />` then accessing the `co2` object, with `let estimatedCO2 = co2.perByte(bytesSent)`
+- [ ] code sample for deno `import co2 from 'https://cdn.com/@tgwf/co2/index.js'`
+
+
+
 # Licenses
 
 Apache 2.0
