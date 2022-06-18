@@ -8,23 +8,23 @@ const log = require("debug")("tgwf:hosting");
  * @return {Boolean}
  */
 function isNodejs() {
-  return typeof process === 'object' &&
-    typeof process.versions === 'object' &&
-    typeof process.versions.node !== 'undefined';
+  return (
+    typeof process === "object" &&
+    typeof process.versions === "object" &&
+    typeof process.versions.node !== "undefined"
+  );
 }
 
 const hostingAPI = require("./hosting-api");
-let hostingJSON
+let hostingJSON;
 
 if (isNodejs()) {
   hostingJSON = require("./hosting-json");
 }
 
-
 function check(domain, db) {
   if (db && hostingJSON) {
     return hostingJSON.check(domain, db);
-    return
   } else {
     return hostingAPI.check(domain);
   }

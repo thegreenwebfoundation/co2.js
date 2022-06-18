@@ -1,36 +1,30 @@
 // rollup.config.js
-import resolve from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
-import babel from '@rollup/plugin-babel';
-import { getBabelOutputPlugin } from '@rollup/plugin-babel';
-
+import resolve from "@rollup/plugin-node-resolve";
+import commonjs from "@rollup/plugin-commonjs";
+import babel from "@rollup/plugin-babel";
+import { getBabelOutputPlugin } from "@rollup/plugin-babel";
 
 const browserBuild = {
-  input: 'src/co2.js',
+  input: "src/co2.js",
   output: {
-    file: 'dist/co2.browser.js',
-    format: 'iife',
+    file: "dist/co2.browser.js",
+    format: "iife",
     name: "CO2",
-    exports: "default"
+    exports: "default",
   },
-  plugins: [
-    resolve(),
-  ]
-}
-
+  plugins: [resolve()],
+};
 
 const browserDemoBuild = {
-  input: 'src/public-web-swd-demo.js',
+  input: "src/public-web-swd-demo.js",
   output: {
-    file: 'public/co2.browser.js',
-    format: 'iife',
+    file: "public/co2.browser.js",
+    format: "iife",
     name: "CO2",
-    exports: "default"
+    exports: "default",
   },
-  plugins: [
-    resolve(),
-  ]
-}
+  plugins: [resolve()],
+};
 
 // const browserBuildMin = {
 //   input: 'src/browser.bundle.js',
@@ -44,34 +38,32 @@ const browserDemoBuild = {
 //   ]
 // }
 
-
-
-const nodeBuild = {
-  input: 'src/co2.js',
+const commonjsBuild = {
+  input: "src/co2.js",
   output: {
-    file: 'lib/index.js',
-    format: 'cjs',
-    exports: "default"
+    file: "lib/index.js",
+    format: "cjs",
+    exports: "default",
   },
   plugins: [
     resolve({
-      preferBuiltins: true
+      preferBuiltins: true,
     }),
     commonjs(),
-    babel({ babelHelpers: 'bundled' }),
+    babel({ babelHelpers: "bundled" }),
     getBabelOutputPlugin({
-      presets: [['@babel/preset-env',
-        {
-          targets: {
-            node: "current"
-          }
-        }]]
-    })
-  ]
-}
+      presets: [
+        [
+          "@babel/preset-env",
+          {
+            targets: {
+              node: "current",
+            },
+          },
+        ],
+      ],
+    }),
+  ],
+};
 
-export default [
-  browserBuild,
-  browserDemoBuild,
-  nodeBuild
-];
+export default [browserBuild, browserDemoBuild, commonjsBuild];

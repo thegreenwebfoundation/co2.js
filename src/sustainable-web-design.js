@@ -285,7 +285,6 @@ class SustainableWebDesign {
   }
 }
 
-
 /*
 this exposes the SustainableWebDesign object in node using
 the commonjs approach, so you can do:
@@ -302,9 +301,7 @@ ES6 style imports. By exposing the default we allow for
 import { SustainableWebDesign } from "./sustainable-web-design";
 ```
 */
-export {
-  SustainableWebDesign
-}
+export { SustainableWebDesign };
 /*
 By exporting the default as well should also have the option of
 doing an import without the destructuring
@@ -313,4 +310,4 @@ doing an import without the destructuring
 import SustainableWebDesign from "./sustainable-web-design";
 ```
 */
-export default SustainableWebDesign
+export default SustainableWebDesign;
