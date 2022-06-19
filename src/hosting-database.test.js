@@ -1,8 +1,11 @@
 "use strict";
 
-const log = require("debug")("tgwf:url2green:test");
-const { hosting } = require("@tgwf/url2green");
-const path = require("path");
+import path from "path";
+
+import debugFactory from "debug"
+const log = debugFactory("tgwf:url2green:test");
+
+import { hosting } from "@tgwf/url2green";
 
 const dbPath = path.resolve(
   __dirname,

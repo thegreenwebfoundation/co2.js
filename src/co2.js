@@ -1,13 +1,13 @@
 "use strict";
 
-const onebyte = require("./1byte.js");
+import Onebyte from "./1byte";
 
 class CO2 {
   constructor(options) {
     this.options = options;
 
     // default model
-    this.model = new onebyte.OneByte();
+    this.model = new Onebyte();
 
     if (options) {
       this.model = new options.model();

@@ -8,8 +8,8 @@
  *
  *
  */
-const { fileSize } = require("./constants");
-const { formatNumber } = require("./helpers");
+import { fileSize } from "./constants/index";
+import { formatNumber } from "./helpers/index";
 
 // this refers to the estimated total energy use for the internet around 2000 TWh,
 // divided by the total transfer it enables around 2500 exabytes
@@ -285,29 +285,6 @@ class SustainableWebDesign {
   }
 }
 
-/*
-this exposes the SustainableWebDesign object in node using
-the commonjs approach, so you can do:
-```
-const SustainableWebDesign = require("./sustainable-web-design")
-```
-*/
-module.exports = SustainableWebDesign;
 
-/*
-This exposes the SustainableWebDesign object so you can do
-ES6 style imports. By exposing the default we allow for
-```
-import { SustainableWebDesign } from "./sustainable-web-design";
-```
-*/
 export { SustainableWebDesign };
-/*
-By exporting the default as well should also have the option of
-doing an import without the destructuring
-
-```
-import SustainableWebDesign from "./sustainable-web-design";
-```
-*/
 export default SustainableWebDesign;

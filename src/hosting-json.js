@@ -1,12 +1,13 @@
 "use strict";
 
-const log = require("debug")("tgwf:hostingCache");
 
-const path = require("path");
-const fs = require("fs");
-const zlib = require("zlib");
+import fs from "fs";
+import zlib from "zlib";
+import { promisify } from "util";
 
-const { promisify } = require("util");
+import debugFactory from "debug";
+const log = debugFactory("tgwf:hostingCache");
+
 const readFile = promisify(fs.readFile);
 const gunzip = promisify(zlib.gunzip);
 

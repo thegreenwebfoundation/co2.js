@@ -1,7 +1,7 @@
 "use strict";
 
-const hosting = require("./hosting-json");
-const path = require("path");
+import hosting from "./hosting-json";
+import path from "path";
 
 describe("hostingJSON", () => {
   const jsonPath = path.resolve(

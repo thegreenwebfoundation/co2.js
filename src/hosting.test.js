@@ -1,10 +1,12 @@
 "use strict";
 
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
 
-const hosting = require("./hosting");
-const pagexray = require("pagexray");
+import pagexray from "pagexray";
+
+import hosting from "./hosting-node";
+
 
 const jsonPath = path.resolve(
   __dirname,
