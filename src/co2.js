@@ -131,7 +131,7 @@ class CO2 {
 }
 
 // for commonjs 'require' approach
-module.exports = CO2;
+// module.exports = CO2;
 // for ES6 'import' approach
 export { CO2 };
 export default CO2;

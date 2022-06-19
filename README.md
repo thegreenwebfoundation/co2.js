@@ -109,8 +109,8 @@ Because the node runtime, *can* make different assumptions about accessing local
 
 - [ ] sample of performing a calculation with node require `const co2 = require('@tgwf/co2')`
 - [ ] sample for node using es6 import `import co2 from '@tgwf/co2/index.js'`
-- [ ] sample for browser build, created by rollup (using an iife?) `<script src="http://cdn/@tgwf/co2/index.js" />` then accessing the `co2` object, with `let estimatedCO2 = co2.perByte(bytesSent)`
-- [ ] code sample for deno `import co2 from 'https://cdn.com/@tgwf/co2/index.js'`
+- [ ] sample for browser build, created by rollup (using an iife?) `<script src="http://somecdn.com/@tgwf/co2/index.js" />` then accessing the `co2` object, with `let estimatedCO2 = co2.perByte(bytesSent)`
+- [ ] code sample for deno `import co2 from 'https://somecdn.com/@tgwf/co2/index.js'`
 
 
 

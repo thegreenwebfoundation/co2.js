@@ -1,0 +1,47 @@
+<html>
+
+<head>
+  <meta charset=utf-8>
+</head>
+
+
+<body class="">
+
+  <h1>This is a minimal demo</h1>
+
+  <p>Add a number in bytes, and we convert it to carbon, using the SWD model</p>
+
+  <form>
+    <p>
+    <label for="bytes">Number of bytes</label>
+    <input name="bytes" value=0 />
+    </p>
+    <button>Update</button>
+  </form>
+
+  <h2 class="result">
+    (result goes here)
+  </h2>
+
+
+  <script src="./co2.browser.js"></script>
+  <script>
+    async function main() {
+      document.querySelector('form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const thisForm = event.target
+        const bytes = thisForm.querySelector('input').value
+        const result = CO2.perByte(bytes)
+
+        document.querySelector('.result').textContent = result
+        document.querySelector('body').classList = []
+      })
+    }
+    main()
+
+  </script>
+</body>
+
+</html>
