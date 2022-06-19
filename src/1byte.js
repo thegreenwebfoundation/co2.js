@@ -66,7 +66,5 @@ class OneByte {
   }
 }
 
-export {
-  OneByte,
-};
-export default OneByte
+export { OneByte };
+export default OneByte;

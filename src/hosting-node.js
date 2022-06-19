@@ -8,7 +8,7 @@
 
 import https from "https";
 
-import debugFactory from "debug"
+import debugFactory from "debug";
 const log = debugFactory("tgwf:hosting-node");
 
 import hostingJSON from "./hosting-json";

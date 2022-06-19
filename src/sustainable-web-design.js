@@ -285,6 +285,5 @@ class SustainableWebDesign {
   }
 }
 
-
 export { SustainableWebDesign };
 export default SustainableWebDesign;

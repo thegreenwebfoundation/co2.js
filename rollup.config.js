@@ -1,7 +1,7 @@
 // rollup.config.js
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
-import swc from 'rollup-plugin-swc'
+import swc from "rollup-plugin-swc";
 
 const browserBuild = {
   input: "src/co2.js",
@@ -37,16 +37,16 @@ const commonjsBuild = {
     //   preferBuiltins: true,
     // }),
     swc({
-      "module": {
-        "type": "commonjs"
+      module: {
+        type: "commonjs",
       },
-      "jsc": {
-        "parser": {
-          "syntax": "ecmascript"
+      jsc: {
+        parser: {
+          syntax: "ecmascript",
         },
-        "target": "es2020"
-      }
-    })
+        target: "es2020",
+      },
+    }),
   ],
 };
 

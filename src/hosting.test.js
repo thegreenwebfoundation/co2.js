@@ -7,7 +7,6 @@ import pagexray from "pagexray";
 
 import hosting from "./hosting-node";
 
-
 const jsonPath = path.resolve(
   __dirname,
   "..",

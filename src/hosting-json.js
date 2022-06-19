@@ -1,6 +1,5 @@
 "use strict";
 
-
 import fs from "fs";
 import zlib from "zlib";
 import { promisify } from "util";

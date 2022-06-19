@@ -8,7 +8,6 @@ import pagexray from "pagexray";
 import CO2 from "./co2";
 import swd from "./sustainable-web-design";
 
-
 describe("co2", () => {
   let har, co2;
 
