@@ -8,6 +8,10 @@
  *
  *
  */
+
+import debugFactory from 'debug'
+const log = debugFactory("tgwf:sustainable-web-design");
+
 import { fileSize } from "./constants/index";
 import { formatNumber } from "./helpers/index";
 
@@ -169,7 +173,7 @@ class SustainableWebDesign {
     const energyBycomponent = this.energyPerByteByComponent(bytes);
     const cacheAdjustedSegmentEnergy = {};
 
-    console.log({ energyBycomponent });
+    log({ energyBycomponent });
     const energyValues = Object.values(energyBycomponent);
 
     // sanity check that these numbers add back up
@@ -179,7 +183,7 @@ class SustainableWebDesign {
 
     // energyBycomponent doesn't apply any caching logic, to should be the
     // same number as the total in the v8
-    console.log({ v9recombinedNoCaching });
+    log({ v9recombinedNoCaching });
 
     // for this, we want
     for (const [key, value] of Object.entries(energyBycomponent)) {
@@ -190,7 +194,7 @@ class SustainableWebDesign {
       cacheAdjustedSegmentEnergy[`${key} - subsequent`] =
         value * returnView * dataReloadRatio;
     }
-    console.log({ cacheAdjustedSegmentEnergy });
+    log({ cacheAdjustedSegmentEnergy });
 
     return cacheAdjustedSegmentEnergy;
   }
@@ -225,8 +229,8 @@ class SustainableWebDesign {
       }
     }
 
-    console.log({ v9firstVisits });
-    console.log({ v9subsequentVisits });
+    log({ v9firstVisits });
+    log({ v9subsequentVisits });
     return v9firstVisits + v9subsequentVisits;
   }
 
@@ -237,7 +241,7 @@ class SustainableWebDesign {
    *
    */
   energyPerVisitV8(bytes) {
-    console.log({ bytes });
+    log({ bytes });
     const transferedBytesToGb = bytes / fileSize.GIGABYTE;
 
     const v8visitWithNoCaching = transferedBytesToGb * KWH_PER_GB;
@@ -253,10 +257,10 @@ class SustainableWebDesign {
 
     const v8firstAndSubsequentVisits = v8firstVisit + v8subsequentVisits;
 
-    console.log({ v8visitWithNoCaching });
-    console.log({ v8firstVisit });
-    console.log({ v8subsequentVisits });
-    console.log({ v8firstAndSubsequentVisits });
+    log({ v8visitWithNoCaching });
+    log({ v8firstVisit });
+    log({ v8subsequentVisits });
+    log({ v8firstAndSubsequentVisits });
 
     return v8firstVisit + v8subsequentVisits;
   }
