@@ -5,7 +5,7 @@ import nock from "nock";
 
 describe("hostingAPI", () => {
   describe("checking a single domain with #check", () => {
-    it("using the API", async () => {
+    it.skip("using the API", async () => {
       const scope = nock("https://api.thegreenwebfoundation.org/")
         .get("/greencheck/google.com")
         .reply(200, {
