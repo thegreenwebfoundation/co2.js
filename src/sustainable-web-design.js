@@ -9,7 +9,7 @@
  *
  */
 
-import debugFactory from 'debug'
+import debugFactory from "debug";
 const log = debugFactory("tgwf:sustainable-web-design");
 
 import { fileSize } from "./constants/index";
