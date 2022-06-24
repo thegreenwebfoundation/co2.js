@@ -13,8 +13,8 @@
 
   <form>
     <p>
-    <label for="bytes">Number of bytes</label>
-    <input name="bytes" value=0 />
+      <label for="bytes">Number of bytes</label>
+      <input name="bytes" value=0 />
     </p>
     <button>Update</button>
   </form>
@@ -24,23 +24,23 @@
   </h2>
 
 
-  <script src="./co2.browser.js"></script>
+  <script src="./co2.js"></script>
   <script>
+    let emissions = new co2.CO2();
     async function main() {
-      document.querySelector('form').addEventListener('submit', function(event) {
+      document.querySelector('form').addEventListener('submit', function (event) {
         event.preventDefault();
         event.stopPropagation();
 
         const thisForm = event.target
         const bytes = thisForm.querySelector('input').value
-        const result = CO2.perByte(bytes)
+        const result = emissions.perByte(bytes)
 
         document.querySelector('.result').textContent = result
         document.querySelector('body').classList = []
       })
     }
     main()
-
   </script>
 </body>
 
