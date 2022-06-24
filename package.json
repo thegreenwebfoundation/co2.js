@@ -12,7 +12,11 @@
     "lint:fix": "eslint . --fix",
     "travis": "npm run lint && jest",
     "build": "swc ./src -d lib",
-    "serve": "python -m http.server --directory ./public"
+    "serve": "python -m http.server --directory ./public",
+    "build:esbuild": "npm run build:esm && npm run build:browser && npm run build:node",
+    "build:esm": "node .esbuild.esm.js",
+    "build:browser": "node .esbuild.browser.js",
+    "build:node": "node .esbuild.node.js"
   },
   "keywords": [
     "sustainability",
