@@ -3,6 +3,7 @@ on:
   push:
     branches:
     - main
+    - ca-v0.10.0
   pull_request:
     branches:
     - main
