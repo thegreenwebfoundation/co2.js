@@ -13,6 +13,7 @@ describe("hostingAPI", () => {
           green: true,
         });
       const res = await hosting.check("google.com");
+      /* eslint-enable jest/no-disabled-tests */
       expect(res).toEqual(true);
     });
   });
