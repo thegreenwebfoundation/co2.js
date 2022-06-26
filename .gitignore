@@ -93,3 +93,13 @@ typings/
 # do not track local sqlite db
 url2green.db
 url2green.json
+
+# don't track generated content
+dist
+
+# don't track source maps
+*.js.map
+
+# don't track generated js build file from esbuild
+public/index.js
+
