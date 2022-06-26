@@ -1,3 +1,3 @@
-const fileSize = require("./file-size");
+import fileSize from "./file-size.js";
 
-module.exports = { fileSize };
+export { fileSize };

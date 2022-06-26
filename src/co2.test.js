@@ -1,11 +1,12 @@
 "use strict";
 
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
 
-const CO2 = require("./co2");
-const swd = require("./sustainable-web-design");
-const pagexray = require("pagexray");
+import pagexray from "pagexray";
+
+import CO2 from "./co2.js";
+import swd from "./sustainable-web-design.js";
 
 describe("co2", () => {
   let har, co2;

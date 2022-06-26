@@ -2,13 +2,12 @@
   "name": "@tgwf/co2",
   "version": "0.9.0",
   "description": "Work out the co2 of your digital services",
-  "main": "src/index.js",
+  "main": "./src/index.js",
   "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch",
+    "test": "jest src",
+    "test:watch": "jest --watch src",
     "lint": "eslint src",
-    "lint:fix": "eslint src --fix",
-    "travis": "npm run lint && jest"
+    "lint:fix": "eslint src --fix"
   },
   "keywords": [
     "sustainability",
@@ -27,11 +26,21 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-jest": "^26.1.5",
     "eslint-plugin-prettier": "^4.0.0",
+    "esbuild": "^0.14.47",
+    "esbuild-jest": "^0.5.0",
+    "esbuild-plugin-glob": "^1.1.2",
     "jest": "^28.1.0",
     "nock": "^13.2.4",
     "np": "^7.6.1",
     "pagexray": "^4.4.2",
     "prettier": "^2.6.2"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.(t|j)sx?$": [
+        "esbuild-jest"
+      ]
+    }
   },
   "np": {
     "yarn": false

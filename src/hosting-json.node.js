@@ -1,12 +1,14 @@
 "use strict";
 
-const log = require("debug")("tgwf:hostingCache");
-const path = require("path");
-const fs = require("fs");
-const zlib = require("zlib");
-const { promisify } = require("util");
+import fs from "fs";
+import zlib from "zlib";
+import { promisify } from "util";
+
 const readFile = promisify(fs.readFile);
 const gunzip = promisify(zlib.gunzip);
+
+import debugFactory from "debug";
+const log = debugFactory("tgwf:hostingCache");
 
 async function streamToString(stream) {
   return new Promise((resolve, reject) => {
