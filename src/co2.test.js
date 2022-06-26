@@ -5,8 +5,8 @@ import path from "path";
 
 import pagexray from "pagexray";
 
-import CO2 from "./co2";
-import swd from "./sustainable-web-design";
+import CO2 from "./co2.js";
+import swd from "./sustainable-web-design.js";
 
 describe("co2", () => {
   let har, co2;

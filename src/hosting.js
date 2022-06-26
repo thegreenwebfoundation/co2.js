@@ -1,6 +1,6 @@
 "use strict";
 
-import hostingAPI from "./hosting-api";
+import hostingAPI from "./hosting-api.js";
 
 function check(domain, db) {
   return hostingAPI.check(domain);

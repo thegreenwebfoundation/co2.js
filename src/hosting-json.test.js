@@ -1,6 +1,6 @@
 "use strict";
 
-import hosting from "./hosting-json";
+import hosting from "./hosting-json.node.js";
 import path from "path";
 
 describe("hostingJSON", () => {

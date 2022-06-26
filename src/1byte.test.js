@@ -1,6 +1,6 @@
 "use strict";
 
-import OneByte from "./1byte";
+import OneByte from "./1byte.js";
 
 describe("onebyte", () => {
   describe("perByte", () => {

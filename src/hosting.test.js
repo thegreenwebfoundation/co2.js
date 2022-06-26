@@ -5,7 +5,7 @@ import path from "path";
 
 import pagexray from "pagexray";
 
-import hosting from "./hosting-node";
+import hosting from "./hosting-node.js";
 
 const jsonPath = path.resolve(
   __dirname,

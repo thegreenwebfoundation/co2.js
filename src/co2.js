@@ -1,6 +1,6 @@
 "use strict";
 
-import Onebyte from "./1byte";
+import Onebyte from "./1byte.js";
 
 class CO2 {
   constructor(options) {

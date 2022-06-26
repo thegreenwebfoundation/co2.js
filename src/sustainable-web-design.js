@@ -12,8 +12,8 @@
 import debugFactory from "debug";
 const log = debugFactory("tgwf:sustainable-web-design");
 
-import { fileSize } from "./constants/index";
-import { formatNumber } from "./helpers/index";
+import { fileSize } from "./constants/index.js";
+import { formatNumber } from "./helpers/index.js";
 
 // this refers to the estimated total energy use for the internet around 2000 TWh,
 // divided by the total transfer it enables around 2500 exabytes

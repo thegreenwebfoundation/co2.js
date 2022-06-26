@@ -1,6 +1,6 @@
 "use strict";
 
-import hosting from "./hosting-node";
+import hosting from "./hosting-node.js";
 import nock from "nock";
 
 describe("hostingAPI", () => {

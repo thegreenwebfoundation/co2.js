@@ -11,7 +11,7 @@ import https from "https";
 import debugFactory from "debug";
 const log = debugFactory("tgwf:hosting-node");
 
-import hostingJSON from "./hosting-json";
+import hostingJSON from "./hosting-json.node.js";
 
 /**
  * Accept a url and perform an http request, returning the body
