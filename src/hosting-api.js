@@ -49,7 +49,6 @@ function greenDomainsFromResults(greenResults) {
   return greenEntries.map(([key, val]) => val.url);
 }
 
-
 export default {
   check,
 };
