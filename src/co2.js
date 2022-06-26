@@ -1,13 +1,13 @@
 "use strict";
 
-const onebyte = require("./1byte.js");
+import OneByte from "./1byte.js";
 
 class CO2 {
   constructor(options) {
     this.options = options;
 
     // default model
-    this.model = new onebyte.OneByte();
+    this.model = new OneByte();
 
     if (options) {
       this.model = new options.model();
@@ -130,4 +130,5 @@ class CO2 {
   }
 }
 
-module.exports = CO2;
+export { CO2 };
+export default CO2;

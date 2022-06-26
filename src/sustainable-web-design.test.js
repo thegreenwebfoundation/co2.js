@@ -1,4 +1,4 @@
-const SustainableWebDesign = require("./sustainable-web-design");
+import SustainableWebDesign from "./sustainable-web-design.js";
 
 describe("sustainable web design model", () => {
   const swd = new SustainableWebDesign();

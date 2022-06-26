@@ -1,7 +1,7 @@
 "use strict";
 
-const log = require("debug")("tgwf:hostingAPI");
-const https = require("https");
+import debugFactory from "debug";
+const log = debugFactory("tgwf:hostingAPI");
 
 function check(domain) {
   // is it a single domain or an array of them?
@@ -13,21 +13,30 @@ function check(domain) {
 }
 
 async function checkAgainstAPI(domain) {
-  const res = JSON.parse(
-    await getBody(`https://api.thegreenwebfoundation.org/greencheck/${domain}`)
+  const req = await fetch(
+    `https://api.thegreenwebfoundation.org/greencheck/${domain}`
   );
+  const res = await req.json();
   return res.green;
 }
 
 async function checkDomainsAgainstAPI(domains) {
   try {
-    const allGreenCheckResults = JSON.parse(
-      await getBody(
-        `https://api.thegreenwebfoundation.org/v2/greencheckmulti/${JSON.stringify(
-          domains
-        )}`
-      )
-    );
+    const apiPath = "https://api.thegreenwebfoundation.org/v2/greencheckmulti";
+    const domainsString = JSON.stringify(domains);
+
+    const req = await fetch(`${apiPath}/${domainsString}`);
+
+    // sanity check API result. Is this the library or
+    // the actual API request that's the problem?
+    // Is nock mocking node-native fetch API calls properly?
+    log(`${apiPath}/${domainsString}`);
+    log({ req });
+    const textResult = await req.text();
+    log({ textResult });
+
+    const allGreenCheckResults = await req.json();
+
     return greenDomainsFromResults(allGreenCheckResults);
   } catch (e) {
     return [];
@@ -40,31 +49,6 @@ function greenDomainsFromResults(greenResults) {
   return greenEntries.map(([key, val]) => val.url);
 }
 
-async function getBody(url) {
-  // Return new promise
-  return new Promise(function (resolve, reject) {
-    // Do async job
-    const req = https.get(url, function (res) {
-      if (res.statusCode < 200 || res.statusCode >= 300) {
-        log(
-          "Could not get info from the Green Web Foundation API, %s for %s",
-          res.statusCode,
-          url
-        );
-        return reject(new Error(`Status Code: ${res.statusCode}`));
-      }
-      const data = [];
-
-      res.on("data", (chunk) => {
-        data.push(chunk);
-      });
-
-      res.on("end", () => resolve(Buffer.concat(data).toString()));
-    });
-    req.end();
-  });
-}
-
-module.exports = {
+export default {
   check,
 };

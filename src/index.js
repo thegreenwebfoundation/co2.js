@@ -1,7 +1,5 @@
-const co2 = require("./co2");
-const hosting = require("./hosting");
+import co2 from "./co2.js";
+import hosting from "./hosting.js";
 
-module.exports = {
-  co2,
-  hosting,
-};
+export { co2, hosting };
+export default { co2, hosting };

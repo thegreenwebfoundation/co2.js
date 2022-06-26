@@ -66,6 +66,5 @@ class OneByte {
   }
 }
 
-module.exports = {
-  OneByte,
-};
+export { OneByte };
+export default OneByte;
