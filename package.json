@@ -2,12 +2,24 @@
   "name": "@tgwf/co2",
   "version": "0.9.0",
   "description": "Work out the co2 of your digital services",
-  "main": "./src/index.js",
+  "main": "dist/cjs/index-node.js",
+  "module": "dist/esm/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index-node.js"
+    }
+  },
   "scripts": {
     "test": "jest src",
     "test:watch": "jest --watch src",
     "lint": "eslint src",
-    "lint:fix": "eslint src --fix"
+    "lint:fix": "eslint src --fix",
+    "serve": "python -m http.server --directory ./public",
+    "build": "npm run build:esm && npm run build:browser && npm run build:node",
+    "build:esm": "node .esbuild.esm.js && ./fixup",
+    "build:browser": "node .esbuild.browser.js",
+    "build:node": "node .esbuild.node.js && ./fixup"
   },
   "keywords": [
     "sustainability",
