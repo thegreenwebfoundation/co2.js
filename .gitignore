@@ -100,4 +100,4 @@ lib/
 dist/
 
 # do not track sourcemaps
-.map
+*.map
