@@ -1,30 +1,24 @@
-const fs = require('fs')
-const path = require('path')
+const esbuild = require('esbuild')
+// tiny glob is a dependency of esbuild-plugin-glob.
+// For this build, we need to filter out some extra files
+// that are used for nodejs, but not in browsers
+const glob = require('tiny-glob');
 
-/*
-Only return the files that target browser APIs, leaving out node
-*/
-const justBrowserFiles = fs.readdirSync("./src")
-  // remove anything using the node APIs
-  .filter(src => !src.endsWith('node.js'))
-  // remove anything querying local JSON blobs - TODO: rename these to end with node.js too
-  .filter(src => !src.endsWith('json.js'))
-  // remove tests
-  .filter(src => !src.endsWith('test.js'))
-  // only transpile actual js files
-  .filter(src => src.endsWith(".js"))
-  // resolve the full filepath
-  .map(file => path.resolve('./src', file))
+async function main() {
+  const results = await glob('src/**/**.js')
+  // we remove node specific files here, with the assumption that
+  // the common use case is bundling into browser based web apps
+  const justBrowserCompatibleFiles = results.filter(filepath => !filepath.endsWith('node.js'))
 
-require('esbuild').buildSync({
-  entryPoints: justBrowserFiles,
-  bundle: false,
-  minify: false,
-  sourcemap: false,
-  target: ['chrome58', 'firefox57', 'safari11', 'edge18', 'esnext'],
-  outdir: 'lib/esm',
-  // do we definitely want mjs files? Some servers don't seem to recognise them as js files
-  outExtension: { '.js': '.mjs' },
-  format: 'esm',
-
-})
+  esbuild.build({
+    entryPoints: justBrowserCompatibleFiles,
+    bundle: false,
+    minify: false,
+    sourcemap: false,
+    target: ['chrome58', 'firefox57', 'safari11', 'edge18', 'esnext'],
+    outdir: 'dist/esm',
+    outExtension: { '.js': '.js' },
+    format: 'esm'
+  })
+}
+main()

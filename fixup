@@ -1,0 +1,19 @@
+#!/bin/bash
+#
+#   Add package.json files to cjs/esm subtrees in dist
+#   This is needed to allow one package to work with
+#   commonJS for older node versions, and for using ES6 imports
+#   for browsers, and newer versions of node
+#
+
+cat >dist/cjs/package.json <<!EOF
+{
+    "type": "commonjs"
+}
+!EOF
+
+cat >dist/esm/package.json <<!EOF
+{
+    "type": "module"
+}
+!EOF

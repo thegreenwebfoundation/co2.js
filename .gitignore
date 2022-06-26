@@ -97,3 +97,7 @@ url2green.json
 
 # do not track generated code for npm
 lib/
+dist/
+
+# do not track sourcemaps
+.map

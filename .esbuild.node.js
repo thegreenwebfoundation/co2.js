@@ -1,10 +1,16 @@
-require('esbuild').buildSync({
-    entryPoints: ['src/index.js'],
+const { globPlugin } = require('esbuild-plugin-glob');
+
+function main() {
+  require('esbuild').build({
+    entryPoints: ['src/**/**.js',],
     bundle: false,
     minify: false,
     sourcemap: true,
-    target: ['node10'],
-    outdir: 'lib',
+    target: ['node14'],
+    outdir: 'dist/cjs/',
     outExtension: { '.js': '.js' },
-    format: 'cjs' // Node, no bundling but in the 
+    format: 'cjs',
+    plugins: [globPlugin()]
   })
+}
+main()
