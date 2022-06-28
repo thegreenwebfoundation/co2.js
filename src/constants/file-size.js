@@ -1,4 +1,4 @@
-const GIGABYTE = 1024 * 1024 * 1024;
+const GIGABYTE = 1000 * 1000 * 1000;
 
 export default {
   GIGABYTE,
