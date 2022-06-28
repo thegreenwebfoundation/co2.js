@@ -8,17 +8,17 @@ describe("sustainable web design model", () => {
     it("should return a object with numbers for each system component", () => {
       const groupedEnergy = swd.energyPerByteByComponent(averageWebsiteInBytes);
 
-      expect(groupedEnergy.consumerDeviceEnergy).toBeCloseTo(0.00088564, 8);
-      expect(groupedEnergy.networkEnergy).toBeCloseTo(0.00023844, 8);
-      expect(groupedEnergy.productionEnergy).toBeCloseTo(0.0003236, 8);
-      expect(groupedEnergy.dataCenterEnergy).toBeCloseTo(0.00025547, 8);
+      expect(groupedEnergy.consumerDeviceEnergy).toBeCloseTo(0.00095095, 8);
+      expect(groupedEnergy.networkEnergy).toBeCloseTo(0.00025602, 7);
+      expect(groupedEnergy.productionEnergy).toBeCloseTo(0.0003475, 7);
+      expect(groupedEnergy.dataCenterEnergy).toBeCloseTo(0.00027431, 8);
     });
   });
 
   describe("energyPerByte", () => {
     it("should return a number in kilowatt hours for the given data transfer in bytes", () => {
       const energyForTransfer = swd.energyPerByte(averageWebsiteInBytes);
-      expect(energyForTransfer).toBeCloseTo(0.00170316, 7);
+      expect(energyForTransfer).toBeCloseTo(0.00182874, 7);
     });
   });
 
@@ -35,7 +35,7 @@ describe("sustainable web design model", () => {
 
     it("should calculate the correct energy", () => {
       expect(swd.energyPerVisit(averageWebsiteInBytes)).toBe(
-        0.001285882415771485
+        0.0013807057305600004
       );
     });
 
@@ -49,20 +49,20 @@ describe("sustainable web design model", () => {
 
       // with the constants switched around so the first view is 0.75, now 0.25
       // we should we the page come back at 0.57g not 0.2
-      expect(swd.emissionsPerVisitInGrams(v9currentEnergyCalc)).toEqual(0.57);
-      expect(swd.emissionsPerVisitInGrams(v8VersionEnergyCalc)).toEqual(0.2);
+      expect(swd.emissionsPerVisitInGrams(v9currentEnergyCalc)).toEqual(0.61);
+      expect(swd.emissionsPerVisitInGrams(v8VersionEnergyCalc)).toEqual(0.21);
     });
   });
 
   describe("emissionsPerVisitInGrams", () => {
     it("should calculate the correct co2 per visit", () => {
       const energy = swd.energyPerVisit(averageWebsiteInBytes);
-      expect(swd.emissionsPerVisitInGrams(energy)).toEqual(0.57);
+      expect(swd.emissionsPerVisitInGrams(energy)).toEqual(0.61);
     });
 
     it("should accept a dynamic KwH value", () => {
       const energy = swd.energyPerVisit(averageWebsiteInBytes);
-      expect(swd.emissionsPerVisitInGrams(energy, 245)).toEqual(0.32);
+      expect(swd.emissionsPerVisitInGrams(energy, 245)).toEqual(0.34);
     });
   });
 
