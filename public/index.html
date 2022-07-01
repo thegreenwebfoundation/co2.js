@@ -24,9 +24,8 @@
   </h2>
 
 
-  <script src="./index.js"></script>
+  <script src="/dist/iife/index.js"></script>
   <script>
-
     let emissions = new co2.co2();
 
     async function main() {
@@ -36,7 +35,9 @@
       // is the result green?
       const result = await hosting.check("google.com")
       // should return true or false
-      console.log({result})
+      console.log({
+        result
+      })
 
       document.querySelector('form').addEventListener('submit', function (event) {
         event.preventDefault();
