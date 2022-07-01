@@ -1,6 +1,6 @@
 require('esbuild').buildSync({
   entryPoints: ['src/index.js'],
-  outdir: 'public',
+  outdir: 'dist/iife',
   globalName: 'co2',
   format: 'iife',
   platform: 'browser',
