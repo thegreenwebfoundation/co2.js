@@ -19,7 +19,8 @@
     "build": "npm run build:esm && npm run build:browser && npm run build:node",
     "build:esm": "node .esbuild.esm.js && ./fixup",
     "build:browser": "node .esbuild.browser.js",
-    "build:node": "node .esbuild.node.js && ./fixup"
+    "build:node": "node .esbuild.node.js && ./fixup",
+    "gitpod": "npm run build && cp ./dist/iife/index.js ./public && npm run serve"
   },
   "keywords": [
     "sustainability",
