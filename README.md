@@ -4,6 +4,8 @@
 
 One day, there internet will be powered by renewable energy. Until that day comes, there’ll be a CO2 cost that comes with every byte of data that’s uploaded or downloaded. By being able to calculate these emissions, developers can be empowered to create more efficient, lower carbon apps, websites, and software.
 
+## [Documentation](https://developers.thegreenwebfoundation.org/co2js/overview/)
+
 ## What is CO2.js?
 
 CO2.js is a JavaScript library that enables developers a way to estimate the emissions related to use of their apps, websites, and software.
@@ -38,8 +40,6 @@ import tgwf from 'https://cdn.skypack.dev/@tgwf/co2';
 
 
 ### Build it yourself
-
-{% betaCodeWarning 'https://github.com/thegreenwebfoundation/co2.js/pull/92' %}
 
 You can also build the CO2.js library from the source code. To do this:
 
