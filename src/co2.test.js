@@ -21,7 +21,7 @@ describe("co2", () => {
     const MILLION_GREEN = 0.23196;
 
     beforeEach(() => {
-      co2 = new CO2();
+      co2 = new CO2({ model: '1byte'});
       har = JSON.parse(
         fs.readFileSync(
           path.resolve(__dirname, "../data/fixtures/tgwf.har"),
@@ -159,8 +159,10 @@ describe("co2", () => {
     const TGWF_GREEN_VALUE = 0.54704;
     const TGWF_MIXED_VALUE = 0.22175;
 
+    // We're not passing a model parameter here
+    // this allows us to verify SWD is being used by default
     beforeEach(() => {
-      co2 = new CO2({ model: swd });
+      co2 = new CO2();
       har = JSON.parse(
         fs.readFileSync(
           path.resolve(__dirname, "../data/fixtures/tgwf.har"),
