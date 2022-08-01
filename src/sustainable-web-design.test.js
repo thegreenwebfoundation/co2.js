@@ -4,14 +4,18 @@ describe("sustainable web design model", () => {
   const swd = new SustainableWebDesign();
   const averageWebsiteInBytes = 2257715.2;
 
+
+
+
   describe("energyPerByteByComponent", () => {
     it("should return a object with numbers for each system component", () => {
+      // compare these with the carbon intensity tab
+      // https://docs.google.com/spreadsheets/d/1eFlHhSBus_HqmoXqX237eAYr0PREUhTr6YBxznQC4jI/edit#gid=0
       const groupedEnergy = swd.energyPerByteByComponent(averageWebsiteInBytes);
-
       expect(groupedEnergy.consumerDeviceEnergy).toBeCloseTo(0.00095095, 8);
       expect(groupedEnergy.networkEnergy).toBeCloseTo(0.00025602, 7);
-      expect(groupedEnergy.productionEnergy).toBeCloseTo(0.0003475, 7);
       expect(groupedEnergy.dataCenterEnergy).toBeCloseTo(0.00027431, 8);
+      expect(groupedEnergy.productionEnergy).toBeCloseTo(0.0003475, 7);
     });
   });
 
@@ -37,20 +41,6 @@ describe("sustainable web design model", () => {
       expect(swd.energyPerVisit(averageWebsiteInBytes)).toBe(
         0.0013807057305600004
       );
-    });
-
-    it("should match the old calculations", () => {
-      // Test the v0.9.0 updates to the SWD method to identify differences
-      const v9currentEnergyCalc = swd.energyPerVisit(averageWebsiteInBytes);
-      const v8VersionEnergyCalc = swd.energyPerVisitV8(averageWebsiteInBytes);
-
-      // expect(currentEnergyCalc).toBe(0.0004513362121582032);
-      // expect(oldVersionEnergyCalc).toBe(0.0012858824157714846);
-
-      // with the constants switched around so the first view is 0.75, now 0.25
-      // we should we the page come back at 0.57g not 0.2
-      expect(swd.emissionsPerVisitInGrams(v9currentEnergyCalc)).toEqual(0.61);
-      expect(swd.emissionsPerVisitInGrams(v8VersionEnergyCalc)).toEqual(0.21);
     });
   });
 
