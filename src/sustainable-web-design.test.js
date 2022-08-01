@@ -5,12 +5,12 @@ describe("sustainable web design model", () => {
   const averageWebsiteInBytes = 2257715.2;
 
 
-
-
   describe("energyPerByteByComponent", () => {
     it("should return a object with numbers for each system component", () => {
-      // compare these with the carbon intensity tab
+      // Compare these with the carbon intensity tab C7-C10.
       // https://docs.google.com/spreadsheets/d/1eFlHhSBus_HqmoXqX237eAYr0PREUhTr6YBxznQC4jI/edit#gid=0
+
+      // These numbers should match the spreadsheet
       const groupedEnergy = swd.energyPerByteByComponent(averageWebsiteInBytes);
       expect(groupedEnergy.consumerDeviceEnergy).toBeCloseTo(0.00095095, 8);
       expect(groupedEnergy.networkEnergy).toBeCloseTo(0.00025602, 7);
