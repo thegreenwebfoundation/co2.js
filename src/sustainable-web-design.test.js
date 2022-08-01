@@ -4,7 +4,6 @@ describe("sustainable web design model", () => {
   const swd = new SustainableWebDesign();
   const averageWebsiteInBytes = 2257715.2;
 
-
   describe("energyPerByteByComponent", () => {
     it("should return a object with numbers for each system component", () => {
       // Compare these with the carbon intensity tab C7-C10.
