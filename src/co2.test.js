@@ -8,7 +8,6 @@ import pagexray from "pagexray";
 import CO2 from "./co2.js";
 import SustainableWebDesign from "./sustainable-web-design.js";
 
-
 describe("co2", () => {
   let har, co2;
 
@@ -161,7 +160,7 @@ describe("co2", () => {
     const TGWF_MIXED_VALUE = 0.22175;
 
     beforeEach(() => {
-      co2 = new CO2({ model: 'swd' });
+      co2 = new CO2({ model: "swd" });
       har = JSON.parse(
         fs.readFileSync(
           path.resolve(__dirname, "../data/fixtures/tgwf.har"),
@@ -312,7 +311,6 @@ describe("co2", () => {
           MILLION_GREY.toPrecision(5)
         );
       });
-    })
-  })
-
+    });
+  });
 });
