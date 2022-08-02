@@ -1,6 +1,7 @@
 "use strict";
 
 import OneByte from "./1byte.js";
+import SustainableWebDesign from "./sustainable-web-design.js"
 
 class CO2 {
   constructor(options) {
@@ -10,7 +11,14 @@ class CO2 {
     this.model = new OneByte();
 
     if (options) {
-      this.model = new options.model();
+      if (options.model === "swd") {
+        this.model = new SustainableWebDesign()
+      } else {
+        // retain the fallback for people developing
+        // new models that follow the same API
+        this.model = new options.model();
+      }
+
     }
   }
 

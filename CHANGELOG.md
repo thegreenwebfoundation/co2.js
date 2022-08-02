@@ -12,6 +12,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > **Fixed** for any bug fixes.
 > **Security** in case of vulnerabilities.
 
+## Unreleased
+
+### Added
+
+- Added the ability to set the model used by CO2.js to the Sustainable Web Design model, using a simple 'swd' string, instead of needing to pass in a class.
+
+## 0.10.1 2022-08-01
+
+This release used a version bump as previously we had released v0.10.0 under a pre-release tag.
+
 ## 0.10.0 2022-06-27
 
 - Added ES import syntax as the main way for handling imports and exports of code within the module.
