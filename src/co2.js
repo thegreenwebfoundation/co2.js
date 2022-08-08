@@ -1,14 +1,21 @@
 "use strict";
 
 import OneByte from "./1byte.js";
-import SWD from "./sustainable-web-design.js";
+import SustainableWebDesign from "./sustainable-web-design.js";
+
 class CO2 {
   constructor(options) {
     // default model
-    this.model = new SWD();
+    this.model = new OneByte();
 
-    if (options && options.model.toLowerCase() === "1byte") {
-      this.model = new OneByte();
+    if (options) {
+      if (options.model === "swd") {
+        this.model = new SustainableWebDesign();
+      } else {
+        // retain the fallback for people developing
+        // new models that follow the same API
+        this.model = new options.model();
+      }
     }
   }
 

@@ -175,15 +175,6 @@ class SustainableWebDesign {
     log({ energyBycomponent });
     const energyValues = Object.values(energyBycomponent);
 
-    // sanity check that these numbers add back up
-    const v9recombinedNoCaching = energyValues.reduce(
-      (prevValue, currentValue) => prevValue + currentValue
-    );
-
-    // energyBycomponent doesn't apply any caching logic, to should be the
-    // same number as the total in the v8
-    log({ v9recombinedNoCaching });
-
     // for this, we want
     for (const [key, value] of Object.entries(energyBycomponent)) {
       // represent the first load
@@ -209,8 +200,8 @@ class SustainableWebDesign {
     // fetch the values using the default caching assumptions
     // const energyValues = Object.values(this.energyPerVisitByComponent(bytes));
 
-    let v9firstVisits = 0;
-    let v9subsequentVisits = 0;
+    let firstVisits = 0;
+    let subsequentVisits = 0;
 
     const energyBycomponent = Object.entries(
       this.energyPerVisitByComponent(bytes)
@@ -218,50 +209,17 @@ class SustainableWebDesign {
 
     for (const [key, val] of energyBycomponent) {
       if (key.indexOf("first") > 0) {
-        v9firstVisits += val;
+        firstVisits += val;
       }
     }
 
     for (const [key, val] of energyBycomponent) {
       if (key.indexOf("subsequent") > 0) {
-        v9subsequentVisits += val;
+        subsequentVisits += val;
       }
     }
 
-    log({ v9firstVisits });
-    log({ v9subsequentVisits });
-    return v9firstVisits + v9subsequentVisits;
-  }
-
-  /*
-   * JUST FOR TEST PURPOSES
-   * Testing v0.8.0 => v0.9.0 versions
-   *
-   *
-   */
-  energyPerVisitV8(bytes) {
-    log({ bytes });
-    const transferedBytesToGb = bytes / fileSize.GIGABYTE;
-
-    const v8visitWithNoCaching = transferedBytesToGb * KWH_PER_GB;
-
-    const v8firstVisit =
-      transferedBytesToGb * KWH_PER_GB * RETURNING_VISITOR_PERCENTAGE;
-
-    const v8subsequentVisits =
-      transferedBytesToGb *
-      KWH_PER_GB *
-      FIRST_TIME_VIEWING_PERCENTAGE *
-      PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD;
-
-    const v8firstAndSubsequentVisits = v8firstVisit + v8subsequentVisits;
-
-    log({ v8visitWithNoCaching });
-    log({ v8firstVisit });
-    log({ v8subsequentVisits });
-    log({ v8firstAndSubsequentVisits });
-
-    return v8firstVisit + v8subsequentVisits;
+    return firstVisits + subsequentVisits;
   }
 
   // TODO: this method looks like it applies the carbon intensity

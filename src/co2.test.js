@@ -6,6 +6,7 @@ import path from "path";
 import pagexray from "pagexray";
 
 import CO2 from "./co2.js";
+import SustainableWebDesign from "./sustainable-web-design.js";
 
 describe("co2", () => {
   let har, co2;
@@ -146,7 +147,7 @@ describe("co2", () => {
     });
   });
 
-  describe("Sustainable Web Design model", () => {
+  describe("Sustainable Web Design model as simple option", () => {
     // the SWD model should have slightly higher values as
     // we include more of the system in calculations for the
     // same levels of data transfer
@@ -161,7 +162,7 @@ describe("co2", () => {
     // We're not passing a model parameter here
     // this allows us to verify SWD is being used by default
     beforeEach(() => {
-      co2 = new CO2();
+      co2 = new CO2({ model: "swd" });
       har = JSON.parse(
         fs.readFileSync(
           path.resolve(__dirname, "../data/fixtures/tgwf.har"),
@@ -285,6 +286,32 @@ describe("co2", () => {
           expect(resWithGreen[index].co2).toBeLessThan(res[index].co2);
           index++;
         }
+      });
+    });
+  });
+
+  describe("New model that implements the same API", () => {
+    const MILLION = 1000000;
+    const MILLION_GREY = 0.35802;
+
+    beforeEach(() => {
+      // we use the SustainableWebDesign to demonstrate passing
+      // in a complex object instead of a simple string
+      co2 = new CO2({ model: SustainableWebDesign });
+      har = JSON.parse(
+        fs.readFileSync(
+          path.resolve(__dirname, "../data/fixtures/tgwf.har"),
+          "utf8"
+        )
+      );
+    });
+
+    describe("perByte", () => {
+      it("returns a CO2 number for data transfer", () => {
+        co2.perByte(MILLION);
+        expect(co2.perByte(MILLION).toPrecision(5)).toBe(
+          MILLION_GREY.toPrecision(5)
+        );
       });
     });
   });
