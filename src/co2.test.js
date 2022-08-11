@@ -162,7 +162,7 @@ describe("co2", () => {
     // We're not passing a model parameter here
     // this allows us to verify SWD is being used by default
     beforeEach(() => {
-      co2 = new CO2({ model: "swd" });
+      co2 = new CO2();
       har = JSON.parse(
         fs.readFileSync(
           path.resolve(__dirname, "../data/fixtures/tgwf.har"),
