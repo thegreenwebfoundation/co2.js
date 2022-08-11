@@ -40,7 +40,9 @@ class CO2 {
     if (this.model?.perVisit) {
       return this.model.perVisit(bytes, green);
     } else {
-      console.warn("The model you have selected does not support perVisit. Using perByte instead.");
+      console.warn(
+        "The model you have selected does not support perVisit. Using perByte instead."
+      );
       return this.model.perByte(bytes, green);
     }
   }

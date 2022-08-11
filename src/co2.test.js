@@ -46,7 +46,7 @@ describe("co2", () => {
         );
       });
     });
-    
+
     // This test is to make sure that the fallback works.
     // Since there is no perVisit fuction in the 1byte model, the perByte function is used.
     describe("perVisit", () => {
