@@ -33,7 +33,7 @@ describe("sustainable web design model", () => {
 
   describe("perVisit", () => {
     it("should return a single number for CO2 emissions", () => {
-      expect(typeof swd.perByte(2257715.2)).toBe("number");
+      expect(typeof swd.perVisit(2257715.2)).toBe("number");
     });
   });
 

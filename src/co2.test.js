@@ -154,6 +154,8 @@ describe("co2", () => {
     const MILLION = 1000000;
     const MILLION_GREY = 0.35802;
     const MILLION_GREEN = 0.31039;
+    const MILLION_PERVISIT_GREY = 0.27145;
+    const MILLION_PERVISIT_GREEN = 0.23062;
 
     const TGWF_GREY_VALUE = 0.25234;
     const TGWF_GREEN_VALUE = 0.54704;
@@ -186,6 +188,25 @@ describe("co2", () => {
 
         expect(co2.perByte(MILLION, true).toPrecision(5)).toBe(
           MILLION_GREEN.toPrecision(5)
+        );
+      });
+    });
+
+    describe("perVisit", () => {
+      it("returns a CO2 number for data transfer per visit with caching assumptions from the Sustainable Web Design model", () => {
+        co2.perVisit(MILLION);
+        expect(co2.perVisit(MILLION).toPrecision(5)).toBe(
+          MILLION_PERVISIT_GREY.toPrecision(5)
+        );
+      });
+
+      it("returns a lower CO2 number for data transfer from domains using entirely 'green' power", () => {
+        expect(co2.perVisit(MILLION, false).toPrecision(5)).toBe(
+          MILLION_PERVISIT_GREY.toPrecision(5)
+        );
+
+        expect(co2.perByte(MILLION, true).toPrecision(5)).toBe(
+          MILLION_PERVISIT_GREEN.toPrecision(5)
         );
       });
     });
