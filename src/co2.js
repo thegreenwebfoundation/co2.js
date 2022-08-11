@@ -8,6 +8,7 @@ class CO2 {
     // default model
     this.model = new SustainableWebDesign();
 
+    // Using optional chaining allows an empty object to be passed in without breaking the code.
     if (options?.model === "1byte") {
       this.model = new OneByte();
     }
