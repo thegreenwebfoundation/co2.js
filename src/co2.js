@@ -8,16 +8,10 @@ class CO2 {
     // default model
     this.model = new OneByte();
 
-    if (options) {
-      if (options.model === "swd") {
+      if (options?.model === "swd") {
         this.model = new SustainableWebDesign();
-      } else {
-        // retain the fallback for people developing
-        // new models that follow the same API
-        this.model = new options.model();
       }
     }
-  }
 
   /**
    * Accept a figure in bytes for data transfer, and a boolean for whether
