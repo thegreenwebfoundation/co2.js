@@ -74,7 +74,7 @@ class SustainableWebDesign {
     for (const [key, value] of Object.entries(energyBycomponent)) {
       // we update the datacentre, as that's what we have information
       // about.
-      if (key === "dataCenterEnergy") {
+      if (key.startsWith("dataCenterEnergy")) {
         returnCO2ByComponent[key] = value * carbonIntensity;
       } else {
         // We don't have info about the device location,
@@ -113,6 +113,48 @@ class SustainableWebDesign {
     if (typeof carbonIntensity !== "number") {
       throw new Error(
         `perByte expects a numeric value or boolean for the carbon intensity value. Received: ${carbonIntensity}`
+      );
+    }
+
+    const co2ValuesbyComponent = this.co2byComponent(
+      energyBycomponent,
+      carbonIntensity
+    );
+
+    // pull out our values…
+    const co2Values = Object.values(co2ValuesbyComponent);
+
+    // so we can return their sum
+    return co2Values.reduce(
+      (prevValue, currentValue) => prevValue + currentValue
+    );
+  }
+
+  /**
+   * Accept a figure for bytes transferred and return a single figure for CO2
+   * emissions. This method applies caching assumptions from the original Sustainable Web Design model.
+   *
+   * @param {number} bytes - the data transferred in bytes
+   * @param {number} `carbonIntensity` the carbon intensity for datacentre (average figures, not marginal ones)
+   * @return {number} the total number in grams of CO2 equivalent emissions
+   */
+  perVisit(bytes, carbonIntensity = GLOBAL_INTENSITY) {
+    const energyBycomponent = this.energyPerVisitByComponent(bytes);
+
+    // when faced with falsy values, fallback to global intensity
+    if (Boolean(carbonIntensity) === false) {
+      carbonIntensity = GLOBAL_INTENSITY;
+    }
+    // if we have a boolean, we have a green result from the green web checker
+    // use the renewables intensity
+    if (carbonIntensity === true) {
+      carbonIntensity = RENEWABLES_INTENSITY;
+    }
+
+    // otherwise when faced with non numeric values throw an error
+    if (typeof carbonIntensity !== "number") {
+      throw new Error(
+        `perVisit expects a numeric value or boolean for the carbon intensity value. Received: ${carbonIntensity}`
       );
     }
 

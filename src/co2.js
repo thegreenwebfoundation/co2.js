@@ -27,6 +27,24 @@ class CO2 {
     return this.model.perByte(bytes, green);
   }
 
+  /**
+   * Accept a figure in bytes for data transfer, and a boolean for whether
+   * the domain shows as 'green', and return a CO2 figure for energy used to shift the corresponding
+   * the data transfer.
+   *
+   * @param {number} bytes
+   * @param {boolean} green
+   * @return {number} the amount of CO2 in grammes
+   */
+  perVisit(bytes, green) {
+    if (this.model?.perVisit) {
+      return this.model.perVisit(bytes, green);
+    } else {
+      console.warn("The model you have selected does not support perVisit. Using perByte instead.");
+      return this.model.perByte(bytes, green);
+    }
+  }
+
   perDomain(pageXray, greenDomains) {
     const co2PerDomain = [];
     for (let domain of Object.keys(pageXray.domains)) {
