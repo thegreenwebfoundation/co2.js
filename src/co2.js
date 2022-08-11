@@ -6,7 +6,7 @@ import SustainableWebDesign from "./sustainable-web-design.js";
 class CO2 {
   constructor(options) {
     // default model
-    this.model = new OneByte();
+    this.model = new SustainableWebDesign();
 
       if (options?.model.toLowerCase() === "swd") {
         this.model = new SustainableWebDesign();
