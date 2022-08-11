@@ -8,7 +8,7 @@ class CO2 {
     // default model
     this.model = new OneByte();
 
-      if (options?.model === "swd") {
+      if (options?.model.toLowerCase() === "swd") {
         this.model = new SustainableWebDesign();
       }
     }
