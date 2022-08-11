@@ -46,6 +46,25 @@ describe("co2", () => {
         );
       });
     });
+    
+    // This test is to make sure that the fallback works.
+    // Since there is no perVisit fuction in the 1byte model, the perByte function is used.
+    describe("perVisit", () => {
+      it("returns a CO2 number for data transfer using 'grey' power", () => {
+        expect(co2.perVisit(MILLION).toPrecision(5)).toBe(
+          MILLION_GREY.toPrecision(5)
+        );
+      });
+
+      it("returns a lower CO2 number for data transfer from domains using entirely 'green' power", () => {
+        expect(co2.perVisit(MILLION).toPrecision(5)).toBe(
+          MILLION_GREY.toPrecision(5)
+        );
+        expect(co2.perVisit(MILLION, true).toPrecision(5)).toBe(
+          MILLION_GREEN.toPrecision(5)
+        );
+      });
+    });
 
     describe("perPage", () => {
       it("returns CO2 for total transfer for page", () => {
