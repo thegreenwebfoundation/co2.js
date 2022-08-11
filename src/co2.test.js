@@ -21,7 +21,7 @@ describe("co2", () => {
     const MILLION_GREEN = 0.23196;
 
     beforeEach(() => {
-      co2 = new CO2({ model: '1byte'});
+      co2 = new CO2({ model: "1byte" });
       har = JSON.parse(
         fs.readFileSync(
           path.resolve(__dirname, "../data/fixtures/tgwf.har"),
