@@ -5,11 +5,10 @@ import SustainableWebDesign from "./sustainable-web-design.js";
 
 class CO2 {
   constructor(options) {
+    this.model = new OneByte();
     // Using optional chaining allows an empty object to be passed in without breaking the code.
     if (options?.model === "swd") {
       this.model = new SustainableWebDesign();
-    } else {
-      this.model = new OneByte();
     }
   }
 
