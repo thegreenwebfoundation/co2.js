@@ -16,6 +16,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Introduced a new `perVisit()` function for the Sustainable Web Design model, which applies [caching and return visits assumptions](https://sustainablewebdesign.org/calculating-digital-emissions/).
+
+## 0.10.2 2022-08-12
+
 - Added the ability to set the model used by CO2.js to the Sustainable Web Design model, using a simple 'swd' string, instead of needing to pass in a class.
 
 ## 0.10.1 2022-08-01
