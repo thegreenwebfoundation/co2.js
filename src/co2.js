@@ -5,19 +5,10 @@ import SustainableWebDesign from "./sustainable-web-design.js";
 
 class CO2 {
   constructor(options) {
-    this.options = options;
-
-    // default model
     this.model = new OneByte();
-
-    if (options) {
-      if (options.model === "swd") {
-        this.model = new SustainableWebDesign();
-      } else {
-        // retain the fallback for people developing
-        // new models that follow the same API
-        this.model = new options.model();
-      }
+    // Using optional chaining allows an empty object to be passed in without breaking the code.
+    if (options?.model === "swd") {
+      this.model = new SustainableWebDesign();
     }
   }
 
@@ -32,6 +23,26 @@ class CO2 {
    */
   perByte(bytes, green) {
     return this.model.perByte(bytes, green);
+  }
+
+  /**
+   * Accept a figure in bytes for data transfer, and a boolean for whether
+   * the domain shows as 'green', and return a CO2 figure for energy used to shift the corresponding
+   * the data transfer.
+   *
+   * @param {number} bytes
+   * @param {boolean} green
+   * @return {number} the amount of CO2 in grammes
+   */
+  perVisit(bytes, green) {
+    if (this.model?.perVisit) {
+      return this.model.perVisit(bytes, green);
+    } else {
+      console.warn(
+        "The model you have selected does not support perVisit. Using perByte instead."
+      );
+      return this.model.perByte(bytes, green);
+    }
   }
 
   perDomain(pageXray, greenDomains) {

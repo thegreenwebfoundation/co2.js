@@ -20,6 +20,7 @@ describe("co2", () => {
     const MILLION_GREY = 0.29081;
     const MILLION_GREEN = 0.23196;
 
+    // We're not passing in a model parameter here to ensure that 1byte gets used as default
     beforeEach(() => {
       co2 = new CO2();
       har = JSON.parse(
@@ -43,6 +44,16 @@ describe("co2", () => {
         );
         expect(co2.perByte(MILLION, true).toPrecision(5)).toBe(
           MILLION_GREEN.toPrecision(5)
+        );
+      });
+    });
+
+    // This test is to make sure that the fallback works.
+    // Since there is no perVisit fuction in the 1byte model, the perByte function is used.
+    describe("perVisit", () => {
+      it("returns a CO2 number for data transfer using 'grey' power", () => {
+        expect(co2.perVisit(MILLION).toPrecision(5)).toBe(
+          MILLION_GREY.toPrecision(5)
         );
       });
     });
@@ -154,11 +165,14 @@ describe("co2", () => {
     const MILLION = 1000000;
     const MILLION_GREY = 0.35802;
     const MILLION_GREEN = 0.31039;
+    const MILLION_PERVISIT_GREY = 0.27031;
+    const MILLION_PERVISIT_GREEN = 0.23435;
 
     const TGWF_GREY_VALUE = 0.25234;
     const TGWF_GREEN_VALUE = 0.54704;
     const TGWF_MIXED_VALUE = 0.22175;
 
+    // Passing in the SWD parameter here
     beforeEach(() => {
       co2 = new CO2({ model: "swd" });
       har = JSON.parse(
@@ -184,6 +198,25 @@ describe("co2", () => {
 
         expect(co2.perByte(MILLION, true).toPrecision(5)).toBe(
           MILLION_GREEN.toPrecision(5)
+        );
+      });
+    });
+
+    describe("perVisit", () => {
+      it("returns a CO2 number for data transfer per visit with caching assumptions from the Sustainable Web Design model", () => {
+        co2.perVisit(MILLION);
+        expect(co2.perVisit(MILLION).toPrecision(5)).toBe(
+          MILLION_PERVISIT_GREY.toPrecision(5)
+        );
+      });
+
+      it("returns a lower CO2 number for data transfer from domains using entirely 'green' power", () => {
+        expect(co2.perVisit(MILLION, false).toPrecision(5)).toBe(
+          MILLION_PERVISIT_GREY.toPrecision(5)
+        );
+
+        expect(co2.perVisit(MILLION, true).toPrecision(5)).toBe(
+          MILLION_PERVISIT_GREEN.toPrecision(5)
         );
       });
     });
@@ -284,32 +317,6 @@ describe("co2", () => {
           expect(resWithGreen[index].co2).toBeLessThan(res[index].co2);
           index++;
         }
-      });
-    });
-  });
-
-  describe("New model that implements the same API", () => {
-    const MILLION = 1000000;
-    const MILLION_GREY = 0.35802;
-
-    beforeEach(() => {
-      // we use the SustainableWebDesign to demonstrate passing
-      // in a complex object instead of a simple string
-      co2 = new CO2({ model: SustainableWebDesign });
-      har = JSON.parse(
-        fs.readFileSync(
-          path.resolve(__dirname, "../data/fixtures/tgwf.har"),
-          "utf8"
-        )
-      );
-    });
-
-    describe("perByte", () => {
-      it("returns a CO2 number for data transfer", () => {
-        co2.perByte(MILLION);
-        expect(co2.perByte(MILLION).toPrecision(5)).toBe(
-          MILLION_GREY.toPrecision(5)
-        );
       });
     });
   });
