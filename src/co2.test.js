@@ -174,7 +174,7 @@ describe("co2", () => {
 
     // Passing in the SWD parameter here
     beforeEach(() => {
-      co2 = new CO2({ model: 'swd'});
+      co2 = new CO2({ model: "swd" });
       har = JSON.parse(
         fs.readFileSync(
           path.resolve(__dirname, "../data/fixtures/tgwf.har"),
