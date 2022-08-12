@@ -52,6 +52,14 @@ You can also build the CO2.js library from the source code. To do this:
     - `dist/esm` - An ES Modules compatible build.
     - `dist/iife` - An Immediately Invoked Function Expression (IIFE) version of the library.
 
+## Publishing to NPM
+
+We use [`np`](https://www.npmjs.com/package/np) to publish new versions of this library to NPM. To do this:
+
+1. First login to NPM by running the `npm login` command in your terminal.
+2. Then run `npx np <VERSION>`.
+3. `np` will run several automated steps to publish the new package to NPM.
+4. If everything runs successfully, you can then add release notes to GitHub for the newly published package.
 ## Licenses
 
 Apache 2.0
