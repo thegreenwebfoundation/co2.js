@@ -14,6 +14,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## 0.10.4 2022-08-12
+
+- Introduced a `release:patch` command, to automate the publishing process. This is designed to make sure we always publish the most recent compiled code, by adding a rebuild step that can be easy to forget.
+
+### Added
+
+## 0.10.3 2022-08-12
+
 ### Added
 
 - Introduced a new `perVisit()` function for the Sustainable Web Design model, which applies [caching and return visits assumptions](https://sustainablewebdesign.org/calculating-digital-emissions/).

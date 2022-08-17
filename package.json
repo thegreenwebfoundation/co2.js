@@ -20,6 +20,7 @@
     "build:esm": "node .esbuild.esm.js && ./fixup",
     "build:browser": "node .esbuild.browser.js",
     "build:node": "node .esbuild.node.js && ./fixup",
+    "release:patch": "npm run build && np i patch",
     "gitpod": "npm run build && cp ./dist/iife/index.js ./public && npm run serve"
   },
   "keywords": [
