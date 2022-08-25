@@ -12,6 +12,10 @@ class CO2 {
       this.model = new OneByte();
     } else if (options?.model === "swd") {
       this.model = new SustainableWebDesign();
+    } else if (options?.model) {
+      throw new Error(
+        `"${options.model}" is not a valid model. Please use "1byte" for the OneByte model, and "swd" for the Sustainable Web Design model.\nSee https://developers.thegreenwebfoundation.org/co2js/models/ to learn more about the models available in CO2.js.`
+      );
     }
   }
 
@@ -41,10 +45,9 @@ class CO2 {
     if (this.model?.perVisit) {
       return this.model.perVisit(bytes, green);
     } else {
-      console.warn(
-        "The model you have selected does not support perVisit. Using perByte instead."
+      throw new Error(
+        `The perVisit() method is not supported in the model you are using. Try using perByte() instead.\nSee https://developers.thegreenwebfoundation.org/co2js/methods/ to learn more about the methods available in CO2.js.`
       );
-      return this.model.perByte(bytes, green);
     }
   }
 
