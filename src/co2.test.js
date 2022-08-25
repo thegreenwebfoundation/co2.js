@@ -46,16 +46,6 @@ describe("co2", () => {
       });
     });
 
-    // This test is to make sure that the fallback works.
-    // Since there is no perVisit fuction in the 1byte model, the perByte function is used.
-    describe("perVisit", () => {
-      it("returns a CO2 number for data transfer using 'grey' power", () => {
-        expect(co2.perVisit(MILLION).toPrecision(5)).toBe(
-          MILLION_GREY.toPrecision(5)
-        );
-      });
-    });
-
     describe("perPage", () => {
       it("returns CO2 for total transfer for page", () => {
         const pages = pagexray.convert(har);
@@ -316,6 +306,25 @@ describe("co2", () => {
           index++;
         }
       });
+    });
+  });
+
+  describe("Error checking", () => {
+    // Test for error if incorrect model is passed
+    it("throws an error if model is not valid", () => {
+      expect(() => (co2 = new CO2({ model: "1direction" }))).toThrowError(
+        `"1direction" is not a valid model. Please use "1byte" for the OneByte model, and "swd" for the Sustainable Web Design model.\nSee https://developers.thegreenwebfoundation.org/co2js/models/ to learn more about the models available in CO2.js.`
+      );
+    });
+
+    // Test that an error is thrown when using the OneByte model with the perVisit method.
+    it("throws an error if perVisit method is not supported by model", () => {
+      expect(() => {
+        co2 = new CO2({ model: "1byte" });
+        co2.perVisit(10);
+      }).toThrowError(
+        `The perVisit() method is not supported in the model you are using. Try using perByte() instead.\nSee https://developers.thegreenwebfoundation.org/co2js/methods/ to learn more about the methods available in CO2.js.`
+      );
     });
   });
 });
