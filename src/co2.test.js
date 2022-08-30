@@ -6,7 +6,6 @@ import path from "path";
 import pagexray from "pagexray";
 
 import CO2 from "./co2.js";
-import SustainableWebDesign from "./sustainable-web-design.js";
 
 describe("co2", () => {
   let har, co2;
@@ -20,9 +19,8 @@ describe("co2", () => {
     const MILLION_GREY = 0.29081;
     const MILLION_GREEN = 0.23196;
 
-    // We're not passing in a model parameter here to ensure that 1byte gets used as default
     beforeEach(() => {
-      co2 = new CO2();
+      co2 = new CO2({ model: "1byte" });
       har = JSON.parse(
         fs.readFileSync(
           path.resolve(__dirname, "../data/fixtures/tgwf.har"),
@@ -44,16 +42,6 @@ describe("co2", () => {
         );
         expect(co2.perByte(MILLION, true).toPrecision(5)).toBe(
           MILLION_GREEN.toPrecision(5)
-        );
-      });
-    });
-
-    // This test is to make sure that the fallback works.
-    // Since there is no perVisit fuction in the 1byte model, the perByte function is used.
-    describe("perVisit", () => {
-      it("returns a CO2 number for data transfer using 'grey' power", () => {
-        expect(co2.perVisit(MILLION).toPrecision(5)).toBe(
-          MILLION_GREY.toPrecision(5)
         );
       });
     });
@@ -172,9 +160,9 @@ describe("co2", () => {
     const TGWF_GREEN_VALUE = 0.54704;
     const TGWF_MIXED_VALUE = 0.22175;
 
-    // Passing in the SWD parameter here
+    // We're not passing in a model parameter here to check that SWD is used by default
     beforeEach(() => {
-      co2 = new CO2({ model: "swd" });
+      co2 = new CO2();
       har = JSON.parse(
         fs.readFileSync(
           path.resolve(__dirname, "../data/fixtures/tgwf.har"),
@@ -318,6 +306,25 @@ describe("co2", () => {
           index++;
         }
       });
+    });
+  });
+
+  describe("Error checking", () => {
+    // Test for error if incorrect model is passed
+    it("throws an error if model is not valid", () => {
+      expect(() => (co2 = new CO2({ model: "1direction" }))).toThrowError(
+        `"1direction" is not a valid model. Please use "1byte" for the OneByte model, and "swd" for the Sustainable Web Design model.\nSee https://developers.thegreenwebfoundation.org/co2js/models/ to learn more about the models available in CO2.js.`
+      );
+    });
+
+    // Test that an error is thrown when using the OneByte model with the perVisit method.
+    it("throws an error if perVisit method is not supported by model", () => {
+      expect(() => {
+        co2 = new CO2({ model: "1byte" });
+        co2.perVisit(10);
+      }).toThrowError(
+        `The perVisit() method is not supported in the model you are using. Try using perByte() instead.\nSee https://developers.thegreenwebfoundation.org/co2js/methods/ to learn more about the methods available in CO2.js.`
+      );
     });
   });
 });
