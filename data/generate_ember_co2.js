@@ -38,7 +38,7 @@ for (let i = 1; i < array.length - 1; i++) {
 		}
 
 		if (headers[j].startsWith('emissions_intensity_gco2_per_kwh')) {
-			gridIntensityResults[country] = jsonProperties[j].replace("\r", "")
+			gridIntensityResults[country.toLowerCase()] = jsonProperties[j].replace("\r", "")
 		}
 	}
 	/* Push the genearted JSON object to resultant array */	
