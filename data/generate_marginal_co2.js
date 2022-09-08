@@ -77,5 +77,3 @@ fs.writeFileSync(
 
 // This saves the full data set as a JSON file for reference.
 fs.writeFileSync("data/marginal-intensities-unfccc-2021.json", json);
-
-// TODO: Include 2 & 3 digit ISO country codes in output.
