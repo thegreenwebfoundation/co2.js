@@ -41,7 +41,6 @@ for (let currentArrayString of array.slice(5)) {
   for (let column in headers) {
     if (!column || column === "") continue;
 
-    console.log(headers[column], jsonProperties[column]);
     // First check if the current property is an array string. If so, then we'll split it and map the results to an array.
 		// We trim the values to remove any whitespace.
     if (jsonProperties[column].includes(",")) {
@@ -59,8 +58,12 @@ for (let currentArrayString of array.slice(5)) {
         .replace('\"', "");
     }
   }
+
+  // UNFCCC keeps the country name in the 1st column, so we'll use that to map the ISO country codes
+	const countryCodes = getCountryCodes('unfccc_country_name', jsonProperties[0].toLowerCase());
+
   /* Push the genearted JSON object to resultant array */
-  csvToJsonResult[country] = jsonObject;
+  csvToJsonResult[country] = {...jsonObject, ...countryCodes};;
 }
 /* Convert the final array to JSON */
 const json = JSON.stringify(csvToJsonResult);
