@@ -1,7 +1,7 @@
 const fs = require("fs");
 let csv = fs.readFileSync("data/IFI_Default_Grid_Factors_2021_v3.1_unfccc.csv");
-const parseCSVRow = require("./utils/parseCSVRow");
-const getCountryCodes = require("./utils/getCountryCodes");
+const parseCSVRow = require("../utils/parseCSVRow");
+const getCountryCodes = require("../utils/getCountryCodes");
 
 const array = csv.toString().split("\n");
 

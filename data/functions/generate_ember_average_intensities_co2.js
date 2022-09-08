@@ -1,7 +1,7 @@
 const fs = require("fs");
 const csv = fs.readFileSync("data/co2-intensities-ember-2021.csv");
-const parseCSVRow = require("./utils/parseCSVRow");
-const getCountryCodes = require("./utils/getCountryCodes");
+const parseCSVRow = require("../utils/parseCSVRow");
+const getCountryCodes = require("../utils/getCountryCodes");
 
 const array = csv.toString().split("\n");
 
