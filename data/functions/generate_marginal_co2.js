@@ -48,6 +48,9 @@ for (let currentArrayString of array.slice(5)) {
         .split(",")
         .map((item) => item.trim());
     } else {
+      // Otherwise, just assign the value to the JSON object.
+			// We replace \r with an empty string to remove any carriage returns.
+      // We also remove any quotations in the strings.
       jsonObject[headers[column].replace("\r", "").replaceAll('\"', "")] =
         jsonProperties[column].replace("\r", "").replace('\"', "");
     }
