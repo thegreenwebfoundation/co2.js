@@ -63,4 +63,6 @@ We use [`np`](https://www.npmjs.com/package/np) to publish new versions of this 
 4. If everything runs successfully, you can then add release notes to GitHub for the newly published package.
 ## Licenses
 
-Apache 2.0
+The code for CO2.js is licensed Apache 2.0.
+
+The carbon intensity data from Ember is published under the Creative Commons ShareAlike Attribution Licence ([CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/))
