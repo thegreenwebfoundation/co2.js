@@ -1,12 +1,12 @@
 const fs = require("fs");
-const getHeaders = require("./getCSVHeaders");
+const parseCSVRow = require("./parseCSVRow");
 const countries = fs.readFileSync("data/fixtures/countries.csv");
 
 const countryArray = [];
 
 const countriesRows = countries.toString().split("\n");
 
-const countryHeaders = getHeaders(countriesRows[0]);
+const countryHeaders = parseCSVRow(countriesRows[0]);
 
 const mapCountries = () => {
     for (let i = 1; i < countriesRows.length; i++) {

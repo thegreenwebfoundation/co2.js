@@ -1,6 +1,6 @@
 const fs = require("fs");
 const csv = fs.readFileSync("data/co2-intensities-ember-2021.csv");
-const getHeaders = require("./utils/getCSVHeaders");
+const parseCSVRow = require("./utils/parseCSVRow");
 const getCountryCodes = require("./utils/getCountryCodes");
 
 const array = csv.toString().split("\n");
@@ -21,30 +21,8 @@ for (let currentArrayString of array) {
 	/* Empty object to store result in key value pair */
 	const jsonObject = {}
 
-	/* Store the current array element */
-	let string = ''
-	let quoteFlag = 0
-
-	// Iterate over the current array element and generate a string
-	for (let character of currentArrayString) {
-
-
-		// The next set of if statements helps setup the current array element to be split by columns (comma delimited)
-		// However, some textual cells may contain commas, so we need to check for those and ignore them.
-		// We do this by looking for textual cells that are enclosed in double quotes, and setting the quoteFlag to 1 when we encounter one.
-		if (character === '"' && quoteFlag === 0) {
-			quoteFlag = 1
-		} else if (character === '"' && quoteFlag == 1) {
-			quoteFlag = 0
-		}
-
-		// If we encounter a comma, and the quoteFlag is 0, then we know that we have reached the end of a column. We replace the comma with a pipe character to help us split the string later.
-		if (character === ',' && quoteFlag === 0) character = '|'
-		if (character !== '"') string += character
-	}
-
 	// Split the string by the pipe character
-	let jsonProperties = string.split("|")
+	let jsonProperties = parseCSVRow(currentArrayString);
 
 	// Ember sets the country value (3-digit country code) in the first column. If data is for a region instead, it will be in the second column.
 	// We can assign the current country (or region) by using these fields.
