@@ -1,3 +1,9 @@
+/**
+ * Parses a string from a comma separated CSV file and returns an array of values.
+ * @param {string} currentArrayString - The string to parse.
+ * @returns {array} - Returns an array of values.
+ */
+
 const parseCSVRow = (currentArrayString) => {
 	let string = "";
 	let quoteFlag = 0;

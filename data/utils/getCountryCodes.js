@@ -1,3 +1,14 @@
+
+/**
+ * This function maps a given country name to the ISO country codes.
+ * @param {string} field - The field to search on. This can be "ember_country_name" or "unfccc_country_name".
+ * @param {string} input - The input value to search for.
+ * @returns {object} - Returns an object with the country code (2-digit and 3-digit).
+ * @example
+ * getCountryCodes('ember_country_name', 'united states of america')
+ * returns { country_code_iso_2: 'US', country_code_iso_3: 'USA' }
+ */
+
 const mapCountries = require("./mapCountries");
 const countries = mapCountries();
 

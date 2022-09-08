@@ -1,3 +1,8 @@
+/**
+ * Generates an array of objects from the countries.csv file.
+ * @returns {array} - Returns an array of objects.
+ */
+
 const fs = require("fs");
 const parseCSVRow = require("./parseCSVRow");
 const countries = fs.readFileSync("data/fixtures/countries.csv");
