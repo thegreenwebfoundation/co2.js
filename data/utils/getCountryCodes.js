@@ -6,7 +6,7 @@ const countries = mapCountries();
 const getCountryCodes = (field, input) => {
     const mappedCountry = countries.find(country => {
 		if (country[field]?.toLowerCase() === input) {
-			const { country_code_iso_2, country_code_iso_3 } = input;
+			const { country_code_iso_2, country_code_iso_3 } = country;
 			return { country_code_iso_2, country_code_iso_3 }
 		}
 	})
