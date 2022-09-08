@@ -15,11 +15,14 @@ const gridIntensityResults = {}
 const headers = getHeaders(array[0]);
 
 /* Iterate over the remaining data rows */
-for (let i = 1; i < array.length - 1; i++) {
+for (let currentArrayString of array) {
+	// If there's an empty line, keep calm and carry on.
+	// Also, skip the first row since those are the headers.
+	if (currentArrayString.length === 0 || currentArrayString === array[0]) continue;
+
 	/* Empty object to store result in key value pair */
 	const jsonObject = {}
 	/* Store the current array element */
-	const currentArrayString = array[i]
 	let string = ''
 	let quoteFlag = 0
 	for (let character of currentArrayString) {
