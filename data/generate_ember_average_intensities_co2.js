@@ -1,39 +1,11 @@
 const fs = require("fs");
 const csv = fs.readFileSync("data/co2-intensities-ember-2021.csv");
+const getHeaders = require("./utils/getCSVHeaders");
+const mapCountries = require("./utils/mapCountries");
+const getCountryCodes = require("./utils/getCountryCodes");
 
-const countries = fs.readFileSync("data/fixtures/countries.csv");
-
-const getHeaders = (string) => {
-	return string.split(",")
-}
-
+const countries = mapCountries();
 const array = csv.toString().split("\n");
-const countriesRows = countries.toString().split("\n");
-const countryArray = [];
-
-const countryHeaders = getHeaders(countriesRows[0]);
-for (let i = 1; i < countriesRows.length; i++) {
-	const countryObject = {};
-	const currentArrayString = countriesRows[i]
-	let string = '';
-	let quoteFlag = 0;
-
-	for (let character of currentArrayString) {
-		if (character === '"' && quoteFlag === 0) {
-			quoteFlag = 1
-		} else if (character === '"' && quoteFlag == 1) quoteFlag = 0
-		if (character === ',' && quoteFlag === 0) character = '|'
-		if (character !== '"') string += character
-	}
-
-	let jsonProperties = string.split("|")
-
-	for (let j in countryHeaders) {
-		countryObject[countryHeaders[j].replace("\r", "")] = jsonProperties[j].replace("\r", "")
-	}
-
-	countryArray.push(countryObject)
-}
 
 /* Store the converted result into an array */
 const csvToJsonResult = {};
@@ -69,17 +41,16 @@ for (let i = 1; i < array.length - 1; i++) {
 			jsonObject[headers[j].replace("\r", "")] = jsonProperties[j].replace("\r", "")
 		}
 
+		// This extracts only the emissions intensity data from the CSV.
+		// We use this to generate a smaller data file which can be later imported into CO2.js
 		if (headers[j].startsWith('emissions_intensity_gco2_per_kwh')) {
 			gridIntensityResults[country.toLowerCase()] = jsonProperties[j].replace("\r", "")
 		}
 	}
 
-	const countryCodes = countryArray.find(findCountry => {
-		if (findCountry.country_name.toLowerCase() === jsonProperties[1].toLowerCase()) {
-			const { country_code_iso_2, country_code_iso_3 } = findCountry;
-			return { country_code_iso_2, country_code_iso_3 }
-		}
-	})
+	// Ember keeps the country name in the 2nd column, so we'll use that to map the ISO country codes
+	const countryCodes = getCountryCodes(countries, jsonProperties[1].toLowerCase());
+
 	/* Push the genearted JSON object to resultant array */	
 	csvToJsonResult[country] = {...jsonObject, ...countryCodes};
 }
@@ -92,5 +63,3 @@ fs.writeFileSync("data/average-intensities-ember-2021.js", `module.exports = ${g
 
 // This saves the full data set as a JSON file for reference.
 fs.writeFileSync("data/average-intensities-ember-2021.json", json);
-
-// TODO: Include 2 & 3 digit ISO country codes in output.
