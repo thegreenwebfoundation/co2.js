@@ -49,7 +49,7 @@ for (let currentArrayString of array) {
 	}
 
 	// Ember keeps the country name in the 2nd column, so we'll use that to map the ISO country codes
-	const countryCodes = getCountryCodes(jsonProperties[1].toLowerCase());
+	const countryCodes = getCountryCodes('ember_country_name', jsonProperties[1].toLowerCase());
 
 	/* Push the genearted JSON object to resultant array */	
 	csvToJsonResult[country] = {...jsonObject, ...countryCodes};

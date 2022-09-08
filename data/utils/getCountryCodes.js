@@ -3,9 +3,9 @@ const countries = mapCountries();
 
 // Search the countries array based on an input value. We run the search on the "country_name" property.
 // If a match is found, we return the country code (2-digit and 3-digit).
-const getCountryCodes = (field = 'ember_country_name', input) => {
+const getCountryCodes = (field, input) => {
     const mappedCountry = countries.find(country => {
-		if (country[field].toLowerCase() === input) {
+		if (country[field]?.toLowerCase() === input) {
 			const { country_code_iso_2, country_code_iso_3 } = input;
 			return { country_code_iso_2, country_code_iso_3 }
 		}
