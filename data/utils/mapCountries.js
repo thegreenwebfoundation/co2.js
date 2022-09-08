@@ -12,21 +12,14 @@ const mapCountries = () => {
     for (let i = 1; i < countriesRows.length; i++) {
         const countryObject = {};
         const currentArrayString = countriesRows[i]
-        let string = '';
-        let quoteFlag = 0;
+        
+        if (currentArrayString.length === 0 || currentArrayString === countriesRows[0]) continue;
     
-        for (let character of currentArrayString) {
-            if (character === '"' && quoteFlag === 0) {
-                quoteFlag = 1
-            } else if (character === '"' && quoteFlag == 1) quoteFlag = 0
-            if (character === ',' && quoteFlag === 0) character = '|'
-            if (character !== '"') string += character
-        }
+        let jsonProperties = parseCSVRow(currentArrayString)
     
-        let jsonProperties = string.split("|")
-    
-        for (let j in countryHeaders) {
-            countryObject[countryHeaders[j].replace("\r", "")] = jsonProperties[j].replace("\r", "")
+        for (let column in countryHeaders) {
+            if (!column || column === "") continue;
+            countryObject[countryHeaders[column].replace("\r", "")] = jsonProperties[column].replace("\r", "")
         }
     
         countryArray.push(countryObject)
