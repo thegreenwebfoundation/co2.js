@@ -10,7 +10,7 @@ const csvToJsonResult = {};
 const gridIntensityResults = {};
 
 /* Store the CSV column headers into separate variable */
-const headers = getHeaders(array[0]);
+const headers = parseCSVRow(array[0]);
 
 /* Iterate over the remaining data rows */
 for (let currentArrayString of array) {
