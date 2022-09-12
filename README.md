@@ -64,6 +64,7 @@ We use [`np`](https://www.npmjs.com/package/np) to publish new versions of this 
 
 ## Marginal and average emissions intensity data
 
+CO2.js includes yearly average grid intensity data from [Ember](https://ember-climate.org/data/data-explorer/), as well as marginal intensity data from the [UNFCCC](https://unfccc.int/) (United Nations Framework Convention on Climate Change). You can find the data in JSON and CommonJS Module format in the `data/output` folder.
 
 ## Licenses
 
