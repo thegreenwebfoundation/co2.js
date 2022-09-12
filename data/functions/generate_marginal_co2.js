@@ -37,6 +37,9 @@ for (let currentArrayString of array.slice(5)) {
   // If there's no value for the country, then we can skip this row.
   if (!country || country === "") continue;
 
+  // UNFCCC keeps the country name in the 1st column, so we'll use that to map the ISO country codes
+  const countryCodes = getCountryCodes('unfccc_country_name', country.toLowerCase());
+
   // Loop through the headers and assign the values to the JSON object
   for (let column in headers) {
     if (!column || column === "") continue;
@@ -56,14 +59,12 @@ for (let currentArrayString of array.slice(5)) {
     }
 
     if (headers[column].startsWith("Operating Margin Grid Emission")) {
-      gridIntensityResults[country.toLowerCase()] = jsonProperties[column]
+      gridIntensityResults[countryCodes.country_code_iso_3] = jsonProperties[column]
         .replace("\r", "")
         .replace('\"', "");
+      }
     }
-  }
 
-  // UNFCCC keeps the country name in the 1st column, so we'll use that to map the ISO country codes
-	const countryCodes = getCountryCodes('unfccc_country_name', jsonProperties[0].toLowerCase());
 
   /* Push the genearted JSON object to resultant array */
   csvToJsonResult[country] = {...jsonObject, ...countryCodes};;
