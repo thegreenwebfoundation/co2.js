@@ -58,8 +58,8 @@ for (let currentArrayString of array.slice(5)) {
         jsonProperties[column].replace("\r", "").replace('\"', "");
     }
 
-    if (countryCodes.country_code_iso_3 && headers[column].startsWith("Operating Margin Grid Emission")) {
-      gridIntensityResults[countryCodes.country_code_iso_3] = jsonProperties[column]
+    if (headers[column].startsWith("Operating Margin Grid Emission")) {
+      gridIntensityResults[countryCodes.country_code_iso_3 || country] = jsonProperties[column]
         .replace("\r", "")
         .replace('\"', "");
       }
