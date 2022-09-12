@@ -13,7 +13,6 @@ module.exports = {
   AUS: "808",
   AUT: "242",
   AZE: "534",
-  "": "409",
   BHS: "753",
   BHR: "726",
   BGD: "528",
