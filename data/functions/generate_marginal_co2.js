@@ -78,6 +78,10 @@ fs.writeFileSync(
   "data/marginal-intensities-unfccc-2021.js",
   `module.exports = ${gridIntensityJson}`
 );
+fs.writeFileSync(
+  "data/marginal-intensities-unfccc-2021.min.js",
+  `module.exports = ${gridIntensityJson}`
+);
 
 // This saves the full data set as a JSON file for reference.
 fs.writeFileSync("data/marginal-intensities-unfccc-2021.json", json);

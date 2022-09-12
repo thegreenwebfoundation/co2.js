@@ -60,6 +60,7 @@ const gridIntensityJson = JSON.stringify(gridIntensityResults);
 
 // This saves the country code and emissions data only, for use in the CO2.js library
 fs.writeFileSync("data/average-intensities-ember-2021.js", `module.exports = ${gridIntensityJson}`);
+fs.writeFileSync("data/average-intensities-ember-2021.min.js", `module.exports = ${gridIntensityJson}`);
 
 // This saves the full data set as a JSON file for reference.
 fs.writeFileSync("data/average-intensities-ember-2021.json", json);
