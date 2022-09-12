@@ -61,6 +61,10 @@ We use [`np`](https://www.npmjs.com/package/np) to publish new versions of this 
 2. Then run `npx np <VERSION>`.
 3. `np` will run several automated steps to publish the new package to NPM.
 4. If everything runs successfully, you can then add release notes to GitHub for the newly published package.
+
+## Marginal and average emissions intensity data
+
+
 ## Licenses
 
 The code for CO2.js is licensed Apache 2.0.

@@ -1,5 +1,5 @@
 const fs = require("fs");
-let csv = fs.readFileSync("data/IFI_Default_Grid_Factors_2021_v3.1_unfccc.csv");
+const csv = fs.readFileSync("data/IFI_Default_Grid_Factors_2021_v3.1_unfccc.csv");
 const parseCSVRow = require("../utils/parseCSVRow");
 const getCountryCodes = require("../utils/getCountryCodes");
 
@@ -75,13 +75,13 @@ const gridIntensityJson = JSON.stringify(gridIntensityResults);
 
 // This saves the country code and emissions data only, for use in the CO2.js library
 fs.writeFileSync(
-  "data/marginal-intensities-unfccc-2021.js",
+  "data/output/marginal-intensities-unfccc-2021.js",
   `module.exports = ${gridIntensityJson}`
 );
 fs.writeFileSync(
-  "data/marginal-intensities-unfccc-2021.min.js",
+  "data/output/marginal-intensities-unfccc-2021.min.js",
   `module.exports = ${gridIntensityJson}`
 );
 
 // This saves the full data set as a JSON file for reference.
-fs.writeFileSync("data/marginal-intensities-unfccc-2021.json", json);
+fs.writeFileSync("data/output/marginal-intensities-unfccc-2021.json", json);
