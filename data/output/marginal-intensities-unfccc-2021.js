@@ -1,4 +1,4 @@
-module.exports = {
+const data = {
   AFG: "414",
   ALB: "0",
   DZA: "528",
@@ -232,3 +232,5 @@ module.exports = {
   ZWE: "1575",
   "Memo:  EU 27": "409",
 };
+export { data };
+export default { data };

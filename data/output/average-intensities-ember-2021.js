@@ -1,4 +1,4 @@
-module.exports = {
+const data = {
   africa: "489.26",
   arg: "365.292",
   arm: "206.522",
@@ -86,3 +86,5 @@ module.exports = {
   vnm: "491.192",
   world: "442.37",
 };
+export { data };
+export default { data };

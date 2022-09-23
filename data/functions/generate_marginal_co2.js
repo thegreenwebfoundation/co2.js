@@ -76,11 +76,16 @@ const gridIntensityJson = JSON.stringify(gridIntensityResults);
 // This saves the country code and emissions data only, for use in the CO2.js library
 fs.writeFileSync(
   "data/output/marginal-intensities-unfccc-2021.js",
-  `module.exports = ${gridIntensityJson}`
+  `const data = ${gridIntensityJson}; 
+  export { data }; 
+  export default { data };`
 );
+// Save a minified version to the src folder so that it can be easily imported into the library
 fs.writeFileSync(
-  "data/output/marginal-intensities-unfccc-2021.min.js",
-  `module.exports = ${gridIntensityJson}`
+  "src/data/marginal-intensities-unfccc-2021.min.js",
+  `const data = ${gridIntensityJson}; 
+  export { data }; 
+  export default { data };`
 );
 
 // This saves the full data set as a JSON file for reference.
