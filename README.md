@@ -61,6 +61,11 @@ We use [`np`](https://www.npmjs.com/package/np) to publish new versions of this 
 2. Then run `npx np <VERSION>`.
 3. `np` will run several automated steps to publish the new package to NPM.
 4. If everything runs successfully, you can then add release notes to GitHub for the newly published package.
+
+## Marginal and average emissions intensity data
+
+CO2.js includes yearly average grid intensity data from [Ember](https://ember-climate.org/data/data-explorer/), as well as marginal intensity data from the [UNFCCC](https://unfccc.int/) (United Nations Framework Convention on Climate Change). You can find the data in JSON and CommonJS Module format in the `data/output` folder.
+
 ## Licenses
 
 The code for CO2.js is licensed Apache 2.0.

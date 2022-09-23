@@ -22,8 +22,10 @@
     "build:node": "node .esbuild.node.js && ./fixup",
     "release:patch": "npm run build && np i patch",
     "gitpod": "npm run build && cp ./dist/iife/index.js ./public && npm run serve",
-    "intensity-data:average": "node data/generate_ember_average_intensities_co2.js",
-    "intensity-data": "npm run intensity-data:average"
+    "intensity-data:average": "node data/functions/generate_ember_average_intensities_co2.js",
+    "intensity-data:marginal": "node data/functions/generate_marginal_co2.js",
+    "intensity-data": "npm run intensity-data:average && npm run intensity-data:marginal && npm run format-data",
+    "format-data": "cd data && prettier --write '**/*.{js,json}'"
   },
   "keywords": [
     "sustainability",

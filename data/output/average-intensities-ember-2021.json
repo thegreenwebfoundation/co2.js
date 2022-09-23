@@ -1,0 +1,776 @@
+{
+  "Africa": {
+    "country_code": "",
+    "country_or_region": "Africa",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "489.26",
+    "country_code_iso_2": "",
+    "country_code_iso_3": ""
+  },
+  "ARG": {
+    "country_code": "ARG",
+    "country_or_region": "Argentina",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "365.292",
+    "country_code_iso_2": "AR",
+    "country_code_iso_3": "ARG"
+  },
+  "ARM": {
+    "country_code": "ARM",
+    "country_or_region": "Armenia",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "206.522",
+    "country_code_iso_2": "AM",
+    "country_code_iso_3": "ARM"
+  },
+  "Asia": {
+    "country_code": "",
+    "country_or_region": "Asia",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "543.57",
+    "country_code_iso_2": "",
+    "country_code_iso_3": ""
+  },
+  "AUS": {
+    "country_code": "AUS",
+    "country_or_region": "Australia",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "526.876",
+    "country_code_iso_2": "AU",
+    "country_code_iso_3": "AUS"
+  },
+  "AUT": {
+    "country_code": "AUT",
+    "country_or_region": "Austria",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "145.083",
+    "country_code_iso_2": "AT",
+    "country_code_iso_3": "AUT"
+  },
+  "AZE": {
+    "country_code": "AZE",
+    "country_or_region": "Azerbaijan",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "536.585",
+    "country_code_iso_2": "AZ",
+    "country_code_iso_3": "AZE"
+  },
+  "BGD": {
+    "country_code": "BGD",
+    "country_or_region": "Bangladesh",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "559.606",
+    "country_code_iso_2": "BD",
+    "country_code_iso_3": "BGD"
+  },
+  "BLR": {
+    "country_code": "BLR",
+    "country_or_region": "Belarus",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "472.727",
+    "country_code_iso_2": "BY",
+    "country_code_iso_3": "BLR"
+  },
+  "BEL": {
+    "country_code": "BEL",
+    "country_or_region": "Belgium",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "156.063",
+    "country_code_iso_2": "BE",
+    "country_code_iso_3": "BEL"
+  },
+  "BOL": {
+    "country_code": "BOL",
+    "country_or_region": "Bolivia",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "311.475",
+    "country_code_iso_2": "BO",
+    "country_code_iso_3": "BOL"
+  },
+  "BIH": {
+    "country_code": "BIH",
+    "country_or_region": "Bosnia Herzegovina",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "470.982",
+    "country_code_iso_2": "BA",
+    "country_code_iso_3": "BIH"
+  },
+  "BRA": {
+    "country_code": "BRA",
+    "country_or_region": "Brazil",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "144.677",
+    "country_code_iso_2": "BR",
+    "country_code_iso_3": "BRA"
+  },
+  "BGR": {
+    "country_code": "BGR",
+    "country_or_region": "Bulgaria",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "364.136",
+    "country_code_iso_2": "BG",
+    "country_code_iso_3": "BGR"
+  },
+  "BDI": {
+    "country_code": "BDI",
+    "country_or_region": "Burundi",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "275.862",
+    "country_code_iso_2": "BI",
+    "country_code_iso_3": "BDI"
+  },
+  "CAN": {
+    "country_code": "CAN",
+    "country_or_region": "Canada",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "123.859",
+    "country_code_iso_2": "CA",
+    "country_code_iso_3": "CAN"
+  },
+  "CHL": {
+    "country_code": "CHL",
+    "country_or_region": "Chile",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "395.565",
+    "country_code_iso_2": "CL",
+    "country_code_iso_3": "CHL"
+  },
+  "CHN": {
+    "country_code": "CHN",
+    "country_or_region": "China",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "549.288",
+    "country_code_iso_2": "CN",
+    "country_code_iso_3": "CHN"
+  },
+  "CRI": {
+    "country_code": "CRI",
+    "country_or_region": "Costa Rica",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "30.903",
+    "country_code_iso_2": "CR",
+    "country_code_iso_3": "CRI"
+  },
+  "HRV": {
+    "country_code": "HRV",
+    "country_or_region": "Croatia",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "212.161",
+    "country_code_iso_2": "HR",
+    "country_code_iso_3": "HRV"
+  },
+  "CYP": {
+    "country_code": "CYP",
+    "country_or_region": "Cyprus",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "601.19",
+    "country_code_iso_2": "CY",
+    "country_code_iso_3": "CYP"
+  },
+  "CZE": {
+    "country_code": "CZE",
+    "country_or_region": "Czechia",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "401.272",
+    "country_code_iso_2": "CZ",
+    "country_code_iso_3": "CZE"
+  },
+  "DNK": {
+    "country_code": "DNK",
+    "country_or_region": "Denmark",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "240.419",
+    "country_code_iso_2": "DK",
+    "country_code_iso_3": "DNK"
+  },
+  "ECU": {
+    "country_code": "ECU",
+    "country_or_region": "Ecuador",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "132.964",
+    "country_code_iso_2": "EC",
+    "country_code_iso_3": "ECU"
+  },
+  "EGY": {
+    "country_code": "EGY",
+    "country_or_region": "Egypt",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "470.879",
+    "country_code_iso_2": "EG",
+    "country_code_iso_3": "EGY"
+  },
+  "SLV": {
+    "country_code": "SLV",
+    "country_or_region": "El Salvador",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "180.87",
+    "country_code_iso_2": "SV",
+    "country_code_iso_3": "SLV"
+  },
+  "EST": {
+    "country_code": "EST",
+    "country_or_region": "Estonia",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "488.529",
+    "country_code_iso_2": "EE",
+    "country_code_iso_3": "EST"
+  },
+  "EU": {
+    "country_code": "",
+    "country_or_region": "EU",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "261.43",
+    "country_code_iso_2": "",
+    "country_code_iso_3": ""
+  },
+  "Europe": {
+    "country_code": "",
+    "country_or_region": "Europe",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "277.64",
+    "country_code_iso_2": "",
+    "country_code_iso_3": ""
+  },
+  "FIN": {
+    "country_code": "FIN",
+    "country_or_region": "Finland",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "152.651",
+    "country_code_iso_2": "FI",
+    "country_code_iso_3": "FIN"
+  },
+  "FRA": {
+    "country_code": "FRA",
+    "country_or_region": "France",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "67.781",
+    "country_code_iso_2": "FR",
+    "country_code_iso_3": "FRA"
+  },
+  "G20": {
+    "country_code": "",
+    "country_or_region": "G20",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "445.9",
+    "country_code_iso_2": "",
+    "country_code_iso_3": ""
+  },
+  "G7": {
+    "country_code": "",
+    "country_or_region": "G7",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "338.04",
+    "country_code_iso_2": "",
+    "country_code_iso_3": ""
+  },
+  "GEO": {
+    "country_code": "GEO",
+    "country_or_region": "Georgia",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "105.685",
+    "country_code_iso_2": "GE",
+    "country_code_iso_3": "GEO"
+  },
+  "DEU": {
+    "country_code": "DEU",
+    "country_or_region": "Germany",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "363.982",
+    "country_code_iso_2": "DE",
+    "country_code_iso_3": "DEU"
+  },
+  "GRC": {
+    "country_code": "GRC",
+    "country_or_region": "Greece",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "363.388",
+    "country_code_iso_2": "GR",
+    "country_code_iso_3": "GRC"
+  },
+  "HUN": {
+    "country_code": "HUN",
+    "country_or_region": "Hungary",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "236.271",
+    "country_code_iso_2": "HU",
+    "country_code_iso_3": "HUN"
+  },
+  "IND": {
+    "country_code": "IND",
+    "country_or_region": "India",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "632.656",
+    "country_code_iso_2": "IN",
+    "country_code_iso_3": "IND"
+  },
+  "IRL": {
+    "country_code": "IRL",
+    "country_or_region": "Ireland",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "361.274",
+    "country_code_iso_2": "IE",
+    "country_code_iso_3": "IRL"
+  },
+  "ITA": {
+    "country_code": "ITA",
+    "country_or_region": "Italy",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "340.937",
+    "country_code_iso_2": "IT",
+    "country_code_iso_3": "ITA"
+  },
+  "JPN": {
+    "country_code": "JPN",
+    "country_or_region": "Japan",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "460.647",
+    "country_code_iso_2": "JP",
+    "country_code_iso_3": "JPN"
+  },
+  "KAZ": {
+    "country_code": "KAZ",
+    "country_or_region": "Kazakhstan",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "656.097",
+    "country_code_iso_2": "KZ",
+    "country_code_iso_3": "KAZ"
+  },
+  "KEN": {
+    "country_code": "KEN",
+    "country_or_region": "Kenya",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "104.0",
+    "country_code_iso_2": "KE",
+    "country_code_iso_3": "KEN"
+  },
+  "Latin America and Caribbean": {
+    "country_code": "",
+    "country_or_region": "Latin America and Caribbean",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "261.51",
+    "country_code_iso_2": "",
+    "country_code_iso_3": ""
+  },
+  "LVA": {
+    "country_code": "LVA",
+    "country_or_region": "Latvia",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "226.351",
+    "country_code_iso_2": "LV",
+    "country_code_iso_3": "LVA"
+  },
+  "LTU": {
+    "country_code": "LTU",
+    "country_or_region": "Lithuania",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "247.475",
+    "country_code_iso_2": "LT",
+    "country_code_iso_3": "LTU"
+  },
+  "LUX": {
+    "country_code": "LUX",
+    "country_or_region": "Luxembourg",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "183.824",
+    "country_code_iso_2": "LU",
+    "country_code_iso_3": "LUX"
+  },
+  "MLT": {
+    "country_code": "MLT",
+    "country_or_region": "Malta",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "452.055",
+    "country_code_iso_2": "MT",
+    "country_code_iso_3": "MLT"
+  },
+  "MEX": {
+    "country_code": "MEX",
+    "country_or_region": "Mexico",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "391.582",
+    "country_code_iso_2": "MX",
+    "country_code_iso_3": "MEX"
+  },
+  "MDA": {
+    "country_code": "MDA",
+    "country_or_region": "Moldova",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "642.512",
+    "country_code_iso_2": "MD",
+    "country_code_iso_3": "MDA"
+  },
+  "MNG": {
+    "country_code": "MNG",
+    "country_or_region": "Mongolia",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "725.26",
+    "country_code_iso_2": "MN",
+    "country_code_iso_3": "MNG"
+  },
+  "MNE": {
+    "country_code": "MNE",
+    "country_or_region": "Montenegro",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "335.958",
+    "country_code_iso_2": "ME",
+    "country_code_iso_3": "MNE"
+  },
+  "NLD": {
+    "country_code": "NLD",
+    "country_or_region": "Netherlands",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "386.189",
+    "country_code_iso_2": "NL",
+    "country_code_iso_3": "NLD"
+  },
+  "North America": {
+    "country_code": "",
+    "country_or_region": "North America",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "345.38",
+    "country_code_iso_2": "",
+    "country_code_iso_3": ""
+  },
+  "MKD": {
+    "country_code": "MKD",
+    "country_or_region": "North Macedonia",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "444.191",
+    "country_code_iso_2": "MK",
+    "country_code_iso_3": "MKD"
+  },
+  "NOR": {
+    "country_code": "NOR",
+    "country_or_region": "Norway",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "26.131",
+    "country_code_iso_2": "NO",
+    "country_code_iso_3": "NOR"
+  },
+  "Oceania": {
+    "country_code": "",
+    "country_or_region": "Oceania",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "479.98",
+    "country_code_iso_2": "",
+    "country_code_iso_3": ""
+  },
+  "OECD": {
+    "country_code": "",
+    "country_or_region": "OECD",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "338.24",
+    "country_code_iso_2": "",
+    "country_code_iso_3": ""
+  },
+  "PAK": {
+    "country_code": "PAK",
+    "country_or_region": "Pakistan",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "363.065",
+    "country_code_iso_2": "PK",
+    "country_code_iso_3": "PAK"
+  },
+  "PER": {
+    "country_code": "PER",
+    "country_or_region": "Peru",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "241.492",
+    "country_code_iso_2": "PE",
+    "country_code_iso_3": "PER"
+  },
+  "PHL": {
+    "country_code": "PHL",
+    "country_or_region": "Philippines (the)",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "579.689",
+    "country_code_iso_2": "PH",
+    "country_code_iso_3": "PHL"
+  },
+  "POL": {
+    "country_code": "POL",
+    "country_or_region": "Poland",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "657.138",
+    "country_code_iso_2": "PL",
+    "country_code_iso_3": "POL"
+  },
+  "PRT": {
+    "country_code": "PRT",
+    "country_or_region": "Portugal",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "222.632",
+    "country_code_iso_2": "PT",
+    "country_code_iso_3": "PRT"
+  },
+  "ROU": {
+    "country_code": "ROU",
+    "country_or_region": "Romania",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "255.718",
+    "country_code_iso_2": "RO",
+    "country_code_iso_3": "ROU"
+  },
+  "RUS": {
+    "country_code": "RUS",
+    "country_or_region": "Russian Federation (the)",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "355.431",
+    "country_code_iso_2": "RU",
+    "country_code_iso_3": "RUS"
+  },
+  "SAU": {
+    "country_code": "SAU",
+    "country_or_region": "Saudi Arabia",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "568.967",
+    "country_code_iso_2": "SA",
+    "country_code_iso_3": "SAU"
+  },
+  "SEN": {
+    "country_code": "SEN",
+    "country_or_region": "Senegal",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "540.098",
+    "country_code_iso_2": "SN",
+    "country_code_iso_3": "SEN"
+  },
+  "SRB": {
+    "country_code": "SRB",
+    "country_or_region": "Serbia",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "549.083",
+    "country_code_iso_2": "RS",
+    "country_code_iso_3": "SRB"
+  },
+  "SGP": {
+    "country_code": "SGP",
+    "country_or_region": "Singapore",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "488.21",
+    "country_code_iso_2": "SG",
+    "country_code_iso_3": "SGP"
+  },
+  "SVK": {
+    "country_code": "SVK",
+    "country_or_region": "Slovakia",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "173.854",
+    "country_code_iso_2": "SK",
+    "country_code_iso_3": "SVK"
+  },
+  "SVN": {
+    "country_code": "SVN",
+    "country_or_region": "Slovenia",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "241.956",
+    "country_code_iso_2": "SI",
+    "country_code_iso_3": "SVN"
+  },
+  "ZAF": {
+    "country_code": "ZAF",
+    "country_or_region": "South Africa",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "706.991",
+    "country_code_iso_2": "ZA",
+    "country_code_iso_3": "ZAF"
+  },
+  "KOR": {
+    "country_code": "KOR",
+    "country_or_region": "South Korea",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "442.389",
+    "country_code_iso_2": "KR",
+    "country_code_iso_3": "KOR"
+  },
+  "ESP": {
+    "country_code": "ESP",
+    "country_or_region": "Spain",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "193.737",
+    "country_code_iso_2": "ES",
+    "country_code_iso_3": "ESP"
+  },
+  "SWE": {
+    "country_code": "SWE",
+    "country_or_region": "Sweden",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "43.9",
+    "country_code_iso_2": "SE",
+    "country_code_iso_3": "SWE"
+  },
+  "CHE": {
+    "country_code": "CHE",
+    "country_or_region": "Switzerland",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "58.952",
+    "country_code_iso_2": "CH",
+    "country_code_iso_3": "CHE"
+  },
+  "TWN": {
+    "country_code": "TWN",
+    "country_or_region": "Taiwan (Province of China)",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "565.629",
+    "country_code_iso_2": "TW",
+    "country_code_iso_3": "TWN"
+  },
+  "TJK": {
+    "country_code": "TJK",
+    "country_or_region": "Tajikistan",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "72.823",
+    "country_code_iso_2": "TJ",
+    "country_code_iso_3": "TJK"
+  },
+  "THA": {
+    "country_code": "THA",
+    "country_or_region": "Thailand",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "503.034",
+    "country_code_iso_2": "TH",
+    "country_code_iso_3": "THA"
+  },
+  "TUN": {
+    "country_code": "TUN",
+    "country_or_region": "Tunisia",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "470.848",
+    "country_code_iso_2": "TN",
+    "country_code_iso_3": "TUN"
+  },
+  "TUR": {
+    "country_code": "TUR",
+    "country_or_region": "Turkey",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "432.293",
+    "country_code_iso_2": "TR",
+    "country_code_iso_3": "TUR"
+  },
+  "UKR": {
+    "country_code": "UKR",
+    "country_or_region": "Ukraine",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "240.28",
+    "country_code_iso_2": "UA",
+    "country_code_iso_3": "UKR"
+  },
+  "GBR": {
+    "country_code": "GBR",
+    "country_or_region": "United Kingdom",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "268.255",
+    "country_code_iso_2": "GB",
+    "country_code_iso_3": "GBR"
+  },
+  "USA": {
+    "country_code": "USA",
+    "country_or_region": "United States of America",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "378.625",
+    "country_code_iso_2": "US",
+    "country_code_iso_3": "USA"
+  },
+  "VNM": {
+    "country_code": "VNM",
+    "country_or_region": "Viet Nam",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "491.192",
+    "country_code_iso_2": "VN",
+    "country_code_iso_3": "VNM"
+  },
+  "World": {
+    "country_code": "",
+    "country_or_region": "World",
+    "year": "2021",
+    "latest_year": "2021",
+    "emissions_intensity_gco2_per_kwh": "442.37",
+    "country_code_iso_2": "",
+    "country_code_iso_3": ""
+  }
+}

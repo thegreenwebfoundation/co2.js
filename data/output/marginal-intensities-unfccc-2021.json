@@ -1,0 +1,2335 @@
+{
+  "Afghanistan": {
+    "Country / Territory / Island": "Afghanistan",
+    "Firm Energy (e.g., Hydro, Geothermal)": "193",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "331",
+    "Energy Efficiency": "193",
+    "Electricity Consumption": "193",
+    "Operating Margin Grid Emission": "414",
+    "country_code_iso_2": "AF",
+    "country_code_iso_3": "AFG"
+  },
+  "Albania": {
+    "Country / Territory / Island": "Albania",
+    "Firm Energy (e.g., Hydro, Geothermal)": "0",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "0",
+    "Energy Efficiency": "0",
+    "Electricity Consumption": "0",
+    "Operating Margin Grid Emission": "0",
+    "country_code_iso_2": "AL",
+    "country_code_iso_3": "ALB"
+  },
+  "Algeria": {
+    "Country / Territory / Island": "Algeria",
+    "Firm Energy (e.g., Hydro, Geothermal)": "397",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "479",
+    "Energy Efficiency": "397",
+    "Electricity Consumption": "397",
+    "Operating Margin Grid Emission": "528",
+    "country_code_iso_2": "DZ",
+    "country_code_iso_3": "DZA"
+  },
+  "American Samoa (U.S.)": {
+    "Country / Territory / Island": "American Samoa (U.S.)",
+    "Firm Energy (e.g., Hydro, Geothermal)": "516",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "664",
+    "Energy Efficiency": "516",
+    "Electricity Consumption": "516",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "AS",
+    "country_code_iso_3": "ASM"
+  },
+  "Andorra": {
+    "Country / Territory / Island": "Andorra",
+    "Firm Energy (e.g., Hydro, Geothermal)": "70",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "144",
+    "Energy Efficiency": "70",
+    "Electricity Consumption": "70",
+    "Operating Margin Grid Emission": "188",
+    "country_code_iso_2": "AD",
+    "country_code_iso_3": "AND"
+  },
+  "Angola": {
+    "Country / Territory / Island": "Angola",
+    "Firm Energy (e.g., Hydro, Geothermal)": "748",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "1203",
+    "Energy Efficiency": "748",
+    "Electricity Consumption": "748",
+    "Operating Margin Grid Emission": "1476",
+    "country_code_iso_2": "AO",
+    "country_code_iso_3": "AGO"
+  },
+  "Anguilla (U.K.)": {
+    "Country / Territory / Island": "Anguilla (U.K.)",
+    "Firm Energy (e.g., Hydro, Geothermal)": "472",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "647",
+    "Energy Efficiency": "472",
+    "Electricity Consumption": "472",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "AI",
+    "country_code_iso_3": "AIA"
+  },
+  "Antigua and Barbuda": {
+    "Country / Territory / Island": "Antigua and Barbuda",
+    "Firm Energy (e.g., Hydro, Geothermal)": "489",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "654",
+    "Energy Efficiency": "489",
+    "Electricity Consumption": "489",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "AG",
+    "country_code_iso_3": "ATG"
+  },
+  "Argentina": {
+    "Country / Territory / Island": "Argentina",
+    "Firm Energy (e.g., Hydro, Geothermal)": "288",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "407",
+    "Energy Efficiency": "288",
+    "Electricity Consumption": "288",
+    "Operating Margin Grid Emission": "478",
+    "country_code_iso_2": "AR",
+    "country_code_iso_3": "ARG"
+  },
+  "Armenia": {
+    "Country / Territory / Island": "Armenia",
+    "Firm Energy (e.g., Hydro, Geothermal)": "205",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "321",
+    "Energy Efficiency": "205",
+    "Electricity Consumption": "205",
+    "Operating Margin Grid Emission": "390",
+    "country_code_iso_2": "AM",
+    "country_code_iso_3": "ARM"
+  },
+  "Aruba": {
+    "Country / Territory / Island": "Aruba",
+    "Firm Energy (e.g., Hydro, Geothermal)": "421",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "628",
+    "Energy Efficiency": "421",
+    "Electricity Consumption": "421",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "AW",
+    "country_code_iso_3": "ABW"
+  },
+  "Australia": {
+    "Country / Territory / Island": "Australia",
+    "Firm Energy (e.g., Hydro, Geothermal)": "421",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "663",
+    "Energy Efficiency": "421",
+    "Electricity Consumption": "421",
+    "Operating Margin Grid Emission": "808",
+    "country_code_iso_2": "AU",
+    "country_code_iso_3": "AUS"
+  },
+  "Austria": {
+    "Country / Territory / Island": "Austria",
+    "Firm Energy (e.g., Hydro, Geothermal)": "113",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "194",
+    "Energy Efficiency": "113",
+    "Electricity Consumption": "113",
+    "Operating Margin Grid Emission": "242",
+    "country_code_iso_2": "AT",
+    "country_code_iso_3": "AUT"
+  },
+  "Azerbaijan": {
+    "Country / Territory / Island": "Azerbaijan",
+    "Firm Energy (e.g., Hydro, Geothermal)": "384",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "478",
+    "Energy Efficiency": "384",
+    "Electricity Consumption": "384",
+    "Operating Margin Grid Emission": "534",
+    "country_code_iso_2": "AZ",
+    "country_code_iso_3": "AZE"
+  },
+  "Azores (Portugal)": {
+    "Country / Territory / Island": "Azores (Portugal)",
+    "Firm Energy (e.g., Hydro, Geothermal)": "384",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "614",
+    "Energy Efficiency": "384",
+    "Electricity Consumption": "384",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "",
+    "country_code_iso_3": ""
+  },
+  "Bahamas": {
+    "Country / Territory / Island": "Bahamas",
+    "Firm Energy (e.g., Hydro, Geothermal)": "441",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "636",
+    "Energy Efficiency": "441",
+    "Electricity Consumption": "441",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "BS",
+    "country_code_iso_3": "BHS"
+  },
+  "Bahrain": {
+    "Country / Territory / Island": "Bahrain",
+    "Firm Energy (e.g., Hydro, Geothermal)": "454",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "624",
+    "Energy Efficiency": "454",
+    "Electricity Consumption": "454",
+    "Operating Margin Grid Emission": "726",
+    "country_code_iso_2": "BH",
+    "country_code_iso_3": "BHR"
+  },
+  "Bangladesh": {
+    "Country / Territory / Island": "Bangladesh",
+    "Firm Energy (e.g., Hydro, Geothermal)": "412",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "484",
+    "Energy Efficiency": "412",
+    "Electricity Consumption": "412",
+    "Operating Margin Grid Emission": "528",
+    "country_code_iso_2": "BD",
+    "country_code_iso_3": "BGD"
+  },
+  "Barbados": {
+    "Country / Territory / Island": "Barbados",
+    "Firm Energy (e.g., Hydro, Geothermal)": "484",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "650",
+    "Energy Efficiency": "484",
+    "Electricity Consumption": "484",
+    "Operating Margin Grid Emission": "749",
+    "country_code_iso_2": "BB",
+    "country_code_iso_3": "BRB"
+  },
+  "Belarus": {
+    "Country / Territory / Island": "Belarus",
+    "Firm Energy (e.g., Hydro, Geothermal)": "292",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "359",
+    "Energy Efficiency": "292",
+    "Electricity Consumption": "292",
+    "Operating Margin Grid Emission": "400",
+    "country_code_iso_2": "BY",
+    "country_code_iso_3": "BLR"
+  },
+  "Belgium": {
+    "Country / Territory / Island": "Belgium",
+    "Firm Energy (e.g., Hydro, Geothermal)": "124",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "204",
+    "Energy Efficiency": "124",
+    "Electricity Consumption": "124",
+    "Operating Margin Grid Emission": "252",
+    "country_code_iso_2": "BE",
+    "country_code_iso_3": "BEL"
+  },
+  "Belize": {
+    "Country / Territory / Island": "Belize",
+    "Firm Energy (e.g., Hydro, Geothermal)": "183",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "320",
+    "Energy Efficiency": "183",
+    "Electricity Consumption": "183",
+    "Operating Margin Grid Emission": "403",
+    "country_code_iso_2": "BZ",
+    "country_code_iso_3": "BLZ"
+  },
+  "Benin": {
+    "Country / Territory / Island": "Benin",
+    "Firm Energy (e.g., Hydro, Geothermal)": "576",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "682",
+    "Energy Efficiency": "576",
+    "Electricity Consumption": "576",
+    "Operating Margin Grid Emission": "745",
+    "country_code_iso_2": "BJ",
+    "country_code_iso_3": "BEN"
+  },
+  "Bermuda (U.K.)": {
+    "Country / Territory / Island": "Bermuda (U.K.)",
+    "Firm Energy (e.g., Hydro, Geothermal)": "342",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "598",
+    "Energy Efficiency": "342",
+    "Electricity Consumption": "342",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "BM",
+    "country_code_iso_3": "BMU"
+  },
+  "Bhutan": {
+    "Country / Territory / Island": "Bhutan",
+    "Firm Energy (e.g., Hydro, Geothermal)": "0",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "0",
+    "Energy Efficiency": "0",
+    "Electricity Consumption": "0",
+    "Operating Margin Grid Emission": "0",
+    "country_code_iso_2": "BT",
+    "country_code_iso_3": "BTN"
+  },
+  "Bolivia, Plurinational State of": {
+    "Country / Territory / Island": ["Bolivia", "Plurinational State of"],
+    "Firm Energy (e.g., Hydro, Geothermal)": "393",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "525",
+    "Energy Efficiency": "393",
+    "Electricity Consumption": "393",
+    "Operating Margin Grid Emission": "604",
+    "country_code_iso_2": "BO",
+    "country_code_iso_3": "BOL"
+  },
+  "Bonaire (Netherland)": {
+    "Country / Territory / Island": "Bonaire (Netherland)",
+    "Firm Energy (e.g., Hydro, Geothermal)": "400",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "620",
+    "Energy Efficiency": "400",
+    "Electricity Consumption": "400",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "BQ",
+    "country_code_iso_3": "BES"
+  },
+  "Bosnia and Herzegovina": {
+    "Country / Territory / Island": "Bosnia and Herzegovina",
+    "Firm Energy (e.g., Hydro, Geothermal)": "739",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "1025",
+    "Energy Efficiency": "739",
+    "Electricity Consumption": "739",
+    "Operating Margin Grid Emission": "1197",
+    "country_code_iso_2": "BA",
+    "country_code_iso_3": "BIH"
+  },
+  "Botswana": {
+    "Country / Territory / Island": "Botswana",
+    "Firm Energy (e.g., Hydro, Geothermal)": "1070",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "1330",
+    "Energy Efficiency": "1070",
+    "Electricity Consumption": "1070",
+    "Operating Margin Grid Emission": "1486",
+    "country_code_iso_2": "BW",
+    "country_code_iso_3": "BWA"
+  },
+  "Brazil": {
+    "Country / Territory / Island": "Brazil",
+    "Firm Energy (e.g., Hydro, Geothermal)": "150",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "234",
+    "Energy Efficiency": "150",
+    "Electricity Consumption": "150",
+    "Operating Margin Grid Emission": "284",
+    "country_code_iso_2": "BR",
+    "country_code_iso_3": "BRA"
+  },
+  "British Virgin Islands (U.K.)": {
+    "Country / Territory / Island": "British Virgin Islands (U.K.)",
+    "Firm Energy (e.g., Hydro, Geothermal)": "420",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "628",
+    "Energy Efficiency": "420",
+    "Electricity Consumption": "420",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "VG",
+    "country_code_iso_3": "VGB"
+  },
+  "Brunei Darussalam": {
+    "Country / Territory / Island": "Brunei Darussalam",
+    "Firm Energy (e.g., Hydro, Geothermal)": "407",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "578",
+    "Energy Efficiency": "407",
+    "Electricity Consumption": "407",
+    "Operating Margin Grid Emission": "681",
+    "country_code_iso_2": "BN",
+    "country_code_iso_3": "BRN"
+  },
+  "Bulgaria": {
+    "Country / Territory / Island": "Bulgaria",
+    "Firm Energy (e.g., Hydro, Geothermal)": "495",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "755",
+    "Energy Efficiency": "495",
+    "Electricity Consumption": "495",
+    "Operating Margin Grid Emission": "911",
+    "country_code_iso_2": "BG",
+    "country_code_iso_3": "BGR"
+  },
+  "Burkina Faso": {
+    "Country / Territory / Island": "Burkina Faso",
+    "Firm Energy (e.g., Hydro, Geothermal)": "539",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "672",
+    "Energy Efficiency": "539",
+    "Electricity Consumption": "539",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "BF",
+    "country_code_iso_3": "BFA"
+  },
+  "Burundi": {
+    "Country / Territory / Island": "Burundi",
+    "Firm Energy (e.g., Hydro, Geothermal)": "197",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "333",
+    "Energy Efficiency": "197",
+    "Electricity Consumption": "197",
+    "Operating Margin Grid Emission": "414",
+    "country_code_iso_2": "BI",
+    "country_code_iso_3": "BDI"
+  },
+  "Cambodia": {
+    "Country / Territory / Island": "Cambodia",
+    "Firm Energy (e.g., Hydro, Geothermal)": "588",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "874",
+    "Energy Efficiency": "588",
+    "Electricity Consumption": "588",
+    "Operating Margin Grid Emission": "1046",
+    "country_code_iso_2": "KH",
+    "country_code_iso_3": "KHM"
+  },
+  "Cameroon": {
+    "Country / Territory / Island": "Cameroon",
+    "Firm Energy (e.g., Hydro, Geothermal)": "354",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "545",
+    "Energy Efficiency": "354",
+    "Electricity Consumption": "354",
+    "Operating Margin Grid Emission": "659",
+    "country_code_iso_2": "CM",
+    "country_code_iso_3": "CMR"
+  },
+  "Canada": {
+    "Country / Territory / Island": "Canada",
+    "Firm Energy (e.g., Hydro, Geothermal)": "213",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "312",
+    "Energy Efficiency": "213",
+    "Electricity Consumption": "213",
+    "Operating Margin Grid Emission": "372",
+    "country_code_iso_2": "CA",
+    "country_code_iso_3": "CAN"
+  },
+  "Canary Islands (Spain)": {
+    "Country / Territory / Island": "Canary Islands (Spain)",
+    "Firm Energy (e.g., Hydro, Geothermal)": "435",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "633",
+    "Energy Efficiency": "435",
+    "Electricity Consumption": "435",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "KY",
+    "country_code_iso_3": "CYM"
+  },
+  "Cape Verde": {
+    "Country / Territory / Island": "Cape Verde",
+    "Firm Energy (e.g., Hydro, Geothermal)": "505",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "660",
+    "Energy Efficiency": "505",
+    "Electricity Consumption": "505",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "CV",
+    "country_code_iso_3": "CPV"
+  },
+  "Cayman Islands": {
+    "Country / Territory / Island": "Cayman Islands",
+    "Firm Energy (e.g., Hydro, Geothermal)": "373",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "610",
+    "Energy Efficiency": "373",
+    "Electricity Consumption": "373",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "CY",
+    "country_code_iso_3": "CYM"
+  },
+  "Central African Republic": {
+    "Country / Territory / Island": "Central African Republic",
+    "Firm Energy (e.g., Hydro, Geothermal)": "77",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "146",
+    "Energy Efficiency": "77",
+    "Electricity Consumption": "77",
+    "Operating Margin Grid Emission": "188",
+    "country_code_iso_2": "CF",
+    "country_code_iso_3": "CAF"
+  },
+  "Chad": {
+    "Country / Territory / Island": "Chad",
+    "Firm Energy (e.g., Hydro, Geothermal)": "581",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "688",
+    "Energy Efficiency": "581",
+    "Electricity Consumption": "581",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "TD",
+    "country_code_iso_3": "TCD"
+  },
+  "Channel Islands (U.K)": {
+    "Country / Territory / Island": "Channel Islands (U.K)",
+    "Firm Energy (e.g., Hydro, Geothermal)": "389",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "616",
+    "Energy Efficiency": "389",
+    "Electricity Consumption": "389",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "",
+    "country_code_iso_3": ""
+  },
+  "Chile": {
+    "Country / Territory / Island": "Chile",
+    "Firm Energy (e.g., Hydro, Geothermal)": "235",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "499",
+    "Energy Efficiency": "235",
+    "Electricity Consumption": "235",
+    "Operating Margin Grid Emission": "657",
+    "country_code_iso_2": "CL",
+    "country_code_iso_3": "CHL"
+  },
+  "China (PRC and Hong Kong)": {
+    "Country / Territory / Island": "China (PRC and Hong Kong)",
+    "Firm Energy (e.g., Hydro, Geothermal)": "485",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "744",
+    "Energy Efficiency": "485",
+    "Electricity Consumption": "485",
+    "Operating Margin Grid Emission": "899",
+    "country_code_iso_2": "CN",
+    "country_code_iso_3": "CHN"
+  },
+  "Colombia": {
+    "Country / Territory / Island": "Colombia",
+    "Firm Energy (e.g., Hydro, Geothermal)": "208",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "334",
+    "Energy Efficiency": "208",
+    "Electricity Consumption": "208",
+    "Operating Margin Grid Emission": "410",
+    "country_code_iso_2": "CO",
+    "country_code_iso_3": "COL"
+  },
+  "Comoros": {
+    "Country / Territory / Island": "Comoros",
+    "Firm Energy (e.g., Hydro, Geothermal)": "589",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "691",
+    "Energy Efficiency": "589",
+    "Electricity Consumption": "589",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "KM",
+    "country_code_iso_3": "COM"
+  },
+  "Congo, Democratic Republic of": {
+    "Country / Territory / Island": ["Congo", "Democratic Republic of"],
+    "Firm Energy (e.g., Hydro, Geothermal)": "0",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "0",
+    "Energy Efficiency": "0",
+    "Electricity Consumption": "0",
+    "Operating Margin Grid Emission": "0",
+    "country_code_iso_2": "CD",
+    "country_code_iso_3": "COD"
+  },
+  "Congo, Republic of": {
+    "Country / Territory / Island": ["Congo", "Republic of"],
+    "Firm Energy (e.g., Hydro, Geothermal)": "405",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "564",
+    "Energy Efficiency": "405",
+    "Electricity Consumption": "405",
+    "Operating Margin Grid Emission": "659",
+    "country_code_iso_2": "CG",
+    "country_code_iso_3": "COG"
+  },
+  "Cook Islands": {
+    "Country / Territory / Island": "Cook Islands",
+    "Firm Energy (e.g., Hydro, Geothermal)": "422",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "628",
+    "Energy Efficiency": "422",
+    "Electricity Consumption": "422",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "CK",
+    "country_code_iso_3": "COK"
+  },
+  "Costa Rica": {
+    "Country / Territory / Island": "Costa Rica",
+    "Firm Energy (e.g., Hydro, Geothermal)": "39",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "82",
+    "Energy Efficiency": "39",
+    "Electricity Consumption": "39",
+    "Operating Margin Grid Emission": "108",
+    "country_code_iso_2": "CR",
+    "country_code_iso_3": "CRI"
+  },
+  "Côte d'Ivoire": {
+    "Country / Territory / Island": "Côte d'Ivoire",
+    "Firm Energy (e.g., Hydro, Geothermal)": "314",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "409",
+    "Energy Efficiency": "314",
+    "Electricity Consumption": "314",
+    "Operating Margin Grid Emission": "466",
+    "country_code_iso_2": "CI",
+    "country_code_iso_3": "CIV"
+  },
+  "Croatia": {
+    "Country / Territory / Island": "Croatia",
+    "Firm Energy (e.g., Hydro, Geothermal)": "168",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "247",
+    "Energy Efficiency": "168",
+    "Electricity Consumption": "168",
+    "Operating Margin Grid Emission": "294",
+    "country_code_iso_2": "HR",
+    "country_code_iso_3": "HRV"
+  },
+  "Cuba": {
+    "Country / Territory / Island": "Cuba",
+    "Firm Energy (e.g., Hydro, Geothermal)": "391",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "496",
+    "Energy Efficiency": "391",
+    "Electricity Consumption": "391",
+    "Operating Margin Grid Emission": "559",
+    "country_code_iso_2": "CU",
+    "country_code_iso_3": "CUB"
+  },
+  "Curacao/Netherlands Antilles": {
+    "Country / Territory / Island": "Curacao/Netherlands Antilles",
+    "Firm Energy (e.g., Hydro, Geothermal)": "506",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "737",
+    "Energy Efficiency": "506",
+    "Electricity Consumption": "506",
+    "Operating Margin Grid Emission": "876",
+    "country_code_iso_2": "CW",
+    "country_code_iso_3": "CUW"
+  },
+  "Cyprus": {
+    "Country / Territory / Island": "Cyprus",
+    "Firm Energy (e.g., Hydro, Geothermal)": "438",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "633",
+    "Energy Efficiency": "438",
+    "Electricity Consumption": "438",
+    "Operating Margin Grid Emission": "751",
+    "country_code_iso_2": "CY",
+    "country_code_iso_3": "CYP"
+  },
+  "Czech Republic": {
+    "Country / Territory / Island": "Czech Republic",
+    "Firm Energy (e.g., Hydro, Geothermal)": "461",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "736",
+    "Energy Efficiency": "461",
+    "Electricity Consumption": "461",
+    "Operating Margin Grid Emission": "902",
+    "country_code_iso_2": "CZ",
+    "country_code_iso_3": "CZE"
+  },
+  "Denmark": {
+    "Country / Territory / Island": "Denmark",
+    "Firm Energy (e.g., Hydro, Geothermal)": "155",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "284",
+    "Energy Efficiency": "155",
+    "Electricity Consumption": "155",
+    "Operating Margin Grid Emission": "362",
+    "country_code_iso_2": "DK",
+    "country_code_iso_3": "DNK"
+  },
+  "Djibouti": {
+    "Country / Territory / Island": "Djibouti",
+    "Firm Energy (e.g., Hydro, Geothermal)": "575",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "686",
+    "Energy Efficiency": "575",
+    "Electricity Consumption": "575",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "DJ",
+    "country_code_iso_3": "DJI"
+  },
+  "Dominica": {
+    "Country / Territory / Island": "Dominica",
+    "Firm Energy (e.g., Hydro, Geothermal)": "433",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "633",
+    "Energy Efficiency": "433",
+    "Electricity Consumption": "433",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "DM",
+    "country_code_iso_3": "DMA"
+  },
+  "Dominican Republic": {
+    "Country / Territory / Island": "Dominican Republic",
+    "Firm Energy (e.g., Hydro, Geothermal)": "426",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "536",
+    "Energy Efficiency": "426",
+    "Electricity Consumption": "426",
+    "Operating Margin Grid Emission": "601",
+    "country_code_iso_2": "DO",
+    "country_code_iso_3": "DOM"
+  },
+  "Ecuador": {
+    "Country / Territory / Island": "Ecuador",
+    "Firm Energy (e.g., Hydro, Geothermal)": "280",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "455",
+    "Energy Efficiency": "280",
+    "Electricity Consumption": "280",
+    "Operating Margin Grid Emission": "560",
+    "country_code_iso_2": "EC",
+    "country_code_iso_3": "ECU"
+  },
+  "Egypt": {
+    "Country / Territory / Island": "Egypt",
+    "Firm Energy (e.g., Hydro, Geothermal)": "406",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "498",
+    "Energy Efficiency": "406",
+    "Electricity Consumption": "406",
+    "Operating Margin Grid Emission": "554",
+    "country_code_iso_2": "EG",
+    "country_code_iso_3": "EGY"
+  },
+  "El Salvador": {
+    "Country / Territory / Island": "El Salvador",
+    "Firm Energy (e.g., Hydro, Geothermal)": "275",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "445",
+    "Energy Efficiency": "275",
+    "Electricity Consumption": "275",
+    "Operating Margin Grid Emission": "547",
+    "country_code_iso_2": "SV",
+    "country_code_iso_3": "SLV"
+  },
+  "Equatorial Guinea": {
+    "Country / Territory / Island": "Equatorial Guinea",
+    "Firm Energy (e.g., Hydro, Geothermal)": "361",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "531",
+    "Energy Efficiency": "361",
+    "Electricity Consumption": "361",
+    "Operating Margin Grid Emission": "632",
+    "country_code_iso_2": "GQ",
+    "country_code_iso_3": "GNQ"
+  },
+  "Eritrea": {
+    "Country / Territory / Island": "Eritrea",
+    "Firm Energy (e.g., Hydro, Geothermal)": "704",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "836",
+    "Energy Efficiency": "704",
+    "Electricity Consumption": "704",
+    "Operating Margin Grid Emission": "915",
+    "country_code_iso_2": "ER",
+    "country_code_iso_3": "ERI"
+  },
+  "Estonia": {
+    "Country / Territory / Island": "Estonia",
+    "Firm Energy (e.g., Hydro, Geothermal)": "625",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "895",
+    "Energy Efficiency": "625",
+    "Electricity Consumption": "625",
+    "Operating Margin Grid Emission": "1057",
+    "country_code_iso_2": "EE",
+    "country_code_iso_3": "EST"
+  },
+  "Eswatini": {
+    "Country / Territory / Island": "Eswatini",
+    "Firm Energy (e.g., Hydro, Geothermal)": "0",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "0",
+    "Energy Efficiency": "0",
+    "Electricity Consumption": "0",
+    "Operating Margin Grid Emission": "0",
+    "country_code_iso_2": "SZ",
+    "country_code_iso_3": "SWZ"
+  },
+  "Ethiopia": {
+    "Country / Territory / Island": "Ethiopia",
+    "Firm Energy (e.g., Hydro, Geothermal)": "0",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "0",
+    "Energy Efficiency": "0",
+    "Electricity Consumption": "0",
+    "Operating Margin Grid Emission": "0",
+    "country_code_iso_2": "ET",
+    "country_code_iso_3": "ETH"
+  },
+  "Falkland Islands (U.K.)": {
+    "Country / Territory / Island": "Falkland Islands (U.K.)",
+    "Firm Energy (e.g., Hydro, Geothermal)": "316",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "589",
+    "Energy Efficiency": "316",
+    "Electricity Consumption": "316",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "FK",
+    "country_code_iso_3": "FLK"
+  },
+  "Faroe Islands (Denmark)": {
+    "Country / Territory / Island": "Faroe Islands (Denmark)",
+    "Firm Energy (e.g., Hydro, Geothermal)": "320",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "590",
+    "Energy Efficiency": "320",
+    "Electricity Consumption": "320",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "FO",
+    "country_code_iso_3": "FRO"
+  },
+  "Fiji": {
+    "Country / Territory / Island": "Fiji",
+    "Firm Energy (e.g., Hydro, Geothermal)": "334",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "525",
+    "Energy Efficiency": "334",
+    "Electricity Consumption": "334",
+    "Operating Margin Grid Emission": "640",
+    "country_code_iso_2": "FJ",
+    "country_code_iso_3": "FJI"
+  },
+  "Finland": {
+    "Country / Territory / Island": "Finland",
+    "Firm Energy (e.g., Hydro, Geothermal)": "114",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "209",
+    "Energy Efficiency": "114",
+    "Electricity Consumption": "114",
+    "Operating Margin Grid Emission": "267",
+    "country_code_iso_2": "FI",
+    "country_code_iso_3": "FIN"
+  },
+  "France": {
+    "Country / Territory / Island": "France",
+    "Firm Energy (e.g., Hydro, Geothermal)": "68",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "124",
+    "Energy Efficiency": "68",
+    "Electricity Consumption": "68",
+    "Operating Margin Grid Emission": "158",
+    "country_code_iso_2": "FR",
+    "country_code_iso_3": "FRA"
+  },
+  "French Guiana": {
+    "Country / Territory / Island": "French Guiana",
+    "Firm Energy (e.g., Hydro, Geothermal)": "200",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "340",
+    "Energy Efficiency": "200",
+    "Electricity Consumption": "200",
+    "Operating Margin Grid Emission": "423",
+    "country_code_iso_2": "GF",
+    "country_code_iso_3": "GUF"
+  },
+  "French Polynesia": {
+    "Country / Territory / Island": "French Polynesia",
+    "Firm Energy (e.g., Hydro, Geothermal)": "412",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "625",
+    "Energy Efficiency": "412",
+    "Electricity Consumption": "412",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "PF",
+    "country_code_iso_3": "PYF"
+  },
+  "Gabon": {
+    "Country / Territory / Island": "Gabon",
+    "Firm Energy (e.g., Hydro, Geothermal)": "533",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "791",
+    "Energy Efficiency": "533",
+    "Electricity Consumption": "533",
+    "Operating Margin Grid Emission": "946",
+    "country_code_iso_2": "GA",
+    "country_code_iso_3": "GAB"
+  },
+  "Gambia": {
+    "Country / Territory / Island": "Gambia",
+    "Firm Energy (e.g., Hydro, Geothermal)": "591",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "692",
+    "Energy Efficiency": "591",
+    "Electricity Consumption": "591",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "GM",
+    "country_code_iso_3": "GMB"
+  },
+  "Georgia": {
+    "Country / Territory / Island": "Georgia",
+    "Firm Energy (e.g., Hydro, Geothermal)": "135",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "231",
+    "Energy Efficiency": "135",
+    "Electricity Consumption": "135",
+    "Operating Margin Grid Emission": "289",
+    "country_code_iso_2": "GE",
+    "country_code_iso_3": "GEO"
+  },
+  "Germany": {
+    "Country / Territory / Island": "Germany",
+    "Firm Energy (e.g., Hydro, Geothermal)": "313",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "523",
+    "Energy Efficiency": "313",
+    "Electricity Consumption": "313",
+    "Operating Margin Grid Emission": "650",
+    "country_code_iso_2": "DE",
+    "country_code_iso_3": "DEU"
+  },
+  "Ghana": {
+    "Country / Territory / Island": "Ghana",
+    "Firm Energy (e.g., Hydro, Geothermal)": "276",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "413",
+    "Energy Efficiency": "276",
+    "Electricity Consumption": "276",
+    "Operating Margin Grid Emission": "495",
+    "country_code_iso_2": "GH",
+    "country_code_iso_3": "GHA"
+  },
+  "Gibraltar (U.K.)": {
+    "Country / Territory / Island": "Gibraltar (U.K.)",
+    "Firm Energy (e.g., Hydro, Geothermal)": "369",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "625",
+    "Energy Efficiency": "369",
+    "Electricity Consumption": "369",
+    "Operating Margin Grid Emission": "779",
+    "country_code_iso_2": "GI",
+    "country_code_iso_3": "GIB"
+  },
+  "Greece": {
+    "Country / Territory / Island": "Greece",
+    "Firm Energy (e.g., Hydro, Geothermal)": "346",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "447",
+    "Energy Efficiency": "346",
+    "Electricity Consumption": "346",
+    "Operating Margin Grid Emission": "507",
+    "country_code_iso_2": "GR",
+    "country_code_iso_3": "GRC"
+  },
+  "Greenland": {
+    "Country / Territory / Island": "Greenland",
+    "Firm Energy (e.g., Hydro, Geothermal)": "105",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "204",
+    "Energy Efficiency": "105",
+    "Electricity Consumption": "105",
+    "Operating Margin Grid Emission": "264",
+    "country_code_iso_2": "GL",
+    "country_code_iso_3": "GRL"
+  },
+  "Grenada": {
+    "Country / Territory / Island": "Grenada",
+    "Firm Energy (e.g., Hydro, Geothermal)": "523",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "666",
+    "Energy Efficiency": "523",
+    "Electricity Consumption": "523",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "GD",
+    "country_code_iso_3": "GRD"
+  },
+  "Guadeloupe (France)": {
+    "Country / Territory / Island": "Guadeloupe (France)",
+    "Firm Energy (e.g., Hydro, Geothermal)": "433",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "633",
+    "Energy Efficiency": "433",
+    "Electricity Consumption": "433",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "GP",
+    "country_code_iso_3": "GLP"
+  },
+  "Guam": {
+    "Country / Territory / Island": "Guam",
+    "Firm Energy (e.g., Hydro, Geothermal)": "428",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "631",
+    "Energy Efficiency": "428",
+    "Electricity Consumption": "428",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "GU",
+    "country_code_iso_3": "GUM"
+  },
+  "Guatemala": {
+    "Country / Territory / Island": "Guatemala",
+    "Firm Energy (e.g., Hydro, Geothermal)": "427",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "659",
+    "Energy Efficiency": "427",
+    "Electricity Consumption": "427",
+    "Operating Margin Grid Emission": "798",
+    "country_code_iso_2": "GT",
+    "country_code_iso_3": "GTM"
+  },
+  "Guinea": {
+    "Country / Territory / Island": "Guinea",
+    "Firm Energy (e.g., Hydro, Geothermal)": "460",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "643",
+    "Energy Efficiency": "460",
+    "Electricity Consumption": "460",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "GN",
+    "country_code_iso_3": "GIN"
+  },
+  "Guinea-Bissau": {
+    "Country / Territory / Island": "Guinea-Bissau",
+    "Firm Energy (e.g., Hydro, Geothermal)": "577",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "687",
+    "Energy Efficiency": "577",
+    "Electricity Consumption": "577",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "GW",
+    "country_code_iso_3": "GNB"
+  },
+  "Guyana": {
+    "Country / Territory / Island": "Guyana",
+    "Firm Energy (e.g., Hydro, Geothermal)": "616",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "760",
+    "Energy Efficiency": "616",
+    "Electricity Consumption": "616",
+    "Operating Margin Grid Emission": "847",
+    "country_code_iso_2": "GY",
+    "country_code_iso_3": "GUY"
+  },
+  "Haiti": {
+    "Country / Territory / Island": "Haiti",
+    "Firm Energy (e.g., Hydro, Geothermal)": "765",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "942",
+    "Energy Efficiency": "765",
+    "Electricity Consumption": "765",
+    "Operating Margin Grid Emission": "1048",
+    "country_code_iso_2": "HT",
+    "country_code_iso_3": "HTI"
+  },
+  "Honduras": {
+    "Country / Territory / Island": "Honduras",
+    "Firm Energy (e.g., Hydro, Geothermal)": "359",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "548",
+    "Energy Efficiency": "359",
+    "Electricity Consumption": "359",
+    "Operating Margin Grid Emission": "662",
+    "country_code_iso_2": "HN",
+    "country_code_iso_3": "HND"
+  },
+  "Hungary": {
+    "Country / Territory / Island": "Hungary",
+    "Firm Energy (e.g., Hydro, Geothermal)": "191",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "257",
+    "Energy Efficiency": "191",
+    "Electricity Consumption": "191",
+    "Operating Margin Grid Emission": "296",
+    "country_code_iso_2": "HU",
+    "country_code_iso_3": "HUN"
+  },
+  "Iceland": {
+    "Country / Territory / Island": "Iceland",
+    "Firm Energy (e.g., Hydro, Geothermal)": "0",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "0",
+    "Energy Efficiency": "0",
+    "Electricity Consumption": "0",
+    "Operating Margin Grid Emission": "0",
+    "country_code_iso_2": "IS",
+    "country_code_iso_3": "ISL"
+  },
+  "India": {
+    "Country / Territory / Island": "India",
+    "Firm Energy (e.g., Hydro, Geothermal)": "608",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "822",
+    "Energy Efficiency": "608",
+    "Electricity Consumption": "608",
+    "Operating Margin Grid Emission": "951",
+    "country_code_iso_2": "IN",
+    "country_code_iso_3": "IND"
+  },
+  "Indonesia": {
+    "Country / Territory / Island": "Indonesia",
+    "Firm Energy (e.g., Hydro, Geothermal)": "675",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "743",
+    "Energy Efficiency": "675",
+    "Electricity Consumption": "675",
+    "Operating Margin Grid Emission": "783",
+    "country_code_iso_2": "ID",
+    "country_code_iso_3": "IDN"
+  },
+  "Iran, Islamic Republic of": {
+    "Country / Territory / Island": ["Iran", "Islamic Republic of"],
+    "Firm Energy (e.g., Hydro, Geothermal)": "421",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "528",
+    "Energy Efficiency": "421",
+    "Electricity Consumption": "421",
+    "Operating Margin Grid Emission": "592",
+    "country_code_iso_2": "IR",
+    "country_code_iso_3": "IRN"
+  },
+  "Iraq": {
+    "Country / Territory / Island": "Iraq",
+    "Firm Energy (e.g., Hydro, Geothermal)": "788",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "971",
+    "Energy Efficiency": "788",
+    "Electricity Consumption": "788",
+    "Operating Margin Grid Emission": "1080",
+    "country_code_iso_2": "IQ",
+    "country_code_iso_3": "IRQ"
+  },
+  "Ireland": {
+    "Country / Territory / Island": "Ireland",
+    "Firm Energy (e.g., Hydro, Geothermal)": "189",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "309",
+    "Energy Efficiency": "189",
+    "Electricity Consumption": "189",
+    "Operating Margin Grid Emission": "380",
+    "country_code_iso_2": "IE",
+    "country_code_iso_3": "IRL"
+  },
+  "Isle of Man (U.K.)": {
+    "Country / Territory / Island": "Isle of Man (U.K.)",
+    "Firm Energy (e.g., Hydro, Geothermal)": "204",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "349",
+    "Energy Efficiency": "204",
+    "Electricity Consumption": "204",
+    "Operating Margin Grid Emission": "436",
+    "country_code_iso_2": "IM",
+    "country_code_iso_3": "IMN"
+  },
+  "Israel": {
+    "Country / Territory / Island": "Israel",
+    "Firm Energy (e.g., Hydro, Geothermal)": "258",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "343",
+    "Energy Efficiency": "258",
+    "Electricity Consumption": "258",
+    "Operating Margin Grid Emission": "394",
+    "country_code_iso_2": "IL",
+    "country_code_iso_3": "ISR"
+  },
+  "Italy": {
+    "Country / Territory / Island": "Italy",
+    "Firm Energy (e.g., Hydro, Geothermal)": "224",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "343",
+    "Energy Efficiency": "224",
+    "Electricity Consumption": "224",
+    "Operating Margin Grid Emission": "414",
+    "country_code_iso_2": "IT",
+    "country_code_iso_3": "ITA"
+  },
+  "Jamaica": {
+    "Country / Territory / Island": "Jamaica",
+    "Firm Energy (e.g., Hydro, Geothermal)": "498",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "631",
+    "Energy Efficiency": "498",
+    "Electricity Consumption": "498",
+    "Operating Margin Grid Emission": "711",
+    "country_code_iso_2": "JM",
+    "country_code_iso_3": "JAM"
+  },
+  "Japan": {
+    "Country / Territory / Island": "Japan",
+    "Firm Energy (e.g., Hydro, Geothermal)": "408",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "448",
+    "Energy Efficiency": "408",
+    "Electricity Consumption": "408",
+    "Operating Margin Grid Emission": "471",
+    "country_code_iso_2": "JP",
+    "country_code_iso_3": "JPN"
+  },
+  "Jordan": {
+    "Country / Territory / Island": "Jordan",
+    "Firm Energy (e.g., Hydro, Geothermal)": "382",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "474",
+    "Energy Efficiency": "382",
+    "Electricity Consumption": "382",
+    "Operating Margin Grid Emission": "529",
+    "country_code_iso_2": "JO",
+    "country_code_iso_3": "JOR"
+  },
+  "Kazakhstan": {
+    "Country / Territory / Island": "Kazakhstan",
+    "Firm Energy (e.g., Hydro, Geothermal)": "532",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "698",
+    "Energy Efficiency": "532",
+    "Electricity Consumption": "532",
+    "Operating Margin Grid Emission": "797",
+    "country_code_iso_2": "KZ",
+    "country_code_iso_3": "KAZ"
+  },
+  "Kenya": {
+    "Country / Territory / Island": "Kenya",
+    "Firm Energy (e.g., Hydro, Geothermal)": "274",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "462",
+    "Energy Efficiency": "274",
+    "Electricity Consumption": "274",
+    "Operating Margin Grid Emission": "574",
+    "country_code_iso_2": "KE",
+    "country_code_iso_3": "KEN"
+  },
+  "Kiribati": {
+    "Country / Territory / Island": "Kiribati",
+    "Firm Energy (e.g., Hydro, Geothermal)": "530",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "669",
+    "Energy Efficiency": "530",
+    "Electricity Consumption": "530",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "KI",
+    "country_code_iso_3": "KIR"
+  },
+  "Korea (North), Democratic People's Republic of": {
+    "Country / Territory / Island": [
+      "Korea (North)",
+      "Democratic People's Republic of"
+    ],
+    "Firm Energy (e.g., Hydro, Geothermal)": "359",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "606",
+    "Energy Efficiency": "359",
+    "Electricity Consumption": "359",
+    "Operating Margin Grid Emission": "754",
+    "country_code_iso_2": "KP",
+    "country_code_iso_3": "PRK"
+  },
+  "Korea (South), Republic of": {
+    "Country / Territory / Island": ["Korea (South)", "Republic of"],
+    "Firm Energy (e.g., Hydro, Geothermal)": "335",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "473",
+    "Energy Efficiency": "335",
+    "Electricity Consumption": "335",
+    "Operating Margin Grid Emission": "555",
+    "country_code_iso_2": "KR",
+    "country_code_iso_3": "KOR"
+  },
+  "Kosovo": {
+    "Country / Territory / Island": "Kosovo",
+    "Firm Energy (e.g., Hydro, Geothermal)": "843",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "1032",
+    "Energy Efficiency": "843",
+    "Electricity Consumption": "843",
+    "Operating Margin Grid Emission": "1145",
+    "country_code_iso_2": "XK",
+    "country_code_iso_3": "XKX"
+  },
+  "Kuwait": {
+    "Country / Territory / Island": "Kuwait",
+    "Firm Energy (e.g., Hydro, Geothermal)": "400",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "572",
+    "Energy Efficiency": "400",
+    "Electricity Consumption": "400",
+    "Operating Margin Grid Emission": "675",
+    "country_code_iso_2": "KW",
+    "country_code_iso_3": "KWT"
+  },
+  "Kyrgyzstan": {
+    "Country / Territory / Island": "Kyrgyzstan",
+    "Firm Energy (e.g., Hydro, Geothermal)": "98",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "172",
+    "Energy Efficiency": "98",
+    "Electricity Consumption": "98",
+    "Operating Margin Grid Emission": "217",
+    "country_code_iso_2": "KG",
+    "country_code_iso_3": "KGZ"
+  },
+  "Lao People's Democratic Republic": {
+    "Country / Territory / Island": "Lao People's Democratic Republic",
+    "Firm Energy (e.g., Hydro, Geothermal)": "555",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "876",
+    "Energy Efficiency": "555",
+    "Electricity Consumption": "555",
+    "Operating Margin Grid Emission": "1069",
+    "country_code_iso_2": "LA",
+    "country_code_iso_3": "LAO"
+  },
+  "Latvia": {
+    "Country / Territory / Island": "Latvia",
+    "Firm Energy (e.g., Hydro, Geothermal)": "117",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "194",
+    "Energy Efficiency": "117",
+    "Electricity Consumption": "117",
+    "Operating Margin Grid Emission": "240",
+    "country_code_iso_2": "LV",
+    "country_code_iso_3": "LVA"
+  },
+  "Lebanon": {
+    "Country / Territory / Island": "Lebanon",
+    "Firm Energy (e.g., Hydro, Geothermal)": "567",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "709",
+    "Energy Efficiency": "567",
+    "Electricity Consumption": "567",
+    "Operating Margin Grid Emission": "794",
+    "country_code_iso_2": "LB",
+    "country_code_iso_3": "LBN"
+  },
+  "Lesotho": {
+    "Country / Territory / Island": "Lesotho",
+    "Firm Energy (e.g., Hydro, Geothermal)": "0",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "0",
+    "Energy Efficiency": "0",
+    "Electricity Consumption": "0",
+    "Operating Margin Grid Emission": "0",
+    "country_code_iso_2": "LS",
+    "country_code_iso_3": "LSO"
+  },
+  "Liberia": {
+    "Country / Territory / Island": "Liberia",
+    "Firm Energy (e.g., Hydro, Geothermal)": "374",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "564",
+    "Energy Efficiency": "374",
+    "Electricity Consumption": "374",
+    "Operating Margin Grid Emission": "677",
+    "country_code_iso_2": "LR",
+    "country_code_iso_3": "LBR"
+  },
+  "Libya": {
+    "Country / Territory / Island": "Libya",
+    "Firm Energy (e.g., Hydro, Geothermal)": "493",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "602",
+    "Energy Efficiency": "493",
+    "Electricity Consumption": "493",
+    "Operating Margin Grid Emission": "668",
+    "country_code_iso_2": "LY",
+    "country_code_iso_3": "LBY"
+  },
+  "Liechtenstein": {
+    "Country / Territory / Island": "Liechtenstein",
+    "Firm Energy (e.g., Hydro, Geothermal)": "52",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "114",
+    "Energy Efficiency": "52",
+    "Electricity Consumption": "52",
+    "Operating Margin Grid Emission": "151",
+    "country_code_iso_2": "LI",
+    "country_code_iso_3": "LIE"
+  },
+  "Lithuania": {
+    "Country / Territory / Island": "Lithuania",
+    "Firm Energy (e.g., Hydro, Geothermal)": "102",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "170",
+    "Energy Efficiency": "102",
+    "Electricity Consumption": "102",
+    "Operating Margin Grid Emission": "211",
+    "country_code_iso_2": "LT",
+    "country_code_iso_3": "LTU"
+  },
+  "Luxembourg": {
+    "Country / Territory / Island": "Luxembourg",
+    "Firm Energy (e.g., Hydro, Geothermal)": "95",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "173",
+    "Energy Efficiency": "95",
+    "Electricity Consumption": "95",
+    "Operating Margin Grid Emission": "220",
+    "country_code_iso_2": "LU",
+    "country_code_iso_3": "LUX"
+  },
+  "Madagascar": {
+    "Country / Territory / Island": "Madagascar",
+    "Firm Energy (e.g., Hydro, Geothermal)": "567",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "760",
+    "Energy Efficiency": "567",
+    "Electricity Consumption": "567",
+    "Operating Margin Grid Emission": "876",
+    "country_code_iso_2": "MG",
+    "country_code_iso_3": "MDG"
+  },
+  "Madeira (Portugal)": {
+    "Country / Territory / Island": "Madeira (Portugal)",
+    "Firm Energy (e.g., Hydro, Geothermal)": "369",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "552",
+    "Energy Efficiency": "369",
+    "Electricity Consumption": "369",
+    "Operating Margin Grid Emission": "663",
+    "country_code_iso_2": "",
+    "country_code_iso_3": ""
+  },
+  "Malawi": {
+    "Country / Territory / Island": "Malawi",
+    "Firm Energy (e.g., Hydro, Geothermal)": "243",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "397",
+    "Energy Efficiency": "243",
+    "Electricity Consumption": "243",
+    "Operating Margin Grid Emission": "489",
+    "country_code_iso_2": "MW",
+    "country_code_iso_3": "MWI"
+  },
+  "Malaysia": {
+    "Country / Territory / Island": "Malaysia",
+    "Firm Energy (e.g., Hydro, Geothermal)": "436",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "508",
+    "Energy Efficiency": "436",
+    "Electricity Consumption": "436",
+    "Operating Margin Grid Emission": "551",
+    "country_code_iso_2": "MY",
+    "country_code_iso_3": "MYS"
+  },
+  "Maldives": {
+    "Country / Territory / Island": "Maldives",
+    "Firm Energy (e.g., Hydro, Geothermal)": "524",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "667",
+    "Energy Efficiency": "524",
+    "Electricity Consumption": "524",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "MV",
+    "country_code_iso_3": "MDV"
+  },
+  "Mali": {
+    "Country / Territory / Island": "Mali",
+    "Firm Energy (e.g., Hydro, Geothermal)": "623",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "906",
+    "Energy Efficiency": "623",
+    "Electricity Consumption": "623",
+    "Operating Margin Grid Emission": "1076",
+    "country_code_iso_2": "ML",
+    "country_code_iso_3": "MLI"
+  },
+  "Malta": {
+    "Country / Territory / Island": "Malta",
+    "Firm Energy (e.g., Hydro, Geothermal)": "295",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "435",
+    "Energy Efficiency": "295",
+    "Electricity Consumption": "295",
+    "Operating Margin Grid Emission": "520",
+    "country_code_iso_2": "MT",
+    "country_code_iso_3": "MLT"
+  },
+  "Marshall Islands": {
+    "Country / Territory / Island": "Marshall Islands",
+    "Firm Energy (e.g., Hydro, Geothermal)": "561",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "681",
+    "Energy Efficiency": "561",
+    "Electricity Consumption": "561",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "MH",
+    "country_code_iso_3": "MHL"
+  },
+  "Martinique (France)": {
+    "Country / Territory / Island": "Martinique (France)",
+    "Firm Energy (e.g., Hydro, Geothermal)": "406",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "623",
+    "Energy Efficiency": "406",
+    "Electricity Consumption": "406",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "MQ",
+    "country_code_iso_3": "MTQ"
+  },
+  "Mauritania": {
+    "Country / Territory / Island": "Mauritania",
+    "Firm Energy (e.g., Hydro, Geothermal)": "513",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "663",
+    "Energy Efficiency": "513",
+    "Electricity Consumption": "513",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "MR",
+    "country_code_iso_3": "MRT"
+  },
+  "Mauritius": {
+    "Country / Territory / Island": "Mauritius",
+    "Firm Energy (e.g., Hydro, Geothermal)": "543",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "641",
+    "Energy Efficiency": "543",
+    "Electricity Consumption": "543",
+    "Operating Margin Grid Emission": "700",
+    "country_code_iso_2": "MU",
+    "country_code_iso_3": "MUS"
+  },
+  "Mayotte (France)": {
+    "Country / Territory / Island": "Mayotte (France)",
+    "Firm Energy (e.g., Hydro, Geothermal)": "512",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "662",
+    "Energy Efficiency": "512",
+    "Electricity Consumption": "512",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "YT",
+    "country_code_iso_3": "MYT"
+  },
+  "Mexico": {
+    "Country / Territory / Island": "Mexico",
+    "Firm Energy (e.g., Hydro, Geothermal)": "359",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "467",
+    "Energy Efficiency": "359",
+    "Electricity Consumption": "359",
+    "Operating Margin Grid Emission": "531",
+    "country_code_iso_2": "MX",
+    "country_code_iso_3": "MEX"
+  },
+  "Micronesia": {
+    "Country / Territory / Island": "Micronesia",
+    "Firm Energy (e.g., Hydro, Geothermal)": "557",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "679",
+    "Energy Efficiency": "557",
+    "Electricity Consumption": "557",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "FM",
+    "country_code_iso_3": "FSM"
+  },
+  "Moldova, Republic of ": {
+    "Country / Territory / Island": ["Moldova", "Republic of"],
+    "Firm Energy (e.g., Hydro, Geothermal)": "399",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "488",
+    "Energy Efficiency": "399",
+    "Electricity Consumption": "399",
+    "Operating Margin Grid Emission": "541",
+    "country_code_iso_2": "MD",
+    "country_code_iso_3": "MDA"
+  },
+  "Monaco": {
+    "Country / Territory / Island": "Monaco",
+    "Firm Energy (e.g., Hydro, Geothermal)": "68",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "124",
+    "Energy Efficiency": "68",
+    "Electricity Consumption": "68",
+    "Operating Margin Grid Emission": "158",
+    "country_code_iso_2": "MC",
+    "country_code_iso_3": "MCO"
+  },
+  "Mongolia": {
+    "Country / Territory / Island": "Mongolia",
+    "Firm Energy (e.g., Hydro, Geothermal)": "1002",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "1230",
+    "Energy Efficiency": "1002",
+    "Electricity Consumption": "1002",
+    "Operating Margin Grid Emission": "1366",
+    "country_code_iso_2": "MN",
+    "country_code_iso_3": "MNG"
+  },
+  "Montenegro": {
+    "Country / Territory / Island": "Montenegro",
+    "Firm Energy (e.g., Hydro, Geothermal)": "471",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "739",
+    "Energy Efficiency": "471",
+    "Electricity Consumption": "471",
+    "Operating Margin Grid Emission": "899",
+    "country_code_iso_2": "ME",
+    "country_code_iso_3": "MNE"
+  },
+  "Montserrat": {
+    "Country / Territory / Island": "Montserrat",
+    "Firm Energy (e.g., Hydro, Geothermal)": "517",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "664",
+    "Energy Efficiency": "517",
+    "Electricity Consumption": "517",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "MS",
+    "country_code_iso_3": "MSR"
+  },
+  "Morocco": {
+    "Country / Territory / Island": "Morocco",
+    "Firm Energy (e.g., Hydro, Geothermal)": "547",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "660",
+    "Energy Efficiency": "547",
+    "Electricity Consumption": "547",
+    "Operating Margin Grid Emission": "729",
+    "country_code_iso_2": "MA",
+    "country_code_iso_3": "MAR"
+  },
+  "Mozambique": {
+    "Country / Territory / Island": "Mozambique",
+    "Firm Energy (e.g., Hydro, Geothermal)": "111",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "188",
+    "Energy Efficiency": "111",
+    "Electricity Consumption": "111",
+    "Operating Margin Grid Emission": "234",
+    "country_code_iso_2": "MZ",
+    "country_code_iso_3": "MOZ"
+  },
+  "Myanmar": {
+    "Country / Territory / Island": "Myanmar",
+    "Firm Energy (e.g., Hydro, Geothermal)": "407",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "602",
+    "Energy Efficiency": "407",
+    "Electricity Consumption": "407",
+    "Operating Margin Grid Emission": "719",
+    "country_code_iso_2": "MM",
+    "country_code_iso_3": "MMR"
+  },
+  "Namibia": {
+    "Country / Territory / Island": "Namibia",
+    "Firm Energy (e.g., Hydro, Geothermal)": "139",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "274",
+    "Energy Efficiency": "139",
+    "Electricity Consumption": "139",
+    "Operating Margin Grid Emission": "355",
+    "country_code_iso_2": "NA",
+    "country_code_iso_3": "NAM"
+  },
+  "Nauru": {
+    "Country / Territory / Island": "Nauru",
+    "Firm Energy (e.g., Hydro, Geothermal)": "521",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "666",
+    "Energy Efficiency": "521",
+    "Electricity Consumption": "521",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "NR",
+    "country_code_iso_3": "NRU"
+  },
+  "Nepal": {
+    "Country / Territory / Island": "Nepal",
+    "Firm Energy (e.g., Hydro, Geothermal)": "0",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "0",
+    "Energy Efficiency": "0",
+    "Electricity Consumption": "0",
+    "Operating Margin Grid Emission": "0",
+    "country_code_iso_2": "NP",
+    "country_code_iso_3": "NPL"
+  },
+  "Netherlands": {
+    "Country / Territory / Island": "Netherlands",
+    "Firm Energy (e.g., Hydro, Geothermal)": "203",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "280",
+    "Energy Efficiency": "203",
+    "Electricity Consumption": "203",
+    "Operating Margin Grid Emission": "326",
+    "country_code_iso_2": "NL",
+    "country_code_iso_3": "NLD"
+  },
+  "New Caledonia (France)": {
+    "Country / Territory / Island": "New Caledonia (France)",
+    "Firm Energy (e.g., Hydro, Geothermal)": "445",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "654",
+    "Energy Efficiency": "445",
+    "Electricity Consumption": "445",
+    "Operating Margin Grid Emission": "779",
+    "country_code_iso_2": "NC",
+    "country_code_iso_3": "NCL"
+  },
+  "New Zealand": {
+    "Country / Territory / Island": "New Zealand",
+    "Firm Energy (e.g., Hydro, Geothermal)": "108",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "194",
+    "Energy Efficiency": "108",
+    "Electricity Consumption": "108",
+    "Operating Margin Grid Emission": "246",
+    "country_code_iso_2": "NZ",
+    "country_code_iso_3": "NZL"
+  },
+  "Nicaragua": {
+    "Country / Territory / Island": "Nicaragua",
+    "Firm Energy (e.g., Hydro, Geothermal)": "372",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "562",
+    "Energy Efficiency": "372",
+    "Electricity Consumption": "372",
+    "Operating Margin Grid Emission": "675",
+    "country_code_iso_2": "NI",
+    "country_code_iso_3": "NIC"
+  },
+  "Niger": {
+    "Country / Territory / Island": "Niger",
+    "Firm Energy (e.g., Hydro, Geothermal)": "718",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "752",
+    "Energy Efficiency": "718",
+    "Electricity Consumption": "718",
+    "Operating Margin Grid Emission": "772",
+    "country_code_iso_2": "NE",
+    "country_code_iso_3": "NER"
+  },
+  "Nigeria": {
+    "Country / Territory / Island": "Nigeria",
+    "Firm Energy (e.g., Hydro, Geothermal)": "358",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "463",
+    "Energy Efficiency": "358",
+    "Electricity Consumption": "358",
+    "Operating Margin Grid Emission": "526",
+    "country_code_iso_2": "NG",
+    "country_code_iso_3": "NGA"
+  },
+  "Niue": {
+    "Country / Territory / Island": "Niue",
+    "Firm Energy (e.g., Hydro, Geothermal)": "459",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "642",
+    "Energy Efficiency": "459",
+    "Electricity Consumption": "459",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "NU",
+    "country_code_iso_3": "NIU"
+  },
+  "North Macedonia, Republic of": {
+    "Country / Territory / Island": ["North Macedonia", "Republic of"],
+    "Firm Energy (e.g., Hydro, Geothermal)": "563",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "743",
+    "Energy Efficiency": "563",
+    "Electricity Consumption": "563",
+    "Operating Margin Grid Emission": "851",
+    "country_code_iso_2": "MK",
+    "country_code_iso_3": "MKD"
+  },
+  "Northern Mariana Islands (U.S.)": {
+    "Country / Territory / Island": "Northern Mariana Islands (U.S.)",
+    "Firm Energy (e.g., Hydro, Geothermal)": "416",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "626",
+    "Energy Efficiency": "416",
+    "Electricity Consumption": "416",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "MP",
+    "country_code_iso_3": "MNP"
+  },
+  "Norway": {
+    "Country / Territory / Island": "Norway",
+    "Firm Energy (e.g., Hydro, Geothermal)": "17",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "36",
+    "Energy Efficiency": "17",
+    "Electricity Consumption": "17",
+    "Operating Margin Grid Emission": "47",
+    "country_code_iso_2": "NO",
+    "country_code_iso_3": "NOR"
+  },
+  "Oman": {
+    "Country / Territory / Island": "Oman",
+    "Firm Energy (e.g., Hydro, Geothermal)": "320",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "419",
+    "Energy Efficiency": "320",
+    "Electricity Consumption": "320",
+    "Operating Margin Grid Emission": "479",
+    "country_code_iso_2": "OM",
+    "country_code_iso_3": "OMN"
+  },
+  "Pakistan": {
+    "Country / Territory / Island": "Pakistan",
+    "Firm Energy (e.g., Hydro, Geothermal)": "386",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "515",
+    "Energy Efficiency": "386",
+    "Electricity Consumption": "386",
+    "Operating Margin Grid Emission": "592",
+    "country_code_iso_2": "PK",
+    "country_code_iso_3": "PAK"
+  },
+  "Palau": {
+    "Country / Territory / Island": "Palau",
+    "Firm Energy (e.g., Hydro, Geothermal)": "497",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "657",
+    "Energy Efficiency": "497",
+    "Electricity Consumption": "497",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "PW",
+    "country_code_iso_3": "PLW"
+  },
+  "Palestinian Authority": {
+    "Country / Territory / Island": "Palestinian Authority",
+    "Firm Energy (e.g., Hydro, Geothermal)": "517",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "643",
+    "Energy Efficiency": "517",
+    "Electricity Consumption": "517",
+    "Operating Margin Grid Emission": "719",
+    "country_code_iso_2": "PS",
+    "country_code_iso_3": "PSE"
+  },
+  "Panama": {
+    "Country / Territory / Island": "Panama",
+    "Firm Energy (e.g., Hydro, Geothermal)": "230",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "385",
+    "Energy Efficiency": "230",
+    "Electricity Consumption": "230",
+    "Operating Margin Grid Emission": "477",
+    "country_code_iso_2": "PA",
+    "country_code_iso_3": "PAN"
+  },
+  "Papua New Guinea": {
+    "Country / Territory / Island": "Papua New Guinea",
+    "Firm Energy (e.g., Hydro, Geothermal)": "315",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "491",
+    "Energy Efficiency": "315",
+    "Electricity Consumption": "315",
+    "Operating Margin Grid Emission": "597",
+    "country_code_iso_2": "PG",
+    "country_code_iso_3": "PNG"
+  },
+  "Paraguay": {
+    "Country / Territory / Island": "Paraguay",
+    "Firm Energy (e.g., Hydro, Geothermal)": "0",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "0",
+    "Energy Efficiency": "0",
+    "Electricity Consumption": "0",
+    "Operating Margin Grid Emission": "0",
+    "country_code_iso_2": "PY",
+    "country_code_iso_3": "PRY"
+  },
+  "Peru": {
+    "Country / Territory / Island": "Peru",
+    "Firm Energy (e.g., Hydro, Geothermal)": "252",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "390",
+    "Energy Efficiency": "252",
+    "Electricity Consumption": "252",
+    "Operating Margin Grid Emission": "473",
+    "country_code_iso_2": "PE",
+    "country_code_iso_3": "PER"
+  },
+  "Philippines": {
+    "Country / Territory / Island": "Philippines",
+    "Firm Energy (e.g., Hydro, Geothermal)": "525",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "617",
+    "Energy Efficiency": "525",
+    "Electricity Consumption": "525",
+    "Operating Margin Grid Emission": "672",
+    "country_code_iso_2": "PH",
+    "country_code_iso_3": "PHL"
+  },
+  "Poland": {
+    "Country / Territory / Island": "Poland",
+    "Firm Energy (e.g., Hydro, Geothermal)": "532",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "717",
+    "Energy Efficiency": "532",
+    "Electricity Consumption": "532",
+    "Operating Margin Grid Emission": "828",
+    "country_code_iso_2": "PL",
+    "country_code_iso_3": "POL"
+  },
+  "Portugal": {
+    "Country / Territory / Island": "Portugal",
+    "Firm Energy (e.g., Hydro, Geothermal)": "228",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "329",
+    "Energy Efficiency": "228",
+    "Electricity Consumption": "228",
+    "Operating Margin Grid Emission": "389",
+    "country_code_iso_2": "PT",
+    "country_code_iso_3": "PRT"
+  },
+  "Puerto Rico (U.S.)": {
+    "Country / Territory / Island": "Puerto Rico (U.S.)",
+    "Firm Energy (e.g., Hydro, Geothermal)": "362",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "508",
+    "Energy Efficiency": "362",
+    "Electricity Consumption": "362",
+    "Operating Margin Grid Emission": "596",
+    "country_code_iso_2": "PR",
+    "country_code_iso_3": "PRI"
+  },
+  "Qatar": {
+    "Country / Territory / Island": "Qatar",
+    "Firm Energy (e.g., Hydro, Geothermal)": "258",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "411",
+    "Energy Efficiency": "258",
+    "Electricity Consumption": "258",
+    "Operating Margin Grid Emission": "503",
+    "country_code_iso_2": "QA",
+    "country_code_iso_3": "QAT"
+  },
+  "Reunion (France)": {
+    "Country / Territory / Island": "Reunion (France)",
+    "Firm Energy (e.g., Hydro, Geothermal)": "421",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "641",
+    "Energy Efficiency": "421",
+    "Electricity Consumption": "421",
+    "Operating Margin Grid Emission": "772",
+    "country_code_iso_2": "RE",
+    "country_code_iso_3": "REU"
+  },
+  "Romania": {
+    "Country / Territory / Island": "Romania",
+    "Firm Energy (e.g., Hydro, Geothermal)": "289",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "414",
+    "Energy Efficiency": "289",
+    "Electricity Consumption": "289",
+    "Operating Margin Grid Emission": "489",
+    "country_code_iso_2": "RO",
+    "country_code_iso_3": "ROU"
+  },
+  "Russian Federation": {
+    "Country / Territory / Island": "Russian Federation",
+    "Firm Energy (e.g., Hydro, Geothermal)": "360",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "432",
+    "Energy Efficiency": "360",
+    "Electricity Consumption": "360",
+    "Operating Margin Grid Emission": "476",
+    "country_code_iso_2": "RU",
+    "country_code_iso_3": "RUS"
+  },
+  "Rwanda": {
+    "Country / Territory / Island": "Rwanda",
+    "Firm Energy (e.g., Hydro, Geothermal)": "416",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "601",
+    "Energy Efficiency": "416",
+    "Electricity Consumption": "416",
+    "Operating Margin Grid Emission": "712",
+    "country_code_iso_2": "RW",
+    "country_code_iso_3": "RWA"
+  },
+  "Saint Helena (U.K.)": {
+    "Country / Territory / Island": "Saint Helena (U.K.)",
+    "Firm Energy (e.g., Hydro, Geothermal)": "456",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "641",
+    "Energy Efficiency": "456",
+    "Electricity Consumption": "456",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "SH",
+    "country_code_iso_3": "SHN"
+  },
+  "Saint Kitts and Nevis": {
+    "Country / Territory / Island": "Saint Kitts and Nevis",
+    "Firm Energy (e.g., Hydro, Geothermal)": "477",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "649",
+    "Energy Efficiency": "477",
+    "Electricity Consumption": "477",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "KN",
+    "country_code_iso_3": "KNA"
+  },
+  "Saint Lucia": {
+    "Country / Territory / Island": "Saint Lucia",
+    "Firm Energy (e.g., Hydro, Geothermal)": "521",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "666",
+    "Energy Efficiency": "521",
+    "Electricity Consumption": "521",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "LC",
+    "country_code_iso_3": "LCA"
+  },
+  "Saint Martin (France)": {
+    "Country / Territory / Island": "Saint Martin (France)",
+    "Firm Energy (e.g., Hydro, Geothermal)": "484",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "652",
+    "Energy Efficiency": "484",
+    "Electricity Consumption": "484",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "MF",
+    "country_code_iso_3": "MAF"
+  },
+  "Saint Pierre and Miquelon (France)": {
+    "Country / Territory / Island": "Saint Pierre and Miquelon (France)",
+    "Firm Energy (e.g., Hydro, Geothermal)": "415",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "626",
+    "Energy Efficiency": "415",
+    "Electricity Consumption": "415",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "PM",
+    "country_code_iso_3": "SPM"
+  },
+  "Saint Vincent and Grenadines": {
+    "Country / Territory / Island": "Saint Vincent and Grenadines",
+    "Firm Energy (e.g., Hydro, Geothermal)": "499",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "658",
+    "Energy Efficiency": "499",
+    "Electricity Consumption": "499",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "VC",
+    "country_code_iso_3": "VCT"
+  },
+  "Samoa": {
+    "Country / Territory / Island": "Samoa",
+    "Firm Energy (e.g., Hydro, Geothermal)": "434",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "633",
+    "Energy Efficiency": "434",
+    "Electricity Consumption": "434",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "WS",
+    "country_code_iso_3": "WSM"
+  },
+  "San Marino": {
+    "Country / Territory / Island": "San Marino",
+    "Firm Energy (e.g., Hydro, Geothermal)": "224",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "343",
+    "Energy Efficiency": "224",
+    "Electricity Consumption": "224",
+    "Operating Margin Grid Emission": "414",
+    "country_code_iso_2": "SM",
+    "country_code_iso_3": "SMR"
+  },
+  "Sao Tomé & Principe": {
+    "Country / Territory / Island": "Sao Tomé & Principe",
+    "Firm Energy (e.g., Hydro, Geothermal)": "565",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "682",
+    "Energy Efficiency": "565",
+    "Electricity Consumption": "565",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "ST",
+    "country_code_iso_3": "STP"
+  },
+  "Saudi Arabia": {
+    "Country / Territory / Island": "Saudi Arabia",
+    "Firm Energy (e.g., Hydro, Geothermal)": "374",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "510",
+    "Energy Efficiency": "374",
+    "Electricity Consumption": "374",
+    "Operating Margin Grid Emission": "592",
+    "country_code_iso_2": "SA",
+    "country_code_iso_3": "SAU"
+  },
+  "Senegal": {
+    "Country / Territory / Island": "Senegal",
+    "Firm Energy (e.g., Hydro, Geothermal)": "656",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "790",
+    "Energy Efficiency": "656",
+    "Electricity Consumption": "656",
+    "Operating Margin Grid Emission": "870",
+    "country_code_iso_2": "SN",
+    "country_code_iso_3": "SEN"
+  },
+  "Serbia": {
+    "Country / Territory / Island": "Serbia",
+    "Firm Energy (e.g., Hydro, Geothermal)": "678",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "933",
+    "Energy Efficiency": "678",
+    "Electricity Consumption": "678",
+    "Operating Margin Grid Emission": "1086",
+    "country_code_iso_2": "RS",
+    "country_code_iso_3": "SRB"
+  },
+  "Seychelles": {
+    "Country / Territory / Island": "Seychelles",
+    "Firm Energy (e.g., Hydro, Geothermal)": "479",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "650",
+    "Energy Efficiency": "479",
+    "Electricity Consumption": "479",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "SC",
+    "country_code_iso_3": "SYC"
+  },
+  "Sierra Leone": {
+    "Country / Territory / Island": "Sierra Leone",
+    "Firm Energy (e.g., Hydro, Geothermal)": "246",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "398",
+    "Energy Efficiency": "246",
+    "Electricity Consumption": "246",
+    "Operating Margin Grid Emission": "489",
+    "country_code_iso_2": "SL",
+    "country_code_iso_3": "SLE"
+  },
+  "Singapore": {
+    "Country / Territory / Island": "Singapore",
+    "Firm Energy (e.g., Hydro, Geothermal)": "200",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "311",
+    "Energy Efficiency": "200",
+    "Electricity Consumption": "200",
+    "Operating Margin Grid Emission": "379",
+    "country_code_iso_2": "SG",
+    "country_code_iso_3": "SGP"
+  },
+  "Sint Martin (Netherlands)": {
+    "Country / Territory / Island": "Sint Martin (Netherlands)",
+    "Firm Energy (e.g., Hydro, Geothermal)": "463",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "644",
+    "Energy Efficiency": "463",
+    "Electricity Consumption": "463",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "SX",
+    "country_code_iso_3": "SXM"
+  },
+  "Slovak Republic": {
+    "Country / Territory / Island": "Slovak Republic",
+    "Firm Energy (e.g., Hydro, Geothermal)": "164",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "269",
+    "Energy Efficiency": "164",
+    "Electricity Consumption": "164",
+    "Operating Margin Grid Emission": "332",
+    "country_code_iso_2": "SK",
+    "country_code_iso_3": "SVK"
+  },
+  "Slovenia": {
+    "Country / Territory / Island": "Slovenia",
+    "Firm Energy (e.g., Hydro, Geothermal)": "285",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "494",
+    "Energy Efficiency": "285",
+    "Electricity Consumption": "285",
+    "Operating Margin Grid Emission": "620",
+    "country_code_iso_2": "SI",
+    "country_code_iso_3": "SVN"
+  },
+  "Solomon Islands": {
+    "Country / Territory / Island": "Solomon Islands",
+    "Firm Energy (e.g., Hydro, Geothermal)": "563",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "681",
+    "Energy Efficiency": "563",
+    "Electricity Consumption": "563",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "SB",
+    "country_code_iso_3": "SLB"
+  },
+  "Somalia": {
+    "Country / Territory / Island": "Somalia",
+    "Firm Energy (e.g., Hydro, Geothermal)": "582",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "689",
+    "Energy Efficiency": "582",
+    "Electricity Consumption": "582",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "SO",
+    "country_code_iso_3": "SOM"
+  },
+  "South Africa": {
+    "Country / Territory / Island": "South Africa",
+    "Firm Energy (e.g., Hydro, Geothermal)": "786",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "964",
+    "Energy Efficiency": "786",
+    "Electricity Consumption": "786",
+    "Operating Margin Grid Emission": "1070",
+    "country_code_iso_2": "ZA",
+    "country_code_iso_3": "ZAF"
+  },
+  "South Sudan": {
+    "Country / Territory / Island": "South Sudan",
+    "Firm Energy (e.g., Hydro, Geothermal)": "704",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "820",
+    "Energy Efficiency": "704",
+    "Electricity Consumption": "704",
+    "Operating Margin Grid Emission": "890",
+    "country_code_iso_2": "SS",
+    "country_code_iso_3": "SSD"
+  },
+  "Spain": {
+    "Country / Territory / Island": "Spain",
+    "Firm Energy (e.g., Hydro, Geothermal)": "209",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "329",
+    "Energy Efficiency": "209",
+    "Electricity Consumption": "209",
+    "Operating Margin Grid Emission": "402",
+    "country_code_iso_2": "ES",
+    "country_code_iso_3": "ESP"
+  },
+  "Sri Lanka": {
+    "Country / Territory / Island": "Sri Lanka",
+    "Firm Energy (e.g., Hydro, Geothermal)": "506",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "646",
+    "Energy Efficiency": "506",
+    "Electricity Consumption": "506",
+    "Operating Margin Grid Emission": "731",
+    "country_code_iso_2": "LK",
+    "country_code_iso_3": "LKA"
+  },
+  "Sudan": {
+    "Country / Territory / Island": "Sudan",
+    "Firm Energy (e.g., Hydro, Geothermal)": "398",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "609",
+    "Energy Efficiency": "398",
+    "Electricity Consumption": "398",
+    "Operating Margin Grid Emission": "736",
+    "country_code_iso_2": "SD",
+    "country_code_iso_3": "SDN"
+  },
+  "Suriname": {
+    "Country / Territory / Island": "Suriname",
+    "Firm Energy (e.g., Hydro, Geothermal)": "565",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "855",
+    "Energy Efficiency": "565",
+    "Electricity Consumption": "565",
+    "Operating Margin Grid Emission": "1029",
+    "country_code_iso_2": "SR",
+    "country_code_iso_3": "SUR"
+  },
+  "Sweden": {
+    "Country / Territory / Island": "Sweden",
+    "Firm Energy (e.g., Hydro, Geothermal)": "25",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "52",
+    "Energy Efficiency": "25",
+    "Electricity Consumption": "25",
+    "Operating Margin Grid Emission": "68",
+    "country_code_iso_2": "SE",
+    "country_code_iso_3": "SWE"
+  },
+  "Switzerland": {
+    "Country / Territory / Island": "Switzerland",
+    "Firm Energy (e.g., Hydro, Geothermal)": "20",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "38",
+    "Energy Efficiency": "20",
+    "Electricity Consumption": "20",
+    "Operating Margin Grid Emission": "48",
+    "country_code_iso_2": "CH",
+    "country_code_iso_3": "CHE"
+  },
+  "Syrian Arab Republic": {
+    "Country / Territory / Island": "Syrian Arab Republic",
+    "Firm Energy (e.g., Hydro, Geothermal)": "546",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "650",
+    "Energy Efficiency": "546",
+    "Electricity Consumption": "546",
+    "Operating Margin Grid Emission": "713",
+    "country_code_iso_2": "SY",
+    "country_code_iso_3": "SYR"
+  },
+  "Taiwan (Chinese Taipei)": {
+    "Country / Territory / Island": "Taiwan (Chinese Taipei)",
+    "Firm Energy (e.g., Hydro, Geothermal)": "331",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "427",
+    "Energy Efficiency": "331",
+    "Electricity Consumption": "331",
+    "Operating Margin Grid Emission": "484",
+    "country_code_iso_2": "TW",
+    "country_code_iso_3": "TWN"
+  },
+  "Tajikistan": {
+    "Country / Territory / Island": "Tajikistan",
+    "Firm Energy (e.g., Hydro, Geothermal)": "106",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "199",
+    "Energy Efficiency": "106",
+    "Electricity Consumption": "106",
+    "Operating Margin Grid Emission": "255",
+    "country_code_iso_2": "TJ",
+    "country_code_iso_3": "TJK"
+  },
+  "Tanzania, United Republic of": {
+    "Country / Territory / Island": ["Tanzania", "United Republic of"],
+    "Firm Energy (e.g., Hydro, Geothermal)": "336",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "458",
+    "Energy Efficiency": "336",
+    "Electricity Consumption": "336",
+    "Operating Margin Grid Emission": "531",
+    "country_code_iso_2": "TZ",
+    "country_code_iso_3": "TZA"
+  },
+  "Thailand": {
+    "Country / Territory / Island": "Thailand",
+    "Firm Energy (e.g., Hydro, Geothermal)": "351",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "413",
+    "Energy Efficiency": "351",
+    "Electricity Consumption": "351",
+    "Operating Margin Grid Emission": "450",
+    "country_code_iso_2": "TH",
+    "country_code_iso_3": "THA"
+  },
+  "Timor-Leste": {
+    "Country / Territory / Island": "Timor-Leste",
+    "Firm Energy (e.g., Hydro, Geothermal)": "589",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "691",
+    "Energy Efficiency": "589",
+    "Electricity Consumption": "589",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "TL",
+    "country_code_iso_3": "TLS"
+  },
+  "Togo": {
+    "Country / Territory / Island": "Togo",
+    "Firm Energy (e.g., Hydro, Geothermal)": "597",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "761",
+    "Energy Efficiency": "597",
+    "Electricity Consumption": "597",
+    "Operating Margin Grid Emission": "859",
+    "country_code_iso_2": "TG",
+    "country_code_iso_3": "TGO"
+  },
+  "Tonga": {
+    "Country / Territory / Island": "Tonga",
+    "Firm Energy (e.g., Hydro, Geothermal)": "533",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "670",
+    "Energy Efficiency": "533",
+    "Electricity Consumption": "533",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "TO",
+    "country_code_iso_3": "TON"
+  },
+  "Trinidad and Tobago": {
+    "Country / Territory / Island": "Trinidad and Tobago",
+    "Firm Energy (e.g., Hydro, Geothermal)": "370",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "488",
+    "Energy Efficiency": "370",
+    "Electricity Consumption": "370",
+    "Operating Margin Grid Emission": "559",
+    "country_code_iso_2": "TT",
+    "country_code_iso_3": "TTO"
+  },
+  "Tunisia": {
+    "Country / Territory / Island": "Tunisia",
+    "Firm Energy (e.g., Hydro, Geothermal)": "348",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "423",
+    "Energy Efficiency": "348",
+    "Electricity Consumption": "348",
+    "Operating Margin Grid Emission": "468",
+    "country_code_iso_2": "TN",
+    "country_code_iso_3": "TUN"
+  },
+  "Turkey": {
+    "Country / Territory / Island": "Turkey",
+    "Firm Energy (e.g., Hydro, Geothermal)": "309",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "351",
+    "Energy Efficiency": "309",
+    "Electricity Consumption": "309",
+    "Operating Margin Grid Emission": "376",
+    "country_code_iso_2": "TR",
+    "country_code_iso_3": "TUR"
+  },
+  "Turkmenistan": {
+    "Country / Territory / Island": "Turkmenistan",
+    "Firm Energy (e.g., Hydro, Geothermal)": "676",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "833",
+    "Energy Efficiency": "676",
+    "Electricity Consumption": "676",
+    "Operating Margin Grid Emission": "927",
+    "country_code_iso_2": "TM",
+    "country_code_iso_3": "TKM"
+  },
+  "Turks and Caicos Islands (U.K.)": {
+    "Country / Territory / Island": "Turks and Caicos Islands (U.K.)",
+    "Firm Energy (e.g., Hydro, Geothermal)": "451",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "639",
+    "Energy Efficiency": "451",
+    "Electricity Consumption": "451",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "TC",
+    "country_code_iso_3": "TCA"
+  },
+  "Tuvalu": {
+    "Country / Territory / Island": "Tuvalu",
+    "Firm Energy (e.g., Hydro, Geothermal)": "497",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "657",
+    "Energy Efficiency": "497",
+    "Electricity Consumption": "497",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "TV",
+    "country_code_iso_3": "TUV"
+  },
+  "Uganda": {
+    "Country / Territory / Island": "Uganda",
+    "Firm Energy (e.g., Hydro, Geothermal)": "116",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "218",
+    "Energy Efficiency": "116",
+    "Electricity Consumption": "116",
+    "Operating Margin Grid Emission": "279",
+    "country_code_iso_2": "UG",
+    "country_code_iso_3": "UGA"
+  },
+  "Ukraine": {
+    "Country / Territory / Island": "Ukraine",
+    "Firm Energy (e.g., Hydro, Geothermal)": "435",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "643",
+    "Energy Efficiency": "435",
+    "Electricity Consumption": "435",
+    "Operating Margin Grid Emission": "768",
+    "country_code_iso_2": "UA",
+    "country_code_iso_3": "UKR"
+  },
+  "United Arab Emirates": {
+    "Country / Territory / Island": "United Arab Emirates",
+    "Firm Energy (e.g., Hydro, Geothermal)": "310",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "464",
+    "Energy Efficiency": "310",
+    "Electricity Consumption": "310",
+    "Operating Margin Grid Emission": "556",
+    "country_code_iso_2": "AE",
+    "country_code_iso_3": "ARE"
+  },
+  "United Kingdom": {
+    "Country / Territory / Island": "United Kingdom",
+    "Firm Energy (e.g., Hydro, Geothermal)": "219",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "320",
+    "Energy Efficiency": "219",
+    "Electricity Consumption": "219",
+    "Operating Margin Grid Emission": "380",
+    "country_code_iso_2": "GB",
+    "country_code_iso_3": "GBR"
+  },
+  "United States": {
+    "Country / Territory / Island": "United States",
+    "Firm Energy (e.g., Hydro, Geothermal)": "246",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "352",
+    "Energy Efficiency": "246",
+    "Electricity Consumption": "246",
+    "Operating Margin Grid Emission": "416",
+    "country_code_iso_2": "US",
+    "country_code_iso_3": "USA"
+  },
+  "Uruguay": {
+    "Country / Territory / Island": "Uruguay",
+    "Firm Energy (e.g., Hydro, Geothermal)": "65",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "133",
+    "Energy Efficiency": "65",
+    "Electricity Consumption": "65",
+    "Operating Margin Grid Emission": "174",
+    "country_code_iso_2": "UY",
+    "country_code_iso_3": "URY"
+  },
+  "Uzbekistan": {
+    "Country / Territory / Island": "Uzbekistan",
+    "Firm Energy (e.g., Hydro, Geothermal)": "467",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "558",
+    "Energy Efficiency": "467",
+    "Electricity Consumption": "467",
+    "Operating Margin Grid Emission": "612",
+    "country_code_iso_2": "UZ",
+    "country_code_iso_3": "UZB"
+  },
+  "Vanatu": {
+    "Country / Territory / Island": "Vanatu",
+    "Firm Energy (e.g., Hydro, Geothermal)": "504",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "659",
+    "Energy Efficiency": "504",
+    "Electricity Consumption": "504",
+    "Operating Margin Grid Emission": "753",
+    "country_code_iso_2": "VU",
+    "country_code_iso_3": "VUT"
+  },
+  "Venezuela, Bolivarian Republic of": {
+    "Country / Territory / Island": ["Venezuela", "Bolivarian Republic of"],
+    "Firm Energy (e.g., Hydro, Geothermal)": "368",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "582",
+    "Energy Efficiency": "368",
+    "Electricity Consumption": "368",
+    "Operating Margin Grid Emission": "711",
+    "country_code_iso_2": "VE",
+    "country_code_iso_3": "VEN"
+  },
+  "Viet Nam": {
+    "Country / Territory / Island": "Viet Nam",
+    "Firm Energy (e.g., Hydro, Geothermal)": "381",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "493",
+    "Energy Efficiency": "381",
+    "Electricity Consumption": "381",
+    "Operating Margin Grid Emission": "560",
+    "country_code_iso_2": "VN",
+    "country_code_iso_3": "VNM"
+  },
+  "Virgin Islands (U.S.)": {
+    "Country / Territory / Island": "Virgin Islands (U.S.)",
+    "Firm Energy (e.g., Hydro, Geothermal)": "373",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "546",
+    "Energy Efficiency": "373",
+    "Electricity Consumption": "373",
+    "Operating Margin Grid Emission": "650",
+    "country_code_iso_2": "VI",
+    "country_code_iso_3": "VIR"
+  },
+  "Yemen": {
+    "Country / Territory / Island": "Yemen",
+    "Firm Energy (e.g., Hydro, Geothermal)": "615",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "735",
+    "Energy Efficiency": "615",
+    "Electricity Consumption": "615",
+    "Operating Margin Grid Emission": "807",
+    "country_code_iso_2": "YE",
+    "country_code_iso_3": "YEM"
+  },
+  "Zambia": {
+    "Country / Territory / Island": "Zambia",
+    "Firm Energy (e.g., Hydro, Geothermal)": "197",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "334",
+    "Energy Efficiency": "197",
+    "Electricity Consumption": "197",
+    "Operating Margin Grid Emission": "416",
+    "country_code_iso_2": "ZM",
+    "country_code_iso_3": "ZMB"
+  },
+  "Zimbabwe": {
+    "Country / Territory / Island": "Zimbabwe",
+    "Firm Energy (e.g., Hydro, Geothermal)": "880",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "1315",
+    "Energy Efficiency": "880",
+    "Electricity Consumption": "880",
+    "Operating Margin Grid Emission": "1575",
+    "country_code_iso_2": "ZW",
+    "country_code_iso_3": "ZWE"
+  },
+  "Memo:  EU 27": {
+    "Country / Territory / Island": "Memo:  EU 27",
+    "Firm Energy (e.g., Hydro, Geothermal)": "261",
+    "Intermittent Energy (e.g., Solar, Wind, Tidal)": "353",
+    "Energy Efficiency": "261",
+    "Electricity Consumption": "261",
+    "Operating Margin Grid Emission": "409",
+    "country_code_iso_2": "",
+    "country_code_iso_3": ""
+  }
+}

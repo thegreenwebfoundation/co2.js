@@ -1,0 +1,7 @@
+node_modules
+
+# Ignore data files that are not generated
+fixtures
+functions
+utils
+*.min.js
