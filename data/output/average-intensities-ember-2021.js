@@ -86,5 +86,8 @@ const data = {
   vnm: "491.192",
   world: "442.37",
 };
-export { data };
-export default { data };
+const type = "average";
+const source = "Ember";
+const year = "2021";
+export { data, type, source, year };
+export default { data, type, source, year };

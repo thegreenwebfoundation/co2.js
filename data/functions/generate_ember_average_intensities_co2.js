@@ -2,6 +2,9 @@ const fs = require("fs");
 const csv = fs.readFileSync("data/co2-intensities-ember-2021.csv");
 const parseCSVRow = require("../utils/parseCSVRow");
 const getCountryCodes = require("../utils/getCountryCodes");
+const type = "average";
+const source = "Ember";
+const year = "2021";
 
 const array = csv.toString().split("\n");
 
@@ -60,12 +63,13 @@ const gridIntensityJson = JSON.stringify(gridIntensityResults);
 
 // This saves the country code and emissions data only, for use in the CO2.js library
 fs.writeFileSync("data/output/average-intensities-ember-2021.js", `const data = ${gridIntensityJson}; 
-export { data }; 
-export default { data };`);
+const type = "${type}";
+const source = "${source}";
+const year = "${year}";
+export { data, type, source, year }; 
+export default { data, type, source, year };`);
 // Save a minified version to the src folder so that it can be easily imported into the library
-fs.writeFileSync("src/data/average-intensities-ember-2021.min.js", `const data = ${gridIntensityJson}; 
-export { data }; 
-export default { data };`);
+fs.writeFileSync("src/data/average-intensities-ember-2021.min.js", `const data = ${gridIntensityJson}; const type = "${type}"; const source = "${source}"; const year = "${year}"; export { data, type, source, year }; export default { data, type, source, year };`);
 
 // This saves the full data set as a JSON file for reference.
 fs.writeFileSync("data/output/average-intensities-ember-2021.json", json);

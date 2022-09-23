@@ -2,6 +2,9 @@ const fs = require("fs");
 const csv = fs.readFileSync("data/IFI_Default_Grid_Factors_2021_v3.1_unfccc.csv");
 const parseCSVRow = require("../utils/parseCSVRow");
 const getCountryCodes = require("../utils/getCountryCodes");
+const type = "marginal";
+const source = "UNFCCC";
+const year = "2021";
 
 const array = csv.toString().split("\n");
 
@@ -77,16 +80,15 @@ const gridIntensityJson = JSON.stringify(gridIntensityResults);
 fs.writeFileSync(
   "data/output/marginal-intensities-unfccc-2021.js",
   `const data = ${gridIntensityJson}; 
-  export { data }; 
-  export default { data };`
-);
+  const type = "${type}";
+const source = "${source}";
+const year = "${year}";
+export { data, type, source, year }; 
+export default { data, type, source, year };`);
 // Save a minified version to the src folder so that it can be easily imported into the library
 fs.writeFileSync(
   "src/data/marginal-intensities-unfccc-2021.min.js",
-  `const data = ${gridIntensityJson}; 
-  export { data }; 
-  export default { data };`
-);
+  `const data = ${gridIntensityJson}; const type = "${type}"; const source = "${source}"; const year = "${year}"; export { data, type, source, year }; export default { data, type, source, year };` );
 
 // This saves the full data set as a JSON file for reference.
 fs.writeFileSync("data/output/marginal-intensities-unfccc-2021.json", json);

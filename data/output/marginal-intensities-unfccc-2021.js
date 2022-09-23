@@ -232,5 +232,8 @@ const data = {
   ZWE: "1575",
   "Memo:  EU 27": "409",
 };
-export { data };
-export default { data };
+const type = "marginal";
+const source = "UNFCCC";
+const year = "2021";
+export { data, type, source, year };
+export default { data, type, source, year };
