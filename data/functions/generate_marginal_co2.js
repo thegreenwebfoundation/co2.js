@@ -62,7 +62,7 @@ for (let currentArrayString of array.slice(5)) {
     }
 
     if (headers[column].startsWith("Operating Margin Grid Emission")) {
-      gridIntensityResults[countryCodes.country_code_iso_3 || country] = jsonProperties[column]
+      gridIntensityResults[countryCodes.country_code_iso_3.toUpperCase() || country.toUpperCase()] = jsonProperties[column]
         .replace("\r", "")
         .replace('\"', "");
       }

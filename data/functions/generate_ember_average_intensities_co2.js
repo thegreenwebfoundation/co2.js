@@ -47,7 +47,7 @@ for (let currentArrayString of array) {
 		// This extracts only the emissions intensity data from the CSV.
 		// We use this to generate a smaller data file which can be later imported into CO2.js
 		if (headers[column].startsWith('emissions_intensity_gco2_per_kwh')) {
-			gridIntensityResults[country.toLowerCase()] = jsonProperties[column].replace("\r", "")
+			gridIntensityResults[country.toUpperCase()] = jsonProperties[column].replace("\r", "")
 		}
 	}
 

@@ -22,8 +22,11 @@ const getCountryCodes = (field, input) => {
 		}
 	})
 
-	const { country_code_iso_2, country_code_iso_3 } = mappedCountry;
-	return { country_code_iso_2, country_code_iso_3 };
+	const { country_code_iso_2, country_code_iso_3 } = mappedCountry
+	return { 
+		country_code_iso_2: country_code_iso_2.toUpperCase(),
+		country_code_iso_3: country_code_iso_3.toUpperCase()
+	};
 }
 
 module.exports = getCountryCodes;
