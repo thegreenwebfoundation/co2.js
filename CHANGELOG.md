@@ -14,27 +14,43 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
-## 0.10.4 2022-08-12
+## [0.11.0] - 2022-10-03
+
+### Change
+
+- Change the default model to Sustainable Web Design.
+
+### Added
+
+- Introduced average grid intensity data from [Ember](https://ember-climate.org/data/data-explorer/), as well as marginal intensity data from the [UNFCCC](https://unfccc.int/) (United Nations Framework Convention on Climate Change).
+- Created scripts to automate the generation of grid intensity data based of Ember & UNFCCC source files.
+- Introduced the ability for developers to directly import annual, country-level marginal or average grid intensity data into projects.
+
+***
+
+## Released
+
+## [0.10.4] - 2022-08-12
 
 - Introduced a `release:patch` command, to automate the publishing process. This is designed to make sure we always publish the most recent compiled code, by adding a rebuild step that can be easy to forget.
 
 ### Added
 
-## 0.10.3 2022-08-12
+## [0.10.3] - 2022-08-12
 
 ### Added
 
 - Introduced a new `perVisit()` function for the Sustainable Web Design model, which applies [caching and return visits assumptions](https://sustainablewebdesign.org/calculating-digital-emissions/).
 
-## 0.10.2 2022-08-12
+## [0.10.2] - 2022-08-12
 
 - Added the ability to set the model used by CO2.js to the Sustainable Web Design model, using a simple 'swd' string, instead of needing to pass in a class.
 
-## 0.10.1 2022-08-01
+## [0.10.1] - 2022-08-01
 
 This release used a version bump as previously we had released v0.10.0 under a pre-release tag.
 
-## 0.10.0 2022-06-27
+## [0.10.0] - 2022-06-27
 
 - Added ES import syntax as the main way for handling imports and exports of code within the module.
 - Changed eslint settings to use later version of ecmascript (2020)

@@ -1,4 +1,4 @@
-module.exports = {
+const data = {
   AFG: "414",
   ALB: "0",
   DZA: "528",
@@ -13,7 +13,7 @@ module.exports = {
   AUS: "808",
   AUT: "242",
   AZE: "534",
-  "Azores (Portugal)": "753",
+  "AZORES (PORTUGAL)": "753",
   BHS: "753",
   BHR: "726",
   BGD: "528",
@@ -41,7 +41,7 @@ module.exports = {
   CPV: "753",
   CAF: "188",
   TCD: "753",
-  "Channel Islands (U.K)": "753",
+  "CHANNEL ISLANDS (U.K)": "753",
   CHL: "657",
   CHN: "899",
   COL: "410",
@@ -123,7 +123,7 @@ module.exports = {
   LTU: "211",
   LUX: "220",
   MDG: "876",
-  "Madeira (Portugal)": "663",
+  "MADEIRA (PORTUGAL)": "663",
   MWI: "489",
   MYS: "551",
   MDV: "753",
@@ -230,5 +230,10 @@ module.exports = {
   YEM: "807",
   ZMB: "416",
   ZWE: "1575",
-  "Memo:  EU 27": "409",
+  "MEMO:  EU 27": "409",
 };
+const type = "marginal";
+const source = "UNFCCC";
+const year = "2021";
+export { data, type, source, year };
+export default { data, type, source, year };

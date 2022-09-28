@@ -6,6 +6,7 @@ import path from "path";
 import pagexray from "pagexray";
 
 import CO2 from "./co2.js";
+import { averageIntensity, marginalIntensity } from "./index.js";
 
 describe("co2", () => {
   let har, co2;
@@ -325,6 +326,23 @@ describe("co2", () => {
       }).toThrowError(
         `The perVisit() method is not supported in the model you are using. Try using perByte() instead.\nSee https://developers.thegreenwebfoundation.org/co2js/methods/ to learn more about the methods available in CO2.js.`
       );
+    });
+  });
+
+  // Test that grid intensity data can be imported and used
+  describe("Importing grid intensity", () => {
+    describe("average intensity", () => {
+      it("imports average intensity data", () => {
+        expect(averageIntensity).toHaveProperty("type", "average");
+        expect(averageIntensity).toHaveProperty("source", "Ember");
+      });
+    });
+
+    describe("marginal intensity", () => {
+      it("imports average intensity data", () => {
+        expect(marginalIntensity).toHaveProperty("type", "marginal");
+        expect(marginalIntensity).toHaveProperty("source", "UNFCCC");
+      });
     });
   });
 });

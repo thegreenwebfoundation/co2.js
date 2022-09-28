@@ -72,6 +72,22 @@ You can also build the CO2.js library from the source code. To do this:
     - `dist/esm` - An ES Modules compatible build.
     - `dist/iife` - An Immediately Invoked Function Expression (IIFE) version of the library.
 
+## Marginal and average emissions intensity data
+
+CO2.js includes yearly average grid intensity data from [Ember](https://ember-climate.org/data/data-explorer/), as well as marginal intensity data from the [UNFCCC](https://unfccc.int/) (United Nations Framework Convention on Climate Change). You can find the data in JSON and CommonJS Module format in the `data/output` folder.
+
+### Using emissions intensity data
+
+You can import annual, country-level marginal or average grid intensity data into your projects directly from CO2.js. For example, if we wanted to use the average grid intensity for Australia in our project, we could use the code below:
+
+```js
+import { averageIntensity } from '@tgwf/co2';
+const { data } = averageIntensity;
+const { AUS } = data;
+console.log({ AUS })
+```
+
+All countries are represented by their respective [Alpha-3 ISO country code](https://www.iso.org/obp/ui/#search).
 ## Publishing to NPM
 
 We use [`np`](https://www.npmjs.com/package/np) to publish new versions of this library to NPM. To do this:
@@ -81,9 +97,6 @@ We use [`np`](https://www.npmjs.com/package/np) to publish new versions of this 
 3. `np` will run several automated steps to publish the new package to NPM.
 4. If everything runs successfully, you can then add release notes to GitHub for the newly published package.
 
-## Marginal and average emissions intensity data
-
-CO2.js includes yearly average grid intensity data from [Ember](https://ember-climate.org/data/data-explorer/), as well as marginal intensity data from the [UNFCCC](https://unfccc.int/) (United Nations Framework Convention on Climate Change). You can find the data in JSON and CommonJS Module format in the `data/output` folder.
 
 ## Licenses
 

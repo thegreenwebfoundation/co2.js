@@ -2,6 +2,9 @@ const fs = require("fs");
 const csv = fs.readFileSync("data/IFI_Default_Grid_Factors_2021_v3.1_unfccc.csv");
 const parseCSVRow = require("../utils/parseCSVRow");
 const getCountryCodes = require("../utils/getCountryCodes");
+const type = "marginal";
+const source = "UNFCCC";
+const year = "2021";
 
 const array = csv.toString().split("\n");
 
@@ -59,7 +62,7 @@ for (let currentArrayString of array.slice(5)) {
     }
 
     if (headers[column].startsWith("Operating Margin Grid Emission")) {
-      gridIntensityResults[countryCodes.country_code_iso_3 || country] = jsonProperties[column]
+      gridIntensityResults[countryCodes.country_code_iso_3.toUpperCase() || country.toUpperCase()] = jsonProperties[column]
         .replace("\r", "")
         .replace('\"', "");
       }
@@ -76,12 +79,16 @@ const gridIntensityJson = JSON.stringify(gridIntensityResults);
 // This saves the country code and emissions data only, for use in the CO2.js library
 fs.writeFileSync(
   "data/output/marginal-intensities-unfccc-2021.js",
-  `module.exports = ${gridIntensityJson}`
-);
+  `const data = ${gridIntensityJson}; 
+  const type = "${type}";
+const source = "${source}";
+const year = "${year}";
+export { data, type, source, year }; 
+export default { data, type, source, year };`);
+// Save a minified version to the src folder so that it can be easily imported into the library
 fs.writeFileSync(
-  "data/output/marginal-intensities-unfccc-2021.min.js",
-  `module.exports = ${gridIntensityJson}`
-);
+  "src/data/marginal-intensities-unfccc-2021.min.js",
+  `const data = ${gridIntensityJson}; const type = "${type}"; const source = "${source}"; const year = "${year}"; export { data, type, source, year }; export default { data, type, source, year };` );
 
 // This saves the full data set as a JSON file for reference.
 fs.writeFileSync("data/output/marginal-intensities-unfccc-2021.json", json);
