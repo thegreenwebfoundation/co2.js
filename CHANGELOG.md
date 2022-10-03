@@ -26,10 +26,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added new paths to `import` and `require` the annual, country-level average and marginal carbon intensity data mentioned above like, as javascript objects, or as JSON. See [#104 for more](https://github.com/thegreenwebfoundation/co2.js/issues/104).
 - Added links to CO2.js in forms already available on CDNs to avoid needing to npm install it to try it out. See [#105 for more](https://github.com/thegreenwebfoundation/co2.js/issues/105).
 - Introduced scripts to automate the generation of grid intensity data based of Ember & UNFCCC source files.
+- Introduced a `release:minor` command, to automate the publishing process, to complement `release:patch`.
 
 ### Changed
 
 - Changed the default model for transfer based CO2 calculations from the _1byte_ model to the _Sustainable Web Design_ model instead. See https://developers.thegreenwebfoundation.org/co2js/models/ for guidance on the differences and how to migrate between them. See [#94 for more](https://github.com/thegreenwebfoundation/co2.js/issues/94).
+- Updated our release commands to generate and format the carbon intensity data as part of the release process.
 
 ## 0.10.4 2022-08-12
 
