@@ -12,8 +12,15 @@ images/
 
 # Test files
 src/**/*.test.js
+
+# Data
+# exlude mode data
 data
+
+# but include the output js / json files
 !data/output/
+# and include the minimized versions
+!src/data
 
 # Local sqlite db
 url2green.db
