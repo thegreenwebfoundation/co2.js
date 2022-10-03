@@ -14,7 +14,7 @@ images/
 src/**/*.test.js
 
 # Data
-# exlude mode data
+# exclude mode data
 data
 
 # but include the output js / json files
