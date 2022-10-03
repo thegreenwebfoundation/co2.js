@@ -12,7 +12,8 @@ images/
 
 # Test files
 src/**/*.test.js
-data/
+data
+!data/output/
 
 # Local sqlite db
 url2green.db
