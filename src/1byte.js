@@ -44,7 +44,7 @@ class OneByte {
     this.KWH_PER_BYTE_FOR_NETWORK = KWH_PER_BYTE_FOR_NETWORK;
   }
 
-  perByte(bytes, green) {
+  perByte(bytes, green, detailed) {
     if (bytes < 1) {
       return 0;
     }
@@ -58,10 +58,27 @@ class OneByte {
       const Co2forNetwork =
         bytes * KWH_PER_BYTE_FOR_NETWORK * CO2_PER_KWH_NETWORK_GREY;
 
+      if (detailed) {
+        return {
+          datacenterCo2: Co2ForDC,
+          networkCo2: Co2forNetwork,
+          total: Co2ForDC + Co2forNetwork,
+        };
+      }
+
       return Co2ForDC + Co2forNetwork;
     }
 
     const KwHPerByte = KWH_PER_BYTE_IN_DC + KWH_PER_BYTE_FOR_NETWORK;
+
+    if (detailed) {
+      return {
+        datacenterCo2: bytes * KWH_PER_BYTE_IN_DC * CO2_PER_KWH_IN_DC_GREY,
+        networkCo2: bytes * KWH_PER_BYTE_FOR_NETWORK * CO2_PER_KWH_IN_DC_GREY,
+        total: bytes * KwHPerByte * CO2_PER_KWH_IN_DC_GREY,
+      };
+    }
+
     return bytes * KwHPerByte * CO2_PER_KWH_IN_DC_GREY;
   }
 }
