@@ -87,7 +87,6 @@ const data = {
   WORLD: "442.37",
 };
 const type = "average";
-const source = "Ember";
 const year = "2021";
-export { data, type, source, year };
-export default { data, type, source, year };
+export { data, type, year };
+export default { data, type, year };
