@@ -233,7 +233,6 @@ const data = {
   "MEMO:  EU 27": "409",
 };
 const type = "marginal";
-const source = "UNFCCC";
 const year = "2021";
-export { data, type, source, year };
-export default { data, type, source, year };
+export { data, type, year };
+export default { data, type, year };
