@@ -334,14 +334,12 @@ describe("co2", () => {
     describe("average intensity", () => {
       it("imports average intensity data", () => {
         expect(averageIntensity).toHaveProperty("type", "average");
-        expect(averageIntensity).toHaveProperty("source", "Ember");
       });
     });
 
     describe("marginal intensity", () => {
       it("imports average intensity data", () => {
         expect(marginalIntensity).toHaveProperty("type", "marginal");
-        expect(marginalIntensity).toHaveProperty("source", "UNFCCC");
       });
     });
   });
