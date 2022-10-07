@@ -9,18 +9,19 @@
 
 # Documentation
 images/
+public
 
 # Test files
 src/**/*.test.js
 
 # Data
 # exclude mode data
-data/
+data/**
 
 # but include the output js / json files
-!data/output/
+!data/output/**
 # and include the minimized versions
-!src/data/
+!src/data/**
 
 # Local sqlite db
 url2green.db
