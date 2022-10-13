@@ -123,15 +123,15 @@ class SustainableWebDesign {
 
     // pull out our values…
     const co2Values = Object.values(co2ValuesbyComponent);
-
-    if (detailed) {
-      return co2ValuesbyComponent;
-    }
-
-    // so we can return their sum
-    return co2Values.reduce(
+    const co2ValuesSum = co2Values.reduce(
       (prevValue, currentValue) => prevValue + currentValue
     );
+
+    if (detailed) {
+      return {...co2ValuesbyComponent, total: co2ValuesSum};
+    }
+
+    return co2ValuesSum;
   }
 
   /**
@@ -169,15 +169,16 @@ class SustainableWebDesign {
 
     // pull out our values…
     const co2Values = Object.values(co2ValuesbyComponent);
+    const co2ValuesSum = co2Values.reduce(
+      (prevValue, currentValue) => prevValue + currentValue
+    );
 
     if (detailed) {
-      return co2ValuesbyComponent;
+      return {...co2ValuesbyComponent, total: co2ValuesSum};
     }
 
     // so we can return their sum
-    return co2Values.reduce(
-      (prevValue, currentValue) => prevValue + currentValue
-    );
+    return co2ValuesSum;
   }
 
   /**
