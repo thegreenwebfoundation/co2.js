@@ -6,7 +6,10 @@
  * Updated calculations and figures from
  * https://sustainablewebdesign.org/calculating-digital-emissions/
  *
- *
+ * TODO: Provide a way to pass in a custom figures for:
+ *       - the carbon intensity
+ *       - the percentage of data loaded on subsequent visits
+ *       - the percentage first & returning visitors
  */
 import debugFactory from "debug";
 const log = debugFactory("tgwf:sustainable-web-design");
