@@ -343,4 +343,17 @@ describe("co2", () => {
       });
     });
   });
+
+  describe("Using grid intensity", () => {
+    const co2 = new CO2({
+      gridIntensity: {
+        device: { value: 526.876 },
+        dataCenter: { country: "TWN" },
+      },
+    });
+    it("uses the grid intensity data", () => {
+      console.log(co2.perVisit(1000000));
+      expect(co2.perVisit(1000000)).toBeGreaterThan(0);
+    });
+  });
 });

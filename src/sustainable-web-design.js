@@ -73,17 +73,24 @@ class SustainableWebDesign {
    * @return {number} the total number in grams of CO2 equivalent emissions
    */
   co2byComponent(energyBycomponent, carbonIntensity = GLOBAL_INTENSITY) {
+    const { device, dataCenter } = carbonIntensity;
+    let globalEmissions = GLOBAL_INTENSITY;
+    let dataCenterCarbonIntensity = dataCenter?.value || carbonIntensity;
+    let deviceCarbonIntensity = device?.value || GLOBAL_INTENSITY;
+
     const returnCO2ByComponent = {};
     for (const [key, value] of Object.entries(energyBycomponent)) {
       // we update the datacentre, as that's what we have information
       // about.
       if (key.startsWith("dataCenterEnergy")) {
-        returnCO2ByComponent[key] = value * carbonIntensity;
+        returnCO2ByComponent[key] = value * dataCenterCarbonIntensity;
+      } else if (key.startsWith("consumerDeviceEnergy")) {
+        returnCO2ByComponent[key] = value * deviceCarbonIntensity;
       } else {
         // We don't have info about the device location,
         // nor the network path used, nor the production emissions
         // so we revert to global figures
-        returnCO2ByComponent[key] = value * GLOBAL_INTENSITY;
+        returnCO2ByComponent[key] = value * globalEmissions;
       }
     }
     return returnCO2ByComponent;
@@ -141,24 +148,26 @@ class SustainableWebDesign {
    * @param {number} `carbonIntensity` the carbon intensity for datacentre (average figures, not marginal ones)
    * @return {number} the total number in grams of CO2 equivalent emissions
    */
-  perVisit(bytes, carbonIntensity = GLOBAL_INTENSITY) {
+  perVisit(bytes, carbonIntensity = false) {
+    if (
+      typeof carbonIntensity !== "boolean" &&
+      typeof carbonIntensity !== "object"
+    ) {
+      throw new Error(
+        `perVisit expects a gridIntensity object or boolean for the carbon intensity value. Received: ${typeof carbonIntensity}`
+      );
+    }
     const energyBycomponent = this.energyPerVisitByComponent(bytes);
 
-    // when faced with falsy values, fallback to global intensity
-    if (Boolean(carbonIntensity) === false) {
-      carbonIntensity = GLOBAL_INTENSITY;
-    }
-    // if we have a boolean, we have a green result from the green web checker
-    // use the renewables intensity
-    if (carbonIntensity === true) {
-      carbonIntensity = RENEWABLES_INTENSITY;
-    }
-
-    // otherwise when faced with non numeric values throw an error
-    if (typeof carbonIntensity !== "number") {
-      throw new Error(
-        `perVisit expects a numeric value or boolean for the carbon intensity value. Received: ${carbonIntensity}`
-      );
+    // handle the object
+    if (typeof carbonIntensity !== "object") {
+      if (carbonIntensity === true) {
+        // if we have a boolean, we have a green result from the green web checker
+        // use the renewables intensity
+        carbonIntensity = RENEWABLES_INTENSITY;
+      } else {
+        carbonIntensity = GLOBAL_INTENSITY;
+      }
     }
 
     const co2ValuesbyComponent = this.co2byComponent(

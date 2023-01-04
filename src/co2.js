@@ -17,6 +17,65 @@ class CO2 {
         `"${options.model}" is not a valid model. Please use "1byte" for the OneByte model, and "swd" for the Sustainable Web Design model.\nSee https://developers.thegreenwebfoundation.org/co2js/models/ to learn more about the models available in CO2.js.`
       );
     }
+
+    if (options?.gridIntensity) {
+      this.model.gridIntensity = {};
+      const { device, dataCenter } = options.gridIntensity;
+      if (device) {
+        // Check if device is an object with a value property
+        if (typeof device === "object" && device.value) {
+          // Check if the value is a number
+          if (typeof device.value === "number") {
+            this.model.gridIntensity["device"] = {
+              value: device.value,
+            };
+          } else {
+            throw new Error(
+              `The value for device grid intensity must be a number. You passed in a ${typeof device.value}.`
+            );
+          }
+        } else if (typeof device === "object" && device.country) {
+          const averageIntensity =
+            require("./data/average-intensities-2021.min.js").default;
+          if (!averageIntensity.data[device.country]) {
+            throw new Error(
+              `"${device.country}" is not a valid country. Please use a valid 3 digit ISO 3166 country code. \nSee https://developers.thegreenwebfoundation.org/co2js/data/ for more information.`
+            );
+          }
+          this.model.gridIntensity["device"] = {
+            country: device.country,
+            value: parseFloat(averageIntensity.data[device.country]),
+          };
+        }
+      }
+      if (dataCenter) {
+        // Check if device is an object with a value property
+        if (typeof dataCenter === "object" && dataCenter.value) {
+          // Check if the value is a number
+          if (typeof dataCenter.value === "number") {
+            this.model.gridIntensity.dataCenter = {
+              value: dataCenter.value,
+            };
+          } else {
+            throw new Error(
+              `The value for device grid intensity must be a number. You passed in a ${typeof device.value}.`
+            );
+          }
+        } else if (typeof dataCenter === "object" && dataCenter.country) {
+          const averageIntensity =
+            require("./data/average-intensities-2021.min.js").default;
+          if (!averageIntensity.data[dataCenter.country]) {
+            throw new Error(
+              `"${dataCenter.country}" is not a valid country. Please use a valid 3 digit ISO 3166 country code. \nSee https://developers.thegreenwebfoundation.org/co2js/data/ for more information.`
+            );
+          }
+          this.model.gridIntensity["dataCenter"] = {
+            country: dataCenter.country,
+            value: parseFloat(averageIntensity.data[dataCenter.country]),
+          };
+        }
+      }
+    }
   }
 
   /**
@@ -41,9 +100,10 @@ class CO2 {
    * @param {boolean} green
    * @return {number} the amount of CO2 in grammes
    */
-  perVisit(bytes, green) {
+  perVisit(bytes, green = false) {
     if (this.model?.perVisit) {
-      return this.model.perVisit(bytes, green);
+      const gridIntensity = this.model?.gridIntensity || green;
+      return this.model.perVisit(bytes, gridIntensity);
     } else {
       throw new Error(
         `The perVisit() method is not supported in the model you are using. Try using perByte() instead.\nSee https://developers.thegreenwebfoundation.org/co2js/methods/ to learn more about the methods available in CO2.js.`
