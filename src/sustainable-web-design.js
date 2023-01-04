@@ -75,12 +75,14 @@ class SustainableWebDesign {
       // we update the datacentre, as that's what we have information
       // about.
       if (key.startsWith("dataCenterEnergy")) {
-        returnCO2ByComponent[key] = value * carbonIntensity;
+        returnCO2ByComponent[key.replace("Energy", "CO2")] =
+          value * carbonIntensity;
       } else {
         // We don't have info about the device location,
         // nor the network path used, nor the production emissions
         // so we revert to global figures
-        returnCO2ByComponent[key] = value * GLOBAL_INTENSITY;
+        returnCO2ByComponent[key.replace("Energy", "CO2")] =
+          value * GLOBAL_INTENSITY;
       }
     }
     return returnCO2ByComponent;
