@@ -361,7 +361,16 @@ describe("co2", () => {
       cachePercentage: 0.5,
     });
     it("uses the grid intensity data", () => {
-      console.log(co2.perVisit(1000000));
+      expect(co2.perVisit(1000000)).toBeGreaterThan(0.27031);
+    });
+  });
+
+  describe("Using custom first and return visitor figures in SWD", () => {
+    const co2 = new CO2({
+      firstVisitPercentage: 0.8,
+      returnVisitPercentage: 0.2,
+    });
+    it("uses the grid intensity data", () => {
       expect(co2.perVisit(1000000)).toBeGreaterThan(0.27031);
     });
   });

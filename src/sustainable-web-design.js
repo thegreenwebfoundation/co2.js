@@ -230,6 +230,14 @@ class SustainableWebDesign {
       dataReloadRatio = 1 - options.cachePercentage;
     }
 
+    if (options.firstVisitPercentage) {
+      firstView = options.firstVisitPercentage;
+    }
+
+    if (options.returnVisitPercentage) {
+      returnView = options.returnVisitPercentage;
+    }
+
     const energyBycomponent = this.energyPerByteByComponent(bytes);
     const cacheAdjustedSegmentEnergy = {};
 

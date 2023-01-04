@@ -79,10 +79,54 @@ class CO2 {
 
     if (options?.cachePercentage) {
       if (typeof options.cachePercentage === "number") {
-        this.model.cachePercentage = options.cachePercentage;
+        if (options.cachePercentage > 0 && options.cachePercentage < 1) {
+          this.model.cachePercentage = options.cachePercentage;
+        } else {
+          throw new Error(
+            `The cachePercentage option must be a number between 0 and 1. You passed in ${options.cachePercentage}.`
+          );
+        }
       } else {
         throw new Error(
           `The cachePercentage option must be a number. You passed in a ${typeof options.cachePercentage}.`
+        );
+      }
+    }
+
+    if (options?.firstVisitPercentage) {
+      if (typeof options.firstVisitPercentage === "number") {
+        if (
+          options.firstVisitPercentage > 0 &&
+          options.firstVisitPercentage < 1
+        ) {
+          this.model.firstVisitPercentage = options.firstVisitPercentage;
+        } else {
+          throw new Error(
+            `The firstVisitPercentage option must be a number between 0 and 1. You passed in ${options.firstVisitPercentage}.`
+          );
+        }
+      } else {
+        throw new Error(
+          `The firstVisitPercentage option must be a number. You passed in a ${typeof options.firstVisitPercentage}.`
+        );
+      }
+    }
+
+    if (options?.returnVisitPercentage) {
+      if (typeof options.returnVisitPercentage === "number") {
+        if (
+          options.returnVisitPercentage > 0 &&
+          options.returnVisitPercentage < 1
+        ) {
+          this.model.returnVisitPercentage = options.returnVisitPercentage;
+        } else {
+          throw new Error(
+            `The returnVisitPercentage option must be a number between 0 and 1. You passed in ${options.returnVisitPercentage}.`
+          );
+        }
+      } else {
+        throw new Error(
+          `The returnVisitPercentage option must be a number. You passed in a ${typeof options.returnVisitPercentage}.`
         );
       }
     }
@@ -115,6 +159,8 @@ class CO2 {
       const gridIntensity = this.model?.gridIntensity || green;
       return this.model.perVisit(bytes, gridIntensity, {
         cachePercentage: this.model.cachePercentage,
+        firstVisitPercentage: this.model.firstVisitPercentage,
+        returnVisitPercentage: this.model.returnVisitPercentage,
       });
     } else {
       throw new Error(
