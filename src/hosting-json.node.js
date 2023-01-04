@@ -70,4 +70,5 @@ function checkDomainsInJSON(domains, db) {
 module.exports = {
   check,
   loadJSON,
+  greenDomainsFromResults,
 };

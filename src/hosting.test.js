@@ -54,22 +54,15 @@ describe("hosting", () => {
   describe("checking a single domain with #check", () => {
     it("use the API instead", async () => {
       const db = await hosting.loadJSON(jsonPath);
-      const res = await hosting.check("google.com", db);
+      const res = await hosting.check("google.com");
       expect(res).toEqual(true);
     });
   });
-  describe("implicitly checking multiple domains with #check", () => {
+  describe("checking multiple domains with #check", () => {
     it("Use the API", async () => {
       const db = await hosting.loadJSON(jsonPath);
 
-      const res = await hosting.check(["google.com", "kochindustries.com"], db);
-      expect(res).toContain("google.com");
-    });
-  });
-  describe("explicitly checking multiple domains with #checkMulti", () => {
-    it("use the API", async () => {
-      const db = await hosting.loadJSON(jsonPath);
-      const res = await hosting.check(["google.com", "kochindustries.com"], db);
+      const res = await hosting.check(["google.com", "kochindustries.com"]);
       expect(res).toContain("google.com");
     });
   });

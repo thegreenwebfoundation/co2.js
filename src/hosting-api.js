@@ -30,10 +30,11 @@ async function checkDomainsAgainstAPI(domains) {
     // sanity check API result. Is this the library or
     // the actual API request that's the problem?
     // Is nock mocking node-native fetch API calls properly?
-    log(`${apiPath}/${domainsString}`);
-    log({ req });
-    const textResult = await req.text();
-    log({ textResult });
+    // Commented out the logs for now, as they cause an error to be thrown when using the library.
+    // log(`${apiPath}/${domainsString}`);
+    // log({ req });
+    // const textResult = await req.text();
+    // log({ textResult });
 
     const allGreenCheckResults = await req.json();
 
