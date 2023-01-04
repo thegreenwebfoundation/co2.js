@@ -19,9 +19,13 @@ class CO2 {
     }
 
     if (options?.results === "segment") {
-      this.model.results.segment = true;
+      this.model.results = {
+        segment: true,
+      };
     } else {
-      this.model.results.segment = false;
+      this.model.results = {
+        segment: false,
+      };
     }
   }
 
@@ -49,7 +53,7 @@ class CO2 {
    */
   perVisit(bytes, green) {
     if (this.model?.perVisit) {
-      return this.model.perVisit(bytes, green, this.model.detailed);
+      return this.model.perVisit(bytes, green, this.model.results.segment);
     } else {
       throw new Error(
         `The perVisit() method is not supported in the model you are using. Try using perByte() instead.\nSee https://developers.thegreenwebfoundation.org/co2js/methods/ to learn more about the methods available in CO2.js.`
