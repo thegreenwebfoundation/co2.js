@@ -344,7 +344,7 @@ describe("co2", () => {
     });
   });
 
-  describe("Using grid intensity", () => {
+  describe("Using custom grid intensity", () => {
     const co2 = new CO2({
       gridIntensity: {
         device: { value: 526.876 },
@@ -352,8 +352,17 @@ describe("co2", () => {
       },
     });
     it("uses the grid intensity data", () => {
-      console.log(co2.perVisit(1000000));
       expect(co2.perVisit(1000000)).toBeGreaterThan(0);
+    });
+  });
+
+  describe("Using custom caching figures in SWD", () => {
+    const co2 = new CO2({
+      cachePercentage: 0.5,
+    });
+    it("uses the grid intensity data", () => {
+      console.log(co2.perVisit(1000000));
+      expect(co2.perVisit(1000000)).toBeGreaterThan(0.27031);
     });
   });
 });

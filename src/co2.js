@@ -76,6 +76,16 @@ class CO2 {
         }
       }
     }
+
+    if (options?.cachePercentage) {
+      if (typeof options.cachePercentage === "number") {
+        this.model.cachePercentage = options.cachePercentage;
+      } else {
+        throw new Error(
+          `The cachePercentage option must be a number. You passed in a ${typeof options.cachePercentage}.`
+        );
+      }
+    }
   }
 
   /**
@@ -103,7 +113,9 @@ class CO2 {
   perVisit(bytes, green = false) {
     if (this.model?.perVisit) {
       const gridIntensity = this.model?.gridIntensity || green;
-      return this.model.perVisit(bytes, gridIntensity);
+      return this.model.perVisit(bytes, gridIntensity, {
+        cachePercentage: this.model.cachePercentage,
+      });
     } else {
       throw new Error(
         `The perVisit() method is not supported in the model you are using. Try using perByte() instead.\nSee https://developers.thegreenwebfoundation.org/co2js/methods/ to learn more about the methods available in CO2.js.`

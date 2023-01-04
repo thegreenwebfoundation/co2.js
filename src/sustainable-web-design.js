@@ -148,7 +148,7 @@ class SustainableWebDesign {
    * @param {number} `carbonIntensity` the carbon intensity for datacentre (average figures, not marginal ones)
    * @return {number} the total number in grams of CO2 equivalent emissions
    */
-  perVisit(bytes, carbonIntensity = false) {
+  perVisit(bytes, carbonIntensity = false, options = {}) {
     if (
       typeof carbonIntensity !== "boolean" &&
       typeof carbonIntensity !== "object"
@@ -157,7 +157,7 @@ class SustainableWebDesign {
         `perVisit expects a gridIntensity object or boolean for the carbon intensity value. Received: ${typeof carbonIntensity}`
       );
     }
-    const energyBycomponent = this.energyPerVisitByComponent(bytes);
+    const energyBycomponent = this.energyPerVisitByComponent(bytes, options);
 
     // handle the object
     if (typeof carbonIntensity !== "object") {
@@ -219,10 +219,17 @@ class SustainableWebDesign {
    */
   energyPerVisitByComponent(
     bytes,
+    options = {},
     firstView = FIRST_TIME_VIEWING_PERCENTAGE,
     returnView = RETURNING_VISITOR_PERCENTAGE,
     dataReloadRatio = PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD
   ) {
+    if (options.cachePercentage) {
+      // if we have a cachePercentage passed in, then use that to calculate the dataReloadRatio
+      // since we're using the cachePercentage to represent the amount of data that is cached, we need to subtract that from 1 to determine the amount of data that is reloaded
+      dataReloadRatio = 1 - options.cachePercentage;
+    }
+
     const energyBycomponent = this.energyPerByteByComponent(bytes);
     const cacheAdjustedSegmentEnergy = {};
 
