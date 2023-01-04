@@ -96,7 +96,7 @@ class SustainableWebDesign {
    * @param {number} `carbonIntensity` the carbon intensity for datacentre (average figures, not marginal ones)
    * @return {number} the total number in grams of CO2 equivalent emissions
    */
-  perByte(bytes, carbonIntensity = GLOBAL_INTENSITY, detailed) {
+  perByte(bytes, carbonIntensity = GLOBAL_INTENSITY, segmentResults = false) {
     const energyBycomponent = this.energyPerByteByComponent(bytes);
 
     // when faced with falsy values, fallback to global intensity
@@ -127,8 +127,8 @@ class SustainableWebDesign {
       (prevValue, currentValue) => prevValue + currentValue
     );
 
-    if (detailed) {
-      return {...co2ValuesbyComponent, total: co2ValuesSum};
+    if (segmentResults) {
+      return { ...co2ValuesbyComponent, total: co2ValuesSum };
     }
 
     return co2ValuesSum;
@@ -142,7 +142,7 @@ class SustainableWebDesign {
    * @param {number} `carbonIntensity` the carbon intensity for datacentre (average figures, not marginal ones)
    * @return {number} the total number in grams of CO2 equivalent emissions
    */
-  perVisit(bytes, carbonIntensity = GLOBAL_INTENSITY, detailed) {
+  perVisit(bytes, carbonIntensity = GLOBAL_INTENSITY, segmentResults = false) {
     const energyBycomponent = this.energyPerVisitByComponent(bytes);
 
     // when faced with falsy values, fallback to global intensity
@@ -173,8 +173,8 @@ class SustainableWebDesign {
       (prevValue, currentValue) => prevValue + currentValue
     );
 
-    if (detailed) {
-      return {...co2ValuesbyComponent, total: co2ValuesSum};
+    if (segmentResults) {
+      return { ...co2ValuesbyComponent, total: co2ValuesSum };
     }
 
     // so we can return their sum

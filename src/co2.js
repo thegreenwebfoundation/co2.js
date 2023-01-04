@@ -18,10 +18,10 @@ class CO2 {
       );
     }
 
-    if (options?.results === "detailed") {
-      this.model.detailed = true;
+    if (options?.results === "segment") {
+      this.model.results.segment = true;
     } else {
-      this.model.detailed = false;
+      this.model.results.segment = false;
     }
   }
 
@@ -35,7 +35,7 @@ class CO2 {
    * @return {number} the amount of CO2 in grammes
    */
   perByte(bytes, green) {
-    return this.model.perByte(bytes, green, this.model.detailed);
+    return this.model.perByte(bytes, green, this.model.results.segment);
   }
 
   /**
