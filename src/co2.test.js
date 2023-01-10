@@ -348,134 +348,272 @@ describe("co2", () => {
   });
 
   describe("Using custom grid intensity", () => {
-    const co2 = new CO2({
-      gridIntensity: {
-        device: { value: 565.629 },
-        dataCenter: { country: "TWN" },
-        network: { country: "TWN" },
-      },
-    });
+    const co2 = new CO2();
     it("uses the grid intensity data", () => {
-      expect(co2.perVisit(MILLION)).toBeGreaterThan(0);
+      expect(
+        co2.perVisit(MILLION, false, {
+          gridIntensity: {
+            device: 565.629,
+            dataCenter: { country: "TWN" },
+            network: { country: "TWN" },
+          },
+        })
+      ).toBeGreaterThan(0);
     });
   });
 
-  describe("Using custom caching figures in SWD", () => {
+  describe("Custom device intensity", () => {
+    const { MILLION_PERVISIT_GREY_DEVICE_GRID_INTENSITY_CHANGE } = SWD;
+    const co2 = new CO2();
+    it("expects an object or number", () => {
+      expect(() => {
+        const co2 = new CO2();
+        co2.perVisit(1000000, false, {
+          gridIntensity: {
+            device: "565.629",
+          },
+        });
+      }).toThrowError(
+        "The device grid intensity must be a number or an object. You passed in a string."
+      );
+    });
+
+    it("uses a number correctly", () => {
+      expect(
+        co2
+          .perVisit(MILLION, false, {
+            gridIntensity: {
+              device: 565.629,
+            },
+          })
+          .toPrecision(5)
+      ).toBe(MILLION_PERVISIT_GREY_DEVICE_GRID_INTENSITY_CHANGE.toPrecision(5));
+    });
+
+    it("uses an object correctly", () => {
+      expect(
+        co2
+          .perVisit(MILLION, false, {
+            gridIntensity: {
+              device: {
+                country: "TWN",
+              },
+            },
+          })
+          .toPrecision(5)
+      ).toBe(MILLION_PERVISIT_GREY_DEVICE_GRID_INTENSITY_CHANGE.toPrecision(5));
+    });
+  });
+
+  describe("Custom data center intensity", () => {
+    const { MILLION_PERVISIT_GREY_DATACENTER_GRID_INTENSITY_CHANGE } = SWD;
+    const co2 = new CO2();
+    it("expects an object or number", () => {
+      expect(() => {
+        const co2 = new CO2();
+        co2.perVisit(1000000, false, {
+          gridIntensity: {
+            dataCenter: "565.629",
+          },
+        });
+      }).toThrowError(
+        "The data center grid intensity must be a number or an object. You passed in a string."
+      );
+    });
+
+    it("uses a number correctly", () => {
+      expect(
+        co2
+          .perVisit(MILLION, false, {
+            gridIntensity: {
+              dataCenter: 565.629,
+            },
+          })
+          .toPrecision(5)
+      ).toBe(
+        MILLION_PERVISIT_GREY_DATACENTER_GRID_INTENSITY_CHANGE.toPrecision(5)
+      );
+    });
+
+    it("uses an object correctly", () => {
+      expect(
+        co2
+          .perVisit(MILLION, false, {
+            gridIntensity: {
+              dataCenter: {
+                country: "TWN",
+              },
+            },
+          })
+          .toPrecision(5)
+      ).toBe(
+        MILLION_PERVISIT_GREY_DATACENTER_GRID_INTENSITY_CHANGE.toPrecision(5)
+      );
+    });
+  });
+
+  describe("Custom network intensity", () => {
+    const { MILLION_PERVISIT_GREY_NETWORK_GRID_INTENSITY_CHANGE } = SWD;
+    const co2 = new CO2();
+    it("expects an object or number", () => {
+      expect(() => {
+        const co2 = new CO2();
+        co2.perVisit(1000000, false, {
+          gridIntensity: {
+            network: "565.629",
+          },
+        });
+      }).toThrowError(
+        "The network grid intensity must be a number or an object. You passed in a string."
+      );
+    });
+
+    it("uses a number correctly", () => {
+      expect(
+        co2
+          .perVisit(MILLION, false, {
+            gridIntensity: {
+              network: 565.629,
+            },
+          })
+          .toPrecision(5)
+      ).toBe(
+        MILLION_PERVISIT_GREY_NETWORK_GRID_INTENSITY_CHANGE.toPrecision(5)
+      );
+    });
+
+    it("uses an object correctly", () => {
+      expect(
+        co2
+          .perVisit(MILLION, false, {
+            gridIntensity: {
+              network: {
+                country: "TWN",
+              },
+            },
+          })
+          .toPrecision(5)
+      ).toBe(
+        MILLION_PERVISIT_GREY_NETWORK_GRID_INTENSITY_CHANGE.toPrecision(5)
+      );
+    });
+  });
+
+  describe("Using custom caching values in SWD", () => {
     const { MILLION_PERVISIT_GREY } = SWD;
-    const co2 = new CO2({
-      cachePercentage: 0.5,
+    const co2 = new CO2();
+    it("uses the custom value", () => {
+      expect(
+        co2.perVisit(1000000, false, {
+          cachePercentage: 0.5,
+        })
+      ).toBeGreaterThan(MILLION_PERVISIT_GREY);
     });
-    it("uses the grid intensity data", () => {
-      expect(co2.perVisit(1000000)).toBeGreaterThan(MILLION_PERVISIT_GREY);
-    });
+
     it("expects a number", () => {
       expect(() => {
-        const co2 = new CO2({
-          cachePercentage: "0.5",
-        });
-        co2.perVisit(1000000);
+        co2.perVisit(1000000, false, { cachePercentage: "0.5" });
       }).toThrowError(
         "The cachePercentage option must be a number. You passed in a string."
       );
     });
+
     it("expects a number between 0 and 1", () => {
-      const co2 = new CO2({
-        cachePercentage: 0,
-      });
       expect(() => {
-        const co2 = new CO2({
+        co2.perVisit(1000000, false, {
           cachePercentage: 1.5,
         });
-        co2.perVisit(1000000);
       }).toThrowError(
         "The cachePercentage option must be a number between 0 and 1. You passed in 1.5."
       );
       expect(() => {
-        const co2 = new CO2({
+        co2.perVisit(1000000, false, {
           cachePercentage: -1.5,
         });
-        co2.perVisit(1000000);
       }).toThrowError(
         "The cachePercentage option must be a number between 0 and 1. You passed in -1.5."
       );
-      expect(co2.perVisit(1000000)).toBeLessThan(MILLION_PERVISIT_GREY);
+      expect(
+        co2.perVisit(1000000, false, {
+          cachePercentage: 0,
+        })
+      ).toBeLessThan(MILLION_PERVISIT_GREY);
     });
   });
 
   describe("Using custom first and return visitor figures in SWD", () => {
     const { MILLION_PERVISIT_GREY } = SWD;
-    const co2 = new CO2({
-      firstVisitPercentage: 0.8,
-      returnVisitPercentage: 0.2,
-    });
+    const co2 = new CO2();
 
     it("uses the custom values", () => {
-      expect(co2.perVisit(MILLION)).toBeGreaterThan(MILLION_PERVISIT_GREY);
+      expect(
+        co2.perVisit(MILLION, false, {
+          firstVisitPercentage: 0.8,
+          returnVisitPercentage: 0.2,
+        })
+      ).toBeGreaterThan(MILLION_PERVISIT_GREY);
     });
 
     it("expects firstVisitPercentage to be a number", () => {
       expect(() => {
-        const co2 = new CO2({
-          firstVisitPercentage: "0.5",
+        co2.perVisit(1000000, false, {
+          firstVisitPercentage: "0.8",
         });
-        co2.perVisit(1000000);
       }).toThrowError(
         "The firstVisitPercentage option must be a number. You passed in a string."
       );
     });
     it("expects firstVisitPercentage to be a number between 0 and 1", () => {
-      const co2 = new CO2({
-        firstVisitPercentage: 0,
-      });
+      const co2 = new CO2();
       expect(() => {
-        const co2 = new CO2({
+        co2.perVisit(1000000, false, {
           firstVisitPercentage: 1.5,
         });
-        co2.perVisit(1000000);
       }).toThrowError(
         "The firstVisitPercentage option must be a number between 0 and 1. You passed in 1.5."
       );
       expect(() => {
-        const co2 = new CO2({
+        co2.perVisit(1000000, false, {
           firstVisitPercentage: -1.5,
         });
-        co2.perVisit(1000000);
       }).toThrowError(
         "The firstVisitPercentage option must be a number between 0 and 1. You passed in -1.5."
       );
-      expect(co2.perVisit(1000000)).toBeLessThan(MILLION_PERVISIT_GREY);
+      expect(
+        co2.perVisit(1000000, false, {
+          firstVisitPercentage: 0,
+        })
+      ).toBeLessThan(MILLION_PERVISIT_GREY);
     });
     it("expects returnVisitPercentage to be a number", () => {
       expect(() => {
-        const co2 = new CO2({
+        co2.perVisit(1000000, false, {
           returnVisitPercentage: "0.5",
         });
-        co2.perVisit(1000000);
       }).toThrowError(
         "The returnVisitPercentage option must be a number. You passed in a string."
       );
     });
     it("expects returnVisitPercentage to be a number between 0 and 1", () => {
-      const co2 = new CO2({
-        returnVisitPercentage: 0,
-      });
       expect(() => {
-        const co2 = new CO2({
+        co2.perVisit(1000000, false, {
           returnVisitPercentage: 1.5,
         });
-        co2.perVisit(1000000);
       }).toThrowError(
         "The returnVisitPercentage option must be a number between 0 and 1. You passed in 1.5."
       );
       expect(() => {
-        const co2 = new CO2({
+        co2.perVisit(1000000, false, {
           returnVisitPercentage: -1.5,
         });
-        co2.perVisit(1000000);
       }).toThrowError(
         "The returnVisitPercentage option must be a number between 0 and 1. You passed in -1.5."
       );
-      expect(co2.perVisit(1000000)).toBeLessThan(MILLION_PERVISIT_GREY);
+      expect(
+        co2.perVisit(1000000, false, {
+          returnVisitPercentage: 0,
+        })
+      ).toBeLessThan(MILLION_PERVISIT_GREY);
     });
   });
 });
