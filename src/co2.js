@@ -3,6 +3,145 @@
 import OneByte from "./1byte.js";
 import SustainableWebDesign from "./sustainable-web-design.js";
 
+function parseOptions(options) {
+  // CHeck that it is an object
+  if (typeof options !== "object") {
+    throw new Error("Options must be an object");
+  }
+
+  const adjustments = {};
+
+  if (options?.gridIntensity) {
+    adjustments.gridIntensity = {};
+    const { device, dataCenter, network } = options.gridIntensity;
+    if (device) {
+      if (typeof device === "object" && device.country) {
+        const averageIntensity =
+          require("./data/average-intensities-2021.min.js").default;
+        if (!averageIntensity.data[device.country]) {
+          throw new Error(
+            `"${device.country}" is not a valid country. Please use a valid 3 digit ISO 3166 country code. \nSee https://developers.thegreenwebfoundation.org/co2js/data/ for more information.`
+          );
+        }
+        adjustments.gridIntensity["device"] = {
+          country: device.country,
+          value: parseFloat(averageIntensity.data[device.country]),
+        };
+      } else if (typeof device === "number") {
+        adjustments.gridIntensity["device"] = {
+          value: device,
+        };
+      } else {
+        throw new Error(
+          `The device grid intensity must be a number or an object. You passed in a ${typeof device}.`
+        );
+      }
+    }
+    if (dataCenter) {
+      if (typeof dataCenter === "object" && dataCenter.country) {
+        const averageIntensity =
+          require("./data/average-intensities-2021.min.js").default;
+        if (!averageIntensity.data[dataCenter.country]) {
+          throw new Error(
+            `"${dataCenter.country}" is not a valid country. Please use a valid 3 digit ISO 3166 country code. \nSee https://developers.thegreenwebfoundation.org/co2js/data/ for more information.`
+          );
+        }
+        adjustments.gridIntensity["dataCenter"] = {
+          country: dataCenter.country,
+          value: parseFloat(averageIntensity.data[dataCenter.country]),
+        };
+      } else if (typeof dataCenter === "number") {
+        adjustments.gridIntensity["dataCenter"] = {
+          value: dataCenter,
+        };
+      } else {
+        throw new Error(
+          `The data center grid intensity must be a number or an object. You passed in a ${typeof dataCenter}.`
+        );
+      }
+    }
+    if (network) {
+      if (typeof network === "object" && network.country) {
+        const averageIntensity =
+          require("./data/average-intensities-2021.min.js").default;
+        if (!averageIntensity.data[network.country]) {
+          throw new Error(
+            `"${network.country}" is not a valid country. Please use a valid 3 digit ISO 3166 country code. \nSee https://developers.thegreenwebfoundation.org/co2js/data/ for more information.`
+          );
+        }
+        adjustments.gridIntensity["network"] = {
+          country: network.country,
+          value: parseFloat(averageIntensity.data[network.country]),
+        };
+      } else if (typeof network === "number") {
+        adjustments.gridIntensity["network"] = {
+          value: network,
+        };
+      } else {
+        throw new Error(
+          `The network grid intensity must be a number or an object. You passed in a ${typeof network}.`
+        );
+      }
+    }
+  }
+
+  if (options?.cachePercentage) {
+    if (typeof options.cachePercentage === "number") {
+      if (options.cachePercentage > 0 && options.cachePercentage < 1) {
+        adjustments.cachePercentage = options.cachePercentage;
+      } else {
+        throw new Error(
+          `The cachePercentage option must be a number between 0 and 1. You passed in ${options.cachePercentage}.`
+        );
+      }
+    } else {
+      throw new Error(
+        `The cachePercentage option must be a number. You passed in a ${typeof options.cachePercentage}.`
+      );
+    }
+  }
+
+  if (options?.firstVisitPercentage) {
+    if (typeof options.firstVisitPercentage === "number") {
+      if (
+        options.firstVisitPercentage > 0 &&
+        options.firstVisitPercentage < 1
+      ) {
+        adjustments.firstVisitPercentage = options.firstVisitPercentage;
+      } else {
+        throw new Error(
+          `The firstVisitPercentage option must be a number between 0 and 1. You passed in ${options.firstVisitPercentage}.`
+        );
+      }
+    } else {
+      throw new Error(
+        `The firstVisitPercentage option must be a number. You passed in a ${typeof options.firstVisitPercentage}.`
+      );
+    }
+  }
+
+  if (options?.returnVisitPercentage) {
+    if (typeof options.returnVisitPercentage === "number") {
+      if (
+        options.returnVisitPercentage > 0 &&
+        options.returnVisitPercentage < 1
+      ) {
+        adjustments.returnVisitPercentage = options.returnVisitPercentage;
+      } else {
+        throw new Error(
+          `The returnVisitPercentage option must be a number between 0 and 1. You passed in ${options.returnVisitPercentage}.`
+        );
+      }
+    } else {
+      throw new Error(
+        `The returnVisitPercentage option must be a number. You passed in a ${typeof options.returnVisitPercentage}.`
+      );
+    }
+  }
+
+  return adjustments;
+}
+
 class CO2 {
   constructor(options) {
     this.model = new SustainableWebDesign();
@@ -16,146 +155,6 @@ class CO2 {
       throw new Error(
         `"${options.model}" is not a valid model. Please use "1byte" for the OneByte model, and "swd" for the Sustainable Web Design model.\nSee https://developers.thegreenwebfoundation.org/co2js/models/ to learn more about the models available in CO2.js.`
       );
-    }
-
-    if (options?.gridIntensity) {
-      this.model.gridIntensity = {};
-      const { device, dataCenter, network } = options.gridIntensity;
-      if (device) {
-        // Check if device is an object with a value property
-        if (typeof device === "object" && device.value) {
-          // Check if the value is a number
-          if (typeof device.value === "number") {
-            this.model.gridIntensity["device"] = {
-              value: device.value,
-            };
-          } else {
-            throw new Error(
-              `The value for device grid intensity must be a number. You passed in a ${typeof device.value}.`
-            );
-          }
-        } else if (typeof device === "object" && device.country) {
-          const averageIntensity =
-            require("./data/average-intensities-2021.min.js").default;
-          if (!averageIntensity.data[device.country]) {
-            throw new Error(
-              `"${device.country}" is not a valid country. Please use a valid 3 digit ISO 3166 country code. \nSee https://developers.thegreenwebfoundation.org/co2js/data/ for more information.`
-            );
-          }
-          this.model.gridIntensity["device"] = {
-            country: device.country,
-            value: parseFloat(averageIntensity.data[device.country]),
-          };
-        }
-      }
-      if (dataCenter) {
-        // Check if device is an object with a value property
-        if (typeof dataCenter === "object" && dataCenter.value) {
-          // Check if the value is a number
-          if (typeof dataCenter.value === "number") {
-            this.model.gridIntensity.dataCenter = {
-              value: dataCenter.value,
-            };
-          } else {
-            throw new Error(
-              `The value for device grid intensity must be a number. You passed in a ${typeof device.value}.`
-            );
-          }
-        } else if (typeof dataCenter === "object" && dataCenter.country) {
-          const averageIntensity =
-            require("./data/average-intensities-2021.min.js").default;
-          if (!averageIntensity.data[dataCenter.country]) {
-            throw new Error(
-              `"${dataCenter.country}" is not a valid country. Please use a valid 3 digit ISO 3166 country code. \nSee https://developers.thegreenwebfoundation.org/co2js/data/ for more information.`
-            );
-          }
-          this.model.gridIntensity["dataCenter"] = {
-            country: dataCenter.country,
-            value: parseFloat(averageIntensity.data[dataCenter.country]),
-          };
-        }
-      }
-      if (network) {
-        // Check if device is an object with a value property
-        if (typeof network === "object" && network.value) {
-          // Check if the value is a number
-          if (typeof network.value === "number") {
-            this.model.gridIntensity.network = {
-              value: network.value,
-            };
-          } else {
-            throw new Error(
-              `The value for device grid intensity must be a number. You passed in a ${typeof device.value}.`
-            );
-          }
-        } else if (typeof network === "object" && network.country) {
-          const averageIntensity =
-            require("./data/average-intensities-2021.min.js").default;
-          if (!averageIntensity.data[network.country]) {
-            throw new Error(
-              `"${network.country}" is not a valid country. Please use a valid 3 digit ISO 3166 country code. \nSee https://developers.thegreenwebfoundation.org/co2js/data/ for more information.`
-            );
-          }
-          this.model.gridIntensity["network"] = {
-            country: network.country,
-            value: parseFloat(averageIntensity.data[network.country]),
-          };
-        }
-      }
-    }
-
-    if (options?.cachePercentage) {
-      if (typeof options.cachePercentage === "number") {
-        if (options.cachePercentage > 0 && options.cachePercentage < 1) {
-          this.model.cachePercentage = options.cachePercentage;
-        } else {
-          throw new Error(
-            `The cachePercentage option must be a number between 0 and 1. You passed in ${options.cachePercentage}.`
-          );
-        }
-      } else {
-        throw new Error(
-          `The cachePercentage option must be a number. You passed in a ${typeof options.cachePercentage}.`
-        );
-      }
-    }
-
-    if (options?.firstVisitPercentage) {
-      if (typeof options.firstVisitPercentage === "number") {
-        if (
-          options.firstVisitPercentage > 0 &&
-          options.firstVisitPercentage < 1
-        ) {
-          this.model.firstVisitPercentage = options.firstVisitPercentage;
-        } else {
-          throw new Error(
-            `The firstVisitPercentage option must be a number between 0 and 1. You passed in ${options.firstVisitPercentage}.`
-          );
-        }
-      } else {
-        throw new Error(
-          `The firstVisitPercentage option must be a number. You passed in a ${typeof options.firstVisitPercentage}.`
-        );
-      }
-    }
-
-    if (options?.returnVisitPercentage) {
-      if (typeof options.returnVisitPercentage === "number") {
-        if (
-          options.returnVisitPercentage > 0 &&
-          options.returnVisitPercentage < 1
-        ) {
-          this.model.returnVisitPercentage = options.returnVisitPercentage;
-        } else {
-          throw new Error(
-            `The returnVisitPercentage option must be a number between 0 and 1. You passed in ${options.returnVisitPercentage}.`
-          );
-        }
-      } else {
-        throw new Error(
-          `The returnVisitPercentage option must be a number. You passed in a ${typeof options.returnVisitPercentage}.`
-        );
-      }
     }
   }
 
@@ -181,14 +180,15 @@ class CO2 {
    * @param {boolean} green
    * @return {number} the amount of CO2 in grammes
    */
-  perVisit(bytes, green = false) {
+  perVisit(bytes, green = false, options = {}) {
     if (this.model?.perVisit) {
-      const gridIntensity = this.model?.gridIntensity || green;
-      return this.model.perVisit(bytes, gridIntensity, {
-        cachePercentage: this.model.cachePercentage,
-        firstVisitPercentage: this.model.firstVisitPercentage,
-        returnVisitPercentage: this.model.returnVisitPercentage,
-      });
+      let adjustments = {};
+      if (options) {
+        // If there are options, parse them and add them to the model.
+        adjustments = parseOptions(options);
+      }
+
+      return this.model.perVisit(bytes, green, adjustments);
     } else {
       throw new Error(
         `The perVisit() method is not supported in the model you are using. Try using perByte() instead.\nSee https://developers.thegreenwebfoundation.org/co2js/methods/ to learn more about the methods available in CO2.js.`
