@@ -2,23 +2,26 @@
 
 import fs from "fs";
 import path from "path";
+import { testConstants } from "./constants/index.js";
 
 import pagexray from "pagexray";
 
 import CO2 from "./co2.js";
 import { averageIntensity, marginalIntensity } from "./index.js";
 
+const { MILLION, ONEBYTE, SWD } = testConstants;
+
 describe("co2", () => {
   let har, co2;
 
   describe("1 byte model", () => {
-    const TGWF_GREY_VALUE = 0.20497;
-    const TGWF_GREEN_VALUE = 0.54704;
-    const TGWF_MIXED_VALUE = 0.16718;
-
-    const MILLION = 1000000;
-    const MILLION_GREY = 0.29081;
-    const MILLION_GREEN = 0.23196;
+    const {
+      TGWF_GREY_VALUE,
+      TGWF_GREEN_VALUE,
+      TGWF_MIXED_VALUE,
+      MILLION_GREY,
+      MILLION_GREEN,
+    } = ONEBYTE;
 
     beforeEach(() => {
       co2 = new CO2({ model: "1byte" });
@@ -151,15 +154,15 @@ describe("co2", () => {
     // the SWD model should have slightly higher values as
     // we include more of the system in calculations for the
     // same levels of data transfer
-    const MILLION = 1000000;
-    const MILLION_GREY = 0.35802;
-    const MILLION_GREEN = 0.31039;
-    const MILLION_PERVISIT_GREY = 0.27031;
-    const MILLION_PERVISIT_GREEN = 0.23435;
 
-    const TGWF_GREY_VALUE = 0.25234;
-    const TGWF_GREEN_VALUE = 0.54704;
-    const TGWF_MIXED_VALUE = 0.22175;
+    const {
+      MILLION_GREEN,
+      MILLION_GREY,
+      TGWF_GREY_VALUE,
+      TGWF_MIXED_VALUE,
+      MILLION_PERVISIT_GREY,
+      MILLION_PERVISIT_GREEN,
+    } = SWD;
 
     // We're not passing in a model parameter here to check that SWD is used by default
     beforeEach(() => {
@@ -353,16 +356,49 @@ describe("co2", () => {
       },
     });
     it("uses the grid intensity data", () => {
-      expect(co2.perVisit(1000000)).toBeGreaterThan(0);
+      expect(co2.perVisit(MILLION)).toBeGreaterThan(0);
     });
   });
 
   describe("Using custom caching figures in SWD", () => {
+    const { MILLION_PERVISIT_GREY } = SWD;
     const co2 = new CO2({
       cachePercentage: 0.5,
     });
     it("uses the grid intensity data", () => {
-      expect(co2.perVisit(1000000)).toBeGreaterThan(0.27031);
+      expect(co2.perVisit(1000000)).toBeGreaterThan(MILLION_PERVISIT_GREY);
+    });
+    it("expects a number", () => {
+      expect(() => {
+        const co2 = new CO2({
+          cachePercentage: "0.5",
+        });
+        co2.perVisit(1000000);
+      }).toThrowError(
+        "The cachePercentage option must be a number. You passed in a string."
+      );
+    });
+    it("expects a number between 0 and 1", () => {
+      const co2 = new CO2({
+        cachePercentage: 0,
+      });
+      expect(() => {
+        const co2 = new CO2({
+          cachePercentage: 1.5,
+        });
+        co2.perVisit(1000000);
+      }).toThrowError(
+        "The cachePercentage option must be a number between 0 and 1. You passed in 1.5."
+      );
+      expect(() => {
+        const co2 = new CO2({
+          cachePercentage: -1.5,
+        });
+        co2.perVisit(1000000);
+      }).toThrowError(
+        "The cachePercentage option must be a number between 0 and 1. You passed in -1.5."
+      );
+      expect(co2.perVisit(1000000)).toBeLessThan(MILLION_PERVISIT_GREY);
     });
   });
 
@@ -373,7 +409,7 @@ describe("co2", () => {
     });
 
     it("uses the grid intensity data", () => {
-      expect(co2.perVisit(1000000)).toBeGreaterThan(0.27031);
+      expect(co2.perVisit(MILLION)).toBeGreaterThan(0.27031);
     });
   });
 });
