@@ -131,8 +131,8 @@ class SustainableWebDesign {
    * @param {number} `carbonIntensity` the carbon intensity for datacentre (average figures, not marginal ones)
    * @return {number} the total number in grams of CO2 equivalent emissions
    */
-  perByte(bytes, carbonIntensity = false) {
-    const energyBycomponent = this.energyPerByteByComponent(bytes);
+  perByte(bytes, carbonIntensity = false, options = {}) {
+    const energyBycomponent = this.energyPerByteByComponent(bytes, options);
 
     // otherwise when faced with non numeric values throw an error
     if (typeof carbonIntensity !== "boolean") {
@@ -143,7 +143,8 @@ class SustainableWebDesign {
 
     const co2ValuesbyComponent = this.co2byComponent(
       energyBycomponent,
-      carbonIntensity
+      carbonIntensity,
+      options
     );
 
     // pull out our values…

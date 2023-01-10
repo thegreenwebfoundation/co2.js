@@ -359,16 +359,40 @@ describe("co2", () => {
           },
         })
       ).toBeGreaterThan(0);
+
+      expect(
+        co2.perByte(MILLION, false, {
+          gridIntensity: {
+            device: 565.629,
+            dataCenter: { country: "TWN" },
+            network: { country: "TWN" },
+          },
+        })
+      ).toBeGreaterThan(0);
     });
   });
 
   describe("Custom device intensity", () => {
-    const { MILLION_PERVISIT_GREY_DEVICE_GRID_INTENSITY_CHANGE } = SWD;
+    const {
+      MILLION_PERVISIT_GREY_DEVICE_GRID_INTENSITY_CHANGE,
+      MILLION_PERBYTE_GREY_DEVICE_GRID_INTENSITY_CHANGE,
+    } = SWD;
     const co2 = new CO2();
     it("expects an object or number", () => {
       expect(() => {
         const co2 = new CO2();
         co2.perVisit(1000000, false, {
+          gridIntensity: {
+            device: "565.629",
+          },
+        });
+      }).toThrowError(
+        "The device grid intensity must be a number or an object. You passed in a string."
+      );
+
+      expect(() => {
+        const co2 = new CO2();
+        co2.perByte(1000000, false, {
           gridIntensity: {
             device: "565.629",
           },
@@ -388,6 +412,16 @@ describe("co2", () => {
           })
           .toPrecision(5)
       ).toBe(MILLION_PERVISIT_GREY_DEVICE_GRID_INTENSITY_CHANGE.toPrecision(5));
+
+      expect(
+        co2
+          .perByte(MILLION, false, {
+            gridIntensity: {
+              device: 565.629,
+            },
+          })
+          .toPrecision(5)
+      ).toBe(MILLION_PERBYTE_GREY_DEVICE_GRID_INTENSITY_CHANGE.toPrecision(5));
     });
 
     it("uses an object correctly", () => {
@@ -402,16 +436,40 @@ describe("co2", () => {
           })
           .toPrecision(5)
       ).toBe(MILLION_PERVISIT_GREY_DEVICE_GRID_INTENSITY_CHANGE.toPrecision(5));
+      expect(
+        co2
+          .perByte(MILLION, false, {
+            gridIntensity: {
+              device: {
+                country: "TWN",
+              },
+            },
+          })
+          .toPrecision(5)
+      ).toBe(MILLION_PERBYTE_GREY_DEVICE_GRID_INTENSITY_CHANGE.toPrecision(5));
     });
   });
 
   describe("Custom data center intensity", () => {
-    const { MILLION_PERVISIT_GREY_DATACENTER_GRID_INTENSITY_CHANGE } = SWD;
+    const {
+      MILLION_PERVISIT_GREY_DATACENTER_GRID_INTENSITY_CHANGE,
+      MILLION_PERBYTE_GREY_DATACENTER_GRID_INTENSITY_CHANGE,
+    } = SWD;
     const co2 = new CO2();
     it("expects an object or number", () => {
       expect(() => {
         const co2 = new CO2();
         co2.perVisit(1000000, false, {
+          gridIntensity: {
+            dataCenter: "565.629",
+          },
+        });
+      }).toThrowError(
+        "The data center grid intensity must be a number or an object. You passed in a string."
+      );
+      expect(() => {
+        const co2 = new CO2();
+        co2.perByte(1000000, false, {
           gridIntensity: {
             dataCenter: "565.629",
           },
@@ -433,6 +491,17 @@ describe("co2", () => {
       ).toBe(
         MILLION_PERVISIT_GREY_DATACENTER_GRID_INTENSITY_CHANGE.toPrecision(5)
       );
+      expect(
+        co2
+          .perByte(MILLION, false, {
+            gridIntensity: {
+              dataCenter: 565.629,
+            },
+          })
+          .toPrecision(5)
+      ).toBe(
+        MILLION_PERBYTE_GREY_DATACENTER_GRID_INTENSITY_CHANGE.toPrecision(5)
+      );
     });
 
     it("uses an object correctly", () => {
@@ -449,16 +518,42 @@ describe("co2", () => {
       ).toBe(
         MILLION_PERVISIT_GREY_DATACENTER_GRID_INTENSITY_CHANGE.toPrecision(5)
       );
+      expect(
+        co2
+          .perByte(MILLION, false, {
+            gridIntensity: {
+              dataCenter: {
+                country: "TWN",
+              },
+            },
+          })
+          .toPrecision(5)
+      ).toBe(
+        MILLION_PERBYTE_GREY_DATACENTER_GRID_INTENSITY_CHANGE.toPrecision(5)
+      );
     });
   });
 
   describe("Custom network intensity", () => {
-    const { MILLION_PERVISIT_GREY_NETWORK_GRID_INTENSITY_CHANGE } = SWD;
+    const {
+      MILLION_PERVISIT_GREY_NETWORK_GRID_INTENSITY_CHANGE,
+      MILLION_PERBYTE_GREY_NETWORK_GRID_INTENSITY_CHANGE,
+    } = SWD;
     const co2 = new CO2();
     it("expects an object or number", () => {
       expect(() => {
         const co2 = new CO2();
         co2.perVisit(1000000, false, {
+          gridIntensity: {
+            network: "565.629",
+          },
+        });
+      }).toThrowError(
+        "The network grid intensity must be a number or an object. You passed in a string."
+      );
+      expect(() => {
+        const co2 = new CO2();
+        co2.perByte(1000000, false, {
           gridIntensity: {
             network: "565.629",
           },
@@ -480,6 +575,15 @@ describe("co2", () => {
       ).toBe(
         MILLION_PERVISIT_GREY_NETWORK_GRID_INTENSITY_CHANGE.toPrecision(5)
       );
+      expect(
+        co2
+          .perByte(MILLION, false, {
+            gridIntensity: {
+              network: 565.629,
+            },
+          })
+          .toPrecision(5)
+      ).toBe(MILLION_PERBYTE_GREY_NETWORK_GRID_INTENSITY_CHANGE.toPrecision(5));
     });
 
     it("uses an object correctly", () => {
@@ -496,6 +600,17 @@ describe("co2", () => {
       ).toBe(
         MILLION_PERVISIT_GREY_NETWORK_GRID_INTENSITY_CHANGE.toPrecision(5)
       );
+      expect(
+        co2
+          .perByte(MILLION, false, {
+            gridIntensity: {
+              network: {
+                country: "TWN",
+              },
+            },
+          })
+          .toPrecision(5)
+      ).toBe(MILLION_PERBYTE_GREY_NETWORK_GRID_INTENSITY_CHANGE.toPrecision(5));
     });
   });
 

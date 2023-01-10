@@ -167,8 +167,13 @@ class CO2 {
    * @param {boolean} green
    * @return {number} the amount of CO2 in grammes
    */
-  perByte(bytes, green) {
-    return this.model.perByte(bytes, green);
+  perByte(bytes, green = false, options = {}) {
+    let adjustments = {};
+    if (options) {
+      // If there are options, parse them and add them to the model.
+      adjustments = parseOptions(options);
+    }
+    return this.model.perByte(bytes, green, adjustments);
   }
 
   /**
