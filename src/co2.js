@@ -78,6 +78,16 @@ class CO2 {
     }
   }
 
+  /**
+   * Accept a figure in bytes for data transfer, a boolean for whether
+   * the domain shows as 'green', and an options object.
+   * Returns an object containing CO2 figure, green boolean, and object of the variables used in calculating the CO2 figure.
+   *
+   * @param {number} bytes
+   * @param {boolean} green
+   * @param {Object} options
+   * @return {CO2EstimateTraceResult} the amount of CO2 in grammes
+   */
   perByteTrace(bytes, green = false, options = {}) {
     let adjustments = {};
     if (options) {
@@ -105,6 +115,16 @@ class CO2 {
     };
   }
 
+  /**
+   * Accept a figure in bytes for data transfer, a boolean for whether
+   * the domain shows as 'green', and an options object.
+   * Returns an object containing CO2 figure, green boolean, and object of the variables used in calculating the CO2 figure.
+   *
+   * @param {number} bytes
+   * @param {boolean} green
+   * @param {Object} options
+   * @return {CO2EstimateTraceResult} the amount of CO2 in grammes
+   */
   perVisitTrace(bytes, green = false, options = {}) {
     if (this.model?.perVisit) {
       let adjustments = {};
