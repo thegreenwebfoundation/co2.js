@@ -349,25 +349,32 @@ describe("co2", () => {
 
   describe("Using custom grid intensity", () => {
     const co2 = new CO2();
+    console.log(
+      co2.perVisitTrace(MILLION, false, {
+        gridIntensity: {
+          device: 565.629,
+          dataCenter: { country: "TWN" },
+        },
+      })
+    );
     it("uses the grid intensity data", () => {
       expect(
-        co2.perVisit(MILLION, false, {
+        co2.perVisitTrace(MILLION, false, {
           gridIntensity: {
             device: 565.629,
             dataCenter: { country: "TWN" },
-            network: { country: "TWN" },
           },
-        })
+        }).co2
       ).toBeGreaterThan(0);
 
       expect(
-        co2.perByte(MILLION, false, {
+        co2.perByteTrace(MILLION, false, {
           gridIntensity: {
             device: 565.629,
             dataCenter: { country: "TWN" },
             network: { country: "TWN" },
           },
-        })
+        }).co2
       ).toBeGreaterThan(0);
     });
   });
@@ -381,7 +388,7 @@ describe("co2", () => {
     it("expects an object or number", () => {
       expect(() => {
         const co2 = new CO2();
-        co2.perVisit(1000000, false, {
+        co2.perVisitTrace(1000000, false, {
           gridIntensity: {
             device: "565.629",
           },
@@ -392,7 +399,7 @@ describe("co2", () => {
 
       expect(() => {
         const co2 = new CO2();
-        co2.perByte(1000000, false, {
+        co2.perByteTrace(1000000, false, {
           gridIntensity: {
             device: "565.629",
           },
@@ -405,47 +412,47 @@ describe("co2", () => {
     it("uses a number correctly", () => {
       expect(
         co2
-          .perVisit(MILLION, false, {
+          .perVisitTrace(MILLION, false, {
             gridIntensity: {
               device: 565.629,
             },
           })
-          .toPrecision(5)
+          .co2.toPrecision(5)
       ).toBe(MILLION_PERVISIT_GREY_DEVICE_GRID_INTENSITY_CHANGE.toPrecision(5));
 
       expect(
         co2
-          .perByte(MILLION, false, {
+          .perByteTrace(MILLION, false, {
             gridIntensity: {
               device: 565.629,
             },
           })
-          .toPrecision(5)
+          .co2.toPrecision(5)
       ).toBe(MILLION_PERBYTE_GREY_DEVICE_GRID_INTENSITY_CHANGE.toPrecision(5));
     });
 
     it("uses an object correctly", () => {
       expect(
         co2
-          .perVisit(MILLION, false, {
+          .perVisitTrace(MILLION, false, {
             gridIntensity: {
               device: {
                 country: "TWN",
               },
             },
           })
-          .toPrecision(5)
+          .co2.toPrecision(5)
       ).toBe(MILLION_PERVISIT_GREY_DEVICE_GRID_INTENSITY_CHANGE.toPrecision(5));
       expect(
         co2
-          .perByte(MILLION, false, {
+          .perByteTrace(MILLION, false, {
             gridIntensity: {
               device: {
                 country: "TWN",
               },
             },
           })
-          .toPrecision(5)
+          .co2.toPrecision(5)
       ).toBe(MILLION_PERBYTE_GREY_DEVICE_GRID_INTENSITY_CHANGE.toPrecision(5));
     });
   });
@@ -459,7 +466,7 @@ describe("co2", () => {
     it("expects an object or number", () => {
       expect(() => {
         const co2 = new CO2();
-        co2.perVisit(1000000, false, {
+        co2.perVisitTrace(1000000, false, {
           gridIntensity: {
             dataCenter: "565.629",
           },
@@ -469,7 +476,7 @@ describe("co2", () => {
       );
       expect(() => {
         const co2 = new CO2();
-        co2.perByte(1000000, false, {
+        co2.perByteTrace(1000000, false, {
           gridIntensity: {
             dataCenter: "565.629",
           },
@@ -482,23 +489,23 @@ describe("co2", () => {
     it("uses a number correctly", () => {
       expect(
         co2
-          .perVisit(MILLION, false, {
+          .perVisitTrace(MILLION, false, {
             gridIntensity: {
               dataCenter: 565.629,
             },
           })
-          .toPrecision(5)
+          .co2.toPrecision(5)
       ).toBe(
         MILLION_PERVISIT_GREY_DATACENTER_GRID_INTENSITY_CHANGE.toPrecision(5)
       );
       expect(
         co2
-          .perByte(MILLION, false, {
+          .perByteTrace(MILLION, false, {
             gridIntensity: {
               dataCenter: 565.629,
             },
           })
-          .toPrecision(5)
+          .co2.toPrecision(5)
       ).toBe(
         MILLION_PERBYTE_GREY_DATACENTER_GRID_INTENSITY_CHANGE.toPrecision(5)
       );
@@ -507,27 +514,27 @@ describe("co2", () => {
     it("uses an object correctly", () => {
       expect(
         co2
-          .perVisit(MILLION, false, {
+          .perVisitTrace(MILLION, false, {
             gridIntensity: {
               dataCenter: {
                 country: "TWN",
               },
             },
           })
-          .toPrecision(5)
+          .co2.toPrecision(5)
       ).toBe(
         MILLION_PERVISIT_GREY_DATACENTER_GRID_INTENSITY_CHANGE.toPrecision(5)
       );
       expect(
         co2
-          .perByte(MILLION, false, {
+          .perByteTrace(MILLION, false, {
             gridIntensity: {
               dataCenter: {
                 country: "TWN",
               },
             },
           })
-          .toPrecision(5)
+          .co2.toPrecision(5)
       ).toBe(
         MILLION_PERBYTE_GREY_DATACENTER_GRID_INTENSITY_CHANGE.toPrecision(5)
       );
@@ -543,7 +550,7 @@ describe("co2", () => {
     it("expects an object or number", () => {
       expect(() => {
         const co2 = new CO2();
-        co2.perVisit(1000000, false, {
+        co2.perVisitTrace(1000000, false, {
           gridIntensity: {
             network: "565.629",
           },
@@ -553,7 +560,7 @@ describe("co2", () => {
       );
       expect(() => {
         const co2 = new CO2();
-        co2.perByte(1000000, false, {
+        co2.perByteTrace(1000000, false, {
           gridIntensity: {
             network: "565.629",
           },
@@ -566,50 +573,50 @@ describe("co2", () => {
     it("uses a number correctly", () => {
       expect(
         co2
-          .perVisit(MILLION, false, {
+          .perVisitTrace(MILLION, false, {
             gridIntensity: {
               network: 565.629,
             },
           })
-          .toPrecision(5)
+          .co2.toPrecision(5)
       ).toBe(
         MILLION_PERVISIT_GREY_NETWORK_GRID_INTENSITY_CHANGE.toPrecision(5)
       );
       expect(
         co2
-          .perByte(MILLION, false, {
+          .perByteTrace(MILLION, false, {
             gridIntensity: {
               network: 565.629,
             },
           })
-          .toPrecision(5)
+          .co2.toPrecision(5)
       ).toBe(MILLION_PERBYTE_GREY_NETWORK_GRID_INTENSITY_CHANGE.toPrecision(5));
     });
 
     it("uses an object correctly", () => {
       expect(
         co2
-          .perVisit(MILLION, false, {
+          .perVisitTrace(MILLION, false, {
             gridIntensity: {
               network: {
                 country: "TWN",
               },
             },
           })
-          .toPrecision(5)
+          .co2.toPrecision(5)
       ).toBe(
         MILLION_PERVISIT_GREY_NETWORK_GRID_INTENSITY_CHANGE.toPrecision(5)
       );
       expect(
         co2
-          .perByte(MILLION, false, {
+          .perByteTrace(MILLION, false, {
             gridIntensity: {
               network: {
                 country: "TWN",
               },
             },
           })
-          .toPrecision(5)
+          .co2.toPrecision(5)
       ).toBe(MILLION_PERBYTE_GREY_NETWORK_GRID_INTENSITY_CHANGE.toPrecision(5));
     });
   });
@@ -619,15 +626,15 @@ describe("co2", () => {
     const co2 = new CO2();
     it("uses the custom value", () => {
       expect(
-        co2.perVisit(1000000, false, {
+        co2.perVisitTrace(1000000, false, {
           cachePercentage: 0.5,
-        })
+        }).co2
       ).toBeGreaterThan(MILLION_PERVISIT_GREY);
     });
 
     it("expects a number", () => {
       expect(() => {
-        co2.perVisit(1000000, false, { cachePercentage: "0.5" });
+        co2.perVisitTrace(1000000, false, { cachePercentage: "0.5" });
       }).toThrowError(
         "The cachePercentage option must be a number. You passed in a string."
       );
@@ -635,23 +642,23 @@ describe("co2", () => {
 
     it("expects a number between 0 and 1", () => {
       expect(() => {
-        co2.perVisit(1000000, false, {
+        co2.perVisitTrace(1000000, false, {
           cachePercentage: 1.5,
         });
       }).toThrowError(
         "The cachePercentage option must be a number between 0 and 1. You passed in 1.5."
       );
       expect(() => {
-        co2.perVisit(1000000, false, {
+        co2.perVisitTrace(1000000, false, {
           cachePercentage: -1.5,
         });
       }).toThrowError(
         "The cachePercentage option must be a number between 0 and 1. You passed in -1.5."
       );
       expect(
-        co2.perVisit(1000000, false, {
+        co2.perVisitTrace(1000000, false, {
           cachePercentage: 0,
-        })
+        }).co2
       ).toBeLessThan(MILLION_PERVISIT_GREY);
     });
   });
@@ -662,16 +669,16 @@ describe("co2", () => {
 
     it("uses the custom values", () => {
       expect(
-        co2.perVisit(MILLION, false, {
+        co2.perVisitTrace(MILLION, false, {
           firstVisitPercentage: 0.8,
           returnVisitPercentage: 0.2,
-        })
+        }).co2
       ).toBeGreaterThan(MILLION_PERVISIT_GREY);
     });
 
     it("expects firstVisitPercentage to be a number", () => {
       expect(() => {
-        co2.perVisit(1000000, false, {
+        co2.perVisitTrace(1000000, false, {
           firstVisitPercentage: "0.8",
         });
       }).toThrowError(
@@ -681,28 +688,28 @@ describe("co2", () => {
     it("expects firstVisitPercentage to be a number between 0 and 1", () => {
       const co2 = new CO2();
       expect(() => {
-        co2.perVisit(1000000, false, {
+        co2.perVisitTrace(1000000, false, {
           firstVisitPercentage: 1.5,
         });
       }).toThrowError(
         "The firstVisitPercentage option must be a number between 0 and 1. You passed in 1.5."
       );
       expect(() => {
-        co2.perVisit(1000000, false, {
+        co2.perVisitTrace(1000000, false, {
           firstVisitPercentage: -1.5,
         });
       }).toThrowError(
         "The firstVisitPercentage option must be a number between 0 and 1. You passed in -1.5."
       );
       expect(
-        co2.perVisit(1000000, false, {
+        co2.perVisitTrace(1000000, false, {
           firstVisitPercentage: 0,
-        })
+        }).co2
       ).toBeLessThan(MILLION_PERVISIT_GREY);
     });
     it("expects returnVisitPercentage to be a number", () => {
       expect(() => {
-        co2.perVisit(1000000, false, {
+        co2.perVisitTrace(1000000, false, {
           returnVisitPercentage: "0.5",
         });
       }).toThrowError(
@@ -711,23 +718,23 @@ describe("co2", () => {
     });
     it("expects returnVisitPercentage to be a number between 0 and 1", () => {
       expect(() => {
-        co2.perVisit(1000000, false, {
+        co2.perVisitTrace(1000000, false, {
           returnVisitPercentage: 1.5,
         });
       }).toThrowError(
         "The returnVisitPercentage option must be a number between 0 and 1. You passed in 1.5."
       );
       expect(() => {
-        co2.perVisit(1000000, false, {
+        co2.perVisitTrace(1000000, false, {
           returnVisitPercentage: -1.5,
         });
       }).toThrowError(
         "The returnVisitPercentage option must be a number between 0 and 1. You passed in -1.5."
       );
       expect(
-        co2.perVisit(1000000, false, {
+        co2.perVisitTrace(1000000, false, {
           returnVisitPercentage: 0,
-        })
+        }).co2
       ).toBeLessThan(MILLION_PERVISIT_GREY);
     });
   });

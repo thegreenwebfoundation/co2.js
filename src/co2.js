@@ -167,13 +167,8 @@ class CO2 {
    * @param {boolean} green
    * @return {number} the amount of CO2 in grammes
    */
-  perByte(bytes, green = false, options = {}) {
-    let adjustments = {};
-    if (options) {
-      // If there are options, parse them and add them to the model.
-      adjustments = parseOptions(options);
-    }
-    return this.model.perByte(bytes, green, adjustments);
+  perByte(bytes, green = false) {
+    return this.model.perByte(bytes, green);
   }
 
   /**
@@ -185,7 +180,43 @@ class CO2 {
    * @param {boolean} green
    * @return {number} the amount of CO2 in grammes
    */
-  perVisit(bytes, green = false, options = {}) {
+  perVisit(bytes, green = false) {
+    if (this.model?.perVisit) {
+      return this.model.perVisit(bytes, green);
+    } else {
+      throw new Error(
+        `The perVisit() method is not supported in the model you are using. Try using perByte() instead.\nSee https://developers.thegreenwebfoundation.org/co2js/methods/ to learn more about the methods available in CO2.js.`
+      );
+    }
+  }
+
+  perByteTrace(bytes, green = false, options = {}) {
+    let adjustments = {};
+    if (options) {
+      // If there are options, parse them and add them to the model.
+      adjustments = parseOptions(options);
+    }
+    return {
+      co2: this.model.perByte(bytes, green, adjustments),
+      variables: {
+        description:
+          "Below are the variables used to calculate this CO2 estimate.",
+        gridIntensity: {
+          description:
+            "The grid intensity (grams per kilowatt-hour) used to calculate this CO2 estimate.",
+          network: adjustments?.gridIntensity?.network?.value || 442,
+          dataCenter: adjustments?.gridIntensity?.dataCenter?.value || 442,
+          production: 442,
+          device: adjustments?.gridIntensity?.device?.value || 442,
+        },
+        cachePercentage: adjustments?.cachePercentage || 0.02,
+        firstVisitPercentage: adjustments?.firstVisitPercentage || 0.75,
+        returnVisitPercentage: adjustments?.returnVisitPercentage || 0.25,
+      },
+    };
+  }
+
+  perVisitTrace(bytes, green = false, options = {}) {
     if (this.model?.perVisit) {
       let adjustments = {};
       if (options) {
@@ -193,10 +224,27 @@ class CO2 {
         adjustments = parseOptions(options);
       }
 
-      return this.model.perVisit(bytes, green, adjustments);
+      return {
+        co2: this.model.perVisit(bytes, green, adjustments),
+        variables: {
+          description:
+            "Below are the variables used to calculate this CO2 estimate.",
+          gridIntensity: {
+            description:
+              "The grid intensity (grams per kilowatt-hour) used to calculate this CO2 estimate.",
+            network: adjustments?.gridIntensity?.network?.value || 442,
+            dataCenter: adjustments?.gridIntensity?.dataCenter?.value || 442,
+            production: 442,
+            device: adjustments?.gridIntensity?.device?.value || 442,
+          },
+          cachePercentage: adjustments?.cachePercentage || 0.02,
+          firstVisitPercentage: adjustments?.firstVisitPercentage || 0.75,
+          returnVisitPercentage: adjustments?.returnVisitPercentage || 0.25,
+        },
+      };
     } else {
       throw new Error(
-        `The perVisit() method is not supported in the model you are using. Try using perByte() instead.\nSee https://developers.thegreenwebfoundation.org/co2js/methods/ to learn more about the methods available in CO2.js.`
+        `The perVisitDetailed() method is not supported in the model you are using. Try using perByte() instead.\nSee https://developers.thegreenwebfoundation.org/co2js/methods/ to learn more about the methods available in CO2.js.`
       );
     }
   }
