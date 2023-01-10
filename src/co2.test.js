@@ -347,8 +347,9 @@ describe("co2", () => {
   describe("Using custom grid intensity", () => {
     const co2 = new CO2({
       gridIntensity: {
-        device: { value: 526.876 },
+        device: { value: 565.629 },
         dataCenter: { country: "TWN" },
+        network: { country: "TWN" },
       },
     });
     it("uses the grid intensity data", () => {
@@ -370,6 +371,7 @@ describe("co2", () => {
       firstVisitPercentage: 0.8,
       returnVisitPercentage: 0.2,
     });
+
     it("uses the grid intensity data", () => {
       expect(co2.perVisit(1000000)).toBeGreaterThan(0.27031);
     });

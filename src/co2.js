@@ -20,7 +20,7 @@ class CO2 {
 
     if (options?.gridIntensity) {
       this.model.gridIntensity = {};
-      const { device, dataCenter } = options.gridIntensity;
+      const { device, dataCenter, network } = options.gridIntensity;
       if (device) {
         // Check if device is an object with a value property
         if (typeof device === "object" && device.value) {
@@ -72,6 +72,33 @@ class CO2 {
           this.model.gridIntensity["dataCenter"] = {
             country: dataCenter.country,
             value: parseFloat(averageIntensity.data[dataCenter.country]),
+          };
+        }
+      }
+      if (network) {
+        // Check if device is an object with a value property
+        if (typeof network === "object" && network.value) {
+          // Check if the value is a number
+          if (typeof network.value === "number") {
+            this.model.gridIntensity.network = {
+              value: network.value,
+            };
+          } else {
+            throw new Error(
+              `The value for device grid intensity must be a number. You passed in a ${typeof device.value}.`
+            );
+          }
+        } else if (typeof network === "object" && network.country) {
+          const averageIntensity =
+            require("./data/average-intensities-2021.min.js").default;
+          if (!averageIntensity.data[network.country]) {
+            throw new Error(
+              `"${network.country}" is not a valid country. Please use a valid 3 digit ISO 3166 country code. \nSee https://developers.thegreenwebfoundation.org/co2js/data/ for more information.`
+            );
+          }
+          this.model.gridIntensity["network"] = {
+            country: network.country,
+            value: parseFloat(averageIntensity.data[network.country]),
           };
         }
       }

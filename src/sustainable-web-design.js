@@ -73,10 +73,11 @@ class SustainableWebDesign {
    * @return {number} the total number in grams of CO2 equivalent emissions
    */
   co2byComponent(energyBycomponent, carbonIntensity = GLOBAL_INTENSITY) {
-    const { device, dataCenter } = carbonIntensity;
+    const { device, dataCenter, network } = carbonIntensity;
     let globalEmissions = GLOBAL_INTENSITY;
     let dataCenterCarbonIntensity = dataCenter?.value || carbonIntensity;
     let deviceCarbonIntensity = device?.value || GLOBAL_INTENSITY;
+    let networkCarbonIntensity = network?.value || GLOBAL_INTENSITY;
 
     const returnCO2ByComponent = {};
     for (const [key, value] of Object.entries(energyBycomponent)) {
@@ -86,13 +87,14 @@ class SustainableWebDesign {
         returnCO2ByComponent[key] = value * dataCenterCarbonIntensity;
       } else if (key.startsWith("consumerDeviceEnergy")) {
         returnCO2ByComponent[key] = value * deviceCarbonIntensity;
+      } else if (key.startsWith("networkEnergy")) {
+        returnCO2ByComponent[key] = value * networkCarbonIntensity;
       } else {
-        // We don't have info about the device location,
-        // nor the network path used, nor the production emissions
-        // so we revert to global figures
+        // Use the global intensity for the remaining segments
         returnCO2ByComponent[key] = value * globalEmissions;
       }
     }
+
     return returnCO2ByComponent;
   }
 
