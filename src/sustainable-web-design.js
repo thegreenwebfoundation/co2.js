@@ -229,10 +229,8 @@ class SustainableWebDesign {
     returnView = RETURNING_VISITOR_PERCENTAGE,
     dataReloadRatio = PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD
   ) {
-    if (options.cachePercentage) {
-      // if we have a cachePercentage passed in, then use that to calculate the dataReloadRatio
-      // since we're using the cachePercentage to represent the amount of data that is cached, we need to subtract that from 1 to determine the amount of data that is reloaded
-      dataReloadRatio = 1 - options.cachePercentage;
+    if (options.dataReloadRatio) {
+      dataReloadRatio = options.dataReloadRatio;
     }
 
     if (options.firstVisitPercentage) {

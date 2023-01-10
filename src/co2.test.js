@@ -355,6 +355,7 @@ describe("co2", () => {
           device: 565.629,
           dataCenter: { country: "TWN" },
         },
+        dataReloadRatio: 0.6,
       })
     );
     it("uses the grid intensity data", () => {
@@ -627,37 +628,37 @@ describe("co2", () => {
     it("uses the custom value", () => {
       expect(
         co2.perVisitTrace(1000000, false, {
-          cachePercentage: 0.5,
+          dataReloadRatio: 0.5,
         }).co2
       ).toBeGreaterThan(MILLION_PERVISIT_GREY);
     });
 
     it("expects a number", () => {
       expect(() => {
-        co2.perVisitTrace(1000000, false, { cachePercentage: "0.5" });
+        co2.perVisitTrace(1000000, false, { dataReloadRatio: "0.5" });
       }).toThrowError(
-        "The cachePercentage option must be a number. You passed in a string."
+        "The dataReloadRatio option must be a number. You passed in a string."
       );
     });
 
     it("expects a number between 0 and 1", () => {
       expect(() => {
         co2.perVisitTrace(1000000, false, {
-          cachePercentage: 1.5,
+          dataReloadRatio: 1.5,
         });
       }).toThrowError(
-        "The cachePercentage option must be a number between 0 and 1. You passed in 1.5."
+        "The dataReloadRatio option must be a number between 0 and 1. You passed in 1.5."
       );
       expect(() => {
         co2.perVisitTrace(1000000, false, {
-          cachePercentage: -1.5,
+          dataReloadRatio: -1.5,
         });
       }).toThrowError(
-        "The cachePercentage option must be a number between 0 and 1. You passed in -1.5."
+        "The dataReloadRatio option must be a number between 0 and 1. You passed in -1.5."
       );
       expect(
         co2.perVisitTrace(1000000, false, {
-          cachePercentage: 0,
+          dataReloadRatio: 0,
         }).co2
       ).toBeLessThan(MILLION_PERVISIT_GREY);
     });

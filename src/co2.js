@@ -85,18 +85,18 @@ function parseOptions(options) {
     }
   }
 
-  if (options?.cachePercentage) {
-    if (typeof options.cachePercentage === "number") {
-      if (options.cachePercentage > 0 && options.cachePercentage < 1) {
-        adjustments.cachePercentage = options.cachePercentage;
+  if (options?.dataReloadRatio) {
+    if (typeof options.dataReloadRatio === "number") {
+      if (options.dataReloadRatio > 0 && options.dataReloadRatio < 1) {
+        adjustments.dataReloadRatio = options.dataReloadRatio;
       } else {
         throw new Error(
-          `The cachePercentage option must be a number between 0 and 1. You passed in ${options.cachePercentage}.`
+          `The dataReloadRatio option must be a number between 0 and 1. You passed in ${options.dataReloadRatio}.`
         );
       }
     } else {
       throw new Error(
-        `The cachePercentage option must be a number. You passed in a ${typeof options.cachePercentage}.`
+        `The dataReloadRatio option must be a number. You passed in a ${typeof options.dataReloadRatio}.`
       );
     }
   }
@@ -209,7 +209,7 @@ class CO2 {
           production: 442,
           device: adjustments?.gridIntensity?.device?.value || 442,
         },
-        cachePercentage: adjustments?.cachePercentage || 0.02,
+        dataReloadRatio: adjustments?.dataReloadRatio || 0.02,
         firstVisitPercentage: adjustments?.firstVisitPercentage || 0.75,
         returnVisitPercentage: adjustments?.returnVisitPercentage || 0.25,
       },
@@ -237,7 +237,7 @@ class CO2 {
             production: 442,
             device: adjustments?.gridIntensity?.device?.value || 442,
           },
-          cachePercentage: adjustments?.cachePercentage || 0.02,
+          dataReloadRatio: adjustments?.dataReloadRatio || 0.02,
           firstVisitPercentage: adjustments?.firstVisitPercentage || 0.75,
           returnVisitPercentage: adjustments?.returnVisitPercentage || 0.25,
         },
