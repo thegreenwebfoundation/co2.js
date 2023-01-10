@@ -1,5 +1,30 @@
 "use strict";
 
+/**
+ * @typedef {Object} CO2EstimateTraceResult
+ * @property {number} co2 - The CO2 estimate in grams/kilowatt-hour
+ * @property {boolean} green - Whether the domain is green or not
+ * @property {TraceResultVariables} variables - The variables used to calculate the CO2 estimate
+ */
+
+/**
+ * @typedef {Object} TraceResultVariables
+ * @property {number} co2 - The CO2 estimate in grams/kilowatt-hour
+ * @property {GridIntensityVariables} gridIntensity - The grid intensity related variables
+ * @property {number} dataReloadRatio - What percentage of a page is reloaded on each subsequent page view
+ * @property {number} firstVisitPercentage - What percentage of visits are loading this page for subsequent times
+ * @property {number} returnVisitPercentage - What percentage of visits are loading this page for the second or more time
+ */
+
+/**
+ * @typedef {Object} GridIntensityVariables
+ * @property {string} description - The description of the variables
+ * @property {number} network - The network grid intensity set by the user or the default
+ * @property {number} dataCenter - The data center grid intensity set by the user or the default
+ * @property {number} device - The device grid intensity set by the user or the default
+ * @property {number} production - The production grid intensity set by the user or the default
+ */
+
 import OneByte from "./1byte.js";
 import SustainableWebDesign from "./sustainable-web-design.js";
 
@@ -61,6 +86,7 @@ class CO2 {
     }
     return {
       co2: this.model.perByte(bytes, green, adjustments),
+      green,
       variables: {
         description:
           "Below are the variables used to calculate this CO2 estimate.",
@@ -89,6 +115,7 @@ class CO2 {
 
       return {
         co2: this.model.perVisit(bytes, green, adjustments),
+        green,
         variables: {
           description:
             "Below are the variables used to calculate this CO2 estimate.",
