@@ -403,13 +403,79 @@ describe("co2", () => {
   });
 
   describe("Using custom first and return visitor figures in SWD", () => {
+    const { MILLION_PERVISIT_GREY } = SWD;
     const co2 = new CO2({
       firstVisitPercentage: 0.8,
       returnVisitPercentage: 0.2,
     });
 
-    it("uses the grid intensity data", () => {
-      expect(co2.perVisit(MILLION)).toBeGreaterThan(0.27031);
+    it("uses the custom values", () => {
+      expect(co2.perVisit(MILLION)).toBeGreaterThan(MILLION_PERVISIT_GREY);
+    });
+
+    it("expects firstVisitPercentage to be a number", () => {
+      expect(() => {
+        const co2 = new CO2({
+          firstVisitPercentage: "0.5",
+        });
+        co2.perVisit(1000000);
+      }).toThrowError(
+        "The firstVisitPercentage option must be a number. You passed in a string."
+      );
+    });
+    it("expects firstVisitPercentage to be a number between 0 and 1", () => {
+      const co2 = new CO2({
+        firstVisitPercentage: 0,
+      });
+      expect(() => {
+        const co2 = new CO2({
+          firstVisitPercentage: 1.5,
+        });
+        co2.perVisit(1000000);
+      }).toThrowError(
+        "The firstVisitPercentage option must be a number between 0 and 1. You passed in 1.5."
+      );
+      expect(() => {
+        const co2 = new CO2({
+          firstVisitPercentage: -1.5,
+        });
+        co2.perVisit(1000000);
+      }).toThrowError(
+        "The firstVisitPercentage option must be a number between 0 and 1. You passed in -1.5."
+      );
+      expect(co2.perVisit(1000000)).toBeLessThan(MILLION_PERVISIT_GREY);
+    });
+    it("expects returnVisitPercentage to be a number", () => {
+      expect(() => {
+        const co2 = new CO2({
+          returnVisitPercentage: "0.5",
+        });
+        co2.perVisit(1000000);
+      }).toThrowError(
+        "The returnVisitPercentage option must be a number. You passed in a string."
+      );
+    });
+    it("expects returnVisitPercentage to be a number between 0 and 1", () => {
+      const co2 = new CO2({
+        returnVisitPercentage: 0,
+      });
+      expect(() => {
+        const co2 = new CO2({
+          returnVisitPercentage: 1.5,
+        });
+        co2.perVisit(1000000);
+      }).toThrowError(
+        "The returnVisitPercentage option must be a number between 0 and 1. You passed in 1.5."
+      );
+      expect(() => {
+        const co2 = new CO2({
+          returnVisitPercentage: -1.5,
+        });
+        co2.perVisit(1000000);
+      }).toThrowError(
+        "The returnVisitPercentage option must be a number between 0 and 1. You passed in -1.5."
+      );
+      expect(co2.perVisit(1000000)).toBeLessThan(MILLION_PERVISIT_GREY);
     });
   });
 });
