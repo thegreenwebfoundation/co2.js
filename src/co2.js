@@ -1,15 +1,25 @@
 "use strict";
 
 /**
- * @typedef {Object} CO2EstimateTraceResult
+ * @typedef {Object} CO2EstimateTraceResultPerByte
  * @property {number} co2 - The CO2 estimate in grams/kilowatt-hour
  * @property {boolean} green - Whether the domain is green or not
  * @property {TraceResultVariables} variables - The variables used to calculate the CO2 estimate
  */
 
 /**
- * @typedef {Object} TraceResultVariables
+ * @typedef {Object} CO2EstimateTraceResultPerVisit
  * @property {number} co2 - The CO2 estimate in grams/kilowatt-hour
+ * @property {boolean} green - Whether the domain is green or not
+ * @property {TraceResultVariables} variables - The variables used to calculate the CO2 estimate
+ */
+
+/**
+ * @typedef {Object} TraceResultVariablesPerByte
+ * @property {GridIntensityVariables} gridIntensity - The grid intensity related variables
+ */
+/**
+ * @typedef {Object} TraceResultVariablesPerVisit
  * @property {GridIntensityVariables} gridIntensity - The grid intensity related variables
  * @property {number} dataReloadRatio - What percentage of a page is reloaded on each subsequent page view
  * @property {number} firstVisitPercentage - What percentage of visits are loading this page for subsequent times
@@ -86,7 +96,7 @@ class CO2 {
    * @param {number} bytes
    * @param {boolean} green
    * @param {Object} options
-   * @return {CO2EstimateTraceResult} the amount of CO2 in grammes
+   * @return {CO2EstimateTraceResultPerByte} the amount of CO2 in grammes
    */
   perByteTrace(bytes, green = false, options = {}) {
     let adjustments = {};
@@ -108,9 +118,6 @@ class CO2 {
           production: 442,
           device: adjustments?.gridIntensity?.device?.value || 442,
         },
-        dataReloadRatio: adjustments?.dataReloadRatio || 0.02,
-        firstVisitPercentage: adjustments?.firstVisitPercentage || 0.75,
-        returnVisitPercentage: adjustments?.returnVisitPercentage || 0.25,
       },
     };
   }
@@ -123,7 +130,7 @@ class CO2 {
    * @param {number} bytes
    * @param {boolean} green
    * @param {Object} options
-   * @return {CO2EstimateTraceResult} the amount of CO2 in grammes
+   * @return {CO2EstimateTraceResultPerVisit} the amount of CO2 in grammes
    */
   perVisitTrace(bytes, green = false, options = {}) {
     if (this.model?.perVisit) {
