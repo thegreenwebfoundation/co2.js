@@ -347,17 +347,31 @@ describe("co2", () => {
     });
   });
 
+  describe("perByte and perVisit trace function without options", () => {
+    const co2 = new CO2();
+    it("perByteTrace is the same as perByte", () => {
+      expect(co2.perByteTrace(MILLION).co2).toBe(co2.perByte(MILLION));
+      expect(co2.perByteTrace(MILLION, true).co2).toBe(
+        co2.perByte(MILLION, true)
+      );
+      expect(co2.perByteTrace(MILLION, true, {}).co2).toBe(
+        co2.perByte(MILLION, true)
+      );
+    });
+
+    it("perVisitTrace is the same as perVisit", () => {
+      expect(co2.perVisitTrace(MILLION).co2).toBe(co2.perVisit(MILLION));
+      expect(co2.perVisitTrace(MILLION, true).co2).toBe(
+        co2.perVisit(MILLION, true)
+      );
+      expect(co2.perVisitTrace(MILLION, true, {}).co2).toBe(
+        co2.perVisit(MILLION, true)
+      );
+    });
+  });
+
   describe("Using custom grid intensity", () => {
     const co2 = new CO2();
-    console.log(
-      co2.perVisitTrace(MILLION, false, {
-        gridIntensity: {
-          device: 565.629,
-          dataCenter: { country: "TWN" },
-        },
-        dataReloadRatio: 0.6,
-      })
-    );
     it("uses the grid intensity data", () => {
       expect(
         co2.perVisitTrace(MILLION, false, {
@@ -665,7 +679,7 @@ describe("co2", () => {
   });
 
   describe("Using custom first and return visitor figures in SWD", () => {
-    const { MILLION_PERVISIT_GREY } = SWD;
+    const { MILLION_PERVISIT_GREY, MILLION_GREY } = SWD;
     const co2 = new CO2();
 
     it("uses the custom values", () => {
@@ -675,6 +689,17 @@ describe("co2", () => {
           returnVisitPercentage: 0.2,
         }).co2
       ).toBeGreaterThan(MILLION_PERVISIT_GREY);
+
+      expect(
+        parseFloat(
+          co2
+            .perByteTrace(MILLION, false, {
+              firstVisitPercentage: 0.8,
+              returnVisitPercentage: 0.2,
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBe(MILLION_GREY);
     });
 
     it("expects firstVisitPercentage to be a number", () => {
