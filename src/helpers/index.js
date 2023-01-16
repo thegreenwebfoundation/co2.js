@@ -1,3 +1,4 @@
+import { averageIntensity } from "../index.js";
 const formatNumber = (num) => parseFloat(num.toFixed(2));
 
 function parseOptions(options) {
@@ -13,8 +14,6 @@ function parseOptions(options) {
     const { device, dataCenter, network } = options.gridIntensity;
     if (device) {
       if (typeof device === "object" && device.country) {
-        const averageIntensity =
-          require("../data/average-intensities-2021.min.js").default;
         if (!averageIntensity.data[device.country]) {
           throw new Error(
             `"${device.country}" is not a valid country. Please use a valid 3 digit ISO 3166 country code. \nSee https://developers.thegreenwebfoundation.org/co2js/data/ for more information.`
@@ -36,8 +35,6 @@ function parseOptions(options) {
     }
     if (dataCenter) {
       if (typeof dataCenter === "object" && dataCenter.country) {
-        const averageIntensity =
-          require("../data/average-intensities-2021.min.js").default;
         if (!averageIntensity.data[dataCenter.country]) {
           throw new Error(
             `"${dataCenter.country}" is not a valid country. Please use a valid 3 digit ISO 3166 country code. \nSee https://developers.thegreenwebfoundation.org/co2js/data/ for more information.`
@@ -59,8 +56,6 @@ function parseOptions(options) {
     }
     if (network) {
       if (typeof network === "object" && network.country) {
-        const averageIntensity =
-          require("../data/average-intensities-2021.min.js").default;
         if (!averageIntensity.data[network.country]) {
           throw new Error(
             `"${network.country}" is not a valid country. Please use a valid 3 digit ISO 3166 country code. \nSee https://developers.thegreenwebfoundation.org/co2js/data/ for more information.`
