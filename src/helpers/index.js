@@ -13,15 +13,20 @@ function parseOptions(options) {
     adjustments.gridIntensity = {};
     const { device, dataCenter, network } = options.gridIntensity;
     if (device) {
-      if (typeof device === "object" && device.country) {
-        if (!averageIntensity.data[device.country]) {
-          throw new Error(
-            `"${device.country}" is not a valid country. Please use a valid 3 digit ISO 3166 country code. \nSee https://developers.thegreenwebfoundation.org/co2js/data/ for more information.`
+      if (typeof device === "object") {
+        if (!averageIntensity.data[device.country?.toUpperCase()]) {
+          console.warn(
+            `"${device.country}" is not a valid country. Please use a valid 3 digit ISO 3166 country code. \nSee https://developers.thegreenwebfoundation.org/co2js/data/ for more information. Falling back to global average grid intensity.`
           );
+          adjustments.gridIntensity["device"] = {
+            value: 442,
+          };
         }
         adjustments.gridIntensity["device"] = {
           country: device.country,
-          value: parseFloat(averageIntensity.data[device.country]),
+          value: parseFloat(
+            averageIntensity.data[device.country?.toUpperCase()]
+          ),
         };
       } else if (typeof device === "number") {
         adjustments.gridIntensity["device"] = {
@@ -34,15 +39,20 @@ function parseOptions(options) {
       }
     }
     if (dataCenter) {
-      if (typeof dataCenter === "object" && dataCenter.country) {
-        if (!averageIntensity.data[dataCenter.country]) {
-          throw new Error(
-            `"${dataCenter.country}" is not a valid country. Please use a valid 3 digit ISO 3166 country code. \nSee https://developers.thegreenwebfoundation.org/co2js/data/ for more information.`
+      if (typeof dataCenter === "object") {
+        if (!averageIntensity.data[dataCenter.country?.toUpperCase()]) {
+          console.warn(
+            `"${dataCenter.country}" is not a valid country. Please use a valid 3 digit ISO 3166 country code. \nSee https://developers.thegreenwebfoundation.org/co2js/data/ for more information.  Falling back to global average grid intensity.`
           );
+          adjustments.gridIntensity["dataCenter"] = {
+            value: 442,
+          };
         }
         adjustments.gridIntensity["dataCenter"] = {
           country: dataCenter.country,
-          value: parseFloat(averageIntensity.data[dataCenter.country]),
+          value: parseFloat(
+            averageIntensity.data[dataCenter.country?.toUpperCase()]
+          ),
         };
       } else if (typeof dataCenter === "number") {
         adjustments.gridIntensity["dataCenter"] = {
@@ -55,15 +65,20 @@ function parseOptions(options) {
       }
     }
     if (network) {
-      if (typeof network === "object" && network.country) {
-        if (!averageIntensity.data[network.country]) {
-          throw new Error(
-            `"${network.country}" is not a valid country. Please use a valid 3 digit ISO 3166 country code. \nSee https://developers.thegreenwebfoundation.org/co2js/data/ for more information.`
+      if (typeof network === "object") {
+        if (!averageIntensity.data[network.country?.toUpperCase()]) {
+          console.warn(
+            `"${network.country}" is not a valid country. Please use a valid 3 digit ISO 3166 country code. \nSee https://developers.thegreenwebfoundation.org/co2js/data/ for more information.  Falling back to global average grid intensity.`
           );
+          adjustments.gridIntensity["network"] = {
+            value: 442,
+          };
         }
         adjustments.gridIntensity["network"] = {
           country: network.country,
-          value: parseFloat(averageIntensity.data[network.country]),
+          value: parseFloat(
+            averageIntensity.data[network.country?.toUpperCase()]
+          ),
         };
       } else if (typeof network === "number") {
         adjustments.gridIntensity["network"] = {
