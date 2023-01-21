@@ -126,6 +126,7 @@ class CO2 {
       variables: {
         description:
           "Below are the variables used to calculate this CO2 estimate.",
+        bytes,
         gridIntensity: {
           description:
             "The grid intensity (grams per kilowatt-hour) used to calculate this CO2 estimate.",
@@ -171,6 +172,7 @@ class CO2 {
         variables: {
           description:
             "Below are the variables used to calculate this CO2 estimate.",
+          bytes,
           gridIntensity: {
             description:
               "The grid intensity (grams per kilowatt-hour) used to calculate this CO2 estimate.",
