@@ -68,10 +68,6 @@ class SustainableWebDesign {
     let dataCenterCarbonIntensity = GLOBAL_GRID_INTENSITY;
 
     let globalEmissions = GLOBAL_GRID_INTENSITY;
-    // If the user passes in a TRUE value (green web host), then use the renewables intensity value
-    if (carbonIntensity === true) {
-      dataCenterCarbonIntensity = RENEWABLES_GRID_INTENSITY;
-    }
 
     if (options?.gridIntensity) {
       const { device, network, dataCenter } = options.gridIntensity;
@@ -86,6 +82,11 @@ class SustainableWebDesign {
       if (dataCenter?.value) {
         dataCenterCarbonIntensity = dataCenter.value;
       }
+    }
+
+    // If the user passes in a TRUE value (green web host), then use the renewables intensity value
+    if (carbonIntensity === true) {
+      dataCenterCarbonIntensity = RENEWABLES_GRID_INTENSITY;
     }
 
     const returnCO2ByComponent = {};
