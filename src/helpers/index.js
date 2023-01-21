@@ -1,5 +1,10 @@
 import { averageIntensity } from "../index.js";
-import { GLOBAL_GRID_INTENSITY } from "../constants/index.js";
+import {
+  GLOBAL_GRID_INTENSITY,
+  PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD,
+  FIRST_TIME_VIEWING_PERCENTAGE,
+  RETURNING_VISITOR_PERCENTAGE,
+} from "../constants/index.js";
 const formatNumber = (num) => parseFloat(num.toFixed(2));
 
 function parseOptions(options) {
@@ -107,13 +112,17 @@ function parseOptions(options) {
       if (options.dataReloadRatio >= 0 && options.dataReloadRatio <= 1) {
         adjustments.dataReloadRatio = options.dataReloadRatio;
       } else {
-        throw new Error(
-          `The dataReloadRatio option must be a number between 0 and 1. You passed in ${options.dataReloadRatio}.`
+        adjustments.dataReloadRatio =
+          PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD;
+        console.warn(
+          `The dataReloadRatio option must be a number between 0 and 1. You passed in ${options.dataReloadRatio}. \nFalling back to default value.`
         );
       }
     } else {
-      throw new Error(
-        `The dataReloadRatio option must be a number. You passed in a ${typeof options.dataReloadRatio}.`
+      adjustments.dataReloadRatio =
+        PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD;
+      console.warn(
+        `The dataReloadRatio option must be a number. You passed in a ${typeof options.dataReloadRatio}. \nFalling back to default value.`
       );
     }
   }
@@ -126,13 +135,15 @@ function parseOptions(options) {
       ) {
         adjustments.firstVisitPercentage = options.firstVisitPercentage;
       } else {
-        throw new Error(
-          `The firstVisitPercentage option must be a number between 0 and 1. You passed in ${options.firstVisitPercentage}.`
+        adjustments.firstVisitPercentage = FIRST_TIME_VIEWING_PERCENTAGE;
+        console.warn(
+          `The firstVisitPercentage option must be a number between 0 and 1. You passed in ${options.firstVisitPercentage}. \nFalling back to default value.`
         );
       }
     } else {
-      throw new Error(
-        `The firstVisitPercentage option must be a number. You passed in a ${typeof options.firstVisitPercentage}.`
+      adjustments.firstVisitPercentage = FIRST_TIME_VIEWING_PERCENTAGE;
+      console.warn(
+        `The firstVisitPercentage option must be a number. You passed in a ${typeof options.firstVisitPercentage}. \nFalling back to default value.`
       );
     }
   }
@@ -145,13 +156,15 @@ function parseOptions(options) {
       ) {
         adjustments.returnVisitPercentage = options.returnVisitPercentage;
       } else {
-        throw new Error(
-          `The returnVisitPercentage option must be a number between 0 and 1. You passed in ${options.returnVisitPercentage}.`
+        adjustments.returnVisitPercentage = RETURNING_VISITOR_PERCENTAGE;
+        console.warn(
+          `The returnVisitPercentage option must be a number between 0 and 1. You passed in ${options.returnVisitPercentage}. \nFalling back to default value.`
         );
       }
     } else {
-      throw new Error(
-        `The returnVisitPercentage option must be a number. You passed in a ${typeof options.returnVisitPercentage}.`
+      adjustments.returnVisitPercentage = RETURNING_VISITOR_PERCENTAGE;
+      console.warn(
+        `The returnVisitPercentage option must be a number. You passed in a ${typeof options.returnVisitPercentage}. \nFalling back to default value.`
       );
     }
   }

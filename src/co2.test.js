@@ -758,28 +758,34 @@ describe("co2", () => {
     });
 
     it("expects a number", () => {
-      expect(() => {
-        co2.perVisitTrace(1000000, false, { dataReloadRatio: "0.5" });
-      }).toThrowError(
-        "The dataReloadRatio option must be a number. You passed in a string."
-      );
+      expect(
+        parseFloat(
+          co2
+            .perVisitTrace(1000000, false, { dataReloadRatio: "0.5" })
+            .co2.toPrecision(5)
+        )
+      ).toBe(MILLION_PERVISIT_GREY);
     });
 
     it("expects a number between 0 and 1", () => {
-      expect(() => {
-        co2.perVisitTrace(1000000, false, {
-          dataReloadRatio: 1.5,
-        });
-      }).toThrowError(
-        "The dataReloadRatio option must be a number between 0 and 1. You passed in 1.5."
-      );
-      expect(() => {
-        co2.perVisitTrace(1000000, false, {
-          dataReloadRatio: -1.5,
-        });
-      }).toThrowError(
-        "The dataReloadRatio option must be a number between 0 and 1. You passed in -1.5."
-      );
+      expect(
+        parseFloat(
+          co2
+            .perVisitTrace(1000000, false, {
+              dataReloadRatio: 1.5,
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBe(MILLION_PERVISIT_GREY);
+      expect(
+        parseFloat(
+          co2
+            .perVisitTrace(1000000, false, {
+              dataReloadRatio: -1.5,
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBe(MILLION_PERVISIT_GREY);
       expect(
         co2.perVisitTrace(1000000, false, {
           dataReloadRatio: 0,
@@ -813,30 +819,36 @@ describe("co2", () => {
     });
 
     it("expects firstVisitPercentage to be a number", () => {
-      expect(() => {
-        co2.perVisitTrace(1000000, false, {
-          firstVisitPercentage: "0.8",
-        });
-      }).toThrowError(
-        "The firstVisitPercentage option must be a number. You passed in a string."
-      );
+      expect(
+        parseFloat(
+          co2
+            .perVisitTrace(1000000, false, {
+              firstVisitPercentage: "0.8",
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBe(MILLION_PERVISIT_GREY);
     });
     it("expects firstVisitPercentage to be a number between 0 and 1", () => {
       const co2 = new CO2();
-      expect(() => {
-        co2.perVisitTrace(1000000, false, {
-          firstVisitPercentage: 1.5,
-        });
-      }).toThrowError(
-        "The firstVisitPercentage option must be a number between 0 and 1. You passed in 1.5."
-      );
-      expect(() => {
-        co2.perVisitTrace(1000000, false, {
-          firstVisitPercentage: -1.5,
-        });
-      }).toThrowError(
-        "The firstVisitPercentage option must be a number between 0 and 1. You passed in -1.5."
-      );
+      expect(
+        parseFloat(
+          co2
+            .perVisitTrace(1000000, false, {
+              firstVisitPercentage: 1.5,
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBe(MILLION_PERVISIT_GREY);
+      expect(
+        parseFloat(
+          co2
+            .perVisitTrace(1000000, false, {
+              firstVisitPercentage: -1.5,
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBe(MILLION_PERVISIT_GREY);
       expect(
         co2.perVisitTrace(1000000, false, {
           firstVisitPercentage: 0,
@@ -844,29 +856,35 @@ describe("co2", () => {
       ).toBeLessThan(MILLION_PERVISIT_GREY);
     });
     it("expects returnVisitPercentage to be a number", () => {
-      expect(() => {
-        co2.perVisitTrace(1000000, false, {
-          returnVisitPercentage: "0.5",
-        });
-      }).toThrowError(
-        "The returnVisitPercentage option must be a number. You passed in a string."
-      );
+      expect(
+        parseFloat(
+          co2
+            .perVisitTrace(1000000, false, {
+              returnVisitPercentage: "0.5",
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBe(MILLION_PERVISIT_GREY);
     });
     it("expects returnVisitPercentage to be a number between 0 and 1", () => {
-      expect(() => {
-        co2.perVisitTrace(1000000, false, {
-          returnVisitPercentage: 1.5,
-        });
-      }).toThrowError(
-        "The returnVisitPercentage option must be a number between 0 and 1. You passed in 1.5."
-      );
-      expect(() => {
-        co2.perVisitTrace(1000000, false, {
-          returnVisitPercentage: -1.5,
-        });
-      }).toThrowError(
-        "The returnVisitPercentage option must be a number between 0 and 1. You passed in -1.5."
-      );
+      expect(
+        parseFloat(
+          co2
+            .perVisitTrace(1000000, false, {
+              returnVisitPercentage: 1.5,
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBe(MILLION_PERVISIT_GREY);
+      expect(
+        parseFloat(
+          co2
+            .perVisitTrace(1000000, false, {
+              returnVisitPercentage: -1.5,
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBe(MILLION_PERVISIT_GREY);
       expect(
         co2.perVisitTrace(1000000, false, {
           returnVisitPercentage: 0,
