@@ -306,6 +306,8 @@ describe("co2", () => {
     });
     describe("Returning results by segment", () => {
       const {
+        MILLION_GREY,
+        MILLION_GREEN,
         MILLION_PERVISIT_GREY_DATACENTERS_FIRST,
         MILLION_PERVISIT_GREY_DEVICES_FIRST,
         MILLION_PERVISIT_GREY_NETWORKS_FIRST,
@@ -493,30 +495,34 @@ describe("co2", () => {
     const {
       MILLION_PERVISIT_GREY_DEVICE_GRID_INTENSITY_CHANGE,
       MILLION_PERBYTE_GREY_DEVICE_GRID_INTENSITY_CHANGE,
+      MILLION_GREY,
+      MILLION_PERVISIT_GREY,
     } = SWD;
     const co2 = new CO2();
     it("expects an object or number", () => {
-      expect(() => {
-        const co2 = new CO2();
-        co2.perVisitTrace(1000000, false, {
-          gridIntensity: {
-            device: "565.629",
-          },
-        });
-      }).toThrowError(
-        "The device grid intensity must be a number or an object. You passed in a string."
-      );
+      expect(
+        parseFloat(
+          co2
+            .perVisitTrace(1000000, false, {
+              gridIntensity: {
+                device: "565.629",
+              },
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBe(MILLION_PERVISIT_GREY);
 
-      expect(() => {
-        const co2 = new CO2();
-        co2.perByteTrace(1000000, false, {
-          gridIntensity: {
-            device: "565.629",
-          },
-        });
-      }).toThrowError(
-        "The device grid intensity must be a number or an object. You passed in a string."
-      );
+      expect(
+        parseFloat(
+          co2
+            .perByteTrace(1000000, false, {
+              gridIntensity: {
+                device: "565.629",
+              },
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBe(MILLION_GREY);
     });
 
     it("uses a number correctly", () => {
@@ -571,29 +577,33 @@ describe("co2", () => {
     const {
       MILLION_PERVISIT_GREY_DATACENTER_GRID_INTENSITY_CHANGE,
       MILLION_PERBYTE_GREY_DATACENTER_GRID_INTENSITY_CHANGE,
+      MILLION_GREY,
+      MILLION_PERVISIT_GREY,
     } = SWD;
     const co2 = new CO2();
     it("expects an object or number", () => {
-      expect(() => {
-        const co2 = new CO2();
-        co2.perVisitTrace(1000000, false, {
-          gridIntensity: {
-            dataCenter: "565.629",
-          },
-        });
-      }).toThrowError(
-        "The data center grid intensity must be a number or an object. You passed in a string."
-      );
-      expect(() => {
-        const co2 = new CO2();
-        co2.perByteTrace(1000000, false, {
-          gridIntensity: {
-            dataCenter: "565.629",
-          },
-        });
-      }).toThrowError(
-        "The data center grid intensity must be a number or an object. You passed in a string."
-      );
+      expect(
+        parseFloat(
+          co2
+            .perVisitTrace(1000000, false, {
+              gridIntensity: {
+                dataCenter: "565.629",
+              },
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBe(MILLION_PERVISIT_GREY);
+      expect(
+        parseFloat(
+          co2
+            .perByteTrace(1000000, false, {
+              gridIntensity: {
+                dataCenter: "565.629",
+              },
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBe(MILLION_GREY);
     });
 
     it("uses a number correctly", () => {
@@ -655,29 +665,34 @@ describe("co2", () => {
     const {
       MILLION_PERVISIT_GREY_NETWORK_GRID_INTENSITY_CHANGE,
       MILLION_PERBYTE_GREY_NETWORK_GRID_INTENSITY_CHANGE,
+      MILLION_GREY,
+      MILLION_PERVISIT_GREY,
     } = SWD;
     const co2 = new CO2();
     it("expects an object or number", () => {
-      expect(() => {
-        const co2 = new CO2();
-        co2.perVisitTrace(1000000, false, {
-          gridIntensity: {
-            network: "565.629",
-          },
-        });
-      }).toThrowError(
-        "The network grid intensity must be a number or an object. You passed in a string."
-      );
-      expect(() => {
-        const co2 = new CO2();
-        co2.perByteTrace(1000000, false, {
-          gridIntensity: {
-            network: "565.629",
-          },
-        });
-      }).toThrowError(
-        "The network grid intensity must be a number or an object. You passed in a string."
-      );
+      expect(
+        parseFloat(
+          co2
+            .perVisitTrace(1000000, false, {
+              gridIntensity: {
+                network: "565.629",
+              },
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBe(MILLION_PERVISIT_GREY);
+
+      expect(
+        parseFloat(
+          co2
+            .perByteTrace(1000000, false, {
+              gridIntensity: {
+                network: "565.629",
+              },
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBe(MILLION_GREY);
     });
 
     it("uses a number correctly", () => {

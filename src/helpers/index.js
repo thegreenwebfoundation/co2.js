@@ -17,7 +17,7 @@ function parseOptions(options) {
       if (typeof device === "object") {
         if (!averageIntensity.data[device.country?.toUpperCase()]) {
           console.warn(
-            `"${device.country}" is not a valid country. Please use a valid 3 digit ISO 3166 country code. \nSee https://developers.thegreenwebfoundation.org/co2js/data/ for more information. Falling back to global average grid intensity.`
+            `"${device.country}" is not a valid country. Please use a valid 3 digit ISO 3166 country code. \nSee https://developers.thegreenwebfoundation.org/co2js/data/ for more information. \nFalling back to global average grid intensity.`
           );
           adjustments.gridIntensity["device"] = {
             value: GLOBAL_GRID_INTENSITY,
@@ -34,8 +34,11 @@ function parseOptions(options) {
           value: device,
         };
       } else {
-        throw new Error(
-          `The device grid intensity must be a number or an object. You passed in a ${typeof device}.`
+        adjustments.gridIntensity["device"] = {
+          value: GLOBAL_GRID_INTENSITY,
+        };
+        console.warn(
+          `The device grid intensity must be a number or an object. You passed in a ${typeof device}. \nFalling back to global average grid intensity.`
         );
       }
     }
@@ -43,7 +46,7 @@ function parseOptions(options) {
       if (typeof dataCenter === "object") {
         if (!averageIntensity.data[dataCenter.country?.toUpperCase()]) {
           console.warn(
-            `"${dataCenter.country}" is not a valid country. Please use a valid 3 digit ISO 3166 country code. \nSee https://developers.thegreenwebfoundation.org/co2js/data/ for more information.  Falling back to global average grid intensity.`
+            `"${dataCenter.country}" is not a valid country. Please use a valid 3 digit ISO 3166 country code. \nSee https://developers.thegreenwebfoundation.org/co2js/data/ for more information.  \nFalling back to global average grid intensity.`
           );
           adjustments.gridIntensity["dataCenter"] = {
             value: GLOBAL_GRID_INTENSITY,
@@ -60,8 +63,11 @@ function parseOptions(options) {
           value: dataCenter,
         };
       } else {
-        throw new Error(
-          `The data center grid intensity must be a number or an object. You passed in a ${typeof dataCenter}.`
+        adjustments.gridIntensity["dataCenter"] = {
+          value: GLOBAL_GRID_INTENSITY,
+        };
+        console.warn(
+          `The data center grid intensity must be a number or an object. You passed in a ${typeof dataCenter}. \nFalling back to global average grid intensity.`
         );
       }
     }
@@ -69,7 +75,7 @@ function parseOptions(options) {
       if (typeof network === "object") {
         if (!averageIntensity.data[network.country?.toUpperCase()]) {
           console.warn(
-            `"${network.country}" is not a valid country. Please use a valid 3 digit ISO 3166 country code. \nSee https://developers.thegreenwebfoundation.org/co2js/data/ for more information.  Falling back to global average grid intensity.`
+            `"${network.country}" is not a valid country. Please use a valid 3 digit ISO 3166 country code. \nSee https://developers.thegreenwebfoundation.org/co2js/data/ for more information.  Falling back to global average grid intensity. \nFalling back to global average grid intensity.`
           );
           adjustments.gridIntensity["network"] = {
             value: GLOBAL_GRID_INTENSITY,
@@ -86,8 +92,11 @@ function parseOptions(options) {
           value: network,
         };
       } else {
-        throw new Error(
-          `The network grid intensity must be a number or an object. You passed in a ${typeof network}.`
+        adjustments.gridIntensity["network"] = {
+          value: GLOBAL_GRID_INTENSITY,
+        };
+        console.warn(
+          `The network grid intensity must be a number or an object. You passed in a ${typeof network}. \nFalling back to global average grid intensity.`
         );
       }
     }
