@@ -10,30 +10,20 @@
 import debugFactory from "debug";
 const log = debugFactory("tgwf:sustainable-web-design");
 
-import { fileSize } from "./constants/index.js";
+import {
+  fileSize,
+  KWH_PER_GB,
+  END_USER_DEVICE_ENERGY,
+  NETWORK_ENERGY,
+  DATACENTER_ENERGY,
+  PRODUCTION_ENERGY,
+  GLOBAL_GRID_INTENSITY,
+  RENEWABLES_GRID_INTENSITY,
+  FIRST_TIME_VIEWING_PERCENTAGE,
+  RETURNING_VISITOR_PERCENTAGE,
+  PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD,
+} from "./constants/index.js";
 import { formatNumber } from "./helpers/index.js";
-
-// this refers to the estimated total energy use for the internet around 2000 TWh,
-// divided by the total transfer it enables around 2500 exabytes
-const KWH_PER_GB = 0.81;
-
-// these constants outline how the energy is attributed to
-// different parts of the system in the SWD model
-const END_USER_DEVICE_ENERGY = 0.52;
-const NETWORK_ENERGY = 0.14;
-const DATACENTER_ENERGY = 0.15;
-const PRODUCTION_ENERGY = 0.19;
-
-// These carbon intensity figures https://ember-climate.org/data/data-explorer
-// - Global carbon intensity for 2021
-const GLOBAL_INTENSITY = 442;
-const RENEWABLES_INTENSITY = 50;
-
-// Taken from: https://gitlab.com/wholegrain/carbon-api-2-0/-/blob/master/includes/carbonapi.php
-
-const FIRST_TIME_VIEWING_PERCENTAGE = 0.75;
-const RETURNING_VISITOR_PERCENTAGE = 0.25;
-const PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD = 0.02;
 
 class SustainableWebDesign {
   constructor(options) {
@@ -70,17 +60,17 @@ class SustainableWebDesign {
    */
   co2byComponent(
     energyByComponent,
-    carbonIntensity = GLOBAL_INTENSITY,
+    carbonIntensity = GLOBAL_GRID_INTENSITY,
     options = {}
   ) {
-    let deviceCarbonIntensity = GLOBAL_INTENSITY;
-    let networkCarbonIntensity = GLOBAL_INTENSITY;
-    let dataCenterCarbonIntensity = GLOBAL_INTENSITY;
+    let deviceCarbonIntensity = GLOBAL_GRID_INTENSITY;
+    let networkCarbonIntensity = GLOBAL_GRID_INTENSITY;
+    let dataCenterCarbonIntensity = GLOBAL_GRID_INTENSITY;
 
-    let globalEmissions = GLOBAL_INTENSITY;
+    let globalEmissions = GLOBAL_GRID_INTENSITY;
     // If the user passes in a TRUE value (green web host), then use the renewables intensity value
     if (carbonIntensity === true) {
-      dataCenterCarbonIntensity = RENEWABLES_INTENSITY;
+      dataCenterCarbonIntensity = RENEWABLES_GRID_INTENSITY;
     }
 
     if (options?.gridIntensity) {
@@ -137,7 +127,7 @@ class SustainableWebDesign {
     segmentResults = false,
     options = {}
   ) {
-    const energyBycomponent = this.energyPerByteByComponent(bytes);
+    const energyBycomponent = this.energyPerByteByComponent(bytes, options);
 
     // otherwise when faced with non numeric values throw an error
     if (typeof carbonIntensity !== "boolean") {
@@ -179,7 +169,7 @@ class SustainableWebDesign {
     segmentResults = false,
     options = {}
   ) {
-    const energyBycomponent = this.energyPerVisitByComponent(bytes);
+    const energyBycomponent = this.energyPerVisitByComponent(bytes, options);
 
     if (typeof carbonIntensity !== "boolean") {
       // otherwise when faced with non numeric values throw an error
@@ -313,9 +303,10 @@ class SustainableWebDesign {
     return firstVisits + subsequentVisits;
   }
 
-  // TODO: this method looks like it applies the carbon intensity
-  // change to the *entire* system, not just the datacenter.
-  emissionsPerVisitInGrams(energyPerVisit, carbonintensity = GLOBAL_INTENSITY) {
+  emissionsPerVisitInGrams(
+    energyPerVisit,
+    carbonintensity = GLOBAL_GRID_INTENSITY
+  ) {
     return formatNumber(energyPerVisit * carbonintensity);
   }
 

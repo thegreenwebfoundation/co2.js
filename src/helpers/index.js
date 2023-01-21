@@ -1,4 +1,5 @@
 import { averageIntensity } from "../index.js";
+import { GLOBAL_GRID_INTENSITY } from "../constants/index.js";
 const formatNumber = (num) => parseFloat(num.toFixed(2));
 
 function parseOptions(options) {
@@ -19,7 +20,7 @@ function parseOptions(options) {
             `"${device.country}" is not a valid country. Please use a valid 3 digit ISO 3166 country code. \nSee https://developers.thegreenwebfoundation.org/co2js/data/ for more information. Falling back to global average grid intensity.`
           );
           adjustments.gridIntensity["device"] = {
-            value: 442,
+            value: GLOBAL_GRID_INTENSITY,
           };
         }
         adjustments.gridIntensity["device"] = {
@@ -45,7 +46,7 @@ function parseOptions(options) {
             `"${dataCenter.country}" is not a valid country. Please use a valid 3 digit ISO 3166 country code. \nSee https://developers.thegreenwebfoundation.org/co2js/data/ for more information.  Falling back to global average grid intensity.`
           );
           adjustments.gridIntensity["dataCenter"] = {
-            value: 442,
+            value: GLOBAL_GRID_INTENSITY,
           };
         }
         adjustments.gridIntensity["dataCenter"] = {
@@ -71,7 +72,7 @@ function parseOptions(options) {
             `"${network.country}" is not a valid country. Please use a valid 3 digit ISO 3166 country code. \nSee https://developers.thegreenwebfoundation.org/co2js/data/ for more information.  Falling back to global average grid intensity.`
           );
           adjustments.gridIntensity["network"] = {
-            value: 442,
+            value: GLOBAL_GRID_INTENSITY,
           };
         }
         adjustments.gridIntensity["network"] = {

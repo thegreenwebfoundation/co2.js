@@ -38,6 +38,7 @@
 import OneByte from "./1byte.js";
 import SustainableWebDesign from "./sustainable-web-design.js";
 
+import { GLOBAL_GRID_INTENSITY } from "./constants/index.js";
 import { parseOptions } from "./helpers/index.js";
 
 class CO2 {
@@ -128,10 +129,14 @@ class CO2 {
         gridIntensity: {
           description:
             "The grid intensity (grams per kilowatt-hour) used to calculate this CO2 estimate.",
-          network: adjustments?.gridIntensity?.network?.value || 442,
-          dataCenter: adjustments?.gridIntensity?.dataCenter?.value || 442,
-          production: 442,
-          device: adjustments?.gridIntensity?.device?.value || 442,
+          network:
+            adjustments?.gridIntensity?.network?.value || GLOBAL_GRID_INTENSITY,
+          dataCenter:
+            adjustments?.gridIntensity?.dataCenter?.value ||
+            GLOBAL_GRID_INTENSITY,
+          production: GLOBAL_GRID_INTENSITY,
+          device:
+            adjustments?.gridIntensity?.device?.value || GLOBAL_GRID_INTENSITY,
         },
       },
     };
@@ -169,10 +174,16 @@ class CO2 {
           gridIntensity: {
             description:
               "The grid intensity (grams per kilowatt-hour) used to calculate this CO2 estimate.",
-            network: adjustments?.gridIntensity?.network?.value || 442,
-            dataCenter: adjustments?.gridIntensity?.dataCenter?.value || 442,
-            production: 442,
-            device: adjustments?.gridIntensity?.device?.value || 442,
+            network:
+              adjustments?.gridIntensity?.network?.value ||
+              GLOBAL_GRID_INTENSITY,
+            dataCenter:
+              adjustments?.gridIntensity?.dataCenter?.value ||
+              GLOBAL_GRID_INTENSITY,
+            production: GLOBAL_GRID_INTENSITY,
+            device:
+              adjustments?.gridIntensity?.device?.value ||
+              GLOBAL_GRID_INTENSITY,
           },
           dataReloadRatio: adjustments?.dataReloadRatio || 0.02,
           firstVisitPercentage: adjustments?.firstVisitPercentage || 0.75,
