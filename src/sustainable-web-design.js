@@ -75,12 +75,14 @@ class SustainableWebDesign {
       // we update the datacentre, as that's what we have information
       // about.
       if (key.startsWith("dataCenterEnergy")) {
-        returnCO2ByComponent[key] = value * carbonIntensity;
+        returnCO2ByComponent[key.replace("Energy", "CO2")] =
+          value * carbonIntensity;
       } else {
         // We don't have info about the device location,
         // nor the network path used, nor the production emissions
         // so we revert to global figures
-        returnCO2ByComponent[key] = value * GLOBAL_INTENSITY;
+        returnCO2ByComponent[key.replace("Energy", "CO2")] =
+          value * GLOBAL_INTENSITY;
       }
     }
     return returnCO2ByComponent;
@@ -96,7 +98,7 @@ class SustainableWebDesign {
    * @param {number} `carbonIntensity` the carbon intensity for datacentre (average figures, not marginal ones)
    * @return {number} the total number in grams of CO2 equivalent emissions
    */
-  perByte(bytes, carbonIntensity = GLOBAL_INTENSITY) {
+  perByte(bytes, carbonIntensity = GLOBAL_INTENSITY, segmentResults = false) {
     const energyBycomponent = this.energyPerByteByComponent(bytes);
 
     // when faced with falsy values, fallback to global intensity
@@ -123,11 +125,15 @@ class SustainableWebDesign {
 
     // pull out our values…
     const co2Values = Object.values(co2ValuesbyComponent);
-
-    // so we can return their sum
-    return co2Values.reduce(
+    const co2ValuesSum = co2Values.reduce(
       (prevValue, currentValue) => prevValue + currentValue
     );
+
+    if (segmentResults) {
+      return { ...co2ValuesbyComponent, total: co2ValuesSum };
+    }
+
+    return co2ValuesSum;
   }
 
   /**
@@ -138,7 +144,7 @@ class SustainableWebDesign {
    * @param {number} `carbonIntensity` the carbon intensity for datacentre (average figures, not marginal ones)
    * @return {number} the total number in grams of CO2 equivalent emissions
    */
-  perVisit(bytes, carbonIntensity = GLOBAL_INTENSITY) {
+  perVisit(bytes, carbonIntensity = GLOBAL_INTENSITY, segmentResults = false) {
     const energyBycomponent = this.energyPerVisitByComponent(bytes);
 
     // when faced with falsy values, fallback to global intensity
@@ -165,11 +171,16 @@ class SustainableWebDesign {
 
     // pull out our values…
     const co2Values = Object.values(co2ValuesbyComponent);
-
-    // so we can return their sum
-    return co2Values.reduce(
+    const co2ValuesSum = co2Values.reduce(
       (prevValue, currentValue) => prevValue + currentValue
     );
+
+    if (segmentResults) {
+      return { ...co2ValuesbyComponent, total: co2ValuesSum };
+    }
+
+    // so we can return their sum
+    return co2ValuesSum;
   }
 
   /**

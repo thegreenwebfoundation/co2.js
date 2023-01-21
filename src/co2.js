@@ -17,6 +17,16 @@ class CO2 {
         `"${options.model}" is not a valid model. Please use "1byte" for the OneByte model, and "swd" for the Sustainable Web Design model.\nSee https://developers.thegreenwebfoundation.org/co2js/models/ to learn more about the models available in CO2.js.`
       );
     }
+
+    if (options?.results === "segment") {
+      this.model.results = {
+        segment: true,
+      };
+    } else {
+      this.model.results = {
+        segment: false,
+      };
+    }
   }
 
   /**
@@ -29,7 +39,7 @@ class CO2 {
    * @return {number} the amount of CO2 in grammes
    */
   perByte(bytes, green) {
-    return this.model.perByte(bytes, green);
+    return this.model.perByte(bytes, green, this.model.results.segment);
   }
 
   /**
@@ -43,7 +53,7 @@ class CO2 {
    */
   perVisit(bytes, green) {
     if (this.model?.perVisit) {
-      return this.model.perVisit(bytes, green);
+      return this.model.perVisit(bytes, green, this.model.results.segment);
     } else {
       throw new Error(
         `The perVisit() method is not supported in the model you are using. Try using perByte() instead.\nSee https://developers.thegreenwebfoundation.org/co2js/methods/ to learn more about the methods available in CO2.js.`
