@@ -94,7 +94,7 @@ function parseOptions(options) {
 
   if (options?.dataReloadRatio) {
     if (typeof options.dataReloadRatio === "number") {
-      if (options.dataReloadRatio > 0 && options.dataReloadRatio < 1) {
+      if (options.dataReloadRatio >= 0 && options.dataReloadRatio <= 1) {
         adjustments.dataReloadRatio = options.dataReloadRatio;
       } else {
         throw new Error(
@@ -111,8 +111,8 @@ function parseOptions(options) {
   if (options?.firstVisitPercentage) {
     if (typeof options.firstVisitPercentage === "number") {
       if (
-        options.firstVisitPercentage > 0 &&
-        options.firstVisitPercentage < 1
+        options.firstVisitPercentage >= 0 &&
+        options.firstVisitPercentage <= 1
       ) {
         adjustments.firstVisitPercentage = options.firstVisitPercentage;
       } else {
@@ -130,8 +130,8 @@ function parseOptions(options) {
   if (options?.returnVisitPercentage) {
     if (typeof options.returnVisitPercentage === "number") {
       if (
-        options.returnVisitPercentage > 0 &&
-        options.returnVisitPercentage < 1
+        options.returnVisitPercentage >= 0 &&
+        options.returnVisitPercentage <= 1
       ) {
         adjustments.returnVisitPercentage = options.returnVisitPercentage;
       } else {
