@@ -38,7 +38,10 @@
 import OneByte from "./1byte.js";
 import SustainableWebDesign from "./sustainable-web-design.js";
 
-import { GLOBAL_GRID_INTENSITY } from "./constants/index.js";
+import {
+  GLOBAL_GRID_INTENSITY,
+  RENEWABLES_GRID_INTENSITY,
+} from "./constants/index.js";
 import { parseOptions } from "./helpers/index.js";
 
 class CO2 {
@@ -132,9 +135,10 @@ class CO2 {
             "The grid intensity (grams per kilowatt-hour) used to calculate this CO2 estimate.",
           network:
             adjustments?.gridIntensity?.network?.value || GLOBAL_GRID_INTENSITY,
-          dataCenter:
-            adjustments?.gridIntensity?.dataCenter?.value ||
-            GLOBAL_GRID_INTENSITY,
+          dataCenter: green
+            ? RENEWABLES_GRID_INTENSITY
+            : adjustments?.gridIntensity?.dataCenter?.value ||
+              GLOBAL_GRID_INTENSITY,
           production: GLOBAL_GRID_INTENSITY,
           device:
             adjustments?.gridIntensity?.device?.value || GLOBAL_GRID_INTENSITY,
@@ -179,9 +183,10 @@ class CO2 {
             network:
               adjustments?.gridIntensity?.network?.value ||
               GLOBAL_GRID_INTENSITY,
-            dataCenter:
-              adjustments?.gridIntensity?.dataCenter?.value ||
-              GLOBAL_GRID_INTENSITY,
+            dataCenter: green
+              ? RENEWABLES_GRID_INTENSITY
+              : adjustments?.gridIntensity?.dataCenter?.value ||
+                GLOBAL_GRID_INTENSITY,
             production: GLOBAL_GRID_INTENSITY,
             device:
               adjustments?.gridIntensity?.device?.value ||
