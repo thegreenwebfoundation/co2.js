@@ -6,10 +6,6 @@
  * Updated calculations and figures from
  * https://sustainablewebdesign.org/calculating-digital-emissions/
  *
- * TODO: Provide a way to pass in a custom figures for:
- *       - the carbon intensity
- *       - the percentage of data loaded on subsequent visits
- *       - the percentage first & returning visitors
  */
 import debugFactory from "debug";
 const log = debugFactory("tgwf:sustainable-web-design");
@@ -107,14 +103,18 @@ class SustainableWebDesign {
       // we update the datacentre, as that's what we have information
       // about.
       if (key.startsWith("dataCenterEnergy")) {
-        returnCO2ByComponent[key] = value * dataCenterCarbonIntensity;
+        returnCO2ByComponent[key.replace("Energy", "CO2")] =
+          value * dataCenterCarbonIntensity;
       } else if (key.startsWith("consumerDeviceEnergy")) {
-        returnCO2ByComponent[key] = value * deviceCarbonIntensity;
+        returnCO2ByComponent[key.replace("Energy", "CO2")] =
+          value * deviceCarbonIntensity;
       } else if (key.startsWith("networkEnergy")) {
-        returnCO2ByComponent[key] = value * networkCarbonIntensity;
+        returnCO2ByComponent[key.replace("Energy", "CO2")] =
+          value * networkCarbonIntensity;
       } else {
         // Use the global intensity for the remaining segments
-        returnCO2ByComponent[key] = value * globalEmissions;
+        returnCO2ByComponent[key.replace("Energy", "CO2")] =
+          value * globalEmissions;
       }
     }
 
@@ -131,8 +131,13 @@ class SustainableWebDesign {
    * @param {number} `carbonIntensity` the carbon intensity for datacentre (average figures, not marginal ones)
    * @return {number} the total number in grams of CO2 equivalent emissions
    */
-  perByte(bytes, carbonIntensity = false, options = {}) {
-    const energyBycomponent = this.energyPerByteByComponent(bytes, options);
+  perByte(
+    bytes,
+    carbonIntensity = false,
+    segmentResults = false,
+    options = {}
+  ) {
+    const energyBycomponent = this.energyPerByteByComponent(bytes);
 
     // otherwise when faced with non numeric values throw an error
     if (typeof carbonIntensity !== "boolean") {
@@ -149,11 +154,15 @@ class SustainableWebDesign {
 
     // pull out our values…
     const co2Values = Object.values(co2ValuesbyComponent);
-
-    // so we can return their sum
-    return co2Values.reduce(
+    const co2ValuesSum = co2Values.reduce(
       (prevValue, currentValue) => prevValue + currentValue
     );
+
+    if (segmentResults) {
+      return { ...co2ValuesbyComponent, total: co2ValuesSum };
+    }
+
+    return co2ValuesSum;
   }
 
   /**
@@ -164,11 +173,16 @@ class SustainableWebDesign {
    * @param {number} `carbonIntensity` the carbon intensity for datacentre (average figures, not marginal ones)
    * @return {number} the total number in grams of CO2 equivalent emissions
    */
-  perVisit(bytes, carbonIntensity = false, options = {}) {
-    const energyBycomponent = this.energyPerVisitByComponent(bytes, options);
+  perVisit(
+    bytes,
+    carbonIntensity = false,
+    segmentResults = false,
+    options = {}
+  ) {
+    const energyBycomponent = this.energyPerVisitByComponent(bytes);
 
-    // otherwise when faced with non numeric values throw an error
     if (typeof carbonIntensity !== "boolean") {
+      // otherwise when faced with non numeric values throw an error
       throw new Error(
         `perVisit expects a boolean for the carbon intensity value. Received: ${carbonIntensity}`
       );
@@ -182,11 +196,16 @@ class SustainableWebDesign {
 
     // pull out our values…
     const co2Values = Object.values(co2ValuesbyComponent);
-
-    // so we can return their sum
-    return co2Values.reduce(
+    const co2ValuesSum = co2Values.reduce(
       (prevValue, currentValue) => prevValue + currentValue
     );
+
+    if (segmentResults) {
+      return { ...co2ValuesbyComponent, total: co2ValuesSum };
+    }
+
+    // so we can return their sum
+    return co2ValuesSum;
   }
 
   /**

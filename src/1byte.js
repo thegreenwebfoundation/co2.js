@@ -44,6 +44,13 @@ class OneByte {
     this.KWH_PER_BYTE_FOR_NETWORK = KWH_PER_BYTE_FOR_NETWORK;
   }
 
+  /**
+   * Calculates the carbon footprint of a website using the OneByte model
+   * @param {number} bytes - The number of bytes to calculate the carbon footprint for
+   * @param {boolean} green - Whether the energy is green or not
+   * @returns {number} The carbon footprint in grams of CO2
+   */
+
   perByte(bytes, green) {
     if (bytes < 1) {
       return 0;

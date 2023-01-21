@@ -8,7 +8,6 @@ import pagexray from "pagexray";
 
 import CO2 from "./co2.js";
 import { averageIntensity, marginalIntensity } from "./index.js";
-
 const { MILLION, ONEBYTE, SWD } = testConstants;
 
 describe("co2", () => {
@@ -35,17 +34,13 @@ describe("co2", () => {
 
     describe("perByte", () => {
       it("returns a CO2 number for data transfer using 'grey' power", () => {
-        expect(co2.perByte(MILLION).toPrecision(5)).toBe(
-          MILLION_GREY.toPrecision(5)
-        );
+        expect(co2.perByte(MILLION).toFixed(5)).toBe(MILLION_GREY.toFixed(5));
       });
 
       it("returns a lower CO2 number for data transfer from domains using entirely 'green' power", () => {
-        expect(co2.perByte(MILLION).toPrecision(5)).toBe(
-          MILLION_GREY.toPrecision(5)
-        );
-        expect(co2.perByte(MILLION, true).toPrecision(5)).toBe(
-          MILLION_GREEN.toPrecision(5)
+        expect(co2.perByte(MILLION).toFixed(5)).toBe(MILLION_GREY.toFixed(5));
+        expect(co2.perByte(MILLION, true).toFixed(5)).toBe(
+          MILLION_GREEN.toFixed(5)
         );
       });
     });
@@ -55,8 +50,8 @@ describe("co2", () => {
         const pages = pagexray.convert(har);
         const pageXrayRun = pages[0];
 
-        expect(co2.perPage(pageXrayRun).toPrecision(5)).toBe(
-          TGWF_GREY_VALUE.toPrecision(5)
+        expect(co2.perPage(pageXrayRun).toFixed(5)).toBe(
+          TGWF_GREY_VALUE.toFixed(5)
         );
       });
       it("returns lower CO2 for page served from green site", () => {
@@ -90,8 +85,8 @@ describe("co2", () => {
           "fonts.gstatic.com",
           "api.thegreenwebfoundation.org",
         ];
-        expect(co2.perPage(pageXrayRun, green).toPrecision(5)).toBe(
-          TGWF_MIXED_VALUE.toPrecision(5)
+        expect(co2.perPage(pageXrayRun, green).toFixed(5)).toBe(
+          TGWF_MIXED_VALUE.toFixed(5)
         );
       });
     });
@@ -178,18 +173,16 @@ describe("co2", () => {
     describe("perByte", () => {
       it("returns a CO2 number for data transfer", () => {
         co2.perByte(MILLION);
-        expect(co2.perByte(MILLION).toPrecision(5)).toBe(
-          MILLION_GREY.toPrecision(5)
-        );
+        expect(co2.perByte(MILLION).toFixed(5)).toBe(MILLION_GREY.toFixed(5));
       });
 
       it("returns a lower CO2 number for data transfer from domains using entirely 'green' power", () => {
-        expect(co2.perByte(MILLION, false).toPrecision(5)).toBe(
-          MILLION_GREY.toPrecision(5)
+        expect(co2.perByte(MILLION, false).toFixed(5)).toBe(
+          MILLION_GREY.toFixed(5)
         );
 
-        expect(co2.perByte(MILLION, true).toPrecision(5)).toBe(
-          MILLION_GREEN.toPrecision(5)
+        expect(co2.perByte(MILLION, true).toFixed(5)).toBe(
+          MILLION_GREEN.toFixed(5)
         );
       });
     });
@@ -197,18 +190,18 @@ describe("co2", () => {
     describe("perVisit", () => {
       it("returns a CO2 number for data transfer per visit with caching assumptions from the Sustainable Web Design model", () => {
         co2.perVisit(MILLION);
-        expect(co2.perVisit(MILLION).toPrecision(5)).toBe(
-          MILLION_PERVISIT_GREY.toPrecision(5)
+        expect(co2.perVisit(MILLION).toFixed(5)).toBe(
+          MILLION_PERVISIT_GREY.toFixed(5)
         );
       });
 
       it("returns a lower CO2 number for data transfer from domains using entirely 'green' power", () => {
-        expect(co2.perVisit(MILLION, false).toPrecision(5)).toBe(
-          MILLION_PERVISIT_GREY.toPrecision(5)
+        expect(co2.perVisit(MILLION, false).toFixed(5)).toBe(
+          MILLION_PERVISIT_GREY.toFixed(5)
         );
 
-        expect(co2.perVisit(MILLION, true).toPrecision(5)).toBe(
-          MILLION_PERVISIT_GREEN.toPrecision(5)
+        expect(co2.perVisit(MILLION, true).toFixed(5)).toBe(
+          MILLION_PERVISIT_GREEN.toFixed(5)
         );
       });
     });
@@ -218,8 +211,8 @@ describe("co2", () => {
         const pages = pagexray.convert(har);
         const pageXrayRun = pages[0];
 
-        expect(co2.perPage(pageXrayRun).toPrecision(5)).toBe(
-          TGWF_GREY_VALUE.toPrecision(5)
+        expect(co2.perPage(pageXrayRun).toFixed(5)).toBe(
+          TGWF_GREY_VALUE.toFixed(5)
         );
       });
       it("returns lower CO2 for page served from green site", () => {
@@ -253,8 +246,8 @@ describe("co2", () => {
           "fonts.gstatic.com",
           "api.thegreenwebfoundation.org",
         ];
-        expect(co2.perPage(pageXrayRun, green).toPrecision(5)).toBe(
-          TGWF_MIXED_VALUE.toPrecision(5)
+        expect(co2.perPage(pageXrayRun, green).toFixed(5)).toBe(
+          TGWF_MIXED_VALUE.toFixed(5)
         );
       });
     });
@@ -309,6 +302,108 @@ describe("co2", () => {
           expect(resWithGreen[index].co2).toBeLessThan(res[index].co2);
           index++;
         }
+      });
+    });
+    describe("Returning results by segment", () => {
+      const {
+        MILLION_PERVISIT_GREY_DATACENTERS_FIRST,
+        MILLION_PERVISIT_GREY_DEVICES_FIRST,
+        MILLION_PERVISIT_GREY_NETWORKS_FIRST,
+        MILLION_PERVISIT_GREY_PRODUCTION_FIRST,
+        MILLION_PERVISIT_GREY_DATACENTERS_SECOND,
+        MILLION_PERVISIT_GREY_DEVICES_SECOND,
+        MILLION_PERVISIT_GREY_NETWORKS_SECOND,
+        MILLION_PERVISIT_GREY_PRODUCTION_SECOND,
+        MILLION_PERVISIT_GREEN_DATACENTERS_FIRST,
+        MILLION_PERVISIT_GREEN_DATACENTERS_SECOND,
+        MILLION_GREY_DEVICES,
+        MILLION_GREY_NETWORKS,
+        MILLION_GREY_DATACENTERS,
+        MILLION_GREY_PRODUCTION,
+        MILLION_GREEN_DATACENTERS,
+      } = SWD;
+      describe("perVisit", () => {
+        it("returns an object with devices, networks, data centers, and production emissions shown separately, as well as the total emissions", () => {
+          co2 = new CO2({ results: "segment" });
+          const res = co2.perVisit(MILLION);
+          expect(res["consumerDeviceCO2 - first"].toFixed(5)).toBe(
+            MILLION_PERVISIT_GREY_DEVICES_FIRST.toFixed(5)
+          );
+          expect(res["networkCO2 - first"].toFixed(5)).toBe(
+            MILLION_PERVISIT_GREY_NETWORKS_FIRST.toFixed(5)
+          );
+          expect(res["dataCenterCO2 - first"].toFixed(5)).toBe(
+            MILLION_PERVISIT_GREY_DATACENTERS_FIRST.toFixed(5)
+          );
+          expect(res["productionCO2 - first"].toFixed(5)).toBe(
+            MILLION_PERVISIT_GREY_PRODUCTION_FIRST.toFixed(5)
+          );
+          expect(res["consumerDeviceCO2 - subsequent"].toFixed(5)).toBe(
+            MILLION_PERVISIT_GREY_DEVICES_SECOND.toFixed(5)
+          );
+          expect(res["networkCO2 - subsequent"].toFixed(5)).toBe(
+            MILLION_PERVISIT_GREY_NETWORKS_SECOND.toFixed(5)
+          );
+          expect(res["dataCenterCO2 - subsequent"].toFixed(5)).toBe(
+            MILLION_PERVISIT_GREY_DATACENTERS_SECOND.toFixed(5)
+          );
+          expect(res["productionCO2 - subsequent"].toFixed(5)).toBe(
+            MILLION_PERVISIT_GREY_PRODUCTION_SECOND.toFixed(5)
+          );
+          expect(res.total.toFixed(5)).toBe(MILLION_PERVISIT_GREY.toFixed(5));
+        });
+        it("returns adjusted data center and total emissions for when green, other values remain the same as grey", () => {
+          co2 = new CO2({ results: "segment" });
+          const res = co2.perVisit(MILLION, true);
+          // Since the data center emissions are the only ones that change, we can just check those
+          // and the total. To check the rest stay the same as grey, we can just check the device results.
+          expect(res["consumerDeviceCO2 - first"].toFixed(5)).toBe(
+            MILLION_PERVISIT_GREY_DEVICES_FIRST.toFixed(5)
+          );
+
+          expect(res["dataCenterCO2 - first"].toFixed(5)).toBe(
+            MILLION_PERVISIT_GREEN_DATACENTERS_FIRST.toFixed(5)
+          );
+
+          expect(res["consumerDeviceCO2 - subsequent"].toFixed(5)).toBe(
+            MILLION_PERVISIT_GREY_DEVICES_SECOND.toFixed(5)
+          );
+          expect(res["dataCenterCO2 - subsequent"].toFixed(5)).toBe(
+            MILLION_PERVISIT_GREEN_DATACENTERS_SECOND.toFixed(5)
+          );
+
+          expect(res.total.toFixed(5)).toBe(MILLION_PERVISIT_GREEN.toFixed(5));
+        });
+      });
+      describe("perByte", () => {
+        it("returns adjusted data center and total emissions for when green, other values remain the same as grey", () => {
+          co2 = new CO2({ results: "segment" });
+          const res = co2.perByte(MILLION, true);
+          expect(res["consumerDeviceCO2"].toFixed(5)).toBe(
+            MILLION_GREY_DEVICES.toFixed(5)
+          );
+          expect(res["dataCenterCO2"].toFixed(5)).toBe(
+            MILLION_GREEN_DATACENTERS.toFixed(5)
+          );
+          expect(res.total.toFixed(5)).toBe(MILLION_GREEN.toFixed(5));
+        });
+        it("returns an object with devices, networks, data centers, and production emissions shown separately, as well as the total emissions", () => {
+          co2 = new CO2({ results: "segment" });
+          const res = co2.perByte(MILLION);
+          expect(res["consumerDeviceCO2"].toFixed(5)).toBe(
+            MILLION_GREY_DEVICES.toFixed(5)
+          );
+          expect(res["networkCO2"].toFixed(5)).toBe(
+            MILLION_GREY_NETWORKS.toFixed(5)
+          );
+          expect(res["dataCenterCO2"].toFixed(5)).toBe(
+            MILLION_GREY_DATACENTERS.toFixed(5)
+          );
+          expect(res["productionCO2"].toFixed(5)).toBe(
+            MILLION_GREY_PRODUCTION.toFixed(5)
+          );
+          expect(res.total.toFixed(5)).toBe(MILLION_GREY.toFixed(5));
+        });
       });
     });
   });
