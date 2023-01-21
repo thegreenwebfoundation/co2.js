@@ -2,23 +2,25 @@
 
 import fs from "fs";
 import path from "path";
+import { testConstants } from "./constants/index.js";
 
 import pagexray from "pagexray";
 
 import CO2 from "./co2.js";
 import { averageIntensity, marginalIntensity } from "./index.js";
-const MILLION = 1000000;
+const { MILLION, ONEBYTE, SWD } = testConstants;
 
 describe("co2", () => {
   let har, co2;
 
   describe("1 byte model", () => {
-    const TGWF_GREY_VALUE = 0.20497;
-    const TGWF_GREEN_VALUE = 0.54704;
-    const TGWF_MIXED_VALUE = 0.16718;
-
-    const MILLION_GREY = 0.29081;
-    const MILLION_GREEN = 0.23196;
+    const {
+      TGWF_GREY_VALUE,
+      TGWF_GREEN_VALUE,
+      TGWF_MIXED_VALUE,
+      MILLION_GREY,
+      MILLION_GREEN,
+    } = ONEBYTE;
 
     beforeEach(() => {
       co2 = new CO2({ model: "1byte" });
@@ -147,31 +149,15 @@ describe("co2", () => {
     // the SWD model should have slightly higher values as
     // we include more of the system in calculations for the
     // same levels of data transfer
-    const MILLION_GREY = 0.35802;
-    const MILLION_GREEN = 0.31039;
-    const MILLION_PERVISIT_GREY = 0.27031;
-    const MILLION_PERVISIT_GREEN = 0.23435;
 
-    const MILLION_GREY_DEVICES = 0.18617;
-    const MILLION_GREY_NETWORKS = 0.05012;
-    const MILLION_GREY_DATACENTERS = 0.0537;
-    const MILLION_GREEN_DATACENTERS = 0.00607;
-    const MILLION_GREY_PRODUCTION = 0.06802;
-
-    const MILLION_PERVISIT_GREY_DEVICES_FIRST = 0.13963;
-    const MILLION_PERVISIT_GREY_DEVICES_SECOND = 0.00093;
-    const MILLION_PERVISIT_GREY_NETWORKS_FIRST = 0.03759;
-    const MILLION_PERVISIT_GREY_NETWORKS_SECOND = 0.00025;
-    const MILLION_PERVISIT_GREY_DATACENTERS_FIRST = 0.04028;
-    const MILLION_PERVISIT_GREY_DATACENTERS_SECOND = 0.00027;
-    const MILLION_PERVISIT_GREEN_DATACENTERS_FIRST = 0.00456;
-    const MILLION_PERVISIT_GREEN_DATACENTERS_SECOND = 0.00003;
-    const MILLION_PERVISIT_GREY_PRODUCTION_FIRST = 0.05102;
-    const MILLION_PERVISIT_GREY_PRODUCTION_SECOND = 0.00034;
-
-    const TGWF_GREY_VALUE = 0.25234;
-    const TGWF_GREEN_VALUE = 0.54704;
-    const TGWF_MIXED_VALUE = 0.22175;
+    const {
+      MILLION_GREEN,
+      MILLION_GREY,
+      TGWF_GREY_VALUE,
+      TGWF_MIXED_VALUE,
+      MILLION_PERVISIT_GREY,
+      MILLION_PERVISIT_GREEN,
+    } = SWD;
 
     // We're not passing in a model parameter here to check that SWD is used by default
     beforeEach(() => {
@@ -319,6 +305,25 @@ describe("co2", () => {
       });
     });
     describe("Returning results by segment", () => {
+      const {
+        MILLION_GREY,
+        MILLION_GREEN,
+        MILLION_PERVISIT_GREY_DATACENTERS_FIRST,
+        MILLION_PERVISIT_GREY_DEVICES_FIRST,
+        MILLION_PERVISIT_GREY_NETWORKS_FIRST,
+        MILLION_PERVISIT_GREY_PRODUCTION_FIRST,
+        MILLION_PERVISIT_GREY_DATACENTERS_SECOND,
+        MILLION_PERVISIT_GREY_DEVICES_SECOND,
+        MILLION_PERVISIT_GREY_NETWORKS_SECOND,
+        MILLION_PERVISIT_GREY_PRODUCTION_SECOND,
+        MILLION_PERVISIT_GREEN_DATACENTERS_FIRST,
+        MILLION_PERVISIT_GREEN_DATACENTERS_SECOND,
+        MILLION_GREY_DEVICES,
+        MILLION_GREY_NETWORKS,
+        MILLION_GREY_DATACENTERS,
+        MILLION_GREY_PRODUCTION,
+        MILLION_GREEN_DATACENTERS,
+      } = SWD;
       describe("perVisit", () => {
         it("returns an object with devices, networks, data centers, and production emissions shown separately, as well as the total emissions", () => {
           co2 = new CO2({ results: "segment" });
@@ -436,6 +441,455 @@ describe("co2", () => {
       it("imports average intensity data", () => {
         expect(marginalIntensity).toHaveProperty("type", "marginal");
       });
+    });
+  });
+
+  describe("perByte and perVisit trace function without options", () => {
+    const co2 = new CO2();
+    it("perByteTrace is the same as perByte", () => {
+      expect(co2.perByteTrace(MILLION).co2).toBe(co2.perByte(MILLION));
+      expect(co2.perByteTrace(MILLION, true).co2).toBe(
+        co2.perByte(MILLION, true)
+      );
+      expect(co2.perByteTrace(MILLION, true, {}).co2).toBe(
+        co2.perByte(MILLION, true)
+      );
+    });
+
+    it("perVisitTrace is the same as perVisit", () => {
+      expect(co2.perVisitTrace(MILLION).co2).toBe(co2.perVisit(MILLION));
+      expect(co2.perVisitTrace(MILLION, true).co2).toBe(
+        co2.perVisit(MILLION, true)
+      );
+      expect(co2.perVisitTrace(MILLION, true, {}).co2).toBe(
+        co2.perVisit(MILLION, true)
+      );
+    });
+  });
+
+  describe("Using custom grid intensity", () => {
+    const co2 = new CO2();
+    it("uses the grid intensity data", () => {
+      expect(
+        co2.perVisitTrace(MILLION, false, {
+          gridIntensity: {
+            device: 565.629,
+            dataCenter: { country: "TWN" },
+          },
+        }).co2
+      ).toBeGreaterThan(0);
+
+      expect(
+        co2.perByteTrace(MILLION, false, {
+          gridIntensity: {
+            device: 565.629,
+            dataCenter: { country: "TWN" },
+            network: { country: "TWN" },
+          },
+        }).co2
+      ).toBeGreaterThan(0);
+    });
+  });
+
+  describe("Custom device intensity", () => {
+    const {
+      MILLION_PERVISIT_GREY_DEVICE_GRID_INTENSITY_CHANGE,
+      MILLION_PERBYTE_GREY_DEVICE_GRID_INTENSITY_CHANGE,
+      MILLION_GREY,
+      MILLION_PERVISIT_GREY,
+    } = SWD;
+    const co2 = new CO2();
+    it("expects an object or number", () => {
+      expect(
+        parseFloat(
+          co2
+            .perVisitTrace(1000000, false, {
+              gridIntensity: {
+                device: "565.629",
+              },
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBe(MILLION_PERVISIT_GREY);
+
+      expect(
+        parseFloat(
+          co2
+            .perByteTrace(1000000, false, {
+              gridIntensity: {
+                device: "565.629",
+              },
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBe(MILLION_GREY);
+    });
+
+    it("uses a number correctly", () => {
+      expect(
+        co2
+          .perVisitTrace(MILLION, false, {
+            gridIntensity: {
+              device: 565.629,
+            },
+          })
+          .co2.toPrecision(5)
+      ).toBe(MILLION_PERVISIT_GREY_DEVICE_GRID_INTENSITY_CHANGE.toPrecision(5));
+
+      expect(
+        co2
+          .perByteTrace(MILLION, false, {
+            gridIntensity: {
+              device: 565.629,
+            },
+          })
+          .co2.toPrecision(5)
+      ).toBe(MILLION_PERBYTE_GREY_DEVICE_GRID_INTENSITY_CHANGE.toPrecision(5));
+    });
+
+    it("uses an object correctly", () => {
+      expect(
+        co2
+          .perVisitTrace(MILLION, false, {
+            gridIntensity: {
+              device: {
+                country: "TWN",
+              },
+            },
+          })
+          .co2.toPrecision(5)
+      ).toBe(MILLION_PERVISIT_GREY_DEVICE_GRID_INTENSITY_CHANGE.toPrecision(5));
+      expect(
+        co2
+          .perByteTrace(MILLION, false, {
+            gridIntensity: {
+              device: {
+                country: "TWN",
+              },
+            },
+          })
+          .co2.toPrecision(5)
+      ).toBe(MILLION_PERBYTE_GREY_DEVICE_GRID_INTENSITY_CHANGE.toPrecision(5));
+    });
+  });
+
+  describe("Custom data center intensity", () => {
+    const {
+      MILLION_PERVISIT_GREY_DATACENTER_GRID_INTENSITY_CHANGE,
+      MILLION_PERBYTE_GREY_DATACENTER_GRID_INTENSITY_CHANGE,
+      MILLION_GREY,
+      MILLION_PERVISIT_GREY,
+    } = SWD;
+    const co2 = new CO2();
+    it("expects an object or number", () => {
+      expect(
+        parseFloat(
+          co2
+            .perVisitTrace(1000000, false, {
+              gridIntensity: {
+                dataCenter: "565.629",
+              },
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBe(MILLION_PERVISIT_GREY);
+      expect(
+        parseFloat(
+          co2
+            .perByteTrace(1000000, false, {
+              gridIntensity: {
+                dataCenter: "565.629",
+              },
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBe(MILLION_GREY);
+    });
+
+    it("uses a number correctly", () => {
+      expect(
+        co2
+          .perVisitTrace(MILLION, false, {
+            gridIntensity: {
+              dataCenter: 565.629,
+            },
+          })
+          .co2.toPrecision(5)
+      ).toBe(
+        MILLION_PERVISIT_GREY_DATACENTER_GRID_INTENSITY_CHANGE.toPrecision(5)
+      );
+      expect(
+        co2
+          .perByteTrace(MILLION, false, {
+            gridIntensity: {
+              dataCenter: 565.629,
+            },
+          })
+          .co2.toPrecision(5)
+      ).toBe(
+        MILLION_PERBYTE_GREY_DATACENTER_GRID_INTENSITY_CHANGE.toPrecision(5)
+      );
+    });
+
+    it("uses an object correctly", () => {
+      expect(
+        co2
+          .perVisitTrace(MILLION, false, {
+            gridIntensity: {
+              dataCenter: {
+                country: "TWN",
+              },
+            },
+          })
+          .co2.toPrecision(5)
+      ).toBe(
+        MILLION_PERVISIT_GREY_DATACENTER_GRID_INTENSITY_CHANGE.toPrecision(5)
+      );
+      expect(
+        co2
+          .perByteTrace(MILLION, false, {
+            gridIntensity: {
+              dataCenter: {
+                country: "TWN",
+              },
+            },
+          })
+          .co2.toPrecision(5)
+      ).toBe(
+        MILLION_PERBYTE_GREY_DATACENTER_GRID_INTENSITY_CHANGE.toPrecision(5)
+      );
+    });
+  });
+
+  describe("Custom network intensity", () => {
+    const {
+      MILLION_PERVISIT_GREY_NETWORK_GRID_INTENSITY_CHANGE,
+      MILLION_PERBYTE_GREY_NETWORK_GRID_INTENSITY_CHANGE,
+      MILLION_GREY,
+      MILLION_PERVISIT_GREY,
+    } = SWD;
+    const co2 = new CO2();
+    it("expects an object or number", () => {
+      expect(
+        parseFloat(
+          co2
+            .perVisitTrace(1000000, false, {
+              gridIntensity: {
+                network: "565.629",
+              },
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBe(MILLION_PERVISIT_GREY);
+
+      expect(
+        parseFloat(
+          co2
+            .perByteTrace(1000000, false, {
+              gridIntensity: {
+                network: "565.629",
+              },
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBe(MILLION_GREY);
+    });
+
+    it("uses a number correctly", () => {
+      expect(
+        co2
+          .perVisitTrace(MILLION, false, {
+            gridIntensity: {
+              network: 565.629,
+            },
+          })
+          .co2.toPrecision(5)
+      ).toBe(
+        MILLION_PERVISIT_GREY_NETWORK_GRID_INTENSITY_CHANGE.toPrecision(5)
+      );
+      expect(
+        co2
+          .perByteTrace(MILLION, false, {
+            gridIntensity: {
+              network: 565.629,
+            },
+          })
+          .co2.toPrecision(5)
+      ).toBe(MILLION_PERBYTE_GREY_NETWORK_GRID_INTENSITY_CHANGE.toPrecision(5));
+    });
+
+    it("uses an object correctly", () => {
+      expect(
+        co2
+          .perVisitTrace(MILLION, false, {
+            gridIntensity: {
+              network: {
+                country: "TWN",
+              },
+            },
+          })
+          .co2.toPrecision(5)
+      ).toBe(
+        MILLION_PERVISIT_GREY_NETWORK_GRID_INTENSITY_CHANGE.toPrecision(5)
+      );
+      expect(
+        co2
+          .perByteTrace(MILLION, false, {
+            gridIntensity: {
+              network: {
+                country: "TWN",
+              },
+            },
+          })
+          .co2.toPrecision(5)
+      ).toBe(MILLION_PERBYTE_GREY_NETWORK_GRID_INTENSITY_CHANGE.toPrecision(5));
+    });
+  });
+
+  describe("Using custom caching values in SWD", () => {
+    const { MILLION_PERVISIT_GREY } = SWD;
+    const co2 = new CO2();
+    it("uses the custom value", () => {
+      expect(
+        co2.perVisitTrace(1000000, false, {
+          dataReloadRatio: 0.5,
+        }).co2
+      ).toBeGreaterThan(MILLION_PERVISIT_GREY);
+    });
+
+    it("expects a number", () => {
+      expect(
+        parseFloat(
+          co2
+            .perVisitTrace(1000000, false, { dataReloadRatio: "0.5" })
+            .co2.toPrecision(5)
+        )
+      ).toBe(MILLION_PERVISIT_GREY);
+    });
+
+    it("expects a number between 0 and 1", () => {
+      expect(
+        parseFloat(
+          co2
+            .perVisitTrace(1000000, false, {
+              dataReloadRatio: 1.5,
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBe(MILLION_PERVISIT_GREY);
+      expect(
+        parseFloat(
+          co2
+            .perVisitTrace(1000000, false, {
+              dataReloadRatio: -1.5,
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBe(MILLION_PERVISIT_GREY);
+      expect(
+        co2.perVisitTrace(1000000, false, {
+          dataReloadRatio: 0,
+        }).co2
+      ).toBeLessThan(MILLION_PERVISIT_GREY);
+    });
+  });
+
+  describe("Using custom first and return visitor figures in SWD", () => {
+    const { MILLION_PERVISIT_GREY, MILLION_GREY } = SWD;
+    const co2 = new CO2();
+
+    it("uses the custom values", () => {
+      expect(
+        co2.perVisitTrace(MILLION, false, {
+          firstVisitPercentage: 0.8,
+          returnVisitPercentage: 0.2,
+        }).co2
+      ).toBeGreaterThan(MILLION_PERVISIT_GREY);
+
+      expect(
+        parseFloat(
+          co2
+            .perByteTrace(MILLION, false, {
+              firstVisitPercentage: 0.8,
+              returnVisitPercentage: 0.2,
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBe(MILLION_GREY);
+    });
+
+    it("expects firstVisitPercentage to be a number", () => {
+      expect(
+        parseFloat(
+          co2
+            .perVisitTrace(1000000, false, {
+              firstVisitPercentage: "0.8",
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBe(MILLION_PERVISIT_GREY);
+    });
+    it("expects firstVisitPercentage to be a number between 0 and 1", () => {
+      const co2 = new CO2();
+      expect(
+        parseFloat(
+          co2
+            .perVisitTrace(1000000, false, {
+              firstVisitPercentage: 1.5,
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBe(MILLION_PERVISIT_GREY);
+      expect(
+        parseFloat(
+          co2
+            .perVisitTrace(1000000, false, {
+              firstVisitPercentage: -1.5,
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBe(MILLION_PERVISIT_GREY);
+      expect(
+        co2.perVisitTrace(1000000, false, {
+          firstVisitPercentage: 0,
+        }).co2
+      ).toBeLessThan(MILLION_PERVISIT_GREY);
+    });
+    it("expects returnVisitPercentage to be a number", () => {
+      expect(
+        parseFloat(
+          co2
+            .perVisitTrace(1000000, false, {
+              returnVisitPercentage: "0.5",
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBe(MILLION_PERVISIT_GREY);
+    });
+    it("expects returnVisitPercentage to be a number between 0 and 1", () => {
+      expect(
+        parseFloat(
+          co2
+            .perVisitTrace(1000000, false, {
+              returnVisitPercentage: 1.5,
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBe(MILLION_PERVISIT_GREY);
+      expect(
+        parseFloat(
+          co2
+            .perVisitTrace(1000000, false, {
+              returnVisitPercentage: -1.5,
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBe(MILLION_PERVISIT_GREY);
+      expect(
+        co2.perVisitTrace(1000000, false, {
+          returnVisitPercentage: 0,
+        }).co2
+      ).toBeLessThan(MILLION_PERVISIT_GREY);
     });
   });
 });

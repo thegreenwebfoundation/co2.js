@@ -6,35 +6,24 @@
  * Updated calculations and figures from
  * https://sustainablewebdesign.org/calculating-digital-emissions/
  *
- *
  */
 import debugFactory from "debug";
 const log = debugFactory("tgwf:sustainable-web-design");
 
-import { fileSize } from "./constants/index.js";
+import {
+  fileSize,
+  KWH_PER_GB,
+  END_USER_DEVICE_ENERGY,
+  NETWORK_ENERGY,
+  DATACENTER_ENERGY,
+  PRODUCTION_ENERGY,
+  GLOBAL_GRID_INTENSITY,
+  RENEWABLES_GRID_INTENSITY,
+  FIRST_TIME_VIEWING_PERCENTAGE,
+  RETURNING_VISITOR_PERCENTAGE,
+  PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD,
+} from "./constants/index.js";
 import { formatNumber } from "./helpers/index.js";
-
-// this refers to the estimated total energy use for the internet around 2000 TWh,
-// divided by the total transfer it enables around 2500 exabytes
-const KWH_PER_GB = 0.81;
-
-// these constants outline how the energy is attributed to
-// different parts of the system in the SWD model
-const END_USER_DEVICE_ENERGY = 0.52;
-const NETWORK_ENERGY = 0.14;
-const DATACENTER_ENERGY = 0.15;
-const PRODUCTION_ENERGY = 0.19;
-
-// These carbon intensity figures https://ember-climate.org/data/data-explorer
-// - Global carbon intensity for 2021
-const GLOBAL_INTENSITY = 442;
-const RENEWABLES_INTENSITY = 50;
-
-// Taken from: https://gitlab.com/wholegrain/carbon-api-2-0/-/blob/master/includes/carbonapi.php
-
-const FIRST_TIME_VIEWING_PERCENTAGE = 0.75;
-const RETURNING_VISITOR_PERCENTAGE = 0.25;
-const PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD = 0.02;
 
 class SustainableWebDesign {
   constructor(options) {
@@ -65,26 +54,60 @@ class SustainableWebDesign {
    * Accept an object keys by the different system components, and
    * return an object with the co2 figures key by the each component
    *
-   * @param {object} energyBycomponent - energy grouped by the four system components
+   * @param {object} energyByComponent - energy grouped by the four system components
    * @param {number} [carbonIntensity] - carbon intensity to apply to the datacentre values
    * @return {number} the total number in grams of CO2 equivalent emissions
    */
-  co2byComponent(energyBycomponent, carbonIntensity = GLOBAL_INTENSITY) {
+  co2byComponent(
+    energyByComponent,
+    carbonIntensity = GLOBAL_GRID_INTENSITY,
+    options = {}
+  ) {
+    let deviceCarbonIntensity = GLOBAL_GRID_INTENSITY;
+    let networkCarbonIntensity = GLOBAL_GRID_INTENSITY;
+    let dataCenterCarbonIntensity = GLOBAL_GRID_INTENSITY;
+
+    let globalEmissions = GLOBAL_GRID_INTENSITY;
+    // If the user passes in a TRUE value (green web host), then use the renewables intensity value
+    if (carbonIntensity === true) {
+      dataCenterCarbonIntensity = RENEWABLES_GRID_INTENSITY;
+    }
+
+    if (options?.gridIntensity) {
+      const { device, network, dataCenter } = options.gridIntensity;
+
+      if (device?.value) {
+        deviceCarbonIntensity = device.value;
+      }
+      if (network?.value) {
+        networkCarbonIntensity = network.value;
+      }
+      // If the user has set a carbon intensity value for the datacentre, then that overrides everything and is used
+      if (dataCenter?.value) {
+        dataCenterCarbonIntensity = dataCenter.value;
+      }
+    }
+
     const returnCO2ByComponent = {};
-    for (const [key, value] of Object.entries(energyBycomponent)) {
+    for (const [key, value] of Object.entries(energyByComponent)) {
       // we update the datacentre, as that's what we have information
       // about.
       if (key.startsWith("dataCenterEnergy")) {
         returnCO2ByComponent[key.replace("Energy", "CO2")] =
-          value * carbonIntensity;
-      } else {
-        // We don't have info about the device location,
-        // nor the network path used, nor the production emissions
-        // so we revert to global figures
+          value * dataCenterCarbonIntensity;
+      } else if (key.startsWith("consumerDeviceEnergy")) {
         returnCO2ByComponent[key.replace("Energy", "CO2")] =
-          value * GLOBAL_INTENSITY;
+          value * deviceCarbonIntensity;
+      } else if (key.startsWith("networkEnergy")) {
+        returnCO2ByComponent[key.replace("Energy", "CO2")] =
+          value * networkCarbonIntensity;
+      } else {
+        // Use the global intensity for the remaining segments
+        returnCO2ByComponent[key.replace("Energy", "CO2")] =
+          value * globalEmissions;
       }
     }
+
     return returnCO2ByComponent;
   }
 
@@ -98,29 +121,25 @@ class SustainableWebDesign {
    * @param {number} `carbonIntensity` the carbon intensity for datacentre (average figures, not marginal ones)
    * @return {number} the total number in grams of CO2 equivalent emissions
    */
-  perByte(bytes, carbonIntensity = GLOBAL_INTENSITY, segmentResults = false) {
-    const energyBycomponent = this.energyPerByteByComponent(bytes);
-
-    // when faced with falsy values, fallback to global intensity
-    if (Boolean(carbonIntensity) === false) {
-      carbonIntensity = GLOBAL_INTENSITY;
-    }
-    // if we have a boolean, we have a green result from the green web checker
-    // use the renewables intensity
-    if (carbonIntensity === true) {
-      carbonIntensity = RENEWABLES_INTENSITY;
-    }
+  perByte(
+    bytes,
+    carbonIntensity = false,
+    segmentResults = false,
+    options = {}
+  ) {
+    const energyBycomponent = this.energyPerByteByComponent(bytes, options);
 
     // otherwise when faced with non numeric values throw an error
-    if (typeof carbonIntensity !== "number") {
+    if (typeof carbonIntensity !== "boolean") {
       throw new Error(
-        `perByte expects a numeric value or boolean for the carbon intensity value. Received: ${carbonIntensity}`
+        `perByte expects a boolean for the carbon intensity value. Received: ${carbonIntensity}`
       );
     }
 
     const co2ValuesbyComponent = this.co2byComponent(
       energyBycomponent,
-      carbonIntensity
+      carbonIntensity,
+      options
     );
 
     // pull out our values…
@@ -144,29 +163,25 @@ class SustainableWebDesign {
    * @param {number} `carbonIntensity` the carbon intensity for datacentre (average figures, not marginal ones)
    * @return {number} the total number in grams of CO2 equivalent emissions
    */
-  perVisit(bytes, carbonIntensity = GLOBAL_INTENSITY, segmentResults = false) {
-    const energyBycomponent = this.energyPerVisitByComponent(bytes);
+  perVisit(
+    bytes,
+    carbonIntensity = false,
+    segmentResults = false,
+    options = {}
+  ) {
+    const energyBycomponent = this.energyPerVisitByComponent(bytes, options);
 
-    // when faced with falsy values, fallback to global intensity
-    if (Boolean(carbonIntensity) === false) {
-      carbonIntensity = GLOBAL_INTENSITY;
-    }
-    // if we have a boolean, we have a green result from the green web checker
-    // use the renewables intensity
-    if (carbonIntensity === true) {
-      carbonIntensity = RENEWABLES_INTENSITY;
-    }
-
-    // otherwise when faced with non numeric values throw an error
-    if (typeof carbonIntensity !== "number") {
+    if (typeof carbonIntensity !== "boolean") {
+      // otherwise when faced with non numeric values throw an error
       throw new Error(
-        `perVisit expects a numeric value or boolean for the carbon intensity value. Received: ${carbonIntensity}`
+        `perVisit expects a boolean for the carbon intensity value. Received: ${carbonIntensity}`
       );
     }
 
     const co2ValuesbyComponent = this.co2byComponent(
       energyBycomponent,
-      carbonIntensity
+      carbonIntensity,
+      options
     );
 
     // pull out our values…
@@ -218,10 +233,23 @@ class SustainableWebDesign {
    */
   energyPerVisitByComponent(
     bytes,
+    options = {},
     firstView = FIRST_TIME_VIEWING_PERCENTAGE,
     returnView = RETURNING_VISITOR_PERCENTAGE,
     dataReloadRatio = PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD
   ) {
+    if (options.dataReloadRatio) {
+      dataReloadRatio = options.dataReloadRatio;
+    }
+
+    if (options.firstVisitPercentage) {
+      firstView = options.firstVisitPercentage;
+    }
+
+    if (options.returnVisitPercentage) {
+      returnView = options.returnVisitPercentage;
+    }
+
     const energyBycomponent = this.energyPerByteByComponent(bytes);
     const cacheAdjustedSegmentEnergy = {};
 
@@ -275,9 +303,10 @@ class SustainableWebDesign {
     return firstVisits + subsequentVisits;
   }
 
-  // TODO: this method looks like it applies the carbon intensity
-  // change to the *entire* system, not just the datacenter.
-  emissionsPerVisitInGrams(energyPerVisit, carbonintensity = GLOBAL_INTENSITY) {
+  emissionsPerVisitInGrams(
+    energyPerVisit,
+    carbonintensity = GLOBAL_GRID_INTENSITY
+  ) {
     return formatNumber(energyPerVisit * carbonintensity);
   }
 

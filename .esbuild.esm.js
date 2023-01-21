@@ -6,7 +6,7 @@ const esbuild = require('esbuild')
 const glob = require('tiny-glob');
 
 async function main() {
-  const results = await glob('src/**/**.js')
+  const results = await glob('src/**/!(*.test.js|!(*.js))')
   // we remove node specific files here, with the assumption that
   // the common use case is bundling into browser based web apps
   const justBrowserCompatibleFiles = results.filter(filepath => !filepath.endsWith('node.js'))
