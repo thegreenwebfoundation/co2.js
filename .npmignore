@@ -13,6 +13,7 @@ public
 
 # Test files
 src/**/*.test.js
+src/constants/test-constants.js
 
 # Data
 # exclude mode data
