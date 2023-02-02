@@ -1,5 +1,4 @@
 import fileSize from "./file-size.js";
-import testConstants from "./test-constants.js";
 
 // SUSTAINABLE WEB DESIGN CONSTANTS
 // this refers to the estimated total energy use for the internet around 2000 TWh,
@@ -26,7 +25,6 @@ const PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD = 0.02;
 
 export {
   fileSize,
-  testConstants,
   KWH_PER_GB,
   END_USER_DEVICE_ENERGY,
   NETWORK_ENERGY,

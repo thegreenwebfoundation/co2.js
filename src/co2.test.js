@@ -2,7 +2,7 @@
 
 import fs from "fs";
 import path from "path";
-import { testConstants } from "./constants/index.js";
+import testConstants from "./constants/test-constants.js";
 
 import pagexray from "pagexray";
 
