@@ -1,5 +1,7 @@
 const fs = require("fs");
-const csv = fs.readFileSync("data/IFI_Default_Grid_Factors_2021_v3.1_unfccc.csv");
+const csv = fs.readFileSync(
+  "data/IFI_Default_Grid_Factors_2021_v3.1_unfccc.csv"
+);
 const parseCSVRow = require("../utils/parseCSVRow");
 const getCountryCodes = require("../utils/getCountryCodes");
 const type = "marginal";
@@ -22,14 +24,13 @@ const headers = rowHeaders.filter((header) => header !== "");
 /* Iterate over the remaining data rows */
 // Here we remove the first 5 items in the array, since these are the headings which we have already accounted for
 for (let currentArrayString of array.slice(5)) {
-
   // If there's an empty line, keep calm and carry on.
   if (currentArrayString.length === 0) continue;
 
   /* Empty object to store result in key value pair */
   const jsonObject = {};
 
-	// Split the string by the pipe character
+  // Split the string by the pipe character
   let jsonProperties = parseCSVRow(currentArrayString);
 
   if (jsonProperties.length < 2) continue;
@@ -41,36 +42,38 @@ for (let currentArrayString of array.slice(5)) {
   if (!country || country === "") continue;
 
   // UNFCCC keeps the country name in the 1st column, so we'll use that to map the ISO country codes
-  const countryCodes = getCountryCodes('unfccc_country_name', country.toLowerCase());
+  const countryCodes = getCountryCodes(
+    "unfccc_country_name",
+    country.toLowerCase()
+  );
 
   // Loop through the headers and assign the values to the JSON object
   for (let column in headers) {
     if (!column || column === "") continue;
 
     // First check if the current property is an array string. If so, then we'll split it and map the results to an array.
-		// We trim the values to remove any whitespace.
+    // We trim the values to remove any whitespace.
     if (jsonProperties[column].includes(",")) {
       jsonObject[headers[column]] = jsonProperties[column]
         .split(",")
         .map((item) => item.trim());
     } else {
       // Otherwise, just assign the value to the JSON object.
-			// We replace \r with an empty string to remove any carriage returns.
+      // We replace \r with an empty string to remove any carriage returns.
       // We also remove any quotations in the strings.
-      jsonObject[headers[column].replace("\r", "").replaceAll('\"', "")] =
-        jsonProperties[column].replace("\r", "").replace('\"', "");
+      jsonObject[headers[column].replace("\r", "").replaceAll('"', "")] =
+        jsonProperties[column].replace("\r", "").replace('"', "");
     }
 
     if (headers[column].startsWith("Operating Margin Grid Emission")) {
-      gridIntensityResults[countryCodes.country_code_iso_3.toUpperCase() || country.toUpperCase()] = jsonProperties[column]
-        .replace("\r", "")
-        .replace('\"', "");
-      }
+      gridIntensityResults[
+        countryCodes?.country_code_iso_3.toUpperCase() || country?.toUpperCase()
+      ] = jsonProperties[column].replace("\r", "").replace('"', "");
     }
-
+  }
 
   /* Push the genearted JSON object to resultant array */
-  csvToJsonResult[country] = {...jsonObject, ...countryCodes};;
+  csvToJsonResult[country] = { ...jsonObject, ...countryCodes };
 }
 /* Convert the final array to JSON */
 const json = JSON.stringify(csvToJsonResult);
@@ -83,11 +86,13 @@ fs.writeFileSync(
   const type = "${type}";
 const year = "${year}";
 export { data, type, year }; 
-export default { data, type, year };`);
+export default { data, type, year };`
+);
 // Save a minified version to the src folder so that it can be easily imported into the library
 fs.writeFileSync(
   "src/data/marginal-intensities-2021.min.js",
-  `const data = ${gridIntensityJson}; const type = "${type}"; const year = "${year}"; export { data, type, year }; export default { data, type, year };` );
+  `const data = ${gridIntensityJson}; const type = "${type}"; const year = "${year}"; export { data, type, year }; export default { data, type, year };`
+);
 
 // This saves the full data set as a JSON file for reference.
 fs.writeFileSync("data/output/marginal-intensities-2021.json", json);

@@ -20,6 +20,7 @@ const getCountryCodes = (field, input) => {
       return { country_code_iso_2, country_code_iso_3 };
     }
   });
+  return mappedCountry;
 };
 
 module.exports = getCountryCodes;

@@ -6,6 +6,8 @@
     "Energy Efficiency": "193",
     "Electricity Consumption": "193",
     "Operating Margin Grid Emission": "414",
+    "ember_country_name": "Afghanistan",
+    "unfccc_country_name": "Afghanistan",
     "country_code_iso_2": "AF",
     "country_code_iso_3": "AFG"
   },
@@ -16,6 +18,8 @@
     "Energy Efficiency": "0",
     "Electricity Consumption": "0",
     "Operating Margin Grid Emission": "0",
+    "ember_country_name": "Albania",
+    "unfccc_country_name": "Albania",
     "country_code_iso_2": "AL",
     "country_code_iso_3": "ALB"
   },
@@ -26,6 +30,8 @@
     "Energy Efficiency": "397",
     "Electricity Consumption": "397",
     "Operating Margin Grid Emission": "528",
+    "ember_country_name": "Algeria",
+    "unfccc_country_name": "Algeria",
     "country_code_iso_2": "DZ",
     "country_code_iso_3": "DZA"
   },
@@ -36,6 +42,8 @@
     "Energy Efficiency": "516",
     "Electricity Consumption": "516",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "American Samoa",
+    "unfccc_country_name": "American Samoa (U.S.)",
     "country_code_iso_2": "AS",
     "country_code_iso_3": "ASM"
   },
@@ -46,6 +54,8 @@
     "Energy Efficiency": "70",
     "Electricity Consumption": "70",
     "Operating Margin Grid Emission": "188",
+    "ember_country_name": "",
+    "unfccc_country_name": "Andorra",
     "country_code_iso_2": "AD",
     "country_code_iso_3": "AND"
   },
@@ -56,6 +66,8 @@
     "Energy Efficiency": "748",
     "Electricity Consumption": "748",
     "Operating Margin Grid Emission": "1476",
+    "ember_country_name": "Angola",
+    "unfccc_country_name": "Angola",
     "country_code_iso_2": "AO",
     "country_code_iso_3": "AGO"
   },
@@ -66,6 +78,8 @@
     "Energy Efficiency": "472",
     "Electricity Consumption": "472",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "",
+    "unfccc_country_name": "Anguilla (U.K.)",
     "country_code_iso_2": "AI",
     "country_code_iso_3": "AIA"
   },
@@ -76,6 +90,8 @@
     "Energy Efficiency": "489",
     "Electricity Consumption": "489",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Antigua and Barbuda",
+    "unfccc_country_name": "Antigua and Barbuda",
     "country_code_iso_2": "AG",
     "country_code_iso_3": "ATG"
   },
@@ -86,6 +102,8 @@
     "Energy Efficiency": "288",
     "Electricity Consumption": "288",
     "Operating Margin Grid Emission": "478",
+    "ember_country_name": "Argentina",
+    "unfccc_country_name": "Argentina",
     "country_code_iso_2": "AR",
     "country_code_iso_3": "ARG"
   },
@@ -96,6 +114,8 @@
     "Energy Efficiency": "205",
     "Electricity Consumption": "205",
     "Operating Margin Grid Emission": "390",
+    "ember_country_name": "Armenia",
+    "unfccc_country_name": "Armenia",
     "country_code_iso_2": "AM",
     "country_code_iso_3": "ARM"
   },
@@ -106,6 +126,8 @@
     "Energy Efficiency": "421",
     "Electricity Consumption": "421",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Aruba",
+    "unfccc_country_name": "Aruba",
     "country_code_iso_2": "AW",
     "country_code_iso_3": "ABW"
   },
@@ -116,6 +138,8 @@
     "Energy Efficiency": "421",
     "Electricity Consumption": "421",
     "Operating Margin Grid Emission": "808",
+    "ember_country_name": "Australia",
+    "unfccc_country_name": "Australia",
     "country_code_iso_2": "AU",
     "country_code_iso_3": "AUS"
   },
@@ -126,6 +150,8 @@
     "Energy Efficiency": "113",
     "Electricity Consumption": "113",
     "Operating Margin Grid Emission": "242",
+    "ember_country_name": "Austria",
+    "unfccc_country_name": "Austria",
     "country_code_iso_2": "AT",
     "country_code_iso_3": "AUT"
   },
@@ -136,6 +162,8 @@
     "Energy Efficiency": "384",
     "Electricity Consumption": "384",
     "Operating Margin Grid Emission": "534",
+    "ember_country_name": "Azerbaijan",
+    "unfccc_country_name": "Azerbaijan",
     "country_code_iso_2": "AZ",
     "country_code_iso_3": "AZE"
   },
@@ -146,6 +174,8 @@
     "Energy Efficiency": "384",
     "Electricity Consumption": "384",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "",
+    "unfccc_country_name": "Azores (Portugal)",
     "country_code_iso_2": "",
     "country_code_iso_3": ""
   },
@@ -156,6 +186,8 @@
     "Energy Efficiency": "441",
     "Electricity Consumption": "441",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Bahamas (the)",
+    "unfccc_country_name": "Bahamas",
     "country_code_iso_2": "BS",
     "country_code_iso_3": "BHS"
   },
@@ -166,6 +198,8 @@
     "Energy Efficiency": "454",
     "Electricity Consumption": "454",
     "Operating Margin Grid Emission": "726",
+    "ember_country_name": "Bahrain",
+    "unfccc_country_name": "Bahrain",
     "country_code_iso_2": "BH",
     "country_code_iso_3": "BHR"
   },
@@ -176,6 +210,8 @@
     "Energy Efficiency": "412",
     "Electricity Consumption": "412",
     "Operating Margin Grid Emission": "528",
+    "ember_country_name": "Bangladesh",
+    "unfccc_country_name": "Bangladesh",
     "country_code_iso_2": "BD",
     "country_code_iso_3": "BGD"
   },
@@ -186,6 +222,8 @@
     "Energy Efficiency": "484",
     "Electricity Consumption": "484",
     "Operating Margin Grid Emission": "749",
+    "ember_country_name": "Barbados",
+    "unfccc_country_name": "Barbados",
     "country_code_iso_2": "BB",
     "country_code_iso_3": "BRB"
   },
@@ -196,6 +234,8 @@
     "Energy Efficiency": "292",
     "Electricity Consumption": "292",
     "Operating Margin Grid Emission": "400",
+    "ember_country_name": "Belarus",
+    "unfccc_country_name": "Belarus",
     "country_code_iso_2": "BY",
     "country_code_iso_3": "BLR"
   },
@@ -206,6 +246,8 @@
     "Energy Efficiency": "124",
     "Electricity Consumption": "124",
     "Operating Margin Grid Emission": "252",
+    "ember_country_name": "Belgium",
+    "unfccc_country_name": "Belgium",
     "country_code_iso_2": "BE",
     "country_code_iso_3": "BEL"
   },
@@ -216,6 +258,8 @@
     "Energy Efficiency": "183",
     "Electricity Consumption": "183",
     "Operating Margin Grid Emission": "403",
+    "ember_country_name": "Belize",
+    "unfccc_country_name": "Belize",
     "country_code_iso_2": "BZ",
     "country_code_iso_3": "BLZ"
   },
@@ -226,6 +270,8 @@
     "Energy Efficiency": "576",
     "Electricity Consumption": "576",
     "Operating Margin Grid Emission": "745",
+    "ember_country_name": "Benin",
+    "unfccc_country_name": "Benin",
     "country_code_iso_2": "BJ",
     "country_code_iso_3": "BEN"
   },
@@ -236,6 +282,8 @@
     "Energy Efficiency": "342",
     "Electricity Consumption": "342",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "",
+    "unfccc_country_name": "Bermuda (U.K.)",
     "country_code_iso_2": "BM",
     "country_code_iso_3": "BMU"
   },
@@ -246,6 +294,8 @@
     "Energy Efficiency": "0",
     "Electricity Consumption": "0",
     "Operating Margin Grid Emission": "0",
+    "ember_country_name": "Bhutan",
+    "unfccc_country_name": "Bhutan",
     "country_code_iso_2": "BT",
     "country_code_iso_3": "BTN"
   },
@@ -256,6 +306,8 @@
     "Energy Efficiency": "393",
     "Electricity Consumption": "393",
     "Operating Margin Grid Emission": "604",
+    "ember_country_name": "Bolivia",
+    "unfccc_country_name": "Bolivia, Plurinational State of",
     "country_code_iso_2": "BO",
     "country_code_iso_3": "BOL"
   },
@@ -266,6 +318,8 @@
     "Energy Efficiency": "400",
     "Electricity Consumption": "400",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "",
+    "unfccc_country_name": "Bonaire (Netherland)",
     "country_code_iso_2": "BQ",
     "country_code_iso_3": "BES"
   },
@@ -276,6 +330,8 @@
     "Energy Efficiency": "739",
     "Electricity Consumption": "739",
     "Operating Margin Grid Emission": "1197",
+    "ember_country_name": "Bosnia Herzegovina",
+    "unfccc_country_name": "Bosnia and Herzegovina",
     "country_code_iso_2": "BA",
     "country_code_iso_3": "BIH"
   },
@@ -286,6 +342,8 @@
     "Energy Efficiency": "1070",
     "Electricity Consumption": "1070",
     "Operating Margin Grid Emission": "1486",
+    "ember_country_name": "Botswana",
+    "unfccc_country_name": "Botswana",
     "country_code_iso_2": "BW",
     "country_code_iso_3": "BWA"
   },
@@ -296,6 +354,8 @@
     "Energy Efficiency": "150",
     "Electricity Consumption": "150",
     "Operating Margin Grid Emission": "284",
+    "ember_country_name": "Brazil",
+    "unfccc_country_name": "Brazil",
     "country_code_iso_2": "BR",
     "country_code_iso_3": "BRA"
   },
@@ -306,6 +366,8 @@
     "Energy Efficiency": "420",
     "Electricity Consumption": "420",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Virgin Islands (British)",
+    "unfccc_country_name": "British Virgin Islands (U.K.)",
     "country_code_iso_2": "VG",
     "country_code_iso_3": "VGB"
   },
@@ -316,6 +378,8 @@
     "Energy Efficiency": "407",
     "Electricity Consumption": "407",
     "Operating Margin Grid Emission": "681",
+    "ember_country_name": "Brunei Darussalam",
+    "unfccc_country_name": "Brunei Darussalam",
     "country_code_iso_2": "BN",
     "country_code_iso_3": "BRN"
   },
@@ -326,6 +390,8 @@
     "Energy Efficiency": "495",
     "Electricity Consumption": "495",
     "Operating Margin Grid Emission": "911",
+    "ember_country_name": "Bulgaria",
+    "unfccc_country_name": "Bulgaria",
     "country_code_iso_2": "BG",
     "country_code_iso_3": "BGR"
   },
@@ -336,6 +402,8 @@
     "Energy Efficiency": "539",
     "Electricity Consumption": "539",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Burkina Faso",
+    "unfccc_country_name": "Burkina Faso",
     "country_code_iso_2": "BF",
     "country_code_iso_3": "BFA"
   },
@@ -346,6 +414,8 @@
     "Energy Efficiency": "197",
     "Electricity Consumption": "197",
     "Operating Margin Grid Emission": "414",
+    "ember_country_name": "Burundi",
+    "unfccc_country_name": "Burundi",
     "country_code_iso_2": "BI",
     "country_code_iso_3": "BDI"
   },
@@ -356,6 +426,8 @@
     "Energy Efficiency": "588",
     "Electricity Consumption": "588",
     "Operating Margin Grid Emission": "1046",
+    "ember_country_name": "Cambodia",
+    "unfccc_country_name": "Cambodia",
     "country_code_iso_2": "KH",
     "country_code_iso_3": "KHM"
   },
@@ -366,6 +438,8 @@
     "Energy Efficiency": "354",
     "Electricity Consumption": "354",
     "Operating Margin Grid Emission": "659",
+    "ember_country_name": "Cameroon",
+    "unfccc_country_name": "Cameroon",
     "country_code_iso_2": "CM",
     "country_code_iso_3": "CMR"
   },
@@ -376,6 +450,8 @@
     "Energy Efficiency": "213",
     "Electricity Consumption": "213",
     "Operating Margin Grid Emission": "372",
+    "ember_country_name": "Canada",
+    "unfccc_country_name": "Canada",
     "country_code_iso_2": "CA",
     "country_code_iso_3": "CAN"
   },
@@ -386,6 +462,8 @@
     "Energy Efficiency": "435",
     "Electricity Consumption": "435",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Cayman Islands (the)",
+    "unfccc_country_name": "Canary Islands (Spain)",
     "country_code_iso_2": "KY",
     "country_code_iso_3": "CYM"
   },
@@ -396,6 +474,8 @@
     "Energy Efficiency": "505",
     "Electricity Consumption": "505",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Cabo Verde",
+    "unfccc_country_name": "Cape Verde",
     "country_code_iso_2": "CV",
     "country_code_iso_3": "CPV"
   },
@@ -406,6 +486,8 @@
     "Energy Efficiency": "373",
     "Electricity Consumption": "373",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "",
+    "unfccc_country_name": "Cayman Islands",
     "country_code_iso_2": "CY",
     "country_code_iso_3": "CYM"
   },
@@ -416,6 +498,8 @@
     "Energy Efficiency": "77",
     "Electricity Consumption": "77",
     "Operating Margin Grid Emission": "188",
+    "ember_country_name": "Central African Republic (the)",
+    "unfccc_country_name": "Central African Republic",
     "country_code_iso_2": "CF",
     "country_code_iso_3": "CAF"
   },
@@ -426,6 +510,8 @@
     "Energy Efficiency": "581",
     "Electricity Consumption": "581",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Chad",
+    "unfccc_country_name": "Chad",
     "country_code_iso_2": "TD",
     "country_code_iso_3": "TCD"
   },
@@ -436,6 +522,8 @@
     "Energy Efficiency": "389",
     "Electricity Consumption": "389",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "",
+    "unfccc_country_name": "Channel Islands (U.K)",
     "country_code_iso_2": "",
     "country_code_iso_3": ""
   },
@@ -446,6 +534,8 @@
     "Energy Efficiency": "235",
     "Electricity Consumption": "235",
     "Operating Margin Grid Emission": "657",
+    "ember_country_name": "Chile",
+    "unfccc_country_name": "Chile",
     "country_code_iso_2": "CL",
     "country_code_iso_3": "CHL"
   },
@@ -456,6 +546,8 @@
     "Energy Efficiency": "485",
     "Electricity Consumption": "485",
     "Operating Margin Grid Emission": "899",
+    "ember_country_name": "China",
+    "unfccc_country_name": "China (PRC and Hong Kong)",
     "country_code_iso_2": "CN",
     "country_code_iso_3": "CHN"
   },
@@ -466,6 +558,8 @@
     "Energy Efficiency": "208",
     "Electricity Consumption": "208",
     "Operating Margin Grid Emission": "410",
+    "ember_country_name": "Colombia",
+    "unfccc_country_name": "Colombia",
     "country_code_iso_2": "CO",
     "country_code_iso_3": "COL"
   },
@@ -476,6 +570,8 @@
     "Energy Efficiency": "589",
     "Electricity Consumption": "589",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Comoros (the)",
+    "unfccc_country_name": "Comoros",
     "country_code_iso_2": "KM",
     "country_code_iso_3": "COM"
   },
@@ -486,6 +582,8 @@
     "Energy Efficiency": "0",
     "Electricity Consumption": "0",
     "Operating Margin Grid Emission": "0",
+    "ember_country_name": "Congo (the Democratic Republic of the)",
+    "unfccc_country_name": "Congo, Democratic Republic of",
     "country_code_iso_2": "CD",
     "country_code_iso_3": "COD"
   },
@@ -496,6 +594,8 @@
     "Energy Efficiency": "405",
     "Electricity Consumption": "405",
     "Operating Margin Grid Emission": "659",
+    "ember_country_name": "Congo (the)",
+    "unfccc_country_name": "Congo, Republic of",
     "country_code_iso_2": "CG",
     "country_code_iso_3": "COG"
   },
@@ -506,6 +606,8 @@
     "Energy Efficiency": "422",
     "Electricity Consumption": "422",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Cook Islands (the)",
+    "unfccc_country_name": "Cook Islands",
     "country_code_iso_2": "CK",
     "country_code_iso_3": "COK"
   },
@@ -516,6 +618,8 @@
     "Energy Efficiency": "39",
     "Electricity Consumption": "39",
     "Operating Margin Grid Emission": "108",
+    "ember_country_name": "Costa Rica",
+    "unfccc_country_name": "Costa Rica",
     "country_code_iso_2": "CR",
     "country_code_iso_3": "CRI"
   },
@@ -526,6 +630,8 @@
     "Energy Efficiency": "314",
     "Electricity Consumption": "314",
     "Operating Margin Grid Emission": "466",
+    "ember_country_name": "Cote d'Ivoire",
+    "unfccc_country_name": "Côte d'Ivoire",
     "country_code_iso_2": "CI",
     "country_code_iso_3": "CIV"
   },
@@ -536,6 +642,8 @@
     "Energy Efficiency": "168",
     "Electricity Consumption": "168",
     "Operating Margin Grid Emission": "294",
+    "ember_country_name": "Croatia",
+    "unfccc_country_name": "Croatia",
     "country_code_iso_2": "HR",
     "country_code_iso_3": "HRV"
   },
@@ -546,6 +654,8 @@
     "Energy Efficiency": "391",
     "Electricity Consumption": "391",
     "Operating Margin Grid Emission": "559",
+    "ember_country_name": "Cuba",
+    "unfccc_country_name": "Cuba",
     "country_code_iso_2": "CU",
     "country_code_iso_3": "CUB"
   },
@@ -556,6 +666,8 @@
     "Energy Efficiency": "506",
     "Electricity Consumption": "506",
     "Operating Margin Grid Emission": "876",
+    "ember_country_name": "",
+    "unfccc_country_name": "Curacao/Netherlands Antilles",
     "country_code_iso_2": "CW",
     "country_code_iso_3": "CUW"
   },
@@ -566,6 +678,8 @@
     "Energy Efficiency": "438",
     "Electricity Consumption": "438",
     "Operating Margin Grid Emission": "751",
+    "ember_country_name": "Cyprus",
+    "unfccc_country_name": "Cyprus",
     "country_code_iso_2": "CY",
     "country_code_iso_3": "CYP"
   },
@@ -576,6 +690,8 @@
     "Energy Efficiency": "461",
     "Electricity Consumption": "461",
     "Operating Margin Grid Emission": "902",
+    "ember_country_name": "Czechia",
+    "unfccc_country_name": "Czech Republic",
     "country_code_iso_2": "CZ",
     "country_code_iso_3": "CZE"
   },
@@ -586,6 +702,8 @@
     "Energy Efficiency": "155",
     "Electricity Consumption": "155",
     "Operating Margin Grid Emission": "362",
+    "ember_country_name": "Denmark",
+    "unfccc_country_name": "Denmark",
     "country_code_iso_2": "DK",
     "country_code_iso_3": "DNK"
   },
@@ -596,6 +714,8 @@
     "Energy Efficiency": "575",
     "Electricity Consumption": "575",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Djibouti",
+    "unfccc_country_name": "Djibouti",
     "country_code_iso_2": "DJ",
     "country_code_iso_3": "DJI"
   },
@@ -606,6 +726,8 @@
     "Energy Efficiency": "433",
     "Electricity Consumption": "433",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Dominica",
+    "unfccc_country_name": "Dominica",
     "country_code_iso_2": "DM",
     "country_code_iso_3": "DMA"
   },
@@ -616,6 +738,8 @@
     "Energy Efficiency": "426",
     "Electricity Consumption": "426",
     "Operating Margin Grid Emission": "601",
+    "ember_country_name": "Dominican Republic (the)",
+    "unfccc_country_name": "Dominican Republic",
     "country_code_iso_2": "DO",
     "country_code_iso_3": "DOM"
   },
@@ -626,6 +750,8 @@
     "Energy Efficiency": "280",
     "Electricity Consumption": "280",
     "Operating Margin Grid Emission": "560",
+    "ember_country_name": "Ecuador",
+    "unfccc_country_name": "Ecuador",
     "country_code_iso_2": "EC",
     "country_code_iso_3": "ECU"
   },
@@ -636,6 +762,8 @@
     "Energy Efficiency": "406",
     "Electricity Consumption": "406",
     "Operating Margin Grid Emission": "554",
+    "ember_country_name": "Egypt",
+    "unfccc_country_name": "Egypt",
     "country_code_iso_2": "EG",
     "country_code_iso_3": "EGY"
   },
@@ -646,6 +774,8 @@
     "Energy Efficiency": "275",
     "Electricity Consumption": "275",
     "Operating Margin Grid Emission": "547",
+    "ember_country_name": "El Salvador",
+    "unfccc_country_name": "El Salvador",
     "country_code_iso_2": "SV",
     "country_code_iso_3": "SLV"
   },
@@ -656,6 +786,8 @@
     "Energy Efficiency": "361",
     "Electricity Consumption": "361",
     "Operating Margin Grid Emission": "632",
+    "ember_country_name": "Equatorial Guinea",
+    "unfccc_country_name": "Equatorial Guinea",
     "country_code_iso_2": "GQ",
     "country_code_iso_3": "GNQ"
   },
@@ -666,6 +798,8 @@
     "Energy Efficiency": "704",
     "Electricity Consumption": "704",
     "Operating Margin Grid Emission": "915",
+    "ember_country_name": "Eritrea",
+    "unfccc_country_name": "Eritrea",
     "country_code_iso_2": "ER",
     "country_code_iso_3": "ERI"
   },
@@ -676,6 +810,8 @@
     "Energy Efficiency": "625",
     "Electricity Consumption": "625",
     "Operating Margin Grid Emission": "1057",
+    "ember_country_name": "Estonia",
+    "unfccc_country_name": "Estonia",
     "country_code_iso_2": "EE",
     "country_code_iso_3": "EST"
   },
@@ -686,6 +822,8 @@
     "Energy Efficiency": "0",
     "Electricity Consumption": "0",
     "Operating Margin Grid Emission": "0",
+    "ember_country_name": "Eswatini",
+    "unfccc_country_name": "Eswatini",
     "country_code_iso_2": "SZ",
     "country_code_iso_3": "SWZ"
   },
@@ -696,6 +834,8 @@
     "Energy Efficiency": "0",
     "Electricity Consumption": "0",
     "Operating Margin Grid Emission": "0",
+    "ember_country_name": "Ethiopia",
+    "unfccc_country_name": "Ethiopia",
     "country_code_iso_2": "ET",
     "country_code_iso_3": "ETH"
   },
@@ -706,6 +846,8 @@
     "Energy Efficiency": "316",
     "Electricity Consumption": "316",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Falkland Islands (the) [Malvinas]",
+    "unfccc_country_name": "Falkland Islands (U.K.)",
     "country_code_iso_2": "FK",
     "country_code_iso_3": "FLK"
   },
@@ -716,6 +858,8 @@
     "Energy Efficiency": "320",
     "Electricity Consumption": "320",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Faroe Islands (the)",
+    "unfccc_country_name": "Faroe Islands (Denmark)",
     "country_code_iso_2": "FO",
     "country_code_iso_3": "FRO"
   },
@@ -726,6 +870,8 @@
     "Energy Efficiency": "334",
     "Electricity Consumption": "334",
     "Operating Margin Grid Emission": "640",
+    "ember_country_name": "Fiji",
+    "unfccc_country_name": "Fiji",
     "country_code_iso_2": "FJ",
     "country_code_iso_3": "FJI"
   },
@@ -736,6 +882,8 @@
     "Energy Efficiency": "114",
     "Electricity Consumption": "114",
     "Operating Margin Grid Emission": "267",
+    "ember_country_name": "Finland",
+    "unfccc_country_name": "Finland",
     "country_code_iso_2": "FI",
     "country_code_iso_3": "FIN"
   },
@@ -746,6 +894,8 @@
     "Energy Efficiency": "68",
     "Electricity Consumption": "68",
     "Operating Margin Grid Emission": "158",
+    "ember_country_name": "France",
+    "unfccc_country_name": "France",
     "country_code_iso_2": "FR",
     "country_code_iso_3": "FRA"
   },
@@ -756,6 +906,8 @@
     "Energy Efficiency": "200",
     "Electricity Consumption": "200",
     "Operating Margin Grid Emission": "423",
+    "ember_country_name": "French Guiana",
+    "unfccc_country_name": "French Guiana",
     "country_code_iso_2": "GF",
     "country_code_iso_3": "GUF"
   },
@@ -766,6 +918,8 @@
     "Energy Efficiency": "412",
     "Electricity Consumption": "412",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "French Polynesia",
+    "unfccc_country_name": "French Polynesia",
     "country_code_iso_2": "PF",
     "country_code_iso_3": "PYF"
   },
@@ -776,6 +930,8 @@
     "Energy Efficiency": "533",
     "Electricity Consumption": "533",
     "Operating Margin Grid Emission": "946",
+    "ember_country_name": "Gabon",
+    "unfccc_country_name": "Gabon",
     "country_code_iso_2": "GA",
     "country_code_iso_3": "GAB"
   },
@@ -786,6 +942,8 @@
     "Energy Efficiency": "591",
     "Electricity Consumption": "591",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Gambia (the)",
+    "unfccc_country_name": "Gambia",
     "country_code_iso_2": "GM",
     "country_code_iso_3": "GMB"
   },
@@ -796,6 +954,8 @@
     "Energy Efficiency": "135",
     "Electricity Consumption": "135",
     "Operating Margin Grid Emission": "289",
+    "ember_country_name": "Georgia",
+    "unfccc_country_name": "Georgia",
     "country_code_iso_2": "GE",
     "country_code_iso_3": "GEO"
   },
@@ -806,6 +966,8 @@
     "Energy Efficiency": "313",
     "Electricity Consumption": "313",
     "Operating Margin Grid Emission": "650",
+    "ember_country_name": "Germany",
+    "unfccc_country_name": "Germany",
     "country_code_iso_2": "DE",
     "country_code_iso_3": "DEU"
   },
@@ -816,6 +978,8 @@
     "Energy Efficiency": "276",
     "Electricity Consumption": "276",
     "Operating Margin Grid Emission": "495",
+    "ember_country_name": "Ghana",
+    "unfccc_country_name": "Ghana",
     "country_code_iso_2": "GH",
     "country_code_iso_3": "GHA"
   },
@@ -826,6 +990,8 @@
     "Energy Efficiency": "369",
     "Electricity Consumption": "369",
     "Operating Margin Grid Emission": "779",
+    "ember_country_name": "",
+    "unfccc_country_name": "Gibraltar (U.K.)",
     "country_code_iso_2": "GI",
     "country_code_iso_3": "GIB"
   },
@@ -836,6 +1002,8 @@
     "Energy Efficiency": "346",
     "Electricity Consumption": "346",
     "Operating Margin Grid Emission": "507",
+    "ember_country_name": "Greece",
+    "unfccc_country_name": "Greece",
     "country_code_iso_2": "GR",
     "country_code_iso_3": "GRC"
   },
@@ -846,6 +1014,8 @@
     "Energy Efficiency": "105",
     "Electricity Consumption": "105",
     "Operating Margin Grid Emission": "264",
+    "ember_country_name": "Greenland",
+    "unfccc_country_name": "Greenland",
     "country_code_iso_2": "GL",
     "country_code_iso_3": "GRL"
   },
@@ -856,6 +1026,8 @@
     "Energy Efficiency": "523",
     "Electricity Consumption": "523",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Grenada",
+    "unfccc_country_name": "Grenada",
     "country_code_iso_2": "GD",
     "country_code_iso_3": "GRD"
   },
@@ -866,6 +1038,8 @@
     "Energy Efficiency": "433",
     "Electricity Consumption": "433",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Guadeloupe",
+    "unfccc_country_name": "Guadeloupe (France)",
     "country_code_iso_2": "GP",
     "country_code_iso_3": "GLP"
   },
@@ -876,6 +1050,8 @@
     "Energy Efficiency": "428",
     "Electricity Consumption": "428",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Guam",
+    "unfccc_country_name": "Guam",
     "country_code_iso_2": "GU",
     "country_code_iso_3": "GUM"
   },
@@ -886,6 +1062,8 @@
     "Energy Efficiency": "427",
     "Electricity Consumption": "427",
     "Operating Margin Grid Emission": "798",
+    "ember_country_name": "Guatemala",
+    "unfccc_country_name": "Guatemala",
     "country_code_iso_2": "GT",
     "country_code_iso_3": "GTM"
   },
@@ -896,6 +1074,8 @@
     "Energy Efficiency": "460",
     "Electricity Consumption": "460",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Guinea",
+    "unfccc_country_name": "Guinea",
     "country_code_iso_2": "GN",
     "country_code_iso_3": "GIN"
   },
@@ -906,6 +1086,8 @@
     "Energy Efficiency": "577",
     "Electricity Consumption": "577",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Guinea-Bissau",
+    "unfccc_country_name": "Guinea-Bissau",
     "country_code_iso_2": "GW",
     "country_code_iso_3": "GNB"
   },
@@ -916,6 +1098,8 @@
     "Energy Efficiency": "616",
     "Electricity Consumption": "616",
     "Operating Margin Grid Emission": "847",
+    "ember_country_name": "Guyana",
+    "unfccc_country_name": "Guyana",
     "country_code_iso_2": "GY",
     "country_code_iso_3": "GUY"
   },
@@ -926,6 +1110,8 @@
     "Energy Efficiency": "765",
     "Electricity Consumption": "765",
     "Operating Margin Grid Emission": "1048",
+    "ember_country_name": "Haiti",
+    "unfccc_country_name": "Haiti",
     "country_code_iso_2": "HT",
     "country_code_iso_3": "HTI"
   },
@@ -936,6 +1122,8 @@
     "Energy Efficiency": "359",
     "Electricity Consumption": "359",
     "Operating Margin Grid Emission": "662",
+    "ember_country_name": "Honduras",
+    "unfccc_country_name": "Honduras",
     "country_code_iso_2": "HN",
     "country_code_iso_3": "HND"
   },
@@ -946,6 +1134,8 @@
     "Energy Efficiency": "191",
     "Electricity Consumption": "191",
     "Operating Margin Grid Emission": "296",
+    "ember_country_name": "Hungary",
+    "unfccc_country_name": "Hungary",
     "country_code_iso_2": "HU",
     "country_code_iso_3": "HUN"
   },
@@ -956,6 +1146,8 @@
     "Energy Efficiency": "0",
     "Electricity Consumption": "0",
     "Operating Margin Grid Emission": "0",
+    "ember_country_name": "Iceland",
+    "unfccc_country_name": "Iceland",
     "country_code_iso_2": "IS",
     "country_code_iso_3": "ISL"
   },
@@ -966,6 +1158,8 @@
     "Energy Efficiency": "608",
     "Electricity Consumption": "608",
     "Operating Margin Grid Emission": "951",
+    "ember_country_name": "India",
+    "unfccc_country_name": "India",
     "country_code_iso_2": "IN",
     "country_code_iso_3": "IND"
   },
@@ -976,6 +1170,8 @@
     "Energy Efficiency": "675",
     "Electricity Consumption": "675",
     "Operating Margin Grid Emission": "783",
+    "ember_country_name": "Indonesia",
+    "unfccc_country_name": "Indonesia",
     "country_code_iso_2": "ID",
     "country_code_iso_3": "IDN"
   },
@@ -986,6 +1182,8 @@
     "Energy Efficiency": "421",
     "Electricity Consumption": "421",
     "Operating Margin Grid Emission": "592",
+    "ember_country_name": "Iran (Islamic Republic of)",
+    "unfccc_country_name": "Iran, Islamic Republic of",
     "country_code_iso_2": "IR",
     "country_code_iso_3": "IRN"
   },
@@ -996,6 +1194,8 @@
     "Energy Efficiency": "788",
     "Electricity Consumption": "788",
     "Operating Margin Grid Emission": "1080",
+    "ember_country_name": "Iraq",
+    "unfccc_country_name": "Iraq",
     "country_code_iso_2": "IQ",
     "country_code_iso_3": "IRQ"
   },
@@ -1006,6 +1206,8 @@
     "Energy Efficiency": "189",
     "Electricity Consumption": "189",
     "Operating Margin Grid Emission": "380",
+    "ember_country_name": "Ireland",
+    "unfccc_country_name": "Ireland",
     "country_code_iso_2": "IE",
     "country_code_iso_3": "IRL"
   },
@@ -1016,6 +1218,8 @@
     "Energy Efficiency": "204",
     "Electricity Consumption": "204",
     "Operating Margin Grid Emission": "436",
+    "ember_country_name": "",
+    "unfccc_country_name": "Isle of Man (U.K.)",
     "country_code_iso_2": "IM",
     "country_code_iso_3": "IMN"
   },
@@ -1026,6 +1230,8 @@
     "Energy Efficiency": "258",
     "Electricity Consumption": "258",
     "Operating Margin Grid Emission": "394",
+    "ember_country_name": "Israel",
+    "unfccc_country_name": "Israel",
     "country_code_iso_2": "IL",
     "country_code_iso_3": "ISR"
   },
@@ -1036,6 +1242,8 @@
     "Energy Efficiency": "224",
     "Electricity Consumption": "224",
     "Operating Margin Grid Emission": "414",
+    "ember_country_name": "Italy",
+    "unfccc_country_name": "Italy",
     "country_code_iso_2": "IT",
     "country_code_iso_3": "ITA"
   },
@@ -1046,6 +1254,8 @@
     "Energy Efficiency": "498",
     "Electricity Consumption": "498",
     "Operating Margin Grid Emission": "711",
+    "ember_country_name": "Jamaica",
+    "unfccc_country_name": "Jamaica",
     "country_code_iso_2": "JM",
     "country_code_iso_3": "JAM"
   },
@@ -1056,6 +1266,8 @@
     "Energy Efficiency": "408",
     "Electricity Consumption": "408",
     "Operating Margin Grid Emission": "471",
+    "ember_country_name": "Japan",
+    "unfccc_country_name": "Japan",
     "country_code_iso_2": "JP",
     "country_code_iso_3": "JPN"
   },
@@ -1066,6 +1278,8 @@
     "Energy Efficiency": "382",
     "Electricity Consumption": "382",
     "Operating Margin Grid Emission": "529",
+    "ember_country_name": "Jordan",
+    "unfccc_country_name": "Jordan",
     "country_code_iso_2": "JO",
     "country_code_iso_3": "JOR"
   },
@@ -1076,6 +1290,8 @@
     "Energy Efficiency": "532",
     "Electricity Consumption": "532",
     "Operating Margin Grid Emission": "797",
+    "ember_country_name": "Kazakhstan",
+    "unfccc_country_name": "Kazakhstan",
     "country_code_iso_2": "KZ",
     "country_code_iso_3": "KAZ"
   },
@@ -1086,6 +1302,8 @@
     "Energy Efficiency": "274",
     "Electricity Consumption": "274",
     "Operating Margin Grid Emission": "574",
+    "ember_country_name": "Kenya",
+    "unfccc_country_name": "Kenya",
     "country_code_iso_2": "KE",
     "country_code_iso_3": "KEN"
   },
@@ -1096,6 +1314,8 @@
     "Energy Efficiency": "530",
     "Electricity Consumption": "530",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Kiribati",
+    "unfccc_country_name": "Kiribati",
     "country_code_iso_2": "KI",
     "country_code_iso_3": "KIR"
   },
@@ -1109,6 +1329,8 @@
     "Energy Efficiency": "359",
     "Electricity Consumption": "359",
     "Operating Margin Grid Emission": "754",
+    "ember_country_name": "Korea (the Democratic People's Republic of)",
+    "unfccc_country_name": "Korea (North), Democratic People's Republic of",
     "country_code_iso_2": "KP",
     "country_code_iso_3": "PRK"
   },
@@ -1119,6 +1341,8 @@
     "Energy Efficiency": "335",
     "Electricity Consumption": "335",
     "Operating Margin Grid Emission": "555",
+    "ember_country_name": "South Korea",
+    "unfccc_country_name": "Korea (South), Republic of",
     "country_code_iso_2": "KR",
     "country_code_iso_3": "KOR"
   },
@@ -1129,6 +1353,8 @@
     "Energy Efficiency": "843",
     "Electricity Consumption": "843",
     "Operating Margin Grid Emission": "1145",
+    "ember_country_name": "Kosovo",
+    "unfccc_country_name": "Kosovo",
     "country_code_iso_2": "XK",
     "country_code_iso_3": "XKX"
   },
@@ -1139,6 +1365,8 @@
     "Energy Efficiency": "400",
     "Electricity Consumption": "400",
     "Operating Margin Grid Emission": "675",
+    "ember_country_name": "Kuwait",
+    "unfccc_country_name": "Kuwait",
     "country_code_iso_2": "KW",
     "country_code_iso_3": "KWT"
   },
@@ -1149,6 +1377,8 @@
     "Energy Efficiency": "98",
     "Electricity Consumption": "98",
     "Operating Margin Grid Emission": "217",
+    "ember_country_name": "Kyrgyzstan",
+    "unfccc_country_name": "Kyrgyzstan",
     "country_code_iso_2": "KG",
     "country_code_iso_3": "KGZ"
   },
@@ -1159,6 +1389,8 @@
     "Energy Efficiency": "555",
     "Electricity Consumption": "555",
     "Operating Margin Grid Emission": "1069",
+    "ember_country_name": "Lao People's Democratic Republic (the)",
+    "unfccc_country_name": "Lao People's Democratic Republic",
     "country_code_iso_2": "LA",
     "country_code_iso_3": "LAO"
   },
@@ -1169,6 +1401,8 @@
     "Energy Efficiency": "117",
     "Electricity Consumption": "117",
     "Operating Margin Grid Emission": "240",
+    "ember_country_name": "Latvia",
+    "unfccc_country_name": "Latvia",
     "country_code_iso_2": "LV",
     "country_code_iso_3": "LVA"
   },
@@ -1179,6 +1413,8 @@
     "Energy Efficiency": "567",
     "Electricity Consumption": "567",
     "Operating Margin Grid Emission": "794",
+    "ember_country_name": "Lebanon",
+    "unfccc_country_name": "Lebanon",
     "country_code_iso_2": "LB",
     "country_code_iso_3": "LBN"
   },
@@ -1189,6 +1425,8 @@
     "Energy Efficiency": "0",
     "Electricity Consumption": "0",
     "Operating Margin Grid Emission": "0",
+    "ember_country_name": "Lesotho",
+    "unfccc_country_name": "Lesotho",
     "country_code_iso_2": "LS",
     "country_code_iso_3": "LSO"
   },
@@ -1199,6 +1437,8 @@
     "Energy Efficiency": "374",
     "Electricity Consumption": "374",
     "Operating Margin Grid Emission": "677",
+    "ember_country_name": "Liberia",
+    "unfccc_country_name": "Liberia",
     "country_code_iso_2": "LR",
     "country_code_iso_3": "LBR"
   },
@@ -1209,6 +1449,8 @@
     "Energy Efficiency": "493",
     "Electricity Consumption": "493",
     "Operating Margin Grid Emission": "668",
+    "ember_country_name": "Libya",
+    "unfccc_country_name": "Libya",
     "country_code_iso_2": "LY",
     "country_code_iso_3": "LBY"
   },
@@ -1219,6 +1461,8 @@
     "Energy Efficiency": "52",
     "Electricity Consumption": "52",
     "Operating Margin Grid Emission": "151",
+    "ember_country_name": "",
+    "unfccc_country_name": "Liechtenstein",
     "country_code_iso_2": "LI",
     "country_code_iso_3": "LIE"
   },
@@ -1229,6 +1473,8 @@
     "Energy Efficiency": "102",
     "Electricity Consumption": "102",
     "Operating Margin Grid Emission": "211",
+    "ember_country_name": "Lithuania",
+    "unfccc_country_name": "Lithuania",
     "country_code_iso_2": "LT",
     "country_code_iso_3": "LTU"
   },
@@ -1239,6 +1485,8 @@
     "Energy Efficiency": "95",
     "Electricity Consumption": "95",
     "Operating Margin Grid Emission": "220",
+    "ember_country_name": "Luxembourg",
+    "unfccc_country_name": "Luxembourg",
     "country_code_iso_2": "LU",
     "country_code_iso_3": "LUX"
   },
@@ -1249,6 +1497,8 @@
     "Energy Efficiency": "567",
     "Electricity Consumption": "567",
     "Operating Margin Grid Emission": "876",
+    "ember_country_name": "Madagascar",
+    "unfccc_country_name": "Madagascar",
     "country_code_iso_2": "MG",
     "country_code_iso_3": "MDG"
   },
@@ -1259,6 +1509,8 @@
     "Energy Efficiency": "369",
     "Electricity Consumption": "369",
     "Operating Margin Grid Emission": "663",
+    "ember_country_name": "",
+    "unfccc_country_name": "Madeira (Portugal)",
     "country_code_iso_2": "",
     "country_code_iso_3": ""
   },
@@ -1269,6 +1521,8 @@
     "Energy Efficiency": "243",
     "Electricity Consumption": "243",
     "Operating Margin Grid Emission": "489",
+    "ember_country_name": "Malawi",
+    "unfccc_country_name": "Malawi",
     "country_code_iso_2": "MW",
     "country_code_iso_3": "MWI"
   },
@@ -1279,6 +1533,8 @@
     "Energy Efficiency": "436",
     "Electricity Consumption": "436",
     "Operating Margin Grid Emission": "551",
+    "ember_country_name": "Malaysia",
+    "unfccc_country_name": "Malaysia",
     "country_code_iso_2": "MY",
     "country_code_iso_3": "MYS"
   },
@@ -1289,6 +1545,8 @@
     "Energy Efficiency": "524",
     "Electricity Consumption": "524",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Maldives",
+    "unfccc_country_name": "Maldives",
     "country_code_iso_2": "MV",
     "country_code_iso_3": "MDV"
   },
@@ -1299,6 +1557,8 @@
     "Energy Efficiency": "623",
     "Electricity Consumption": "623",
     "Operating Margin Grid Emission": "1076",
+    "ember_country_name": "Mali",
+    "unfccc_country_name": "Mali",
     "country_code_iso_2": "ML",
     "country_code_iso_3": "MLI"
   },
@@ -1309,6 +1569,8 @@
     "Energy Efficiency": "295",
     "Electricity Consumption": "295",
     "Operating Margin Grid Emission": "520",
+    "ember_country_name": "Malta",
+    "unfccc_country_name": "Malta",
     "country_code_iso_2": "MT",
     "country_code_iso_3": "MLT"
   },
@@ -1319,6 +1581,8 @@
     "Energy Efficiency": "561",
     "Electricity Consumption": "561",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "",
+    "unfccc_country_name": "Marshall Islands",
     "country_code_iso_2": "MH",
     "country_code_iso_3": "MHL"
   },
@@ -1329,6 +1593,8 @@
     "Energy Efficiency": "406",
     "Electricity Consumption": "406",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Martinique",
+    "unfccc_country_name": "Martinique (France)",
     "country_code_iso_2": "MQ",
     "country_code_iso_3": "MTQ"
   },
@@ -1339,6 +1605,8 @@
     "Energy Efficiency": "513",
     "Electricity Consumption": "513",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Mauritania",
+    "unfccc_country_name": "Mauritania",
     "country_code_iso_2": "MR",
     "country_code_iso_3": "MRT"
   },
@@ -1349,6 +1617,8 @@
     "Energy Efficiency": "543",
     "Electricity Consumption": "543",
     "Operating Margin Grid Emission": "700",
+    "ember_country_name": "Mauritius",
+    "unfccc_country_name": "Mauritius",
     "country_code_iso_2": "MU",
     "country_code_iso_3": "MUS"
   },
@@ -1359,6 +1629,8 @@
     "Energy Efficiency": "512",
     "Electricity Consumption": "512",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "",
+    "unfccc_country_name": "Mayotte (France)",
     "country_code_iso_2": "YT",
     "country_code_iso_3": "MYT"
   },
@@ -1369,6 +1641,8 @@
     "Energy Efficiency": "359",
     "Electricity Consumption": "359",
     "Operating Margin Grid Emission": "531",
+    "ember_country_name": "Mexico",
+    "unfccc_country_name": "Mexico",
     "country_code_iso_2": "MX",
     "country_code_iso_3": "MEX"
   },
@@ -1379,6 +1653,8 @@
     "Energy Efficiency": "557",
     "Electricity Consumption": "557",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "",
+    "unfccc_country_name": "Micronesia",
     "country_code_iso_2": "FM",
     "country_code_iso_3": "FSM"
   },
@@ -1389,6 +1665,8 @@
     "Energy Efficiency": "399",
     "Electricity Consumption": "399",
     "Operating Margin Grid Emission": "541",
+    "ember_country_name": "Moldova",
+    "unfccc_country_name": "Moldova, Republic of ",
     "country_code_iso_2": "MD",
     "country_code_iso_3": "MDA"
   },
@@ -1399,6 +1677,8 @@
     "Energy Efficiency": "68",
     "Electricity Consumption": "68",
     "Operating Margin Grid Emission": "158",
+    "ember_country_name": "",
+    "unfccc_country_name": "Monaco",
     "country_code_iso_2": "MC",
     "country_code_iso_3": "MCO"
   },
@@ -1409,6 +1689,8 @@
     "Energy Efficiency": "1002",
     "Electricity Consumption": "1002",
     "Operating Margin Grid Emission": "1366",
+    "ember_country_name": "Mongolia",
+    "unfccc_country_name": "Mongolia",
     "country_code_iso_2": "MN",
     "country_code_iso_3": "MNG"
   },
@@ -1419,6 +1701,8 @@
     "Energy Efficiency": "471",
     "Electricity Consumption": "471",
     "Operating Margin Grid Emission": "899",
+    "ember_country_name": "Montenegro",
+    "unfccc_country_name": "Montenegro",
     "country_code_iso_2": "ME",
     "country_code_iso_3": "MNE"
   },
@@ -1429,6 +1713,8 @@
     "Energy Efficiency": "517",
     "Electricity Consumption": "517",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Montserrat",
+    "unfccc_country_name": "Montserrat",
     "country_code_iso_2": "MS",
     "country_code_iso_3": "MSR"
   },
@@ -1439,6 +1725,8 @@
     "Energy Efficiency": "547",
     "Electricity Consumption": "547",
     "Operating Margin Grid Emission": "729",
+    "ember_country_name": "Morocco",
+    "unfccc_country_name": "Morocco",
     "country_code_iso_2": "MA",
     "country_code_iso_3": "MAR"
   },
@@ -1449,6 +1737,8 @@
     "Energy Efficiency": "111",
     "Electricity Consumption": "111",
     "Operating Margin Grid Emission": "234",
+    "ember_country_name": "Mozambique",
+    "unfccc_country_name": "Mozambique",
     "country_code_iso_2": "MZ",
     "country_code_iso_3": "MOZ"
   },
@@ -1459,6 +1749,8 @@
     "Energy Efficiency": "407",
     "Electricity Consumption": "407",
     "Operating Margin Grid Emission": "719",
+    "ember_country_name": "Myanmar",
+    "unfccc_country_name": "Myanmar",
     "country_code_iso_2": "MM",
     "country_code_iso_3": "MMR"
   },
@@ -1469,6 +1761,8 @@
     "Energy Efficiency": "139",
     "Electricity Consumption": "139",
     "Operating Margin Grid Emission": "355",
+    "ember_country_name": "Namibia",
+    "unfccc_country_name": "Namibia",
     "country_code_iso_2": "NA",
     "country_code_iso_3": "NAM"
   },
@@ -1479,6 +1773,8 @@
     "Energy Efficiency": "521",
     "Electricity Consumption": "521",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Nauru",
+    "unfccc_country_name": "Nauru",
     "country_code_iso_2": "NR",
     "country_code_iso_3": "NRU"
   },
@@ -1489,6 +1785,8 @@
     "Energy Efficiency": "0",
     "Electricity Consumption": "0",
     "Operating Margin Grid Emission": "0",
+    "ember_country_name": "Nepal",
+    "unfccc_country_name": "Nepal",
     "country_code_iso_2": "NP",
     "country_code_iso_3": "NPL"
   },
@@ -1499,6 +1797,8 @@
     "Energy Efficiency": "203",
     "Electricity Consumption": "203",
     "Operating Margin Grid Emission": "326",
+    "ember_country_name": "Netherlands",
+    "unfccc_country_name": "Netherlands",
     "country_code_iso_2": "NL",
     "country_code_iso_3": "NLD"
   },
@@ -1509,6 +1809,8 @@
     "Energy Efficiency": "445",
     "Electricity Consumption": "445",
     "Operating Margin Grid Emission": "779",
+    "ember_country_name": "New Caledonia",
+    "unfccc_country_name": "New Caledonia (France)",
     "country_code_iso_2": "NC",
     "country_code_iso_3": "NCL"
   },
@@ -1519,6 +1821,8 @@
     "Energy Efficiency": "108",
     "Electricity Consumption": "108",
     "Operating Margin Grid Emission": "246",
+    "ember_country_name": "New Zealand",
+    "unfccc_country_name": "New Zealand",
     "country_code_iso_2": "NZ",
     "country_code_iso_3": "NZL"
   },
@@ -1529,6 +1833,8 @@
     "Energy Efficiency": "372",
     "Electricity Consumption": "372",
     "Operating Margin Grid Emission": "675",
+    "ember_country_name": "Nicaragua",
+    "unfccc_country_name": "Nicaragua",
     "country_code_iso_2": "NI",
     "country_code_iso_3": "NIC"
   },
@@ -1539,6 +1845,8 @@
     "Energy Efficiency": "718",
     "Electricity Consumption": "718",
     "Operating Margin Grid Emission": "772",
+    "ember_country_name": "Niger (the)",
+    "unfccc_country_name": "Niger",
     "country_code_iso_2": "NE",
     "country_code_iso_3": "NER"
   },
@@ -1549,6 +1857,8 @@
     "Energy Efficiency": "358",
     "Electricity Consumption": "358",
     "Operating Margin Grid Emission": "526",
+    "ember_country_name": "Nigeria",
+    "unfccc_country_name": "Nigeria",
     "country_code_iso_2": "NG",
     "country_code_iso_3": "NGA"
   },
@@ -1559,6 +1869,8 @@
     "Energy Efficiency": "459",
     "Electricity Consumption": "459",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "",
+    "unfccc_country_name": "Niue",
     "country_code_iso_2": "NU",
     "country_code_iso_3": "NIU"
   },
@@ -1569,6 +1881,8 @@
     "Energy Efficiency": "563",
     "Electricity Consumption": "563",
     "Operating Margin Grid Emission": "851",
+    "ember_country_name": "North Macedonia",
+    "unfccc_country_name": "North Macedonia, Republic of",
     "country_code_iso_2": "MK",
     "country_code_iso_3": "MKD"
   },
@@ -1579,6 +1893,8 @@
     "Energy Efficiency": "416",
     "Electricity Consumption": "416",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "",
+    "unfccc_country_name": "Northern Mariana Islands (U.S.)",
     "country_code_iso_2": "MP",
     "country_code_iso_3": "MNP"
   },
@@ -1589,6 +1905,8 @@
     "Energy Efficiency": "17",
     "Electricity Consumption": "17",
     "Operating Margin Grid Emission": "47",
+    "ember_country_name": "Norway",
+    "unfccc_country_name": "Norway",
     "country_code_iso_2": "NO",
     "country_code_iso_3": "NOR"
   },
@@ -1599,6 +1917,8 @@
     "Energy Efficiency": "320",
     "Electricity Consumption": "320",
     "Operating Margin Grid Emission": "479",
+    "ember_country_name": "Oman",
+    "unfccc_country_name": "Oman",
     "country_code_iso_2": "OM",
     "country_code_iso_3": "OMN"
   },
@@ -1609,6 +1929,8 @@
     "Energy Efficiency": "386",
     "Electricity Consumption": "386",
     "Operating Margin Grid Emission": "592",
+    "ember_country_name": "Pakistan",
+    "unfccc_country_name": "Pakistan",
     "country_code_iso_2": "PK",
     "country_code_iso_3": "PAK"
   },
@@ -1619,6 +1941,8 @@
     "Energy Efficiency": "497",
     "Electricity Consumption": "497",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "",
+    "unfccc_country_name": "Palau",
     "country_code_iso_2": "PW",
     "country_code_iso_3": "PLW"
   },
@@ -1629,6 +1953,8 @@
     "Energy Efficiency": "517",
     "Electricity Consumption": "517",
     "Operating Margin Grid Emission": "719",
+    "ember_country_name": "Palestine, State of",
+    "unfccc_country_name": "Palestinian Authority",
     "country_code_iso_2": "PS",
     "country_code_iso_3": "PSE"
   },
@@ -1639,6 +1965,8 @@
     "Energy Efficiency": "230",
     "Electricity Consumption": "230",
     "Operating Margin Grid Emission": "477",
+    "ember_country_name": "Panama",
+    "unfccc_country_name": "Panama",
     "country_code_iso_2": "PA",
     "country_code_iso_3": "PAN"
   },
@@ -1649,6 +1977,8 @@
     "Energy Efficiency": "315",
     "Electricity Consumption": "315",
     "Operating Margin Grid Emission": "597",
+    "ember_country_name": "Papua New Guinea",
+    "unfccc_country_name": "Papua New Guinea",
     "country_code_iso_2": "PG",
     "country_code_iso_3": "PNG"
   },
@@ -1659,6 +1989,8 @@
     "Energy Efficiency": "0",
     "Electricity Consumption": "0",
     "Operating Margin Grid Emission": "0",
+    "ember_country_name": "Paraguay",
+    "unfccc_country_name": "Paraguay",
     "country_code_iso_2": "PY",
     "country_code_iso_3": "PRY"
   },
@@ -1669,6 +2001,8 @@
     "Energy Efficiency": "252",
     "Electricity Consumption": "252",
     "Operating Margin Grid Emission": "473",
+    "ember_country_name": "Peru",
+    "unfccc_country_name": "Peru",
     "country_code_iso_2": "PE",
     "country_code_iso_3": "PER"
   },
@@ -1679,6 +2013,8 @@
     "Energy Efficiency": "525",
     "Electricity Consumption": "525",
     "Operating Margin Grid Emission": "672",
+    "ember_country_name": "Philippines (the)",
+    "unfccc_country_name": "Philippines",
     "country_code_iso_2": "PH",
     "country_code_iso_3": "PHL"
   },
@@ -1689,6 +2025,8 @@
     "Energy Efficiency": "532",
     "Electricity Consumption": "532",
     "Operating Margin Grid Emission": "828",
+    "ember_country_name": "Poland",
+    "unfccc_country_name": "Poland",
     "country_code_iso_2": "PL",
     "country_code_iso_3": "POL"
   },
@@ -1699,6 +2037,8 @@
     "Energy Efficiency": "228",
     "Electricity Consumption": "228",
     "Operating Margin Grid Emission": "389",
+    "ember_country_name": "Portugal",
+    "unfccc_country_name": "Portugal",
     "country_code_iso_2": "PT",
     "country_code_iso_3": "PRT"
   },
@@ -1709,6 +2049,8 @@
     "Energy Efficiency": "362",
     "Electricity Consumption": "362",
     "Operating Margin Grid Emission": "596",
+    "ember_country_name": "Puerto Rico",
+    "unfccc_country_name": "Puerto Rico (U.S.)",
     "country_code_iso_2": "PR",
     "country_code_iso_3": "PRI"
   },
@@ -1719,6 +2061,8 @@
     "Energy Efficiency": "258",
     "Electricity Consumption": "258",
     "Operating Margin Grid Emission": "503",
+    "ember_country_name": "Qatar",
+    "unfccc_country_name": "Qatar",
     "country_code_iso_2": "QA",
     "country_code_iso_3": "QAT"
   },
@@ -1729,6 +2073,8 @@
     "Energy Efficiency": "421",
     "Electricity Consumption": "421",
     "Operating Margin Grid Emission": "772",
+    "ember_country_name": "Reunion",
+    "unfccc_country_name": "Reunion (France)",
     "country_code_iso_2": "RE",
     "country_code_iso_3": "REU"
   },
@@ -1739,6 +2085,8 @@
     "Energy Efficiency": "289",
     "Electricity Consumption": "289",
     "Operating Margin Grid Emission": "489",
+    "ember_country_name": "Romania",
+    "unfccc_country_name": "Romania",
     "country_code_iso_2": "RO",
     "country_code_iso_3": "ROU"
   },
@@ -1749,6 +2097,8 @@
     "Energy Efficiency": "360",
     "Electricity Consumption": "360",
     "Operating Margin Grid Emission": "476",
+    "ember_country_name": "Russian Federation (the)",
+    "unfccc_country_name": "Russian Federation",
     "country_code_iso_2": "RU",
     "country_code_iso_3": "RUS"
   },
@@ -1759,6 +2109,8 @@
     "Energy Efficiency": "416",
     "Electricity Consumption": "416",
     "Operating Margin Grid Emission": "712",
+    "ember_country_name": "Rwanda",
+    "unfccc_country_name": "Rwanda",
     "country_code_iso_2": "RW",
     "country_code_iso_3": "RWA"
   },
@@ -1769,6 +2121,8 @@
     "Energy Efficiency": "456",
     "Electricity Consumption": "456",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "",
+    "unfccc_country_name": "Saint Helena (U.K.)",
     "country_code_iso_2": "SH",
     "country_code_iso_3": "SHN"
   },
@@ -1779,6 +2133,8 @@
     "Energy Efficiency": "477",
     "Electricity Consumption": "477",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Saint Kitts and Nevis",
+    "unfccc_country_name": "Saint Kitts and Nevis",
     "country_code_iso_2": "KN",
     "country_code_iso_3": "KNA"
   },
@@ -1789,6 +2145,8 @@
     "Energy Efficiency": "521",
     "Electricity Consumption": "521",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Saint Lucia",
+    "unfccc_country_name": "Saint Lucia",
     "country_code_iso_2": "LC",
     "country_code_iso_3": "LCA"
   },
@@ -1799,6 +2157,8 @@
     "Energy Efficiency": "484",
     "Electricity Consumption": "484",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "",
+    "unfccc_country_name": "Saint Martin (France)",
     "country_code_iso_2": "MF",
     "country_code_iso_3": "MAF"
   },
@@ -1809,6 +2169,8 @@
     "Energy Efficiency": "415",
     "Electricity Consumption": "415",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Saint Pierre and Miquelon",
+    "unfccc_country_name": "Saint Pierre and Miquelon (France)",
     "country_code_iso_2": "PM",
     "country_code_iso_3": "SPM"
   },
@@ -1819,6 +2181,8 @@
     "Energy Efficiency": "499",
     "Electricity Consumption": "499",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Saint Vincent and the Grenadines",
+    "unfccc_country_name": "Saint Vincent and Grenadines",
     "country_code_iso_2": "VC",
     "country_code_iso_3": "VCT"
   },
@@ -1829,6 +2193,8 @@
     "Energy Efficiency": "434",
     "Electricity Consumption": "434",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Samoa",
+    "unfccc_country_name": "Samoa",
     "country_code_iso_2": "WS",
     "country_code_iso_3": "WSM"
   },
@@ -1839,6 +2205,8 @@
     "Energy Efficiency": "224",
     "Electricity Consumption": "224",
     "Operating Margin Grid Emission": "414",
+    "ember_country_name": "",
+    "unfccc_country_name": "San Marino",
     "country_code_iso_2": "SM",
     "country_code_iso_3": "SMR"
   },
@@ -1849,6 +2217,8 @@
     "Energy Efficiency": "565",
     "Electricity Consumption": "565",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Sao Tome and Principe",
+    "unfccc_country_name": "Sao Tomé & Principe",
     "country_code_iso_2": "ST",
     "country_code_iso_3": "STP"
   },
@@ -1859,6 +2229,8 @@
     "Energy Efficiency": "374",
     "Electricity Consumption": "374",
     "Operating Margin Grid Emission": "592",
+    "ember_country_name": "Saudi Arabia",
+    "unfccc_country_name": "Saudi Arabia",
     "country_code_iso_2": "SA",
     "country_code_iso_3": "SAU"
   },
@@ -1869,6 +2241,8 @@
     "Energy Efficiency": "656",
     "Electricity Consumption": "656",
     "Operating Margin Grid Emission": "870",
+    "ember_country_name": "Senegal",
+    "unfccc_country_name": "Senegal",
     "country_code_iso_2": "SN",
     "country_code_iso_3": "SEN"
   },
@@ -1879,6 +2253,8 @@
     "Energy Efficiency": "678",
     "Electricity Consumption": "678",
     "Operating Margin Grid Emission": "1086",
+    "ember_country_name": "Serbia",
+    "unfccc_country_name": "Serbia",
     "country_code_iso_2": "RS",
     "country_code_iso_3": "SRB"
   },
@@ -1889,6 +2265,8 @@
     "Energy Efficiency": "479",
     "Electricity Consumption": "479",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Seychelles",
+    "unfccc_country_name": "Seychelles",
     "country_code_iso_2": "SC",
     "country_code_iso_3": "SYC"
   },
@@ -1899,6 +2277,8 @@
     "Energy Efficiency": "246",
     "Electricity Consumption": "246",
     "Operating Margin Grid Emission": "489",
+    "ember_country_name": "Sierra Leone",
+    "unfccc_country_name": "Sierra Leone",
     "country_code_iso_2": "SL",
     "country_code_iso_3": "SLE"
   },
@@ -1909,6 +2289,8 @@
     "Energy Efficiency": "200",
     "Electricity Consumption": "200",
     "Operating Margin Grid Emission": "379",
+    "ember_country_name": "Singapore",
+    "unfccc_country_name": "Singapore",
     "country_code_iso_2": "SG",
     "country_code_iso_3": "SGP"
   },
@@ -1919,6 +2301,8 @@
     "Energy Efficiency": "463",
     "Electricity Consumption": "463",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "",
+    "unfccc_country_name": "Sint Martin (Netherlands)",
     "country_code_iso_2": "SX",
     "country_code_iso_3": "SXM"
   },
@@ -1929,6 +2313,8 @@
     "Energy Efficiency": "164",
     "Electricity Consumption": "164",
     "Operating Margin Grid Emission": "332",
+    "ember_country_name": "Slovakia",
+    "unfccc_country_name": "Slovak Republic",
     "country_code_iso_2": "SK",
     "country_code_iso_3": "SVK"
   },
@@ -1939,6 +2325,8 @@
     "Energy Efficiency": "285",
     "Electricity Consumption": "285",
     "Operating Margin Grid Emission": "620",
+    "ember_country_name": "Slovenia",
+    "unfccc_country_name": "Slovenia",
     "country_code_iso_2": "SI",
     "country_code_iso_3": "SVN"
   },
@@ -1949,6 +2337,8 @@
     "Energy Efficiency": "563",
     "Electricity Consumption": "563",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Solomon Islands",
+    "unfccc_country_name": "Solomon Islands",
     "country_code_iso_2": "SB",
     "country_code_iso_3": "SLB"
   },
@@ -1959,6 +2349,8 @@
     "Energy Efficiency": "582",
     "Electricity Consumption": "582",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Somalia",
+    "unfccc_country_name": "Somalia",
     "country_code_iso_2": "SO",
     "country_code_iso_3": "SOM"
   },
@@ -1969,6 +2361,8 @@
     "Energy Efficiency": "786",
     "Electricity Consumption": "786",
     "Operating Margin Grid Emission": "1070",
+    "ember_country_name": "South Africa",
+    "unfccc_country_name": "South Africa",
     "country_code_iso_2": "ZA",
     "country_code_iso_3": "ZAF"
   },
@@ -1979,6 +2373,8 @@
     "Energy Efficiency": "704",
     "Electricity Consumption": "704",
     "Operating Margin Grid Emission": "890",
+    "ember_country_name": "South Sudan",
+    "unfccc_country_name": "South Sudan",
     "country_code_iso_2": "SS",
     "country_code_iso_3": "SSD"
   },
@@ -1989,6 +2385,8 @@
     "Energy Efficiency": "209",
     "Electricity Consumption": "209",
     "Operating Margin Grid Emission": "402",
+    "ember_country_name": "Spain",
+    "unfccc_country_name": "Spain",
     "country_code_iso_2": "ES",
     "country_code_iso_3": "ESP"
   },
@@ -1999,6 +2397,8 @@
     "Energy Efficiency": "506",
     "Electricity Consumption": "506",
     "Operating Margin Grid Emission": "731",
+    "ember_country_name": "Sri Lanka",
+    "unfccc_country_name": "Sri Lanka",
     "country_code_iso_2": "LK",
     "country_code_iso_3": "LKA"
   },
@@ -2009,6 +2409,8 @@
     "Energy Efficiency": "398",
     "Electricity Consumption": "398",
     "Operating Margin Grid Emission": "736",
+    "ember_country_name": "Sudan (the)",
+    "unfccc_country_name": "Sudan",
     "country_code_iso_2": "SD",
     "country_code_iso_3": "SDN"
   },
@@ -2019,6 +2421,8 @@
     "Energy Efficiency": "565",
     "Electricity Consumption": "565",
     "Operating Margin Grid Emission": "1029",
+    "ember_country_name": "Suriname",
+    "unfccc_country_name": "Suriname",
     "country_code_iso_2": "SR",
     "country_code_iso_3": "SUR"
   },
@@ -2029,6 +2433,8 @@
     "Energy Efficiency": "25",
     "Electricity Consumption": "25",
     "Operating Margin Grid Emission": "68",
+    "ember_country_name": "Sweden",
+    "unfccc_country_name": "Sweden",
     "country_code_iso_2": "SE",
     "country_code_iso_3": "SWE"
   },
@@ -2039,6 +2445,8 @@
     "Energy Efficiency": "20",
     "Electricity Consumption": "20",
     "Operating Margin Grid Emission": "48",
+    "ember_country_name": "Switzerland",
+    "unfccc_country_name": "Switzerland",
     "country_code_iso_2": "CH",
     "country_code_iso_3": "CHE"
   },
@@ -2049,6 +2457,8 @@
     "Energy Efficiency": "546",
     "Electricity Consumption": "546",
     "Operating Margin Grid Emission": "713",
+    "ember_country_name": "Syrian Arab Republic (the)",
+    "unfccc_country_name": "Syrian Arab Republic",
     "country_code_iso_2": "SY",
     "country_code_iso_3": "SYR"
   },
@@ -2059,6 +2469,8 @@
     "Energy Efficiency": "331",
     "Electricity Consumption": "331",
     "Operating Margin Grid Emission": "484",
+    "ember_country_name": "Taiwan (Province of China)",
+    "unfccc_country_name": "Taiwan (Chinese Taipei)",
     "country_code_iso_2": "TW",
     "country_code_iso_3": "TWN"
   },
@@ -2069,6 +2481,8 @@
     "Energy Efficiency": "106",
     "Electricity Consumption": "106",
     "Operating Margin Grid Emission": "255",
+    "ember_country_name": "Tajikistan",
+    "unfccc_country_name": "Tajikistan",
     "country_code_iso_2": "TJ",
     "country_code_iso_3": "TJK"
   },
@@ -2079,6 +2493,8 @@
     "Energy Efficiency": "336",
     "Electricity Consumption": "336",
     "Operating Margin Grid Emission": "531",
+    "ember_country_name": "Tanzania, the United Republic of",
+    "unfccc_country_name": "Tanzania, United Republic of",
     "country_code_iso_2": "TZ",
     "country_code_iso_3": "TZA"
   },
@@ -2089,6 +2505,8 @@
     "Energy Efficiency": "351",
     "Electricity Consumption": "351",
     "Operating Margin Grid Emission": "450",
+    "ember_country_name": "Thailand",
+    "unfccc_country_name": "Thailand",
     "country_code_iso_2": "TH",
     "country_code_iso_3": "THA"
   },
@@ -2099,6 +2517,8 @@
     "Energy Efficiency": "589",
     "Electricity Consumption": "589",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "",
+    "unfccc_country_name": "Timor-Leste",
     "country_code_iso_2": "TL",
     "country_code_iso_3": "TLS"
   },
@@ -2109,6 +2529,8 @@
     "Energy Efficiency": "597",
     "Electricity Consumption": "597",
     "Operating Margin Grid Emission": "859",
+    "ember_country_name": "Togo",
+    "unfccc_country_name": "Togo",
     "country_code_iso_2": "TG",
     "country_code_iso_3": "TGO"
   },
@@ -2119,6 +2541,8 @@
     "Energy Efficiency": "533",
     "Electricity Consumption": "533",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Tonga",
+    "unfccc_country_name": "Tonga",
     "country_code_iso_2": "TO",
     "country_code_iso_3": "TON"
   },
@@ -2129,6 +2553,8 @@
     "Energy Efficiency": "370",
     "Electricity Consumption": "370",
     "Operating Margin Grid Emission": "559",
+    "ember_country_name": "Trinidad and Tobago",
+    "unfccc_country_name": "Trinidad and Tobago",
     "country_code_iso_2": "TT",
     "country_code_iso_3": "TTO"
   },
@@ -2139,6 +2565,8 @@
     "Energy Efficiency": "348",
     "Electricity Consumption": "348",
     "Operating Margin Grid Emission": "468",
+    "ember_country_name": "Tunisia",
+    "unfccc_country_name": "Tunisia",
     "country_code_iso_2": "TN",
     "country_code_iso_3": "TUN"
   },
@@ -2149,6 +2577,8 @@
     "Energy Efficiency": "309",
     "Electricity Consumption": "309",
     "Operating Margin Grid Emission": "376",
+    "ember_country_name": "Turkey",
+    "unfccc_country_name": "Turkey",
     "country_code_iso_2": "TR",
     "country_code_iso_3": "TUR"
   },
@@ -2159,6 +2589,8 @@
     "Energy Efficiency": "676",
     "Electricity Consumption": "676",
     "Operating Margin Grid Emission": "927",
+    "ember_country_name": "Turkmenistan",
+    "unfccc_country_name": "Turkmenistan",
     "country_code_iso_2": "TM",
     "country_code_iso_3": "TKM"
   },
@@ -2169,6 +2601,8 @@
     "Energy Efficiency": "451",
     "Electricity Consumption": "451",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Turks and Caicos Islands (the)",
+    "unfccc_country_name": "Turks and Caicos Islands (U.K.)",
     "country_code_iso_2": "TC",
     "country_code_iso_3": "TCA"
   },
@@ -2179,6 +2613,8 @@
     "Energy Efficiency": "497",
     "Electricity Consumption": "497",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "",
+    "unfccc_country_name": "Tuvalu",
     "country_code_iso_2": "TV",
     "country_code_iso_3": "TUV"
   },
@@ -2189,6 +2625,8 @@
     "Energy Efficiency": "116",
     "Electricity Consumption": "116",
     "Operating Margin Grid Emission": "279",
+    "ember_country_name": "Uganda",
+    "unfccc_country_name": "Uganda",
     "country_code_iso_2": "UG",
     "country_code_iso_3": "UGA"
   },
@@ -2199,6 +2637,8 @@
     "Energy Efficiency": "435",
     "Electricity Consumption": "435",
     "Operating Margin Grid Emission": "768",
+    "ember_country_name": "Ukraine",
+    "unfccc_country_name": "Ukraine",
     "country_code_iso_2": "UA",
     "country_code_iso_3": "UKR"
   },
@@ -2209,6 +2649,8 @@
     "Energy Efficiency": "310",
     "Electricity Consumption": "310",
     "Operating Margin Grid Emission": "556",
+    "ember_country_name": "United Arab Emirates",
+    "unfccc_country_name": "United Arab Emirates",
     "country_code_iso_2": "AE",
     "country_code_iso_3": "ARE"
   },
@@ -2219,6 +2661,8 @@
     "Energy Efficiency": "219",
     "Electricity Consumption": "219",
     "Operating Margin Grid Emission": "380",
+    "ember_country_name": "United Kingdom",
+    "unfccc_country_name": "United Kingdom",
     "country_code_iso_2": "GB",
     "country_code_iso_3": "GBR"
   },
@@ -2229,6 +2673,8 @@
     "Energy Efficiency": "246",
     "Electricity Consumption": "246",
     "Operating Margin Grid Emission": "416",
+    "ember_country_name": "United States of America",
+    "unfccc_country_name": "United States",
     "country_code_iso_2": "US",
     "country_code_iso_3": "USA"
   },
@@ -2239,6 +2685,8 @@
     "Energy Efficiency": "65",
     "Electricity Consumption": "65",
     "Operating Margin Grid Emission": "174",
+    "ember_country_name": "Uruguay",
+    "unfccc_country_name": "Uruguay",
     "country_code_iso_2": "UY",
     "country_code_iso_3": "URY"
   },
@@ -2249,6 +2697,8 @@
     "Energy Efficiency": "467",
     "Electricity Consumption": "467",
     "Operating Margin Grid Emission": "612",
+    "ember_country_name": "Uzbekistan",
+    "unfccc_country_name": "Uzbekistan",
     "country_code_iso_2": "UZ",
     "country_code_iso_3": "UZB"
   },
@@ -2259,6 +2709,8 @@
     "Energy Efficiency": "504",
     "Electricity Consumption": "504",
     "Operating Margin Grid Emission": "753",
+    "ember_country_name": "Vanuatu",
+    "unfccc_country_name": "Vanatu",
     "country_code_iso_2": "VU",
     "country_code_iso_3": "VUT"
   },
@@ -2269,6 +2721,8 @@
     "Energy Efficiency": "368",
     "Electricity Consumption": "368",
     "Operating Margin Grid Emission": "711",
+    "ember_country_name": "Venezuela (Bolivarian Republic of)",
+    "unfccc_country_name": "Venezuela, Bolivarian Republic of",
     "country_code_iso_2": "VE",
     "country_code_iso_3": "VEN"
   },
@@ -2279,6 +2733,8 @@
     "Energy Efficiency": "381",
     "Electricity Consumption": "381",
     "Operating Margin Grid Emission": "560",
+    "ember_country_name": "Viet Nam",
+    "unfccc_country_name": "Viet Nam",
     "country_code_iso_2": "VN",
     "country_code_iso_3": "VNM"
   },
@@ -2289,6 +2745,8 @@
     "Energy Efficiency": "373",
     "Electricity Consumption": "373",
     "Operating Margin Grid Emission": "650",
+    "ember_country_name": "Virgin Islands (U.S.)",
+    "unfccc_country_name": "Virgin Islands (U.S.)",
     "country_code_iso_2": "VI",
     "country_code_iso_3": "VIR"
   },
@@ -2299,6 +2757,8 @@
     "Energy Efficiency": "615",
     "Electricity Consumption": "615",
     "Operating Margin Grid Emission": "807",
+    "ember_country_name": "Yemen",
+    "unfccc_country_name": "Yemen",
     "country_code_iso_2": "YE",
     "country_code_iso_3": "YEM"
   },
@@ -2309,6 +2769,8 @@
     "Energy Efficiency": "197",
     "Electricity Consumption": "197",
     "Operating Margin Grid Emission": "416",
+    "ember_country_name": "Zambia",
+    "unfccc_country_name": "Zambia",
     "country_code_iso_2": "ZM",
     "country_code_iso_3": "ZMB"
   },
@@ -2319,6 +2781,8 @@
     "Energy Efficiency": "880",
     "Electricity Consumption": "880",
     "Operating Margin Grid Emission": "1575",
+    "ember_country_name": "Zimbabwe",
+    "unfccc_country_name": "Zimbabwe",
     "country_code_iso_2": "ZW",
     "country_code_iso_3": "ZWE"
   },
@@ -2329,6 +2793,8 @@
     "Energy Efficiency": "261",
     "Electricity Consumption": "261",
     "Operating Margin Grid Emission": "409",
+    "ember_country_name": "EU",
+    "unfccc_country_name": "Memo:  EU 27",
     "country_code_iso_2": "",
     "country_code_iso_3": ""
   }
