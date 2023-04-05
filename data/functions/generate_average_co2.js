@@ -1,20 +1,36 @@
 const fs = require("fs");
-const type = "average";
 
 // This URL from Ember returns ALL the data for the country_overview_yearly table
 const sourceURL =
   "https://ember-data-api-scg3n.ondigitalocean.app/ember/country_overview_yearly.json?_sort=rowid&_shape=array";
 const gridIntensityResults = {};
 const generalResults = {};
+const type = "average";
 
-// Fetch data from the source URL in a function
+/**
+ * This function generates the average CO2 emissions data for each country.
+ * It reads the data from the Ember API and saves it in the data/output folder.
+ * It also saves the data as a minified file in the src/data folder, so that it can be imported into the library.
+ */
+
+// Use async/await
+// Use fetch to get the data from the API
+// Use the reduce method to group the data by country_code
+// Use the reduce method again to find the latest year for each country
+// Use a for loop to get the emissions intensity data
+// Save the data to the gridIntensityResults object
+// Save the full data set to a JSON file
+// Save the country code and emissions data only to a JS file
+// Save a minified version of the JS file to the src/data folder
+
 (async () => {
   const response = await fetch(sourceURL);
   const data = await response.json();
 
   // Group data by country_code
-  const groupedData = data.reduce((acc, item) => {
-    const key = item.country_code;
+  const groupedData = await data.reduce((acc, item) => {
+    const key =
+      item.country_code === "" ? item.country_or_region : item.country_code;
     if (!acc[key]) {
       acc[key] = [];
     }
@@ -22,21 +38,35 @@ const generalResults = {};
     return acc;
   }, {});
 
+  console.log("Grouped", Object.keys(groupedData).length);
   // Loop through the grouped data and find the latest year
-  const latestData = Object.keys(groupedData).reduce((acc, key) => {
-    const latestYear = groupedData[key].length - 1;
+  const latestData = await Object.keys(groupedData).reduce((acc, key) => {
+    // Find the last year in the array with emissions intensity data
+    const latestYear = groupedData[key].reduce((acc, item, index) => {
+      if (
+        item.emissions_intensity_gco2_per_kwh === null ||
+        item.emissions_intensity_gco2_per_kwh === ""
+      ) {
+        return acc;
+      }
+      return index;
+    }, 0);
+
     acc[key] = groupedData[key][latestYear];
     return acc;
   }, {});
 
+  console.log("Latest", Object.keys(latestData).length);
   // Loop through the data and extract the emissions intensity data
   // Save it to the gridIntensityResults object with the country code as the key
-  for (let row of data) {
+  Object.values(latestData).forEach((row) => {
     if (
       row.emissions_intensity_gco2_per_kwh === null ||
       row.emissions_intensity_gco2_per_kwh === ""
-    )
-      continue;
+    ) {
+      return;
+    }
+
     const country =
       row.country_code === "" ? row.country_or_region : row.country_code;
     gridIntensityResults[country] = row.emissions_intensity_gco2_per_kwh;
@@ -47,9 +77,10 @@ const generalResults = {};
       year: row.year,
       emissions_intensity_gco2_per_kwh: row.emissions_intensity_gco2_per_kwh,
     };
-  }
+  });
 
   const gridIntensityJson = JSON.stringify(gridIntensityResults);
+  console.log("Grid Intensity", Object.keys(gridIntensityResults).length);
 
   // This saves the country code and emissions data only, for use in the CO2.js library
   fs.writeFileSync(
