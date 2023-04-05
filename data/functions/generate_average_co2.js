@@ -38,7 +38,6 @@ const type = "average";
     return acc;
   }, {});
 
-  console.log("Grouped", Object.keys(groupedData).length);
   // Loop through the grouped data and find the latest year
   const latestData = await Object.keys(groupedData).reduce((acc, key) => {
     // Find the last year in the array with emissions intensity data
@@ -56,7 +55,6 @@ const type = "average";
     return acc;
   }, {});
 
-  console.log("Latest", Object.keys(latestData).length);
   // Loop through the data and extract the emissions intensity data
   // Save it to the gridIntensityResults object with the country code as the key
   Object.values(latestData).forEach((row) => {
@@ -80,7 +78,6 @@ const type = "average";
   });
 
   const gridIntensityJson = JSON.stringify(gridIntensityResults);
-  console.log("Grid Intensity", Object.keys(gridIntensityResults).length);
 
   // This saves the country code and emissions data only, for use in the CO2.js library
   fs.writeFileSync(
