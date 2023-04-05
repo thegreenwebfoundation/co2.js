@@ -103,3 +103,6 @@ dist
 # don't track generated js build file from esbuild
 public/index.js
 
+# don't track workspace files
+*.vscode
+*.code-workspace
