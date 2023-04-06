@@ -540,7 +540,7 @@ describe("co2", () => {
         co2
           .perByteTrace(MILLION, false, {
             gridIntensity: {
-              device: 573.28,
+              device: 573.275,
             },
           })
           .co2.toPrecision(5)
