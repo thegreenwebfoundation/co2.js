@@ -27,3 +27,7 @@ data/**
 # Local sqlite db
 url2green.db
 url2green.json
+
+# don't track workspace files
+*.vscode
+*.code-workspace
