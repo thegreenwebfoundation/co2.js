@@ -505,7 +505,7 @@ describe("co2", () => {
           co2
             .perVisitTrace(1000000, false, {
               gridIntensity: {
-                device: "573.28",
+                device: "561.431",
               },
             })
             .co2.toPrecision(5)
@@ -517,7 +517,7 @@ describe("co2", () => {
           co2
             .perByteTrace(1000000, false, {
               gridIntensity: {
-                device: "573.28",
+                device: "561.431",
               },
             })
             .co2.toPrecision(5)
@@ -530,7 +530,7 @@ describe("co2", () => {
         co2
           .perVisitTrace(MILLION, false, {
             gridIntensity: {
-              device: 573.28,
+              device: 561.431,
             },
           })
           .co2.toPrecision(5)
@@ -540,7 +540,7 @@ describe("co2", () => {
         co2
           .perByteTrace(MILLION, false, {
             gridIntensity: {
-              device: 573.275,
+              device: 561.431,
             },
           })
           .co2.toPrecision(5)
@@ -611,7 +611,7 @@ describe("co2", () => {
         co2
           .perVisitTrace(MILLION, false, {
             gridIntensity: {
-              dataCenter: 573.28,
+              dataCenter: 561.431,
             },
           })
           .co2.toPrecision(5)
@@ -622,7 +622,7 @@ describe("co2", () => {
         co2
           .perByteTrace(MILLION, false, {
             gridIntensity: {
-              dataCenter: 573.28,
+              dataCenter: 561.431,
             },
           })
           .co2.toPrecision(5)
@@ -675,7 +675,7 @@ describe("co2", () => {
           co2
             .perVisitTrace(1000000, false, {
               gridIntensity: {
-                network: "573.28",
+                network: "561.431",
               },
             })
             .co2.toPrecision(5)
@@ -687,7 +687,7 @@ describe("co2", () => {
           co2
             .perByteTrace(1000000, false, {
               gridIntensity: {
-                network: "573.28",
+                network: "561.431",
               },
             })
             .co2.toPrecision(5)
@@ -700,7 +700,7 @@ describe("co2", () => {
         co2
           .perVisitTrace(MILLION, false, {
             gridIntensity: {
-              network: 573.28,
+              network: 561.431,
             },
           })
           .co2.toPrecision(5)
@@ -711,7 +711,7 @@ describe("co2", () => {
         co2
           .perByteTrace(MILLION, false, {
             gridIntensity: {
-              network: 573.28,
+              network: 561.431,
             },
           })
           .co2.toPrecision(5)
