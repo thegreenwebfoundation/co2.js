@@ -67,7 +67,9 @@ const type = "average";
 
     const country =
       row.country_code === "" ? row.country_or_region : row.country_code;
-    gridIntensityResults[country] = row.emissions_intensity_gco2_per_kwh;
+
+    gridIntensityResults[country.toUpperCase()] =
+      row.emissions_intensity_gco2_per_kwh;
 
     generalResults[country] = {
       country_code: row.country_code,
