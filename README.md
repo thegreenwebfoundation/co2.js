@@ -96,6 +96,16 @@ We use [`np`](https://www.npmjs.com/package/np) to publish new versions of this 
 3. `np` will run several automated steps to publish the new package to NPM.
 4. If everything runs successfully, you can then add release notes to GitHub for the newly published package.
 
+## Release communication
+
+CO2.js releases will be communicated through the following channels:
+
+| Channel | Minor Release (0.xx) | Patch Release (0.xx.x) |
+|----------|----------------------|----------------------|
+| [Github](https://github.com/thegreenwebfoundation/co2.js/releases)  | ✅ | ✅ |
+| [Green Web Foundation website](https://www.thegreenwebfoundation.org/co2-js/#releases) | ✅ | ❌ |
+| W3C Slack Sustainability Channel | ✅ | ❌ |
+| ClimateAction.Tech Slack | ✅ | ❌ |
 
 ## Licenses
 
