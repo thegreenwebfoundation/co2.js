@@ -68,7 +68,6 @@
     "access": "public"
   },
   "dependencies": {
-    "debug": "^4.3.4"
   },
   "repository": {
     "type": "git",

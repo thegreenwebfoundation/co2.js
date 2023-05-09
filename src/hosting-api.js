@@ -1,8 +1,5 @@
 "use strict";
 
-import debugFactory from "debug";
-const log = debugFactory("tgwf:hostingAPI");
-
 function check(domain) {
   // is it a single domain or an array of them?
   if (typeof domain === "string") {
@@ -26,15 +23,6 @@ async function checkDomainsAgainstAPI(domains) {
     const domainsString = JSON.stringify(domains);
 
     const req = await fetch(`${apiPath}/${domainsString}`);
-
-    // sanity check API result. Is this the library or
-    // the actual API request that's the problem?
-    // Is nock mocking node-native fetch API calls properly?
-    // Commented out the logs for now, as they cause an error to be thrown when using the library.
-    // log(`${apiPath}/${domainsString}`);
-    // log({ req });
-    // const textResult = await req.text();
-    // log({ textResult });
 
     const allGreenCheckResults = await req.json();
 

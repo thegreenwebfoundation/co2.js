@@ -10,9 +10,6 @@ This lets us keep the total library small, and dependencies minimal.
 
 import https from "https";
 
-import debugFactory from "debug";
-const log = debugFactory("tgwf:hosting-node");
-
 import hostingJSON from "./hosting-json.node.js";
 
 /**
@@ -27,12 +24,7 @@ async function getBody(url) {
     // Do async job
     const req = https.get(url, function (res) {
       if (res.statusCode < 200 || res.statusCode >= 300) {
-        log(
-          "Could not get info from the Green Web Foundation API, %s for %s",
-          res.statusCode,
-          url
-        );
-        return reject(new Error(`Status Code: ${res.statusCode}`));
+        return reject(new Error(`Could not get info from: ${url}. Status Code: ${res.statusCode}`));
       }
       const data = [];
 

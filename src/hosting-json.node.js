@@ -7,9 +7,6 @@ import { promisify } from "util";
 const readFile = promisify(fs.readFile);
 const gunzip = promisify(zlib.gunzip);
 
-import debugFactory from "debug";
-const log = debugFactory("tgwf:hostingCache");
-
 async function streamToString(stream) {
   return new Promise((resolve, reject) => {
     const chunks = [];

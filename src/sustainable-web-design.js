@@ -7,8 +7,6 @@
  * https://sustainablewebdesign.org/calculating-digital-emissions/
  *
  */
-import debugFactory from "debug";
-const log = debugFactory("tgwf:sustainable-web-design");
 
 import {
   fileSize,
