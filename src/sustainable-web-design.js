@@ -252,7 +252,6 @@ class SustainableWebDesign {
     const energyBycomponent = this.energyPerByteByComponent(bytes);
     const cacheAdjustedSegmentEnergy = {};
 
-    log({ energyBycomponent });
     const energyValues = Object.values(energyBycomponent);
 
     // for this, we want
@@ -264,7 +263,6 @@ class SustainableWebDesign {
       cacheAdjustedSegmentEnergy[`${key} - subsequent`] =
         value * returnView * dataReloadRatio;
     }
-    log({ cacheAdjustedSegmentEnergy });
 
     return cacheAdjustedSegmentEnergy;
   }

@@ -24,7 +24,11 @@ async function getBody(url) {
     // Do async job
     const req = https.get(url, function (res) {
       if (res.statusCode < 200 || res.statusCode >= 300) {
-        return reject(new Error(`Could not get info from: ${url}. Status Code: ${res.statusCode}`));
+        return reject(
+          new Error(
+            `Could not get info from: ${url}. Status Code: ${res.statusCode}`
+          )
+        );
       }
       const data = [];
 
