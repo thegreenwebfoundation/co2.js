@@ -1,6 +1,6 @@
 {
   "name": "@tgwf/co2",
-  "version": "0.13.2",
+  "version": "0.13.3",
   "description": "Work out the co2 of your digital services",
   "main": "dist/cjs/index-node.js",
   "module": "dist/esm/index.js",
@@ -67,8 +67,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/thegreenwebfoundation/co2.js.git"
