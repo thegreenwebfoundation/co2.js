@@ -14,7 +14,7 @@ const DATACENTER_ENERGY = 0.15;
 const PRODUCTION_ENERGY = 0.19;
 
 // These carbon intensity figures https://ember-climate.org/data/data-explorer
-// - Global carbon intensity for 2021
+// - Global carbon intensity for 2022
 const GLOBAL_GRID_INTENSITY = averageIntensity.data["WORLD"];
 const RENEWABLES_GRID_INTENSITY = 50;
 
