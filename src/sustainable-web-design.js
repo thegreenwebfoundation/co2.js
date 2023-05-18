@@ -7,8 +7,6 @@
  * https://sustainablewebdesign.org/calculating-digital-emissions/
  *
  */
-import debugFactory from "debug";
-const log = debugFactory("tgwf:sustainable-web-design");
 
 import {
   fileSize,
@@ -254,7 +252,6 @@ class SustainableWebDesign {
     const energyBycomponent = this.energyPerByteByComponent(bytes);
     const cacheAdjustedSegmentEnergy = {};
 
-    log({ energyBycomponent });
     const energyValues = Object.values(energyBycomponent);
 
     // for this, we want
@@ -266,7 +263,6 @@ class SustainableWebDesign {
       cacheAdjustedSegmentEnergy[`${key} - subsequent`] =
         value * returnView * dataReloadRatio;
     }
-    log({ cacheAdjustedSegmentEnergy });
 
     return cacheAdjustedSegmentEnergy;
   }

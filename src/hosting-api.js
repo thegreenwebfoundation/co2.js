@@ -1,7 +1,9 @@
 "use strict";
 
-import debugFactory from "debug";
-const log = debugFactory("tgwf:hostingAPI");
+/**
+ * Check if a string or array of domains has been provided
+ * @param {string|array} domain - The domain to check, or an array of domains to be checked.
+ */
 
 function check(domain) {
   // is it a single domain or an array of them?
@@ -12,6 +14,11 @@ function check(domain) {
   }
 }
 
+/**
+ * Check if a domain is hosted by a green web host by querying the Green Web Foundation API.
+ * @param {string} domain - The domain to check.
+ * @returns {boolean} - A boolean indicating whether the domain is hosted by a green web host.
+ */
 async function checkAgainstAPI(domain) {
   const req = await fetch(
     `https://api.thegreenwebfoundation.org/greencheck/${domain}`
@@ -20,21 +27,18 @@ async function checkAgainstAPI(domain) {
   return res.green;
 }
 
+/**
+ * Check if an array of domains is hosted by a green web host by querying the Green Web Foundation API.
+ * @param {array} domains - An array of domains to check.
+ * @returns {array} - An array of domains that are hosted by a green web host.
+ */
+
 async function checkDomainsAgainstAPI(domains) {
   try {
     const apiPath = "https://api.thegreenwebfoundation.org/v2/greencheckmulti";
     const domainsString = JSON.stringify(domains);
 
     const req = await fetch(`${apiPath}/${domainsString}`);
-
-    // sanity check API result. Is this the library or
-    // the actual API request that's the problem?
-    // Is nock mocking node-native fetch API calls properly?
-    // Commented out the logs for now, as they cause an error to be thrown when using the library.
-    // log(`${apiPath}/${domainsString}`);
-    // log({ req });
-    // const textResult = await req.text();
-    // log({ textResult });
 
     const allGreenCheckResults = await req.json();
 
@@ -44,6 +48,11 @@ async function checkDomainsAgainstAPI(domains) {
   }
 }
 
+/**
+ * Extract the green domains from the results of a green check.
+ * @param {object} greenResults - The results of a green check.
+ * @returns {array} - An array of domains that are hosted by a green web host.
+ */
 function greenDomainsFromResults(greenResults) {
   const entries = Object.entries(greenResults);
   const greenEntries = entries.filter(([key, val]) => val.green);

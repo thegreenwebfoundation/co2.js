@@ -2,9 +2,6 @@
 
 import path from "path";
 
-import debugFactory from "debug";
-const log = debugFactory("tgwf:url2green:test");
-
 import { hosting } from "@tgwf/url2green";
 
 const dbPath = path.resolve(

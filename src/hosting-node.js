@@ -10,9 +10,6 @@ This lets us keep the total library small, and dependencies minimal.
 
 import https from "https";
 
-import debugFactory from "debug";
-const log = debugFactory("tgwf:hosting-node");
-
 import hostingJSON from "./hosting-json.node.js";
 
 /**
@@ -27,12 +24,11 @@ async function getBody(url) {
     // Do async job
     const req = https.get(url, function (res) {
       if (res.statusCode < 200 || res.statusCode >= 300) {
-        log(
-          "Could not get info from the Green Web Foundation API, %s for %s",
-          res.statusCode,
-          url
+        return reject(
+          new Error(
+            `Could not get info from: ${url}. Status Code: ${res.statusCode}`
+          )
         );
-        return reject(new Error(`Status Code: ${res.statusCode}`));
       }
       const data = [];
 
@@ -45,6 +41,13 @@ async function getBody(url) {
     req.end();
   });
 }
+
+/**
+ * Check if a domain is hosted by a green web host.
+ * @param {string|array} domain - The domain to check, or an array of domains to be checked.
+ * @param {object} db - Optional. A database object to use for lookups.
+ * @returns {boolean|array} - A boolean if a string was provided, or an array of booleans if an array of domains was provided.
+ */
 
 function check(domain, db) {
   if (db) {
@@ -59,6 +62,11 @@ function check(domain, db) {
   }
 }
 
+/**
+ * Check if a domain is hosted by a green web host by querying the Green Web Foundation API.
+ * @param {string} domain - The domain to check.
+ * @returns {boolean} - A boolean indicating whether the domain is hosted by a green web host.
+ */
 async function checkAgainstAPI(domain) {
   const res = JSON.parse(
     await getBody(`https://api.thegreenwebfoundation.org/greencheck/${domain}`)
@@ -66,6 +74,11 @@ async function checkAgainstAPI(domain) {
   return res.green;
 }
 
+/**
+ * Check if an array of domains is hosted by a green web host by querying the Green Web Foundation API.
+ * @param {array} domains - An array of domains to check.
+ * @returns {array} - An array of domains that are hosted by a green web host.
+ */
 async function checkDomainsAgainstAPI(domains) {
   try {
     const allGreenCheckResults = JSON.parse(
@@ -81,6 +94,12 @@ async function checkDomainsAgainstAPI(domains) {
   }
 }
 
+/**
+ * Take the result of a pageXray and check the domains in it against the database.
+ * @param {object} pageXray - The result of a pageXray.
+ * @param {object} db - A database object to use for lookups.
+ * @returns {array} - An array indicating whether the domain is hosted by a green web host.
+ */
 async function checkPage(pageXray, db) {
   const domains = Object.keys(pageXray.domains);
   return check(domains, db);
