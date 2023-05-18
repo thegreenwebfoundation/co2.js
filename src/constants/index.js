@@ -1,4 +1,5 @@
 import fileSize from "./file-size.js";
+import { averageIntensity } from "../index.js";
 
 // SUSTAINABLE WEB DESIGN CONSTANTS
 // this refers to the estimated total energy use for the internet around 2000 TWh,
@@ -13,8 +14,8 @@ const DATACENTER_ENERGY = 0.15;
 const PRODUCTION_ENERGY = 0.19;
 
 // These carbon intensity figures https://ember-climate.org/data/data-explorer
-// - Global carbon intensity for 2021
-const GLOBAL_GRID_INTENSITY = 442;
+// - Global carbon intensity for 2022
+const GLOBAL_GRID_INTENSITY = averageIntensity.data["WORLD"];
 const RENEWABLES_GRID_INTENSITY = 50;
 
 // Taken from: https://gitlab.com/wholegrain/carbon-api-2-0/-/blob/master/includes/carbonapi.php
