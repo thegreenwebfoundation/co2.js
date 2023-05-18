@@ -17,8 +17,8 @@ _Provide a link/s to documentation explaining the model and how it is implemente
 **Research**
 _Provide links to the underlying research that the model is built upon._
 
+**Suitability**
+_Give some context and information about what this model is most suitable for measuring. (Example: websites, video streaming, file storage etc.)_
+
 **Usage**
 _List and link to other tools, libraries, or organisations that are currently using this model._
-
-**Additional context**
-Add any other context or screenshots about the feature request here.
