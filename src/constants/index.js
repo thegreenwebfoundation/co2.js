@@ -1,5 +1,5 @@
 import fileSize from "./file-size.js";
-import { averageIntensity } from "../index.js";
+import averageIntensity from "../data/average-intensities.min.js";
 
 // SUSTAINABLE WEB DESIGN CONSTANTS
 // this refers to the estimated total energy use for the internet around 2000 TWh,
