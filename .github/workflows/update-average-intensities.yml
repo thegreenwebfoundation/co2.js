@@ -1,0 +1,35 @@
+name: "Update average co2 intensities"
+on:
+  schedule:
+  - cron: "0 0 * * 1"
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'     
+        required: true
+        default: 'warning'
+jobs:
+  createPullRequest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run average intensities
+        run: node data/functions/generate_average_co2.js 
+
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v5
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: Update report
+          committer: GitHub <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          signoff: false
+          branch: average-intensities/${{ github.run_id }}
+          delete-branch: true
+          title: '[generate_average_co2] Update report'
+          body: |
+            - Updated average intensities
+            - Auto-generated `.github/workflows/update-average-intensities.yml` and `data/functions/generate_average_co2.js`
+          draft: false
