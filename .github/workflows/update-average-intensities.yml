@@ -1,4 +1,4 @@
-name: "Update average co2 intensities"
+name: "Update average annual grid intensities"
 on:
   schedule:
   - cron: "0 0 * * 1"
@@ -22,14 +22,14 @@ jobs:
         uses: peter-evans/create-pull-request@v5
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: Update report
+          commit-message: Update average annual grid intensities
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
           branch: average-intensities/${{ github.run_id }}
           delete-branch: true
-          title: '[generate_average_co2] Update report'
+          title: '[AUTOMATED] Update average annual grid intensities'
           body: |
-            - Updated average intensities
+            - Updated average annual grid intensities
             - Auto-generated `.github/workflows/update-average-intensities.yml` and `data/functions/generate_average_co2.js`
           draft: false
