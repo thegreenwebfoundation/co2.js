@@ -17,7 +17,9 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Run average intensities
-        run: node data/functions/generate_average_co2.js 
+        run: |
+          npm run intensity-data:average
+          npm run format-data
 
       - name: Create Pull Request
         id: cpr
