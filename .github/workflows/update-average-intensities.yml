@@ -1,0 +1,39 @@
+name: "Update average annual grid intensities"
+on:
+  schedule:
+  # https://crontab.guru/#0_10_1_*_*
+  # At 10:00 on day-of-month 1.
+  - cron: "0 10 3 * *"
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'     
+        required: true
+        default: 'warning'
+jobs:
+  createPullRequest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run average intensities
+        run: |
+          npm run intensity-data:average
+          npm run format-data
+
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v5
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: Update average annual grid intensities
+          committer: GitHub <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          signoff: false
+          branch: average-intensities/${{ github.run_id }}
+          delete-branch: true
+          title: '[AUTOMATED] Update average annual grid intensities'
+          body: |
+            - Updated average annual grid intensities
+            - Auto-generated `.github/workflows/update-average-intensities.yml` and `data/functions/generate_average_co2.js`
+          draft: false

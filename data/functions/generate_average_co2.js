@@ -79,25 +79,24 @@ const type = "average";
     };
   });
 
-  const gridIntensityJson = JSON.stringify(gridIntensityResults);
-
   // This saves the country code and emissions data only, for use in the CO2.js library
   fs.writeFileSync(
     "data/output/average-intensities.js",
-    `const data = ${gridIntensityJson}; 
+    `const data = ${JSON.stringify(gridIntensityResults, null, "  ")}; 
 const type = "${type}";
 export { data, type }; 
-export default { data, type };`
+export default { data, type };
+`
   );
   // Save a minified version to the src folder so that it can be easily imported into the library
   fs.writeFileSync(
     "src/data/average-intensities.min.js",
-    `const data = ${gridIntensityJson}; const type = "${type}"; export { data, type }; export default { data, type };`
+    `const data = ${JSON.stringify(gridIntensityResults)}; const type = "${type}"; export { data, type }; export default { data, type };`
   );
 
   // This saves the full data set as a JSON file for reference.
   fs.writeFileSync(
     "data/output/average-intensities.json",
-    JSON.stringify(generalResults)
+    JSON.stringify(generalResults, null, "  ")
   );
 })();
