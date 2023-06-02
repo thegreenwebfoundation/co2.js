@@ -3,7 +3,7 @@ on:
   schedule:
   # https://crontab.guru/#0_10_1_*_*
   # At 10:00 on day-of-month 1.
-  - cron: "0 10 1 * *"
+  - cron: "0 10 3 * *"
   workflow_dispatch:
     inputs:
       logLevel:
