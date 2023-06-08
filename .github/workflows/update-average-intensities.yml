@@ -18,6 +18,7 @@ jobs:
 
       - name: Run average intensities
         run: |
+          npm ci
           npm run intensity-data:average
           npm run format-data
 
