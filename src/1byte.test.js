@@ -2,16 +2,26 @@
 
 import OneByte from "./1byte.js";
 
-describe("onebyte", () => {
+describe("OneByte", () => {
   describe("perByte", () => {
-    it("returns a simple average of the different networks", () => {
-      // we limit this to 12 figures with toFixed(12), because
-      // we have a recurring 333333 afterwards
-      // 4.88e-10 is the same as 0.000000000488
-      const expected_val = (0.000000000488).toFixed(12);
+    it("returns 0 for byte counts less than 1", () => {
       const instance = new OneByte();
 
-      expect(instance.KWH_PER_BYTE_FOR_NETWORK.toFixed(12)).toBe(expected_val);
+      expect(instance.perByte(0)).toBe(0);
+      expect(instance.perByte(0.99)).toBe(0);
+      expect(instance.perByte(-1)).toBe(0);
+    });
+
+    it("returns a result for grey energy", () => {
+      const instance = new OneByte();
+
+      expect(instance.perByte(1000)).toBeCloseTo(0.00029, 5);
+    });
+
+    it("returns a result for green energy", () => {
+      const instance = new OneByte();
+
+      expect(instance.perByte(1000, true)).toBeCloseTo(0.00023, 5);
     });
   });
 });
