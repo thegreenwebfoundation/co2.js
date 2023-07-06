@@ -2,13 +2,12 @@
 
 import fs from "fs";
 import path from "path";
-import testConstants from "./constants/test-constants.js";
+import { MILLION, ONEBYTE, SWD } from "./constants/test-constants.js";
 
 import pagexray from "pagexray";
 
 import CO2 from "./co2.js";
 import { averageIntensity, marginalIntensity } from "./index.js";
-const { MILLION, ONEBYTE, SWD } = testConstants;
 
 describe("co2", () => {
   let har, co2;

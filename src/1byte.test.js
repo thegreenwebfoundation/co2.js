@@ -1,5 +1,7 @@
 "use strict";
 
+import { MILLION, ONEBYTE } from "./constants/test-constants.js";
+
 import OneByte from "./1byte.js";
 
 describe("OneByte", () => {
@@ -15,13 +17,16 @@ describe("OneByte", () => {
     it("returns a result for grey energy", () => {
       const instance = new OneByte();
 
-      expect(instance.perByte(1000)).toBeCloseTo(0.00029, 5);
+      expect(instance.perByte(MILLION)).toBeCloseTo(ONEBYTE.MILLION_GREY, 5);
     });
 
     it("returns a result for green energy", () => {
       const instance = new OneByte();
 
-      expect(instance.perByte(1000, true)).toBeCloseTo(0.00023, 5);
+      expect(instance.perByte(MILLION, true)).toBeCloseTo(
+        ONEBYTE.MILLION_GREEN,
+        5
+      );
     });
   });
 });
