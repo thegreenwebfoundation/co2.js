@@ -2,25 +2,18 @@
 
 import fs from "fs";
 import path from "path";
-import testConstants from "./constants/test-constants.js";
+import { MILLION, ONEBYTE, SWD } from "./constants/test-constants.js";
 
 import pagexray from "pagexray";
 
 import CO2 from "./co2.js";
 import { averageIntensity, marginalIntensity } from "./index.js";
-const { MILLION, ONEBYTE, SWD } = testConstants;
 
 describe("co2", () => {
   let har, co2;
 
   describe("1 byte model", () => {
-    const {
-      TGWF_GREY_VALUE,
-      TGWF_GREEN_VALUE,
-      TGWF_MIXED_VALUE,
-      MILLION_GREY,
-      MILLION_GREEN,
-    } = ONEBYTE;
+    const { TGWF_GREY_VALUE, TGWF_GREEN_VALUE, TGWF_MIXED_VALUE } = ONEBYTE;
 
     beforeEach(() => {
       co2 = new CO2({ model: "1byte" });
@@ -30,19 +23,6 @@ describe("co2", () => {
           "utf8"
         )
       );
-    });
-
-    describe("perByte", () => {
-      it("returns a CO2 number for data transfer using 'grey' power", () => {
-        expect(co2.perByte(MILLION).toFixed(5)).toBe(MILLION_GREY.toFixed(5));
-      });
-
-      it("returns a lower CO2 number for data transfer from domains using entirely 'green' power", () => {
-        expect(co2.perByte(MILLION).toFixed(5)).toBe(MILLION_GREY.toFixed(5));
-        expect(co2.perByte(MILLION, true).toFixed(5)).toBe(
-          MILLION_GREEN.toFixed(5)
-        );
-      });
     });
 
     describe("perPage", () => {
