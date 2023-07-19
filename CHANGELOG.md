@@ -18,6 +18,96 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 # Released
 
+## [0.13.5] - 2023-07-5
+
+### Changed
+
+- Automated monthly update of annual average grid intensity data.
+
+## [0.13.4] - 2023-05-24
+
+### Fixed
+
+- Fixed an error when try to use global grid intensities in IIFE. (PR #147)
+
+## [0.13.3] - 2023-05-18
+
+### Changed
+
+- Updated the global grid intensity constant to use the latest WORLD grid intensity value from Ember. (PR #142)
+
+## [0.13.2] - 2023-04-21
+
+- Fix to ensure that region names that are keys in the average annual grid intensity export are capitalised.
+
+## [0.13.1] - 2023-04-20
+
+### Fixed
+
+- Fixed the import of average grid intensities in node. (PR #137)
+
+## [0.13.0] - 2023-04-13
+
+### Changed
+
+In PR #135 there were significant changes made to how average annual grid intensities are fetched and generated.
+
+- Updated average annual grid intensities to include 2022 values from Ember.
+- Changed the functions to generate average grid intensities to:
+    - Fetch data directly from Ember's API.
+    - Get the *latest* annual average values for each country/region.
+- Renamed the average grid intensities export file.
+
+## [0.12.2] - 2023-03-01
+
+### Added
+
+- Add a module declaration for use from typescript (PR #131)
+
+### Changed
+
+- Updated 2021 average annual grid intensity values (PR #133)
+
+## [0.12.1] - 2023-02-02
+
+### Fixed
+
+- Removed incorrectly imported constants in tests.
+
+## [0.12.0] - 2023-02-02
+
+### Added
+
+- Introduced two new functions `perByteTrace` and `perVisitTrace` which allow developers to pass an options object containing customised values for the constants used in the Sustainable Web Design model. (PR #126)
+
+### Changed
+
+- Allowed developers now have the option to return a breakdown of carbon emissions estimates by system segment when using the Sustainable Web Design model. (PR #113)
+
+## [0.11.4] - 2022-12-02
+
+### Fixed
+
+- Updated the `greenCheckMulti` function to work properly in ESM. (PR #123)
+
+## [0.11.3] - 2022-10-13
+
+### Fixed
+
+- Corrected the Node export for the hosting raised in issue #110. (PR #118)
+
+## [0.11.2] - 2022-10-11
+
+### Fixed
+
+- v0.11.x updates increased library size to 17MB + when published to NPM. This has been raised in [#108](https://github.com/thegreenwebfoundation/co2.js/issues/108) and it was found data files were being included in the published package. (PR #117)
+
+## [0.11.1] - 2022-10-07
+
+### Changed
+
+- We have used generic filenames for data files, to avoid any confusion around the data being provided in this library. (PR #112)
+
 ## [0.11.0] - 2022-10-03
 
 ### Added
