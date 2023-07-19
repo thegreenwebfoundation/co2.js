@@ -123,13 +123,13 @@ In PR #135 there were significant changes made to how average annual grid intens
 - Changed the default model for transfer based CO2 calculations from the _1byte_ model to the _Sustainable Web Design_ model instead. See https://developers.thegreenwebfoundation.org/co2js/models/ for guidance on the differences and how to migrate between them. See [#94 for more](https://github.com/thegreenwebfoundation/co2.js/issues/94).
 - Updated our release commands to generate and format the carbon intensity data as part of the release process.
 
-## 0.10.4 2022-08-12
+## [0.10.4] - 2022-08-12
 
 ### Added
 
 - Introduced a `release:patch` command, to automate the publishing process. This is designed to make sure we always publish the most recent compiled code, by adding a rebuild step that can be easy to forget.
 
-## 0.10.3 2022-08-12
+## [0.10.3] - 2022-08-12
 
 ### Added
 
