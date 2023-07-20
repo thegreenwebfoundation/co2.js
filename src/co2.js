@@ -59,15 +59,8 @@ class CO2 {
       );
     }
 
-    if (options?.results === "segment") {
-      this.model.results = {
-        segment: true,
-      };
-    } else {
-      this.model.results = {
-        segment: false,
-      };
-    }
+    /** @private */
+    this._segment = options?.results === "segment";
   }
 
   /**
@@ -80,7 +73,7 @@ class CO2 {
    * @return {number} the amount of CO2 in grammes
    */
   perByte(bytes, green = false) {
-    return this.model.perByte(bytes, green, this.model.results.segment);
+    return this.model.perByte(bytes, green, this._segment);
   }
 
   /**
@@ -94,7 +87,7 @@ class CO2 {
    */
   perVisit(bytes, green = false) {
     if (this.model?.perVisit) {
-      return this.model.perVisit(bytes, green, this.model.results.segment);
+      return this.model.perVisit(bytes, green, this._segment);
     } else {
       throw new Error(
         `The perVisit() method is not supported in the model you are using. Try using perByte() instead.\nSee https://developers.thegreenwebfoundation.org/co2js/methods/ to learn more about the methods available in CO2.js.`
@@ -119,12 +112,7 @@ class CO2 {
       adjustments = parseOptions(options);
     }
     return {
-      co2: this.model.perByte(
-        bytes,
-        green,
-        this.model.results.segment,
-        adjustments
-      ),
+      co2: this.model.perByte(bytes, green, this._segment, adjustments),
       green,
       variables: {
         description:
@@ -166,12 +154,7 @@ class CO2 {
       }
 
       return {
-        co2: this.model.perVisit(
-          bytes,
-          green,
-          this.model.results.segment,
-          adjustments
-        ),
+        co2: this.model.perVisit(bytes, green, this._segment, adjustments),
         green,
         variables: {
           description:
