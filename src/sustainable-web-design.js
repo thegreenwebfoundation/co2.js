@@ -126,6 +126,10 @@ class SustainableWebDesign {
     segmentResults = false,
     options = {}
   ) {
+    if (bytes < 1) {
+      bytes = 0;
+    }
+
     const energyBycomponent = this.energyPerByteByComponent(bytes, options);
 
     // otherwise when faced with non numeric values throw an error

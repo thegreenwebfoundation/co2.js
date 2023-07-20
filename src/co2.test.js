@@ -150,23 +150,6 @@ describe("co2", () => {
       );
     });
 
-    describe("perByte", () => {
-      it("returns a CO2 number for data transfer", () => {
-        co2.perByte(MILLION);
-        expect(co2.perByte(MILLION).toFixed(5)).toBe(MILLION_GREY.toFixed(5));
-      });
-
-      it("returns a lower CO2 number for data transfer from domains using entirely 'green' power", () => {
-        expect(co2.perByte(MILLION, false).toFixed(5)).toBe(
-          MILLION_GREY.toFixed(5)
-        );
-
-        expect(co2.perByte(MILLION, true).toFixed(5)).toBe(
-          MILLION_GREEN.toFixed(5)
-        );
-      });
-    });
-
     describe("perVisit", () => {
       it("returns a CO2 number for data transfer per visit with caching assumptions from the Sustainable Web Design model", () => {
         co2.perVisit(MILLION);

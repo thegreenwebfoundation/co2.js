@@ -1,4 +1,5 @@
 import SustainableWebDesign from "./sustainable-web-design.js";
+import { MILLION, SWD } from "./constants/test-constants.js";
 
 describe("sustainable web design model", () => {
   const swd = new SustainableWebDesign();
@@ -26,8 +27,35 @@ describe("sustainable web design model", () => {
   });
 
   describe("perByte", () => {
-    it("should return a single number for CO2 emissions", () => {
-      expect(typeof swd.perByte(2257715.2)).toBe("number");
+    it("returns 0 for byte counts less than 1", () => {
+      expect(swd.perByte(0)).toBe(0);
+      expect(swd.perByte(0.99)).toBe(0);
+      expect(swd.perByte(-1)).toBe(0);
+
+      const segmented = swd.perByte(0.5, false, true);
+      expect(segmented.dataCenterCO2).toBe(0);
+      expect(segmented.consumerDeviceCO2).toBe(0);
+      expect(segmented.networkCO2).toBe(0);
+      expect(segmented.productionCO2).toBe(0);
+      expect(segmented.total).toBe(0);
+    });
+
+    it("returns a result for grey energy", () => {
+      expect(swd.perByte(MILLION)).toBeCloseTo(SWD.MILLION_GREY, 5);
+    });
+
+    it("returns a result for green energy", () => {
+      expect(swd.perByte(MILLION, true)).toBeCloseTo(SWD.MILLION_GREEN, 5);
+    });
+
+    it("can segment results", () => {
+      const result = swd.perByte(MILLION, false, true);
+
+      expect(result.dataCenterCO2).toBeCloseTo(0.05301, 5);
+      expect(result.consumerDeviceCO2).toBeCloseTo(0.18378, 5);
+      expect(result.networkCO2).toBeCloseTo(0.04948, 5);
+      expect(result.productionCO2).toBeCloseTo(0.06715, 5);
+      expect(result.total).toBeCloseTo(SWD.MILLION_GREY, 5);
     });
   });
 
