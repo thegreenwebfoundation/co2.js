@@ -1,7 +1,7 @@
 # CO2.js
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <img src="https://github.com/thegreenwebfoundation/co2.js/actions/workflows/unittests.yml/badge.svg" />
@@ -144,6 +144,7 @@ See LICENCE for more.
       <td align="center" valign="top" width="14.28%"><a href="http://portfolio.toolness.org/"><img src="https://avatars.githubusercontent.com/u/124687?v=4?s=100" width="100px;" alt="Atul Varma"/><br /><sub><b>Atul Varma</b></sub></a><br /><a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=toolness" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://www.intersectionalenvironmentalist.com/"><img src="https://avatars.githubusercontent.com/u/1530684?v=4?s=100" width="100px;" alt="Piper"/><br /><sub><b>Piper</b></sub></a><br /><a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=piperchester" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://vasquezruiz.com/"><img src="https://avatars.githubusercontent.com/u/108420?v=4?s=100" width="100px;" alt="Raymundo Vásquez Ruiz"/><br /><sub><b>Raymundo Vásquez Ruiz</b></sub></a><br /><a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=raymundovr" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://greengumption.co.uk/"><img src="https://avatars.githubusercontent.com/u/26165947?v=4?s=100" width="100px;" alt="JamieB"/><br /><sub><b>JamieB</b></sub></a><br /><a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=JamieBeevor" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>

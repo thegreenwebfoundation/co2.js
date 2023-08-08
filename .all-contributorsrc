@@ -113,6 +113,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "JamieBeevor",
+      "name": "JamieB",
+      "avatar_url": "https://avatars.githubusercontent.com/u/26165947?v=4",
+      "profile": "https://greengumption.co.uk/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
