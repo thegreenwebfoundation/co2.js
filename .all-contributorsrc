@@ -9,7 +9,17 @@
   "imageSize": 100,
   "commit": true,
   "commitConvention": "none",
-  "contributors": [],
+  "contributors": [
+    {
+      "login": "mrchrisadams",
+      "name": "Chris Adams",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17906?v=4",
+      "profile": "https://github.com/mrchrisadams",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
   "contributorsPerLine": 7,
   "linkToUsage": false
 }
