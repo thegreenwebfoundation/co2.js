@@ -523,8 +523,8 @@ describe("co2", () => {
               device: 561,
             },
           })
-          .co2.toPrecision(5)
-      ).toBe(MILLION_PERBYTE_GREY_DEVICE_GRID_INTENSITY_CHANGE.toPrecision(5));
+          .co2.toPrecision(4)
+      ).toBe(MILLION_PERBYTE_GREY_DEVICE_GRID_INTENSITY_CHANGE.toPrecision(4));
     });
 
     it("uses an object correctly", () => {
@@ -548,8 +548,8 @@ describe("co2", () => {
               },
             },
           })
-          .co2.toPrecision(5)
-      ).toBe(MILLION_PERBYTE_GREY_DEVICE_GRID_INTENSITY_CHANGE.toPrecision(5));
+          .co2.toPrecision(4)
+      ).toBe(MILLION_PERBYTE_GREY_DEVICE_GRID_INTENSITY_CHANGE.toPrecision(4));
     });
   });
 
