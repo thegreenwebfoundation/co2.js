@@ -19,5 +19,15 @@
   },
   "linkToUsage": true,
   "skipCi": true,
-  "contributors": []
+  "contributors": [
+  {
+      "login": "mrchrisadams",
+      "name": "Chris Adams",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17906?s=96&v=4",
+      "profile": "https://github.com/mrchrisadams",
+      "contributions": [
+        "code"
+      ]
+    },
+  ]
 }
