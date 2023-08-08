@@ -1,6 +1,7 @@
 # CO2.js
 
 <img src="https://github.com/thegreenwebfoundation/co2.js/actions/workflows/unittests.yml/badge.svg" />
+[![All Contributors](https://img.shields.io/github/all-contributors/thegreenwebfoundation/co2.js?color=ee8449&style=flat-square)](#contributors)
 
 One day, the internet will be powered by renewable energy. Until that day comes, there’ll be a CO2 cost that comes with every byte of data that’s uploaded or downloaded. By being able to calculate these emissions, developers can be empowered to create more efficient, lower carbon apps, websites, and software.
 
