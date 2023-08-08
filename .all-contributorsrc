@@ -57,6 +57,16 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "PrathumP",
+      "name": "Prathum Pandey",
+      "avatar_url": "https://avatars.githubusercontent.com/u/115390367?v=4",
+      "profile": "https://github.com/PrathumP",
+      "contributions": [
+        "bug",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
