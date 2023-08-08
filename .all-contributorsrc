@@ -3,29 +3,13 @@
   "projectOwner": "thegreenwebfoundation",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "files": ["README.md"],
+  "files": [
+    "README.md"
+  ],
   "imageSize": 100,
-  "commit": false,
+  "commit": true,
+  "commitConvention": "none",
+  "contributors": [],
   "contributorsPerLine": 7,
-  "contributorsSortAlphabetically": false,
-  "types": {
-    "custom": {
-      "symbol": "🔭",
-      "description": "A custom contribution type.",
-      "link": "[<%= symbol %>](<%= url %> \"<%= description %>\"),"
-    }
-  },
-  "linkToUsage": true,
-  "skipCi": true,
-  "contributors": [
-  {
-      "login": "mrchrisadams",
-      "name": "Chris Adams",
-      "avatar_url": "https://avatars.githubusercontent.com/u/17906?s=96&v=4",
-      "profile": "https://github.com/mrchrisadams",
-      "contributions": [
-        "code"
-      ]
-    },
-  ]
+  "linkToUsage": false
 }

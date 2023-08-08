@@ -44,13 +44,14 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "@tgwf/url2green": "^0.4.0",
+    "all-contributors-cli": "^6.26.1",
+    "esbuild": "^0.14.47",
+    "esbuild-jest": "^0.5.0",
+    "esbuild-plugin-glob": "^1.1.2",
     "eslint": "^8.15.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-jest": "^26.1.5",
     "eslint-plugin-prettier": "^4.0.0",
-    "esbuild": "^0.14.47",
-    "esbuild-jest": "^0.5.0",
-    "esbuild-plugin-glob": "^1.1.2",
     "jest": "^28.1.0",
     "nock": "^13.2.4",
     "np": "^8.0.4",
@@ -70,7 +71,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/thegreenwebfoundation/co2.js.git"

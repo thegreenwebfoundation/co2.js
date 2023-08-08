@@ -1,8 +1,12 @@
 # CO2.js
 
-<img src="https://github.com/thegreenwebfoundation/co2.js/actions/workflows/unittests.yml/badge.svg" />
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
-[![All Contributors](https://img.shields.io/github/all-contributors/thegreenwebfoundation/co2.js?color=ee8449&style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square)](#contributors-)
+
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
+
+<img src="https://github.com/thegreenwebfoundation/co2.js/actions/workflows/unittests.yml/badge.svg" />
 
 One day, the internet will be powered by renewable energy. Until that day comes, there’ll be a CO2 cost that comes with every byte of data that’s uploaded or downloaded. By being able to calculate these emissions, developers can be empowered to create more efficient, lower carbon apps, websites, and software.
 
@@ -16,7 +20,7 @@ CO2.js is a JavaScript library that enables developers a way to estimate the emi
 
 Being able to estimate the CO2 emissions associated with digital activities can be of benefit to both developers and users.
 
-Internally, you may want to use this library to create a *carbon budget* for your site or app. It is also useful for inclusion in dashboards and monitoring tools.
+Internally, you may want to use this library to create a _carbon budget_ for your site or app. It is also useful for inclusion in dashboards and monitoring tools.
 
 For user facing applications, CO2.js could be used to check & block the uploading of carbon intensive files. Or, to present users with information about the carbon impact of their online activities (such as browsing a website).
 
@@ -37,7 +41,7 @@ npm install @tgwf/co2
 You can import the CO2.js library into projects using Skypack.
 
 ```js
-import tgwf from 'https://cdn.skypack.dev/@tgwf/co2';
+import tgwf from "https://cdn.skypack.dev/@tgwf/co2";
 ```
 
 ## Using a JS CDN
@@ -68,10 +72,10 @@ You can also build the CO2.js library from the source code. To do this:
 1. Clone or fork the repository.
 1. Navigate to the folder on your machine and run `npm run build` in your terminal.
 1. Once the build has finished running, you will find a `/dist` folder has been created. Inside you can find:
-  
-    - `dist/cjs` - A CommonJS compatible build.
-    - `dist/esm` - An ES Modules compatible build.
-    - `dist/iife` - An Immediately Invoked Function Expression (IIFE) version of the library.
+
+   - `dist/cjs` - A CommonJS compatible build.
+   - `dist/esm` - An ES Modules compatible build.
+   - `dist/iife` - An Immediately Invoked Function Expression (IIFE) version of the library.
 
 ## Marginal and average emissions intensity data
 
@@ -82,13 +86,14 @@ CO2.js includes yearly average grid intensity data from [Ember](https://ember-cl
 You can import annual, country-level marginal or average grid intensity data into your projects directly from CO2.js. For example, if we wanted to use the average grid intensity for Australia in our project, we could use the code below:
 
 ```js
-import { averageIntensity } from '@tgwf/co2';
+import { averageIntensity } from "@tgwf/co2";
 const { data } = averageIntensity;
 const { AUS } = data;
-console.log({ AUS })
+console.log({ AUS });
 ```
 
 All countries are represented by their respective [Alpha-3 ISO country code](https://www.iso.org/obp/ui/#search).
+
 ## Publishing to NPM
 
 We use [`np`](https://www.npmjs.com/package/np) to publish new versions of this library to NPM. To do this:
@@ -102,17 +107,17 @@ We use [`np`](https://www.npmjs.com/package/np) to publish new versions of this 
 
 CO2.js releases will be communicated through the following channels:
 
-| Channel | Minor Release (0.xx) | Patch Release (0.xx.x) |
-|----------|----------------------|----------------------|
-| [Github](https://github.com/thegreenwebfoundation/co2.js/releases)  | ✅ | ✅ |
-| [Green Web Foundation website](https://www.thegreenwebfoundation.org/co2-js/#releases) | ✅ | ❌ |
-| W3C Slack Sustainability Channel | ✅ | ❌ |
-| ClimateAction.Tech Slack | ✅ | ❌ |
-| [Green Web Foundation LinkedIn Account](https://www.linkedin.com/company/green-web-foundation/) | ✅ | ❌ |
+| Channel                                                                                         | Minor Release (0.xx) | Patch Release (0.xx.x) |
+| ----------------------------------------------------------------------------------------------- | -------------------- | ---------------------- |
+| [Github](https://github.com/thegreenwebfoundation/co2.js/releases)                              | ✅                   | ✅                     |
+| [Green Web Foundation website](https://www.thegreenwebfoundation.org/co2-js/#releases)          | ✅                   | ❌                     |
+| W3C Slack Sustainability Channel                                                                | ✅                   | ❌                     |
+| ClimateAction.Tech Slack                                                                        | ✅                   | ❌                     |
+| [Green Web Foundation LinkedIn Account](https://www.linkedin.com/company/green-web-foundation/) | ✅                   | ❌                     |
 
 ## Licenses
 
-The code for CO2.js is licensed Apache 2.0. ([What does this mean?](https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)))
+The code for CO2.js is licensed Apache 2.0. ([What does this mean?](<https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)>))
 
 The average carbon intensity data from Ember is published under the Creative Commons ShareAlike Attribution Licence ([CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)). ([What does this mean?](https://www.tldrlegal.com/license/creative-commons-attribution-share-alike-cc-sa))
 
@@ -123,6 +128,13 @@ See LICENCE for more.
 ## Contributors
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
 
