@@ -29,6 +29,15 @@
         "doc",
         "maintenance"
       ]
+    },
+    {
+      "login": "soulgalore",
+      "name": "Peter Hedenskog",
+      "avatar_url": "https://avatars.githubusercontent.com/u/540757?v=4",
+      "profile": "https://www.peterhedenskog.com/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
