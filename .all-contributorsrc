@@ -77,6 +77,15 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "hamishfagg",
+      "name": "Hamish Fagg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/895845?v=4",
+      "profile": "https://github.com/hamishfagg",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
