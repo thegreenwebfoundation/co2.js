@@ -104,6 +104,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "raymundovr",
+      "name": "Raymundo Vásquez Ruiz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/108420?v=4",
+      "profile": "https://vasquezruiz.com/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
