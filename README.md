@@ -1,7 +1,7 @@
 # CO2.js
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <img src="https://github.com/thegreenwebfoundation/co2.js/actions/workflows/unittests.yml/badge.svg" />
@@ -141,6 +141,7 @@ See LICENCE for more.
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/hamishfagg"><img src="https://avatars.githubusercontent.com/u/895845?v=4?s=100" width="100px;" alt="Hamish Fagg"/><br /><sub><b>Hamish Fagg</b></sub></a><br /><a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=hamishfagg" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://portfolio.toolness.org/"><img src="https://avatars.githubusercontent.com/u/124687?v=4?s=100" width="100px;" alt="Atul Varma"/><br /><sub><b>Atul Varma</b></sub></a><br /><a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=toolness" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
