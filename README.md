@@ -1,7 +1,7 @@
 # CO2.js
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <img src="https://github.com/thegreenwebfoundation/co2.js/actions/workflows/unittests.yml/badge.svg" />
@@ -135,6 +135,7 @@ See LICENCE for more.
       <td align="center" valign="top" width="14.28%"><a href="https://www.fershad.com/"><img src="https://avatars.githubusercontent.com/u/27988517?v=4?s=100" width="100px;" alt="fershad"/><br /><sub><b>fershad</b></sub></a><br /><a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=fershad" title="Code">💻</a> <a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=fershad" title="Documentation">📖</a> <a href="#maintenance-fershad" title="Maintenance">🚧</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://www.peterhedenskog.com/"><img src="https://avatars.githubusercontent.com/u/540757?v=4?s=100" width="100px;" alt="Peter Hedenskog"/><br /><sub><b>Peter Hedenskog</b></sub></a><br /><a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=soulgalore" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://www.drydenwilliams.co.uk/"><img src="https://avatars.githubusercontent.com/u/4403089?v=4?s=100" width="100px;" alt="Dryden"/><br /><sub><b>Dryden</b></sub></a><br /><a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=drydenwilliams" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://evanhahn.com/"><img src="https://avatars.githubusercontent.com/u/777712?v=4?s=100" width="100px;" alt="Evan Hahn"/><br /><sub><b>Evan Hahn</b></sub></a><br /><a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=EvanHahn" title="Code">💻</a> <a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=EvanHahn" title="Tests">⚠️</a></td>
     </tr>
   </tbody>
 </table>
