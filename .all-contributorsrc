@@ -18,6 +18,17 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "fershad",
+      "name": "fershad",
+      "avatar_url": "https://avatars.githubusercontent.com/u/27988517?v=4",
+      "profile": "https://www.fershad.com/",
+      "contributions": [
+        "code",
+        "doc",
+        "maintenance"
+      ]
     }
   ],
   "contributorsPerLine": 7,
