@@ -1,39 +1,24 @@
 {
-  "files": [
-    "README.md"
-  ],
-  "imageSize": 100,
-  "commit": false,
-  "contributors": [
-    {
-      "login": "JamieBeevor",
-      "name": "JamieB",
-      "avatar_url": "https://avatars1.githubusercontent.com/u/26165947?v=4",
-      "profile": "https://greengumption.co.uk",
-      "contributions": [
-        "ideas",
-        "question",
-        "review"
-      ]
-    },
-    {
-    "login": "soulgalore",
-      "name": "Peter Hedenskog",
-      "avatar_url": "https://avatars2.githubusercontent.com/u/540757?v=4",
-      "profile": "https://www.peterhedenskog.com",
-      "contributions": [
-        "code",
-        "ideas",
-        "review",
-        "infra",
-        "docs"
-      ]
-    }
-  ],
-  "contributorsPerLine": 7,
   "projectName": "co2.js",
   "projectOwner": "thegreenwebfoundation",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true
+  "files": ["README.md"],
+  "imageSize": 100,
+  "commit": false,
+  "contributorsPerLine": 7,
+  "contributorsSortAlphabetically": false,
+  "badgeTemplate": "[![All Contributors](https://img.shields.io/github/all-contributors/<%= projectOwner %>/<%= projectName %>?color=ee8449&style=flat-square)](#contributors)",
+  "contributorTemplate": "<a href=\"<%= contributor.profile %>\"><img src=\"<%= contributor.avatar_url %>\" width=\"<%= options.imageSize %>px;\" alt=\"\"/><br /><sub><b><%= contributor.name %></b></sub></a>",
+  "wrapperTemplate": "\n<table>\n  <tbody><%= bodyContent %>  </tbody>\n<%= tableFooterContent %></table>\n\n",
+  "types": {
+    "custom": {
+      "symbol": "🔭",
+      "description": "A custom contribution type.",
+      "link": "[<%= symbol %>](<%= url %> \"<%= description %>\"),"
+    }
+  },
+  "linkToUsage": true,
+  "skipCi": true,
+  "contributors": []
 }
