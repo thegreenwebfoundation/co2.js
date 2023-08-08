@@ -8,8 +8,6 @@
   "commit": false,
   "contributorsPerLine": 7,
   "contributorsSortAlphabetically": false,
-  "contributorTemplate": "<a href=\"<%= contributor.profile %>\"><img src=\"<%= contributor.avatar_url %>\" width=\"<%= options.imageSize %>px;\" alt=\"\"/><br /><sub><b><%= contributor.name %></b></sub></a>",
-  "wrapperTemplate": "\n<table>\n  <tbody><%= bodyContent %>  </tbody>\n<%= tableFooterContent %></table>\n\n",
   "types": {
     "custom": {
       "symbol": "🔭",
