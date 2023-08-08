@@ -95,6 +95,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "piperchester",
+      "name": "Piper",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1530684?v=4",
+      "profile": "https://www.intersectionalenvironmentalist.com/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
