@@ -6,7 +6,7 @@ Thank you for considering contributing to this project! We welcome all contribut
 
 When contributing to this repository, please first discuss the change you wish in an existing issue, or make a new issue using one of the templates. Doing this before you make any code changes can ensure your time is not spent in vain.
 
-Please note we have a code of conduct, please follow it in all your interactions with the project.
+Please note we have a [code of conduct](CODE_OF_CONDUCT.md), please follow it in all your interactions with the project.
 
 ## Getting Started
 
