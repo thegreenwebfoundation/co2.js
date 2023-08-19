@@ -114,11 +114,13 @@ class SustainableWebDesign {
    * Accept a figure for bytes transferred and return a single figure for CO2
    * emissions. Where information exists about the origin data is being
    * fetched from, a different carbon intensity figure
-   * is applied for the datacentre share of the carbon intensity.
+   * is applied for the data centre share of the carbon intensity.
    *
    * @param {number} bytes - the data transferred in bytes
-   * @param {number} `carbonIntensity` the carbon intensity for datacentre (average figures, not marginal ones)
-   * @return {number} the total number in grams of CO2 equivalent emissions
+   * @param {boolean} carbonIntensity - a boolean indicating whether the data center is green or not
+   * @param {boolean} segmentResults - a boolean indicating whether to return the results broken down by component
+   * @param {object} options - an object containing the grid intensity and first/return visitor values
+   * @return {number|object} the total number in grams of CO2 equivalent emissions, or an object containing the breakdown by component
    */
   perByte(
     bytes,
@@ -159,8 +161,10 @@ class SustainableWebDesign {
    * emissions. This method applies caching assumptions from the original Sustainable Web Design model.
    *
    * @param {number} bytes - the data transferred in bytes
-   * @param {number} `carbonIntensity` the carbon intensity for datacentre (average figures, not marginal ones)
-   * @return {number} the total number in grams of CO2 equivalent emissions
+   * @param {boolean} carbonIntensity - a boolean indicating whether the data center is green or not
+   * @param {boolean} segmentResults - a boolean indicating whether to return the results broken down by component
+   * @param {object} options - an object containing the grid intensity and first/return visitor values
+   * @return {number|object} the total number in grams of CO2 equivalent emissions, or an object containing the breakdown by component
    */
   perVisit(
     bytes,
