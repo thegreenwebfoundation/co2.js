@@ -1,5 +1,5 @@
 {
-  "name": "@tgwf/co2",
+  "name": "co2ts",
   "version": "0.13.6",
   "description": "Work out the co2 of your digital services",
   "main": "dist/cjs/index-node.js",

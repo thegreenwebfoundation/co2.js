@@ -1,1 +1,1 @@
-declare module "@tgwf/co2ts";
+declare module "co2ts";
