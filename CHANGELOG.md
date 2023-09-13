@@ -18,6 +18,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 # Released
 
+## [0.13.7] - 2023-09-13
+
+- Automated monthly update of annual average grid intensity data.
+
+## [0.13.6] - 2023-08-08
+
+- Automated monthly update of annual average grid intensity data.
+- Create FUNDING.yml to allow sponsor contribution to this project.
+- Store segment flag on CO2 instance, not models.
+
 ## [0.13.5] - 2023-07-5
 
 ### Changed
@@ -54,8 +64,8 @@ In PR #135 there were significant changes made to how average annual grid intens
 
 - Updated average annual grid intensities to include 2022 values from Ember.
 - Changed the functions to generate average grid intensities to:
-    - Fetch data directly from Ember's API.
-    - Get the *latest* annual average values for each country/region.
+  - Fetch data directly from Ember's API.
+  - Get the _latest_ annual average values for each country/region.
 - Renamed the average grid intensities export file.
 
 ## [0.12.2] - 2023-03-01
@@ -120,7 +130,7 @@ In PR #135 there were significant changes made to how average annual grid intens
 
 ### Changed
 
-- Changed the default model for transfer based CO2 calculations from the _1byte_ model to the _Sustainable Web Design_ model instead. See https://developers.thegreenwebfoundation.org/co2js/models/ for guidance on the differences and how to migrate between them. See [#94 for more](https://github.com/thegreenwebfoundation/co2.js/issues/94).
+- Changed the default model for transfer based CO2 calculations from the _1byte_ model to the _Sustainable Web Design_ model instead. See <https://developers.thegreenwebfoundation.org/co2js/models/> for guidance on the differences and how to migrate between them. See [#94 for more](https://github.com/thegreenwebfoundation/co2.js/issues/94).
 - Updated our release commands to generate and format the carbon intensity data as part of the release process.
 
 ## [0.10.4] - 2022-08-12
@@ -212,7 +222,7 @@ This release used a version bump as previously we had released v0.10.0 under a p
 
 ### Removed
 
-- Extracted sqlite usage and dependencies into a separate module, `url2green`. This means  you no longer need to compile SQLite on install.
+- Extracted sqlite usage and dependencies into a separate module, `url2green`. This means you no longer need to compile SQLite on install.
 
 ## [0.5.0] - 2020-03-03
 
