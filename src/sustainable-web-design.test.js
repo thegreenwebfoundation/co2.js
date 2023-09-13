@@ -51,10 +51,10 @@ describe("sustainable web design model", () => {
     it("can segment results", () => {
       const result = swd.perByte(MILLION, false, true);
 
-      expect(result.dataCenterCO2).toBeCloseTo(0.05301, 5);
-      expect(result.consumerDeviceCO2).toBeCloseTo(0.18378, 5);
-      expect(result.networkCO2).toBeCloseTo(0.04948, 5);
-      expect(result.productionCO2).toBeCloseTo(0.06715, 5);
+      expect(result.dataCenterCO2).toBeCloseTo(SWD.MILLION_GREY_DATACENTERS, 5);
+      expect(result.consumerDeviceCO2).toBeCloseTo(SWD.MILLION_GREY_DEVICES, 5);
+      expect(result.networkCO2).toBeCloseTo(SWD.MILLION_GREY_NETWORKS, 5);
+      expect(result.productionCO2).toBeCloseTo(SWD.MILLION_GREY_PRODUCTION, 5);
       expect(result.total).toBeCloseTo(SWD.MILLION_GREY, 5);
     });
   });
