@@ -855,4 +855,46 @@ describe("co2", () => {
       ).toBeLessThan(MILLION_PERVISIT_GREY);
     });
   });
+
+  describe("Using values equal to 0", () => {
+    const co2 = new CO2();
+
+    it("expects perByteTrace to support values equal to 0", () => {
+      const perByteTraceResult = co2.perByteTrace(1000000, false, {
+        gridIntensity: {
+          dataCenter: 0,
+          network: 0,
+          device: 0,
+        },
+      });
+      const { dataCenter, network, device } =
+        perByteTraceResult.variables.gridIntensity;
+      expect(dataCenter).toBe(0);
+      expect(network).toBe(0);
+      expect(device).toBe(0);
+    });
+
+    it("expects perVisitTrace to support values equal to 0", () => {
+      const perVisitTraceResult = co2.perVisitTrace(1000000, false, {
+        dataReloadRatio: 0,
+        returnVisitPercentage: 0,
+        firstVisitPercentage: 0,
+        gridIntensity: {
+          dataCenter: 0,
+          network: 0,
+          device: 0,
+        },
+      });
+      const { dataReloadRatio, firstVisitPercentage, returnVisitPercentage } =
+        perVisitTraceResult.variables;
+      const { dataCenter, network, device } =
+        perVisitTraceResult.variables.gridIntensity;
+      expect(dataReloadRatio).toBe(0);
+      expect(firstVisitPercentage).toBe(0);
+      expect(returnVisitPercentage).toBe(0);
+      expect(dataCenter).toBe(0);
+      expect(network).toBe(0);
+      expect(device).toBe(0);
+    });
+  });
 });
