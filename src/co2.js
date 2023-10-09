@@ -122,14 +122,14 @@ class CO2 {
           description:
             "The grid intensity (grams per kilowatt-hour) used to calculate this CO2 estimate.",
           network:
-            adjustments?.gridIntensity?.network?.value || GLOBAL_GRID_INTENSITY,
+            adjustments?.gridIntensity?.network?.value ?? GLOBAL_GRID_INTENSITY,
           dataCenter: green
             ? RENEWABLES_GRID_INTENSITY
-            : adjustments?.gridIntensity?.dataCenter?.value ||
+            : adjustments?.gridIntensity?.dataCenter?.value ??
               GLOBAL_GRID_INTENSITY,
           production: GLOBAL_GRID_INTENSITY,
           device:
-            adjustments?.gridIntensity?.device?.value || GLOBAL_GRID_INTENSITY,
+            adjustments?.gridIntensity?.device?.value ?? GLOBAL_GRID_INTENSITY,
         },
       },
     };
@@ -164,20 +164,20 @@ class CO2 {
             description:
               "The grid intensity (grams per kilowatt-hour) used to calculate this CO2 estimate.",
             network:
-              adjustments?.gridIntensity?.network?.value ||
+              adjustments?.gridIntensity?.network?.value ??
               GLOBAL_GRID_INTENSITY,
             dataCenter: green
               ? RENEWABLES_GRID_INTENSITY
-              : adjustments?.gridIntensity?.dataCenter?.value ||
+              : adjustments?.gridIntensity?.dataCenter?.value ??
                 GLOBAL_GRID_INTENSITY,
             production: GLOBAL_GRID_INTENSITY,
             device:
-              adjustments?.gridIntensity?.device?.value ||
+              adjustments?.gridIntensity?.device?.value ??
               GLOBAL_GRID_INTENSITY,
           },
-          dataReloadRatio: adjustments?.dataReloadRatio || 0.02,
-          firstVisitPercentage: adjustments?.firstVisitPercentage || 0.75,
-          returnVisitPercentage: adjustments?.returnVisitPercentage || 0.25,
+          dataReloadRatio: adjustments?.dataReloadRatio ?? 0.02,
+          firstVisitPercentage: adjustments?.firstVisitPercentage ?? 0.75,
+          returnVisitPercentage: adjustments?.returnVisitPercentage ?? 0.25,
         },
       };
     } else {

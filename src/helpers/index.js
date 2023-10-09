@@ -18,7 +18,7 @@ function parseOptions(options) {
   if (options?.gridIntensity) {
     adjustments.gridIntensity = {};
     const { device, dataCenter, network } = options.gridIntensity;
-    if (device) {
+    if (device || device === 0) {
       if (typeof device === "object") {
         if (!averageIntensity.data[device.country?.toUpperCase()]) {
           console.warn(
@@ -47,7 +47,7 @@ function parseOptions(options) {
         );
       }
     }
-    if (dataCenter) {
+    if (dataCenter || dataCenter === 0) {
       if (typeof dataCenter === "object") {
         if (!averageIntensity.data[dataCenter.country?.toUpperCase()]) {
           console.warn(
@@ -76,7 +76,7 @@ function parseOptions(options) {
         );
       }
     }
-    if (network) {
+    if (network || network === 0) {
       if (typeof network === "object") {
         if (!averageIntensity.data[network.country?.toUpperCase()]) {
           console.warn(
@@ -107,7 +107,7 @@ function parseOptions(options) {
     }
   }
 
-  if (options?.dataReloadRatio) {
+  if (options?.dataReloadRatio || options.dataReloadRatio === 0) {
     if (typeof options.dataReloadRatio === "number") {
       if (options.dataReloadRatio >= 0 && options.dataReloadRatio <= 1) {
         adjustments.dataReloadRatio = options.dataReloadRatio;
@@ -127,7 +127,7 @@ function parseOptions(options) {
     }
   }
 
-  if (options?.firstVisitPercentage) {
+  if (options?.firstVisitPercentage || options.firstVisitPercentage === 0) {
     if (typeof options.firstVisitPercentage === "number") {
       if (
         options.firstVisitPercentage >= 0 &&
@@ -148,7 +148,7 @@ function parseOptions(options) {
     }
   }
 
-  if (options?.returnVisitPercentage) {
+  if (options?.returnVisitPercentage || options.returnVisitPercentage === 0) {
     if (typeof options.returnVisitPercentage === "number") {
       if (
         options.returnVisitPercentage >= 0 &&
