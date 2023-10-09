@@ -18,6 +18,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 # Released
 
+## [0.13.8] - 2023-10-09
+
+- Fix: Properly use value of 0 for system segments and variables in the perByteTrace and perVisitTrace functions.
+- Automated monthly update of annual average grid intensity data.
+
 ## [0.13.7] - 2023-09-13
 
 - Automated monthly update of annual average grid intensity data.
