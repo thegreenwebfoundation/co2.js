@@ -122,6 +122,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "p-gerard",
+      "name": "p-gerard",
+      "avatar_url": "https://avatars.githubusercontent.com/u/97036756?v=4",
+      "profile": "https://github.com/p-gerard",
+      "contributions": [
+        "bug",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
