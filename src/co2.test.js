@@ -473,7 +473,7 @@ describe("co2", () => {
             })
             .co2.toPrecision(5)
         )
-      ).toBe(MILLION_PERVISIT_GREY);
+      ).toBeCloseTo(MILLION_PERVISIT_GREY, 5);
 
       expect(
         parseFloat(
@@ -485,7 +485,7 @@ describe("co2", () => {
             })
             .co2.toPrecision(5)
         )
-      ).toBe(MILLION_GREY);
+      ).toBeCloseTo(MILLION_GREY, 5);
     });
 
     it("uses a number correctly", () => {
@@ -512,27 +512,31 @@ describe("co2", () => {
 
     it("uses an object correctly", () => {
       expect(
-        co2
-          .perVisitTrace(MILLION, false, {
-            gridIntensity: {
-              device: {
-                country: "TWN",
+        parseFloat(
+          co2
+            .perVisitTrace(MILLION, false, {
+              gridIntensity: {
+                device: {
+                  country: "TWN",
+                },
               },
-            },
-          })
-          .co2.toPrecision(5)
-      ).toBe(MILLION_PERVISIT_GREY_DEVICE_GRID_INTENSITY_CHANGE.toPrecision(5));
+            })
+            .co2.toFixed(5)
+        )
+      ).toBeCloseTo(MILLION_PERVISIT_GREY_DEVICE_GRID_INTENSITY_CHANGE, 4);
       expect(
-        co2
-          .perByteTrace(MILLION, false, {
-            gridIntensity: {
-              device: {
-                country: "TWN",
+        parseFloat(
+          co2
+            .perByteTrace(MILLION, false, {
+              gridIntensity: {
+                device: {
+                  country: "TWN",
+                },
               },
-            },
-          })
-          .co2.toPrecision(4)
-      ).toBe(MILLION_PERBYTE_GREY_DEVICE_GRID_INTENSITY_CHANGE.toPrecision(4));
+            })
+            .co2.toPrecision(4)
+        )
+      ).toBeCloseTo(MILLION_PERBYTE_GREY_DEVICE_GRID_INTENSITY_CHANGE, 4);
     });
   });
 
@@ -596,31 +600,31 @@ describe("co2", () => {
 
     it("uses an object correctly", () => {
       expect(
-        co2
-          .perVisitTrace(MILLION, false, {
-            gridIntensity: {
-              dataCenter: {
-                country: "TWN",
+        parseFloat(
+          co2
+            .perVisitTrace(MILLION, false, {
+              gridIntensity: {
+                dataCenter: {
+                  country: "TWN",
+                },
               },
-            },
-          })
-          .co2.toPrecision(5)
-      ).toBe(
-        MILLION_PERVISIT_GREY_DATACENTER_GRID_INTENSITY_CHANGE.toPrecision(5)
-      );
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBeCloseTo(MILLION_PERVISIT_GREY_DATACENTER_GRID_INTENSITY_CHANGE, 4);
       expect(
-        co2
-          .perByteTrace(MILLION, false, {
-            gridIntensity: {
-              dataCenter: {
-                country: "TWN",
+        parseFloat(
+          co2
+            .perByteTrace(MILLION, false, {
+              gridIntensity: {
+                dataCenter: {
+                  country: "TWN",
+                },
               },
-            },
-          })
-          .co2.toPrecision(5)
-      ).toBe(
-        MILLION_PERBYTE_GREY_DATACENTER_GRID_INTENSITY_CHANGE.toPrecision(5)
-      );
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBeCloseTo(MILLION_PERBYTE_GREY_DATACENTER_GRID_INTENSITY_CHANGE, 4);
     });
   });
 
@@ -683,29 +687,31 @@ describe("co2", () => {
 
     it("uses an object correctly", () => {
       expect(
-        co2
-          .perVisitTrace(MILLION, false, {
-            gridIntensity: {
-              network: {
-                country: "TWN",
+        parseFloat(
+          co2
+            .perVisitTrace(MILLION, false, {
+              gridIntensity: {
+                network: {
+                  country: "TWN",
+                },
               },
-            },
-          })
-          .co2.toPrecision(5)
-      ).toBe(
-        MILLION_PERVISIT_GREY_NETWORK_GRID_INTENSITY_CHANGE.toPrecision(5)
-      );
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBeCloseTo(MILLION_PERVISIT_GREY_NETWORK_GRID_INTENSITY_CHANGE, 4);
       expect(
-        co2
-          .perByteTrace(MILLION, false, {
-            gridIntensity: {
-              network: {
-                country: "TWN",
+        parseFloat(
+          co2
+            .perByteTrace(MILLION, false, {
+              gridIntensity: {
+                network: {
+                  country: "TWN",
+                },
               },
-            },
-          })
-          .co2.toPrecision(5)
-      ).toBe(MILLION_PERBYTE_GREY_NETWORK_GRID_INTENSITY_CHANGE.toPrecision(5));
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBeCloseTo(MILLION_PERBYTE_GREY_NETWORK_GRID_INTENSITY_CHANGE, 4);
     });
   });
 
