@@ -387,13 +387,13 @@
     "country_code": "",
     "country_or_region": "EU",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 277.19
+    "emissions_intensity_gco2_per_kwh": 276.5
   },
   "Europe": {
     "country_code": "",
     "country_or_region": "Europe",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 296.45
+    "emissions_intensity_gco2_per_kwh": 297.16
   },
   "FLK": {
     "country_code": "FLK",
@@ -441,13 +441,13 @@
     "country_code": "",
     "country_or_region": "G20",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 442.38
+    "emissions_intensity_gco2_per_kwh": 442.62
   },
   "G7": {
     "country_code": "",
     "country_or_region": "G7",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 343.92
+    "emissions_intensity_gco2_per_kwh": 344.29
   },
   "GAB": {
     "country_code": "GAB",
@@ -471,7 +471,7 @@
     "country_code": "DEU",
     "country_or_region": "Germany",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 384.83
+    "emissions_intensity_gco2_per_kwh": 385.38
   },
   "GHA": {
     "country_code": "GHA",
@@ -885,7 +885,7 @@
     "country_code": "",
     "country_or_region": "North America",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 336.01
+    "emissions_intensity_gco2_per_kwh": 336.68
   },
   "PRK": {
     "country_code": "PRK",
@@ -915,7 +915,7 @@
     "country_code": "",
     "country_or_region": "OECD",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 340.95
+    "emissions_intensity_gco2_per_kwh": 341.2
   },
   "OMN": {
     "country_code": "OMN",
@@ -1107,7 +1107,7 @@
     "country_code": "ZAF",
     "country_or_region": "South Africa",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 708.19
+    "emissions_intensity_gco2_per_kwh": 708.21
   },
   "KOR": {
     "country_code": "KOR",
@@ -1245,7 +1245,7 @@
     "country_code": "UKR",
     "country_or_region": "Ukraine",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 187.06
+    "emissions_intensity_gco2_per_kwh": 230.89
   },
   "ARE": {
     "country_code": "ARE",
@@ -1263,7 +1263,7 @@
     "country_code": "USA",
     "country_or_region": "United States",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 367.26
+    "emissions_intensity_gco2_per_kwh": 368.1
   },
   "URY": {
     "country_code": "URY",
@@ -1311,7 +1311,7 @@
     "country_code": "",
     "country_or_region": "World",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 437.26
+    "emissions_intensity_gco2_per_kwh": 437.67
   },
   "YEM": {
     "country_code": "YEM",
