@@ -70,14 +70,14 @@ class SustainableWebDesign {
     if (options?.gridIntensity) {
       const { device, network, dataCenter } = options.gridIntensity;
 
-      if (device?.value) {
+      if (device?.value || device?.value === 0) {
         deviceCarbonIntensity = device.value;
       }
-      if (network?.value) {
+      if (network?.value || network?.value === 0) {
         networkCarbonIntensity = network.value;
       }
       // If the user has set a carbon intensity value for the datacentre, then that overrides everything and is used
-      if (dataCenter?.value) {
+      if (dataCenter?.value || dataCenter?.value === 0) {
         dataCenterCarbonIntensity = dataCenter.value;
       }
     }
@@ -245,15 +245,15 @@ class SustainableWebDesign {
     returnView = RETURNING_VISITOR_PERCENTAGE,
     dataReloadRatio = PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD
   ) {
-    if (options.dataReloadRatio) {
+    if (options.dataReloadRatio || options.dataReloadRatio === 0) {
       dataReloadRatio = options.dataReloadRatio;
     }
 
-    if (options.firstVisitPercentage) {
+    if (options.firstVisitPercentage || options.firstVisitPercentage === 0) {
       firstView = options.firstVisitPercentage;
     }
 
-    if (options.returnVisitPercentage) {
+    if (options.returnVisitPercentage || options.returnVisitPercentage === 0) {
       returnView = options.returnVisitPercentage;
     }
 
