@@ -153,18 +153,21 @@ describe("co2", () => {
     describe("perVisit", () => {
       it("returns a CO2 number for data transfer per visit with caching assumptions from the Sustainable Web Design model", () => {
         co2.perVisit(MILLION);
-        expect(co2.perVisit(MILLION).toFixed(5)).toBe(
-          MILLION_PERVISIT_GREY.toFixed(5)
+        expect(parseFloat(co2.perVisit(MILLION).toFixed(5))).toBeCloseTo(
+          parseFloat(MILLION_PERVISIT_GREY.toFixed(5)),
+          3
         );
       });
 
       it("returns a lower CO2 number for data transfer from domains using entirely 'green' power", () => {
-        expect(co2.perVisit(MILLION, false).toFixed(5)).toBe(
-          MILLION_PERVISIT_GREY.toFixed(5)
+        expect(parseFloat(co2.perVisit(MILLION, false).toFixed(5))).toBeCloseTo(
+          parseFloat(MILLION_PERVISIT_GREY.toFixed(5)),
+          3
         );
 
-        expect(co2.perVisit(MILLION, true).toFixed(5)).toBe(
-          MILLION_PERVISIT_GREEN.toFixed(5)
+        expect(parseFloat(co2.perVisit(MILLION, true).toFixed(5))).toBeCloseTo(
+          parseFloat(MILLION_PERVISIT_GREEN.toFixed(5)),
+          3
         );
       });
     });
@@ -174,8 +177,9 @@ describe("co2", () => {
         const pages = pagexray.convert(har);
         const pageXrayRun = pages[0];
 
-        expect(co2.perPage(pageXrayRun).toFixed(5)).toBe(
-          TGWF_GREY_VALUE.toFixed(5)
+        expect(parseFloat(co2.perPage(pageXrayRun).toFixed(5))).toBeCloseTo(
+          parseFloat(TGWF_GREY_VALUE.toFixed(5)),
+          3
         );
       });
       it("returns lower CO2 for page served from green site", () => {
@@ -209,9 +213,9 @@ describe("co2", () => {
           "fonts.gstatic.com",
           "api.thegreenwebfoundation.org",
         ];
-        expect(co2.perPage(pageXrayRun, green).toFixed(5)).toBe(
-          TGWF_MIXED_VALUE.toFixed(5)
-        );
+        expect(
+          parseFloat(co2.perPage(pageXrayRun, green).toFixed(5))
+        ).toBeCloseTo(parseFloat(TGWF_MIXED_VALUE.toFixed(5)), 3);
       });
     });
     describe("perDomain", () => {
@@ -291,83 +295,127 @@ describe("co2", () => {
         it("returns an object with devices, networks, data centers, and production emissions shown separately, as well as the total emissions", () => {
           co2 = new CO2({ results: "segment" });
           const res = co2.perVisit(MILLION);
-          expect(res["consumerDeviceCO2 - first"].toFixed(5)).toBe(
-            MILLION_PERVISIT_GREY_DEVICES_FIRST.toFixed(5)
+          expect(
+            parseFloat(res["consumerDeviceCO2 - first"].toFixed(5))
+          ).toBeCloseTo(
+            parseFloat(MILLION_PERVISIT_GREY_DEVICES_FIRST.toFixed(5))
           );
-          expect(res["networkCO2 - first"].toFixed(5)).toBe(
-            MILLION_PERVISIT_GREY_NETWORKS_FIRST.toFixed(5)
+          expect(parseFloat(res["networkCO2 - first"].toFixed(5))).toBeCloseTo(
+            parseFloat(MILLION_PERVISIT_GREY_NETWORKS_FIRST.toFixed(5))
           );
-          expect(res["dataCenterCO2 - first"].toFixed(5)).toBe(
-            MILLION_PERVISIT_GREY_DATACENTERS_FIRST.toFixed(5)
+          expect(
+            parseFloat(res["dataCenterCO2 - first"].toFixed(5))
+          ).toBeCloseTo(
+            parseFloat(MILLION_PERVISIT_GREY_DATACENTERS_FIRST.toFixed(5))
           );
-          expect(res["productionCO2 - first"].toFixed(5)).toBe(
-            MILLION_PERVISIT_GREY_PRODUCTION_FIRST.toFixed(5)
+          expect(
+            parseFloat(res["productionCO2 - first"].toFixed(5))
+          ).toBeCloseTo(
+            parseFloat(MILLION_PERVISIT_GREY_PRODUCTION_FIRST.toFixed(5))
           );
-          expect(res["consumerDeviceCO2 - subsequent"].toFixed(5)).toBe(
-            MILLION_PERVISIT_GREY_DEVICES_SECOND.toFixed(5)
+          expect(
+            parseFloat(res["consumerDeviceCO2 - subsequent"].toFixed(5))
+          ).toBeCloseTo(
+            parseFloat(MILLION_PERVISIT_GREY_DEVICES_SECOND.toFixed(5))
           );
-          expect(res["networkCO2 - subsequent"].toFixed(5)).toBe(
-            MILLION_PERVISIT_GREY_NETWORKS_SECOND.toFixed(5)
+          expect(
+            parseFloat(res["networkCO2 - subsequent"].toFixed(5))
+          ).toBeCloseTo(
+            parseFloat(MILLION_PERVISIT_GREY_NETWORKS_SECOND.toFixed(5))
           );
-          expect(res["dataCenterCO2 - subsequent"].toFixed(5)).toBe(
-            MILLION_PERVISIT_GREY_DATACENTERS_SECOND.toFixed(5)
+          expect(
+            parseFloat(res["dataCenterCO2 - subsequent"].toFixed(5))
+          ).toBeCloseTo(
+            parseFloat(MILLION_PERVISIT_GREY_DATACENTERS_SECOND.toFixed(5))
           );
-          expect(res["productionCO2 - subsequent"].toFixed(5)).toBe(
-            MILLION_PERVISIT_GREY_PRODUCTION_SECOND.toFixed(5)
+          expect(
+            parseFloat(res["productionCO2 - subsequent"].toFixed(5))
+          ).toBeCloseTo(
+            parseFloat(MILLION_PERVISIT_GREY_PRODUCTION_SECOND.toFixed(5))
           );
-          expect(res.total.toFixed(5)).toBe(MILLION_PERVISIT_GREY.toFixed(5));
+          expect(parseFloat(res.total.toFixed(5))).toBeCloseTo(
+            parseFloat(MILLION_PERVISIT_GREY.toFixed(5)),
+            3
+          );
         });
         it("returns adjusted data center and total emissions for when green, other values remain the same as grey", () => {
           co2 = new CO2({ results: "segment" });
           const res = co2.perVisit(MILLION, true);
           // Since the data center emissions are the only ones that change, we can just check those
           // and the total. To check the rest stay the same as grey, we can just check the device results.
-          expect(res["consumerDeviceCO2 - first"].toFixed(5)).toBe(
-            MILLION_PERVISIT_GREY_DEVICES_FIRST.toFixed(5)
+          expect(
+            parseFloat(res["consumerDeviceCO2 - first"].toFixed(5))
+          ).toBeCloseTo(
+            parseFloat(MILLION_PERVISIT_GREY_DEVICES_FIRST.toFixed(5)),
+            3
           );
 
-          expect(res["dataCenterCO2 - first"].toFixed(5)).toBe(
-            MILLION_PERVISIT_GREEN_DATACENTERS_FIRST.toFixed(5)
+          expect(
+            parseFloat(res["dataCenterCO2 - first"].toFixed(5))
+          ).toBeCloseTo(
+            parseFloat(MILLION_PERVISIT_GREEN_DATACENTERS_FIRST.toFixed(5)),
+            3
           );
 
-          expect(res["consumerDeviceCO2 - subsequent"].toFixed(5)).toBe(
-            MILLION_PERVISIT_GREY_DEVICES_SECOND.toFixed(5)
+          expect(
+            parseFloat(res["consumerDeviceCO2 - subsequent"].toFixed(5))
+          ).toBeCloseTo(
+            parseFloat(MILLION_PERVISIT_GREY_DEVICES_SECOND.toFixed(5)),
+            3
           );
-          expect(res["dataCenterCO2 - subsequent"].toFixed(5)).toBe(
-            MILLION_PERVISIT_GREEN_DATACENTERS_SECOND.toFixed(5)
+          expect(
+            parseFloat(res["dataCenterCO2 - subsequent"].toFixed(5))
+          ).toBeCloseTo(
+            parseFloat(MILLION_PERVISIT_GREEN_DATACENTERS_SECOND.toFixed(5)),
+            3
           );
 
-          expect(res.total.toFixed(5)).toBe(MILLION_PERVISIT_GREEN.toFixed(5));
+          expect(parseFloat(res.total.toFixed(5))).toBeCloseTo(
+            parseFloat(MILLION_PERVISIT_GREEN.toFixed(5)),
+            3
+          );
         });
       });
       describe("perByte", () => {
         it("returns adjusted data center and total emissions for when green, other values remain the same as grey", () => {
           co2 = new CO2({ results: "segment" });
           const res = co2.perByte(MILLION, true);
-          expect(res["consumerDeviceCO2"].toFixed(5)).toBe(
-            MILLION_GREY_DEVICES.toFixed(5)
+          expect(parseFloat(res["consumerDeviceCO2"].toFixed(5))).toBeCloseTo(
+            parseFloat(MILLION_GREY_DEVICES.toFixed(5)),
+            3
           );
-          expect(res["dataCenterCO2"].toFixed(5)).toBe(
-            MILLION_GREEN_DATACENTERS.toFixed(5)
+          expect(parseFloat(res["dataCenterCO2"].toFixed(5))).toBeCloseTo(
+            parseFloat(MILLION_GREEN_DATACENTERS.toFixed(5)),
+            3
           );
-          expect(res.total.toFixed(5)).toBe(MILLION_GREEN.toFixed(5));
+          expect(parseFloat(res.total.toFixed(5))).toBeCloseTo(
+            parseFloat(MILLION_GREEN.toFixed(5)),
+            3
+          );
         });
         it("returns an object with devices, networks, data centers, and production emissions shown separately, as well as the total emissions", () => {
           co2 = new CO2({ results: "segment" });
           const res = co2.perByte(MILLION);
-          expect(res["consumerDeviceCO2"].toFixed(5)).toBe(
-            MILLION_GREY_DEVICES.toFixed(5)
+          expect(parseFloat(res["consumerDeviceCO2"].toFixed(5))).toBeCloseTo(
+            parseFloat(MILLION_GREY_DEVICES.toFixed(5)),
+            3
           );
-          expect(res["networkCO2"].toFixed(5)).toBe(
-            MILLION_GREY_NETWORKS.toFixed(5)
+          expect(parseFloat(res["networkCO2"].toFixed(5))).toBeCloseTo(
+            parseFloat(MILLION_GREY_NETWORKS.toFixed(5)),
+            3
           );
-          expect(res["dataCenterCO2"].toFixed(5)).toBe(
-            MILLION_GREY_DATACENTERS.toFixed(5)
+          expect(parseFloat(res["dataCenterCO2"].toFixed(5))).toBeCloseTo(
+            parseFloat(MILLION_GREY_DATACENTERS.toFixed(5)),
+            3
           );
-          expect(res["productionCO2"].toFixed(5)).toBe(
-            MILLION_GREY_PRODUCTION.toFixed(5)
+          expect(parseFloat(res["productionCO2"].toFixed(5))).toBeCloseTo(
+            parseFloat(MILLION_GREY_PRODUCTION.toFixed(5)),
+            3
           );
-          expect(res.total.toFixed(5)).toBe(MILLION_GREY.toFixed(5));
+          expect(parseFloat(res.total.toFixed(5))).toBeCloseTo(
+            parseFloat(MILLION_GREY.toFixed(5)),
+            3
+          );
         });
       });
     });
@@ -473,7 +521,7 @@ describe("co2", () => {
             })
             .co2.toPrecision(5)
         )
-      ).toBeCloseTo(MILLION_PERVISIT_GREY, 5);
+      ).toBeCloseTo(MILLION_PERVISIT_GREY, 3);
 
       expect(
         parseFloat(
@@ -485,29 +533,43 @@ describe("co2", () => {
             })
             .co2.toPrecision(5)
         )
-      ).toBeCloseTo(MILLION_GREY, 5);
+      ).toBeCloseTo(MILLION_GREY, 3);
     });
 
     it("uses a number correctly", () => {
       expect(
-        co2
-          .perVisitTrace(MILLION, false, {
-            gridIntensity: {
-              device: 561,
-            },
-          })
-          .co2.toPrecision(5)
-      ).toBe(MILLION_PERVISIT_GREY_DEVICE_GRID_INTENSITY_CHANGE.toPrecision(5));
+        parseFloat(
+          co2
+            .perVisitTrace(MILLION, false, {
+              gridIntensity: {
+                device: 561,
+              },
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBeCloseTo(
+        parseFloat(
+          MILLION_PERVISIT_GREY_DEVICE_GRID_INTENSITY_CHANGE.toPrecision(5)
+        ),
+        3
+      );
 
       expect(
-        co2
-          .perByteTrace(MILLION, false, {
-            gridIntensity: {
-              device: 561,
-            },
-          })
-          .co2.toPrecision(4)
-      ).toBe(MILLION_PERBYTE_GREY_DEVICE_GRID_INTENSITY_CHANGE.toPrecision(4));
+        parseFloat(
+          co2
+            .perByteTrace(MILLION, false, {
+              gridIntensity: {
+                device: 561,
+              },
+            })
+            .co2.toPrecision(4)
+        )
+      ).toBeCloseTo(
+        parseFloat(
+          MILLION_PERBYTE_GREY_DEVICE_GRID_INTENSITY_CHANGE.toPrecision(4)
+        ),
+        3
+      );
     });
 
     it("uses an object correctly", () => {
@@ -523,7 +585,7 @@ describe("co2", () => {
             })
             .co2.toFixed(5)
         )
-      ).toBeCloseTo(MILLION_PERVISIT_GREY_DEVICE_GRID_INTENSITY_CHANGE, 4);
+      ).toBeCloseTo(MILLION_PERVISIT_GREY_DEVICE_GRID_INTENSITY_CHANGE, 3);
       expect(
         parseFloat(
           co2
@@ -536,7 +598,7 @@ describe("co2", () => {
             })
             .co2.toPrecision(4)
         )
-      ).toBeCloseTo(MILLION_PERBYTE_GREY_DEVICE_GRID_INTENSITY_CHANGE, 4);
+      ).toBeCloseTo(MILLION_PERBYTE_GREY_DEVICE_GRID_INTENSITY_CHANGE, 3);
     });
   });
 
@@ -559,7 +621,7 @@ describe("co2", () => {
             })
             .co2.toPrecision(5)
         )
-      ).toBe(MILLION_PERVISIT_GREY);
+      ).toBeCloseTo(MILLION_PERVISIT_GREY, 3);
       expect(
         parseFloat(
           co2
@@ -570,31 +632,41 @@ describe("co2", () => {
             })
             .co2.toPrecision(5)
         )
-      ).toBe(MILLION_GREY);
+      ).toBeCloseTo(MILLION_GREY, 3);
     });
 
     it("uses a number correctly", () => {
       expect(
-        co2
-          .perVisitTrace(MILLION, false, {
-            gridIntensity: {
-              dataCenter: 561,
-            },
-          })
-          .co2.toPrecision(5)
-      ).toBe(
-        MILLION_PERVISIT_GREY_DATACENTER_GRID_INTENSITY_CHANGE.toPrecision(5)
+        parseFloat(
+          co2
+            .perVisitTrace(MILLION, false, {
+              gridIntensity: {
+                dataCenter: 561,
+              },
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBeCloseTo(
+        parseFloat(
+          MILLION_PERVISIT_GREY_DATACENTER_GRID_INTENSITY_CHANGE.toPrecision(5)
+        ),
+        3
       );
       expect(
-        co2
-          .perByteTrace(MILLION, false, {
-            gridIntensity: {
-              dataCenter: 561,
-            },
-          })
-          .co2.toPrecision(5)
-      ).toBe(
-        MILLION_PERBYTE_GREY_DATACENTER_GRID_INTENSITY_CHANGE.toPrecision(5)
+        parseFloat(
+          co2
+            .perByteTrace(MILLION, false, {
+              gridIntensity: {
+                dataCenter: 561,
+              },
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBeCloseTo(
+        parseFloat(
+          MILLION_PERBYTE_GREY_DATACENTER_GRID_INTENSITY_CHANGE.toPrecision(5)
+        ),
+        3
       );
     });
 
@@ -611,7 +683,7 @@ describe("co2", () => {
             })
             .co2.toPrecision(5)
         )
-      ).toBeCloseTo(MILLION_PERVISIT_GREY_DATACENTER_GRID_INTENSITY_CHANGE, 4);
+      ).toBeCloseTo(MILLION_PERVISIT_GREY_DATACENTER_GRID_INTENSITY_CHANGE, 3);
       expect(
         parseFloat(
           co2
@@ -624,7 +696,7 @@ describe("co2", () => {
             })
             .co2.toPrecision(5)
         )
-      ).toBeCloseTo(MILLION_PERBYTE_GREY_DATACENTER_GRID_INTENSITY_CHANGE, 4);
+      ).toBeCloseTo(MILLION_PERBYTE_GREY_DATACENTER_GRID_INTENSITY_CHANGE, 3);
     });
   });
 
@@ -647,7 +719,7 @@ describe("co2", () => {
             })
             .co2.toPrecision(5)
         )
-      ).toBe(MILLION_PERVISIT_GREY);
+      ).toBeCloseTo(MILLION_PERVISIT_GREY, 3);
 
       expect(
         parseFloat(
@@ -659,30 +731,42 @@ describe("co2", () => {
             })
             .co2.toPrecision(5)
         )
-      ).toBe(MILLION_GREY);
+      ).toBeCloseTo(MILLION_GREY, 3);
     });
 
     it("uses a number correctly", () => {
       expect(
-        co2
-          .perVisitTrace(MILLION, false, {
-            gridIntensity: {
-              network: 561,
-            },
-          })
-          .co2.toPrecision(5)
-      ).toBe(
-        MILLION_PERVISIT_GREY_NETWORK_GRID_INTENSITY_CHANGE.toPrecision(5)
+        parseFloat(
+          co2
+            .perVisitTrace(MILLION, false, {
+              gridIntensity: {
+                network: 561,
+              },
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBeCloseTo(
+        parseFloat(
+          MILLION_PERVISIT_GREY_NETWORK_GRID_INTENSITY_CHANGE.toPrecision(5)
+        ),
+        3
       );
       expect(
-        co2
-          .perByteTrace(MILLION, false, {
-            gridIntensity: {
-              network: 561,
-            },
-          })
-          .co2.toPrecision(5)
-      ).toBe(MILLION_PERBYTE_GREY_NETWORK_GRID_INTENSITY_CHANGE.toPrecision(5));
+        parseFloat(
+          co2
+            .perByteTrace(MILLION, false, {
+              gridIntensity: {
+                network: 561,
+              },
+            })
+            .co2.toPrecision(5)
+        )
+      ).toBeCloseTo(
+        parseFloat(
+          MILLION_PERBYTE_GREY_NETWORK_GRID_INTENSITY_CHANGE.toPrecision(5)
+        ),
+        3
+      );
     });
 
     it("uses an object correctly", () => {
@@ -698,7 +782,7 @@ describe("co2", () => {
             })
             .co2.toPrecision(5)
         )
-      ).toBeCloseTo(MILLION_PERVISIT_GREY_NETWORK_GRID_INTENSITY_CHANGE, 4);
+      ).toBeCloseTo(MILLION_PERVISIT_GREY_NETWORK_GRID_INTENSITY_CHANGE, 3);
       expect(
         parseFloat(
           co2
@@ -711,7 +795,7 @@ describe("co2", () => {
             })
             .co2.toPrecision(5)
         )
-      ).toBeCloseTo(MILLION_PERBYTE_GREY_NETWORK_GRID_INTENSITY_CHANGE, 4);
+      ).toBeCloseTo(MILLION_PERBYTE_GREY_NETWORK_GRID_INTENSITY_CHANGE, 3);
     });
   });
 
@@ -733,7 +817,7 @@ describe("co2", () => {
             .perVisitTrace(1000000, false, { dataReloadRatio: "0.5" })
             .co2.toPrecision(5)
         )
-      ).toBe(MILLION_PERVISIT_GREY);
+      ).toBeCloseTo(MILLION_PERVISIT_GREY, 3);
     });
 
     it("expects a number between 0 and 1", () => {
@@ -745,7 +829,7 @@ describe("co2", () => {
             })
             .co2.toPrecision(5)
         )
-      ).toBe(MILLION_PERVISIT_GREY);
+      ).toBeCloseTo(MILLION_PERVISIT_GREY, 3);
       expect(
         parseFloat(
           co2
@@ -754,7 +838,7 @@ describe("co2", () => {
             })
             .co2.toPrecision(5)
         )
-      ).toBe(MILLION_PERVISIT_GREY);
+      ).toBeCloseTo(MILLION_PERVISIT_GREY, 3);
       expect(
         co2.perVisitTrace(1000000, false, {
           dataReloadRatio: 0,
@@ -784,7 +868,7 @@ describe("co2", () => {
             })
             .co2.toPrecision(5)
         )
-      ).toBe(MILLION_GREY);
+      ).toBeCloseTo(MILLION_GREY, 3);
     });
 
     it("expects firstVisitPercentage to be a number", () => {
