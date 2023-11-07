@@ -947,7 +947,7 @@ describe("co2", () => {
   });
 
   describe("Using values equal to 0", () => {
-    const co2 = new CO2();
+    const co2 = new CO2({ results: "segment" });
 
     it("expects perByteTrace to support values equal to 0", () => {
       const perByteTraceResult = co2.perByteTrace(1000000, false, {
@@ -985,6 +985,78 @@ describe("co2", () => {
       expect(dataCenter).toBe(0);
       expect(network).toBe(0);
       expect(device).toBe(0);
+    });
+    it("expects perByteTrace segments to be 0 when grid intensity is 0", () => {
+      const perByteTraceResult = co2.perByteTrace(1000000, false, {
+        gridIntensity: {
+          dataCenter: 0,
+          network: 0,
+          device: 0,
+        },
+      });
+      const co2Result = perByteTraceResult.co2;
+      // Less than 0.1 because there's still a small production component that's calculated
+      expect(co2Result.total).toBeLessThan(0.1);
+      expect(co2Result["dataCenterCO2"]).toBe(0);
+      expect(co2Result["networkCO2"]).toBe(0);
+      expect(co2Result["consumerDeviceCO2"]).toBe(0);
+    });
+
+    it("expects perVisitTrace segments to be 0 when grid intensity is 0", () => {
+      const perVisitTraceResult = co2.perVisitTrace(1000000, false, {
+        gridIntensity: {
+          dataCenter: 0,
+          network: 0,
+          device: 0,
+        },
+      });
+      const co2Result = perVisitTraceResult.co2;
+      const { dataCenter, network, device } =
+        perVisitTraceResult.variables.gridIntensity;
+      // Less than 0.1 because there's still a small production component that's calculated
+      expect(co2Result.total).toBeLessThan(0.1);
+      expect(co2Result["dataCenterCO2 - first"]).toBe(0);
+      expect(co2Result["networkCO2 - first"]).toBe(0);
+      expect(co2Result["consumerDeviceCO2 - first"]).toBe(0);
+      expect(co2Result["dataCenterCO2 - subsequent"]).toBe(0);
+      expect(co2Result["networkCO2 - subsequent"]).toBe(0);
+      expect(co2Result["consumerDeviceCO2 - subsequent"]).toBe(0);
+    });
+
+    it("expects perVisitTrace segments to be 0 when there are 0 first and returning visitors", () => {
+      const perVisitTraceResult = co2.perVisitTrace(1000000, false, {
+        firstVisitPercentage: 0,
+        returnVisitPercentage: 0,
+      });
+      const co2Result = perVisitTraceResult.co2;
+      // Less than 0.1 because there's still a small production component that's calculated
+      expect(co2Result.total).toBe(0);
+    });
+
+    it("expects perVisitTrace subsequent segments to be 0 when returning visitors is 0", () => {
+      const perVisitTraceResult = co2.perVisitTrace(1000000, false, {
+        firstVisitPercentage: 100,
+        returnVisitPercentage: 0,
+      });
+      const co2Result = perVisitTraceResult.co2;
+      expect(co2Result["dataCenterCO2 - first"]).toBeGreaterThan(0);
+      expect(co2Result["networkCO2 - first"]).toBeGreaterThan(0);
+      expect(co2Result["consumerDeviceCO2 - first"]).toBeGreaterThan(0);
+      expect(co2Result["dataCenterCO2 - subsequent"]).toBe(0);
+      expect(co2Result["networkCO2 - subsequent"]).toBe(0);
+      expect(co2Result["consumerDeviceCO2 - subsequent"]).toBe(0);
+    });
+    it("expects perVisitTrace subsequent segments to be 0 when data reload is 0", () => {
+      const perVisitTraceResult = co2.perVisitTrace(1000000, false, {
+        dataReloadRatio: 0,
+      });
+      const co2Result = perVisitTraceResult.co2;
+      expect(co2Result["dataCenterCO2 - first"]).toBeGreaterThan(0);
+      expect(co2Result["networkCO2 - first"]).toBeGreaterThan(0);
+      expect(co2Result["consumerDeviceCO2 - first"]).toBeGreaterThan(0);
+      expect(co2Result["dataCenterCO2 - subsequent"]).toBe(0);
+      expect(co2Result["networkCO2 - subsequent"]).toBe(0);
+      expect(co2Result["consumerDeviceCO2 - subsequent"]).toBe(0);
     });
   });
 });
