@@ -9,7 +9,7 @@
     "country_code": "",
     "country_or_region": "Africa",
     "year": 2021,
-    "emissions_intensity_gco2_per_kwh": 484.16
+    "emissions_intensity_gco2_per_kwh": 484.7
   },
   "ALB": {
     "country_code": "ALB",
@@ -21,7 +21,7 @@
     "country_code": "DZA",
     "country_or_region": "Algeria",
     "year": 2021,
-    "emissions_intensity_gco2_per_kwh": 498.9
+    "emissions_intensity_gco2_per_kwh": 485.49
   },
   "ASM": {
     "country_code": "ASM",
@@ -63,13 +63,13 @@
     "country_code": "",
     "country_or_region": "ASEAN",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 508.06
+    "emissions_intensity_gco2_per_kwh": 508.2
   },
   "Asia": {
     "country_code": "",
     "country_or_region": "Asia",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 535.23
+    "emissions_intensity_gco2_per_kwh": 534.83
   },
   "AUS": {
     "country_code": "AUS",
@@ -81,13 +81,13 @@
     "country_code": "AUT",
     "country_or_region": "Austria",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 157.52
+    "emissions_intensity_gco2_per_kwh": 158.22
   },
   "AZE": {
     "country_code": "AZE",
     "country_or_region": "Azerbaijan",
     "year": 2021,
-    "emissions_intensity_gco2_per_kwh": 532.9
+    "emissions_intensity_gco2_per_kwh": 469.58
   },
   "BHS": {
     "country_code": "BHS",
@@ -105,7 +105,7 @@
     "country_code": "BGD",
     "country_or_region": "Bangladesh",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 577.03
+    "emissions_intensity_gco2_per_kwh": 574.28
   },
   "BRB": {
     "country_code": "BRB",
@@ -117,13 +117,13 @@
     "country_code": "BLR",
     "country_or_region": "Belarus",
     "year": 2021,
-    "emissions_intensity_gco2_per_kwh": 415.64
+    "emissions_intensity_gco2_per_kwh": 425.9
   },
   "BEL": {
     "country_code": "BEL",
     "country_or_region": "Belgium",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 165.36
+    "emissions_intensity_gco2_per_kwh": 167.11
   },
   "BLZ": {
     "country_code": "BLZ",
@@ -147,13 +147,13 @@
     "country_code": "BOL",
     "country_or_region": "Bolivia",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 322.09
+    "emissions_intensity_gco2_per_kwh": 335.4
   },
   "BIH": {
     "country_code": "BIH",
     "country_or_region": "Bosnia Herzegovina",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 516.01
+    "emissions_intensity_gco2_per_kwh": 553.47
   },
   "BWA": {
     "country_code": "BWA",
@@ -165,19 +165,19 @@
     "country_code": "BRA",
     "country_or_region": "Brazil",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 102.09
+    "emissions_intensity_gco2_per_kwh": 102.04
   },
   "BRN": {
     "country_code": "BRN",
     "country_or_region": "Brunei Darussalam",
     "year": 2021,
-    "emissions_intensity_gco2_per_kwh": 658.85
+    "emissions_intensity_gco2_per_kwh": 493.59
   },
   "BGR": {
     "country_code": "BGR",
     "country_or_region": "Bulgaria",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 399.57
+    "emissions_intensity_gco2_per_kwh": 399.72
   },
   "BFA": {
     "country_code": "BFA",
@@ -249,7 +249,7 @@
     "country_code": "COL",
     "country_or_region": "Colombia",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 168.95
+    "emissions_intensity_gco2_per_kwh": 163.99
   },
   "COM": {
     "country_code": "COM",
@@ -291,13 +291,13 @@
     "country_code": "HRV",
     "country_or_region": "Croatia",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 246.46
+    "emissions_intensity_gco2_per_kwh": 246.29
   },
   "CUB": {
     "country_code": "CUB",
     "country_or_region": "Cuba",
     "year": 2021,
-    "emissions_intensity_gco2_per_kwh": 602.23
+    "emissions_intensity_gco2_per_kwh": 654.68
   },
   "CYP": {
     "country_code": "CYP",
@@ -309,13 +309,13 @@
     "country_code": "CZE",
     "country_or_region": "Czechia",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 415.35
+    "emissions_intensity_gco2_per_kwh": 414.8
   },
   "DNK": {
     "country_code": "DNK",
     "country_or_region": "Denmark",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 180.71
+    "emissions_intensity_gco2_per_kwh": 180.42
   },
   "DJI": {
     "country_code": "DJI",
@@ -339,7 +339,7 @@
     "country_code": "ECU",
     "country_or_region": "Ecuador",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 188.71
+    "emissions_intensity_gco2_per_kwh": 183.63
   },
   "EGY": {
     "country_code": "EGY",
@@ -369,7 +369,7 @@
     "country_code": "EST",
     "country_or_region": "Estonia",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 464.03
+    "emissions_intensity_gco2_per_kwh": 460.26
   },
   "SWZ": {
     "country_code": "SWZ",
@@ -387,13 +387,13 @@
     "country_code": "",
     "country_or_region": "EU",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 276.5
+    "emissions_intensity_gco2_per_kwh": 276.63
   },
   "Europe": {
     "country_code": "",
     "country_or_region": "Europe",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 297.16
+    "emissions_intensity_gco2_per_kwh": 297.05
   },
   "FLK": {
     "country_code": "FLK",
@@ -417,13 +417,13 @@
     "country_code": "FIN",
     "country_or_region": "Finland",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 130.98
+    "emissions_intensity_gco2_per_kwh": 131.71
   },
   "FRA": {
     "country_code": "FRA",
     "country_or_region": "France",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 84.82
+    "emissions_intensity_gco2_per_kwh": 84.88
   },
   "GUF": {
     "country_code": "GUF",
@@ -441,13 +441,13 @@
     "country_code": "",
     "country_or_region": "G20",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 442.62
+    "emissions_intensity_gco2_per_kwh": 442.57
   },
   "G7": {
     "country_code": "",
     "country_or_region": "G7",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 344.29
+    "emissions_intensity_gco2_per_kwh": 344.31
   },
   "GAB": {
     "country_code": "GAB",
@@ -471,7 +471,7 @@
     "country_code": "DEU",
     "country_or_region": "Germany",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 385.38
+    "emissions_intensity_gco2_per_kwh": 385.39
   },
   "GHA": {
     "country_code": "GHA",
@@ -483,7 +483,7 @@
     "country_code": "GRC",
     "country_or_region": "Greece",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 343.82
+    "emissions_intensity_gco2_per_kwh": 344.41
   },
   "GRL": {
     "country_code": "GRL",
@@ -513,7 +513,7 @@
     "country_code": "GTM",
     "country_or_region": "Guatemala",
     "year": 2021,
-    "emissions_intensity_gco2_per_kwh": 291.55
+    "emissions_intensity_gco2_per_kwh": 304.71
   },
   "GIN": {
     "country_code": "GIN",
@@ -549,13 +549,13 @@
     "country_code": "HKG",
     "country_or_region": "Hong Kong",
     "year": 2021,
-    "emissions_intensity_gco2_per_kwh": 683.97
+    "emissions_intensity_gco2_per_kwh": 609.93
   },
   "HUN": {
     "country_code": "HUN",
     "country_or_region": "Hungary",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 222.97
+    "emissions_intensity_gco2_per_kwh": 222.1
   },
   "ISL": {
     "country_code": "ISL",
@@ -573,7 +573,7 @@
     "country_code": "IDN",
     "country_or_region": "Indonesia",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 619.02
+    "emissions_intensity_gco2_per_kwh": 619.03
   },
   "IRN": {
     "country_code": "IRN",
@@ -585,25 +585,25 @@
     "country_code": "IRQ",
     "country_or_region": "Iraq",
     "year": 2021,
-    "emissions_intensity_gco2_per_kwh": 498.87
+    "emissions_intensity_gco2_per_kwh": 531.36
   },
   "IRL": {
     "country_code": "IRL",
     "country_or_region": "Ireland",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 346.33
+    "emissions_intensity_gco2_per_kwh": 346.43
   },
   "ISR": {
     "country_code": "ISR",
     "country_or_region": "Israel",
     "year": 2021,
-    "emissions_intensity_gco2_per_kwh": 548.03
+    "emissions_intensity_gco2_per_kwh": 537.57
   },
   "ITA": {
     "country_code": "ITA",
     "country_or_region": "Italy",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 371.69
+    "emissions_intensity_gco2_per_kwh": 372.63
   },
   "JAM": {
     "country_code": "JAM",
@@ -621,7 +621,7 @@
     "country_code": "JOR",
     "country_or_region": "Jordan",
     "year": 2021,
-    "emissions_intensity_gco2_per_kwh": 399.91
+    "emissions_intensity_gco2_per_kwh": 391.13
   },
   "KAZ": {
     "country_code": "KAZ",
@@ -633,7 +633,7 @@
     "country_code": "KEN",
     "country_or_region": "Kenya",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 100.57
+    "emissions_intensity_gco2_per_kwh": 101.13
   },
   "KIR": {
     "country_code": "KIR",
@@ -645,13 +645,13 @@
     "country_code": "XKX",
     "country_or_region": "Kosovo",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 768.73
+    "emissions_intensity_gco2_per_kwh": 767
   },
   "KWT": {
     "country_code": "KWT",
     "country_or_region": "Kuwait",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 551.74
+    "emissions_intensity_gco2_per_kwh": 574.56
   },
   "KGZ": {
     "country_code": "KGZ",
@@ -669,19 +669,19 @@
     "country_code": "",
     "country_or_region": "Latin America and Caribbean",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 238.68
+    "emissions_intensity_gco2_per_kwh": 237.91
   },
   "LVA": {
     "country_code": "LVA",
     "country_or_region": "Latvia",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 181.82
+    "emissions_intensity_gco2_per_kwh": 183.43
   },
   "LBN": {
     "country_code": "LBN",
     "country_or_region": "Lebanon",
     "year": 2021,
-    "emissions_intensity_gco2_per_kwh": 605.74
+    "emissions_intensity_gco2_per_kwh": 663.1
   },
   "LSO": {
     "country_code": "LSO",
@@ -699,19 +699,19 @@
     "country_code": "LBY",
     "country_or_region": "Libya",
     "year": 2021,
-    "emissions_intensity_gco2_per_kwh": 550.42
+    "emissions_intensity_gco2_per_kwh": 558.85
   },
   "LTU": {
     "country_code": "LTU",
     "country_or_region": "Lithuania",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 194.25
+    "emissions_intensity_gco2_per_kwh": 195.7
   },
   "LUX": {
     "country_code": "LUX",
     "country_or_region": "Luxembourg",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 168.14
+    "emissions_intensity_gco2_per_kwh": 162.6
   },
   "MAC": {
     "country_code": "MAC",
@@ -753,7 +753,7 @@
     "country_code": "MLT",
     "country_or_region": "Malta",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 495
+    "emissions_intensity_gco2_per_kwh": 433.48
   },
   "MTQ": {
     "country_code": "MTQ",
@@ -783,25 +783,25 @@
     "country_code": "",
     "country_or_region": "Middle East",
     "year": 2021,
-    "emissions_intensity_gco2_per_kwh": 516.02
+    "emissions_intensity_gco2_per_kwh": 519.92
   },
   "MDA": {
     "country_code": "MDA",
     "country_or_region": "Moldova",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 677.18
+    "emissions_intensity_gco2_per_kwh": 666.67
   },
   "MNG": {
     "country_code": "MNG",
     "country_or_region": "Mongolia",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 749.66
+    "emissions_intensity_gco2_per_kwh": 642.37
   },
   "MNE": {
     "country_code": "MNE",
     "country_or_region": "Montenegro",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 399.38
+    "emissions_intensity_gco2_per_kwh": 392.75
   },
   "MSR": {
     "country_code": "MSR",
@@ -813,7 +813,7 @@
     "country_code": "MAR",
     "country_or_region": "Morocco",
     "year": 2021,
-    "emissions_intensity_gco2_per_kwh": 610.41
+    "emissions_intensity_gco2_per_kwh": 630.75
   },
   "MOZ": {
     "country_code": "MOZ",
@@ -825,7 +825,7 @@
     "country_code": "MMR",
     "country_or_region": "Myanmar",
     "year": 2021,
-    "emissions_intensity_gco2_per_kwh": 344.37
+    "emissions_intensity_gco2_per_kwh": 330.8
   },
   "NAM": {
     "country_code": "NAM",
@@ -849,7 +849,7 @@
     "country_code": "NLD",
     "country_or_region": "Netherlands",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 355.78
+    "emissions_intensity_gco2_per_kwh": 354.31
   },
   "NCL": {
     "country_code": "NCL",
@@ -861,7 +861,7 @@
     "country_code": "NZL",
     "country_or_region": "New Zealand",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 97.73
+    "emissions_intensity_gco2_per_kwh": 105.22
   },
   "NIC": {
     "country_code": "NIC",
@@ -891,31 +891,31 @@
     "country_code": "PRK",
     "country_or_region": "North Korea",
     "year": 2021,
-    "emissions_intensity_gco2_per_kwh": 157.79
+    "emissions_intensity_gco2_per_kwh": 102.42
   },
   "MKD": {
     "country_code": "MKD",
     "country_or_region": "North Macedonia",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 529.33
+    "emissions_intensity_gco2_per_kwh": 543.71
   },
   "NOR": {
     "country_code": "NOR",
     "country_or_region": "Norway",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 28.82
+    "emissions_intensity_gco2_per_kwh": 28.93
   },
   "Oceania": {
     "country_code": "",
     "country_or_region": "Oceania",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 449.71
+    "emissions_intensity_gco2_per_kwh": 450.73
   },
   "OECD": {
     "country_code": "",
     "country_or_region": "OECD",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 341.2
+    "emissions_intensity_gco2_per_kwh": 341.08
   },
   "OMN": {
     "country_code": "OMN",
@@ -939,7 +939,7 @@
     "country_code": "PAN",
     "country_or_region": "Panama",
     "year": 2021,
-    "emissions_intensity_gco2_per_kwh": 186.61
+    "emissions_intensity_gco2_per_kwh": 152.68
   },
   "PNG": {
     "country_code": "PNG",
@@ -963,25 +963,25 @@
     "country_code": "POL",
     "country_or_region": "Poland",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 633.1
+    "emissions_intensity_gco2_per_kwh": 633.23
   },
   "PRT": {
     "country_code": "PRT",
     "country_or_region": "Portugal",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 234.03
+    "emissions_intensity_gco2_per_kwh": 234.61
   },
   "PRI": {
     "country_code": "PRI",
     "country_or_region": "Puerto Rico",
     "year": 2021,
-    "emissions_intensity_gco2_per_kwh": 681.47
+    "emissions_intensity_gco2_per_kwh": 612.39
   },
   "QAT": {
     "country_code": "QAT",
     "country_or_region": "Qatar",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 489.88
+    "emissions_intensity_gco2_per_kwh": 490.28
   },
   "REU": {
     "country_code": "REU",
@@ -993,7 +993,7 @@
     "country_code": "ROU",
     "country_or_region": "Romania",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 264.12
+    "emissions_intensity_gco2_per_kwh": 264.24
   },
   "RUS": {
     "country_code": "RUS",
@@ -1059,7 +1059,7 @@
     "country_code": "SRB",
     "country_or_region": "Serbia",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 569.38
+    "emissions_intensity_gco2_per_kwh": 582.13
   },
   "SYC": {
     "country_code": "SYC",
@@ -1083,7 +1083,7 @@
     "country_code": "SVK",
     "country_or_region": "Slovakia",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 140.67
+    "emissions_intensity_gco2_per_kwh": 140.14
   },
   "SVN": {
     "country_code": "SVN",
@@ -1125,19 +1125,19 @@
     "country_code": "ESP",
     "country_or_region": "Spain",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 217.37
+    "emissions_intensity_gco2_per_kwh": 217.42
   },
   "LKA": {
     "country_code": "LKA",
     "country_or_region": "Sri Lanka",
     "year": 2021,
-    "emissions_intensity_gco2_per_kwh": 463
+    "emissions_intensity_gco2_per_kwh": 501.53
   },
   "SDN": {
     "country_code": "SDN",
     "country_or_region": "Sudan",
     "year": 2021,
-    "emissions_intensity_gco2_per_kwh": 264.01
+    "emissions_intensity_gco2_per_kwh": 288.13
   },
   "SUR": {
     "country_code": "SUR",
@@ -1149,13 +1149,13 @@
     "country_code": "SWE",
     "country_or_region": "Sweden",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 45.08
+    "emissions_intensity_gco2_per_kwh": 45.12
   },
   "CHE": {
     "country_code": "CHE",
     "country_or_region": "Switzerland",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 45.62
+    "emissions_intensity_gco2_per_kwh": 41.28
   },
   "SYR": {
     "country_code": "SYR",
@@ -1191,7 +1191,7 @@
     "country_code": "PHL",
     "country_or_region": "The Philippines",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 582.84
+    "emissions_intensity_gco2_per_kwh": 594.45
   },
   "TGO": {
     "country_code": "TGO",
@@ -1221,7 +1221,7 @@
     "country_code": "TUR",
     "country_or_region": "Türkiye",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 413.63
+    "emissions_intensity_gco2_per_kwh": 413.6
   },
   "TKM": {
     "country_code": "TKM",
@@ -1245,7 +1245,7 @@
     "country_code": "UKR",
     "country_or_region": "Ukraine",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 230.89
+    "emissions_intensity_gco2_per_kwh": 232.74
   },
   "ARE": {
     "country_code": "ARE",
@@ -1257,7 +1257,7 @@
     "country_code": "GBR",
     "country_or_region": "United Kingdom",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 261.24
+    "emissions_intensity_gco2_per_kwh": 261.16
   },
   "USA": {
     "country_code": "USA",
@@ -1269,7 +1269,7 @@
     "country_code": "URY",
     "country_or_region": "Uruguay",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 114.89
+    "emissions_intensity_gco2_per_kwh": 150.13
   },
   "UZB": {
     "country_code": "UZB",
@@ -1311,13 +1311,13 @@
     "country_code": "",
     "country_or_region": "World",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 437.67
+    "emissions_intensity_gco2_per_kwh": 437.63
   },
   "YEM": {
     "country_code": "YEM",
     "country_or_region": "Yemen",
     "year": 2021,
-    "emissions_intensity_gco2_per_kwh": 543.91
+    "emissions_intensity_gco2_per_kwh": 559.66
   },
   "ZMB": {
     "country_code": "ZMB",
