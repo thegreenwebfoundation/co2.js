@@ -1,5 +1,7 @@
 "use strict";
 
+import { getApiRequestHeaders } from "./helpers";
+
 /**
  * Check if a string or array of domains has been provided
  * @param {string|array} domain - The domain to check, or an array of domains to be checked.
@@ -21,7 +23,10 @@ function check(domain) {
  */
 async function checkAgainstAPI(domain) {
   const req = await fetch(
-    `https://api.thegreenwebfoundation.org/greencheck/${domain}`
+    `https://api.thegreenwebfoundation.org/greencheck/${domain}`,
+    {
+      headers: getApiRequestHeaders(),
+    }
   );
   const res = await req.json();
   return res.green;
@@ -38,7 +43,9 @@ async function checkDomainsAgainstAPI(domains) {
     const apiPath = "https://api.thegreenwebfoundation.org/v2/greencheckmulti";
     const domainsString = JSON.stringify(domains);
 
-    const req = await fetch(`${apiPath}/${domainsString}`);
+    const req = await fetch(`${apiPath}/${domainsString}`, {
+      headers: getApiRequestHeaders(),
+    });
 
     const allGreenCheckResults = await req.json();
 

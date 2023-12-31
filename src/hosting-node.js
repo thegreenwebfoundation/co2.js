@@ -11,6 +11,7 @@ This lets us keep the total library small, and dependencies minimal.
 import https from "https";
 
 import hostingJSON from "./hosting-json.node.js";
+import { getApiRequestHeaders } from "./helpers/index.js";
 
 /**
  * Accept a url and perform an http request, returning the body
@@ -22,22 +23,26 @@ import hostingJSON from "./hosting-json.node.js";
 async function getBody(url) {
   return new Promise(function (resolve, reject) {
     // Do async job
-    const req = https.get(url, function (res) {
-      if (res.statusCode < 200 || res.statusCode >= 300) {
-        return reject(
-          new Error(
-            `Could not get info from: ${url}. Status Code: ${res.statusCode}`
-          )
-        );
+    const req = https.get(
+      url,
+      { headers: getApiRequestHeaders() },
+      function (res) {
+        if (res.statusCode < 200 || res.statusCode >= 300) {
+          return reject(
+            new Error(
+              `Could not get info from: ${url}. Status Code: ${res.statusCode}`
+            )
+          );
+        }
+        const data = [];
+
+        res.on("data", (chunk) => {
+          data.push(chunk);
+        });
+
+        res.on("end", () => resolve(Buffer.concat(data).toString()));
       }
-      const data = [];
-
-      res.on("data", (chunk) => {
-        data.push(chunk);
-      });
-
-      res.on("end", () => resolve(Buffer.concat(data).toString()));
-    });
+    );
     req.end();
   });
 }

@@ -3,7 +3,8 @@ const esbuild = require('esbuild')
 // For this build however we need to filter out some extra files
 // that are used for nodejs, but not in browsers, so we use the
 // library directly instead of using `esbuild-plugin-glob` as a plugin
-const glob = require('tiny-glob');
+const glob = require('tiny-glob')
+const esbuildCommon = require('./.esbuild.common')
 
 async function main() {
   const results = await glob('src/**/!(*.test.js|test-constants.js|!(*.js))')
@@ -12,6 +13,7 @@ async function main() {
   const justBrowserCompatibleFiles = results.filter(filepath => !filepath.endsWith('node.js'))
 
   esbuild.build({
+    ...esbuildCommon,
     entryPoints: justBrowserCompatibleFiles,
     bundle: false,
     minify: false,

@@ -1,11 +1,14 @@
 "use strict";
 
 import fs from "fs";
+import https from "https";
 import path from "path";
 
 import pagexray from "pagexray";
 
 import hosting from "./hosting-node.js";
+
+process.env.CO2JS_VERSION = "1.2.34";
 
 const jsonPath = path.resolve(
   __dirname,
@@ -17,6 +20,7 @@ const jsonPath = path.resolve(
 
 describe("hosting", () => {
   let har;
+  let httpsGetSpy;
   beforeEach(() => {
     har = JSON.parse(
       fs.readFileSync(
@@ -24,6 +28,10 @@ describe("hosting", () => {
         "utf8"
       )
     );
+    httpsGetSpy = jest.spyOn(https, "get");
+  });
+  afterEach(() => {
+    jest.restoreAllMocks();
   });
   describe("checking all domains on a page object with #checkPage", () => {
     it("returns a list of green domains, when passed a page object", async () => {
@@ -56,6 +64,15 @@ describe("hosting", () => {
       const db = await hosting.loadJSON(jsonPath);
       const res = await hosting.check("google.com");
       expect(res).toEqual(true);
+    });
+    it("sets the correct user agent header", async () => {
+      await hosting.check("google.com");
+      expect(httpsGetSpy).toHaveBeenCalledTimes(1);
+      expect(httpsGetSpy).toHaveBeenLastCalledWith(
+        expect.any(String),
+        expect.objectContaining({ headers: { "user-agent": "co2js/1.2.34" } }),
+        expect.any(Function)
+      );
     });
   });
   describe("checking multiple domains with #check", () => {
