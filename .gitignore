@@ -95,7 +95,10 @@ url2green.db
 url2green.json
 
 # don't track generated content
-dist
+dist/*
+
+# but commit the bundled IIFE code for anyone who needs it
+!dist/iife
 
 # don't track source maps
 *.js.map
