@@ -69,7 +69,7 @@
     "country_code": "",
     "country_or_region": "Asia",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 534.83
+    "emissions_intensity_gco2_per_kwh": 534.89
   },
   "AUS": {
     "country_code": "AUS",
@@ -795,7 +795,7 @@
     "country_code": "MNG",
     "country_or_region": "Mongolia",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 642.37
+    "emissions_intensity_gco2_per_kwh": 749.66
   },
   "MNE": {
     "country_code": "MNE",
@@ -1311,7 +1311,7 @@
     "country_code": "",
     "country_or_region": "World",
     "year": 2022,
-    "emissions_intensity_gco2_per_kwh": 437.63
+    "emissions_intensity_gco2_per_kwh": 437.66
   },
   "YEM": {
     "country_code": "YEM",
