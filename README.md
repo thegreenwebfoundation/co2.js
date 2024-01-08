@@ -79,7 +79,7 @@ You can also build the CO2.js library from the source code. To do this:
 
 ## Using CO2.js in TypeScript projects
 
-Type definitions for CO2.js are published in the DefinitelyTyped project, and are available on NPM at `@types/tgwf__co2`.
+Type definitions for CO2.js are [published in the DefinitelyTyped project](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/tgwf__co2), and are [available on NPM](https://www.npmjs.com/package/@types/tgwf__co2) at `@types/tgwf__co2`.
 
 If you want to use type definitions in your project, they should be installed as a devDependency.
 
