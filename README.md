@@ -1,7 +1,9 @@
 # CO2.js
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <img src="https://github.com/thegreenwebfoundation/co2.js/actions/workflows/unittests.yml/badge.svg" />
@@ -74,6 +76,14 @@ You can also build the CO2.js library from the source code. To do this:
    - `dist/cjs` - A CommonJS compatible build.
    - `dist/esm` - An ES Modules compatible build.
    - `dist/iife` - An Immediately Invoked Function Expression (IIFE) version of the library.
+
+## Using CO2.js in TypeScript projects
+
+Type definitions for CO2.js are published in the DefinitelyTyped project, and are available on NPM at `@types/tgwf__co2`.
+
+If you want to use type definitions in your project, they should be installed as a devDependency.
+
+`npm install --dev @types/tgwf__co2`
 
 ## Marginal and average emissions intensity data
 
