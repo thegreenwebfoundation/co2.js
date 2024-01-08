@@ -77,7 +77,7 @@ You can also build the CO2.js library from the source code. To do this:
    - `dist/esm` - An ES Modules compatible build.
    - `dist/iife` - An Immediately Invoked Function Expression (IIFE) version of the library.
 
-## Using CO2.js in TypeScript projects
+## TypeScript support
 
 Type definitions for CO2.js are [published in the DefinitelyTyped project](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/tgwf__co2), and are [available on NPM](https://www.npmjs.com/package/@types/tgwf__co2) at `@types/tgwf__co2`.
 
