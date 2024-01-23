@@ -18,14 +18,15 @@ import { getApiRequestHeaders } from "./helpers/index.js";
  * for parsing as JSON.
  *
  * @param {string} url
+ * @param {string} comment - Optional. The app, site, or organisation that is making the request.
  * @return {string}
  */
-async function getBody(url) {
+async function getBody(url, comment) {
   return new Promise(function (resolve, reject) {
     // Do async job
     const req = https.get(
       url,
-      { headers: getApiRequestHeaders() },
+      { headers: getApiRequestHeaders(comment) },
       function (res) {
         if (res.statusCode < 200 || res.statusCode >= 300) {
           return reject(
@@ -70,11 +71,15 @@ function check(domain, db) {
 /**
  * Check if a domain is hosted by a green web host by querying the Green Web Foundation API.
  * @param {string} domain - The domain to check.
+ * @param {string} comment - Optional. The app, site, or organisation that is making the request.
  * @returns {boolean} - A boolean indicating whether the domain is hosted by a green web host.
  */
-async function checkAgainstAPI(domain) {
+async function checkAgainstAPI(domain, comment) {
   const res = JSON.parse(
-    await getBody(`https://api.thegreenwebfoundation.org/greencheck/${domain}`)
+    await getBody(
+      `https://api.thegreenwebfoundation.org/greencheck/${domain}`,
+      comment
+    )
   );
   return res.green;
 }
@@ -82,15 +87,17 @@ async function checkAgainstAPI(domain) {
 /**
  * Check if an array of domains is hosted by a green web host by querying the Green Web Foundation API.
  * @param {array} domains - An array of domains to check.
+ * @param {string} comment - Optional. The app, site, or organisation that is making the request.
  * @returns {array} - An array of domains that are hosted by a green web host.
  */
-async function checkDomainsAgainstAPI(domains) {
+async function checkDomainsAgainstAPI(domains, comment) {
   try {
     const allGreenCheckResults = JSON.parse(
       await getBody(
         `https://api.thegreenwebfoundation.org/v2/greencheckmulti/${JSON.stringify(
           domains
-        )}`
+        )}`,
+        comment
       )
     );
     return hostingJSON.greenDomainsFromResults(allGreenCheckResults);

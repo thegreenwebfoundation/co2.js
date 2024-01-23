@@ -19,13 +19,14 @@ function check(domain) {
 /**
  * Check if a domain is hosted by a green web host by querying the Green Web Foundation API.
  * @param {string} domain - The domain to check.
+ * @param {string} comment - Optional. The app, site, or organisation that is making the request.
  * @returns {boolean} - A boolean indicating whether the domain is hosted by a green web host.
  */
-async function checkAgainstAPI(domain) {
+async function checkAgainstAPI(domain, comment) {
   const req = await fetch(
     `https://api.thegreenwebfoundation.org/greencheck/${domain}`,
     {
-      headers: getApiRequestHeaders(),
+      headers: getApiRequestHeaders(comment),
     }
   );
   const res = await req.json();
@@ -35,16 +36,17 @@ async function checkAgainstAPI(domain) {
 /**
  * Check if an array of domains is hosted by a green web host by querying the Green Web Foundation API.
  * @param {array} domains - An array of domains to check.
+ * @param {string} comment - Optional. The app, site, or organisation that is making the request.
  * @returns {array} - An array of domains that are hosted by a green web host.
  */
 
-async function checkDomainsAgainstAPI(domains) {
+async function checkDomainsAgainstAPI(domains, comment) {
   try {
     const apiPath = "https://api.thegreenwebfoundation.org/v2/greencheckmulti";
     const domainsString = JSON.stringify(domains);
 
     const req = await fetch(`${apiPath}/${domainsString}`, {
-      headers: getApiRequestHeaders(),
+      headers: getApiRequestHeaders(comment),
     });
 
     const allGreenCheckResults = await req.json();

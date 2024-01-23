@@ -5,6 +5,7 @@ import nock from "nock";
 /* eslint-disable jest/no-disabled-tests */
 
 process.env.CO2JS_VERSION = "1.2.34";
+const requestHeaderComment = "Test Runner";
 
 describe("hostingAPI", () => {
   describe("checking a single domain with #check", () => {
@@ -15,7 +16,7 @@ describe("hostingAPI", () => {
           url: "google.com",
           green: true,
         });
-      const res = await hosting.check("google.com");
+      const res = await hosting.check("google.com", requestHeaderComment);
       expect(res).toEqual(true);
     });
     it("sets the correct user agent header", async () => {
@@ -29,8 +30,8 @@ describe("hostingAPI", () => {
             green: true,
           };
         });
-      const res = await hosting.check("google.com");
-      expect(userAgent).toEqual("co2js/1.2.34");
+      const res = await hosting.check("google.com", requestHeaderComment);
+      expect(userAgent).toEqual("co2js/1.2.34 Test Runner");
     });
   });
   describe("implicitly checking multiple domains with #check", () => {

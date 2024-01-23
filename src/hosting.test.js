@@ -9,6 +9,7 @@ import pagexray from "pagexray";
 import hosting from "./hosting-node.js";
 
 process.env.CO2JS_VERSION = "1.2.34";
+const requestHeaderComment = "Test Runner";
 
 const jsonPath = path.resolve(
   __dirname,
@@ -66,11 +67,13 @@ describe("hosting", () => {
       expect(res).toEqual(true);
     });
     it("sets the correct user agent header", async () => {
-      await hosting.check("google.com");
+      await hosting.check("google.com", requestHeaderComment);
       expect(httpsGetSpy).toHaveBeenCalledTimes(1);
       expect(httpsGetSpy).toHaveBeenLastCalledWith(
         expect.any(String),
-        expect.objectContaining({ headers: { "User-Agent": "co2js/1.2.34" } }),
+        expect.objectContaining({
+          headers: { "User-Agent": "co2js/1.2.34 Test Runner" },
+        }),
         expect.any(Function)
       );
     });
