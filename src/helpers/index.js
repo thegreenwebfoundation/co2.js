@@ -178,7 +178,7 @@ function parseOptions(options) {
  * @returns {import('http').OutgoingHttpHeaders}
  */
 function getApiRequestHeaders() {
-  return { "user-agent": `co2js/${process.env.CO2JS_VERSION}` };
+  return { "User-Agent": `co2js/${process.env.CO2JS_VERSION}` };
 }
 
 export { formatNumber, parseOptions, getApiRequestHeaders };

@@ -23,7 +23,7 @@ describe("hostingAPI", () => {
       const scope = nock("https://api.thegreenwebfoundation.org/")
         .get("/greencheck/google.com")
         .reply(200, function () {
-          userAgent = this.req.headers["user-agent"];
+          userAgent = this.req.headers["User-Agent"];
           return {
             url: "google.com",
             green: true,

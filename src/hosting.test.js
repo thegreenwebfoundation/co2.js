@@ -70,7 +70,7 @@ describe("hosting", () => {
       expect(httpsGetSpy).toHaveBeenCalledTimes(1);
       expect(httpsGetSpy).toHaveBeenLastCalledWith(
         expect.any(String),
-        expect.objectContaining({ headers: { "user-agent": "co2js/1.2.34" } }),
+        expect.objectContaining({ headers: { "User-Agent": "co2js/1.2.34" } }),
         expect.any(Function)
       );
     });
