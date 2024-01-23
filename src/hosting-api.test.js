@@ -5,7 +5,7 @@ import https from "https";
 /* eslint-disable jest/no-disabled-tests */
 
 process.env.CO2JS_VERSION = "1.2.34";
-const requestHeaderComment = "Test Runner";
+const requestHeaderComment = "TestRunner";
 
 describe("hostingAPI", () => {
   let httpsGetSpy;
@@ -26,7 +26,7 @@ describe("hostingAPI", () => {
       expect(httpsGetSpy).toHaveBeenLastCalledWith(
         expect.any(String),
         expect.objectContaining({
-          headers: { "User-Agent": "co2js/1.2.34 Test Runner" },
+          headers: { "User-Agent": "co2js/1.2.34 TestRunner" },
         }),
         expect.any(Function)
       );

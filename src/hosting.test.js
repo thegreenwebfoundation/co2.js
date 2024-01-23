@@ -9,7 +9,7 @@ import pagexray from "pagexray";
 import hosting from "./hosting-node.js";
 
 process.env.CO2JS_VERSION = "1.2.34";
-const requestHeaderComment = "Test Runner";
+const requestHeaderComment = "TestRunner";
 
 const jsonPath = path.resolve(
   __dirname,
@@ -72,7 +72,7 @@ describe("hosting", () => {
       expect(httpsGetSpy).toHaveBeenLastCalledWith(
         expect.any(String),
         expect.objectContaining({
-          headers: { "User-Agent": "co2js/1.2.34 Test Runner" },
+          headers: { "User-Agent": "co2js/1.2.34 TestRunner" },
         }),
         expect.any(Function)
       );
