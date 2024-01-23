@@ -1,6 +1,6 @@
 "use strict";
 
-import { getApiRequestHeaders } from "./helpers";
+import { getApiRequestHeaders } from "./helpers/index.js";
 
 /**
  * Check if a string or array of domains has been provided
