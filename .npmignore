@@ -18,11 +18,7 @@ src/constants/test-constants.js
 # Data
 # exclude mode data
 data/**
-
-# but include the output js / json files
-!data/output/**
-# and include the minimized versions
-!src/data/**
+dist/data/**
 
 # Local sqlite db
 url2green.db
@@ -31,3 +27,15 @@ url2green.json
 # don't track workspace files
 *.vscode
 *.code-workspace
+
+# don't publish IIFE files, will commit these to git for people who need them
+dist/iife/**
+
+# don't publish the src folder, that code can be found on github
+src/**
+
+## ignore the fixup file
+fixup
+
+## don't publish the dotfiles
+.*
