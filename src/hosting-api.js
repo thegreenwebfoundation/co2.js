@@ -7,12 +7,12 @@ import { getApiRequestHeaders } from "./helpers";
  * @param {string|array} domain - The domain to check, or an array of domains to be checked.
  */
 
-function check(domain) {
+function check(domain, comment) {
   // is it a single domain or an array of them?
   if (typeof domain === "string") {
-    return checkAgainstAPI(domain);
+    return checkAgainstAPI(domain, comment);
   } else {
-    return checkDomainsAgainstAPI(domain);
+    return checkDomainsAgainstAPI(domain, comment);
   }
 }
 

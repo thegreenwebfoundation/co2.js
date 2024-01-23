@@ -16,7 +16,7 @@ describe("hostingAPI", () => {
           url: "google.com",
           green: true,
         });
-      const res = await hosting.check("google.com", requestHeaderComment);
+      const res = await hosting.check("google.com", null, requestHeaderComment);
       expect(res).toEqual(true);
     });
     it("sets the correct user agent header", async () => {
@@ -30,7 +30,7 @@ describe("hostingAPI", () => {
             green: true,
           };
         });
-      const res = await hosting.check("google.com", requestHeaderComment);
+      const res = await hosting.check("google.com", null, requestHeaderComment);
       expect(userAgent).toEqual("co2js/1.2.34 Test Runner");
     });
   });

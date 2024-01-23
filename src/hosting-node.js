@@ -52,19 +52,20 @@ async function getBody(url, comment) {
  * Check if a domain is hosted by a green web host.
  * @param {string|array} domain - The domain to check, or an array of domains to be checked.
  * @param {object} db - Optional. A database object to use for lookups.
+ * @param {string} comment - Optional. The app, site, or organisation that is making the request.
  * @returns {boolean|array} - A boolean if a string was provided, or an array of booleans if an array of domains was provided.
  */
 
-function check(domain, db) {
+function check(domain, db, comment) {
   if (db) {
     return hostingJSON.check(domain, db);
   }
 
   // is it a single domain or an array of them?
   if (typeof domain === "string") {
-    return checkAgainstAPI(domain);
+    return checkAgainstAPI(domain, comment);
   } else {
-    return checkDomainsAgainstAPI(domain);
+    return checkDomainsAgainstAPI(domain, comment);
   }
 }
 

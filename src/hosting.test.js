@@ -67,7 +67,7 @@ describe("hosting", () => {
       expect(res).toEqual(true);
     });
     it("sets the correct user agent header", async () => {
-      await hosting.check("google.com", requestHeaderComment);
+      await hosting.check("google.com", null, requestHeaderComment);
       expect(httpsGetSpy).toHaveBeenCalledTimes(1);
       expect(httpsGetSpy).toHaveBeenLastCalledWith(
         expect.any(String),
