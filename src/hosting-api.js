@@ -5,6 +5,7 @@ import { getApiRequestHeaders } from "./helpers/index.js";
 /**
  * Check if a string or array of domains has been provided
  * @param {string|array} domain - The domain to check, or an array of domains to be checked.
+ * @param {string} comment - Optional. The app, site, or organisation that is making the request.
  */
 
 function check(domain, comment) {
