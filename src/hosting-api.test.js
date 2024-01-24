@@ -20,6 +20,12 @@ describe("hostingAPI", () => {
     it("using the API", async () => {
       const res = await hosting.check("google.com");
       expect(fetch).toHaveBeenCalledTimes(1);
+      expect(fetch).toHaveBeenLastCalledWith(
+        expect.any(String),
+        expect.objectContaining({
+          headers: { "User-Agent": "co2js/1.2.34 " },
+        })
+      );
       expect(res).toEqual(true);
     });
     it("sets the correct user agent header", async () => {
