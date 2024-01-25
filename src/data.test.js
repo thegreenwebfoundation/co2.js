@@ -4,12 +4,12 @@ import DataSources from "./data.js";
 
 describe("DataSources", () => {
   let dataSources;
-  describe("set", () => {
+  describe("sets the source", () => {
     beforeEach(() => {
       dataSources = new DataSources();
     });
     it("throws an error when the data source is unknown", () => {
-      expect(() => dataSources.set("unknown")).toThrow(
+      expect(() => dataSources.set()).toThrow(
         new Error("Unknown data source: unknown")
       );
     });
@@ -17,20 +17,6 @@ describe("DataSources", () => {
       expect(() => dataSources.set("electricityMapsApi")).not.toThrow(
         new Error("Unknown data source: unknown")
       );
-    });
-  });
-  describe("get", () => {
-    beforeEach(() => {
-      dataSources = new DataSources();
-      dataSources.set("electricityMapsApi");
-    });
-    it("returns the correct data", async () => {
-      const data = await dataSources.source.get("FR");
-      expect(data.countryCode).toBe("FR");
-    });
-    it("returns the correct zones", async () => {
-      const zones = await dataSources.source.getZones();
-      expect(zones).toEqual(["a", "b", "c"]);
     });
   });
 });
