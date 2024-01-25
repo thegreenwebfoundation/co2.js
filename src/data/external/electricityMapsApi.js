@@ -9,6 +9,13 @@ class ElectricityMapsApi {
     // const data = await response.json();
     return { countryCode };
   }
+
+  async getZones() {
+    // const url = `${this.baseUrl}/zones`;
+    // const response = await fetch(url);
+    // const data = await response.json();
+    return ["a", "b", "c"];
+  }
 }
 
 export { ElectricityMapsApi };

@@ -25,8 +25,12 @@ describe("DataSources", () => {
       dataSources.set("electricityMapsApi");
     });
     it("returns the correct data", async () => {
-      const data = await dataSources.get("FR");
+      const data = await dataSources.source.get("FR");
       expect(data.countryCode).toBe("FR");
+    });
+    it("returns the correct zones", async () => {
+      const zones = await dataSources.source.getZones();
+      expect(zones).toEqual(["a", "b", "c"]);
     });
   });
 });
