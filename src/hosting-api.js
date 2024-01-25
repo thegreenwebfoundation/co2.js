@@ -5,29 +5,29 @@ import { getApiRequestHeaders } from "./helpers/index.js";
 /**
  * Check if a string or array of domains has been provided
  * @param {string|array} domain - The domain to check, or an array of domains to be checked.
- * @param {string} comment - Optional. The app, site, or organisation that is making the request.
+ * @param {string} userAgentIdentifier - Optional. The app, site, or organisation that is making the request.
  */
 
-function check(domain, comment) {
+function check(domain, userAgentIdentifier) {
   // is it a single domain or an array of them?
   if (typeof domain === "string") {
-    return checkAgainstAPI(domain, comment);
+    return checkAgainstAPI(domain, userAgentIdentifier);
   } else {
-    return checkDomainsAgainstAPI(domain, comment);
+    return checkDomainsAgainstAPI(domain, userAgentIdentifier);
   }
 }
 
 /**
  * Check if a domain is hosted by a green web host by querying the Green Web Foundation API.
  * @param {string} domain - The domain to check.
- * @param {string} comment - Optional. The app, site, or organisation that is making the request.
+ * @param {string} userAgentIdentifier - Optional. The app, site, or organisation that is making the request.
  * @returns {boolean} - A boolean indicating whether the domain is hosted by a green web host.
  */
-async function checkAgainstAPI(domain, comment) {
+async function checkAgainstAPI(domain, userAgentIdentifier) {
   const req = await fetch(
     `https://api.thegreenwebfoundation.org/greencheck/${domain}`,
     {
-      headers: getApiRequestHeaders(comment),
+      headers: getApiRequestHeaders(userAgentIdentifier),
     }
   );
   const res = await req.json();
@@ -37,17 +37,17 @@ async function checkAgainstAPI(domain, comment) {
 /**
  * Check if an array of domains is hosted by a green web host by querying the Green Web Foundation API.
  * @param {array} domains - An array of domains to check.
- * @param {string} comment - Optional. The app, site, or organisation that is making the request.
+ * @param {string} userAgentIdentifier - Optional. The app, site, or organisation that is making the request.
  * @returns {array} - An array of domains that are hosted by a green web host.
  */
 
-async function checkDomainsAgainstAPI(domains, comment) {
+async function checkDomainsAgainstAPI(domains, userAgentIdentifier) {
   try {
     const apiPath = "https://api.thegreenwebfoundation.org/v2/greencheckmulti";
     const domainsString = JSON.stringify(domains);
 
     const req = await fetch(`${apiPath}/${domainsString}`, {
-      headers: getApiRequestHeaders(comment),
+      headers: getApiRequestHeaders(userAgentIdentifier),
     });
 
     const allGreenCheckResults = await req.json();
