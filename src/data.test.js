@@ -8,9 +8,9 @@ describe("DataSources", () => {
     beforeEach(() => {
       dataSources = new DataSources();
     });
-    it("throws an error when the data source is unknown", () => {
+    it("throws an error when the data source is not defined", () => {
       expect(() => dataSources.set()).toThrow(
-        new Error("Unknown data source: unknown")
+        new Error("Unknown data source: undefined")
       );
     });
     it("sets the source correctly", () => {
