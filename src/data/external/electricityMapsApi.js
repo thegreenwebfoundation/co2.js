@@ -52,18 +52,6 @@ class ElectricityMapsApi {
       throw new Error(data.message);
     }
 
-    if (dataTime) {
-      try {
-        return data.history.filter((d) => d.datetime === dataTime)[0];
-      } catch {
-        throw new Error(
-          `No data for ${dataTime} in ${
-            (zone | ("lat: " + lat), "lon: " + lon)
-          }`
-        );
-      }
-    }
-
     return data.history;
   }
 
