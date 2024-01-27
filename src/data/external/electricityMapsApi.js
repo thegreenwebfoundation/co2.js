@@ -4,7 +4,7 @@ class ElectricityMapsApi {
     this.apiKey = options.apiKey;
   }
 
-  async get(zone, lat, lon) {
+  async getLatest(zone, lat, lon) {
     const url = `${this.baseUrl}/carbon-intensity/latest?lat=${lat}&lon=${lon}&zone=${zone}`;
     const response = await fetch(url);
     const data = await response.json();
