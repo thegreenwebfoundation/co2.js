@@ -44,7 +44,6 @@ class ElectricityMapsApi {
     }
 
     if (!zone && (!lat || !lon)) {
-      console.log(zone, lat, lon);
       throw new Error(
         "Either a zone or a latitude and longitude value is required."
       );
