@@ -2,6 +2,8 @@ class ElectricityMapsApi {
   constructor(options) {
     this.baseUrl = "https://api-access.electricitymaps.com/free-tier";
     this.authToken = options?.authToken || undefined;
+    this.name = "Electricity Maps API - Free Tier";
+    this.docs = "https://static.electricitymaps.com/api/docs/index.html";
   }
 
   async getLatest(zone, lat, lon) {
