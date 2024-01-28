@@ -11,6 +11,12 @@ class ElectricityMapsApi {
       );
     }
 
+    if (!zone && (!lat || !lon)) {
+      throw new Error(
+        "Either a zone or a latitude and longitude value is required."
+      );
+    }
+
     const query = `${lat ? `lat=${lat}&` : ""}${lon ? `lon=${lon}&` : ""}${
       zone ? `zone=${zone}` : ""
     }`;
@@ -30,15 +36,24 @@ class ElectricityMapsApi {
     return { data };
   }
 
-  async getHistory(zone, lat, lon, dataTime = undefined) {
+  async getHistory(zone, lat, lon) {
     if (!this.authToken || this.authToken === undefined) {
       throw new Error(
         "An authentication token is required to access this endpoint."
       );
     }
+
+    if (!zone && (!lat || !lon)) {
+      console.log(zone, lat, lon);
+      throw new Error(
+        "Either a zone or a latitude and longitude value is required."
+      );
+    }
+
     const query = `${lat ? `lat=${lat}&` : ""}${lon ? `lon=${lon}&` : ""}${
       zone ? `zone=${zone}` : ""
     }`;
+
     const url = `${this.baseUrl}/carbon-intensity/history?${query}`;
     const response = await fetch(url, {
       method: "GET",
