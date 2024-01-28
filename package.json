@@ -29,7 +29,8 @@
     "intensity-data:average": "node data/functions/generate_average_co2.js",
     "intensity-data:marginal": "node data/functions/generate_marginal_co2.js",
     "intensity-data": "npm run intensity-data:average && npm run intensity-data:marginal && npm run format-data",
-    "format-data": "cd data && prettier --write '**/*.{js,json}'"
+    "format-data": "cd data && prettier --write '**/*.{js,json}'",
+    "version": "npm run build"
   },
   "keywords": [
     "sustainability",
