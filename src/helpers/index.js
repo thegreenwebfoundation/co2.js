@@ -172,4 +172,14 @@ function parseOptions(options) {
   return adjustments;
 }
 
-export { formatNumber, parseOptions };
+/**
+ * Returns an object containing all the HTTP headers to use when making a request to the Green Web Foundation API.
+ * @param {string} comment - Optional. The app, site, or organisation that is making the request.
+ *
+ * @returns {import('http').OutgoingHttpHeaders}
+ */
+function getApiRequestHeaders(comment = "") {
+  return { "User-Agent": `co2js/${process.env.CO2JS_VERSION} ${comment}` };
+}
+
+export { formatNumber, parseOptions, getApiRequestHeaders };
