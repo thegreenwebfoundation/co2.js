@@ -14,10 +14,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
-- Adds user agent header for requests to Green Web Foundation APIs
+- Add ability to create adaptors which provide access to external data sources
+- Add access to the Electricity Maps API free tier
 <!-- - _(Add a summary of your feature, and if relevant the issue, in your PR for merging into `main`)_ -->
 
 ## Released
+
+### [0.14.2] - 2024-01-29
+
+- Adds user agent header for requests to Green Web Foundation APIs
 
 ### [0.14.1] - 2024-01-09
 
