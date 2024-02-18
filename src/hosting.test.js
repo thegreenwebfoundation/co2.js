@@ -65,6 +65,17 @@ describe("hosting", () => {
       const res = await hosting.check("google.com");
       expect(res).toEqual(true);
     });
+    it("use the API instead with verbose=true", async () => {
+      const res = await hosting.check("google.com", null, {
+        verbose: true,
+      });
+      expect(res).toMatchObject({
+        green: true,
+        hosted_by: "Google Inc.",
+        hosted_by_website: "https://www.google.com",
+        url: "google.com",
+      });
+    });
     it("sets the correct user agent header", async () => {
       await hosting.check("google.com", null, requestHeaderComment);
       expect(httpsGetSpy).toHaveBeenCalledTimes(1);
@@ -81,6 +92,24 @@ describe("hosting", () => {
     it("Use the API", async () => {
       const res = await hosting.check(["google.com", "pchome.com"]);
       expect(res).toContain("google.com");
+    });
+
+    it("use the API with verbose=true", async () => {
+      const res = await hosting.check(["google.com", "pchome.com"], null, {
+        verbose: true,
+      });
+      expect(res).toEqual({
+        "google.com": expect.objectContaining({
+          green: true,
+          hosted_by: "Google Inc.",
+          hosted_by_website: "https://www.google.com",
+          url: "google.com",
+        }),
+        "pchome.com": expect.objectContaining({
+          url: "pchome.com",
+          green: false,
+        }),
+      });
     });
   });
 });

@@ -5,6 +5,16 @@ import {
   FIRST_TIME_VIEWING_PERCENTAGE,
   RETURNING_VISITOR_PERCENTAGE,
 } from "../constants/index.js";
+
+// Shared type definitions to be used across different files
+
+/**
+ * @typedef {Object} DomainCheckOptions options to control the behavior when checking a domain
+ * @property {string} userAgentIdentifier - Optional. The app, site, or organisation that is making the request.
+ * @property {boolean} verbose - Optional. Whether to return a verbose response.
+ * @property {string[]} db - Optional. A database list to use for lookups.
+ */
+
 const formatNumber = (num) => parseFloat(num.toFixed(2));
 
 function parseOptions(options) {
