@@ -9,9 +9,10 @@ import pagexray from "pagexray";
 import CO2 from "./co2.js";
 import { averageIntensity, marginalIntensity } from "./index.js";
 
+const TwnGridIntensityValue = averageIntensity.data["TWN"];
+
 describe("co2", () => {
   let har, co2;
-
   describe("1 byte model", () => {
     const { TGWF_GREY_VALUE, TGWF_GREEN_VALUE, TGWF_MIXED_VALUE } = ONEBYTE;
 
@@ -484,7 +485,7 @@ describe("co2", () => {
       expect(
         co2.perVisitTrace(MILLION, false, {
           gridIntensity: {
-            device: 565.629,
+            device: 678.87,
             dataCenter: { country: "TWN" },
           },
         }).co2
@@ -493,7 +494,7 @@ describe("co2", () => {
       expect(
         co2.perByteTrace(MILLION, false, {
           gridIntensity: {
-            device: 565.629,
+            device: 678.87,
             dataCenter: { country: "TWN" },
             network: { country: "TWN" },
           },
@@ -542,7 +543,7 @@ describe("co2", () => {
           co2
             .perVisitTrace(MILLION, false, {
               gridIntensity: {
-                device: 561,
+                device: TwnGridIntensityValue,
               },
             })
             .co2.toPrecision(5)
@@ -559,7 +560,7 @@ describe("co2", () => {
           co2
             .perByteTrace(MILLION, false, {
               gridIntensity: {
-                device: 561,
+                device: TwnGridIntensityValue,
               },
             })
             .co2.toPrecision(4)
@@ -641,7 +642,7 @@ describe("co2", () => {
           co2
             .perVisitTrace(MILLION, false, {
               gridIntensity: {
-                dataCenter: 561,
+                dataCenter: TwnGridIntensityValue,
               },
             })
             .co2.toPrecision(5)
@@ -657,7 +658,7 @@ describe("co2", () => {
           co2
             .perByteTrace(MILLION, false, {
               gridIntensity: {
-                dataCenter: 561,
+                dataCenter: TwnGridIntensityValue,
               },
             })
             .co2.toPrecision(5)
@@ -740,14 +741,14 @@ describe("co2", () => {
           co2
             .perVisitTrace(MILLION, false, {
               gridIntensity: {
-                network: 561,
+                network: TwnGridIntensityValue,
               },
             })
             .co2.toPrecision(5)
         )
       ).toBeCloseTo(
         parseFloat(
-          MILLION_PERVISIT_GREY_NETWORK_GRID_INTENSITY_CHANGE.toPrecision(5)
+          MILLION_PERVISIT_GREY_NETWORK_GRID_INTENSITY_CHANGE.toFixed(5)
         ),
         3
       );
@@ -756,7 +757,7 @@ describe("co2", () => {
           co2
             .perByteTrace(MILLION, false, {
               gridIntensity: {
-                network: 561,
+                network: TwnGridIntensityValue,
               },
             })
             .co2.toPrecision(5)
