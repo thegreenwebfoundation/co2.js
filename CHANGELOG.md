@@ -14,11 +14,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+- Add access to more verbose data response from Greencheck API
 - Add ability to create adaptors which provide access to external data sources
 - Add access to the Electricity Maps API free tier
 <!-- - _(Add a summary of your feature, and if relevant the issue, in your PR for merging into `main`)_ -->
 
 ## Released
+
+### [0.14.4] - 2024-03-08
+
+#### Changed
+
+- Automated monthly update of annual average grid intensity data.
+
+### [0.14.3] - 2024-02-21
+
+#### Changed
+
+- Automated monthly update of annual average grid intensity data.
 
 ### [0.14.2] - 2024-01-29
 
