@@ -2,16 +2,16 @@
 
 /**
  * @typedef {Object} CO2EstimateTraceResultPerByte
- * @property {number} co2 - The CO2 estimate in grams/kilowatt-hour
+ * @property {number|CO2EstimateComponents} co2 - The CO2 estimate in grams or its separate components
  * @property {boolean} green - Whether the domain is green or not
- * @property {TraceResultVariables} variables - The variables used to calculate the CO2 estimate
+ * @property {TraceResultVariablesPerByte} variables - The variables used to calculate the CO2 estimate
  */
 
 /**
  * @typedef {Object} CO2EstimateTraceResultPerVisit
- * @property {number} co2 - The CO2 estimate in grams/kilowatt-hour
+ * @property {number|CO2EstimateComponents} co2 - The CO2 estimate in grams or its separate components
  * @property {boolean} green - Whether the domain is green or not
- * @property {TraceResultVariables} variables - The variables used to calculate the CO2 estimate
+ * @property {TraceResultVariablesPerVisit} variables - The variables used to calculate the CO2 estimate
  */
 
 /**
@@ -33,6 +33,15 @@
  * @property {number} dataCenter - The data center grid intensity set by the user or the default
  * @property {number} device - The device grid intensity set by the user or the default
  * @property {number} production - The production grid intensity set by the user or the default
+ */
+
+/**
+ * @typedef {Object} CO2EstimateComponents
+ * @property {number} networkCO2 - The CO2 estimate for networking in grams
+ * @property {number} dataCenterCO2 - The CO2 estimate for data centers in grams
+ * @property {number} consumerDeviceCO2 - The CO2 estimate for consumer devices in grams
+ * @property {number} productionCO2 - The CO2 estimate for device production in grams
+ * @property {number} total - The total CO2 estimate in grams
  */
 
 import OneByte from "./1byte.js";
@@ -70,7 +79,7 @@ class CO2 {
    *
    * @param {number} bytes
    * @param {boolean} green
-   * @return {number} the amount of CO2 in grammes
+   * @return {number|CO2EstimateComponents} the amount of CO2 in grammes or its separate components
    */
   perByte(bytes, green = false) {
     return this.model.perByte(bytes, green, this._segment);
@@ -83,7 +92,7 @@ class CO2 {
    *
    * @param {number} bytes
    * @param {boolean} green
-   * @return {number} the amount of CO2 in grammes
+   * @return {number|CO2EstimateComponents} the amount of CO2 in grammes or its separate components
    */
   perVisit(bytes, green = false) {
     if (this.model?.perVisit) {
