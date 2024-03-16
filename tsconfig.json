@@ -1,0 +1,11 @@
+{
+    "extends": "@tsconfig/strictest/tsconfig.json",
+    "include": ["src/**/*"],
+    "compilerOptions": {
+        "strict": true,
+        "allowJs": true,
+        "checkJs": true,
+        "emitDeclarationOnly": true,
+        "declaration": true
+    }
+}
