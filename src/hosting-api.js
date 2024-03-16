@@ -4,7 +4,7 @@ import { getApiRequestHeaders } from "./helpers/index.js";
 
 /**
  * Check if a string or array of domains has been provided
- * @param {string|array} domain - The domain to check, or an array of domains to be checked.
+ * @param {string | string[]} domain - The domain to check, or an array of domains to be checked.
  * @param {string} userAgentIdentifier - Optional. The app, site, or organisation that is making the request.
  */
 
@@ -21,7 +21,7 @@ function check(domain, userAgentIdentifier) {
  * Check if a domain is hosted by a green web host by querying the Green Web Foundation API.
  * @param {string} domain - The domain to check.
  * @param {string} userAgentIdentifier - Optional. The app, site, or organisation that is making the request.
- * @returns {boolean} - A boolean indicating whether the domain is hosted by a green web host.
+ * @returns {Promise<boolean>} - A boolean indicating whether the domain is hosted by a green web host.
  */
 async function checkAgainstAPI(domain, userAgentIdentifier) {
   const req = await fetch(
@@ -36,9 +36,9 @@ async function checkAgainstAPI(domain, userAgentIdentifier) {
 
 /**
  * Check if an array of domains is hosted by a green web host by querying the Green Web Foundation API.
- * @param {array} domains - An array of domains to check.
+ * @param {string[]} domains - An array of domains to check.
  * @param {string} userAgentIdentifier - Optional. The app, site, or organisation that is making the request.
- * @returns {array} - An array of domains that are hosted by a green web host.
+ * @returns {Promise<string[]>} - An array of domains that are hosted by a green web host.
  */
 
 async function checkDomainsAgainstAPI(domains, userAgentIdentifier) {
@@ -61,7 +61,7 @@ async function checkDomainsAgainstAPI(domains, userAgentIdentifier) {
 /**
  * Extract the green domains from the results of a green check.
  * @param {object} greenResults - The results of a green check.
- * @returns {array} - An array of domains that are hosted by a green web host.
+ * @returns {string[]} - An array of domains that are hosted by a green web host.
  */
 function greenDomainsFromResults(greenResults) {
   const entries = Object.entries(greenResults);

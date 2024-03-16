@@ -18,11 +18,13 @@
     "test:watch": "jest --watch src",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
+    "check:types": "tsc --noEmit",
     "serve": "python -m http.server --directory ./public",
     "build": "npm run build:esm && npm run build:browser && npm run build:node",
     "build:esm": "node .esbuild.esm.js && ./fixup",
     "build:browser": "node .esbuild.browser.js",
     "build:node": "node .esbuild.node.js && ./fixup",
+    "emit:types": "tsc --emitDeclarationOnly --outDir dist/",
     "release:minor": "npm run build && npm run intensity-data && npm run format-data && np minor",
     "release:patch": "npm run build && npm run intensity-data && npm run format-data && np patch",
     "gitpod": "npm run build && cp ./dist/iife/index.js ./public && npm run serve",
@@ -45,6 +47,7 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "@tgwf/url2green": "^0.4.0",
+    "@tsconfig/strictest": "^2.0.3",
     "all-contributors-cli": "^6.26.1",
     "esbuild": "^0.14.47",
     "esbuild-jest": "^0.5.0",
@@ -56,7 +59,8 @@
     "jest": "^28.1.0",
     "nock": "^13.2.4",
     "np": "^8.0.4",
-    "prettier": "^2.6.2"
+    "prettier": "^2.6.2",
+    "typescript": "^5.4.2"
   },
   "jest": {
     "transform": {
