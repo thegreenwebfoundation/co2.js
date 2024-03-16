@@ -5,7 +5,7 @@ import hostingJSON from "./hosting-json.js";
 
 /**
  * Check if a string or array of domains is hosted by a green web host by querying the Green Web Foundation API.
- * @param {string|array} domain - The domain to check, or an array of domains to be checked.
+ * @param {string | string[]} domain - The domain to check, or an array of domains to be checked.
  * @param {string | DomainCheckOptions} optionsOrAgentId - Optional. An object of domain check options, or a string
  *   representing the app, site, or organisation that is making the request.
  */
@@ -31,7 +31,7 @@ function check(domain, optionsOrAgentId) {
  * Check if a domain is hosted by a green web host by querying the Green Web Foundation API.
  * @param {string} domain - The domain to check.
  * @param {DomainCheckOptions} options
- * @returns - A boolean indicating whether the domain is hosted by a green web host if `options.verbose` is false,
+ * @returns {Promise<boolean>} - A boolean indicating whether the domain is hosted by a green web host if `options.verbose` is false,
  *   otherwise an object representing the domain host information.
  */
 async function checkAgainstAPI(domain, options = {}) {
@@ -50,9 +50,9 @@ async function checkAgainstAPI(domain, options = {}) {
 
 /**
  * Check if an array of domains is hosted by a green web host by querying the Green Web Foundation API.
- * @param {array} domains - An array of domains to check.
+ * @param {string[]} domains - An array of domains to check.
  * @param {DomainCheckOptions} options
- * @returns - An array of domains that are hosted by a green web host if `options.verbose` is false,
+ * @returns {Promise<string[]>} - An array of domains that are hosted by a green web host if `options.verbose` is false,
  *   otherwise a dictionary of domain to host information.
  */
 
@@ -78,7 +78,7 @@ async function checkDomainsAgainstAPI(domains, options = {}) {
 /**
  * Extract the green domains from the results of a green check.
  * @param {object} greenResults - The results of a green check.
- * @returns {array} - An array of domains that are hosted by a green web host.
+ * @returns {string[]} - An array of domains that are hosted by a green web host.
  */
 function greenDomainsFromResults(greenResults) {
   const entries = Object.entries(greenResults);
