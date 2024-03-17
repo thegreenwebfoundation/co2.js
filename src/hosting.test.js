@@ -28,7 +28,7 @@ describe("hosting", () => {
   describe("checking all domains on a page object with #checkPage", () => {
     it("returns a list of green domains, when passed a page object", async () => {
       const db = await hosting.loadJSON(jsonPath);
-      const greenDomains = await hosting.checkPage(
+      const greenDomains = await hosting.check(
         ["www.thegreenwebfoundation.org", "fonts.googleapis.com"],
         db
       );
