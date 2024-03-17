@@ -107,20 +107,8 @@ async function checkDomainsAgainstAPI(domains, userAgentIdentifier) {
   }
 }
 
-/**
- * Take the result of a pageXray and check the domains in it against the database.
- * @param {object} pageXray - The result of a pageXray.
- * @param {object} db - A database object to use for lookups.
- * @returns {array} - An array indicating whether the domain is hosted by a green web host.
- */
-async function checkPage(pageXray, db) {
-  const domains = Object.keys(pageXray.domains);
-  return check(domains, db);
-}
-
 export default {
   check,
-  checkPage,
   greendomains: hostingJSON.greenDomainsFromResults,
   loadJSON: hostingJSON.loadJSON,
 };
