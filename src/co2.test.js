@@ -1,10 +1,6 @@
 "use strict";
 
-import fs from "fs";
-import path from "path";
-import { MILLION, ONEBYTE, SWD } from "./constants/test-constants.js";
-
-import pagexray from "pagexray";
+import { MILLION, SWD } from "./constants/test-constants.js";
 
 import CO2 from "./co2.js";
 import { averageIntensity, marginalIntensity } from "./index.js";
@@ -12,143 +8,18 @@ import { averageIntensity, marginalIntensity } from "./index.js";
 const TwnGridIntensityValue = averageIntensity.data["TWN"];
 
 describe("co2", () => {
-  let har, co2;
-  describe("1 byte model", () => {
-    const { TGWF_GREY_VALUE, TGWF_GREEN_VALUE, TGWF_MIXED_VALUE } = ONEBYTE;
-
-    beforeEach(() => {
-      co2 = new CO2({ model: "1byte" });
-      har = JSON.parse(
-        fs.readFileSync(
-          path.resolve(__dirname, "../data/fixtures/tgwf.har"),
-          "utf8"
-        )
-      );
-    });
-
-    describe("perPage", () => {
-      it("returns CO2 for total transfer for page", () => {
-        const pages = pagexray.convert(har);
-        const pageXrayRun = pages[0];
-
-        expect(co2.perPage(pageXrayRun).toFixed(5)).toBe(
-          TGWF_GREY_VALUE.toFixed(5)
-        );
-      });
-      it("returns lower CO2 for page served from green site", () => {
-        const pages = pagexray.convert(har);
-        const pageXrayRun = pages[0];
-        let green = [
-          "www.thegreenwebfoundation.org",
-          "fonts.googleapis.com",
-          "ajax.googleapis.com",
-          "assets.digitalclimatestrike.net",
-          "cdnjs.cloudflare.com",
-          "graphite.thegreenwebfoundation.org",
-          "analytics.thegreenwebfoundation.org",
-          "fonts.gstatic.com",
-          "api.thegreenwebfoundation.org",
-        ];
-        expect(co2.perPage(pageXrayRun, green)).toBeLessThan(TGWF_GREY_VALUE);
-      });
-      it("returns a lower CO2 number where *some* domains use green power", () => {
-        const pages = pagexray.convert(har);
-        const pageXrayRun = pages[0];
-        // green can be true, or a array containing entries
-        let green = [
-          "www.thegreenwebfoundation.org",
-          "fonts.googleapis.com",
-          "ajax.googleapis.com",
-          "assets.digitalclimatestrike.net",
-          "cdnjs.cloudflare.com",
-          "graphite.thegreenwebfoundation.org",
-          "analytics.thegreenwebfoundation.org",
-          "fonts.gstatic.com",
-          "api.thegreenwebfoundation.org",
-        ];
-        expect(co2.perPage(pageXrayRun, green).toFixed(5)).toBe(
-          TGWF_MIXED_VALUE.toFixed(5)
-        );
-      });
-    });
-    describe("perDomain", () => {
-      it("shows object listing Co2 for each domain", () => {
-        const pages = pagexray.convert(har);
-        const pageXrayRun = pages[0];
-        const res = co2.perDomain(pageXrayRun);
-
-        const domains = [
-          "thegreenwebfoundation.org",
-          "www.thegreenwebfoundation.org",
-          "maxcdn.bootstrapcdn.com",
-          "fonts.googleapis.com",
-          "ajax.googleapis.com",
-          "assets.digitalclimatestrike.net",
-          "cdnjs.cloudflare.com",
-          "graphite.thegreenwebfoundation.org",
-          "analytics.thegreenwebfoundation.org",
-          "fonts.gstatic.com",
-          "api.thegreenwebfoundation.org",
-        ];
-
-        for (let obj of res) {
-          expect(domains.indexOf(obj.domain)).toBeGreaterThan(-1);
-          expect(typeof obj.co2).toBe("number");
-        }
-      });
-      it("shows lower Co2 for green domains", () => {
-        const pages = pagexray.convert(har);
-        const pageXrayRun = pages[0];
-
-        const greenDomains = [
-          "www.thegreenwebfoundation.org",
-          "fonts.googleapis.com",
-          "ajax.googleapis.com",
-          "assets.digitalclimatestrike.net",
-          "cdnjs.cloudflare.com",
-          "graphite.thegreenwebfoundation.org",
-          "analytics.thegreenwebfoundation.org",
-          "fonts.gstatic.com",
-          "api.thegreenwebfoundation.org",
-        ];
-        const res = co2.perDomain(pageXrayRun);
-        const resWithGreen = co2.perDomain(pageXrayRun, greenDomains);
-
-        for (let obj of res) {
-          expect(typeof obj.co2).toBe("number");
-        }
-        for (let obj of greenDomains) {
-          let index = 0;
-          expect(resWithGreen[index].co2).toBeLessThan(res[index].co2);
-          index++;
-        }
-      });
-    });
-  });
+  let co2;
 
   describe("Sustainable Web Design model as simple option", () => {
     // the SWD model should have slightly higher values as
     // we include more of the system in calculations for the
     // same levels of data transfer
 
-    const {
-      MILLION_GREEN,
-      MILLION_GREY,
-      TGWF_GREY_VALUE,
-      TGWF_MIXED_VALUE,
-      MILLION_PERVISIT_GREY,
-      MILLION_PERVISIT_GREEN,
-    } = SWD;
+    const { MILLION_PERVISIT_GREY, MILLION_PERVISIT_GREEN } = SWD;
 
     // We're not passing in a model parameter here to check that SWD is used by default
     beforeEach(() => {
       co2 = new CO2();
-      har = JSON.parse(
-        fs.readFileSync(
-          path.resolve(__dirname, "../data/fixtures/tgwf.har"),
-          "utf8"
-        )
-      );
     });
 
     describe("perVisit", () => {
@@ -173,105 +44,6 @@ describe("co2", () => {
       });
     });
 
-    describe("perPage", () => {
-      it("returns CO2 for total transfer for page", () => {
-        const pages = pagexray.convert(har);
-        const pageXrayRun = pages[0];
-
-        expect(parseFloat(co2.perPage(pageXrayRun).toFixed(5))).toBeCloseTo(
-          parseFloat(TGWF_GREY_VALUE.toFixed(5)),
-          3
-        );
-      });
-      it("returns lower CO2 for page served from green site", () => {
-        const pages = pagexray.convert(har);
-        const pageXrayRun = pages[0];
-        let green = [
-          "www.thegreenwebfoundation.org",
-          "fonts.googleapis.com",
-          "ajax.googleapis.com",
-          "assets.digitalclimatestrike.net",
-          "cdnjs.cloudflare.com",
-          "graphite.thegreenwebfoundation.org",
-          "analytics.thegreenwebfoundation.org",
-          "fonts.gstatic.com",
-          "api.thegreenwebfoundation.org",
-        ];
-        expect(co2.perPage(pageXrayRun, green)).toBeLessThan(TGWF_GREY_VALUE);
-      });
-      it("returns a lower CO2 number where *some* domains use green power", () => {
-        const pages = pagexray.convert(har);
-        const pageXrayRun = pages[0];
-        // green can be true, or a array containing entries
-        let green = [
-          "www.thegreenwebfoundation.org",
-          "fonts.googleapis.com",
-          "ajax.googleapis.com",
-          "assets.digitalclimatestrike.net",
-          "cdnjs.cloudflare.com",
-          "graphite.thegreenwebfoundation.org",
-          "analytics.thegreenwebfoundation.org",
-          "fonts.gstatic.com",
-          "api.thegreenwebfoundation.org",
-        ];
-        expect(
-          parseFloat(co2.perPage(pageXrayRun, green).toFixed(5))
-        ).toBeCloseTo(parseFloat(TGWF_MIXED_VALUE.toFixed(5)), 3);
-      });
-    });
-    describe("perDomain", () => {
-      it("shows object listing Co2 for each domain", () => {
-        const pages = pagexray.convert(har);
-        const pageXrayRun = pages[0];
-        const res = co2.perDomain(pageXrayRun);
-
-        const domains = [
-          "thegreenwebfoundation.org",
-          "www.thegreenwebfoundation.org",
-          "maxcdn.bootstrapcdn.com",
-          "fonts.googleapis.com",
-          "ajax.googleapis.com",
-          "assets.digitalclimatestrike.net",
-          "cdnjs.cloudflare.com",
-          "graphite.thegreenwebfoundation.org",
-          "analytics.thegreenwebfoundation.org",
-          "fonts.gstatic.com",
-          "api.thegreenwebfoundation.org",
-        ];
-
-        for (let obj of res) {
-          expect(domains.indexOf(obj.domain)).toBeGreaterThan(-1);
-          expect(typeof obj.co2).toBe("number");
-        }
-      });
-      it("shows lower Co2 for green domains", () => {
-        const pages = pagexray.convert(har);
-        const pageXrayRun = pages[0];
-
-        const greenDomains = [
-          "www.thegreenwebfoundation.org",
-          "fonts.googleapis.com",
-          "ajax.googleapis.com",
-          "assets.digitalclimatestrike.net",
-          "cdnjs.cloudflare.com",
-          "graphite.thegreenwebfoundation.org",
-          "analytics.thegreenwebfoundation.org",
-          "fonts.gstatic.com",
-          "api.thegreenwebfoundation.org",
-        ];
-        const res = co2.perDomain(pageXrayRun);
-        const resWithGreen = co2.perDomain(pageXrayRun, greenDomains);
-
-        for (let obj of res) {
-          expect(typeof obj.co2).toBe("number");
-        }
-        for (let obj of greenDomains) {
-          let index = 0;
-          expect(resWithGreen[index].co2).toBeLessThan(res[index].co2);
-          index++;
-        }
-      });
-    });
     describe("Returning results by segment", () => {
       const {
         MILLION_GREY,
