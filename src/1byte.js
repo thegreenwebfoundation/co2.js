@@ -38,16 +38,14 @@ const KWH_PER_BYTE_FOR_NETWORK =
 const KWH_PER_BYTE_FOR_DEVICES = 1.3e-10;
 
 class OneByte {
-  constructor(options) {
-    this.options = options;
-
+  constructor() {
     this.KWH_PER_BYTE_FOR_NETWORK = KWH_PER_BYTE_FOR_NETWORK;
   }
 
   /**
    * Calculates the carbon footprint of a website using the OneByte model
    * @param {number} bytes - The number of bytes to calculate the carbon footprint for
-   * @param {boolean} green - Whether the energy is green or not
+   * @param {boolean=} green - Whether the energy is green or not
    * @returns {number} The carbon footprint in grams of CO2
    */
 
