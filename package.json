@@ -48,6 +48,7 @@
   "devDependencies": {
     "@tgwf/url2green": "^0.4.0",
     "@tsconfig/strictest": "^2.0.3",
+    "@types/jest": "^29.5.12",
     "all-contributors-cli": "^6.26.1",
     "esbuild": "^0.14.47",
     "esbuild-jest": "^0.5.0",

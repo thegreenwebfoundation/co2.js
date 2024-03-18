@@ -15,14 +15,55 @@ import {
  * @property {string[]} db - Optional. A database list to use for lookups.
  */
 
+/**
+ * @param {number} num
+ */
 const formatNumber = (num) => parseFloat(num.toFixed(2));
 
+/**
+ * @typedef ModelOptionsSegmentCountry
+ * @property {string} country
+ *
+ * @typedef ModelOptionsGridIntensity
+ * @property {number | ModelOptionsSegmentCountry} device
+ * @property {number | ModelOptionsSegmentCountry} dataCenter
+ * @property {number | ModelOptionsSegmentCountry} network
+ *
+ * @typedef ModelOptions
+ * @property {ModelOptionsGridIntensity=} gridIntensity
+ * @property {number=} dataReloadRatio
+ * @property {number=} returnVisitPercentage
+ * @property {number=} firstVisitPercentage
+ */
+
+/**
+ * @typedef ModelAdjustmentSegment
+ * @property {number} value
+ * @property {string=} country
+ *
+ * @typedef ModelAdjustmentsGridIntensity
+ * @property {ModelAdjustmentSegment} device
+ * @property {ModelAdjustmentSegment} dataCenter
+ * @property {ModelAdjustmentSegment} network
+ *
+ * @typedef ModelAdjustments
+ * @property {ModelAdjustmentsGridIntensity} gridIntensity
+ * @property {number} dataReloadRatio
+ * @property {number} returnVisitPercentage
+ * @property {number} firstVisitPercentage
+ */
+
+/**
+ * @param {ModelOptions} options
+ * @returns {ModelAdjustments}
+ */
 function parseOptions(options) {
   // CHeck that it is an object
   if (typeof options !== "object") {
     throw new Error("Options must be an object");
   }
 
+  /** @type {ModelAdjustments} */
   const adjustments = {};
 
   if (options?.gridIntensity) {
