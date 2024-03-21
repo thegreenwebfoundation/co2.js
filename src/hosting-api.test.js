@@ -3,7 +3,7 @@
 import hosting from "./hosting-api.js";
 /* eslint-disable jest/no-disabled-tests */
 
-process.env.CO2JS_VERSION = "1.2.34";
+process.env["CO2JS_VERSION"] = "1.2.34";
 const requestHeaderComment = "TestRunner";
 
 global.fetch = jest.fn(() =>

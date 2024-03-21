@@ -23,18 +23,30 @@ import {
 } from "./constants/index.js";
 import { formatNumber } from "./helpers/index.js";
 
-class SustainableWebDesign {
-  constructor(options) {
-    this.options = options;
-  }
+/**
+ * @typedef EnergyByComponent
+ * @property {number} consumerDeviceEnergy
+ * @property {number} networkEnergy
+ * @property {number} productionEnergy
+ * @property {number} dataCenterEnergy
+ */
 
+/**
+ * @typedef CO2ByComponent
+ * @property {number} consumerDeviceCO2
+ * @property {number} networkCO2
+ * @property {number} productionCO2
+ * @property {number} dataCenterCO2
+ */
+
+class SustainableWebDesign {
   /**
    * Accept a figure for bytes transferred and return an object representing
    * the share of the total enrgy use of the entire system, broken down
    * by each corresponding system component
    *
    * @param {number}  bytes - the data transferred in bytes
-   * @return {object} Object containing the energy in kilowatt hours, keyed by system component
+   * @return {EnergyByComponent} Object containing the energy in kilowatt hours, keyed by system component
    */
   energyPerByteByComponent(bytes) {
     const transferedBytesToGb = bytes / fileSize.GIGABYTE;
@@ -52,14 +64,15 @@ class SustainableWebDesign {
    * Accept an object keys by the different system components, and
    * return an object with the co2 figures key by the each component
    *
-   * @param {object} energyByComponent - energy grouped by the four system components
-   * @param {number} [carbonIntensity] - carbon intensity to apply to the datacentre values
-   * @return {number} the total number in grams of CO2 equivalent emissions
+   * @param {EnergyByComponent} energyByComponent - energy grouped by the four system components
+   * @param {(number | boolean)=} carbonIntensity - carbon intensity to apply to the datacentre values
+   * @param {import("./helpers/index.js").ModelAdjustments=} options - carbon intensity to apply to the datacentre values
+   * @return {CO2ByComponent} the total number in grams of CO2 equivalent emissions
    */
   co2byComponent(
     energyByComponent,
     carbonIntensity = GLOBAL_GRID_INTENSITY,
-    options = {}
+    options
   ) {
     let deviceCarbonIntensity = GLOBAL_GRID_INTENSITY;
     let networkCarbonIntensity = GLOBAL_GRID_INTENSITY;
@@ -87,27 +100,14 @@ class SustainableWebDesign {
       dataCenterCarbonIntensity = RENEWABLES_GRID_INTENSITY;
     }
 
-    const returnCO2ByComponent = {};
-    for (const [key, value] of Object.entries(energyByComponent)) {
-      // we update the datacentre, as that's what we have information
-      // about.
-      if (key.startsWith("dataCenterEnergy")) {
-        returnCO2ByComponent[key.replace("Energy", "CO2")] =
-          value * dataCenterCarbonIntensity;
-      } else if (key.startsWith("consumerDeviceEnergy")) {
-        returnCO2ByComponent[key.replace("Energy", "CO2")] =
-          value * deviceCarbonIntensity;
-      } else if (key.startsWith("networkEnergy")) {
-        returnCO2ByComponent[key.replace("Energy", "CO2")] =
-          value * networkCarbonIntensity;
-      } else {
-        // Use the global intensity for the remaining segments
-        returnCO2ByComponent[key.replace("Energy", "CO2")] =
-          value * globalEmissions;
-      }
-    }
-
-    return returnCO2ByComponent;
+    return {
+      dataCenterCO2:
+        energyByComponent.dataCenterEnergy * dataCenterCarbonIntensity,
+      consumerDeviceCO2:
+        energyByComponent.consumerDeviceEnergy * deviceCarbonIntensity,
+      networkCO2: energyByComponent.networkEnergy * networkCarbonIntensity,
+      productionCO2: energyByComponent.productionEnergy * globalEmissions,
+    };
   }
 
   /**
@@ -117,22 +117,22 @@ class SustainableWebDesign {
    * is applied for the data centre share of the carbon intensity.
    *
    * @param {number} bytes - the data transferred in bytes
-   * @param {boolean} carbonIntensity - a boolean indicating whether the data center is green or not
-   * @param {boolean} segmentResults - a boolean indicating whether to return the results broken down by component
-   * @param {object} options - an object containing the grid intensity and first/return visitor values
+   * @param {boolean=} carbonIntensity - a boolean indicating whether the data center is green or not
+   * @param {boolean=} segmentResults - a boolean indicating whether to return the results broken down by component
+   * @param {import("./helpers/index.js").ModelAdjustments=} options - an object containing the grid intensity and first/return visitor values
    * @return {number|object} the total number in grams of CO2 equivalent emissions, or an object containing the breakdown by component
    */
   perByte(
     bytes,
     carbonIntensity = false,
     segmentResults = false,
-    options = {}
+    options = undefined
   ) {
     if (bytes < 1) {
       bytes = 0;
     }
 
-    const energyBycomponent = this.energyPerByteByComponent(bytes, options);
+    const energyBycomponent = this.energyPerByteByComponent(bytes);
 
     // otherwise when faced with non numeric values throw an error
     if (typeof carbonIntensity !== "boolean") {
