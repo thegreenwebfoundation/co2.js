@@ -2,7 +2,8 @@
 
 /**
  * @typedef {Object} CO2EstimateTraceResultPerByte
- * @property {number|CO2EstimateComponentsPerByte} co2 - The CO2 estimate in grams or its separate components
+ * // TODO [sf]: do better than `object` here?
+ * @property {number | object} co2 - The CO2 estimate in grams/kilowatt-hour or its separate components
  * @property {boolean} green - Whether the domain is green or not
  * @property {TraceResultVariablesPerByte} variables - The variables used to calculate the CO2 estimate
  */
@@ -67,7 +68,12 @@ import {
 import { parseOptions } from "./helpers/index.js";
 
 class CO2 {
-  constructor(options) {
+  /**
+   * @param {object} options
+   * @param {'1byte' | 'swd'=} options.model
+   * @param {'segment'=} options.results
+   */
+  constructor(options = {}) {
     this.model = new SustainableWebDesign();
     // Using optional chaining allows an empty object to be passed
     // in without breaking the code.
@@ -92,7 +98,8 @@ class CO2 {
    *
    * @param {number} bytes
    * @param {boolean} green
-   * @return {number|CO2EstimateComponentsPerByte} the amount of CO2 in grammes or its separate components
+   * // TODO [sf]: do better than `object` here?
+   * @return {number | object} the amount of CO2 in grammes or its separate components
    */
   perByte(bytes, green = false) {
     return this.model.perByte(bytes, green, this._segment);
@@ -105,10 +112,11 @@ class CO2 {
    *
    * @param {number} bytes
    * @param {boolean} green
-   * @return {number|CO2EstimateComponentsPerVisit} the amount of CO2 in grammes or its separate components
+   * // TODO [sf]: do better than `object` here?
+   * @return {number | object} the amount of CO2 in grammes or its separate components
    */
   perVisit(bytes, green = false) {
-    if (this.model?.perVisit) {
+    if ("perVisit" in this.model) {
       return this.model.perVisit(bytes, green, this._segment);
     } else {
       throw new Error(
@@ -168,7 +176,7 @@ class CO2 {
    * @return {CO2EstimateTraceResultPerVisit} the amount of CO2 in grammes
    */
   perVisitTrace(bytes, green = false, options = {}) {
-    if (this.model?.perVisit) {
+    if ("perVisit" in this.model) {
       let adjustments = {};
       if (options) {
         // If there are options, parse them and add them to the model.
