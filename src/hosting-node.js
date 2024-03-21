@@ -18,8 +18,8 @@ import { getApiRequestHeaders } from "./helpers/index.js";
  * for parsing as JSON.
  *
  * @param {string} url
- * @param {string} userAgentIdentifier - Optional. The app, site, or organisation that is making the request.
- * @return {string}
+ * @param {string=} userAgentIdentifier - Optional. The app, site, or organisation that is making the request.
+ * @return {Promise<string>}
  */
 async function getBody(url, userAgentIdentifier) {
   return new Promise(function (resolve, reject) {
@@ -28,13 +28,14 @@ async function getBody(url, userAgentIdentifier) {
       url,
       { headers: getApiRequestHeaders(userAgentIdentifier) },
       function (res) {
-        if (res.statusCode < 200 || res.statusCode >= 300) {
+        if (!res.statusCode || res.statusCode < 200 || res.statusCode >= 300) {
           return reject(
             new Error(
               `Could not get info from: ${url}. Status Code: ${res.statusCode}`
             )
           );
         }
+        /** @type {Buffer[]} */
         const data = [];
 
         res.on("data", (chunk) => {
@@ -50,10 +51,10 @@ async function getBody(url, userAgentIdentifier) {
 
 /**
  * Check if a domain is hosted by a green web host.
- * @param {string|array} domain - The domain to check, or an array of domains to be checked.
- * @param {object} db - Optional. A database object to use for lookups.
- * @param {string} userAgentIdentifier - Optional. The app, site, or organisation that is making the request.
- * @returns {boolean|array} - A boolean if a string was provided, or an array of booleans if an array of domains was provided.
+ * @param {string|string[]} domain - The domain to check, or an array of domains to be checked.
+ * @param {string[]=} db - Optional. A database object to use for lookups.
+ * @param {string=} userAgentIdentifier - Optional. The app, site, or organisation that is making the request.
+ * @returns {Promise<boolean|string[]>} - A boolean if a string was provided, or an array of booleans if an array of domains was provided.
  */
 
 function check(domain, db, userAgentIdentifier) {
@@ -72,8 +73,8 @@ function check(domain, db, userAgentIdentifier) {
 /**
  * Check if a domain is hosted by a green web host by querying the Green Web Foundation API.
  * @param {string} domain - The domain to check.
- * @param {string} userAgentIdentifier - Optional. The app, site, or organisation that is making the request.
- * @returns {boolean} - A boolean indicating whether the domain is hosted by a green web host.
+ * @param {string=} userAgentIdentifier - Optional. The app, site, or organisation that is making the request.
+ * @returns {Promise<boolean>} - A boolean indicating whether the domain is hosted by a green web host.
  */
 async function checkAgainstAPI(domain, userAgentIdentifier) {
   const res = JSON.parse(
@@ -87,9 +88,9 @@ async function checkAgainstAPI(domain, userAgentIdentifier) {
 
 /**
  * Check if an array of domains is hosted by a green web host by querying the Green Web Foundation API.
- * @param {array} domains - An array of domains to check.
- * @param {string} userAgentIdentifier - Optional. The app, site, or organisation that is making the request.
- * @returns {array} - An array of domains that are hosted by a green web host.
+ * @param {string[]} domains - An array of domains to check.
+ * @param {string=} userAgentIdentifier - Optional. The app, site, or organisation that is making the request.
+ * @returns {Promise<string[]>} - An array of domains that are hosted by a green web host.
  */
 async function checkDomainsAgainstAPI(domains, userAgentIdentifier) {
   try {

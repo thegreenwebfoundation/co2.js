@@ -5,7 +5,7 @@ import { getApiRequestHeaders } from "./helpers/index.js";
 /**
  * Check if a string or array of domains has been provided
  * @param {string | string[]} domain - The domain to check, or an array of domains to be checked.
- * @param {string} userAgentIdentifier - Optional. The app, site, or organisation that is making the request.
+ * @param {string=} userAgentIdentifier - Optional. The app, site, or organisation that is making the request.
  */
 
 function check(domain, userAgentIdentifier) {
@@ -20,7 +20,7 @@ function check(domain, userAgentIdentifier) {
 /**
  * Check if a domain is hosted by a green web host by querying the Green Web Foundation API.
  * @param {string} domain - The domain to check.
- * @param {string} userAgentIdentifier - Optional. The app, site, or organisation that is making the request.
+ * @param {string=} userAgentIdentifier - Optional. The app, site, or organisation that is making the request.
  * @returns {Promise<boolean>} - A boolean indicating whether the domain is hosted by a green web host.
  */
 async function checkAgainstAPI(domain, userAgentIdentifier) {
@@ -37,7 +37,7 @@ async function checkAgainstAPI(domain, userAgentIdentifier) {
 /**
  * Check if an array of domains is hosted by a green web host by querying the Green Web Foundation API.
  * @param {string[]} domains - An array of domains to check.
- * @param {string} userAgentIdentifier - Optional. The app, site, or organisation that is making the request.
+ * @param {string=} userAgentIdentifier - Optional. The app, site, or organisation that is making the request.
  * @returns {Promise<string[]>} - An array of domains that are hosted by a green web host.
  */
 
