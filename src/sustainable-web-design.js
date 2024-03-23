@@ -23,29 +23,6 @@ import {
 } from "./constants/index.js";
 import { formatNumber } from "./helpers/index.js";
 
-/**
- * @typedef EnergyByComponent
- * @property {number} consumerDeviceEnergy
- * @property {number} networkEnergy
- * @property {number} productionEnergy
- * @property {number} dataCenterEnergy
- */
-
-/**
- * @typedef CO2ByComponent
- * @property {number} consumerDeviceCO2
- * @property {number} networkCO2
- * @property {number} productionCO2
- * @property {number} dataCenterCO2
- *
- * @typedef CO2ByComponentWithTotal
- * @property {number} consumerDeviceCO2
- * @property {number} networkCO2
- * @property {number} productionCO2
- * @property {number} dataCenterCO2
- * @property {number} total
- */
-
 class SustainableWebDesign {
   /**
    * Accept a figure for bytes transferred and return an object representing
@@ -73,7 +50,7 @@ class SustainableWebDesign {
    *
    * @param {EnergyByComponent} energyByComponent - energy grouped by the four system components
    * @param {(number | boolean)=} carbonIntensity - carbon intensity to apply to the datacentre values
-   * @param {import("./helpers/index.js").ModelAdjustments=} options - carbon intensity to apply to the datacentre values
+   * @param {ModelAdjustments=} options - carbon intensity to apply to the datacentre values
    * @return {CO2ByComponent} the total number in grams of CO2 equivalent emissions
    */
   co2byComponent(
@@ -126,8 +103,8 @@ class SustainableWebDesign {
    * @param {number} bytes - the data transferred in bytes
    * @param {boolean=} carbonIntensity - a boolean indicating whether the data center is green or not
    * @param {boolean=} segmentResults - a boolean indicating whether to return the results broken down by component
-   * @param {import("./helpers/index.js").ModelAdjustments=} options - an object containing the grid intensity and first/return visitor values
-   * @return {number|CO2ByComponentWithTotal} the total number in grams of CO2 equivalent emissions, or an object containing the breakdown by component
+   * @param {ModelAdjustments=} options - an object containing the grid intensity and first/return visitor values
+   * @return {number | CO2ByComponentWithTotal} the total number in grams of CO2 equivalent emissions, or an object containing the breakdown by component
    */
   perByte(
     bytes,
@@ -174,8 +151,8 @@ class SustainableWebDesign {
    * @param {number} bytes - the data transferred in bytes
    * @param {boolean} carbonIntensity - a boolean indicating whether the data center is green or not
    * @param {boolean} segmentResults - a boolean indicating whether to return the results broken down by component
-   * @param {import("./helpers/index.js").ModelAdjustments=} options - an object containing the grid intensity and first/return visitor values
-   * @return {number|object} the total number in grams of CO2 equivalent emissions, or an object containing the breakdown by component
+   * @param {ModelAdjustments=} options - an object containing the grid intensity and first/return visitor values
+   * @return {number | CO2ByComponentWithTotal} the total number in grams of CO2 equivalent emissions, or an object containing the breakdown by component
    */
   perVisit(
     bytes,
@@ -232,10 +209,6 @@ class SustainableWebDesign {
   }
 
   /**
-   * @typedef {Object} AdjustedEnergyComponent
-   * @type {{ [K in keyof EnergyByComponent as `${K} - first`]: EnergyByComponent[K] } & { [K in keyof EnergyByComponent as `${K} - subsequest`]: EnergyByComponent[K] }}
-   */
-  /**
    * Accept a figure for bytes transferred, and return an object containing figures
    * per system component, with the caching assumptions applied. This tries to account
    * for webpages being loaded from a cache by browsers, so if you had a thousand page views,
@@ -243,7 +216,7 @@ class SustainableWebDesign {
    * of transfer.
    *
    * @param {number} bytes - the data transferred in bytes for loading a webpage
-   * @param {import("./helpers/index.js").ModelAdjustments=} options - what percentage of visits are loading this page for the first time
+   * @param {ModelAdjustments=} options - what percentage of visits are loading this page for the first time
    * @param {number} firstView - what percentage of visits are loading this page for the first time
    * @param {number=} returnView - what percentage of visits are loading this page for subsequent times
    * @param {number=} dataReloadRatio - what percentage of a page is reloaded on each subsequent page view

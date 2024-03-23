@@ -65,6 +65,7 @@ async function checkDomainsAgainstAPI(domains, options = {}) {
       headers: getApiRequestHeaders(options.userAgentIdentifier),
     });
 
+    /** @type {MultiDomainCheckResponse} */
     const allGreenCheckResults = await req.json();
 
     return options.verbose
@@ -77,7 +78,7 @@ async function checkDomainsAgainstAPI(domains, options = {}) {
 
 /**
  * Extract the green domains from the results of a green check.
- * @param {object} greenResults - The results of a green check.
+ * @param {MultiDomainCheckResponse} greenResults - The results of a green check.
  * @returns {string[]} - An array of domains that are hosted by a green web host.
  */
 function greenDomainsFromResults(greenResults) {

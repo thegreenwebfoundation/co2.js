@@ -45,6 +45,7 @@ async function loadJSON(jsonPath) {
   const jsonBuffer = jsonPath.endsWith(".gz")
     ? await getGzippedFileAsJson(jsonPath)
     : await readFile(jsonPath);
+  // TODO (simon) should we check that the parsed JSON is a list of strings?
   return JSON.parse(jsonBuffer.toString());
 }
 
@@ -77,7 +78,7 @@ function checkInJSON(domain, db) {
 
 /**
  * Extract the green domains from the results of a green check.
- * @param {Record<string, { green: boolean, url: string}>} greenResults - The results of a green check.
+ * @param {MultiDomainCheckResponse} greenResults - The results of a green check.
  * @returns {string[]} - An array of domains that are hosted by a green web host.
  */
 function greenDomainsFromResults(greenResults) {
