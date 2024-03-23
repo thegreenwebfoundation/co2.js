@@ -82,9 +82,9 @@ function checkInJSON(domain, db) {
  */
 function greenDomainsFromResults(greenResults) {
   const entries = Object.entries(greenResults);
-  const greenEntries = entries.filter(([key, val]) => val.green);
+  const greenEntries = entries.filter(([, val]) => val.green);
 
-  return greenEntries.map(([key, val]) => val.url);
+  return greenEntries.map(([, val]) => val.url);
 }
 
 /**
