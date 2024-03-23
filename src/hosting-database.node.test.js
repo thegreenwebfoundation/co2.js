@@ -2,6 +2,7 @@
 
 import path from "path";
 
+// @ts-ignore
 import { hosting } from "@tgwf/url2green";
 
 const dbPath = path.resolve(

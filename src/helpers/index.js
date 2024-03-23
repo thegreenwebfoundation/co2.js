@@ -72,9 +72,7 @@ function parseOptions(options) {
         }
         adjustments.gridIntensity["device"] = {
           country: device.country,
-          value: parseFloat(
-            averageIntensity.data[device.country?.toUpperCase()]
-          ),
+          value: averageIntensity.data[device.country?.toUpperCase()],
         };
       } else if (typeof device === "number") {
         adjustments.gridIntensity["device"] = {
@@ -101,9 +99,7 @@ function parseOptions(options) {
         }
         adjustments.gridIntensity["dataCenter"] = {
           country: dataCenter.country,
-          value: parseFloat(
-            averageIntensity.data[dataCenter.country?.toUpperCase()]
-          ),
+          value: averageIntensity.data[dataCenter.country?.toUpperCase()],
         };
       } else if (typeof dataCenter === "number") {
         adjustments.gridIntensity["dataCenter"] = {
@@ -130,9 +126,7 @@ function parseOptions(options) {
         }
         adjustments.gridIntensity["network"] = {
           country: network.country,
-          value: parseFloat(
-            averageIntensity.data[network.country?.toUpperCase()]
-          ),
+          value: averageIntensity.data[network.country?.toUpperCase()],
         };
       } else if (typeof network === "number") {
         adjustments.gridIntensity["network"] = {

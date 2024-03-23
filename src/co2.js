@@ -1,6 +1,23 @@
 "use strict";
 
 /**
+ * @typedef {Object} TraceResultsGridIntensity
+ * @property {string} description
+ * @property {number} device
+ * @property {number} dataCenter
+ * @property {number} network
+ * @property {number} production
+ *
+ * @typedef {Object} TraceResultVariables
+ * @property {string} description
+ * @property {number} bytes
+ * @property {TraceResultsGridIntensity} gridIntensity
+ * @property {number=} dataReloadRatio
+ * @property {number=} firstVisitPercentage
+ * @property {number=} returnVisitPercentage
+ */
+
+/**
  * @typedef {Object} CO2EstimateTraceResultPerByte
  * // TODO [sf]: do better than `object` here?
  * @property {number | object} co2 - The CO2 estimate in grams/kilowatt-hour
@@ -110,11 +127,12 @@ class CO2 {
    *
    * @param {number} bytes
    * @param {boolean} green
-   * @param {Object} options
+   * @param {object} options
    * @return {CO2EstimateTraceResultPerByte} the amount of CO2 in grammes
    */
   perByteTrace(bytes, green = false, options = {}) {
-    let adjustments = {};
+    /** @type {import("./helpers/index.js").ModelAdjustments | undefined} */
+    let adjustments;
     if (options) {
       // If there are options, parse them and add them to the model.
       adjustments = parseOptions(options);
@@ -155,14 +173,17 @@ class CO2 {
    */
   perVisitTrace(bytes, green = false, options = {}) {
     if ("perVisit" in this.model) {
-      let adjustments = {};
+      /** @type {import("./helpers/index.js").ModelAdjustments | undefined} */
+      let adjustments;
       if (options) {
         // If there are options, parse them and add them to the model.
         adjustments = parseOptions(options);
       }
 
       return {
-        co2: this.model.perVisit(bytes, green, this._segment, adjustments),
+        co2: /** @type {number} */ (
+          this.model.perVisit(bytes, green, this._segment, adjustments)
+        ),
         green,
         variables: {
           description:
@@ -195,14 +216,58 @@ class CO2 {
     }
   }
 
+  /**
+   * @typedef {Object} PageXRayDomain
+   * @property {number} transferSize
+   *
+   * @typedef {Object} PageXRayAsset
+   * @property {string} url
+   * @property {number} transferSize
+   * @property {string} type
+   *
+   * @typedef {Object} PageXRay
+   * @property {Record<string, PageXRayDomain>} domains
+   * @property {PageXRayAsset[]} assets
+   * @property {RegExp} firstPartyRegEx
+   */
+
+  /**
+   * @typedef {Object} CO2PerDomain
+   * @property {string} domain
+   * @property {number} co2
+   * @property {number} transferSize
+   *
+   * @typedef {Object} CO2PerContentType
+   * @property {string} type
+   * @property {number} co2
+   * @property {number} transferSize
+   *
+   * @typedef {Object} CO2PerContentAsset
+   * @property {string} url
+   * @property {number} co2
+   * @property {number} transferSize
+   */
+
+  /**
+   *
+   * @param {PageXRay} pageXray
+   * @param {string[]=} greenDomains
+   * @returns {CO2PerDomain[]}
+   */
   perDomain(pageXray, greenDomains) {
+    /** @type {CO2PerDomain[]} */
     const co2PerDomain = [];
     for (let domain of Object.keys(pageXray.domains)) {
+      /** @type {number} */
       let co2;
       if (greenDomains && greenDomains.indexOf(domain) > -1) {
-        co2 = this.perByte(pageXray.domains[domain].transferSize, true);
+        co2 = /** @type {number} */ (
+          this.perByte(pageXray.domains[domain].transferSize, true)
+        );
       } else {
-        co2 = this.perByte(pageXray.domains[domain].transferSize);
+        co2 = /** @type {number} */ (
+          this.perByte(pageXray.domains[domain].transferSize)
+        );
       }
       co2PerDomain.push({
         domain,
@@ -215,6 +280,11 @@ class CO2 {
     return co2PerDomain;
   }
 
+  /**
+   *
+   * @param {PageXRay} pageXray
+   * @param {string[]=} green
+   */
   perPage(pageXray, green) {
     // Accept an xray object, and if we receive a boolean as the second
     // argument, we assume every request we make is sent to a server
@@ -231,14 +301,22 @@ class CO2 {
     return totalCO2;
   }
 
+  /**
+   * @param {PageXRay} pageXray
+   * @param {string[]=} greenDomains
+   * @returns {CO2PerContentType[]}
+   */
   perContentType(pageXray, greenDomains) {
+    /** @type {Record<string, Omit<CO2PerContentType, 'type'>>} */
     const co2PerContentType = {};
     for (let asset of pageXray.assets) {
-      const domain = new URL(asset.url).domain;
+      const domain = new URL(asset.url).host;
       const transferSize = asset.transferSize;
-      const co2ForTransfer = this.perByte(
-        transferSize,
-        greenDomains && greenDomains.indexOf(domain) > -1
+      const co2ForTransfer = /** @type {number} */ (
+        this.perByte(
+          transferSize,
+          greenDomains && greenDomains.indexOf(domain) > -1
+        )
       );
       const contentType = asset.type;
       if (!co2PerContentType[contentType]) {
@@ -260,14 +338,22 @@ class CO2 {
     return all;
   }
 
+  /**
+   *
+   * @param {PageXRay} pageXray
+   * @param {string[]=} greenDomains
+   */
   dirtiestResources(pageXray, greenDomains) {
+    /** @type {CO2PerContentAsset[]} */
     const allAssets = [];
     for (let asset of pageXray.assets) {
-      const domain = new URL(asset.url).domain;
+      const domain = new URL(asset.url).host;
       const transferSize = asset.transferSize;
-      const co2ForTransfer = this.perByte(
-        transferSize,
-        greenDomains && greenDomains.indexOf(domain) > -1
+      const co2ForTransfer = /** @type {number} */ (
+        this.perByte(
+          transferSize,
+          greenDomains && greenDomains.indexOf(domain) > -1
+        )
       );
       allAssets.push({ url: asset.url, co2: co2ForTransfer, transferSize });
     }
@@ -276,6 +362,11 @@ class CO2 {
     return allAssets.slice(0, allAssets.length > 10 ? 10 : allAssets.length);
   }
 
+  /**
+   * @param {PageXRay} pageXray
+   * @param {string[]=} greenDomains
+   * @returns
+   */
   perParty(pageXray, greenDomains) {
     let firstParty = 0;
     let thirdParty = 0;
@@ -283,14 +374,18 @@ class CO2 {
     const firstPartyRegEx = pageXray.firstPartyRegEx;
     for (let d of Object.keys(pageXray.domains)) {
       if (!d.match(firstPartyRegEx)) {
-        thirdParty += this.perByte(
-          pageXray.domains[d].transferSize,
-          greenDomains && greenDomains.indexOf(d) > -1
+        thirdParty += /** @type {number} */ (
+          this.perByte(
+            pageXray.domains[d].transferSize,
+            greenDomains && greenDomains.indexOf(d) > -1
+          )
         );
       } else {
-        firstParty += this.perByte(
-          pageXray.domains[d].transferSize,
-          greenDomains && greenDomains.indexOf(d) > -1
+        firstParty += /** @type {number} */ (
+          this.perByte(
+            pageXray.domains[d].transferSize,
+            greenDomains && greenDomains.indexOf(d) > -1
+          )
         );
       }
     }

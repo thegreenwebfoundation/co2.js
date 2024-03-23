@@ -4,6 +4,7 @@ import fs from "fs";
 import path from "path";
 import { MILLION, ONEBYTE, SWD } from "./constants/test-constants.js";
 
+// @ts-ignore
 import pagexray from "pagexray";
 
 import CO2 from "./co2.js";
@@ -12,9 +13,12 @@ import { averageIntensity, marginalIntensity } from "./index.js";
 const TwnGridIntensityValue = averageIntensity.data["TWN"];
 
 describe("co2", () => {
-  let har, co2;
+  /** @type {unknown} */
+  let har;
+  /** @type {CO2} */
+  let co2;
   describe("1 byte model", () => {
-    const { TGWF_GREY_VALUE, TGWF_GREEN_VALUE, TGWF_MIXED_VALUE } = ONEBYTE;
+    const { TGWF_GREY_VALUE, TGWF_MIXED_VALUE } = ONEBYTE;
 
     beforeEach(() => {
       co2 = new CO2({ model: "1byte" });
@@ -117,7 +121,7 @@ describe("co2", () => {
         for (let obj of res) {
           expect(typeof obj.co2).toBe("number");
         }
-        for (let obj of greenDomains) {
+        for (let _ of greenDomains) {
           let index = 0;
           expect(resWithGreen[index].co2).toBeLessThan(res[index].co2);
           index++;
@@ -132,8 +136,6 @@ describe("co2", () => {
     // same levels of data transfer
 
     const {
-      MILLION_GREEN,
-      MILLION_GREY,
       TGWF_GREY_VALUE,
       TGWF_MIXED_VALUE,
       MILLION_PERVISIT_GREY,
@@ -265,7 +267,7 @@ describe("co2", () => {
         for (let obj of res) {
           expect(typeof obj.co2).toBe("number");
         }
-        for (let obj of greenDomains) {
+        for (let _ of greenDomains) {
           let index = 0;
           expect(resWithGreen[index].co2).toBeLessThan(res[index].co2);
           index++;
