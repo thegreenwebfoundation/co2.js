@@ -12,39 +12,6 @@ import {
 const formatNumber = (num) => parseFloat(num.toFixed(2));
 
 /**
- * @typedef ModelOptionsSegmentCountry
- * @property {string} country
- *
- * @typedef ModelOptionsGridIntensity
- * @property {number | ModelOptionsSegmentCountry} device
- * @property {number | ModelOptionsSegmentCountry} dataCenter
- * @property {number | ModelOptionsSegmentCountry} network
- *
- * @typedef ModelOptions
- * @property {ModelOptionsGridIntensity=} gridIntensity
- * @property {number=} dataReloadRatio
- * @property {number=} returnVisitPercentage
- * @property {number=} firstVisitPercentage
- */
-
-/**
- * @typedef ModelAdjustmentSegment
- * @property {number} value
- * @property {string=} country
- *
- * @typedef ModelAdjustmentsGridIntensity
- * @property {ModelAdjustmentSegment} device
- * @property {ModelAdjustmentSegment} dataCenter
- * @property {ModelAdjustmentSegment} network
- *
- * @typedef ModelAdjustments
- * @property {ModelAdjustmentsGridIntensity} gridIntensity
- * @property {number} dataReloadRatio
- * @property {number} returnVisitPercentage
- * @property {number} firstVisitPercentage
- */
-
-/**
  * @param {ModelOptions} options
  * @returns {ModelAdjustments}
  */
@@ -221,4 +188,13 @@ function getApiRequestHeaders(comment = "") {
   return { "User-Agent": `co2js/${process.env["CO2JS_VERSION"]} ${comment}` };
 }
 
-export { formatNumber, parseOptions, getApiRequestHeaders };
+/**
+ *
+ * @param {number | CO2ByComponentWithTotal} input
+ * @returns {number}
+ */
+function toTotalCO2(input) {
+  return typeof input === "object" ? input.total : input;
+}
+
+export { formatNumber, parseOptions, getApiRequestHeaders, toTotalCO2 };

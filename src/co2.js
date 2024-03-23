@@ -1,58 +1,5 @@
 "use strict";
 
-/**
- * @typedef {Object} TraceResultsGridIntensity
- * @property {string} description
- * @property {number} device
- * @property {number} dataCenter
- * @property {number} network
- * @property {number} production
- *
- * @typedef {Object} TraceResultVariables
- * @property {string} description
- * @property {number} bytes
- * @property {TraceResultsGridIntensity} gridIntensity
- * @property {number=} dataReloadRatio
- * @property {number=} firstVisitPercentage
- * @property {number=} returnVisitPercentage
- */
-
-/**
- * @typedef {Object} CO2EstimateTraceResultPerByte
- * // TODO [sf]: do better than `object` here?
- * @property {number | object} co2 - The CO2 estimate in grams/kilowatt-hour
- * @property {boolean} green - Whether the domain is green or not
- * @property {TraceResultVariables} variables - The variables used to calculate the CO2 estimate
- */
-
-/**
- * @typedef {Object} CO2EstimateTraceResultPerVisit
- * @property {number} co2 - The CO2 estimate in grams/kilowatt-hour
- * @property {boolean} green - Whether the domain is green or not
- * @property {TraceResultVariables} variables - The variables used to calculate the CO2 estimate
- */
-
-/**
- * @typedef {Object} TraceResultVariablesPerByte
- * @property {GridIntensityVariables} gridIntensity - The grid intensity related variables
- */
-/**
- * @typedef {Object} TraceResultVariablesPerVisit
- * @property {GridIntensityVariables} gridIntensity - The grid intensity related variables
- * @property {number} dataReloadRatio - What percentage of a page is reloaded on each subsequent page view
- * @property {number} firstVisitPercentage - What percentage of visits are loading this page for subsequent times
- * @property {number} returnVisitPercentage - What percentage of visits are loading this page for the second or more time
- */
-
-/**
- * @typedef {Object} GridIntensityVariables
- * @property {string} description - The description of the variables
- * @property {number} network - The network grid intensity set by the user or the default
- * @property {number} dataCenter - The data center grid intensity set by the user or the default
- * @property {number} device - The device grid intensity set by the user or the default
- * @property {number} production - The production grid intensity set by the user or the default
- */
-
 import OneByte from "./1byte.js";
 import SustainableWebDesign from "./sustainable-web-design.js";
 
@@ -60,7 +7,7 @@ import {
   GLOBAL_GRID_INTENSITY,
   RENEWABLES_GRID_INTENSITY,
 } from "./constants/index.js";
-import { parseOptions } from "./helpers/index.js";
+import { parseOptions, toTotalCO2 } from "./helpers/index.js";
 
 class CO2 {
   /**
@@ -93,8 +40,7 @@ class CO2 {
    *
    * @param {number} bytes
    * @param {boolean} green
-   * // TODO [sf]: do better than `object` here?
-   * @return {number | object} the amount of CO2 in grammes
+   * @return {number | CO2ByComponentWithTotal} the amount of CO2 in grammes
    */
   perByte(bytes, green = false) {
     return this.model.perByte(bytes, green, this._segment);
@@ -107,8 +53,7 @@ class CO2 {
    *
    * @param {number} bytes
    * @param {boolean} green
-   * // TODO [sf]: do better than `object` here?
-   * @return {number | object} the amount of CO2 in grammes
+   * @return {number | CO2ByComponentWithTotal} the amount of CO2 in grammes
    */
   perVisit(bytes, green = false) {
     if ("perVisit" in this.model) {
@@ -127,11 +72,11 @@ class CO2 {
    *
    * @param {number} bytes
    * @param {boolean} green
-   * @param {object} options
+   * @param {ModelOptions} options
    * @return {CO2EstimateTraceResultPerByte} the amount of CO2 in grammes
    */
   perByteTrace(bytes, green = false, options = {}) {
-    /** @type {import("./helpers/index.js").ModelAdjustments | undefined} */
+    /** @type {ModelAdjustments | undefined} */
     let adjustments;
     if (options) {
       // If there are options, parse them and add them to the model.
@@ -168,12 +113,12 @@ class CO2 {
    *
    * @param {number} bytes
    * @param {boolean} green
-   * @param {Object} options
+   * @param {ModelOptions} options
    * @return {CO2EstimateTraceResultPerVisit} the amount of CO2 in grammes
    */
   perVisitTrace(bytes, green = false, options = {}) {
     if ("perVisit" in this.model) {
-      /** @type {import("./helpers/index.js").ModelAdjustments | undefined} */
+      /** @type {ModelAdjustments | undefined} */
       let adjustments;
       if (options) {
         // If there are options, parse them and add them to the model.
@@ -181,7 +126,7 @@ class CO2 {
       }
 
       return {
-        co2: /** @type {number} */ (
+        co2: toTotalCO2(
           this.model.perVisit(bytes, green, this._segment, adjustments)
         ),
         green,
@@ -217,38 +162,6 @@ class CO2 {
   }
 
   /**
-   * @typedef {Object} PageXRayDomain
-   * @property {number} transferSize
-   *
-   * @typedef {Object} PageXRayAsset
-   * @property {string} url
-   * @property {number} transferSize
-   * @property {string} type
-   *
-   * @typedef {Object} PageXRay
-   * @property {Record<string, PageXRayDomain>} domains
-   * @property {PageXRayAsset[]} assets
-   * @property {RegExp} firstPartyRegEx
-   */
-
-  /**
-   * @typedef {Object} CO2PerDomain
-   * @property {string} domain
-   * @property {number} co2
-   * @property {number} transferSize
-   *
-   * @typedef {Object} CO2PerContentType
-   * @property {string} type
-   * @property {number} co2
-   * @property {number} transferSize
-   *
-   * @typedef {Object} CO2PerContentAsset
-   * @property {string} url
-   * @property {number} co2
-   * @property {number} transferSize
-   */
-
-  /**
    *
    * @param {PageXRay} pageXray
    * @param {string[]=} greenDomains
@@ -261,13 +174,11 @@ class CO2 {
       /** @type {number} */
       let co2;
       if (greenDomains && greenDomains.indexOf(domain) > -1) {
-        co2 = /** @type {number} */ (
+        co2 = toTotalCO2(
           this.perByte(pageXray.domains[domain].transferSize, true)
         );
       } else {
-        co2 = /** @type {number} */ (
-          this.perByte(pageXray.domains[domain].transferSize)
-        );
+        co2 = toTotalCO2(this.perByte(pageXray.domains[domain].transferSize));
       }
       co2PerDomain.push({
         domain,
@@ -312,7 +223,7 @@ class CO2 {
     for (let asset of pageXray.assets) {
       const domain = new URL(asset.url).host;
       const transferSize = asset.transferSize;
-      const co2ForTransfer = /** @type {number} */ (
+      const co2ForTransfer = toTotalCO2(
         this.perByte(
           transferSize,
           greenDomains && greenDomains.indexOf(domain) > -1
@@ -349,7 +260,7 @@ class CO2 {
     for (let asset of pageXray.assets) {
       const domain = new URL(asset.url).host;
       const transferSize = asset.transferSize;
-      const co2ForTransfer = /** @type {number} */ (
+      const co2ForTransfer = toTotalCO2(
         this.perByte(
           transferSize,
           greenDomains && greenDomains.indexOf(domain) > -1
@@ -374,14 +285,14 @@ class CO2 {
     const firstPartyRegEx = pageXray.firstPartyRegEx;
     for (let d of Object.keys(pageXray.domains)) {
       if (!d.match(firstPartyRegEx)) {
-        thirdParty += /** @type {number} */ (
+        thirdParty += toTotalCO2(
           this.perByte(
             pageXray.domains[d].transferSize,
             greenDomains && greenDomains.indexOf(d) > -1
           )
         );
       } else {
-        firstParty += /** @type {number} */ (
+        firstParty += toTotalCO2(
           this.perByte(
             pageXray.domains[d].transferSize,
             greenDomains && greenDomains.indexOf(d) > -1

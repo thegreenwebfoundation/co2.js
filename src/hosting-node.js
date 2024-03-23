@@ -110,7 +110,7 @@ async function checkDomainsAgainstAPI(domains, userAgentIdentifier) {
 
 /**
  * Take the result of a pageXray and check the domains in it against the database.
- * @param {{ domains: Record<string, unknown>}} pageXray - The result of a pageXray.
+ * @param {PageXRay} pageXray - The result of a pageXray.
  * @param {string[]} db - A database object to use for lookups.
  * @returns {Promise<boolean | string[]>} - An array indicating whether the domain is hosted by a green web host.
  */
