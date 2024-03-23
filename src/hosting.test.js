@@ -7,7 +7,7 @@ import hosting from "./hosting-node.js";
 
 jest.mock("https");
 
-process.env.CO2JS_VERSION = "1.2.34";
+process.env["CO2JS_VERSION"] = "1.2.34";
 const requestHeaderComment = "TestRunner";
 
 const jsonPath = path.resolve(
@@ -19,7 +19,9 @@ const jsonPath = path.resolve(
 );
 
 describe("hosting", () => {
+  /** @type {unknown} */
   let har;
+  /** @type {jest.SpyInstance<typeof https['get']>} */
   let httpsGetSpy;
   beforeEach(() => {
     httpsGetSpy = jest.spyOn(https, "get");
@@ -38,7 +40,8 @@ describe("hosting", () => {
         "www.thegreenwebfoundation.org",
         "fonts.googleapis.com",
       ];
-      greenDomains.forEach((dom) => {
+      expect(Array.isArray(greenDomains)).toBe(true);
+      /** @type string[] */ (greenDomains).forEach((dom) => {
         expect(expectedGreendomains).toContain(dom);
       });
     });

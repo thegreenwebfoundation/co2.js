@@ -1,6 +1,23 @@
 "use strict";
 
 /**
+ * @typedef {Object} TraceResultsGridIntensity
+ * @property {string} description
+ * @property {number} device
+ * @property {number} dataCenter
+ * @property {number} network
+ * @property {number} production
+ *
+ * @typedef {Object} TraceResultVariables
+ * @property {string} description
+ * @property {number} bytes
+ * @property {TraceResultsGridIntensity} gridIntensity
+ * @property {number=} dataReloadRatio
+ * @property {number=} firstVisitPercentage
+ * @property {number=} returnVisitPercentage
+ */
+
+/**
  * @typedef {Object} CO2EstimateTraceResultPerByte
  * // TODO [sf]: do better than `object` here?
  * @property {number | object} co2 - The CO2 estimate in grams/kilowatt-hour or its separate components
@@ -132,11 +149,12 @@ class CO2 {
    *
    * @param {number} bytes
    * @param {boolean} green
-   * @param {Object} options
+   * @param {object} options
    * @return {CO2EstimateTraceResultPerByte} the amount of CO2 in grammes
    */
   perByteTrace(bytes, green = false, options = {}) {
-    let adjustments = {};
+    /** @type {import("./helpers/index.js").ModelAdjustments | undefined} */
+    let adjustments;
     if (options) {
       // If there are options, parse them and add them to the model.
       adjustments = parseOptions(options);
@@ -177,14 +195,17 @@ class CO2 {
    */
   perVisitTrace(bytes, green = false, options = {}) {
     if ("perVisit" in this.model) {
-      let adjustments = {};
+      /** @type {import("./helpers/index.js").ModelAdjustments | undefined} */
+      let adjustments;
       if (options) {
         // If there are options, parse them and add them to the model.
         adjustments = parseOptions(options);
       }
 
       return {
-        co2: this.model.perVisit(bytes, green, this._segment, adjustments),
+        co2: /** @type {number} */ (
+          this.model.perVisit(bytes, green, this._segment, adjustments)
+        ),
         green,
         variables: {
           description:
