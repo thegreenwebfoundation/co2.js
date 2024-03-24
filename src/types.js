@@ -14,10 +14,10 @@
  *   Or, an object, which contains a key of country and a value that is an Alpha-3 ISO country code.
  *
  * @typedef ModelOptions
- * @property {ModelOptionsGridIntensity=} gridIntensity
- * @property {number=} dataReloadRatio
- * @property {number=} returnVisitPercentage
- * @property {number=} firstVisitPercentage
+ * @property {ModelOptionsGridIntensity=} gridIntensity Segment-level description of the grid carbon intensity.
+ * @property {number=} dataReloadRatio A number between 0 and 1 representing the percentage of data that is downloaded by return visitors.
+ * @property {number=} returnVisitPercentage A number between 0 and 1 representing the percentage of returning visitors.
+ * @property {number=} firstVisitPercentage A number between 0 and 1 representing the percentage of new visitors.
  *
  * @typedef ModelAdjustmentSegment
  * @property {number} value
@@ -55,7 +55,7 @@
  * @property {TraceResultVariables} variables - The variables used to calculate the CO2 estimate
  *
  * @typedef CO2EstimateTraceResultPerVisit
- * @property {number} co2 - The CO2 estimate in grams/kilowatt-hour or its separate components
+ * @property {number | AdjustedCO2ByComponentWithTotal} co2 - The CO2 estimate in grams/kilowatt-hour or its separate components
  * @property {boolean} green - Whether the domain is green or not
  * @property {TraceResultVariables} variables - The variables used to calculate the CO2 estimate
  *
@@ -81,8 +81,12 @@
  * @property {number} productionEnergy
  * @property {number} dataCenterEnergy
  *
- * @typedef {Object} AdjustedEnergyComponent
- * @type {{ [K in keyof EnergyByComponent as `${K} - first`]: EnergyByComponent[K] } & { [K in keyof EnergyByComponent as `${K} - subsequest`]: EnergyByComponent[K] }}
+ * @typedef {Object} AdjustedEnergyByComponent
+ * @type {{
+ *   [K in keyof EnergyByComponent as `${K} - first`]: EnergyByComponent[K]
+ * } & {
+ *   [K in keyof EnergyByComponent as `${K} - subsequest`]: EnergyByComponent[K]
+ * }}
  *
  * @typedef CO2ByComponent
  * @property {number} consumerDeviceCO2
@@ -90,12 +94,22 @@
  * @property {number} productionCO2
  * @property {number} dataCenterCO2
  *
+ * @typedef {Object} AdjustedCO2ByComponent
+ * @type {{
+ *   [K in keyof CO2ByComponent as `${K} - first`]: CO2ByComponent[K]
+ * } & {
+ *   [K in keyof CO2ByComponent as `${K} - subsequest`]: CO2ByComponent[K]
+ * }}
+ *
  * @typedef CO2ByComponentWithTotal
  * @property {number} consumerDeviceCO2
  * @property {number} networkCO2
  * @property {number} productionCO2
  * @property {number} dataCenterCO2
  * @property {number} total
+ *
+ * @typedef {Object} AdjustedCO2ByComponentWithTotal
+ * @type {AdjustedCO2ByComponent & { total: number }}
  *
  * @typedef PageXRayDomain
  * @property {number} transferSize

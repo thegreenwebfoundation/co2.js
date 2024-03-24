@@ -12,8 +12,8 @@ import { parseOptions, toTotalCO2 } from "./helpers/index.js";
 class CO2 {
   /**
    * @param {object} options
-   * @param {'1byte' | 'swd'=} options.model
-   * @param {'segment'=} options.results
+   * @param {'1byte' | 'swd'=} options.model The model to use (OneByte or Sustainable Web Design)
+   * @param {'segment'=} options.results Optional. Whether to return segment-level emissions estimates.
    */
   constructor(options = {}) {
     this.model = new SustainableWebDesign();
@@ -53,7 +53,7 @@ class CO2 {
    *
    * @param {number} bytes
    * @param {boolean} green
-   * @return {number | CO2ByComponentWithTotal} the amount of CO2 in grammes or its separate components
+   * @return {number | AdjustedCO2ByComponentWithTotal} the amount of CO2 in grammes or its separate components
    */
   perVisit(bytes, green = false) {
     if ("perVisit" in this.model) {
@@ -126,9 +126,7 @@ class CO2 {
       }
 
       return {
-        co2: toTotalCO2(
-          this.model.perVisit(bytes, green, this._segment, adjustments)
-        ),
+        co2: this.model.perVisit(bytes, green, this._segment, adjustments),
         green,
         variables: {
           description:

@@ -10,17 +10,17 @@ const gunzip = promisify(zlib.gunzip);
 /**
  * Converts a readable stream to a string.
  * @param {fs.ReadStream} stream - The readable stream to convert.
- * @returns {Promise<string>} A promise that resolves to the string representation of the stream.
+ * @returns {Promise<Buffer>} A promise that resolves to the string representation of the stream.
  */
-async function streamToString(stream) {
+async function streamToBuffer(stream) {
   return new Promise((resolve, reject) => {
     /** @type {Buffer[]} */
     const chunks = [];
     stream.on("error", reject);
     stream.on("data", (chunk) =>
-      chunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk))
+      chunks.push(chunk instanceof Buffer ? chunk : Buffer.from(chunk))
     );
-    stream.on("end", () => resolve(Buffer.concat(chunks).toString()));
+    stream.on("end", () => resolve(Buffer.concat(chunks)));
   });
 }
 
@@ -31,7 +31,7 @@ async function streamToString(stream) {
  */
 async function getGzippedFileAsJson(jsonPath) {
   const readStream = fs.createReadStream(jsonPath);
-  const text = await streamToString(readStream);
+  const text = await streamToBuffer(readStream);
   const unzipped = await gunzip(text);
   return unzipped.toString();
 }

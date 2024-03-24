@@ -39,6 +39,7 @@ function parseOptions(options) {
         }
         adjustments.gridIntensity["device"] = {
           country: device.country,
+          // TODO (simon) check that parseFloat can be safely removed here
           value: averageIntensity.data[device.country?.toUpperCase()],
         };
       } else if (typeof device === "number") {
