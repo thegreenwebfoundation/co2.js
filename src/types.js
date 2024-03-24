@@ -55,7 +55,7 @@
  * @property {TraceResultVariables} variables - The variables used to calculate the CO2 estimate
  *
  * @typedef CO2EstimateTraceResultPerVisit
- * @property {number | AdjustedCO2ByComponentWithTotal} co2 - The CO2 estimate in grams/kilowatt-hour or its separate components
+ * @property {number | CO2ByComponentAndVisitWithTotal} co2 - The CO2 estimate in grams/kilowatt-hour or its separate components
  * @property {boolean} green - Whether the domain is green or not
  * @property {TraceResultVariables} variables - The variables used to calculate the CO2 estimate
  *
@@ -81,12 +81,8 @@
  * @property {number} productionEnergy
  * @property {number} dataCenterEnergy
  *
- * @typedef {Object} AdjustedEnergyByComponent
- * @type {{
- *   [K in keyof EnergyByComponent as `${K} - first`]: EnergyByComponent[K]
- * } & {
- *   [K in keyof EnergyByComponent as `${K} - subsequest`]: EnergyByComponent[K]
- * }}
+ * @typedef EnergyByComponentAndVisit
+ * @type {SegmentedByVisit<EnergyByComponent>}
  *
  * @typedef CO2ByComponent
  * @property {number} consumerDeviceCO2
@@ -94,12 +90,8 @@
  * @property {number} productionCO2
  * @property {number} dataCenterCO2
  *
- * @typedef {Object} AdjustedCO2ByComponent
- * @type {{
- *   [K in keyof CO2ByComponent as `${K} - first`]: CO2ByComponent[K]
- * } & {
- *   [K in keyof CO2ByComponent as `${K} - subsequest`]: CO2ByComponent[K]
- * }}
+ * @typedef CO2ByComponentAndVisit
+ * @type {SegmentedByVisit<CO2ByComponent>}
  *
  * @typedef CO2ByComponentWithTotal
  * @property {number} consumerDeviceCO2
@@ -108,8 +100,8 @@
  * @property {number} dataCenterCO2
  * @property {number} total
  *
- * @typedef {Object} AdjustedCO2ByComponentWithTotal
- * @type {AdjustedCO2ByComponent & { total: number }}
+ * @typedef CO2ByComponentAndVisitWithTotal
+ * @type {CO2ByComponentAndVisit & { total: number }}
  *
  * @typedef PageXRayDomain
  * @property {number} transferSize
@@ -145,4 +137,20 @@
  *
  * @typedef MultiDomainCheckResponse
  * @type {Record<string, PerDomainCheckResponse>}
+ */
+
+/**
+ * @template {Record<string, unknown>} Object
+ * @typedef {{
+ *   [K in Exclude<keyof Object, symbol> as `${K} - first`]: Object[K]
+ * } & {
+ *   [K in Exclude<keyof Object, symbol> as `${K} - subsequest`]: Object[K]
+ * }} SegmentedByVisit
+ */
+
+/**
+ * @template {Record<string, unknown>} Object
+ * @typedef {{
+ *   [K in Extract<keyof Object, string> as import('type-fest').Replace<K, 'Energy', 'CO2'>]: Object[K]
+ * }} MapEnergyToCO2
  */
