@@ -48,13 +48,12 @@ class SustainableWebDesign {
    * Accept an object keys by the different system components, and
    * return an object with the co2 figures key by the each component
    *
-   * @template {AdjustedEnergyByComponent | EnergyByComponent} EnergyObject
-   * @template [CO2Object=EnergyObject extends AdjustedEnergyByComponent ? AdjustedCO2ByComponent : CO2ByComponent]
+   * @template {Record<string, number>} EnergyObject
    * @param {EnergyObject} energyByComponent - energy grouped by the four system components
    * // TODO (simon) check on this type for carbonIntensity
    * @param {(number | boolean)=} carbonIntensity - carbon intensity to apply to the datacentre values
    * @param {ModelAdjustments=} options - carbon intensity to apply to the datacentre values
-   * @return {CO2Object} the total number in grams of CO2 equivalent emissions
+   * @return {MapEnergyToCO2<EnergyObject>} the total number in grams of CO2 equivalent emissions
    */
   co2byComponent(
     energyByComponent,
@@ -108,7 +107,7 @@ class SustainableWebDesign {
       }
     }
 
-    return /** @type {CO2Object} */ (returnCO2ByComponent);
+    return /** @type {MapEnergyToCO2<EnergyObject>} */ (returnCO2ByComponent);
   }
 
   /**
@@ -169,7 +168,7 @@ class SustainableWebDesign {
    * @param {boolean} carbonIntensity - a boolean indicating whether the data center is green or not
    * @param {boolean} segmentResults - a boolean indicating whether to return the results broken down by component
    * @param {ModelAdjustments=} options - an object containing the grid intensity and first/return visitor values
-   * @return {number | AdjustedCO2ByComponentWithTotal} the total number in grams of CO2 equivalent emissions, or an object containing the breakdown by component
+   * @return {number | CO2ByComponentAndVisitWithTotal} the total number in grams of CO2 equivalent emissions, or an object containing the breakdown by component
    */
   perVisit(
     bytes,
@@ -239,7 +238,7 @@ class SustainableWebDesign {
    * @param {number=} returnView - what percentage of visits are loading this page for subsequent times
    * @param {number=} dataReloadRatio - what percentage of a page is reloaded on each subsequent page view
    *
-   * @return {AdjustedEnergyByComponent} Object containing the energy in kilowatt hours, keyed by system component
+   * @return {EnergyByComponentAndVisit} Object containing the energy in kilowatt hours, keyed by system component
    */
   energyPerVisitByComponent(
     bytes,
@@ -277,7 +276,7 @@ class SustainableWebDesign {
         value * returnView * dataReloadRatio;
     }
 
-    return /** @type {AdjustedEnergyByComponent} */ (
+    return /** @type {EnergyByComponentAndVisit} */ (
       cacheAdjustedSegmentEnergy
     );
   }

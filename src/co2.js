@@ -53,7 +53,7 @@ class CO2 {
    *
    * @param {number} bytes
    * @param {boolean} green
-   * @return {number | AdjustedCO2ByComponentWithTotal} the amount of CO2 in grammes
+   * @return {number | CO2ByComponentAndVisitWithTotal} the amount of CO2 in grammes
    */
   perVisit(bytes, green = false) {
     if ("perVisit" in this.model) {

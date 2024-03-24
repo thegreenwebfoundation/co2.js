@@ -65,6 +65,7 @@
     "np": "^8.0.4",
     "pagexray": "^4.4.2",
     "prettier": "^2.6.2",
+    "type-fest": "^4.14.0",
     "typescript": "^5.4.2"
   },
   "jest": {
