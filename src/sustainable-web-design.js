@@ -48,10 +48,13 @@ class SustainableWebDesign {
    * Accept an object keys by the different system components, and
    * return an object with the co2 figures key by the each component
    *
-   * @param {EnergyByComponent} energyByComponent - energy grouped by the four system components
+   * @template {AdjustedEnergyByComponent | EnergyByComponent} EnergyObject
+   * @template [CO2Object=EnergyObject extends AdjustedEnergyByComponent ? AdjustedCO2ByComponent : CO2ByComponent]
+   * @param {EnergyObject} energyByComponent - energy grouped by the four system components
+   * // TODO (simon) check on this type for carbonIntensity
    * @param {(number | boolean)=} carbonIntensity - carbon intensity to apply to the datacentre values
    * @param {ModelAdjustments=} options - carbon intensity to apply to the datacentre values
-   * @return {CO2ByComponent} the total number in grams of CO2 equivalent emissions
+   * @return {CO2Object} the total number in grams of CO2 equivalent emissions
    */
   co2byComponent(
     energyByComponent,
@@ -84,14 +87,28 @@ class SustainableWebDesign {
       dataCenterCarbonIntensity = RENEWABLES_GRID_INTENSITY;
     }
 
-    return {
-      dataCenterCO2:
-        energyByComponent.dataCenterEnergy * dataCenterCarbonIntensity,
-      consumerDeviceCO2:
-        energyByComponent.consumerDeviceEnergy * deviceCarbonIntensity,
-      networkCO2: energyByComponent.networkEnergy * networkCarbonIntensity,
-      productionCO2: energyByComponent.productionEnergy * globalEmissions,
-    };
+    /** @type {Record<string, number>} */
+    const returnCO2ByComponent = {};
+    for (const [key, value] of Object.entries(energyByComponent)) {
+      // we update the datacentre, as that's what we have information
+      // about.
+      if (key.startsWith("dataCenterEnergy")) {
+        returnCO2ByComponent[key.replace("Energy", "CO2")] =
+          value * dataCenterCarbonIntensity;
+      } else if (key.startsWith("consumerDeviceEnergy")) {
+        returnCO2ByComponent[key.replace("Energy", "CO2")] =
+          value * deviceCarbonIntensity;
+      } else if (key.startsWith("networkEnergy")) {
+        returnCO2ByComponent[key.replace("Energy", "CO2")] =
+          value * networkCarbonIntensity;
+      } else {
+        // Use the global intensity for the remaining segments
+        returnCO2ByComponent[key.replace("Energy", "CO2")] =
+          value * globalEmissions;
+      }
+    }
+
+    return /** @type {CO2Object} */ (returnCO2ByComponent);
   }
 
   /**
@@ -152,7 +169,7 @@ class SustainableWebDesign {
    * @param {boolean} carbonIntensity - a boolean indicating whether the data center is green or not
    * @param {boolean} segmentResults - a boolean indicating whether to return the results broken down by component
    * @param {ModelAdjustments=} options - an object containing the grid intensity and first/return visitor values
-   * @return {number | CO2ByComponentWithTotal} the total number in grams of CO2 equivalent emissions, or an object containing the breakdown by component
+   * @return {number | AdjustedCO2ByComponentWithTotal} the total number in grams of CO2 equivalent emissions, or an object containing the breakdown by component
    */
   perVisit(
     bytes,
@@ -160,7 +177,8 @@ class SustainableWebDesign {
     segmentResults = false,
     options = undefined
   ) {
-    const energyBycomponent = this.energyPerByteByComponent(bytes);
+    // TODO (simon) figure out if this method call is correct
+    const energyBycomponent = this.energyPerVisitByComponent(bytes, options);
 
     if (typeof carbonIntensity !== "boolean") {
       // otherwise when faced with non numeric values throw an error
@@ -221,7 +239,7 @@ class SustainableWebDesign {
    * @param {number=} returnView - what percentage of visits are loading this page for subsequent times
    * @param {number=} dataReloadRatio - what percentage of a page is reloaded on each subsequent page view
    *
-   * @return {AdjustedEnergyComponent} Object containing the energy in kilowatt hours, keyed by system component
+   * @return {AdjustedEnergyByComponent} Object containing the energy in kilowatt hours, keyed by system component
    */
   energyPerVisitByComponent(
     bytes,
@@ -259,7 +277,9 @@ class SustainableWebDesign {
         value * returnView * dataReloadRatio;
     }
 
-    return /** @type {AdjustedEnergyComponent} */ (cacheAdjustedSegmentEnergy);
+    return /** @type {AdjustedEnergyByComponent} */ (
+      cacheAdjustedSegmentEnergy
+    );
   }
 
   /**
