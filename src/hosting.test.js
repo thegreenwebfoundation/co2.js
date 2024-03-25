@@ -19,11 +19,10 @@ const jsonPath = path.resolve(
 );
 
 describe("hosting", () => {
-  /** @type {unknown} */
-  let har;
   /** @type {jest.SpyInstance<typeof https['get']>} */
   let httpsGetSpy;
   beforeEach(() => {
+    // @ts-ignore
     httpsGetSpy = jest.spyOn(https, "get");
     jest.clearAllMocks();
   });

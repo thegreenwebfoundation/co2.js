@@ -7,7 +7,7 @@ import {
   GLOBAL_GRID_INTENSITY,
   RENEWABLES_GRID_INTENSITY,
 } from "./constants/index.js";
-import { parseOptions, toTotalCO2 } from "./helpers/index.js";
+import { parseOptions } from "./helpers/index.js";
 
 class CO2 {
   /**

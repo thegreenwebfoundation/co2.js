@@ -140,15 +140,49 @@
  */
 
 /**
+ * Utility type to create "- first" and "- subsequent" variants of each key in the incoming type.
+ *
+ * Ex. for this input type:
+ *
+ * {
+ *   keyOne: number,
+ *   keyTwo: number
+ * }
+ *
+ * The output type will be:
+ *
+ * {
+ *   "keyOne - first": number,
+ *   "keyOne - subsequent": number,
+ *   "keyTwo - first": number,
+ *   "keyTwo - subsequent": number,
+ * }
+ *
  * @template {Record<string, unknown>} Object
  * @typedef {{
  *   [K in Exclude<keyof Object, symbol> as `${K} - first`]: Object[K]
  * } & {
- *   [K in Exclude<keyof Object, symbol> as `${K} - subsequest`]: Object[K]
+ *   [K in Exclude<keyof Object, symbol> as `${K} - subsequent`]: Object[K]
  * }} SegmentedByVisit
  */
 
 /**
+ * Utility type to convert keys from representations of energy to representations of CO2.
+ *
+ * Ex. for this input type:
+ *
+ * {
+ *   keyOneEnergy: number,
+ *   keyTwoEnergy: number
+ * }
+ *
+ * The output type will be:
+ *
+ * {
+ *   keyOneCO2: number,
+ *   keyTwoCO2: number
+ * }
+ *
  * @template {Record<string, unknown>} Object
  * @typedef {{
  *   [K in Extract<keyof Object, string> as import('type-fest').Replace<K, 'Energy', 'CO2'>]: Object[K]
