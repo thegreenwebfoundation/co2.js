@@ -2,14 +2,14 @@
 
 /**
  * @typedef {Object} CO2EstimateTraceResultPerByte
- * @property {number|CO2EstimateComponents} co2 - The CO2 estimate in grams or its separate components
+ * @property {number|CO2EstimateComponentsPerByte} co2 - The CO2 estimate in grams or its separate components
  * @property {boolean} green - Whether the domain is green or not
  * @property {TraceResultVariablesPerByte} variables - The variables used to calculate the CO2 estimate
  */
 
 /**
  * @typedef {Object} CO2EstimateTraceResultPerVisit
- * @property {number|CO2EstimateComponents} co2 - The CO2 estimate in grams or its separate components
+ * @property {number|CO2EstimateComponentsPerVisit} co2 - The CO2 estimate in grams or its separate components
  * @property {boolean} green - Whether the domain is green or not
  * @property {TraceResultVariablesPerVisit} variables - The variables used to calculate the CO2 estimate
  */
@@ -36,11 +36,24 @@
  */
 
 /**
- * @typedef {Object} CO2EstimateComponents
+ * @typedef {Object} CO2EstimateComponentsPerByte
  * @property {number} networkCO2 - The CO2 estimate for networking in grams
  * @property {number} dataCenterCO2 - The CO2 estimate for data centers in grams
  * @property {number} consumerDeviceCO2 - The CO2 estimate for consumer devices in grams
  * @property {number} productionCO2 - The CO2 estimate for device production in grams
+ * @property {number} total - The total CO2 estimate in grams
+ */
+
+/**
+ * @typedef {Object} CO2EstimateComponentsPerVisit
+ * @property {number} 'networkCO2 - first' - The CO2 estimate for networking in grams on first visit
+ * @property {number} 'networkCO2 - subsequent' - The CO2 estimate for networking in grams on subsequent visits
+ * @property {number} 'dataCenterCO2 - first' - The CO2 estimate for data centers in grams on first visit
+ * @property {number} 'dataCenterCO2 - subsequent' - The CO2 estimate for data centers in grams on subsequent visits
+ * @property {number} 'consumerDeviceCO2 - first' - The CO2 estimate for consumer devices in grams on first visit
+ * @property {number} 'consumerDeviceCO2 - subsequent' - The CO2 estimate for consumer devices in grams on subsequent visits
+ * @property {number} 'productionCO2 - first' - The CO2 estimate for device production in grams on first visit
+ * @property {number} 'productionCO2 - subsequent' - The CO2 estimate for device production in grams on subsequent visits
  * @property {number} total - The total CO2 estimate in grams
  */
 
@@ -79,7 +92,7 @@ class CO2 {
    *
    * @param {number} bytes
    * @param {boolean} green
-   * @return {number|CO2EstimateComponents} the amount of CO2 in grammes or its separate components
+   * @return {number|CO2EstimateComponentsPerByte} the amount of CO2 in grammes or its separate components
    */
   perByte(bytes, green = false) {
     return this.model.perByte(bytes, green, this._segment);
@@ -92,7 +105,7 @@ class CO2 {
    *
    * @param {number} bytes
    * @param {boolean} green
-   * @return {number|CO2EstimateComponents} the amount of CO2 in grammes or its separate components
+   * @return {number|CO2EstimateComponentsPerVisit} the amount of CO2 in grammes or its separate components
    */
   perVisit(bytes, green = false) {
     if (this.model?.perVisit) {
