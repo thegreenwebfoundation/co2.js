@@ -176,7 +176,6 @@ class SustainableWebDesign {
     segmentResults = false,
     options = undefined
   ) {
-    // TODO (simon) figure out if this method call is correct
     const energyBycomponent = this.energyPerVisitByComponent(bytes, options);
 
     if (typeof carbonIntensity !== "boolean") {
