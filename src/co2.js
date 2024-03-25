@@ -1,40 +1,5 @@
 "use strict";
 
-/**
- * @typedef {Object} CO2EstimateTraceResultPerByte
- * @property {number} co2 - The CO2 estimate in grams/kilowatt-hour
- * @property {boolean} green - Whether the domain is green or not
- * @property {TraceResultVariables} variables - The variables used to calculate the CO2 estimate
- */
-
-/**
- * @typedef {Object} CO2EstimateTraceResultPerVisit
- * @property {number} co2 - The CO2 estimate in grams/kilowatt-hour
- * @property {boolean} green - Whether the domain is green or not
- * @property {TraceResultVariables} variables - The variables used to calculate the CO2 estimate
- */
-
-/**
- * @typedef {Object} TraceResultVariablesPerByte
- * @property {GridIntensityVariables} gridIntensity - The grid intensity related variables
- */
-/**
- * @typedef {Object} TraceResultVariablesPerVisit
- * @property {GridIntensityVariables} gridIntensity - The grid intensity related variables
- * @property {number} dataReloadRatio - What percentage of a page is reloaded on each subsequent page view
- * @property {number} firstVisitPercentage - What percentage of visits are loading this page for subsequent times
- * @property {number} returnVisitPercentage - What percentage of visits are loading this page for the second or more time
- */
-
-/**
- * @typedef {Object} GridIntensityVariables
- * @property {string} description - The description of the variables
- * @property {number} network - The network grid intensity set by the user or the default
- * @property {number} dataCenter - The data center grid intensity set by the user or the default
- * @property {number} device - The device grid intensity set by the user or the default
- * @property {number} production - The production grid intensity set by the user or the default
- */
-
 import OneByte from "./1byte.js";
 import SustainableWebDesign from "./sustainable-web-design.js";
 
@@ -42,10 +7,15 @@ import {
   GLOBAL_GRID_INTENSITY,
   RENEWABLES_GRID_INTENSITY,
 } from "./constants/index.js";
-import { parseOptions } from "./helpers/index.js";
+import { parseOptions, toTotalCO2 } from "./helpers/index.js";
 
 class CO2 {
-  constructor(options) {
+  /**
+   * @param {object} options
+   * @param {'1byte' | 'swd'=} options.model The model to use (OneByte or Sustainable Web Design)
+   * @param {'segment'=} options.results Optional. Whether to return segment-level emissions estimates.
+   */
+  constructor(options = {}) {
     this.model = new SustainableWebDesign();
     // Using optional chaining allows an empty object to be passed
     // in without breaking the code.
@@ -70,7 +40,7 @@ class CO2 {
    *
    * @param {number} bytes
    * @param {boolean} green
-   * @return {number} the amount of CO2 in grammes
+   * @return {number | CO2ByComponentWithTotal} the amount of CO2 in grammes
    */
   perByte(bytes, green = false) {
     return this.model.perByte(bytes, green, this._segment);
@@ -83,10 +53,10 @@ class CO2 {
    *
    * @param {number} bytes
    * @param {boolean} green
-   * @return {number} the amount of CO2 in grammes
+   * @return {number | CO2ByComponentAndVisitWithTotal} the amount of CO2 in grammes
    */
   perVisit(bytes, green = false) {
-    if (this.model?.perVisit) {
+    if ("perVisit" in this.model) {
       return this.model.perVisit(bytes, green, this._segment);
     } else {
       throw new Error(
@@ -102,11 +72,12 @@ class CO2 {
    *
    * @param {number} bytes
    * @param {boolean} green
-   * @param {Object} options
+   * @param {ModelOptions} options
    * @return {CO2EstimateTraceResultPerByte} the amount of CO2 in grammes
    */
   perByteTrace(bytes, green = false, options = {}) {
-    let adjustments = {};
+    /** @type {ModelAdjustments | undefined} */
+    let adjustments;
     if (options) {
       // If there are options, parse them and add them to the model.
       adjustments = parseOptions(options);
@@ -142,12 +113,13 @@ class CO2 {
    *
    * @param {number} bytes
    * @param {boolean} green
-   * @param {Object} options
+   * @param {ModelOptions} options
    * @return {CO2EstimateTraceResultPerVisit} the amount of CO2 in grammes
    */
   perVisitTrace(bytes, green = false, options = {}) {
-    if (this.model?.perVisit) {
-      let adjustments = {};
+    if ("perVisit" in this.model) {
+      /** @type {ModelAdjustments | undefined} */
+      let adjustments;
       if (options) {
         // If there are options, parse them and add them to the model.
         adjustments = parseOptions(options);
@@ -187,14 +159,24 @@ class CO2 {
     }
   }
 
+  /**
+   *
+   * @param {PageXRay} pageXray
+   * @param {string[]=} greenDomains
+   * @returns {CO2PerDomain[]}
+   */
   perDomain(pageXray, greenDomains) {
+    /** @type {CO2PerDomain[]} */
     const co2PerDomain = [];
     for (let domain of Object.keys(pageXray.domains)) {
+      /** @type {number} */
       let co2;
       if (greenDomains && greenDomains.indexOf(domain) > -1) {
-        co2 = this.perByte(pageXray.domains[domain].transferSize, true);
+        co2 = toTotalCO2(
+          this.perByte(pageXray.domains[domain].transferSize, true)
+        );
       } else {
-        co2 = this.perByte(pageXray.domains[domain].transferSize);
+        co2 = toTotalCO2(this.perByte(pageXray.domains[domain].transferSize));
       }
       co2PerDomain.push({
         domain,
@@ -207,6 +189,11 @@ class CO2 {
     return co2PerDomain;
   }
 
+  /**
+   *
+   * @param {PageXRay} pageXray
+   * @param {string[]=} green
+   */
   perPage(pageXray, green) {
     // Accept an xray object, and if we receive a boolean as the second
     // argument, we assume every request we make is sent to a server
@@ -223,14 +210,23 @@ class CO2 {
     return totalCO2;
   }
 
+  /**
+   * @param {PageXRay} pageXray
+   * @param {string[]=} greenDomains
+   * @returns {CO2PerContentType[]}
+   */
   perContentType(pageXray, greenDomains) {
+    /** @type {Record<string, Omit<CO2PerContentType, 'type'>>} */
     const co2PerContentType = {};
     for (let asset of pageXray.assets) {
-      const domain = new URL(asset.url).domain;
+      // TODO (simon) check that this `domain` -> `host` conversion is correct
+      const domain = new URL(asset.url).host;
       const transferSize = asset.transferSize;
-      const co2ForTransfer = this.perByte(
-        transferSize,
-        greenDomains && greenDomains.indexOf(domain) > -1
+      const co2ForTransfer = toTotalCO2(
+        this.perByte(
+          transferSize,
+          greenDomains && greenDomains.indexOf(domain) > -1
+        )
       );
       const contentType = asset.type;
       if (!co2PerContentType[contentType]) {
@@ -252,14 +248,22 @@ class CO2 {
     return all;
   }
 
+  /**
+   *
+   * @param {PageXRay} pageXray
+   * @param {string[]=} greenDomains
+   */
   dirtiestResources(pageXray, greenDomains) {
+    /** @type {CO2PerContentAsset[]} */
     const allAssets = [];
     for (let asset of pageXray.assets) {
-      const domain = new URL(asset.url).domain;
+      const domain = new URL(asset.url).host;
       const transferSize = asset.transferSize;
-      const co2ForTransfer = this.perByte(
-        transferSize,
-        greenDomains && greenDomains.indexOf(domain) > -1
+      const co2ForTransfer = toTotalCO2(
+        this.perByte(
+          transferSize,
+          greenDomains && greenDomains.indexOf(domain) > -1
+        )
       );
       allAssets.push({ url: asset.url, co2: co2ForTransfer, transferSize });
     }
@@ -268,6 +272,10 @@ class CO2 {
     return allAssets.slice(0, allAssets.length > 10 ? 10 : allAssets.length);
   }
 
+  /**
+   * @param {PageXRay} pageXray
+   * @param {string[]=} greenDomains
+   */
   perParty(pageXray, greenDomains) {
     let firstParty = 0;
     let thirdParty = 0;
@@ -275,14 +283,18 @@ class CO2 {
     const firstPartyRegEx = pageXray.firstPartyRegEx;
     for (let d of Object.keys(pageXray.domains)) {
       if (!d.match(firstPartyRegEx)) {
-        thirdParty += this.perByte(
-          pageXray.domains[d].transferSize,
-          greenDomains && greenDomains.indexOf(d) > -1
+        thirdParty += toTotalCO2(
+          this.perByte(
+            pageXray.domains[d].transferSize,
+            greenDomains && greenDomains.indexOf(d) > -1
+          )
         );
       } else {
-        firstParty += this.perByte(
-          pageXray.domains[d].transferSize,
-          greenDomains && greenDomains.indexOf(d) > -1
+        firstParty += toTotalCO2(
+          this.perByte(
+            pageXray.domains[d].transferSize,
+            greenDomains && greenDomains.indexOf(d) > -1
+          )
         );
       }
     }

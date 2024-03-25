@@ -3,9 +3,10 @@
 import hosting from "./hosting-api.js";
 /* eslint-disable jest/no-disabled-tests */
 
-process.env.CO2JS_VERSION = "1.2.34";
+process.env["CO2JS_VERSION"] = "1.2.34";
 const requestHeaderComment = "TestRunner";
 
+// @ts-ignore
 global.fetch = jest.fn(() =>
   Promise.resolve({
     json: () => Promise.resolve({ green: true }),
@@ -14,6 +15,7 @@ global.fetch = jest.fn(() =>
 
 describe("hostingAPI", () => {
   beforeEach(() => {
+    // @ts-ignore
     fetch.mockClear();
   });
   describe("checking a single domain with #check", () => {
@@ -43,6 +45,7 @@ describe("hostingAPI", () => {
   });
   describe("implicitly checking multiple domains with #check", () => {
     it("using the API", async () => {
+      // @ts-ignore
       fetch.mockImplementation(() =>
         Promise.resolve({
           json: () =>

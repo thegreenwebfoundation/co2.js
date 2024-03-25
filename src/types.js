@@ -1,0 +1,190 @@
+/**
+ * @typedef ModelOptionsSegmentCountry
+ * @property {string} country
+ *
+ * @typedef ModelOptionsGridIntensity
+ * @property {number | ModelOptionsSegmentCountry} device
+ *   A number representing the carbon intensity for the given segment (in grams per kilowatt-hour).
+ *   Or, an object, which contains a key of country and a value that is an Alpha-3 ISO country code.
+ * @property {number | ModelOptionsSegmentCountry} dataCenter
+ *   A number representing the carbon intensity for the given segment (in grams per kilowatt-hour).
+ *   Or, an object, which contains a key of country and a value that is an Alpha-3 ISO country code.
+ * @property {number | ModelOptionsSegmentCountry} network
+ *   A number representing the carbon intensity for the given segment (in grams per kilowatt-hour).
+ *   Or, an object, which contains a key of country and a value that is an Alpha-3 ISO country code.
+ *
+ * @typedef ModelOptions
+ * @property {ModelOptionsGridIntensity=} gridIntensity Segment-level description of the grid carbon intensity.
+ * @property {number=} dataReloadRatio A number between 0 and 1 representing the percentage of data that is downloaded by return visitors.
+ * @property {number=} returnVisitPercentage A number between 0 and 1 representing the percentage of returning visitors.
+ * @property {number=} firstVisitPercentage A number between 0 and 1 representing the percentage of new visitors.
+ *
+ * @typedef ModelAdjustmentSegment
+ * @property {number} value
+ * @property {string=} country
+ *
+ * @typedef ModelAdjustmentsGridIntensity
+ * @property {ModelAdjustmentSegment} device
+ * @property {ModelAdjustmentSegment} dataCenter
+ * @property {ModelAdjustmentSegment} network
+ *
+ * @typedef ModelAdjustments
+ * @property {ModelAdjustmentsGridIntensity} gridIntensity
+ * @property {number} dataReloadRatio
+ * @property {number} returnVisitPercentage
+ * @property {number} firstVisitPercentage
+ *
+ * @typedef TraceResultsGridIntensity
+ * @property {string} description
+ * @property {number} device
+ * @property {number} dataCenter
+ * @property {number} network
+ * @property {number} production
+ *
+ * @typedef TraceResultVariables
+ * @property {string} description
+ * @property {number} bytes
+ * @property {TraceResultsGridIntensity} gridIntensity
+ * @property {number=} dataReloadRatio
+ * @property {number=} firstVisitPercentage
+ * @property {number=} returnVisitPercentage
+ *
+ * @typedef CO2EstimateTraceResultPerByte
+ * @property {number | CO2ByComponentWithTotal} co2 - The CO2 estimate in grams/kilowatt-hour
+ * @property {boolean} green - Whether the domain is green or not
+ * @property {TraceResultVariables} variables - The variables used to calculate the CO2 estimate
+ *
+ * @typedef CO2EstimateTraceResultPerVisit
+ * @property {number | CO2ByComponentAndVisitWithTotal} co2 - The CO2 estimate in grams/kilowatt-hour
+ * @property {boolean} green - Whether the domain is green or not
+ * @property {TraceResultVariables} variables - The variables used to calculate the CO2 estimate
+ *
+ * @typedef TraceResultVariablesPerByte
+ * @property {GridIntensityVariables} gridIntensity - The grid intensity related variables
+ *
+ * @typedef TraceResultVariablesPerVisit
+ * @property {GridIntensityVariables} gridIntensity - The grid intensity related variables
+ * @property {number} dataReloadRatio - What percentage of a page is reloaded on each subsequent page view
+ * @property {number} firstVisitPercentage - What percentage of visits are loading this page for subsequent times
+ * @property {number} returnVisitPercentage - What percentage of visits are loading this page for the second or more time
+ *
+ * @typedef GridIntensityVariables
+ * @property {string} description - The description of the variables
+ * @property {number} network - The network grid intensity set by the user or the default
+ * @property {number} dataCenter - The data center grid intensity set by the user or the default
+ * @property {number} device - The device grid intensity set by the user or the default
+ * @property {number} production - The production grid intensity set by the user or the default
+ *
+ * @typedef EnergyByComponent
+ * @property {number} consumerDeviceEnergy
+ * @property {number} networkEnergy
+ * @property {number} productionEnergy
+ * @property {number} dataCenterEnergy
+ *
+ * @typedef EnergyByComponentAndVisit
+ * @type {SegmentedByVisit<EnergyByComponent>}
+ *
+ * @typedef CO2ByComponent
+ * @property {number} consumerDeviceCO2
+ * @property {number} networkCO2
+ * @property {number} productionCO2
+ * @property {number} dataCenterCO2
+ *
+ * @typedef CO2ByComponentAndVisit
+ * @type {SegmentedByVisit<CO2ByComponent>}
+ *
+ * @typedef CO2ByComponentWithTotal
+ * @property {number} consumerDeviceCO2
+ * @property {number} networkCO2
+ * @property {number} productionCO2
+ * @property {number} dataCenterCO2
+ * @property {number} total
+ *
+ * @typedef CO2ByComponentAndVisitWithTotal
+ * @type {CO2ByComponentAndVisit & { total: number }}
+ *
+ * @typedef PageXRayDomain
+ * @property {number} transferSize
+ *
+ * @typedef PageXRayAsset
+ * @property {string} url
+ * @property {number} transferSize
+ * @property {string} type
+ *
+ * @typedef PageXRay
+ * @property {Record<string, PageXRayDomain>} domains
+ * @property {PageXRayAsset[]} assets
+ * @property {RegExp} firstPartyRegEx
+ *
+ * @typedef CO2PerDomain
+ * @property {string} domain
+ * @property {number} co2
+ * @property {number} transferSize
+ *
+ * @typedef CO2PerContentType
+ * @property {string} type
+ * @property {number} co2
+ * @property {number} transferSize
+ *
+ * @typedef CO2PerContentAsset
+ * @property {string} url
+ * @property {number} co2
+ * @property {number} transferSize
+ *
+ * @typedef PerDomainCheckResponse
+ * @property {string} url
+ * @property {boolean} green
+ *
+ * @typedef MultiDomainCheckResponse
+ * @type {Record<string, PerDomainCheckResponse>}
+ */
+
+/**
+ * Utility type to create "- first" and "- subsequent" variants of each key in the incoming type.
+ *
+ * Ex. for this input type:
+ *
+ * {
+ *   keyOne: number,
+ *   keyTwo: number
+ * }
+ *
+ * The output type will be:
+ *
+ * {
+ *   "keyOne - first": number,
+ *   "keyOne - subsequent": number,
+ *   "keyTwo - first": number,
+ *   "keyTwo - subsequent": number,
+ * }
+ *
+ * @template {Record<string, unknown>} Object
+ * @typedef {{
+ *   [K in Exclude<keyof Object, symbol> as `${K} - first`]: Object[K]
+ * } & {
+ *   [K in Exclude<keyof Object, symbol> as `${K} - subsequent`]: Object[K]
+ * }} SegmentedByVisit
+ */
+
+/**
+ * Utility type to convert keys from representations of energy to representations of CO2.
+ *
+ * Ex. for this input type:
+ *
+ * {
+ *   keyOneEnergy: number,
+ *   keyTwoEnergy: number
+ * }
+ *
+ * The output type will be:
+ *
+ * {
+ *   keyOneCO2: number,
+ *   keyTwoCO2: number
+ * }
+ *
+ * @template {Record<string, unknown>} Object
+ * @typedef {{
+ *   [K in Extract<keyof Object, string> as import('type-fest').Replace<K, 'Energy', 'CO2'>]: Object[K]
+ * }} MapEnergyToCO2
+ */

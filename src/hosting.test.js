@@ -4,13 +4,14 @@ import fs from "fs";
 import https from "https";
 import path from "path";
 
+// @ts-ignore
 import pagexray from "pagexray";
 
 import hosting from "./hosting-node.js";
 
 jest.mock("https");
 
-process.env.CO2JS_VERSION = "1.2.34";
+process.env["CO2JS_VERSION"] = "1.2.34";
 const requestHeaderComment = "TestRunner";
 
 const jsonPath = path.resolve(
@@ -22,7 +23,9 @@ const jsonPath = path.resolve(
 );
 
 describe("hosting", () => {
+  /** @type {unknown} */
   let har;
+  /** @type {jest.SpyInstance<typeof https['get']>} */
   let httpsGetSpy;
   beforeEach(() => {
     har = JSON.parse(
@@ -31,6 +34,7 @@ describe("hosting", () => {
         "utf8"
       )
     );
+    // @ts-ignore
     httpsGetSpy = jest.spyOn(https, "get");
     jest.clearAllMocks();
   });
@@ -55,7 +59,8 @@ describe("hosting", () => {
         "fonts.gstatic.com",
         "api.thegreenwebfoundation.org",
       ];
-      greenDomains.forEach((dom) => {
+      expect(Array.isArray(greenDomains)).toBe(true);
+      /** @type string[] */ (greenDomains).forEach((dom) => {
         expect(expectedGreendomains).toContain(dom);
       });
     });
