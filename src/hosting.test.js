@@ -25,8 +25,8 @@ describe("hosting", () => {
     httpsGetSpy = jest.spyOn(https, "get");
     jest.clearAllMocks();
   });
-  describe("checking all domains on a page object with #checkPage", () => {
-    it("returns a list of green domains, when passed a page object", async () => {
+  describe("checking domains against a db snapshot", () => {
+    it("returns a list of green domains, when passed a database array", async () => {
       const db = await hosting.loadJSON(jsonPath);
       const greenDomains = await hosting.check(
         ["www.thegreenwebfoundation.org", "fonts.googleapis.com"],
