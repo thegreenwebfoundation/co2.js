@@ -66,7 +66,7 @@ describe("hosting", () => {
       expect(res).toEqual(true);
     });
     it("use the API instead with verbose=true", async () => {
-      const res = await hosting.check("google.com", null, {
+      const res = await hosting.check("google.com", {
         verbose: true,
       });
       expect(res).toMatchObject({
@@ -77,7 +77,9 @@ describe("hosting", () => {
       });
     });
     it("sets the correct user agent header", async () => {
-      await hosting.check("google.com", null, requestHeaderComment);
+      await hosting.check("google.com", {
+        userAgentIdentifier: requestHeaderComment,
+      });
       expect(httpsGetSpy).toHaveBeenCalledTimes(1);
       expect(httpsGetSpy).toHaveBeenLastCalledWith(
         expect.any(String),
@@ -95,7 +97,7 @@ describe("hosting", () => {
     });
 
     it("use the API with verbose=true", async () => {
-      const res = await hosting.check(["google.com", "pchome.com"], null, {
+      const res = await hosting.check(["google.com", "pchome.com"], {
         verbose: true,
       });
       expect(res).toEqual({
