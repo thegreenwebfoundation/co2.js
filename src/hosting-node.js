@@ -68,8 +68,13 @@ function check(domain, optionsOrDb, userAgentIdentifier) {
     db = optionsOrDb;
   } else {
     options = optionsOrDb;
+    if (userAgentIdentifier) {
+      options = { ...options, userAgentIdentifier };
+    }
     db = optionsOrDb?.db;
   }
+
+  console.log({ db, options });
 
   if (db && options?.verbose) {
     throw new Error("verbose mode cannot be used with a local lookup database");

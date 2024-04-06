@@ -84,6 +84,17 @@ describe("hosting", () => {
         expect.any(Function)
       );
     });
+    it("sets the correct user agent header when passed as a parameter", async () => {
+      await hosting.check("google.com", null, requestHeaderComment);
+      expect(httpsGetSpy).toHaveBeenCalledTimes(1);
+      expect(httpsGetSpy).toHaveBeenLastCalledWith(
+        expect.any(String),
+        expect.objectContaining({
+          headers: { "User-Agent": "co2js/1.2.34 TestRunner" },
+        }),
+        expect.any(Function)
+      );
+    });
   });
   describe("checking multiple domains with #check", () => {
     it("Use the API", async () => {
