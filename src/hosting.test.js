@@ -19,7 +19,6 @@ const jsonPath = path.resolve(
 );
 
 describe("hosting", () => {
-  let har;
   let httpsGetSpy;
   beforeEach(() => {
     httpsGetSpy = jest.spyOn(https, "get");
@@ -34,13 +33,26 @@ describe("hosting", () => {
       );
 
       expect(greenDomains).toHaveLength(2);
-      const expectedGreendomains = [
-        "www.thegreenwebfoundation.org",
-        "fonts.googleapis.com",
-      ];
-      greenDomains.forEach((dom) => {
-        expect(expectedGreendomains).toContain(dom);
-      });
+    });
+    it("returns a list of green domains, when pass a database array via options", async () => {
+      const db = await hosting.loadJSON(jsonPath);
+      const greenDomains = await hosting.check(
+        ["www.thegreenwebfoundation.org", "fonts.googleapis.com"],
+        { db }
+      );
+
+      expect(greenDomains).toHaveLength(2);
+    });
+    it("fails if verbose=true is set", async () => {
+      const db = await hosting.loadJSON(jsonPath);
+      await expect(() => {
+        hosting.check(
+          ["www.thegreenwebfoundation.org", "fonts.googleapis.com"],
+          { verbose: true, db }
+        );
+      }).toThrowError(
+        "verbose mode cannot be used with a local lookup database"
+      );
     });
   });
   describe("checking a single domain with #check", () => {
