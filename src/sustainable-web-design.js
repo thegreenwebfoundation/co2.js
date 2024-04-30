@@ -24,17 +24,13 @@ import {
 import { formatNumber } from "./helpers/index.js";
 
 class SustainableWebDesign {
-  constructor(options) {
-    this.options = options;
-  }
-
   /**
    * Accept a figure for bytes transferred and return an object representing
    * the share of the total enrgy use of the entire system, broken down
    * by each corresponding system component
    *
    * @param {number}  bytes - the data transferred in bytes
-   * @return {object} Object containing the energy in kilowatt hours, keyed by system component
+   * @return {EnergyByComponent} Object containing the energy in kilowatt hours, keyed by system component
    */
   energyPerByteByComponent(bytes) {
     const transferedBytesToGb = bytes / fileSize.GIGABYTE;
@@ -52,14 +48,17 @@ class SustainableWebDesign {
    * Accept an object keys by the different system components, and
    * return an object with the co2 figures key by the each component
    *
-   * @param {object} energyByComponent - energy grouped by the four system components
-   * @param {number} [carbonIntensity] - carbon intensity to apply to the datacentre values
-   * @return {number} the total number in grams of CO2 equivalent emissions
+   * @template {Record<string, number>} EnergyObject
+   * @param {EnergyObject} energyByComponent - energy grouped by the four system components
+   * // TODO (simon) check on this type for carbonIntensity
+   * @param {(number | boolean)=} carbonIntensity - carbon intensity to apply to the datacentre values
+   * @param {ModelAdjustments=} options - carbon intensity to apply to the datacentre values
+   * @return {MapEnergyToCO2<EnergyObject>} the total number in grams of CO2 equivalent emissions
    */
   co2byComponent(
     energyByComponent,
     carbonIntensity = GLOBAL_GRID_INTENSITY,
-    options = {}
+    options
   ) {
     let deviceCarbonIntensity = GLOBAL_GRID_INTENSITY;
     let networkCarbonIntensity = GLOBAL_GRID_INTENSITY;
@@ -87,6 +86,7 @@ class SustainableWebDesign {
       dataCenterCarbonIntensity = RENEWABLES_GRID_INTENSITY;
     }
 
+    /** @type {Record<string, number>} */
     const returnCO2ByComponent = {};
     for (const [key, value] of Object.entries(energyByComponent)) {
       // we update the datacentre, as that's what we have information
@@ -107,7 +107,7 @@ class SustainableWebDesign {
       }
     }
 
-    return returnCO2ByComponent;
+    return /** @type {MapEnergyToCO2<EnergyObject>} */ (returnCO2ByComponent);
   }
 
   /**
@@ -117,22 +117,22 @@ class SustainableWebDesign {
    * is applied for the data centre share of the carbon intensity.
    *
    * @param {number} bytes - the data transferred in bytes
-   * @param {boolean} carbonIntensity - a boolean indicating whether the data center is green or not
-   * @param {boolean} segmentResults - a boolean indicating whether to return the results broken down by component
-   * @param {object} options - an object containing the grid intensity and first/return visitor values
-   * @return {number|object} the total number in grams of CO2 equivalent emissions, or an object containing the breakdown by component
+   * @param {boolean=} carbonIntensity - a boolean indicating whether the data center is green or not
+   * @param {boolean=} segmentResults - a boolean indicating whether to return the results broken down by component
+   * @param {ModelAdjustments=} options - an object containing the grid intensity and first/return visitor values
+   * @return {number | CO2ByComponentWithTotal} the total number in grams of CO2 equivalent emissions, or an object containing the breakdown by component
    */
   perByte(
     bytes,
     carbonIntensity = false,
     segmentResults = false,
-    options = {}
+    options = undefined
   ) {
     if (bytes < 1) {
       bytes = 0;
     }
 
-    const energyBycomponent = this.energyPerByteByComponent(bytes, options);
+    const energyBycomponent = this.energyPerByteByComponent(bytes);
 
     // otherwise when faced with non numeric values throw an error
     if (typeof carbonIntensity !== "boolean") {
@@ -167,14 +167,14 @@ class SustainableWebDesign {
    * @param {number} bytes - the data transferred in bytes
    * @param {boolean} carbonIntensity - a boolean indicating whether the data center is green or not
    * @param {boolean} segmentResults - a boolean indicating whether to return the results broken down by component
-   * @param {object} options - an object containing the grid intensity and first/return visitor values
-   * @return {number|object} the total number in grams of CO2 equivalent emissions, or an object containing the breakdown by component
+   * @param {ModelAdjustments=} options - an object containing the grid intensity and first/return visitor values
+   * @return {number | CO2ByComponentAndVisitWithTotal} the total number in grams of CO2 equivalent emissions, or an object containing the breakdown by component
    */
   perVisit(
     bytes,
     carbonIntensity = false,
     segmentResults = false,
-    options = {}
+    options = undefined
   ) {
     const energyBycomponent = this.energyPerVisitByComponent(bytes, options);
 
@@ -232,35 +232,38 @@ class SustainableWebDesign {
    * of transfer.
    *
    * @param {number} bytes - the data transferred in bytes for loading a webpage
+   * @param {ModelAdjustments=} options - what percentage of visits are loading this page for the first time
    * @param {number} firstView - what percentage of visits are loading this page for the first time
-   * @param {number} returnView - what percentage of visits are loading this page for subsequent times
-   * @param {number} dataReloadRatio - what percentage of a page is reloaded on each subsequent page view
+   * @param {number=} returnView - what percentage of visits are loading this page for subsequent times
+   * @param {number=} dataReloadRatio - what percentage of a page is reloaded on each subsequent page view
    *
-   * @return {object} Object containing the energy in kilowatt hours, keyed by system component
+   * @return {EnergyByComponentAndVisit} Object containing the energy in kilowatt hours, keyed by system component
    */
   energyPerVisitByComponent(
     bytes,
-    options = {},
+    options = undefined,
     firstView = FIRST_TIME_VIEWING_PERCENTAGE,
     returnView = RETURNING_VISITOR_PERCENTAGE,
     dataReloadRatio = PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD
   ) {
-    if (options.dataReloadRatio || options.dataReloadRatio === 0) {
+    if (options?.dataReloadRatio || options?.dataReloadRatio === 0) {
       dataReloadRatio = options.dataReloadRatio;
     }
 
-    if (options.firstVisitPercentage || options.firstVisitPercentage === 0) {
+    if (options?.firstVisitPercentage || options?.firstVisitPercentage === 0) {
       firstView = options.firstVisitPercentage;
     }
 
-    if (options.returnVisitPercentage || options.returnVisitPercentage === 0) {
+    if (
+      options?.returnVisitPercentage ||
+      options?.returnVisitPercentage === 0
+    ) {
       returnView = options.returnVisitPercentage;
     }
 
     const energyBycomponent = this.energyPerByteByComponent(bytes);
+    /** @type {Record<string, number>} */
     const cacheAdjustedSegmentEnergy = {};
-
-    const energyValues = Object.values(energyBycomponent);
 
     // for this, we want
     for (const [key, value] of Object.entries(energyBycomponent)) {
@@ -272,7 +275,9 @@ class SustainableWebDesign {
         value * returnView * dataReloadRatio;
     }
 
-    return cacheAdjustedSegmentEnergy;
+    return /** @type {EnergyByComponentAndVisit} */ (
+      cacheAdjustedSegmentEnergy
+    );
   }
 
   /**
@@ -308,6 +313,10 @@ class SustainableWebDesign {
     return firstVisits + subsequentVisits;
   }
 
+  /**
+   * @param {number} energyPerVisit
+   * @param {number=} carbonintensity
+   */
   emissionsPerVisitInGrams(
     energyPerVisit,
     carbonintensity = GLOBAL_GRID_INTENSITY
@@ -315,14 +324,25 @@ class SustainableWebDesign {
     return formatNumber(energyPerVisit * carbonintensity);
   }
 
+  /**
+   * @param {number} energyPerVisit
+   * @param {number=} monthlyVisitors
+   */
   annualEnergyInKwh(energyPerVisit, monthlyVisitors = 1000) {
     return energyPerVisit * monthlyVisitors * 12;
   }
 
+  /**
+   * @param {number} co2grams
+   * @param {number=} monthlyVisitors
+   */
   annualEmissionsInGrams(co2grams, monthlyVisitors = 1000) {
     return co2grams * monthlyVisitors * 12;
   }
 
+  /**
+   * @param {number} annualEnergy
+   */
   annualSegmentEnergy(annualEnergy) {
     return {
       consumerDeviceEnergy: formatNumber(annualEnergy * END_USER_DEVICE_ENERGY),

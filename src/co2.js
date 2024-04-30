@@ -1,62 +1,5 @@
 "use strict";
 
-/**
- * @typedef {Object} CO2EstimateTraceResultPerByte
- * @property {number|CO2EstimateComponentsPerByte} co2 - The CO2 estimate in grams or its separate components
- * @property {boolean} green - Whether the domain is green or not
- * @property {TraceResultVariablesPerByte} variables - The variables used to calculate the CO2 estimate
- */
-
-/**
- * @typedef {Object} CO2EstimateTraceResultPerVisit
- * @property {number|CO2EstimateComponentsPerVisit} co2 - The CO2 estimate in grams or its separate components
- * @property {boolean} green - Whether the domain is green or not
- * @property {TraceResultVariablesPerVisit} variables - The variables used to calculate the CO2 estimate
- */
-
-/**
- * @typedef {Object} TraceResultVariablesPerByte
- * @property {GridIntensityVariables} gridIntensity - The grid intensity related variables
- */
-/**
- * @typedef {Object} TraceResultVariablesPerVisit
- * @property {GridIntensityVariables} gridIntensity - The grid intensity related variables
- * @property {number} dataReloadRatio - What percentage of a page is reloaded on each subsequent page view
- * @property {number} firstVisitPercentage - What percentage of visits are loading this page for subsequent times
- * @property {number} returnVisitPercentage - What percentage of visits are loading this page for the second or more time
- */
-
-/**
- * @typedef {Object} GridIntensityVariables
- * @property {string} description - The description of the variables
- * @property {number} network - The network grid intensity set by the user or the default
- * @property {number} dataCenter - The data center grid intensity set by the user or the default
- * @property {number} device - The device grid intensity set by the user or the default
- * @property {number} production - The production grid intensity set by the user or the default
- */
-
-/**
- * @typedef {Object} CO2EstimateComponentsPerByte
- * @property {number} networkCO2 - The CO2 estimate for networking in grams
- * @property {number} dataCenterCO2 - The CO2 estimate for data centers in grams
- * @property {number} consumerDeviceCO2 - The CO2 estimate for consumer devices in grams
- * @property {number} productionCO2 - The CO2 estimate for device production in grams
- * @property {number} total - The total CO2 estimate in grams
- */
-
-/**
- * @typedef {Object} CO2EstimateComponentsPerVisit
- * @property {number} 'networkCO2 - first' - The CO2 estimate for networking in grams on first visit
- * @property {number} 'networkCO2 - subsequent' - The CO2 estimate for networking in grams on subsequent visits
- * @property {number} 'dataCenterCO2 - first' - The CO2 estimate for data centers in grams on first visit
- * @property {number} 'dataCenterCO2 - subsequent' - The CO2 estimate for data centers in grams on subsequent visits
- * @property {number} 'consumerDeviceCO2 - first' - The CO2 estimate for consumer devices in grams on first visit
- * @property {number} 'consumerDeviceCO2 - subsequent' - The CO2 estimate for consumer devices in grams on subsequent visits
- * @property {number} 'productionCO2 - first' - The CO2 estimate for device production in grams on first visit
- * @property {number} 'productionCO2 - subsequent' - The CO2 estimate for device production in grams on subsequent visits
- * @property {number} total - The total CO2 estimate in grams
- */
-
 import OneByte from "./1byte.js";
 import SustainableWebDesign from "./sustainable-web-design.js";
 
@@ -67,7 +10,12 @@ import {
 import { parseOptions } from "./helpers/index.js";
 
 class CO2 {
-  constructor(options) {
+  /**
+   * @param {object} options
+   * @param {'1byte' | 'swd'=} options.model The model to use (OneByte or Sustainable Web Design)
+   * @param {'segment'=} options.results Optional. Whether to return segment-level emissions estimates.
+   */
+  constructor(options = {}) {
     this.model = new SustainableWebDesign();
     // Using optional chaining allows an empty object to be passed
     // in without breaking the code.
@@ -92,7 +40,7 @@ class CO2 {
    *
    * @param {number} bytes
    * @param {boolean} green
-   * @return {number|CO2EstimateComponentsPerByte} the amount of CO2 in grammes or its separate components
+   * @return {number | CO2ByComponentWithTotal} the amount of CO2 in grammes or its separate components
    */
   perByte(bytes, green = false) {
     return this.model.perByte(bytes, green, this._segment);
@@ -105,10 +53,10 @@ class CO2 {
    *
    * @param {number} bytes
    * @param {boolean} green
-   * @return {number|CO2EstimateComponentsPerVisit} the amount of CO2 in grammes or its separate components
+   * @return {number | CO2ByComponentAndVisitWithTotal} the amount of CO2 in grammes or its separate components
    */
   perVisit(bytes, green = false) {
-    if (this.model?.perVisit) {
+    if ("perVisit" in this.model) {
       return this.model.perVisit(bytes, green, this._segment);
     } else {
       throw new Error(
@@ -124,11 +72,12 @@ class CO2 {
    *
    * @param {number} bytes
    * @param {boolean} green
-   * @param {Object} options
+   * @param {ModelOptions} options
    * @return {CO2EstimateTraceResultPerByte} the amount of CO2 in grammes
    */
   perByteTrace(bytes, green = false, options = {}) {
-    let adjustments = {};
+    /** @type {ModelAdjustments | undefined} */
+    let adjustments;
     if (options) {
       // If there are options, parse them and add them to the model.
       adjustments = parseOptions(options);
@@ -164,12 +113,13 @@ class CO2 {
    *
    * @param {number} bytes
    * @param {boolean} green
-   * @param {Object} options
+   * @param {ModelOptions} options
    * @return {CO2EstimateTraceResultPerVisit} the amount of CO2 in grammes
    */
   perVisitTrace(bytes, green = false, options = {}) {
-    if (this.model?.perVisit) {
-      let adjustments = {};
+    if ("perVisit" in this.model) {
+      /** @type {ModelAdjustments | undefined} */
+      let adjustments;
       if (options) {
         // If there are options, parse them and add them to the model.
         adjustments = parseOptions(options);

@@ -9,20 +9,21 @@ import {
 // Shared type definitions to be used across different files
 
 /**
- * @typedef {Object} DomainCheckOptions options to control the behavior when checking a domain
- * @property {string} userAgentIdentifier - Optional. The app, site, or organisation that is making the request.
- * @property {boolean} verbose - Optional. Whether to return a verbose response.
- * @property {string[]} db - Optional. A database list to use for lookups.
+ * @param {number} num
  */
-
 const formatNumber = (num) => parseFloat(num.toFixed(2));
 
+/**
+ * @param {ModelOptions} options
+ * @returns {ModelAdjustments}
+ */
 function parseOptions(options) {
   // CHeck that it is an object
   if (typeof options !== "object") {
     throw new Error("Options must be an object");
   }
 
+  /** @type {ModelAdjustments} */
   const adjustments = {};
 
   if (options?.gridIntensity) {
@@ -40,9 +41,8 @@ function parseOptions(options) {
         }
         adjustments.gridIntensity["device"] = {
           country: device.country,
-          value: parseFloat(
-            averageIntensity.data[device.country?.toUpperCase()]
-          ),
+          // TODO (simon) check that parseFloat can be safely removed here
+          value: averageIntensity.data[device.country?.toUpperCase()],
         };
       } else if (typeof device === "number") {
         adjustments.gridIntensity["device"] = {
@@ -69,9 +69,7 @@ function parseOptions(options) {
         }
         adjustments.gridIntensity["dataCenter"] = {
           country: dataCenter.country,
-          value: parseFloat(
-            averageIntensity.data[dataCenter.country?.toUpperCase()]
-          ),
+          value: averageIntensity.data[dataCenter.country?.toUpperCase()],
         };
       } else if (typeof dataCenter === "number") {
         adjustments.gridIntensity["dataCenter"] = {
@@ -98,9 +96,7 @@ function parseOptions(options) {
         }
         adjustments.gridIntensity["network"] = {
           country: network.country,
-          value: parseFloat(
-            averageIntensity.data[network.country?.toUpperCase()]
-          ),
+          value: averageIntensity.data[network.country?.toUpperCase()],
         };
       } else if (typeof network === "number") {
         adjustments.gridIntensity["network"] = {
@@ -186,10 +182,22 @@ function parseOptions(options) {
  * Returns an object containing all the HTTP headers to use when making a request to the Green Web Foundation API.
  * @param {string} comment - Optional. The app, site, or organisation that is making the request.
  *
- * @returns {import('http').OutgoingHttpHeaders}
+ * @returns {Record<string, string>}
  */
 function getApiRequestHeaders(comment = "") {
-  return { "User-Agent": `co2js/${process.env.CO2JS_VERSION} ${comment}` };
+  if (!process.env["CO2JS_VERSION"]) {
+    return {};
+  }
+  return { "User-Agent": `co2js/${process.env["CO2JS_VERSION"]} ${comment}` };
 }
 
-export { formatNumber, parseOptions, getApiRequestHeaders };
+/**
+ *
+ * @param {number | CO2ByComponentWithTotal} input
+ * @returns {number}
+ */
+function toTotalCO2(input) {
+  return typeof input === "object" ? input.total : input;
+}
+
+export { formatNumber, parseOptions, getApiRequestHeaders, toTotalCO2 };

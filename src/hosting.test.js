@@ -7,7 +7,7 @@ import hosting from "./hosting-node.js";
 
 jest.mock("https");
 
-process.env.CO2JS_VERSION = "1.2.34";
+process.env["CO2JS_VERSION"] = "1.2.34";
 const requestHeaderComment = "TestRunner";
 
 const jsonPath = path.resolve(
@@ -19,8 +19,10 @@ const jsonPath = path.resolve(
 );
 
 describe("hosting", () => {
+  /** @type {jest.SpyInstance<typeof https['get']>} */
   let httpsGetSpy;
   beforeEach(() => {
+    // @ts-ignore
     httpsGetSpy = jest.spyOn(https, "get");
     jest.clearAllMocks();
   });
@@ -42,6 +44,14 @@ describe("hosting", () => {
       );
 
       expect(greenDomains).toHaveLength(2);
+      const expectedGreendomains = [
+        "www.thegreenwebfoundation.org",
+        "fonts.googleapis.com",
+      ];
+      expect(Array.isArray(greenDomains)).toBe(true);
+      /** @type string[] */ (greenDomains).forEach((dom) => {
+        expect(expectedGreendomains).toContain(dom);
+      });
     });
     it("fails if verbose=true is set", async () => {
       const db = await hosting.loadJSON(jsonPath);
@@ -50,9 +60,7 @@ describe("hosting", () => {
           ["www.thegreenwebfoundation.org", "fonts.googleapis.com"],
           { verbose: true, db }
         );
-      }).toThrowError(
-        "verbose mode cannot be used with a local lookup database"
-      );
+      }).toThrow("verbose mode cannot be used with a local lookup database");
     });
   });
   describe("checking a single domain with #check", () => {
@@ -85,7 +93,7 @@ describe("hosting", () => {
       );
     });
     it("sets the correct user agent header when passed as a parameter", async () => {
-      await hosting.check("google.com", null, requestHeaderComment);
+      await hosting.check("google.com", undefined, requestHeaderComment);
       expect(httpsGetSpy).toHaveBeenCalledTimes(1);
       expect(httpsGetSpy).toHaveBeenLastCalledWith(
         expect.any(String),

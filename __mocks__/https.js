@@ -3,6 +3,7 @@ const https = jest.createMockFromModule("https");
 import { Stream } from "stream";
 
 const stream = new Stream();
+stream.statusCode = 200;
 
 https.get.mockImplementation((url, options, callback) => {
   url, { headers: getApiRequestHeaders("TestRunner") }, callback(stream);

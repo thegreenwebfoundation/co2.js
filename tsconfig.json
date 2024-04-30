@@ -1,0 +1,13 @@
+{
+    "extends": "@tsconfig/strictest/tsconfig.json",
+    "include": ["src/**/*"],
+    "exclude": ["src/co2.test.js", "src/sustainable-web-design.test.js"],
+    "compilerOptions": {
+        "strict": true,
+        "allowJs": true,
+        "checkJs": true,
+        "declaration": true,
+        "noUncheckedIndexedAccess": false,
+        "outDir": "dist"
+    }
+}
