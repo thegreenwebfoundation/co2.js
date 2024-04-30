@@ -44,17 +44,6 @@ describe("hosting", () => {
       );
 
       expect(greenDomains).toHaveLength(2);
-    });
-    it("fails if verbose=true is set", async () => {
-      const db = await hosting.loadJSON(jsonPath);
-      await expect(() => {
-        hosting.check(
-          ["www.thegreenwebfoundation.org", "fonts.googleapis.com"],
-          { verbose: true, db }
-        );
-      }).toThrowError(
-        "verbose mode cannot be used with a local lookup database"
-      );
       const expectedGreendomains = [
         "www.thegreenwebfoundation.org",
         "fonts.googleapis.com",
@@ -63,6 +52,15 @@ describe("hosting", () => {
       /** @type string[] */ (greenDomains).forEach((dom) => {
         expect(expectedGreendomains).toContain(dom);
       });
+    });
+    it("fails if verbose=true is set", async () => {
+      const db = await hosting.loadJSON(jsonPath);
+      await expect(() => {
+        hosting.check(
+          ["www.thegreenwebfoundation.org", "fonts.googleapis.com"],
+          { verbose: true, db }
+        );
+      }).toThrow("verbose mode cannot be used with a local lookup database");
     });
   });
   describe("checking a single domain with #check", () => {
@@ -95,7 +93,7 @@ describe("hosting", () => {
       );
     });
     it("sets the correct user agent header when passed as a parameter", async () => {
-      await hosting.check("google.com", null, requestHeaderComment);
+      await hosting.check("google.com", undefined, requestHeaderComment);
       expect(httpsGetSpy).toHaveBeenCalledTimes(1);
       expect(httpsGetSpy).toHaveBeenLastCalledWith(
         expect.any(String),

@@ -43,6 +43,7 @@ describe("hostingAPI", () => {
       expect(res).toEqual(true);
     });
     it("handles the verbose=true option", async () => {
+      // @ts-ignore
       fetch.mockImplementation(() =>
         Promise.resolve({
           json: () =>
@@ -100,6 +101,7 @@ describe("hostingAPI", () => {
       expect(res).toContain("google.com");
     });
     it("handles the verbose=true option", async () => {
+      // @ts-ignore
       fetch.mockImplementation(() =>
         Promise.resolve({
           json: () =>

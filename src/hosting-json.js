@@ -2,7 +2,8 @@
 
 /**
  * Check if a string or array of domains has been provided
- * @param {string|array} domain - The domain to check, or an array of domains to be checked.
+ * @param {string | string[]} domain - The domain to check, or an array of domains to be checked.
+ * @param {string[]} db - The database to check against.
  */
 async function check(domain, db) {
   // is it a single domain or an array of them?
@@ -16,7 +17,7 @@ async function check(domain, db) {
 /**
  * Check if a domain is hosted by a green web host by querying the database.
  * @param {string} domain - The domain to check.
- * @param {object} db - The database to check against.
+ * @param {string[]} db - The database to check against.
  * @returns {boolean} - A boolean indicating whether the domain is hosted by a green web host.
  */
 function checkInJSON(domain, db) {
@@ -29,20 +30,20 @@ function checkInJSON(domain, db) {
 /**
  * Extract the green domains from the results of a green check.
  * @param {object} greenResults - The results of a green check.
- * @returns {array} - An array of domains that are hosted by a green web host.
+ * @returns {string[]} - An array of domains that are hosted by a green web host.
  */
 function greenDomainsFromResults(greenResults) {
   const entries = Object.entries(greenResults);
-  const greenEntries = entries.filter(([key, val]) => val.green);
+  const greenEntries = entries.filter(([_, val]) => val.green);
 
-  return greenEntries.map(([key, val]) => val.url);
+  return greenEntries.map(([_, val]) => val.url);
 }
 
 /**
  * Check if an array of domains is hosted by a green web host by querying the database.
- * @param {array} domains - An array of domains to check.
- * @param {object} db - The database to check against.
- * @returns {array} - An array of domains that are hosted by a green web host.
+ * @param {string[]} domains - An array of domains to check.
+ * @param {string[]} db - The database to check against.
+ * @returns {string[]} - An array of domains that are hosted by a green web host.
  */
 function checkDomainsInJSON(domains, db) {
   let greenDomains = [];
@@ -57,7 +58,8 @@ function checkDomainsInJSON(domains, db) {
 
 /**
  * Find the provided information a string or array of domains
- * @param {string|array} domain - The domain to check, or an array of domains to be checked.
+ * @param {string | string[]} domain - The domain to check, or an array of domains to be checked.
+ * @param {string[]} db - The database to check against.
  */
 function find(domain, db) {
   // is it a single domain or an array of them?
@@ -71,12 +73,15 @@ function find(domain, db) {
 /**
  * Check if a domain is hosted by a green web host by querying the database.
  * @param {string} domain - The domain to check.
- * @param {object} db - The database to check against.
- * @returns {object} - An object representing the domain provided host information.
+ * @param {string[]} db - The database to check against.
+ * @returns {PerDomainCheckResponse} - An object representing the domain provided host information.
  */
 function findInJSON(domain, db) {
   if (db.indexOf(domain) > -1) {
-    return domain;
+    return {
+      url: domain,
+      green: true,
+    };
   }
   return {
     url: domain,
@@ -86,11 +91,12 @@ function findInJSON(domain, db) {
 
 /**
  * Check if an array of domains is hosted by a green web host by querying the database.
- * @param {array} domains - An array of domains to check.
- * @param {object} db - The database to check against.
- * @returns {array} - A dictionary of domain to provided host information.
+ * @param {string[]} domains - An array of domains to check.
+ * @param {string[]} db - The database to check against.
+ * @returns {MultiDomainCheckResponse} - A dictionary of domain to provided host information.
  */
 function findDomainsInJSON(domains, db) {
+  /** @type {MultiDomainCheckResponse} */
   const result = {};
   for (let domain of domains) {
     result[domain] = findInJSON(domain, db);

@@ -53,9 +53,9 @@ async function getBody(url, userAgentIdentifier) {
 /**
  * Check if a domain is hosted by a green web host.
  * @param {string | string[]} domain - The domain to check, or an array of domains to be checked.
- * @param {string[] | DomainCheckOptions} optionsOrDb - Optional. An object of domain check options, or a database list to use for lookups.
+ * @param {(string[] | DomainCheckOptions)=} optionsOrDb - Optional. An object of domain check options, or a database list to use for lookups.
  * @param {string=} userAgentIdentifier - Optional. The app, site, or organisation that is making the request.
- * @returns {Promise<boolean | string[]>} - A boolean if a string was provided, or an array of booleans if an array of domains was provided.
+ * @returns {Promise<boolean | string[] | MultiDomainCheckResponse>} - A boolean if a string was provided, or an array of booleans if an array of domains was provided.
  *   if a string was provided for `domain`: a boolean indicating whether the domain is hosted by a green web host if `options.verbose` is false,
  *     otherwise an object representing the domain host information.
  *   if an array was provided for `domain`: an array of domains that are hosted by a green web host if `options.verbose` is false,
@@ -64,8 +64,9 @@ async function getBody(url, userAgentIdentifier) {
 
 function check(domain, optionsOrDb, userAgentIdentifier) {
   let db,
+    /** @type {DomainCheckOptions | undefined} */
     options = {};
-  if (!db && Array.isArray(optionsOrDb)) {
+  if (Array.isArray(optionsOrDb)) {
     db = optionsOrDb;
   } else {
     options = optionsOrDb;
@@ -112,7 +113,7 @@ async function checkAgainstAPI(domain, options = {}) {
  * Check if an array of domains is hosted by a green web host by querying the Green Web Foundation API.
  * @param {string[]} domains - An array of domains to check.
  * @param {DomainCheckOptions} options
- * @returns {Promise<string[]>} - An array of domains that are hosted by a green web host if `options.verbose` is false,
+ * @returns {Promise<string[] | MultiDomainCheckResponse>} - An array of domains that are hosted by a green web host if `options.verbose` is false,
  * otherwise a dictionary of domain to host information.
  */
 async function checkDomainsAgainstAPI(domains, options = {}) {
