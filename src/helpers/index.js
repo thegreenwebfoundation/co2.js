@@ -17,6 +17,8 @@ import {
 
 const formatNumber = (num) => parseFloat(num.toFixed(2));
 
+const lessThan = (num, limit) => num < limit;
+
 function parseOptions(options) {
   // CHeck that it is an object
   if (typeof options !== "object") {
@@ -192,4 +194,4 @@ function getApiRequestHeaders(comment = "") {
   return { "User-Agent": `co2js/${process.env.CO2JS_VERSION} ${comment}` };
 }
 
-export { formatNumber, parseOptions, getApiRequestHeaders };
+export { formatNumber, parseOptions, getApiRequestHeaders, lessThan };

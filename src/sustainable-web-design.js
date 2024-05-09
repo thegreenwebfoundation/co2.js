@@ -21,7 +21,7 @@ import {
   RETURNING_VISITOR_PERCENTAGE,
   PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD,
 } from "./constants/index.js";
-import { formatNumber } from "./helpers/index.js";
+import { formatNumber, lessThan } from "./helpers/index.js";
 
 class SustainableWebDesign {
   constructor(options) {
@@ -330,6 +330,24 @@ class SustainableWebDesign {
       dataCenterEnergy: formatNumber(annualEnergy * DATACENTER_ENERGY),
       productionEnergy: formatNumber(annualEnergy * PRODUCTION_ENERGY),
     };
+  }
+
+  ratingScale(bytes) {
+    if (lessThan(bytes, 272510)) {
+      return "A+";
+    } else if (lessThan(bytes, 531150)) {
+      return "A";
+    } else if (lessThan(bytes, 975850)) {
+      return "B";
+    } else if (lessThan(bytes, 1410390)) {
+      return "C";
+    } else if (lessThan(bytes, 1875010)) {
+      return "D";
+    } else if (lessThan(bytes, 2419560)) {
+      return "E";
+    } else {
+      return "F";
+    }
   }
 }
 

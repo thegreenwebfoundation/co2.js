@@ -113,4 +113,21 @@ describe("sustainable web design model", () => {
       });
     });
   });
+
+  describe("SWD Rating Scale", () => {
+    it("should return a string", () => {
+      expect(typeof swd.ratingScale(averageWebsiteInBytes)).toBe("string");
+    });
+
+    it("should return a rating", () => {
+      // Check a 3MB file size
+      expect(swd.ratingScale(3000000)).toBe("F");
+    });
+
+    it("returns ratings as expected", () => {
+      expect(swd.ratingScale(1000)).toBe("A+");
+      expect(swd.ratingScale(1000000)).toBe("C");
+      expect(swd.ratingScale(10000000)).toBe("F");
+    });
+  });
 });
