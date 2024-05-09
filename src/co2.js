@@ -68,14 +68,17 @@ import { parseOptions } from "./helpers/index.js";
 
 class CO2 {
   constructor(options) {
+    let allowRatings = true;
     this.model = new SustainableWebDesign();
     // Using optional chaining allows an empty object to be passed
     // in without breaking the code.
     if (options?.model === "1byte") {
       this.model = new OneByte();
+      allowRatings = false;
     } else if (options?.model === "swd") {
       this.model = new SustainableWebDesign();
     } else if (options?.model) {
+      allowRatings = false;
       throw new Error(
         `"${options.model}" is not a valid model. Please use "1byte" for the OneByte model, and "swd" for the Sustainable Web Design model.\nSee https://developers.thegreenwebfoundation.org/co2js/models/ to learn more about the models available in CO2.js.`
       );
@@ -86,7 +89,7 @@ class CO2 {
     this._rating = options?.rating === true;
 
     // The rating system is only supported in the Sustainable Web Design Model.
-    if (options?.model !== "swd" && this._rating) {
+    if (!allowRatings && this._rating) {
       throw new Error(
         `The rating system is not supported in the model you are using. Try using the Sustainable Web Design model instead.\nSee https://developers.thegreenwebfoundation.org/co2js/models/ to learn more about the models available in CO2.js.`
       );
@@ -103,7 +106,7 @@ class CO2 {
    * @return {number|CO2EstimateComponentsPerByte} the amount of CO2 in grammes or its separate components
    */
   perByte(bytes, green = false) {
-    return this.model.perByte(bytes, green, this._segment);
+    return this.model.perByte(bytes, green, this._segment, this._rating);
   }
 
   /**
@@ -117,7 +120,7 @@ class CO2 {
    */
   perVisit(bytes, green = false) {
     if (this.model?.perVisit) {
-      return this.model.perVisit(bytes, green, this._segment);
+      return this.model.perVisit(bytes, green, this._segment, this._rating);
     } else {
       throw new Error(
         `The perVisit() method is not supported in the model you are using. Try using perByte() instead.\nSee https://developers.thegreenwebfoundation.org/co2js/methods/ to learn more about the methods available in CO2.js.`
@@ -142,7 +145,13 @@ class CO2 {
       adjustments = parseOptions(options);
     }
     return {
-      co2: this.model.perByte(bytes, green, this._segment, adjustments),
+      co2: this.model.perByte(
+        bytes,
+        green,
+        this._segment,
+        this._rating,
+        adjustments
+      ),
       green,
       variables: {
         description:
@@ -184,7 +193,13 @@ class CO2 {
       }
 
       return {
-        co2: this.model.perVisit(bytes, green, this._segment, adjustments),
+        co2: this.model.perVisit(
+          bytes,
+          green,
+          this._segment,
+          this._rating,
+          adjustments
+        ),
         green,
         variables: {
           description:

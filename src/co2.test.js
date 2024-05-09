@@ -840,4 +840,23 @@ describe("co2", () => {
       expect(co2Result["consumerDeviceCO2 - subsequent"]).toBe(0);
     });
   });
+
+  describe("Returning SWD results with rating", () => {
+    const co2NoRating = new CO2();
+    const co2Rating = new CO2({ rating: true });
+    const co2RatingSegmented = new CO2({ rating: true, results: "segment" });
+
+    it("does not return a rating when rating is false", () => {
+      expect(co2NoRating.perVisit(MILLION)).not.toHaveProperty("rating");
+    });
+
+    it("returns a rating when rating is true", () => {
+      expect(co2Rating.perVisit(MILLION)).toHaveProperty("rating");
+    });
+
+    it("returns a rating when rating is true and results are segmented", () => {
+      expect(co2RatingSegmented.perByte(MILLION)).toHaveProperty("rating");
+      expect(co2RatingSegmented.perByte(MILLION)).toHaveProperty("networkCO2");
+    });
+  });
 });

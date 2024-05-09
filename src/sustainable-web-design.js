@@ -126,6 +126,7 @@ class SustainableWebDesign {
     bytes,
     carbonIntensity = false,
     segmentResults = false,
+    ratingResults = false,
     options = {}
   ) {
     if (bytes < 1) {
@@ -153,8 +154,25 @@ class SustainableWebDesign {
       (prevValue, currentValue) => prevValue + currentValue
     );
 
+    let rating = null;
+    if (ratingResults) {
+      rating = this.ratingScale(bytes);
+    }
+
     if (segmentResults) {
+      if (ratingResults) {
+        return {
+          ...co2ValuesbyComponent,
+          total: co2ValuesSum,
+          rating: rating,
+        };
+      }
+
       return { ...co2ValuesbyComponent, total: co2ValuesSum };
+    }
+
+    if (ratingResults) {
+      return { total: co2ValuesSum, rating: rating };
     }
 
     return co2ValuesSum;
@@ -174,6 +192,7 @@ class SustainableWebDesign {
     bytes,
     carbonIntensity = false,
     segmentResults = false,
+    ratingResults = false,
     options = {}
   ) {
     const energyBycomponent = this.energyPerVisitByComponent(bytes, options);
@@ -197,8 +216,24 @@ class SustainableWebDesign {
       (prevValue, currentValue) => prevValue + currentValue
     );
 
+    let rating = null;
+    if (ratingResults) {
+      rating = this.ratingScale(bytes);
+    }
+
     if (segmentResults) {
+      if (ratingResults) {
+        return {
+          ...co2ValuesbyComponent,
+          total: co2ValuesSum,
+          rating: rating,
+        };
+      }
       return { ...co2ValuesbyComponent, total: co2ValuesSum };
+    }
+
+    if (ratingResults) {
+      return { total: co2ValuesSum, rating: rating };
     }
 
     // so we can return their sum
