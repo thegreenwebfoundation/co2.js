@@ -83,6 +83,14 @@ class CO2 {
 
     /** @private */
     this._segment = options?.results === "segment";
+    this._rating = options?.rating === true;
+
+    // The rating system is only supported in the Sustainable Web Design Model.
+    if (options?.model !== "swd" && this._rating) {
+      throw new Error(
+        `The rating system is not supported in the model you are using. Try using the Sustainable Web Design model instead.\nSee https://developers.thegreenwebfoundation.org/co2js/models/ to learn more about the models available in CO2.js.`
+      );
+    }
   }
 
   /**

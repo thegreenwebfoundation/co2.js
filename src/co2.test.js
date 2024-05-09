@@ -211,6 +211,14 @@ describe("co2", () => {
         `The perVisit() method is not supported in the model you are using. Try using perByte() instead.\nSee https://developers.thegreenwebfoundation.org/co2js/methods/ to learn more about the methods available in CO2.js.`
       );
     });
+
+    it("throws an error if using the rating system with OneByte", () => {
+      expect(() => {
+        co2 = new CO2({ model: "1byte", rating: true });
+      }).toThrowError(
+        `The rating system is not supported in the model you are using. Try using the Sustainable Web Design model instead.\nSee https://developers.thegreenwebfoundation.org/co2js/models/ to learn more about the models available in CO2.js.`
+      );
+    });
   });
 
   // Test that grid intensity data can be imported and used
