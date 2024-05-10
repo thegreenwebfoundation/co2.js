@@ -125,9 +125,10 @@ describe("sustainable web design model", () => {
     });
 
     it("returns ratings as expected", () => {
-      expect(swd.ratingScale(1000)).toBe("A+");
-      expect(swd.ratingScale(1000000)).toBe("C");
-      expect(swd.ratingScale(10000000)).toBe("F");
+      expect(swd.ratingScale(0.065)).toBe("A+");
+      expect(swd.ratingScale(0.342)).toBe("C");
+      expect(swd.ratingScale(0.341)).toBe("B");
+      expect(swd.ratingScale(0.9)).toBe("F");
     });
   });
 });

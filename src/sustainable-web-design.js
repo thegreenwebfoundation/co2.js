@@ -21,7 +21,7 @@ import {
   RETURNING_VISITOR_PERCENTAGE,
   PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD,
 } from "./constants/index.js";
-import { formatNumber, lessThan } from "./helpers/index.js";
+import { formatNumber, lessThanEqualTo } from "./helpers/index.js";
 
 class SustainableWebDesign {
   constructor(options) {
@@ -156,7 +156,7 @@ class SustainableWebDesign {
 
     let rating = null;
     if (ratingResults) {
-      rating = this.ratingScale(bytes);
+      rating = this.ratingScale(co2ValuesSum);
     }
 
     if (segmentResults) {
@@ -218,7 +218,7 @@ class SustainableWebDesign {
 
     let rating = null;
     if (ratingResults) {
-      rating = this.ratingScale(bytes);
+      rating = this.ratingScale(co2ValuesSum);
     }
 
     if (segmentResults) {
@@ -367,18 +367,18 @@ class SustainableWebDesign {
     };
   }
 
-  ratingScale(bytes) {
-    if (lessThan(bytes, 272510)) {
+  ratingScale(co2e) {
+    if (lessThanEqualTo(co2e, 0.095)) {
       return "A+";
-    } else if (lessThan(bytes, 531150)) {
+    } else if (lessThanEqualTo(co2e, 0.186)) {
       return "A";
-    } else if (lessThan(bytes, 975850)) {
+    } else if (lessThanEqualTo(co2e, 0.341)) {
       return "B";
-    } else if (lessThan(bytes, 1410390)) {
+    } else if (lessThanEqualTo(co2e, 0.493)) {
       return "C";
-    } else if (lessThan(bytes, 1875010)) {
+    } else if (lessThanEqualTo(co2e, 0.656)) {
       return "D";
-    } else if (lessThan(bytes, 2419560)) {
+    } else if (lessThanEqualTo(co2e, 0.846)) {
       return "E";
     } else {
       return "F";
