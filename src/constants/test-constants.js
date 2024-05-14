@@ -9,7 +9,7 @@ export const ONEBYTE = {
   MILLION_GREEN: 0.23196,
 };
 
-export const SWD = {
+export const SWDV3 = {
   MILLION_GREY: 0.39365,
   MILLION_GREEN: 0.34068,
   MILLION_PERVISIT_GREY: 0.29721,
