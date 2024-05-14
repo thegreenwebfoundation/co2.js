@@ -19,7 +19,7 @@ describe("sustainable web design model version 4", () => {
       expect(result.device).toBeCloseTo(39.52, 3);
     });
 
-    it("returns the expected emissions for 0bytes data transfer", () => {
+    it("returns the expected emissions for 0 bytes data transfer", () => {
       const result = swd.operationalEmissions(0);
       expect(result).toEqual(
         expect.objectContaining({
@@ -33,28 +33,26 @@ describe("sustainable web design model version 4", () => {
       expect(result.device).toBeCloseTo(0, 3);
     });
 
-    if (
-      ("returns the expected emissions for 1GB data transfer with custom grid intensities",
-      () => {
-        const result = swd.operationalEmissions(1000000000, {
-          gridIntensity: {
-            dataCenter: { value: 100 },
-            network: { value: 200 },
-            device: { value: 300 },
-          },
-        });
-        expect(result).toEqual(
-          expect.objectContaining({
-            dataCenter: expect.any(Number),
-            network: expect.any(Number),
-            device: expect.any(Number),
-          })
-        );
-        expect(result.dataCenter).toBeCloseTo(5.5, 3);
-        expect(result.network).toBeCloseTo(11.8, 3);
-        expect(result.device).toBeCloseTo(24, 3);
-      })
-    );
+    it("returns the expected emissions for 1GB data transfer with custom grid intensities", () => {
+      const result = swd.operationalEmissions(1000000000, {
+        gridIntensity: {
+          dataCenter: { value: 100 },
+          network: { value: 200 },
+          device: { value: 300 },
+        },
+      });
+
+      expect(result).toEqual(
+        expect.objectContaining({
+          dataCenter: expect.any(Number),
+          network: expect.any(Number),
+          device: expect.any(Number),
+        })
+      );
+      expect(result.dataCenter).toBeCloseTo(5.5, 3);
+      expect(result.network).toBeCloseTo(11.8, 3);
+      expect(result.device).toBeCloseTo(24, 3);
+    });
   });
 
   describe("embodied emissions", () => {
@@ -72,7 +70,7 @@ describe("sustainable web design model version 4", () => {
       expect(result.device).toBeCloseTo(40.014, 3);
     });
 
-    it("returns the expected emissions for 0bytes data transfer", () => {
+    it("returns the expected emissions for 0 bytes data transfer", () => {
       const result = swd.embodiedEmissions(0);
       expect(result).toEqual(
         expect.objectContaining({
