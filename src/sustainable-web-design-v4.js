@@ -132,6 +132,64 @@ class SustainableWebDesign {
       device: deviceEmissions,
     };
   }
+
+  // NOTE: Setting green: true should result in a GREEN_HOSTING_FACTOR of 1.0
+  perByte(bytes, green = false, segmented = false, options = {}) {
+    if (bytes < 1) {
+      return 0;
+    }
+
+    const operationalEmissions = this.operationalEmissions(bytes, options);
+    const embodiedEmissions = this.embodiedEmissions(bytes);
+    let GREEN_HOSTING_FACTOR = 0;
+
+    if (green) {
+      GREEN_HOSTING_FACTOR = 1.0;
+    } else if (
+      options?.greenHostingFactor ||
+      options?.greenHostingFactor === 0
+    ) {
+      GREEN_HOSTING_FACTOR = options.greenHostingFactor;
+    }
+
+    const totalEmissions = {
+      dataCenter:
+        operationalEmissions.dataCenter * (1 - GREEN_HOSTING_FACTOR) +
+        embodiedEmissions.dataCenter,
+      network: operationalEmissions.network + embodiedEmissions.network,
+      device: operationalEmissions.device + embodiedEmissions.device,
+    };
+
+    const total =
+      totalEmissions.dataCenter +
+      totalEmissions.network +
+      totalEmissions.device;
+
+    if (segmented) {
+      return {
+        dataCenterOperationalCO2: operationalEmissions.dataCenter,
+        networkOperationalCO2: operationalEmissions.network,
+        consumerDeviceOperationalCO2: operationalEmissions.device,
+        dataCenterEmbodiedCO2: embodiedEmissions.dataCenter,
+        networkEmbodiedCO2: embodiedEmissions.network,
+        consumerDeviceEmbodiedCO2: embodiedEmissions.device,
+        totalOperational:
+          operationalEmissions.dataCenter +
+          operationalEmissions.network +
+          operationalEmissions.device,
+        totalEmbodied:
+          embodiedEmissions.dataCenter +
+          embodiedEmissions.network +
+          embodiedEmissions.device,
+        dataCenterCO2: totalEmissions.dataCenter,
+        networkCO2: totalEmissions.network,
+        consumerDeviceCO2: totalEmissions.device,
+        total,
+      };
+    }
+
+    return total;
+  }
 }
 
 export { SustainableWebDesign };
