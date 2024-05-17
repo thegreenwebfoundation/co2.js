@@ -190,6 +190,90 @@ class SustainableWebDesign {
 
     return total;
   }
+
+  perVisit(bytes, green = false, segmented = false, options = {}) {
+    let firstView = 1;
+    let returnView = 0;
+    let dataReloadRatio = 0;
+    let GREEN_HOSTING_FACTOR = 0;
+    const operationalEmissions = this.operationalEmissions(bytes, options);
+    const embodiedEmissions = this.embodiedEmissions(bytes);
+
+    if (bytes < 1) {
+      return 0;
+    }
+
+    if (green) {
+      GREEN_HOSTING_FACTOR = 1.0;
+    } else if (
+      options?.greenHostingFactor ||
+      options?.greenHostingFactor === 0
+    ) {
+      GREEN_HOSTING_FACTOR = options.greenHostingFactor;
+    }
+
+    if (options.firstVisitPercentage || options.firstVisitPercentage === 0) {
+      firstView = options.firstVisitPercentage;
+    }
+
+    if (options.returnVisitPercentage || options.returnVisitPercentage === 0) {
+      returnView = options.returnVisitPercentage;
+    }
+
+    if (options.dataReloadRatio || options.dataReloadRatio === 0) {
+      dataReloadRatio = options.dataReloadRatio;
+    }
+
+    const firstVisitEmissions =
+      (operationalEmissions.dataCenter * (1 - GREEN_HOSTING_FACTOR) +
+        embodiedEmissions.dataCenter +
+        operationalEmissions.network +
+        embodiedEmissions.network +
+        operationalEmissions.device +
+        embodiedEmissions.device) *
+      firstView;
+
+    const returnVisitEmissions =
+      (operationalEmissions.dataCenter * (1 - GREEN_HOSTING_FACTOR) +
+        embodiedEmissions.dataCenter +
+        operationalEmissions.network +
+        embodiedEmissions.network +
+        operationalEmissions.device +
+        embodiedEmissions.device) *
+      returnView *
+      (1 - dataReloadRatio);
+
+    const total = firstVisitEmissions + returnVisitEmissions;
+
+    if (segmented) {
+      return {
+        dataCenterOperationalCO2: operationalEmissions.dataCenter,
+        networkOperationalCO2: operationalEmissions.network,
+        consumerDeviceOperationalCO2: operationalEmissions.device,
+        dataCenterEmbodiedCO2: embodiedEmissions.dataCenter,
+        networkEmbodiedCO2: embodiedEmissions.network,
+        consumerDeviceEmbodiedCO2: embodiedEmissions.device,
+        totalOperational:
+          operationalEmissions.dataCenter +
+          operationalEmissions.network +
+          operationalEmissions.device,
+        totalEmbodied:
+          embodiedEmissions.dataCenter +
+          embodiedEmissions.network +
+          embodiedEmissions.device,
+        dataCenterCO2:
+          firstVisitEmissions.dataCenter + returnVisitEmissions.dataCenter,
+        networkCO2: firstVisitEmissions.network + returnVisitEmissions.network,
+        consumerDeviceCO2:
+          firstVisitEmissions.device + returnVisitEmissions.device,
+        firstVisitEmissions,
+        returnVisitEmissions,
+        total,
+      };
+    }
+
+    return total;
+  }
 }
 
 export { SustainableWebDesign };

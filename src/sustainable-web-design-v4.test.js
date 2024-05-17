@@ -141,4 +141,65 @@ describe("sustainable web design model version 4", () => {
       expect(result.total).toBeCloseTo(SWDV4.PERBYTE_EMISSIONS_GB, 3);
     });
   });
+
+  describe("emissions per visit", () => {
+    it("returns the expected emissions for 1GB data transfer with no green energy factor, 75% new visitors, 20% data reload ratio", () => {
+      const result = swd.perVisit(1000000000, false, false, {
+        firstVisitPercentage: 0.75,
+        returnVisitPercentage: 0.25,
+        dataReloadRatio: 0.2,
+      });
+      expect(result).toBeCloseTo(SWDV4.PERVISIT_EMISSIONS_GB, 3);
+    });
+
+    // it("returns the expected emissions for 1GB data transfer with green energy factor", () => {
+    //   const result = swd.perByte(1000000000, true);
+    //   expect(result).toBeCloseTo(SWDV4.PERBYTE_EMISSIONS_GB_GREEN, 3);
+    // });
+
+    // it("returns the expected emissions for 1GB data transfer with green energy factor of 0.5", () => {
+    //   const result = swd.perByte(1000000000, false, false, {
+    //     greenHostingFactor: 0.5,
+    //   });
+
+    //   expect(result).toBeCloseTo(SWDV4.PERBYTE_EMISSIONS_GB_GREEN_PARTIAL, 3);
+    // });
+
+    // it("returns the expected emissions for 0 bytes data transfer", () => {
+    //   const result = swd.perByte(0);
+    //   expect(result).toBe(0);
+    // });
+
+    // it("returns the expected emissions results for each segment for 1GB data transfer", () => {
+    //   const result = swd.perByte(1000000000, false, true);
+    //   expect(result).toEqual(
+    //     expect.objectContaining({
+    //       dataCenterOperationalCO2: expect.any(Number),
+    //       networkOperationalCO2: expect.any(Number),
+    //       consumerDeviceOperationalCO2: expect.any(Number),
+    //       totalOperational: expect.any(Number),
+    //       dataCenterEmbodiedCO2: expect.any(Number),
+    //       networkEmbodiedCO2: expect.any(Number),
+    //       consumerDeviceEmbodiedCO2: expect.any(Number),
+    //       totalEmbodied: expect.any(Number),
+    //       dataCenterCO2: expect.any(Number),
+    //       networkCO2: expect.any(Number),
+    //       consumerDeviceCO2: expect.any(Number),
+    //       total: expect.any(Number),
+    //     })
+    //   );
+    //   expect(result.dataCenterOperationalCO2).toBeCloseTo(27.17, 3);
+    //   expect(result.networkOperationalCO2).toBeCloseTo(29.146, 3);
+    //   expect(result.consumerDeviceOperationalCO2).toBeCloseTo(39.52, 3);
+    //   expect(result.totalOperational).toBeCloseTo(95.836, 3);
+    //   expect(result.dataCenterEmbodiedCO2).toBeCloseTo(5.928, 3);
+    //   expect(result.networkEmbodiedCO2).toBeCloseTo(6.422, 3);
+    //   expect(result.consumerDeviceEmbodiedCO2).toBeCloseTo(40.014, 3);
+    //   expect(result.totalEmbodied).toBeCloseTo(52.364, 3);
+    //   expect(result.dataCenterCO2).toBeCloseTo(33.098, 3);
+    //   expect(result.networkCO2).toBeCloseTo(35.568, 3);
+    //   expect(result.consumerDeviceCO2).toBeCloseTo(79.534, 3);
+    //   expect(result.total).toBeCloseTo(SWDV4.PERBYTE_EMISSIONS_GB, 3);
+    // });
+  });
 });
