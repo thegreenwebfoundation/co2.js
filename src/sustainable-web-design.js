@@ -130,6 +130,7 @@ class SustainableWebDesign {
    * @param {number} bytes - the data transferred in bytes
    * @param {boolean} carbonIntensity - a boolean indicating whether the data center is green or not
    * @param {boolean} segmentResults - a boolean indicating whether to return the results broken down by component
+   * @param {boolean} ratingResults - a boolean indicating whether to return the rating based on the Sustainable Web Design Model
    * @param {object} options - an object containing the grid intensity and first/return visitor values
    * @return {number|object} the total number in grams of CO2 equivalent emissions, or an object containing the breakdown by component
    */
@@ -196,6 +197,7 @@ class SustainableWebDesign {
    * @param {number} bytes - the data transferred in bytes
    * @param {boolean} carbonIntensity - a boolean indicating whether the data center is green or not
    * @param {boolean} segmentResults - a boolean indicating whether to return the results broken down by component
+   * @param {boolean} ratingResults - a boolean indicating whether to return the rating based on the Sustainable Web Design Model
    * @param {object} options - an object containing the grid intensity and first/return visitor values
    * @return {number|object} the total number in grams of CO2 equivalent emissions, or an object containing the breakdown by component
    */
@@ -378,6 +380,12 @@ class SustainableWebDesign {
     };
   }
 
+  /**
+   * Determines the rating of a website's sustainability based on its CO2 emissions.
+   *
+   * @param {number} co2e - The CO2 emissions of the website in grams.
+   * @returns {string} The sustainability rating, ranging from "A+" (best) to "F" (worst).
+   */
   ratingScale(co2e) {
     if (lessThanEqualTo(co2e, fifthPercentile)) {
       return "A+";
