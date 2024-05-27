@@ -136,8 +136,11 @@ describe("sustainable web design model", () => {
 
     it("returns ratings as expected", () => {
       expect(swd.ratingScale(fifthPercentile)).toBe("A+");
-      expect(swd.ratingScale(thirtiethPercentile)).toBe("C");
+      expect(swd.ratingScale(tenthPercentile)).toBe("A");
       expect(swd.ratingScale(twentiethPercentile)).toBe("B");
+      expect(swd.ratingScale(thirtiethPercentile)).toBe("C");
+      expect(swd.ratingScale(fortiethPercentile)).toBe("D");
+      expect(swd.ratingScale(fiftiethPercentile)).toBe("E");
       expect(swd.ratingScale(0.9)).toBe("F");
     });
   });
