@@ -267,10 +267,10 @@ class SustainableWebDesign {
           embodiedEmissions.network +
           embodiedEmissions.device,
         dataCenterCO2:
-          firstVisitEmissions.dataCenter + returnVisitEmissions.dataCenter,
-        networkCO2: firstVisitEmissions.network + returnVisitEmissions.network,
+          operationalEmissions.dataCenter + embodiedEmissions.dataCenter,
+        networkCO2: operationalEmissions.network + embodiedEmissions.network,
         consumerDeviceCO2:
-          firstVisitEmissions.device + returnVisitEmissions.device,
+          operationalEmissions.device + embodiedEmissions.device,
         firstVisitEmissions,
         returnVisitEmissions,
         total,
