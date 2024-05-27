@@ -1,6 +1,6 @@
 "use strict";
 
-import { MILLION, SWDV3 } from "./constants/test-constants.js";
+import { MILLION, SWD } from "./constants/test-constants.js";
 
 import CO2 from "./co2.js";
 import { averageIntensity, marginalIntensity } from "./index.js";
@@ -15,7 +15,7 @@ describe("co2", () => {
     // we include more of the system in calculations for the
     // same levels of data transfer
 
-    const { MILLION_PERVISIT_GREY, MILLION_PERVISIT_GREEN } = SWDV3;
+    const { MILLION_PERVISIT_GREY, MILLION_PERVISIT_GREEN } = SWD;
 
     // We're not passing in a model parameter here to check that SWD is used by default
     beforeEach(() => {
@@ -63,7 +63,7 @@ describe("co2", () => {
         MILLION_GREY_DATACENTERS,
         MILLION_GREY_PRODUCTION,
         MILLION_GREEN_DATACENTERS,
-      } = SWDV3;
+      } = SWD;
       describe("perVisit", () => {
         it("returns an object with devices, networks, data centers, and production emissions shown separately, as well as the total emissions", () => {
           co2 = new CO2({ results: "segment" });
@@ -297,7 +297,7 @@ describe("co2", () => {
       MILLION_PERBYTE_GREY_DEVICE_GRID_INTENSITY_CHANGE,
       MILLION_GREY,
       MILLION_PERVISIT_GREY,
-    } = SWDV3;
+    } = SWD;
     const co2 = new CO2();
     it("expects an object or number", () => {
       expect(
@@ -397,7 +397,7 @@ describe("co2", () => {
       MILLION_PERBYTE_GREY_DATACENTER_GRID_INTENSITY_CHANGE,
       MILLION_GREY,
       MILLION_PERVISIT_GREY,
-    } = SWDV3;
+    } = SWD;
     const co2 = new CO2();
     it("expects an object or number", () => {
       expect(
@@ -495,7 +495,7 @@ describe("co2", () => {
       MILLION_PERBYTE_GREY_NETWORK_GRID_INTENSITY_CHANGE,
       MILLION_GREY,
       MILLION_PERVISIT_GREY,
-    } = SWDV3;
+    } = SWD;
     const co2 = new CO2();
     it("expects an object or number", () => {
       expect(
@@ -589,7 +589,7 @@ describe("co2", () => {
   });
 
   describe("Using custom caching values in SWD", () => {
-    const { MILLION_PERVISIT_GREY } = SWDV3;
+    const { MILLION_PERVISIT_GREY } = SWD;
     const co2 = new CO2();
     it("uses the custom value", () => {
       expect(
@@ -637,7 +637,7 @@ describe("co2", () => {
   });
 
   describe("Using custom first and return visitor figures in SWD", () => {
-    const { MILLION_PERVISIT_GREY, MILLION_GREY } = SWDV3;
+    const { MILLION_PERVISIT_GREY, MILLION_GREY } = SWD;
     const co2 = new CO2();
 
     it("uses the custom values", () => {
