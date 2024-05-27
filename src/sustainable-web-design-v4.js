@@ -224,6 +224,8 @@ class SustainableWebDesign {
       dataReloadRatio = options.dataReloadRatio;
     }
 
+    // NOTE: First visit emissions are calculated as the sum of all three segments without any caching.
+
     const firstVisitEmissions =
       operationalEmissions.dataCenter * (1 - GREEN_HOSTING_FACTOR) +
       embodiedEmissions.dataCenter +
@@ -231,6 +233,8 @@ class SustainableWebDesign {
       embodiedEmissions.network +
       operationalEmissions.device +
       embodiedEmissions.device;
+
+    // NOTE: First visit emissions are calculated as the sum of all three segments with caching applied.
 
     const returnVisitEmissions =
       (operationalEmissions.dataCenter * (1 - GREEN_HOSTING_FACTOR) +
@@ -241,6 +245,7 @@ class SustainableWebDesign {
         embodiedEmissions.device) *
       (1 - dataReloadRatio);
 
+    // NOTE: The total emissions account for the percentage of first and return visits.
     const total =
       firstVisitEmissions * firstViewRatio +
       returnVisitEmissions * returnViewRatio;
