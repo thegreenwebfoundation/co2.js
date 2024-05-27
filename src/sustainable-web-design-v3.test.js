@@ -51,21 +51,30 @@ describe("sustainable web design model", () => {
     });
 
     it("returns a result for grey energy", () => {
-      expect(swd.perByte(MILLION)).toBeCloseTo(SWD.MILLION_GREY, 3);
+      expect(swd.perByte(MILLION)).toBeCloseTo(SWDV3.MILLION_GREY, 3);
     });
 
     it("returns a result for green energy", () => {
-      expect(swd.perByte(MILLION, true)).toBeCloseTo(SWD.MILLION_GREEN, 3);
+      expect(swd.perByte(MILLION, true)).toBeCloseTo(SWDV3.MILLION_GREEN, 3);
     });
 
     it("can segment results", () => {
       const result = swd.perByte(MILLION, false, true);
 
-      expect(result.dataCenterCO2).toBeCloseTo(SWD.MILLION_GREY_DATACENTERS, 3);
-      expect(result.consumerDeviceCO2).toBeCloseTo(SWD.MILLION_GREY_DEVICES, 3);
-      expect(result.networkCO2).toBeCloseTo(SWD.MILLION_GREY_NETWORKS, 3);
-      expect(result.productionCO2).toBeCloseTo(SWD.MILLION_GREY_PRODUCTION, 3);
-      expect(result.total).toBeCloseTo(SWD.MILLION_GREY, 3);
+      expect(result.dataCenterCO2).toBeCloseTo(
+        SWDV3.MILLION_GREY_DATACENTERS,
+        3
+      );
+      expect(result.consumerDeviceCO2).toBeCloseTo(
+        SWDV3.MILLION_GREY_DEVICES,
+        3
+      );
+      expect(result.networkCO2).toBeCloseTo(SWDV3.MILLION_GREY_NETWORKS, 3);
+      expect(result.productionCO2).toBeCloseTo(
+        SWDV3.MILLION_GREY_PRODUCTION,
+        3
+      );
+      expect(result.total).toBeCloseTo(SWDV3.MILLION_GREY, 3);
     });
   });
 

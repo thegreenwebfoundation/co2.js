@@ -60,7 +60,7 @@
  */
 
 import OneByte from "./1byte.js";
-import SustainableWebDesign from "./sustainable-web-design.js";
+import SustainableWebDesignV3 from "./sustainable-web-design-v3.js";
 
 import {
   GLOBAL_GRID_INTENSITY,
@@ -70,13 +70,13 @@ import { parseOptions } from "./helpers/index.js";
 
 class CO2 {
   constructor(options) {
-    this.model = new SustainableWebDesign();
+    this.model = new SustainableWebDesignV3();
     // Using optional chaining allows an empty object to be passed
     // in without breaking the code.
     if (options?.model === "1byte") {
       this.model = new OneByte();
     } else if (options?.model === "swd") {
-      this.model = new SustainableWebDesign();
+      this.model = new SustainableWebDesignV3();
     } else if (options?.model) {
       throw new Error(
         `"${options.model}" is not a valid model. Please use "1byte" for the OneByte model, and "swd" for the Sustainable Web Design model.\nSee https://developers.thegreenwebfoundation.org/co2js/models/ to learn more about the models available in CO2.js.`
@@ -236,7 +236,7 @@ class CO2 {
       };
     } else {
       throw new Error(
-        `The perVisitDetailed() method is not supported in the model you are using. Try using perByte() instead.\nSee https://developers.thegreenwebfoundation.org/co2js/methods/ to learn more about the methods available in CO2.js.`
+        `The perVisitTrace() method is not supported in the model you are using. Try using perByte() instead.\nSee https://developers.thegreenwebfoundation.org/co2js/methods/ to learn more about the methods available in CO2.js.`
       );
     }
   }
