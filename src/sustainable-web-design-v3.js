@@ -20,11 +20,22 @@ import {
   FIRST_TIME_VIEWING_PERCENTAGE,
   RETURNING_VISITOR_PERCENTAGE,
   PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD,
+  SWDMv3Ratings,
 } from "./constants/index.js";
-import { formatNumber } from "./helpers/index.js";
+import { formatNumber, lessThanEqualTo } from "./helpers/index.js";
+
+const {
+  fifthPercentile,
+  tenthPercentile,
+  twentiethPercentile,
+  thirtiethPercentile,
+  fortiethPercentile,
+  fiftiethPercentile,
+} = SWDMv3Ratings;
 
 class SustainableWebDesign {
   constructor(options) {
+    this.allowRatings = true;
     this.options = options;
   }
 
@@ -119,6 +130,7 @@ class SustainableWebDesign {
    * @param {number} bytes - the data transferred in bytes
    * @param {boolean} carbonIntensity - a boolean indicating whether the data center is green or not
    * @param {boolean} segmentResults - a boolean indicating whether to return the results broken down by component
+   * @param {boolean} ratingResults - a boolean indicating whether to return the rating based on the Sustainable Web Design Model
    * @param {object} options - an object containing the grid intensity and first/return visitor values
    * @return {number|object} the total number in grams of CO2 equivalent emissions, or an object containing the breakdown by component
    */
@@ -126,6 +138,7 @@ class SustainableWebDesign {
     bytes,
     carbonIntensity = false,
     segmentResults = false,
+    ratingResults = false,
     options = {}
   ) {
     if (bytes < 1) {
@@ -153,8 +166,25 @@ class SustainableWebDesign {
       (prevValue, currentValue) => prevValue + currentValue
     );
 
+    let rating = null;
+    if (ratingResults) {
+      rating = this.ratingScale(co2ValuesSum);
+    }
+
     if (segmentResults) {
+      if (ratingResults) {
+        return {
+          ...co2ValuesbyComponent,
+          total: co2ValuesSum,
+          rating: rating,
+        };
+      }
+
       return { ...co2ValuesbyComponent, total: co2ValuesSum };
+    }
+
+    if (ratingResults) {
+      return { total: co2ValuesSum, rating: rating };
     }
 
     return co2ValuesSum;
@@ -167,6 +197,7 @@ class SustainableWebDesign {
    * @param {number} bytes - the data transferred in bytes
    * @param {boolean} carbonIntensity - a boolean indicating whether the data center is green or not
    * @param {boolean} segmentResults - a boolean indicating whether to return the results broken down by component
+   * @param {boolean} ratingResults - a boolean indicating whether to return the rating based on the Sustainable Web Design Model
    * @param {object} options - an object containing the grid intensity and first/return visitor values
    * @return {number|object} the total number in grams of CO2 equivalent emissions, or an object containing the breakdown by component
    */
@@ -174,6 +205,7 @@ class SustainableWebDesign {
     bytes,
     carbonIntensity = false,
     segmentResults = false,
+    ratingResults = false,
     options = {}
   ) {
     const energyBycomponent = this.energyPerVisitByComponent(bytes, options);
@@ -197,8 +229,24 @@ class SustainableWebDesign {
       (prevValue, currentValue) => prevValue + currentValue
     );
 
+    let rating = null;
+    if (ratingResults) {
+      rating = this.ratingScale(co2ValuesSum);
+    }
+
     if (segmentResults) {
+      if (ratingResults) {
+        return {
+          ...co2ValuesbyComponent,
+          total: co2ValuesSum,
+          rating: rating,
+        };
+      }
       return { ...co2ValuesbyComponent, total: co2ValuesSum };
+    }
+
+    if (ratingResults) {
+      return { total: co2ValuesSum, rating: rating };
     }
 
     // so we can return their sum
@@ -330,6 +378,30 @@ class SustainableWebDesign {
       dataCenterEnergy: formatNumber(annualEnergy * DATACENTER_ENERGY),
       productionEnergy: formatNumber(annualEnergy * PRODUCTION_ENERGY),
     };
+  }
+
+  /**
+   * Determines the rating of a website's sustainability based on its CO2 emissions.
+   *
+   * @param {number} co2e - The CO2 emissions of the website in grams.
+   * @returns {string} The sustainability rating, ranging from "A+" (best) to "F" (worst).
+   */
+  ratingScale(co2e) {
+    if (lessThanEqualTo(co2e, fifthPercentile)) {
+      return "A+";
+    } else if (lessThanEqualTo(co2e, tenthPercentile)) {
+      return "A";
+    } else if (lessThanEqualTo(co2e, twentiethPercentile)) {
+      return "B";
+    } else if (lessThanEqualTo(co2e, thirtiethPercentile)) {
+      return "C";
+    } else if (lessThanEqualTo(co2e, fortiethPercentile)) {
+      return "D";
+    } else if (lessThanEqualTo(co2e, fiftiethPercentile)) {
+      return "E";
+    } else {
+      return "F";
+    }
   }
 }
 

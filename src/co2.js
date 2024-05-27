@@ -41,6 +41,7 @@
  * @property {number} dataCenterCO2 - The CO2 estimate for data centers in grams
  * @property {number} consumerDeviceCO2 - The CO2 estimate for consumer devices in grams
  * @property {number} productionCO2 - The CO2 estimate for device production in grams
+ * @property {string} rating - The rating of the CO2 estimate based on the Sustainable Web Design Model
  * @property {number} total - The total CO2 estimate in grams
  */
 
@@ -54,6 +55,7 @@
  * @property {number} 'consumerDeviceCO2 - subsequent' - The CO2 estimate for consumer devices in grams on subsequent visits
  * @property {number} 'productionCO2 - first' - The CO2 estimate for device production in grams on first visit
  * @property {number} 'productionCO2 - subsequent' - The CO2 estimate for device production in grams on subsequent visits
+ * @property {string} rating - The rating of the CO2 estimate based on the Sustainable Web Design Model
  * @property {number} total - The total CO2 estimate in grams
  */
 
@@ -81,8 +83,26 @@ class CO2 {
       );
     }
 
+    if (options?.rating && typeof options.rating !== "boolean") {
+      throw new Error(
+        `The rating option must be a boolean. Please use true or false.\nSee https://developers.thegreenwebfoundation.org/co2js/options/ to learn more about the options available in CO2.js.`
+      );
+    }
+
+    // This flag checks to see if the model itself has a rating system.
+    const allowRatings = !!this.model.allowRatings;
+
     /** @private */
     this._segment = options?.results === "segment";
+    // This flag is set by the user to enable the rating system.
+    this._rating = options?.rating === true;
+
+    // The rating system is only supported in the Sustainable Web Design Model.
+    if (!allowRatings && this._rating) {
+      throw new Error(
+        `The rating system is not supported in the model you are using. Try using the Sustainable Web Design model instead.\nSee https://developers.thegreenwebfoundation.org/co2js/models/ to learn more about the models available in CO2.js.`
+      );
+    }
   }
 
   /**
@@ -95,7 +115,7 @@ class CO2 {
    * @return {number|CO2EstimateComponentsPerByte} the amount of CO2 in grammes or its separate components
    */
   perByte(bytes, green = false) {
-    return this.model.perByte(bytes, green, this._segment);
+    return this.model.perByte(bytes, green, this._segment, this._rating);
   }
 
   /**
@@ -109,7 +129,7 @@ class CO2 {
    */
   perVisit(bytes, green = false) {
     if (this.model?.perVisit) {
-      return this.model.perVisit(bytes, green, this._segment);
+      return this.model.perVisit(bytes, green, this._segment, this._rating);
     } else {
       throw new Error(
         `The perVisit() method is not supported in the model you are using. Try using perByte() instead.\nSee https://developers.thegreenwebfoundation.org/co2js/methods/ to learn more about the methods available in CO2.js.`
@@ -134,7 +154,13 @@ class CO2 {
       adjustments = parseOptions(options);
     }
     return {
-      co2: this.model.perByte(bytes, green, this._segment, adjustments),
+      co2: this.model.perByte(
+        bytes,
+        green,
+        this._segment,
+        this._rating,
+        adjustments
+      ),
       green,
       variables: {
         description:
@@ -176,7 +202,13 @@ class CO2 {
       }
 
       return {
-        co2: this.model.perVisit(bytes, green, this._segment, adjustments),
+        co2: this.model.perVisit(
+          bytes,
+          green,
+          this._segment,
+          this._rating,
+          adjustments
+        ),
         green,
         variables: {
           description:

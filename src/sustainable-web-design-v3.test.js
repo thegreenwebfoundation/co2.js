@@ -1,5 +1,15 @@
 import SustainableWebDesign from "./sustainable-web-design-v3.js";
 import { MILLION, SWDV3 } from "./constants/test-constants.js";
+import { SWDMv3Ratings } from "./constants/index.js";
+
+const {
+  fifthPercentile,
+  tenthPercentile,
+  twentiethPercentile,
+  thirtiethPercentile,
+  fortiethPercentile,
+  fiftiethPercentile,
+} = SWDMv3Ratings;
 
 describe("sustainable web design model", () => {
   const swd = new SustainableWebDesign();
@@ -120,6 +130,27 @@ describe("sustainable web design model", () => {
         networkEnergy: 316080.13,
         productionEnergy: 428965.89,
       });
+    });
+  });
+
+  describe("SWD Rating Scale", () => {
+    it("should return a string", () => {
+      expect(typeof swd.ratingScale(averageWebsiteInBytes)).toBe("string");
+    });
+
+    it("should return a rating", () => {
+      // Check a 3MB file size
+      expect(swd.ratingScale(3000000)).toBe("F");
+    });
+
+    it("returns ratings as expected", () => {
+      expect(swd.ratingScale(fifthPercentile)).toBe("A+");
+      expect(swd.ratingScale(tenthPercentile)).toBe("A");
+      expect(swd.ratingScale(twentiethPercentile)).toBe("B");
+      expect(swd.ratingScale(thirtiethPercentile)).toBe("C");
+      expect(swd.ratingScale(fortiethPercentile)).toBe("D");
+      expect(swd.ratingScale(fiftiethPercentile)).toBe("E");
+      expect(swd.ratingScale(0.9)).toBe("F");
     });
   });
 });

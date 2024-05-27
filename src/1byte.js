@@ -39,6 +39,7 @@ const KWH_PER_BYTE_FOR_DEVICES = 1.3e-10;
 
 class OneByte {
   constructor(options) {
+    this.allowRatings = false;
     this.options = options;
 
     this.KWH_PER_BYTE_FOR_NETWORK = KWH_PER_BYTE_FOR_NETWORK;

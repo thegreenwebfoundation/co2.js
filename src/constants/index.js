@@ -34,6 +34,15 @@ const SWDV4 = {
   GLOBAL_GRID_INTENSITY: 494,
 };
 
+const SWDMv3Ratings = {
+  fifthPercentile: 0.095,
+  tenthPercentile: 0.186,
+  twentiethPercentile: 0.341,
+  thirtiethPercentile: 0.493,
+  fortiethPercentile: 0.656,
+  fiftiethPercentile: 0.846,
+};
+
 export {
   fileSize,
   KWH_PER_GB,
@@ -47,4 +56,5 @@ export {
   RETURNING_VISITOR_PERCENTAGE,
   PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD,
   SWDV4,
+  SWDMv3Ratings,
 };
