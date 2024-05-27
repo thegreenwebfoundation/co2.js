@@ -41,6 +41,7 @@
  * @property {number} dataCenterCO2 - The CO2 estimate for data centers in grams
  * @property {number} consumerDeviceCO2 - The CO2 estimate for consumer devices in grams
  * @property {number} productionCO2 - The CO2 estimate for device production in grams
+ * @property {string} rating - The rating of the CO2 estimate based on the Sustainable Web Design Model
  * @property {number} total - The total CO2 estimate in grams
  */
 
@@ -54,6 +55,7 @@
  * @property {number} 'consumerDeviceCO2 - subsequent' - The CO2 estimate for consumer devices in grams on subsequent visits
  * @property {number} 'productionCO2 - first' - The CO2 estimate for device production in grams on first visit
  * @property {number} 'productionCO2 - subsequent' - The CO2 estimate for device production in grams on subsequent visits
+ * @property {string} rating - The rating of the CO2 estimate based on the Sustainable Web Design Model
  * @property {number} total - The total CO2 estimate in grams
  */
 
