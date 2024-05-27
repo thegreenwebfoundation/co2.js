@@ -211,6 +211,22 @@ describe("co2", () => {
         `The perVisit() method is not supported in the model you are using. Try using perByte() instead.\nSee https://developers.thegreenwebfoundation.org/co2js/methods/ to learn more about the methods available in CO2.js.`
       );
     });
+
+    it("throws an error if using the rating system with OneByte", () => {
+      expect(() => {
+        co2 = new CO2({ model: "1byte", rating: true });
+      }).toThrowError(
+        `The rating system is not supported in the model you are using. Try using the Sustainable Web Design model instead.\nSee https://developers.thegreenwebfoundation.org/co2js/models/ to learn more about the models available in CO2.js.`
+      );
+    });
+
+    it("throws an error if the rating parameter is not a boolean", () => {
+      expect(() => {
+        co2 = new CO2({ rating: "false" });
+      }).toThrowError(
+        `The rating option must be a boolean. Please use true or false.\nSee https://developers.thegreenwebfoundation.org/co2js/options/ to learn more about the options available in CO2.js.`
+      );
+    });
   });
 
   // Test that grid intensity data can be imported and used
@@ -830,6 +846,25 @@ describe("co2", () => {
       expect(co2Result["dataCenterCO2 - subsequent"]).toBe(0);
       expect(co2Result["networkCO2 - subsequent"]).toBe(0);
       expect(co2Result["consumerDeviceCO2 - subsequent"]).toBe(0);
+    });
+  });
+
+  describe("Returning SWD results with rating", () => {
+    const co2NoRating = new CO2();
+    const co2Rating = new CO2({ rating: true });
+    const co2RatingSegmented = new CO2({ rating: true, results: "segment" });
+
+    it("does not return a rating when rating is false", () => {
+      expect(co2NoRating.perVisit(MILLION)).not.toHaveProperty("rating");
+    });
+
+    it("returns a rating when rating is true", () => {
+      expect(co2Rating.perVisit(MILLION)).toHaveProperty("rating");
+    });
+
+    it("returns a rating when rating is true and results are segmented", () => {
+      expect(co2RatingSegmented.perByte(MILLION)).toHaveProperty("rating");
+      expect(co2RatingSegmented.perByte(MILLION)).toHaveProperty("networkCO2");
     });
   });
 });

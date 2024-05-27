@@ -24,6 +24,15 @@ const FIRST_TIME_VIEWING_PERCENTAGE = 0.75;
 const RETURNING_VISITOR_PERCENTAGE = 0.25;
 const PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD = 0.02;
 
+const SWDMv3Ratings = {
+  fifthPercentile: 0.095,
+  tenthPercentile: 0.186,
+  twentiethPercentile: 0.341,
+  thirtiethPercentile: 0.493,
+  fortiethPercentile: 0.656,
+  fiftiethPercentile: 0.846,
+};
+
 export {
   fileSize,
   KWH_PER_GB,
@@ -36,4 +45,5 @@ export {
   FIRST_TIME_VIEWING_PERCENTAGE,
   RETURNING_VISITOR_PERCENTAGE,
   PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD,
+  SWDMv3Ratings,
 };
