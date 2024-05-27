@@ -20,8 +20,18 @@ import {
   FIRST_TIME_VIEWING_PERCENTAGE,
   RETURNING_VISITOR_PERCENTAGE,
   PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD,
+  SWDMv3Ratings,
 } from "./constants/index.js";
 import { formatNumber, lessThanEqualTo } from "./helpers/index.js";
+
+const {
+  fifthPercentile,
+  tenthPercentile,
+  twentiethPercentile,
+  thirtiethPercentile,
+  fortiethPercentile,
+  fiftiethPercentile,
+} = SWDMv3Ratings;
 
 class SustainableWebDesign {
   constructor(options) {
@@ -368,17 +378,17 @@ class SustainableWebDesign {
   }
 
   ratingScale(co2e) {
-    if (lessThanEqualTo(co2e, 0.095)) {
+    if (lessThanEqualTo(co2e, fifthPercentile)) {
       return "A+";
-    } else if (lessThanEqualTo(co2e, 0.186)) {
+    } else if (lessThanEqualTo(co2e, tenthPercentile)) {
       return "A";
-    } else if (lessThanEqualTo(co2e, 0.341)) {
+    } else if (lessThanEqualTo(co2e, twentiethPercentile)) {
       return "B";
-    } else if (lessThanEqualTo(co2e, 0.493)) {
+    } else if (lessThanEqualTo(co2e, thirtiethPercentile)) {
       return "C";
-    } else if (lessThanEqualTo(co2e, 0.656)) {
+    } else if (lessThanEqualTo(co2e, fortiethPercentile)) {
       return "D";
-    } else if (lessThanEqualTo(co2e, 0.846)) {
+    } else if (lessThanEqualTo(co2e, fiftiethPercentile)) {
       return "E";
     } else {
       return "F";
