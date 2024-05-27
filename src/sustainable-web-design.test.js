@@ -1,5 +1,15 @@
 import SustainableWebDesign from "./sustainable-web-design.js";
 import { MILLION, SWD } from "./constants/test-constants.js";
+import { SWDMv3Ratings } from "./constants/index.js";
+
+const {
+  fifthPercentile,
+  tenthPercentile,
+  twentiethPercentile,
+  thirtiethPercentile,
+  fortiethPercentile,
+  fiftiethPercentile,
+} = SWDMv3Ratings;
 
 describe("sustainable web design model", () => {
   const swd = new SustainableWebDesign();
@@ -125,9 +135,9 @@ describe("sustainable web design model", () => {
     });
 
     it("returns ratings as expected", () => {
-      expect(swd.ratingScale(0.065)).toBe("A+");
-      expect(swd.ratingScale(0.342)).toBe("C");
-      expect(swd.ratingScale(0.341)).toBe("B");
+      expect(swd.ratingScale(fifthPercentile)).toBe("A+");
+      expect(swd.ratingScale(thirtiethPercentile)).toBe("C");
+      expect(swd.ratingScale(twentiethPercentile)).toBe("B");
       expect(swd.ratingScale(0.9)).toBe("F");
     });
   });
