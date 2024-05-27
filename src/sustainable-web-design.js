@@ -35,6 +35,7 @@ const {
 
 class SustainableWebDesign {
   constructor(options) {
+    this.allowRatings = true;
     this.options = options;
   }
 
