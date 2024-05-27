@@ -867,4 +867,17 @@ describe("co2", () => {
       expect(co2RatingSegmented.perByte(MILLION)).toHaveProperty("networkCO2");
     });
   });
+
+  describe("Switch versions of the Sustainable Web Design model", () => {
+    const co2 = new CO2({ model: "swd" });
+    const co2SWDV4 = new CO2({ model: "swd", version: 4 });
+
+    it("uses the SWD model version 3 by default", () => {
+      expect(co2.model.version).toBe(3);
+    });
+
+    it("uses the SWD model version 4 when specified", () => {
+      expect(co2SWDV4.model.version).toBe(4);
+    });
+  });
 });
