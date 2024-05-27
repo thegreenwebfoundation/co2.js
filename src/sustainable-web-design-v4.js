@@ -192,8 +192,8 @@ class SustainableWebDesign {
   }
 
   perVisit(bytes, green = false, segmented = false, options = {}) {
-    let firstView = 1;
-    let returnView = 0;
+    let firstViewRatio = 1;
+    let returnViewRatio = 0;
     let dataReloadRatio = 0;
     let GREEN_HOSTING_FACTOR = 0;
     const operationalEmissions = this.operationalEmissions(bytes, options);
@@ -213,11 +213,11 @@ class SustainableWebDesign {
     }
 
     if (options.firstVisitPercentage || options.firstVisitPercentage === 0) {
-      firstView = options.firstVisitPercentage;
+      firstViewRatio = options.firstVisitPercentage;
     }
 
     if (options.returnVisitPercentage || options.returnVisitPercentage === 0) {
-      returnView = options.returnVisitPercentage;
+      returnViewRatio = options.returnVisitPercentage;
     }
 
     if (options.dataReloadRatio || options.dataReloadRatio === 0) {
@@ -225,13 +225,12 @@ class SustainableWebDesign {
     }
 
     const firstVisitEmissions =
-      (operationalEmissions.dataCenter * (1 - GREEN_HOSTING_FACTOR) +
-        embodiedEmissions.dataCenter +
-        operationalEmissions.network +
-        embodiedEmissions.network +
-        operationalEmissions.device +
-        embodiedEmissions.device) *
-      firstView;
+      operationalEmissions.dataCenter * (1 - GREEN_HOSTING_FACTOR) +
+      embodiedEmissions.dataCenter +
+      operationalEmissions.network +
+      embodiedEmissions.network +
+      operationalEmissions.device +
+      embodiedEmissions.device;
 
     const returnVisitEmissions =
       (operationalEmissions.dataCenter * (1 - GREEN_HOSTING_FACTOR) +
@@ -240,10 +239,11 @@ class SustainableWebDesign {
         embodiedEmissions.network +
         operationalEmissions.device +
         embodiedEmissions.device) *
-      returnView *
       (1 - dataReloadRatio);
 
-    const total = firstVisitEmissions + returnVisitEmissions;
+    const total =
+      firstVisitEmissions * firstViewRatio +
+      returnVisitEmissions * returnViewRatio;
 
     if (segmented) {
       return {
