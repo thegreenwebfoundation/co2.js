@@ -1,12 +1,13 @@
 import SustainableWebDesign from "./sustainable-web-design-v4.js";
 import { MILLION, SWDV4 } from "./constants/test-constants.js";
+import { GIGABYTE } from "./constants/file-size.js";
 
 describe("sustainable web design model version 4", () => {
   const swd = new SustainableWebDesign();
 
   describe("operational emissions", () => {
     it("returns the expected emissions for 1GB data transfer", () => {
-      const result = swd.operationalEmissions(1000000000);
+      const result = swd.operationalEmissions(GIGABYTE);
       expect(result).toEqual(
         expect.objectContaining({
           dataCenter: expect.any(Number),
@@ -34,7 +35,7 @@ describe("sustainable web design model version 4", () => {
     });
 
     it("returns the expected emissions for 1GB data transfer with custom grid intensities", () => {
-      const result = swd.operationalEmissions(1000000000, {
+      const result = swd.operationalEmissions(GIGABYTE, {
         gridIntensity: {
           dataCenter: { value: 100 },
           network: { value: 200 },
@@ -57,7 +58,7 @@ describe("sustainable web design model version 4", () => {
 
   describe("embodied emissions", () => {
     it("returns the expected emissions for 1GB data transfer", () => {
-      const result = swd.embodiedEmissions(1000000000);
+      const result = swd.embodiedEmissions(GIGABYTE);
       expect(result).toEqual(
         expect.objectContaining({
           dataCenter: expect.any(Number),
@@ -87,17 +88,17 @@ describe("sustainable web design model version 4", () => {
 
   describe("emissions per byte", () => {
     it("returns the expected emissions for 1GB data transfer with no green energy factor", () => {
-      const result = swd.perByte(1000000000);
+      const result = swd.perByte(GIGABYTE);
       expect(result).toBeCloseTo(SWDV4.PERBYTE_EMISSIONS_GB, 3);
     });
 
     it("returns the expected emissions for 1GB data transfer with green energy factor", () => {
-      const result = swd.perByte(1000000000, true);
+      const result = swd.perByte(GIGABYTE, true);
       expect(result).toBeCloseTo(SWDV4.PERBYTE_EMISSIONS_GB_GREEN, 3);
     });
 
     it("returns the expected emissions for 1GB data transfer with green energy factor of 0.5", () => {
-      const result = swd.perByte(1000000000, false, false, {
+      const result = swd.perByte(GIGABYTE, false, false, {
         greenHostingFactor: 0.5,
       });
 
@@ -110,7 +111,7 @@ describe("sustainable web design model version 4", () => {
     });
 
     it("returns the expected emissions results for each segment for 1GB data transfer", () => {
-      const result = swd.perByte(1000000000, false, true);
+      const result = swd.perByte(GIGABYTE, false, true);
       expect(result).toEqual(
         expect.objectContaining({
           dataCenterOperationalCO2: expect.any(Number),
