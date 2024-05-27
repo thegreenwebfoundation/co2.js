@@ -219,6 +219,14 @@ describe("co2", () => {
         `The rating system is not supported in the model you are using. Try using the Sustainable Web Design model instead.\nSee https://developers.thegreenwebfoundation.org/co2js/models/ to learn more about the models available in CO2.js.`
       );
     });
+
+    it("throws an error if the rating parameter is not a boolean", () => {
+      expect(() => {
+        co2 = new CO2({ rating: "false" });
+      }).toThrowError(
+        `The rating option must be a boolean. Please use true or false.\nSee https://developers.thegreenwebfoundation.org/co2js/options/ to learn more about the options available in CO2.js.`
+      );
+    });
   });
 
   // Test that grid intensity data can be imported and used

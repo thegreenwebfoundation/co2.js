@@ -68,24 +68,31 @@ import { parseOptions } from "./helpers/index.js";
 
 class CO2 {
   constructor(options) {
-    let allowRatings = true;
     this.model = new SustainableWebDesign();
     // Using optional chaining allows an empty object to be passed
     // in without breaking the code.
     if (options?.model === "1byte") {
       this.model = new OneByte();
-      allowRatings = false;
     } else if (options?.model === "swd") {
       this.model = new SustainableWebDesign();
     } else if (options?.model) {
-      allowRatings = false;
       throw new Error(
         `"${options.model}" is not a valid model. Please use "1byte" for the OneByte model, and "swd" for the Sustainable Web Design model.\nSee https://developers.thegreenwebfoundation.org/co2js/models/ to learn more about the models available in CO2.js.`
       );
     }
 
+    if (options?.rating && typeof options.rating !== "boolean") {
+      throw new Error(
+        `The rating option must be a boolean. Please use true or false.\nSee https://developers.thegreenwebfoundation.org/co2js/options/ to learn more about the options available in CO2.js.`
+      );
+    }
+
+    // This flag checks to see if the model itself has a rating system.
+    const allowRatings = !!this.model.allowRatings;
+
     /** @private */
     this._segment = options?.results === "segment";
+    // This flag is set by the user to enable the rating system.
     this._rating = options?.rating === true;
 
     // The rating system is only supported in the Sustainable Web Design Model.
