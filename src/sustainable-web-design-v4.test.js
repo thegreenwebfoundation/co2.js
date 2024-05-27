@@ -128,17 +128,47 @@ describe("sustainable web design model version 4", () => {
         })
       );
 
-      expect(result.dataCenterOperationalCO2).toBeCloseTo(27.17, 3);
-      expect(result.networkOperationalCO2).toBeCloseTo(29.146, 3);
-      expect(result.consumerDeviceOperationalCO2).toBeCloseTo(39.52, 3);
-      expect(result.totalOperational).toBeCloseTo(95.836, 3);
-      expect(result.dataCenterEmbodiedCO2).toBeCloseTo(5.928, 3);
-      expect(result.networkEmbodiedCO2).toBeCloseTo(6.422, 3);
-      expect(result.consumerDeviceEmbodiedCO2).toBeCloseTo(40.014, 3);
-      expect(result.totalEmbodied).toBeCloseTo(52.364, 3);
-      expect(result.dataCenterCO2).toBeCloseTo(33.098, 3);
-      expect(result.networkCO2).toBeCloseTo(35.568, 3);
-      expect(result.consumerDeviceCO2).toBeCloseTo(79.534, 3);
+      expect(result.dataCenterOperationalCO2).toBeCloseTo(
+        SWDV4.DC_OPERATIONAL_EMISSIONS_GB,
+        3
+      );
+      expect(result.networkOperationalCO2).toBeCloseTo(
+        SWDV4.NETWORK_OPERATIONAL_EMISSIONS_GB,
+        3
+      );
+      expect(result.consumerDeviceOperationalCO2).toBeCloseTo(
+        SWDV4.DEVICE_OPERATIONAL_EMISSIONS_GB,
+        3
+      );
+      expect(result.totalOperational).toBeCloseTo(
+        SWDV4.TOTAL_OPERATIONAL_EMISSIONS_GB,
+        3
+      );
+      expect(result.dataCenterEmbodiedCO2).toBeCloseTo(
+        SWDV4.DC_EMBODIED_EMISSIONS_GB,
+        3
+      );
+      expect(result.networkEmbodiedCO2).toBeCloseTo(
+        SWDV4.NETWORK_EMBODIED_EMISSIONS_GB,
+        3
+      );
+      expect(result.consumerDeviceEmbodiedCO2).toBeCloseTo(
+        SWDV4.DEVICE_EMBODIED_EMISSIONS_GB,
+        3
+      );
+      expect(result.totalEmbodied).toBeCloseTo(
+        SWDV4.TOTAL_EMBODIED_EMISSIONS_GB,
+        3
+      );
+      expect(result.dataCenterCO2).toBeCloseTo(SWDV4.TOTAL_DC_EMISSIONS_GB, 3);
+      expect(result.networkCO2).toBeCloseTo(
+        SWDV4.TOTAL_NETWORK_EMISSIONS_GB,
+        3
+      );
+      expect(result.consumerDeviceCO2).toBeCloseTo(
+        SWDV4.TOTAL_DEVICE_EMISSIONS_GB,
+        3
+      );
       expect(result.total).toBeCloseTo(SWDV4.PERBYTE_EMISSIONS_GB, 3);
     });
 
