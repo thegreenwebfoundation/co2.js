@@ -37,6 +37,7 @@ class SustainableWebDesign {
   constructor(options) {
     this.allowRatings = true;
     this.options = options;
+    this.version = 3;
   }
 
   /**

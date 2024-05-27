@@ -24,6 +24,7 @@ const {
 class SustainableWebDesign {
   constructor(options) {
     this.options = options;
+    this.version = 4;
   }
 
   /**

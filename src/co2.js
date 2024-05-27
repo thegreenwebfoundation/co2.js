@@ -61,6 +61,7 @@
 
 import OneByte from "./1byte.js";
 import SustainableWebDesignV3 from "./sustainable-web-design-v3.js";
+import SustainableWebDesignV4 from "./sustainable-web-design-v4.js";
 
 import {
   GLOBAL_GRID_INTENSITY,
@@ -77,6 +78,9 @@ class CO2 {
       this.model = new OneByte();
     } else if (options?.model === "swd") {
       this.model = new SustainableWebDesignV3();
+      if (options?.version === 4) {
+        this.model = new SustainableWebDesignV4();
+      }
     } else if (options?.model) {
       throw new Error(
         `"${options.model}" is not a valid model. Please use "1byte" for the OneByte model, and "swd" for the Sustainable Web Design model.\nSee https://developers.thegreenwebfoundation.org/co2js/models/ to learn more about the models available in CO2.js.`
