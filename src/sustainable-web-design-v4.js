@@ -189,23 +189,25 @@ class SustainableWebDesign {
 
     if (segmented) {
       const segments = {
-        dataCenterOperationalCO2: operationalEmissions.dataCenter,
-        networkOperationalCO2: operationalEmissions.network,
-        consumerDeviceOperationalCO2: operationalEmissions.device,
-        dataCenterEmbodiedCO2: embodiedEmissions.dataCenter,
-        networkEmbodiedCO2: embodiedEmissions.network,
-        consumerDeviceEmbodiedCO2: embodiedEmissions.device,
-        totalOperational:
+        dataCenterOperationalCO2e: operationalEmissions.dataCenter,
+        networkOperationalCO2e: operationalEmissions.network,
+        consumerDeviceOperationalCO2e: operationalEmissions.device,
+        dataCenterEmbodiedCO2e: embodiedEmissions.dataCenter,
+        networkEmbodiedCO2e: embodiedEmissions.network,
+        consumerDeviceEmbodiedCO2e: embodiedEmissions.device,
+        totalOperationalCO2e:
           operationalEmissions.dataCenter +
           operationalEmissions.network +
           operationalEmissions.device,
-        totalEmbodied:
+        totalEmbodiedCO2e:
           embodiedEmissions.dataCenter +
           embodiedEmissions.network +
           embodiedEmissions.device,
-        dataCenterCO2: totalEmissions.dataCenter,
-        networkCO2: totalEmissions.network,
-        consumerDeviceCO2: totalEmissions.device,
+        dataCenterCO2e:
+          operationalEmissions.dataCenter + embodiedEmissions.dataCenter,
+        networkCO2e: operationalEmissions.network + embodiedEmissions.network,
+        consumerDeviceCO2e:
+          operationalEmissions.device + embodiedEmissions.device,
       };
 
       if (ratingResults) {
@@ -297,27 +299,27 @@ class SustainableWebDesign {
 
     if (segmented) {
       const segments = {
-        dataCenterOperationalCO2: operationalEmissions.dataCenter,
-        networkOperationalCO2: operationalEmissions.network,
-        consumerDeviceOperationalCO2: operationalEmissions.device,
-        dataCenterEmbodiedCO2: embodiedEmissions.dataCenter,
-        networkEmbodiedCO2: embodiedEmissions.network,
-        consumerDeviceEmbodiedCO2: embodiedEmissions.device,
-        totalOperational:
+        dataCenterOperationalCO2e: operationalEmissions.dataCenter,
+        networkOperationalCO2e: operationalEmissions.network,
+        consumerDeviceOperationalCO2e: operationalEmissions.device,
+        dataCenterEmbodiedCO2e: embodiedEmissions.dataCenter,
+        networkEmbodiedCO2e: embodiedEmissions.network,
+        consumerDeviceEmbodiedCO2e: embodiedEmissions.device,
+        totalOperationalCO2e:
           operationalEmissions.dataCenter +
           operationalEmissions.network +
           operationalEmissions.device,
-        totalEmbodied:
+        totalEmbodiedCO2e:
           embodiedEmissions.dataCenter +
           embodiedEmissions.network +
           embodiedEmissions.device,
-        dataCenterCO2:
+        dataCenterCO2e:
           operationalEmissions.dataCenter + embodiedEmissions.dataCenter,
-        networkCO2: operationalEmissions.network + embodiedEmissions.network,
-        consumerDeviceCO2:
+        networkCO2e: operationalEmissions.network + embodiedEmissions.network,
+        consumerDeviceCO2e:
           operationalEmissions.device + embodiedEmissions.device,
-        firstVisitEmissions,
-        returnVisitEmissions,
+        firstVisitCO2e: firstVisitEmissions,
+        returnVisitCO2e: returnVisitEmissions,
       };
 
       if (ratingResults) {

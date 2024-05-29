@@ -124,59 +124,59 @@ describe("sustainable web design model version 4", () => {
       const result = swd.perByte(GIGABYTE, false, true);
       expect(result).toEqual(
         expect.objectContaining({
-          dataCenterOperationalCO2: expect.any(Number),
-          networkOperationalCO2: expect.any(Number),
-          consumerDeviceOperationalCO2: expect.any(Number),
-          totalOperational: expect.any(Number),
-          dataCenterEmbodiedCO2: expect.any(Number),
-          networkEmbodiedCO2: expect.any(Number),
-          consumerDeviceEmbodiedCO2: expect.any(Number),
-          totalEmbodied: expect.any(Number),
-          dataCenterCO2: expect.any(Number),
-          networkCO2: expect.any(Number),
-          consumerDeviceCO2: expect.any(Number),
+          dataCenterOperationalCO2e: expect.any(Number),
+          networkOperationalCO2e: expect.any(Number),
+          consumerDeviceOperationalCO2e: expect.any(Number),
+          totalOperationalCO2e: expect.any(Number),
+          dataCenterEmbodiedCO2e: expect.any(Number),
+          networkEmbodiedCO2e: expect.any(Number),
+          consumerDeviceEmbodiedCO2e: expect.any(Number),
+          totalEmbodiedCO2e: expect.any(Number),
+          dataCenterCO2e: expect.any(Number),
+          networkCO2e: expect.any(Number),
+          consumerDeviceCO2e: expect.any(Number),
           total: expect.any(Number),
         })
       );
 
-      expect(result.dataCenterOperationalCO2).toBeCloseTo(
+      expect(result.dataCenterOperationalCO2e).toBeCloseTo(
         SWDV4.DC_OPERATIONAL_EMISSIONS_GB,
         3
       );
-      expect(result.networkOperationalCO2).toBeCloseTo(
+      expect(result.networkOperationalCO2e).toBeCloseTo(
         SWDV4.NETWORK_OPERATIONAL_EMISSIONS_GB,
         3
       );
-      expect(result.consumerDeviceOperationalCO2).toBeCloseTo(
+      expect(result.consumerDeviceOperationalCO2e).toBeCloseTo(
         SWDV4.DEVICE_OPERATIONAL_EMISSIONS_GB,
         3
       );
-      expect(result.totalOperational).toBeCloseTo(
+      expect(result.totalOperationalCO2e).toBeCloseTo(
         SWDV4.TOTAL_OPERATIONAL_EMISSIONS_GB,
         3
       );
-      expect(result.dataCenterEmbodiedCO2).toBeCloseTo(
+      expect(result.dataCenterEmbodiedCO2e).toBeCloseTo(
         SWDV4.DC_EMBODIED_EMISSIONS_GB,
         3
       );
-      expect(result.networkEmbodiedCO2).toBeCloseTo(
+      expect(result.networkEmbodiedCO2e).toBeCloseTo(
         SWDV4.NETWORK_EMBODIED_EMISSIONS_GB,
         3
       );
-      expect(result.consumerDeviceEmbodiedCO2).toBeCloseTo(
+      expect(result.consumerDeviceEmbodiedCO2e).toBeCloseTo(
         SWDV4.DEVICE_EMBODIED_EMISSIONS_GB,
         3
       );
-      expect(result.totalEmbodied).toBeCloseTo(
+      expect(result.totalEmbodiedCO2e).toBeCloseTo(
         SWDV4.TOTAL_EMBODIED_EMISSIONS_GB,
         3
       );
-      expect(result.dataCenterCO2).toBeCloseTo(SWDV4.TOTAL_DC_EMISSIONS_GB, 3);
-      expect(result.networkCO2).toBeCloseTo(
+      expect(result.dataCenterCO2e).toBeCloseTo(SWDV4.TOTAL_DC_EMISSIONS_GB, 3);
+      expect(result.networkCO2e).toBeCloseTo(
         SWDV4.TOTAL_NETWORK_EMISSIONS_GB,
         3
       );
-      expect(result.consumerDeviceCO2).toBeCloseTo(
+      expect(result.consumerDeviceCO2e).toBeCloseTo(
         SWDV4.TOTAL_DEVICE_EMISSIONS_GB,
         3
       );
@@ -202,17 +202,17 @@ describe("sustainable web design model version 4", () => {
       expect(result).toEqual(
         expect.objectContaining({
           rating: expect.any(String),
-          dataCenterOperationalCO2: expect.any(Number),
-          networkOperationalCO2: expect.any(Number),
-          consumerDeviceOperationalCO2: expect.any(Number),
-          totalOperational: expect.any(Number),
-          dataCenterEmbodiedCO2: expect.any(Number),
-          networkEmbodiedCO2: expect.any(Number),
-          consumerDeviceEmbodiedCO2: expect.any(Number),
-          totalEmbodied: expect.any(Number),
-          dataCenterCO2: expect.any(Number),
-          networkCO2: expect.any(Number),
-          consumerDeviceCO2: expect.any(Number),
+          dataCenterOperationalCO2e: expect.any(Number),
+          networkOperationalCO2e: expect.any(Number),
+          consumerDeviceOperationalCO2e: expect.any(Number),
+          totalOperationalCO2e: expect.any(Number),
+          dataCenterEmbodiedCO2e: expect.any(Number),
+          networkEmbodiedCO2e: expect.any(Number),
+          consumerDeviceEmbodiedCO2e: expect.any(Number),
+          totalEmbodiedCO2e: expect.any(Number),
+          dataCenterCO2e: expect.any(Number),
+          networkCO2e: expect.any(Number),
+          consumerDeviceCO2e: expect.any(Number),
           total: expect.any(Number),
         })
       );
@@ -264,62 +264,66 @@ describe("sustainable web design model version 4", () => {
       });
       expect(result).toEqual(
         expect.objectContaining({
-          dataCenterOperationalCO2: expect.any(Number),
-          networkOperationalCO2: expect.any(Number),
-          consumerDeviceOperationalCO2: expect.any(Number),
-          totalOperational: expect.any(Number),
-          dataCenterEmbodiedCO2: expect.any(Number),
-          networkEmbodiedCO2: expect.any(Number),
-          consumerDeviceEmbodiedCO2: expect.any(Number),
-          totalEmbodied: expect.any(Number),
-          dataCenterCO2: expect.any(Number),
-          networkCO2: expect.any(Number),
-          consumerDeviceCO2: expect.any(Number),
+          dataCenterOperationalCO2e: expect.any(Number),
+          networkOperationalCO2e: expect.any(Number),
+          consumerDeviceOperationalCO2e: expect.any(Number),
+          totalOperationalCO2e: expect.any(Number),
+          dataCenterEmbodiedCO2e: expect.any(Number),
+          networkEmbodiedCO2e: expect.any(Number),
+          consumerDeviceEmbodiedCO2e: expect.any(Number),
+          totalEmbodiedCO2e: expect.any(Number),
+          dataCenterCO2e: expect.any(Number),
+          networkCO2e: expect.any(Number),
+          consumerDeviceCO2e: expect.any(Number),
+          firstVisitCO2e: expect.any(Number),
+          returnVisitCO2e: expect.any(Number),
           total: expect.any(Number),
         })
       );
 
-      expect(result.dataCenterOperationalCO2).toBeCloseTo(
+      expect(result.dataCenterOperationalCO2e).toBeCloseTo(
         SWDV4.DC_OPERATIONAL_EMISSIONS_GB,
         3
       );
-      expect(result.networkOperationalCO2).toBeCloseTo(
+      expect(result.networkOperationalCO2e).toBeCloseTo(
         SWDV4.NETWORK_OPERATIONAL_EMISSIONS_GB,
         3
       );
-      expect(result.consumerDeviceOperationalCO2).toBeCloseTo(
+      expect(result.consumerDeviceOperationalCO2e).toBeCloseTo(
         SWDV4.DEVICE_OPERATIONAL_EMISSIONS_GB,
         3
       );
-      expect(result.totalOperational).toBeCloseTo(
+      expect(result.totalOperationalCO2e).toBeCloseTo(
         SWDV4.TOTAL_OPERATIONAL_EMISSIONS_GB,
         3
       );
-      expect(result.dataCenterEmbodiedCO2).toBeCloseTo(
+      expect(result.dataCenterEmbodiedCO2e).toBeCloseTo(
         SWDV4.DC_EMBODIED_EMISSIONS_GB,
         3
       );
-      expect(result.networkEmbodiedCO2).toBeCloseTo(
+      expect(result.networkEmbodiedCO2e).toBeCloseTo(
         SWDV4.NETWORK_EMBODIED_EMISSIONS_GB,
         3
       );
-      expect(result.consumerDeviceEmbodiedCO2).toBeCloseTo(
+      expect(result.consumerDeviceEmbodiedCO2e).toBeCloseTo(
         SWDV4.DEVICE_EMBODIED_EMISSIONS_GB,
         3
       );
-      expect(result.totalEmbodied).toBeCloseTo(
+      expect(result.totalEmbodiedCO2e).toBeCloseTo(
         SWDV4.TOTAL_EMBODIED_EMISSIONS_GB,
         3
       );
-      expect(result.dataCenterCO2).toBeCloseTo(SWDV4.TOTAL_DC_EMISSIONS_GB, 3);
-      expect(result.networkCO2).toBeCloseTo(
+      expect(result.dataCenterCO2e).toBeCloseTo(SWDV4.TOTAL_DC_EMISSIONS_GB, 3);
+      expect(result.networkCO2e).toBeCloseTo(
         SWDV4.TOTAL_NETWORK_EMISSIONS_GB,
         3
       );
-      expect(result.consumerDeviceCO2).toBeCloseTo(
+      expect(result.consumerDeviceCO2e).toBeCloseTo(
         SWDV4.TOTAL_DEVICE_EMISSIONS_GB,
         3
       );
+      expect(result.firstVisitCO2e).toBeCloseTo(148.2, 3);
+      expect(result.returnVisitCO2e).toBeCloseTo(118.56, 3);
       expect(result.total).toBeCloseTo(SWDV4.PERVISIT_EMISSIONS_GB, 3);
     });
 
@@ -342,19 +346,19 @@ describe("sustainable web design model version 4", () => {
       expect(result).toEqual(
         expect.objectContaining({
           rating: expect.any(String),
-          dataCenterOperationalCO2: expect.any(Number),
-          networkOperationalCO2: expect.any(Number),
-          consumerDeviceOperationalCO2: expect.any(Number),
-          totalOperational: expect.any(Number),
-          dataCenterEmbodiedCO2: expect.any(Number),
-          networkEmbodiedCO2: expect.any(Number),
-          consumerDeviceEmbodiedCO2: expect.any(Number),
-          totalEmbodied: expect.any(Number),
-          dataCenterCO2: expect.any(Number),
-          networkCO2: expect.any(Number),
-          consumerDeviceCO2: expect.any(Number),
-          firstVisitEmissions: expect.any(Number),
-          returnVisitEmissions: expect.any(Number),
+          dataCenterOperationalCO2e: expect.any(Number),
+          networkOperationalCO2e: expect.any(Number),
+          consumerDeviceOperationalCO2e: expect.any(Number),
+          totalOperationalCO2e: expect.any(Number),
+          dataCenterEmbodiedCO2e: expect.any(Number),
+          networkEmbodiedCO2e: expect.any(Number),
+          consumerDeviceEmbodiedCO2e: expect.any(Number),
+          totalEmbodiedCO2e: expect.any(Number),
+          dataCenterCO2e: expect.any(Number),
+          networkCO2e: expect.any(Number),
+          consumerDeviceCO2e: expect.any(Number),
+          firstVisitCO2e: expect.any(Number),
+          returnVisitCO2e: expect.any(Number),
           total: expect.any(Number),
         })
       );
