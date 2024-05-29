@@ -1,6 +1,16 @@
 import SustainableWebDesign from "./sustainable-web-design-v4.js";
 import { MILLION, SWDV4 } from "./constants/test-constants.js";
 import { GIGABYTE } from "./constants/file-size.js";
+import { SWDMv4Ratings } from "./constants/index.js";
+
+const {
+  fifthPercentile,
+  tenthPercentile,
+  twentiethPercentile,
+  thirtiethPercentile,
+  fortiethPercentile,
+  fiftiethPercentile,
+} = SWDMv4Ratings;
 
 describe("sustainable web design model version 4", () => {
   const swd = new SustainableWebDesign();
@@ -98,7 +108,7 @@ describe("sustainable web design model version 4", () => {
     });
 
     it("returns the expected emissions for 1GB data transfer with green energy factor of 0.5", () => {
-      const result = swd.perByte(GIGABYTE, false, false, {
+      const result = swd.perByte(GIGABYTE, false, false, false, {
         greenHostingFactor: 0.5,
       });
 
@@ -172,11 +182,48 @@ describe("sustainable web design model version 4", () => {
       );
       expect(result.total).toBeCloseTo(SWDV4.PERBYTE_EMISSIONS_GB, 3);
     });
+
+    it("returns a rating without segments", () => {
+      const result = swd.perByte(GIGABYTE, false, false, true);
+
+      expect(result).toEqual(
+        expect.objectContaining({
+          rating: expect.any(String),
+          total: expect.any(Number),
+        })
+      );
+
+      expect(result.rating).toBe("F");
+    });
+
+    it("returns a rating with segments", () => {
+      const result = swd.perByte(GIGABYTE, false, true, true);
+
+      expect(result).toEqual(
+        expect.objectContaining({
+          rating: expect.any(String),
+          dataCenterOperationalCO2: expect.any(Number),
+          networkOperationalCO2: expect.any(Number),
+          consumerDeviceOperationalCO2: expect.any(Number),
+          totalOperational: expect.any(Number),
+          dataCenterEmbodiedCO2: expect.any(Number),
+          networkEmbodiedCO2: expect.any(Number),
+          consumerDeviceEmbodiedCO2: expect.any(Number),
+          totalEmbodied: expect.any(Number),
+          dataCenterCO2: expect.any(Number),
+          networkCO2: expect.any(Number),
+          consumerDeviceCO2: expect.any(Number),
+          total: expect.any(Number),
+        })
+      );
+
+      expect(result.rating).toBe("F");
+    });
   });
 
   describe("emissions per visit", () => {
     it("returns the expected emissions for 1GB data transfer with no green energy factor, 75% new visitors, 20% data reload ratio", () => {
-      const result = swd.perVisit(1000000000, false, false, {
+      const result = swd.perVisit(GIGABYTE, false, false, false, {
         firstVisitPercentage: 0.75,
         returnVisitPercentage: 0.25,
         dataReloadRatio: 0.2,
@@ -185,7 +232,7 @@ describe("sustainable web design model version 4", () => {
     });
 
     it("returns the expected emissions for 1GB data transfer with green energy factor", () => {
-      const result = swd.perVisit(1000000000, true, false, {
+      const result = swd.perVisit(GIGABYTE, true, false, false, {
         firstVisitPercentage: 0.75,
         returnVisitPercentage: 0.25,
         dataReloadRatio: 0.2,
@@ -194,7 +241,7 @@ describe("sustainable web design model version 4", () => {
     });
 
     it("returns the expected emissions for 1GB data transfer with green energy factor of 0.5", () => {
-      const result = swd.perVisit(1000000000, false, false, {
+      const result = swd.perVisit(GIGABYTE, false, false, false, {
         greenHostingFactor: 0.5,
         firstVisitPercentage: 0.75,
         returnVisitPercentage: 0.25,
@@ -210,7 +257,7 @@ describe("sustainable web design model version 4", () => {
     });
 
     it("returns the expected emissions results for each segment for 1GB data transfer", () => {
-      const result = swd.perVisit(1000000000, false, true, {
+      const result = swd.perVisit(GIGABYTE, false, true, false, {
         firstVisitPercentage: 0.75,
         returnVisitPercentage: 0.25,
         dataReloadRatio: 0.2,
@@ -275,24 +322,65 @@ describe("sustainable web design model version 4", () => {
       );
       expect(result.total).toBeCloseTo(SWDV4.PERVISIT_EMISSIONS_GB, 3);
     });
+
+    it("returns a rating without segments", () => {
+      const result = swd.perVisit(GIGABYTE, false, false, true);
+
+      expect(result).toEqual(
+        expect.objectContaining({
+          rating: expect.any(String),
+          total: expect.any(Number),
+        })
+      );
+
+      expect(result.rating).toBe("F");
+    });
+
+    it("returns a rating with segments", () => {
+      const result = swd.perVisit(GIGABYTE, false, true, true);
+
+      expect(result).toEqual(
+        expect.objectContaining({
+          rating: expect.any(String),
+          dataCenterOperationalCO2: expect.any(Number),
+          networkOperationalCO2: expect.any(Number),
+          consumerDeviceOperationalCO2: expect.any(Number),
+          totalOperational: expect.any(Number),
+          dataCenterEmbodiedCO2: expect.any(Number),
+          networkEmbodiedCO2: expect.any(Number),
+          consumerDeviceEmbodiedCO2: expect.any(Number),
+          totalEmbodied: expect.any(Number),
+          dataCenterCO2: expect.any(Number),
+          networkCO2: expect.any(Number),
+          consumerDeviceCO2: expect.any(Number),
+          firstVisitEmissions: expect.any(Number),
+          returnVisitEmissions: expect.any(Number),
+          total: expect.any(Number),
+        })
+      );
+
+      expect(result.rating).toBe("F");
+    });
   });
-  //   it("should return a string", () => {
-  //     expect(typeof swd.ratingScale(averageWebsiteInBytes)).toBe("string");
-  //   });
 
-  //   it("should return a rating", () => {
-  //     // Check a 3MB file size
-  //     expect(swd.ratingScale(3000000)).toBe("F");
-  //   });
+  describe("SWD Rating Scale", () => {
+    it("should return a string", () => {
+      expect(typeof swd.ratingScale(GIGABYTE)).toBe("string");
+    });
 
-  //   it("returns ratings as expected", () => {
-  //     expect(swd.ratingScale(fifthPercentile)).toBe("A+");
-  //     expect(swd.ratingScale(tenthPercentile)).toBe("A");
-  //     expect(swd.ratingScale(twentiethPercentile)).toBe("B");
-  //     expect(swd.ratingScale(thirtiethPercentile)).toBe("C");
-  //     expect(swd.ratingScale(fortiethPercentile)).toBe("D");
-  //     expect(swd.ratingScale(fiftiethPercentile)).toBe("E");
-  //     expect(swd.ratingScale(0.9)).toBe("F");
-  //   });
-  // });
+    it("should return a rating", () => {
+      // Check a 3MB file size
+      expect(swd.ratingScale(3000000)).toBe("F");
+    });
+
+    it("returns ratings as expected", () => {
+      expect(swd.ratingScale(fifthPercentile)).toBe("A+");
+      expect(swd.ratingScale(tenthPercentile)).toBe("A");
+      expect(swd.ratingScale(twentiethPercentile)).toBe("B");
+      expect(swd.ratingScale(thirtiethPercentile)).toBe("C");
+      expect(swd.ratingScale(fortiethPercentile)).toBe("D");
+      expect(swd.ratingScale(fiftiethPercentile)).toBe("E");
+      expect(swd.ratingScale(0.9)).toBe("F");
+    });
+  });
 });

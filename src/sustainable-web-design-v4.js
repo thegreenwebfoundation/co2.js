@@ -8,8 +8,17 @@
  *
  */
 
-import { fileSize, SWDV4 } from "./constants/index.js";
-import { formatNumber } from "./helpers/index.js";
+import { fileSize, SWDV4, SWDMv4Ratings } from "./constants/index.js";
+import { formatNumber, lessThanEqualTo } from "./helpers/index.js";
+
+const {
+  fifthPercentile,
+  tenthPercentile,
+  twentiethPercentile,
+  thirtiethPercentile,
+  fortiethPercentile,
+  fiftiethPercentile,
+} = SWDMv4Ratings;
 
 const {
   OPERATIONAL_KWH_PER_GB_DATACENTER,
@@ -23,6 +32,7 @@ const {
 
 class SustainableWebDesign {
   constructor(options) {
+    this.allowRatings = true;
     this.options = options;
     this.version = 4;
   }
@@ -135,7 +145,13 @@ class SustainableWebDesign {
   }
 
   // NOTE: Setting green: true should result in a GREEN_HOSTING_FACTOR of 1.0
-  perByte(bytes, green = false, segmented = false, options = {}) {
+  perByte(
+    bytes,
+    green = false,
+    segmented = false,
+    ratingResults = false,
+    options = {}
+  ) {
     if (bytes < 1) {
       return 0;
     }
@@ -166,8 +182,13 @@ class SustainableWebDesign {
       totalEmissions.network +
       totalEmissions.device;
 
+    let rating = null;
+    if (ratingResults) {
+      rating = this.ratingScale(total);
+    }
+
     if (segmented) {
-      return {
+      const segments = {
         dataCenterOperationalCO2: operationalEmissions.dataCenter,
         networkOperationalCO2: operationalEmissions.network,
         consumerDeviceOperationalCO2: operationalEmissions.device,
@@ -185,14 +206,32 @@ class SustainableWebDesign {
         dataCenterCO2: totalEmissions.dataCenter,
         networkCO2: totalEmissions.network,
         consumerDeviceCO2: totalEmissions.device,
-        total,
       };
+
+      if (ratingResults) {
+        return {
+          ...segments,
+          total,
+          rating,
+        };
+      }
+      return { ...segments, total };
+    }
+
+    if (ratingResults) {
+      return { total, rating };
     }
 
     return total;
   }
 
-  perVisit(bytes, green = false, segmented = false, options = {}) {
+  perVisit(
+    bytes,
+    green = false,
+    segmented = false,
+    ratingResults = false,
+    options = {}
+  ) {
     let firstViewRatio = 1;
     let returnViewRatio = 0;
     let dataReloadRatio = 0;
@@ -251,8 +290,13 @@ class SustainableWebDesign {
       firstVisitEmissions * firstViewRatio +
       returnVisitEmissions * returnViewRatio;
 
+    let rating = null;
+    if (ratingResults) {
+      rating = this.ratingScale(total);
+    }
+
     if (segmented) {
-      return {
+      const segments = {
         dataCenterOperationalCO2: operationalEmissions.dataCenter,
         networkOperationalCO2: operationalEmissions.network,
         consumerDeviceOperationalCO2: operationalEmissions.device,
@@ -274,11 +318,48 @@ class SustainableWebDesign {
           operationalEmissions.device + embodiedEmissions.device,
         firstVisitEmissions,
         returnVisitEmissions,
-        total,
       };
+
+      if (ratingResults) {
+        return {
+          ...segments,
+          total,
+          rating,
+        };
+      }
+
+      return { ...segments, total };
+    }
+
+    if (ratingResults) {
+      return { total, rating };
     }
 
     return total;
+  }
+
+  /**
+   * Determines the rating of a website's sustainability based on its CO2 emissions.
+   *
+   * @param {number} co2e - The CO2 emissions of the website in grams.
+   * @returns {string} The sustainability rating, ranging from "A+" (best) to "F" (worst).
+   */
+  ratingScale(co2e) {
+    if (lessThanEqualTo(co2e, fifthPercentile)) {
+      return "A+";
+    } else if (lessThanEqualTo(co2e, tenthPercentile)) {
+      return "A";
+    } else if (lessThanEqualTo(co2e, twentiethPercentile)) {
+      return "B";
+    } else if (lessThanEqualTo(co2e, thirtiethPercentile)) {
+      return "C";
+    } else if (lessThanEqualTo(co2e, fortiethPercentile)) {
+      return "D";
+    } else if (lessThanEqualTo(co2e, fiftiethPercentile)) {
+      return "E";
+    } else {
+      return "F";
+    }
   }
 }
 

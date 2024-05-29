@@ -43,6 +43,15 @@ const SWDMv3Ratings = {
   fiftiethPercentile: 0.846,
 };
 
+const SWDMv4Ratings = {
+  fifthPercentile: 0.04,
+  tenthPercentile: 0.079,
+  twentiethPercentile: 0.145,
+  thirtiethPercentile: 0.209,
+  fortiethPercentile: 0.278,
+  fiftiethPercentile: 0.359,
+};
+
 export {
   fileSize,
   KWH_PER_GB,
@@ -57,4 +66,5 @@ export {
   PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD,
   SWDV4,
   SWDMv3Ratings,
+  SWDMv4Ratings,
 };
