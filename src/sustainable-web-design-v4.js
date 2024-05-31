@@ -8,17 +8,8 @@
  *
  */
 
-import { fileSize, SWDV4, SWDMV4_RATINGS } from "./constants/index.js";
+import { fileSize, SWDV4 } from "./constants/index.js";
 import { outputRating } from "./helpers/index.js";
-
-const {
-  FIFTH_PERCENTILE,
-  TENTH_PERCENTILE,
-  TWENTIETH_PERCENTILE,
-  THIRTIETH_PERCENTILE,
-  FORTIETH_PERCENTILE,
-  FIFTIETH_PERCENTILE,
-} = SWDMV4_RATINGS;
 
 const {
   OPERATIONAL_KWH_PER_GB_DATACENTER,
@@ -29,6 +20,43 @@ const {
   EMBODIED_KWH_PER_GB_DEVICE,
   GLOBAL_GRID_INTENSITY,
 } = SWDV4;
+
+/**
+ * Output the CO2e emissions for each system segment
+ * @param {object} operationalEmissions
+ * @param {object} embodiedEmissions
+ * @returns {object}
+ */
+function outputSegments(operationalEmissions, embodiedEmissions) {
+  const totalOperationalCO2e =
+    operationalEmissions.dataCenter +
+    operationalEmissions.network +
+    operationalEmissions.device;
+  const totalEmbodiedCO2e =
+    embodiedEmissions.dataCenter +
+    embodiedEmissions.network +
+    embodiedEmissions.device;
+
+  const dataCenterCO2e =
+    operationalEmissions.dataCenter + embodiedEmissions.dataCenter;
+  const networkCO2e = operationalEmissions.network + embodiedEmissions.network;
+  const consumerDeviceCO2e =
+    operationalEmissions.device + embodiedEmissions.device;
+
+  return {
+    dataCenterOperationalCO2e: operationalEmissions.dataCenter,
+    networkOperationalCO2e: operationalEmissions.network,
+    consumerDeviceOperationalCO2e: operationalEmissions.device,
+    dataCenterEmbodiedCO2e: embodiedEmissions.dataCenter,
+    networkEmbodiedCO2e: embodiedEmissions.network,
+    consumerDeviceEmbodiedCO2e: embodiedEmissions.device,
+    totalEmbodiedCO2e,
+    totalOperationalCO2e,
+    dataCenterCO2e,
+    networkCO2e,
+    consumerDeviceCO2e,
+  };
+}
 
 class SustainableWebDesign {
   constructor(options) {
@@ -189,25 +217,7 @@ class SustainableWebDesign {
 
     if (segmented) {
       const segments = {
-        dataCenterOperationalCO2e: operationalEmissions.dataCenter,
-        networkOperationalCO2e: operationalEmissions.network,
-        consumerDeviceOperationalCO2e: operationalEmissions.device,
-        dataCenterEmbodiedCO2e: embodiedEmissions.dataCenter,
-        networkEmbodiedCO2e: embodiedEmissions.network,
-        consumerDeviceEmbodiedCO2e: embodiedEmissions.device,
-        totalOperationalCO2e:
-          operationalEmissions.dataCenter +
-          operationalEmissions.network +
-          operationalEmissions.device,
-        totalEmbodiedCO2e:
-          embodiedEmissions.dataCenter +
-          embodiedEmissions.network +
-          embodiedEmissions.device,
-        dataCenterCO2e:
-          operationalEmissions.dataCenter + embodiedEmissions.dataCenter,
-        networkCO2e: operationalEmissions.network + embodiedEmissions.network,
-        consumerDeviceCO2e:
-          operationalEmissions.device + embodiedEmissions.device,
+        ...outputSegments(operationalEmissions, embodiedEmissions),
       };
 
       if (ratingResults) {
@@ -299,25 +309,7 @@ class SustainableWebDesign {
 
     if (segmented) {
       const segments = {
-        dataCenterOperationalCO2e: operationalEmissions.dataCenter,
-        networkOperationalCO2e: operationalEmissions.network,
-        consumerDeviceOperationalCO2e: operationalEmissions.device,
-        dataCenterEmbodiedCO2e: embodiedEmissions.dataCenter,
-        networkEmbodiedCO2e: embodiedEmissions.network,
-        consumerDeviceEmbodiedCO2e: embodiedEmissions.device,
-        totalOperationalCO2e:
-          operationalEmissions.dataCenter +
-          operationalEmissions.network +
-          operationalEmissions.device,
-        totalEmbodiedCO2e:
-          embodiedEmissions.dataCenter +
-          embodiedEmissions.network +
-          embodiedEmissions.device,
-        dataCenterCO2e:
-          operationalEmissions.dataCenter + embodiedEmissions.dataCenter,
-        networkCO2e: operationalEmissions.network + embodiedEmissions.network,
-        consumerDeviceCO2e:
-          operationalEmissions.device + embodiedEmissions.device,
+        ...outputSegments(operationalEmissions, embodiedEmissions),
         firstVisitCO2e: firstVisitEmissions,
         returnVisitCO2e: returnVisitEmissions,
       };
