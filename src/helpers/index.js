@@ -196,6 +196,13 @@ function getApiRequestHeaders(comment = "") {
   return { "User-Agent": `co2js/${process.env.CO2JS_VERSION} ${comment}` };
 }
 
+/**
+ * Returns the SWDM rating for a given CO2e value and version of the SWDM.
+ * @param {number} co2e - The CO2e value to rate.
+ * @param {number} swdmVersion - The version of the SWDM to use. Defaults to version 3.
+ * @returns {string} The SWDM rating.
+ */
+
 function outputRating(co2e, swdmVersion) {
   let {
     FIFTH_PERCENTILE,
