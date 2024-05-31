@@ -8,17 +8,17 @@
  *
  */
 
-import { fileSize, SWDV4, SWDMv4Ratings } from "./constants/index.js";
+import { fileSize, SWDV4, SWDMV4_RATINGS } from "./constants/index.js";
 import { formatNumber, lessThanEqualTo } from "./helpers/index.js";
 
 const {
-  fifthPercentile,
-  tenthPercentile,
-  twentiethPercentile,
-  thirtiethPercentile,
-  fortiethPercentile,
-  fiftiethPercentile,
-} = SWDMv4Ratings;
+  FIFTH_PERCENTILE,
+  TENTH_PERCENTILE,
+  TWENTIETH_PERCENTILE,
+  THIRTIETH_PERCENTILE,
+  FORTIETH_PERCENTILE,
+  FIFTIETH_PERCENTILE,
+} = SWDMV4_RATINGS;
 
 const {
   OPERATIONAL_KWH_PER_GB_DATACENTER,
@@ -347,17 +347,17 @@ class SustainableWebDesign {
    * @returns {string} The sustainability rating, ranging from "A+" (best) to "F" (worst).
    */
   ratingScale(co2e) {
-    if (lessThanEqualTo(co2e, fifthPercentile)) {
+    if (lessThanEqualTo(co2e, FIFTH_PERCENTILE)) {
       return "A+";
-    } else if (lessThanEqualTo(co2e, tenthPercentile)) {
+    } else if (lessThanEqualTo(co2e, TENTH_PERCENTILE)) {
       return "A";
-    } else if (lessThanEqualTo(co2e, twentiethPercentile)) {
+    } else if (lessThanEqualTo(co2e, TWENTIETH_PERCENTILE)) {
       return "B";
-    } else if (lessThanEqualTo(co2e, thirtiethPercentile)) {
+    } else if (lessThanEqualTo(co2e, THIRTIETH_PERCENTILE)) {
       return "C";
-    } else if (lessThanEqualTo(co2e, fortiethPercentile)) {
+    } else if (lessThanEqualTo(co2e, FORTIETH_PERCENTILE)) {
       return "D";
-    } else if (lessThanEqualTo(co2e, fiftiethPercentile)) {
+    } else if (lessThanEqualTo(co2e, FIFTIETH_PERCENTILE)) {
       return "E";
     } else {
       return "F";

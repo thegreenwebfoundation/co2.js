@@ -34,22 +34,22 @@ const SWDV4 = {
   GLOBAL_GRID_INTENSITY: 494,
 };
 
-const SWDMv3Ratings = {
-  fifthPercentile: 0.095,
-  tenthPercentile: 0.186,
-  twentiethPercentile: 0.341,
-  thirtiethPercentile: 0.493,
-  fortiethPercentile: 0.656,
-  fiftiethPercentile: 0.846,
+const SWDMV3_RATINGS = {
+  FIFTH_PERCENTILE: 0.095,
+  TENTH_PERCENTILE: 0.186,
+  TWENTIETH_PERCENTILE: 0.341,
+  THIRTIETH_PERCENTILE: 0.493,
+  FORTIETH_PERCENTILE: 0.656,
+  FIFTIETH_PERCENTILE: 0.846,
 };
 
-const SWDMv4Ratings = {
-  fifthPercentile: 0.04,
-  tenthPercentile: 0.079,
-  twentiethPercentile: 0.145,
-  thirtiethPercentile: 0.209,
-  fortiethPercentile: 0.278,
-  fiftiethPercentile: 0.359,
+const SWDMV4_RATINGS = {
+  FIFTH_PERCENTILE: 0.04,
+  TENTH_PERCENTILE: 0.079,
+  TWENTIETH_PERCENTILE: 0.145,
+  THIRTIETH_PERCENTILE: 0.209,
+  FORTIETH_PERCENTILE: 0.278,
+  FIFTIETH_PERCENTILE: 0.359,
 };
 
 export {
@@ -65,6 +65,6 @@ export {
   RETURNING_VISITOR_PERCENTAGE,
   PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD,
   SWDV4,
-  SWDMv3Ratings,
-  SWDMv4Ratings,
+  SWDMV3_RATINGS,
+  SWDMV4_RATINGS,
 };
