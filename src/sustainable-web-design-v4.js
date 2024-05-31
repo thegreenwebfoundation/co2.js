@@ -9,7 +9,7 @@
  */
 
 import { fileSize, SWDV4, SWDMV4_RATINGS } from "./constants/index.js";
-import { formatNumber, lessThanEqualTo } from "./helpers/index.js";
+import { outputRating } from "./helpers/index.js";
 
 const {
   FIFTH_PERCENTILE,
@@ -347,21 +347,7 @@ class SustainableWebDesign {
    * @returns {string} The sustainability rating, ranging from "A+" (best) to "F" (worst).
    */
   ratingScale(co2e) {
-    if (lessThanEqualTo(co2e, FIFTH_PERCENTILE)) {
-      return "A+";
-    } else if (lessThanEqualTo(co2e, TENTH_PERCENTILE)) {
-      return "A";
-    } else if (lessThanEqualTo(co2e, TWENTIETH_PERCENTILE)) {
-      return "B";
-    } else if (lessThanEqualTo(co2e, THIRTIETH_PERCENTILE)) {
-      return "C";
-    } else if (lessThanEqualTo(co2e, FORTIETH_PERCENTILE)) {
-      return "D";
-    } else if (lessThanEqualTo(co2e, FIFTIETH_PERCENTILE)) {
-      return "E";
-    } else {
-      return "F";
-    }
+    return outputRating(co2e, this.version);
   }
 }
 
