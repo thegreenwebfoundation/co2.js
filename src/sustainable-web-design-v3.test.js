@@ -1,15 +1,15 @@
-import SustainableWebDesign from "./sustainable-web-design.js";
-import { MILLION, SWD } from "./constants/test-constants.js";
-import { SWDMv3Ratings } from "./constants/index.js";
+import SustainableWebDesign from "./sustainable-web-design-v3.js";
+import { MILLION, SWDV3 } from "./constants/test-constants.js";
+import { SWDMV3_RATINGS } from "./constants/index.js";
 
 const {
-  fifthPercentile,
-  tenthPercentile,
-  twentiethPercentile,
-  thirtiethPercentile,
-  fortiethPercentile,
-  fiftiethPercentile,
-} = SWDMv3Ratings;
+  FIFTH_PERCENTILE,
+  TENTH_PERCENTILE,
+  TWENTIETH_PERCENTILE,
+  THIRTIETH_PERCENTILE,
+  FORTIETH_PERCENTILE,
+  FIFTIETH_PERCENTILE,
+} = SWDMV3_RATINGS;
 
 describe("sustainable web design model", () => {
   const swd = new SustainableWebDesign();
@@ -51,21 +51,30 @@ describe("sustainable web design model", () => {
     });
 
     it("returns a result for grey energy", () => {
-      expect(swd.perByte(MILLION)).toBeCloseTo(SWD.MILLION_GREY, 3);
+      expect(swd.perByte(MILLION)).toBeCloseTo(SWDV3.MILLION_GREY, 3);
     });
 
     it("returns a result for green energy", () => {
-      expect(swd.perByte(MILLION, true)).toBeCloseTo(SWD.MILLION_GREEN, 3);
+      expect(swd.perByte(MILLION, true)).toBeCloseTo(SWDV3.MILLION_GREEN, 3);
     });
 
     it("can segment results", () => {
       const result = swd.perByte(MILLION, false, true);
 
-      expect(result.dataCenterCO2).toBeCloseTo(SWD.MILLION_GREY_DATACENTERS, 3);
-      expect(result.consumerDeviceCO2).toBeCloseTo(SWD.MILLION_GREY_DEVICES, 3);
-      expect(result.networkCO2).toBeCloseTo(SWD.MILLION_GREY_NETWORKS, 3);
-      expect(result.productionCO2).toBeCloseTo(SWD.MILLION_GREY_PRODUCTION, 3);
-      expect(result.total).toBeCloseTo(SWD.MILLION_GREY, 3);
+      expect(result.dataCenterCO2).toBeCloseTo(
+        SWDV3.MILLION_GREY_DATACENTERS,
+        3
+      );
+      expect(result.consumerDeviceCO2).toBeCloseTo(
+        SWDV3.MILLION_GREY_DEVICES,
+        3
+      );
+      expect(result.networkCO2).toBeCloseTo(SWDV3.MILLION_GREY_NETWORKS, 3);
+      expect(result.productionCO2).toBeCloseTo(
+        SWDV3.MILLION_GREY_PRODUCTION,
+        3
+      );
+      expect(result.total).toBeCloseTo(SWDV3.MILLION_GREY, 3);
     });
   });
 
@@ -135,12 +144,12 @@ describe("sustainable web design model", () => {
     });
 
     it("returns ratings as expected", () => {
-      expect(swd.ratingScale(fifthPercentile)).toBe("A+");
-      expect(swd.ratingScale(tenthPercentile)).toBe("A");
-      expect(swd.ratingScale(twentiethPercentile)).toBe("B");
-      expect(swd.ratingScale(thirtiethPercentile)).toBe("C");
-      expect(swd.ratingScale(fortiethPercentile)).toBe("D");
-      expect(swd.ratingScale(fiftiethPercentile)).toBe("E");
+      expect(swd.ratingScale(FIFTH_PERCENTILE)).toBe("A+");
+      expect(swd.ratingScale(TENTH_PERCENTILE)).toBe("A");
+      expect(swd.ratingScale(TWENTIETH_PERCENTILE)).toBe("B");
+      expect(swd.ratingScale(THIRTIETH_PERCENTILE)).toBe("C");
+      expect(swd.ratingScale(FORTIETH_PERCENTILE)).toBe("D");
+      expect(swd.ratingScale(FIFTIETH_PERCENTILE)).toBe("E");
       expect(swd.ratingScale(0.9)).toBe("F");
     });
   });

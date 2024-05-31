@@ -4,6 +4,8 @@ import {
   PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD,
   FIRST_TIME_VIEWING_PERCENTAGE,
   RETURNING_VISITOR_PERCENTAGE,
+  SWDMV3_RATINGS,
+  SWDMV4_RATINGS,
 } from "../constants/index.js";
 
 // Shared type definitions to be used across different files
@@ -194,4 +196,53 @@ function getApiRequestHeaders(comment = "") {
   return { "User-Agent": `co2js/${process.env.CO2JS_VERSION} ${comment}` };
 }
 
-export { formatNumber, parseOptions, getApiRequestHeaders, lessThanEqualTo };
+/**
+ * Returns the SWDM rating for a given CO2e value and version of the SWDM.
+ * @param {number} co2e - The CO2e value to rate.
+ * @param {number} swdmVersion - The version of the SWDM to use. Defaults to version 3.
+ * @returns {string} The SWDM rating.
+ */
+
+function outputRating(co2e, swdmVersion) {
+  let {
+    FIFTH_PERCENTILE,
+    TENTH_PERCENTILE,
+    TWENTIETH_PERCENTILE,
+    THIRTIETH_PERCENTILE,
+    FORTIETH_PERCENTILE,
+    FIFTIETH_PERCENTILE,
+  } = SWDMV3_RATINGS;
+
+  if (swdmVersion === 4) {
+    FIFTH_PERCENTILE = SWDMV4_RATINGS.FIFTH_PERCENTILE;
+    TENTH_PERCENTILE = SWDMV4_RATINGS.TENTH_PERCENTILE;
+    TWENTIETH_PERCENTILE = SWDMV4_RATINGS.TWENTIETH_PERCENTILE;
+    THIRTIETH_PERCENTILE = SWDMV4_RATINGS.THIRTIETH_PERCENTILE;
+    FORTIETH_PERCENTILE = SWDMV4_RATINGS.FORTIETH_PERCENTILE;
+    FIFTIETH_PERCENTILE = SWDMV4_RATINGS.FIFTIETH_PERCENTILE;
+  }
+
+  if (lessThanEqualTo(co2e, FIFTH_PERCENTILE)) {
+    return "A+";
+  } else if (lessThanEqualTo(co2e, TENTH_PERCENTILE)) {
+    return "A";
+  } else if (lessThanEqualTo(co2e, TWENTIETH_PERCENTILE)) {
+    return "B";
+  } else if (lessThanEqualTo(co2e, THIRTIETH_PERCENTILE)) {
+    return "C";
+  } else if (lessThanEqualTo(co2e, FORTIETH_PERCENTILE)) {
+    return "D";
+  } else if (lessThanEqualTo(co2e, FIFTIETH_PERCENTILE)) {
+    return "E";
+  } else {
+    return "F";
+  }
+}
+
+export {
+  formatNumber,
+  parseOptions,
+  getApiRequestHeaders,
+  lessThanEqualTo,
+  outputRating,
+};

@@ -20,23 +20,14 @@ import {
   FIRST_TIME_VIEWING_PERCENTAGE,
   RETURNING_VISITOR_PERCENTAGE,
   PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD,
-  SWDMv3Ratings,
 } from "./constants/index.js";
-import { formatNumber, lessThanEqualTo } from "./helpers/index.js";
-
-const {
-  fifthPercentile,
-  tenthPercentile,
-  twentiethPercentile,
-  thirtiethPercentile,
-  fortiethPercentile,
-  fiftiethPercentile,
-} = SWDMv3Ratings;
+import { formatNumber, outputRating } from "./helpers/index.js";
 
 class SustainableWebDesign {
   constructor(options) {
     this.allowRatings = true;
     this.options = options;
+    this.version = 3;
   }
 
   /**
@@ -387,21 +378,7 @@ class SustainableWebDesign {
    * @returns {string} The sustainability rating, ranging from "A+" (best) to "F" (worst).
    */
   ratingScale(co2e) {
-    if (lessThanEqualTo(co2e, fifthPercentile)) {
-      return "A+";
-    } else if (lessThanEqualTo(co2e, tenthPercentile)) {
-      return "A";
-    } else if (lessThanEqualTo(co2e, twentiethPercentile)) {
-      return "B";
-    } else if (lessThanEqualTo(co2e, thirtiethPercentile)) {
-      return "C";
-    } else if (lessThanEqualTo(co2e, fortiethPercentile)) {
-      return "D";
-    } else if (lessThanEqualTo(co2e, fiftiethPercentile)) {
-      return "E";
-    } else {
-      return "F";
-    }
+    return outputRating(co2e, this.version);
   }
 }
 
