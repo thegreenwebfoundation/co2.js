@@ -20,18 +20,8 @@ import {
   FIRST_TIME_VIEWING_PERCENTAGE,
   RETURNING_VISITOR_PERCENTAGE,
   PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD,
-  SWDMV3_RATINGS,
 } from "./constants/index.js";
 import { formatNumber, outputRating } from "./helpers/index.js";
-
-const {
-  FIFTH_PERCENTILE,
-  TENTH_PERCENTILE,
-  TWENTIETH_PERCENTILE,
-  THIRTIETH_PERCENTILE,
-  FORTIETH_PERCENTILE,
-  FIFTIETH_PERCENTILE,
-} = SWDMV3_RATINGS;
 
 class SustainableWebDesign {
   constructor(options) {
