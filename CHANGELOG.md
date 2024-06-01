@@ -14,8 +14,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
-- Add ability to create adaptors which provide access to external data sources
-- Add access to the Electricity Maps API free tier
+- Add ability to create adaptors which provide access to external data sources #134
+- Add access to the Electricity Maps API free tier #134
+- Add the Sustainable Web Design Rating system #205
+- Add the updated Sustainable Web Design Model version 4 #119
+- Allow access to individual models and their internal functions #195
 <!-- - _(Add a summary of your feature, and if relevant the issue, in your PR for merging into `main`)_ -->
 
 ## Released
