@@ -11,7 +11,7 @@ const {
   FIFTIETH_PERCENTILE,
 } = SWDMV3_RATINGS;
 
-describe("sustainable web design model", () => {
+describe("sustainable web design model version 3", () => {
   const swd = new SustainableWebDesign();
   const averageWebsiteInBytes = 2257715.2;
 
