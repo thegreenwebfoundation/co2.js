@@ -172,7 +172,7 @@ class SustainableWebDesign {
     };
   }
 
-  // NOTE: Setting green: true should result in a GREEN_HOSTING_FACTOR of 1.0
+  // NOTE: Setting green: true should result in a greenHostingFactor of 1.0
   perByte(
     bytes,
     green = false,
@@ -186,20 +186,20 @@ class SustainableWebDesign {
 
     const operationalEmissions = this.operationalEmissions(bytes, options);
     const embodiedEmissions = this.embodiedEmissions(bytes);
-    let GREEN_HOSTING_FACTOR = 0;
+    let greenHostingFactor = 0;
 
     if (green) {
-      GREEN_HOSTING_FACTOR = 1.0;
+      greenHostingFactor = 1.0;
     } else if (
       options?.greenHostingFactor ||
       options?.greenHostingFactor === 0
     ) {
-      GREEN_HOSTING_FACTOR = options.greenHostingFactor;
+      greenHostingFactor = options.greenHostingFactor;
     }
 
     const totalEmissions = {
       dataCenter:
-        operationalEmissions.dataCenter * (1 - GREEN_HOSTING_FACTOR) +
+        operationalEmissions.dataCenter * (1 - greenHostingFactor) +
         embodiedEmissions.dataCenter,
       network: operationalEmissions.network + embodiedEmissions.network,
       device: operationalEmissions.device + embodiedEmissions.device,
@@ -247,7 +247,7 @@ class SustainableWebDesign {
     let firstViewRatio = 1;
     let returnViewRatio = 0;
     let dataReloadRatio = 0;
-    let GREEN_HOSTING_FACTOR = 0;
+    let greenHostingFactor = 0;
     const operationalEmissions = this.operationalEmissions(bytes, options);
     const embodiedEmissions = this.embodiedEmissions(bytes);
 
@@ -256,12 +256,12 @@ class SustainableWebDesign {
     }
 
     if (green) {
-      GREEN_HOSTING_FACTOR = 1.0;
+      greenHostingFactor = 1.0;
     } else if (
       options?.greenHostingFactor ||
       options?.greenHostingFactor === 0
     ) {
-      GREEN_HOSTING_FACTOR = options.greenHostingFactor;
+      greenHostingFactor = options.greenHostingFactor;
     }
 
     if (options.firstVisitPercentage || options.firstVisitPercentage === 0) {
@@ -279,7 +279,7 @@ class SustainableWebDesign {
     // NOTE: First visit emissions are calculated as the sum of all three segments without any caching.
 
     const firstVisitEmissions =
-      operationalEmissions.dataCenter * (1 - GREEN_HOSTING_FACTOR) +
+      operationalEmissions.dataCenter * (1 - greenHostingFactor) +
       embodiedEmissions.dataCenter +
       operationalEmissions.network +
       embodiedEmissions.network +
@@ -289,7 +289,7 @@ class SustainableWebDesign {
     // NOTE: First visit emissions are calculated as the sum of all three segments with caching applied.
 
     const returnVisitEmissions =
-      (operationalEmissions.dataCenter * (1 - GREEN_HOSTING_FACTOR) +
+      (operationalEmissions.dataCenter * (1 - greenHostingFactor) +
         embodiedEmissions.dataCenter +
         operationalEmissions.network +
         embodiedEmissions.network +
