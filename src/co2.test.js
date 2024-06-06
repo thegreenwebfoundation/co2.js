@@ -4,8 +4,10 @@ import { MILLION, SWDV3 } from "./constants/test-constants.js";
 
 import CO2 from "./co2.js";
 import { averageIntensity, marginalIntensity } from "./index.js";
+import { SWDV4 } from "./constants/index.js";
 
 const TwnGridIntensityValue = averageIntensity.data["TWN"];
+const SWDM4_GLOBAL_GRID_INTENSITY = SWDV4.GLOBAL_GRID_INTENSITY;
 
 describe("co2", () => {
   let co2;
@@ -878,6 +880,37 @@ describe("co2", () => {
 
     it("uses the SWD model version 4 when specified", () => {
       expect(co2SWDV4.model.version).toBe(4);
+    });
+  });
+
+  describe("Using the perByteTrace method in SWDM v4", () => {
+    const co2 = new CO2({ model: "swd", version: 4 });
+    it("returns the expected object", () => {
+      const res = co2.perByteTrace(MILLION);
+      expect(res).toHaveProperty("variables");
+      expect(res).toHaveProperty("co2");
+      expect(res).toHaveProperty("green");
+
+      expect(res.variables).toHaveProperty("bytes");
+      expect(res.variables).toHaveProperty("gridIntensity");
+      expect(res.variables).toHaveProperty("greenHostingFactor");
+
+      expect(res.variables.gridIntensity).toHaveProperty("device");
+      expect(res.variables.gridIntensity).toHaveProperty("dataCenter");
+      expect(res.variables.gridIntensity).toHaveProperty("network");
+
+      expect(res.co2).toBeGreaterThan(0);
+      expect(res.variables.greenHostingFactor).toBe(0);
+      expect(res.variables.green).toBe(false);
+      expect(res.variables.gridIntensity.device).toBe(
+        SWDM4_GLOBAL_GRID_INTENSITY
+      );
+      expect(res.variables.gridIntensity.dataCenter).toBe(
+        SWDM4_GLOBAL_GRID_INTENSITY
+      );
+      expect(res.variables.gridIntensity.network).toBe(
+        SWDM4_GLOBAL_GRID_INTENSITY
+      );
     });
   });
 });
