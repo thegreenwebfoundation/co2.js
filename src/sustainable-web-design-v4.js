@@ -58,6 +58,20 @@ function outputSegments(operationalEmissions, embodiedEmissions) {
   };
 }
 
+/**
+ * Determine the green hosting factor
+ * @param {boolean} green
+ * @param {object} options
+ * @returns {number}
+ */
+function getGreenHostingFactor(green, options) {
+  if (green) {
+    return 1.0;
+  } else if (options?.greenHostingFactor || options?.greenHostingFactor === 0) {
+    return options.greenHostingFactor;
+  }
+  return 0;
+}
 class SustainableWebDesign {
   constructor(options) {
     this.allowRatings = true;
@@ -186,16 +200,7 @@ class SustainableWebDesign {
 
     const operationalEmissions = this.operationalEmissions(bytes, options);
     const embodiedEmissions = this.embodiedEmissions(bytes);
-    let greenHostingFactor = 0;
-
-    if (green) {
-      greenHostingFactor = 1.0;
-    } else if (
-      options?.greenHostingFactor ||
-      options?.greenHostingFactor === 0
-    ) {
-      greenHostingFactor = options.greenHostingFactor;
-    }
+    const greenHostingFactor = getGreenHostingFactor(green, options);
 
     const totalEmissions = {
       dataCenter:
@@ -247,21 +252,12 @@ class SustainableWebDesign {
     let firstViewRatio = 1;
     let returnViewRatio = 0;
     let dataReloadRatio = 0;
-    let greenHostingFactor = 0;
+    const greenHostingFactor = getGreenHostingFactor(green, options);
     const operationalEmissions = this.operationalEmissions(bytes, options);
     const embodiedEmissions = this.embodiedEmissions(bytes);
 
     if (bytes < 1) {
       return 0;
-    }
-
-    if (green) {
-      greenHostingFactor = 1.0;
-    } else if (
-      options?.greenHostingFactor ||
-      options?.greenHostingFactor === 0
-    ) {
-      greenHostingFactor = options.greenHostingFactor;
     }
 
     if (options.firstVisitPercentage || options.firstVisitPercentage === 0) {
