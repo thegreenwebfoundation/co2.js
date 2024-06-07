@@ -750,9 +750,9 @@ describe("co2", () => {
       });
       const { dataCenter, network, device } =
         perByteTraceResult.variables.gridIntensity;
-      expect(dataCenter).toBe(0);
-      expect(network).toBe(0);
-      expect(device).toBe(0);
+      expect(dataCenter).toStrictEqual({ value: 0 });
+      expect(network).toStrictEqual({ value: 0 });
+      expect(device).toStrictEqual({ value: 0 });
     });
 
     it("expects perVisitTrace to support values equal to 0", () => {
@@ -773,9 +773,9 @@ describe("co2", () => {
       expect(dataReloadRatio).toBe(0);
       expect(firstVisitPercentage).toBe(0);
       expect(returnVisitPercentage).toBe(0);
-      expect(dataCenter).toBe(0);
-      expect(network).toBe(0);
-      expect(device).toBe(0);
+      expect(dataCenter).toStrictEqual({ value: 0 });
+      expect(network).toStrictEqual({ value: 0 });
+      expect(device).toStrictEqual({ value: 0 });
     });
     it("expects perByteTrace segments to be 0 when grid intensity is 0", () => {
       const perByteTraceResult = co2.perByteTrace(1000000, false, {
@@ -901,16 +901,33 @@ describe("co2", () => {
 
       expect(res.co2).toBeGreaterThan(0);
       expect(res.variables.greenHostingFactor).toBe(0);
-      expect(res.variables.green).toBe(false);
-      expect(res.variables.gridIntensity.device).toBe(
+      expect(res.green).toBe(false);
+      expect(res.variables.gridIntensity.device.value).toBe(
         SWDM4_GLOBAL_GRID_INTENSITY
       );
-      expect(res.variables.gridIntensity.dataCenter).toBe(
+      expect(res.variables.gridIntensity.dataCenter.value).toBe(
         SWDM4_GLOBAL_GRID_INTENSITY
       );
-      expect(res.variables.gridIntensity.network).toBe(
+      expect(res.variables.gridIntensity.network.value).toBe(
         SWDM4_GLOBAL_GRID_INTENSITY
       );
+    });
+    it("returns the expected object when adjustments are made", () => {
+      const res = co2.perByteTrace(MILLION, false, {
+        gridIntensity: {
+          dataCenter: 300,
+          network: 200,
+          device: { country: "TWN" },
+        },
+        greenHostingFactor: 0.5,
+      });
+      console.log(JSON.stringify(res, null, 2));
+
+      expect(res.variables.greenHostingFactor).toBe(0.5);
+      expect(res.green).toBe(false);
+      expect(res.variables.gridIntensity.device.country).toBe("TWN");
+      expect(res.variables.gridIntensity.dataCenter.value).toBe(300);
+      expect(res.variables.gridIntensity.network.value).toBe(200);
     });
   });
 });
