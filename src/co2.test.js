@@ -921,13 +921,19 @@ describe("co2", () => {
         },
         greenHostingFactor: 0.5,
       });
-      console.log(JSON.stringify(res, null, 2));
 
       expect(res.variables.greenHostingFactor).toBe(0.5);
       expect(res.green).toBe(false);
       expect(res.variables.gridIntensity.device.country).toBe("TWN");
       expect(res.variables.gridIntensity.dataCenter.value).toBe(300);
       expect(res.variables.gridIntensity.network.value).toBe(200);
+    });
+    it("returns the expected greenHosting factor when green is set", () => {
+      const res = co2.perByteTrace(MILLION, true, {
+        greenHostingFactor: 0.5,
+      });
+
+      expect(res.variables.greenHostingFactor).toBe(1);
     });
   });
 });

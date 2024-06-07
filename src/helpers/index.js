@@ -23,7 +23,7 @@ const formatNumber = (num) => parseFloat(num.toFixed(2));
 
 const lessThanEqualTo = (num, limit) => num <= limit;
 
-function parseOptions(options = {}, version = 3) {
+function parseOptions(options = {}, version = 3, green = false) {
   const globalGridIntensity =
     version === 4 ? SWDM4_GLOBAL_GRID_INTENSITY : SWDM3_GLOBAL_GRID_INTENSITY;
   // CHeck that it is an object
@@ -218,6 +218,10 @@ function parseOptions(options = {}, version = 3) {
     }
   } else if (version === 4) {
     adjustments.greenHostingFactor = 0;
+  }
+
+  if (green) {
+    adjustments.greenHostingFactor = 1;
   }
 
   return adjustments;

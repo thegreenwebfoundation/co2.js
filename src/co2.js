@@ -152,7 +152,7 @@ class CO2 {
    * @return {CO2EstimateTraceResultPerByte} the amount of CO2 in grammes
    */
   perByteTrace(bytes, green = false, options = {}) {
-    const adjustments = parseOptions(options, this.model.version);
+    const adjustments = parseOptions(options, this.model.version, green);
 
     const { gridIntensity, ...variables } = adjustments;
     return {
@@ -190,7 +190,7 @@ class CO2 {
    */
   perVisitTrace(bytes, green = false, options = {}) {
     if (this.model?.perVisit) {
-      const adjustments = parseOptions(options, this.model.version);
+      const adjustments = parseOptions(options, this.model.version, green);
       const { gridIntensity, ...variables } = adjustments;
 
       return {
