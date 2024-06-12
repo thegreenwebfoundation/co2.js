@@ -72,7 +72,7 @@ function parseOptions(options = {}, version = 3, green = false) {
             `"${dataCenter.country}" is not a valid country. Please use a valid 3 digit ISO 3166 country code. \nSee https://developers.thegreenwebfoundation.org/co2js/data/ for more information.  \nFalling back to global average grid intensity.`
           );
           adjustments.gridIntensity["dataCenter"] = {
-            value: GLOBAL_GRID_INTENSITY,
+            value: SWDM3_GLOBAL_GRID_INTENSITY,
           };
         }
         adjustments.gridIntensity["dataCenter"] = {
