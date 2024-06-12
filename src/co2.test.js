@@ -267,6 +267,33 @@ describe("co2", () => {
         co2.perVisit(MILLION, true)
       );
     });
+
+    it("returns the expected properties", () => {
+      expect(co2.perByteTrace(MILLION)).toHaveProperty("co2");
+      expect(co2.perByteTrace(MILLION)).toHaveProperty("variables");
+      expect(co2.perByteTrace(MILLION)).toHaveProperty("green");
+      expect(co2.perByteTrace(MILLION)).toHaveProperty(
+        "variables.gridIntensity"
+      );
+      expect(co2.perByteTrace(MILLION)).not.toHaveProperty(
+        "variables.firstVisitPercentage"
+      );
+      expect(co2.perVisitTrace(MILLION)).toHaveProperty("co2");
+      expect(co2.perVisitTrace(MILLION)).toHaveProperty("variables");
+      expect(co2.perVisitTrace(MILLION)).toHaveProperty("green");
+      expect(co2.perVisitTrace(MILLION)).toHaveProperty(
+        "variables.gridIntensity"
+      );
+      expect(co2.perVisitTrace(MILLION)).toHaveProperty(
+        "variables.firstVisitPercentage"
+      );
+      expect(co2.perVisitTrace(MILLION)).toHaveProperty(
+        "variables.returnVisitPercentage"
+      );
+      expect(co2.perVisitTrace(MILLION)).toHaveProperty(
+        "variables.dataReloadRatio"
+      );
+    });
   });
 
   describe("Using custom grid intensity", () => {
