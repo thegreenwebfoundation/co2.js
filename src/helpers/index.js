@@ -149,6 +149,12 @@ function parseOptions(options = {}, version = 3, green = false) {
         `The dataReloadRatio option must be a number. You passed in a ${typeof options.dataReloadRatio}. \nFalling back to default value.`
       );
     }
+  } else {
+    adjustments.dataReloadRatio =
+      version === 3 ? PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD : 0;
+    console.warn(
+      `The dataReloadRatio option must be a number. You passed in a ${typeof options.dataReloadRatio}. \nFalling back to default value.`
+    );
   }
 
   if (options?.firstVisitPercentage || options.firstVisitPercentage === 0) {
@@ -172,6 +178,12 @@ function parseOptions(options = {}, version = 3, green = false) {
         `The firstVisitPercentage option must be a number. You passed in a ${typeof options.firstVisitPercentage}. \nFalling back to default value.`
       );
     }
+  } else {
+    adjustments.firstVisitPercentage =
+      version === 3 ? FIRST_TIME_VIEWING_PERCENTAGE : 1;
+    console.warn(
+      `The firstVisitPercentage option must be a number. You passed in a ${typeof options.firstVisitPercentage}. \nFalling back to default value.`
+    );
   }
 
   if (options?.returnVisitPercentage || options.returnVisitPercentage === 0) {
@@ -195,6 +207,12 @@ function parseOptions(options = {}, version = 3, green = false) {
         `The returnVisitPercentage option must be a number. You passed in a ${typeof options.returnVisitPercentage}. \nFalling back to default value.`
       );
     }
+  } else {
+    adjustments.returnVisitPercentage =
+      version === 3 ? RETURNING_VISITOR_PERCENTAGE : 0;
+    console.warn(
+      `The returnVisitPercentage option must be a number. You passed in a ${typeof options.returnVisitPercentage}. \nFalling back to default value.`
+    );
   }
 
   if (

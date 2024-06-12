@@ -154,7 +154,14 @@ class CO2 {
   perByteTrace(bytes, green = false, options = {}) {
     const adjustments = parseOptions(options, this.model.version, green);
 
-    const { gridIntensity, ...variables } = adjustments;
+    // Filter out the trace items that aren't relevant to this function.
+    const { gridIntensity, ...traceVariables } = adjustments;
+    const {
+      dataReloadRatio,
+      firstVisitPercentage,
+      returnVisitPercentage,
+      ...otherVariables
+    } = traceVariables;
     return {
       co2: this.model.perByte(
         bytes,
@@ -173,7 +180,7 @@ class CO2 {
             "The grid intensity (grams per kilowatt-hour) used to calculate this CO2 estimate.",
           ...adjustments.gridIntensity,
         },
-        ...variables,
+        ...otherVariables,
       },
     };
   }
