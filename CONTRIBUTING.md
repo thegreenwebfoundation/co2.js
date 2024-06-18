@@ -29,6 +29,8 @@ Changes made that are not linked to an existing issue will not be accepted.
 - You pull request will be reviewed by a maintainer from Green Web Foundation.
 - After feedback has been given we expect responses within two weeks. After two weeks we may close the pull request if it isn't showing any activity.
 
+After a pull request is merged, you will be added to the project as a contributor. A maintainer will update the `.all-contributorsrc` file for this project to include your profile which will then add it to the list of contributors shown in this project's readme.
+
 ## Code of Conduct
 
 Please note that this project is released with a [Contributor Code of Conduct](https://github.com/thegreenwebfoundation/.github/blob/main/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
