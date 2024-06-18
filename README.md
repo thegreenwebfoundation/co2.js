@@ -1,7 +1,9 @@
 # CO2.js
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-14-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <img src="https://github.com/thegreenwebfoundation/co2.js/actions/workflows/unittests.yml/badge.svg" />
@@ -132,6 +134,8 @@ The marginal intensity data is published by the Green Web Foundation, under the 
 See LICENCE for more.
 
 ## Contributors
+
+To contribute changes back to this project, please follow the steps outlined in the [CONTRIBUTING.md](/CONTRIBUTING.md) file in this repository.
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
