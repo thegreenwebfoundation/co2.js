@@ -1,6 +1,6 @@
 ---
-name: New issue
-about: Raise a new issue.
+name: New bug report
+about: Report a bug that you have experienced when using CO2.js
 title: ''
 labels: ''
 assignees: ''
