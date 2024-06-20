@@ -26,9 +26,12 @@ Thank you for considering contributing to CO2.js. Open source is at the heart of
 ## Submitting Changes
 
 - Push the changes made in your branch to your fork of this repository.
-- Submit a pull request to the CO2.js repository in the `thegreenwebfoundation` organization.
-  - Your pull request description should follow the structure outlined in our pull request template.
-  - Be sure to clearly explain the changes you've made, any new files, dependencies, or network requests that have been added, and provide any additional context to help reviewers understand the changes made.
+- Submit a [pull request](https://github.com/thegreenwebfoundation/co2.js/pulls) to the CO2.js repository in the `thegreenwebfoundation` organization.
+  - When opening a new pull request, you'll see a template. Please follow it. It asks you to state:
+      - the type of change (choose from a list)
+      - link to the related issue
+      - what documentation needs updating as a result (choose from a list)
+      - what your changes are - be sure to clearly explain the changes you've made, any new files, dependencies, or network requests that have been added, and provide any additional context to help reviewers understand the changes made.
 - Your pull request will be reviewed by a maintainer from Green Web Foundation.
 - After feedback has been given we expect responses within two weeks. After two weeks we may close the pull request if it isn't showing any activity.
 
