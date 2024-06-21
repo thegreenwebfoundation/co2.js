@@ -4,8 +4,10 @@ import { MILLION, SWDV3 } from "./constants/test-constants.js";
 
 import CO2 from "./co2.js";
 import { averageIntensity, marginalIntensity } from "./index.js";
+import { SWDV4 } from "./constants/index.js";
 
 const TwnGridIntensityValue = averageIntensity.data["TWN"];
+const SWDM4_GLOBAL_GRID_INTENSITY = SWDV4.GLOBAL_GRID_INTENSITY;
 
 describe("co2", () => {
   let co2;
@@ -263,6 +265,33 @@ describe("co2", () => {
       );
       expect(co2.perVisitTrace(MILLION, true, {}).co2).toBe(
         co2.perVisit(MILLION, true)
+      );
+    });
+
+    it("returns the expected properties", () => {
+      expect(co2.perByteTrace(MILLION)).toHaveProperty("co2");
+      expect(co2.perByteTrace(MILLION)).toHaveProperty("variables");
+      expect(co2.perByteTrace(MILLION)).toHaveProperty("green");
+      expect(co2.perByteTrace(MILLION)).toHaveProperty(
+        "variables.gridIntensity"
+      );
+      expect(co2.perByteTrace(MILLION)).not.toHaveProperty(
+        "variables.firstVisitPercentage"
+      );
+      expect(co2.perVisitTrace(MILLION)).toHaveProperty("co2");
+      expect(co2.perVisitTrace(MILLION)).toHaveProperty("variables");
+      expect(co2.perVisitTrace(MILLION)).toHaveProperty("green");
+      expect(co2.perVisitTrace(MILLION)).toHaveProperty(
+        "variables.gridIntensity"
+      );
+      expect(co2.perVisitTrace(MILLION)).toHaveProperty(
+        "variables.firstVisitPercentage"
+      );
+      expect(co2.perVisitTrace(MILLION)).toHaveProperty(
+        "variables.returnVisitPercentage"
+      );
+      expect(co2.perVisitTrace(MILLION)).toHaveProperty(
+        "variables.dataReloadRatio"
       );
     });
   });
@@ -748,9 +777,9 @@ describe("co2", () => {
       });
       const { dataCenter, network, device } =
         perByteTraceResult.variables.gridIntensity;
-      expect(dataCenter).toBe(0);
-      expect(network).toBe(0);
-      expect(device).toBe(0);
+      expect(dataCenter).toStrictEqual({ value: 0 });
+      expect(network).toStrictEqual({ value: 0 });
+      expect(device).toStrictEqual({ value: 0 });
     });
 
     it("expects perVisitTrace to support values equal to 0", () => {
@@ -771,9 +800,9 @@ describe("co2", () => {
       expect(dataReloadRatio).toBe(0);
       expect(firstVisitPercentage).toBe(0);
       expect(returnVisitPercentage).toBe(0);
-      expect(dataCenter).toBe(0);
-      expect(network).toBe(0);
-      expect(device).toBe(0);
+      expect(dataCenter).toStrictEqual({ value: 0 });
+      expect(network).toStrictEqual({ value: 0 });
+      expect(device).toStrictEqual({ value: 0 });
     });
     it("expects perByteTrace segments to be 0 when grid intensity is 0", () => {
       const perByteTraceResult = co2.perByteTrace(1000000, false, {
@@ -878,6 +907,122 @@ describe("co2", () => {
 
     it("uses the SWD model version 4 when specified", () => {
       expect(co2SWDV4.model.version).toBe(4);
+    });
+  });
+
+  describe("Using the perByteTrace method in SWDM v4", () => {
+    const co2 = new CO2({ model: "swd", version: 4 });
+    it("returns the expected object", () => {
+      const res = co2.perByteTrace(MILLION);
+      expect(res).toHaveProperty("variables");
+      expect(res).toHaveProperty("co2");
+      expect(res).toHaveProperty("green");
+
+      expect(res.variables).toHaveProperty("bytes");
+      expect(res.variables).toHaveProperty("gridIntensity");
+      expect(res.variables).toHaveProperty("greenHostingFactor");
+      expect(res.variables).not.toHaveProperty("dataReloadRatio");
+
+      expect(res.variables.gridIntensity).toHaveProperty("device");
+      expect(res.variables.gridIntensity).toHaveProperty("dataCenter");
+      expect(res.variables.gridIntensity).toHaveProperty("network");
+
+      expect(res.co2).toBeGreaterThan(0);
+      expect(res.variables.greenHostingFactor).toBe(0);
+      expect(res.green).toBe(false);
+      expect(res.variables.gridIntensity.device.value).toBe(
+        SWDM4_GLOBAL_GRID_INTENSITY
+      );
+      expect(res.variables.gridIntensity.dataCenter.value).toBe(
+        SWDM4_GLOBAL_GRID_INTENSITY
+      );
+      expect(res.variables.gridIntensity.network.value).toBe(
+        SWDM4_GLOBAL_GRID_INTENSITY
+      );
+    });
+    it("returns the expected object when adjustments are made", () => {
+      const res = co2.perByteTrace(MILLION, false, {
+        gridIntensity: {
+          dataCenter: 300,
+          network: 200,
+          device: { country: "TWN" },
+        },
+        greenHostingFactor: 0.5,
+      });
+
+      expect(res.variables.greenHostingFactor).toBe(0.5);
+      expect(res.green).toBe(false);
+      expect(res.variables.gridIntensity.device.country).toBe("TWN");
+      expect(res.variables.gridIntensity.dataCenter.value).toBe(300);
+      expect(res.variables.gridIntensity.network.value).toBe(200);
+    });
+    it("returns the expected greenHosting factor when green is set", () => {
+      const res = co2.perByteTrace(MILLION, true, {
+        greenHostingFactor: 0.5,
+      });
+
+      expect(res.variables.greenHostingFactor).toBe(1);
+    });
+  });
+
+  describe("Using the perVisitTrace method in SWDM v4", () => {
+    const co2 = new CO2({ model: "swd", version: 4 });
+    it("returns the expected object", () => {
+      const res = co2.perVisitTrace(MILLION);
+      // console.log(res);
+      expect(res).toHaveProperty("variables");
+      expect(res).toHaveProperty("co2");
+      expect(res).toHaveProperty("green");
+
+      expect(res.variables).toHaveProperty("bytes");
+      expect(res.variables).toHaveProperty("gridIntensity");
+      expect(res.variables).toHaveProperty("greenHostingFactor");
+      expect(res.variables).toHaveProperty("firstVisitPercentage");
+      expect(res.variables).toHaveProperty("returnVisitPercentage");
+      expect(res.variables).toHaveProperty("dataReloadRatio");
+
+      expect(res.variables.gridIntensity).toHaveProperty("device");
+      expect(res.variables.gridIntensity).toHaveProperty("dataCenter");
+      expect(res.variables.gridIntensity).toHaveProperty("network");
+
+      expect(res.co2).toBeGreaterThan(0);
+      expect(res.variables.greenHostingFactor).toBe(0);
+      expect(res.green).toBe(false);
+      expect(res.variables.firstVisitPercentage).toBe(1);
+      expect(res.variables.returnVisitPercentage).toBe(0);
+      expect(res.variables.dataReloadRatio).toBe(0);
+      expect(res.variables.gridIntensity.device.value).toBe(
+        SWDM4_GLOBAL_GRID_INTENSITY
+      );
+      expect(res.variables.gridIntensity.dataCenter.value).toBe(
+        SWDM4_GLOBAL_GRID_INTENSITY
+      );
+      expect(res.variables.gridIntensity.network.value).toBe(
+        SWDM4_GLOBAL_GRID_INTENSITY
+      );
+    });
+    it("returns the expected object when adjustments are made", () => {
+      const res = co2.perByteTrace(MILLION, false, {
+        gridIntensity: {
+          dataCenter: 300,
+          network: 200,
+          device: { country: "TWN" },
+        },
+        greenHostingFactor: 0.5,
+      });
+
+      expect(res.variables.greenHostingFactor).toBe(0.5);
+      expect(res.green).toBe(false);
+      expect(res.variables.gridIntensity.device.country).toBe("TWN");
+      expect(res.variables.gridIntensity.dataCenter.value).toBe(300);
+      expect(res.variables.gridIntensity.network.value).toBe(200);
+    });
+    it("returns the expected greenHosting factor when green is set", () => {
+      const res = co2.perByteTrace(MILLION, true, {
+        greenHostingFactor: 0.5,
+      });
+
+      expect(res.variables.greenHostingFactor).toBe(1);
     });
   });
 });

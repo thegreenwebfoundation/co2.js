@@ -1,6 +1,7 @@
 import { averageIntensity } from "../index.js";
 import {
-  GLOBAL_GRID_INTENSITY,
+  GLOBAL_GRID_INTENSITY as SWDM3_GLOBAL_GRID_INTENSITY,
+  SWDV4,
   PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD,
   FIRST_TIME_VIEWING_PERCENTAGE,
   RETURNING_VISITOR_PERCENTAGE,
@@ -8,6 +9,7 @@ import {
   SWDMV4_RATINGS,
 } from "../constants/index.js";
 
+const SWDM4_GLOBAL_GRID_INTENSITY = SWDV4.GLOBAL_GRID_INTENSITY;
 // Shared type definitions to be used across different files
 
 /**
@@ -21,7 +23,9 @@ const formatNumber = (num) => parseFloat(num.toFixed(2));
 
 const lessThanEqualTo = (num, limit) => num <= limit;
 
-function parseOptions(options) {
+function parseOptions(options = {}, version = 3, green = false) {
+  const globalGridIntensity =
+    version === 4 ? SWDM4_GLOBAL_GRID_INTENSITY : SWDM3_GLOBAL_GRID_INTENSITY;
   // CHeck that it is an object
   if (typeof options !== "object") {
     throw new Error("Options must be an object");
@@ -39,7 +43,7 @@ function parseOptions(options) {
             `"${device.country}" is not a valid country. Please use a valid 3 digit ISO 3166 country code. \nSee https://developers.thegreenwebfoundation.org/co2js/data/ for more information. \nFalling back to global average grid intensity.`
           );
           adjustments.gridIntensity["device"] = {
-            value: GLOBAL_GRID_INTENSITY,
+            value: globalGridIntensity,
           };
         }
         adjustments.gridIntensity["device"] = {
@@ -54,7 +58,7 @@ function parseOptions(options) {
         };
       } else {
         adjustments.gridIntensity["device"] = {
-          value: GLOBAL_GRID_INTENSITY,
+          value: globalGridIntensity,
         };
         console.warn(
           `The device grid intensity must be a number or an object. You passed in a ${typeof device}. \nFalling back to global average grid intensity.`
@@ -68,7 +72,7 @@ function parseOptions(options) {
             `"${dataCenter.country}" is not a valid country. Please use a valid 3 digit ISO 3166 country code. \nSee https://developers.thegreenwebfoundation.org/co2js/data/ for more information.  \nFalling back to global average grid intensity.`
           );
           adjustments.gridIntensity["dataCenter"] = {
-            value: GLOBAL_GRID_INTENSITY,
+            value: SWDM3_GLOBAL_GRID_INTENSITY,
           };
         }
         adjustments.gridIntensity["dataCenter"] = {
@@ -83,7 +87,7 @@ function parseOptions(options) {
         };
       } else {
         adjustments.gridIntensity["dataCenter"] = {
-          value: GLOBAL_GRID_INTENSITY,
+          value: globalGridIntensity,
         };
         console.warn(
           `The data center grid intensity must be a number or an object. You passed in a ${typeof dataCenter}. \nFalling back to global average grid intensity.`
@@ -97,7 +101,7 @@ function parseOptions(options) {
             `"${network.country}" is not a valid country. Please use a valid 3 digit ISO 3166 country code. \nSee https://developers.thegreenwebfoundation.org/co2js/data/ for more information.  Falling back to global average grid intensity. \nFalling back to global average grid intensity.`
           );
           adjustments.gridIntensity["network"] = {
-            value: GLOBAL_GRID_INTENSITY,
+            value: globalGridIntensity,
           };
         }
         adjustments.gridIntensity["network"] = {
@@ -112,13 +116,19 @@ function parseOptions(options) {
         };
       } else {
         adjustments.gridIntensity["network"] = {
-          value: GLOBAL_GRID_INTENSITY,
+          value: globalGridIntensity,
         };
         console.warn(
           `The network grid intensity must be a number or an object. You passed in a ${typeof network}. \nFalling back to global average grid intensity.`
         );
       }
     }
+  } else {
+    adjustments.gridIntensity = {
+      device: { value: globalGridIntensity },
+      dataCenter: { value: globalGridIntensity },
+      network: { value: globalGridIntensity },
+    };
   }
 
   if (options?.dataReloadRatio || options.dataReloadRatio === 0) {
@@ -127,18 +137,24 @@ function parseOptions(options) {
         adjustments.dataReloadRatio = options.dataReloadRatio;
       } else {
         adjustments.dataReloadRatio =
-          PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD;
+          version === 3 ? PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD : 0;
         console.warn(
           `The dataReloadRatio option must be a number between 0 and 1. You passed in ${options.dataReloadRatio}. \nFalling back to default value.`
         );
       }
     } else {
       adjustments.dataReloadRatio =
-        PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD;
+        version === 3 ? PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD : 0;
       console.warn(
         `The dataReloadRatio option must be a number. You passed in a ${typeof options.dataReloadRatio}. \nFalling back to default value.`
       );
     }
+  } else {
+    adjustments.dataReloadRatio =
+      version === 3 ? PERCENTAGE_OF_DATA_LOADED_ON_SUBSEQUENT_LOAD : 0;
+    console.warn(
+      `The dataReloadRatio option must be a number. You passed in a ${typeof options.dataReloadRatio}. \nFalling back to default value.`
+    );
   }
 
   if (options?.firstVisitPercentage || options.firstVisitPercentage === 0) {
@@ -149,17 +165,25 @@ function parseOptions(options) {
       ) {
         adjustments.firstVisitPercentage = options.firstVisitPercentage;
       } else {
-        adjustments.firstVisitPercentage = FIRST_TIME_VIEWING_PERCENTAGE;
+        adjustments.firstVisitPercentage =
+          version === 3 ? FIRST_TIME_VIEWING_PERCENTAGE : 1;
         console.warn(
           `The firstVisitPercentage option must be a number between 0 and 1. You passed in ${options.firstVisitPercentage}. \nFalling back to default value.`
         );
       }
     } else {
-      adjustments.firstVisitPercentage = FIRST_TIME_VIEWING_PERCENTAGE;
+      adjustments.firstVisitPercentage =
+        version === 3 ? FIRST_TIME_VIEWING_PERCENTAGE : 1;
       console.warn(
         `The firstVisitPercentage option must be a number. You passed in a ${typeof options.firstVisitPercentage}. \nFalling back to default value.`
       );
     }
+  } else {
+    adjustments.firstVisitPercentage =
+      version === 3 ? FIRST_TIME_VIEWING_PERCENTAGE : 1;
+    console.warn(
+      `The firstVisitPercentage option must be a number. You passed in a ${typeof options.firstVisitPercentage}. \nFalling back to default value.`
+    );
   }
 
   if (options?.returnVisitPercentage || options.returnVisitPercentage === 0) {
@@ -170,17 +194,52 @@ function parseOptions(options) {
       ) {
         adjustments.returnVisitPercentage = options.returnVisitPercentage;
       } else {
-        adjustments.returnVisitPercentage = RETURNING_VISITOR_PERCENTAGE;
+        adjustments.returnVisitPercentage =
+          version === 3 ? RETURNING_VISITOR_PERCENTAGE : 0;
         console.warn(
           `The returnVisitPercentage option must be a number between 0 and 1. You passed in ${options.returnVisitPercentage}. \nFalling back to default value.`
         );
       }
     } else {
-      adjustments.returnVisitPercentage = RETURNING_VISITOR_PERCENTAGE;
+      adjustments.returnVisitPercentage =
+        version === 3 ? RETURNING_VISITOR_PERCENTAGE : 0;
       console.warn(
         `The returnVisitPercentage option must be a number. You passed in a ${typeof options.returnVisitPercentage}. \nFalling back to default value.`
       );
     }
+  } else {
+    adjustments.returnVisitPercentage =
+      version === 3 ? RETURNING_VISITOR_PERCENTAGE : 0;
+    console.warn(
+      `The returnVisitPercentage option must be a number. You passed in a ${typeof options.returnVisitPercentage}. \nFalling back to default value.`
+    );
+  }
+
+  if (
+    options?.greenHostingFactor ||
+    (options.greenHostingFactor === 0 && version === 4)
+  ) {
+    if (typeof options.greenHostingFactor === "number") {
+      if (options.greenHostingFactor >= 0 && options.greenHostingFactor <= 1) {
+        adjustments.greenHostingFactor = options.greenHostingFactor;
+      } else {
+        adjustments.greenHostingFactor = 0;
+        console.warn(
+          `The returnVisitPercentage option must be a number between 0 and 1. You passed in ${options.returnVisitPercentage}. \nFalling back to default value.`
+        );
+      }
+    } else {
+      adjustments.greenHostingFactor = 0;
+      console.warn(
+        `The returnVisitPercentage option must be a number. You passed in a ${typeof options.returnVisitPercentage}. \nFalling back to default value.`
+      );
+    }
+  } else if (version === 4) {
+    adjustments.greenHostingFactor = 0;
+  }
+
+  if (green) {
+    adjustments.greenHostingFactor = 1;
   }
 
   return adjustments;
@@ -202,7 +261,6 @@ function getApiRequestHeaders(comment = "") {
  * @param {number} swdmVersion - The version of the SWDM to use. Defaults to version 3.
  * @returns {string} The SWDM rating.
  */
-
 function outputRating(co2e, swdmVersion) {
   let {
     FIFTH_PERCENTILE,

@@ -152,11 +152,16 @@ class CO2 {
    * @return {CO2EstimateTraceResultPerByte} the amount of CO2 in grammes
    */
   perByteTrace(bytes, green = false, options = {}) {
-    let adjustments = {};
-    if (options) {
-      // If there are options, parse them and add them to the model.
-      adjustments = parseOptions(options);
-    }
+    const adjustments = parseOptions(options, this.model.version, green);
+
+    // Filter out the trace items that aren't relevant to this function.
+    const { gridIntensity, ...traceVariables } = adjustments;
+    const {
+      dataReloadRatio,
+      firstVisitPercentage,
+      returnVisitPercentage,
+      ...otherVariables
+    } = traceVariables;
     return {
       co2: this.model.perByte(
         bytes,
@@ -173,16 +178,9 @@ class CO2 {
         gridIntensity: {
           description:
             "The grid intensity (grams per kilowatt-hour) used to calculate this CO2 estimate.",
-          network:
-            adjustments?.gridIntensity?.network?.value ?? GLOBAL_GRID_INTENSITY,
-          dataCenter: green
-            ? RENEWABLES_GRID_INTENSITY
-            : adjustments?.gridIntensity?.dataCenter?.value ??
-              GLOBAL_GRID_INTENSITY,
-          production: GLOBAL_GRID_INTENSITY,
-          device:
-            adjustments?.gridIntensity?.device?.value ?? GLOBAL_GRID_INTENSITY,
+          ...adjustments.gridIntensity,
         },
+        ...otherVariables,
       },
     };
   }
@@ -199,11 +197,8 @@ class CO2 {
    */
   perVisitTrace(bytes, green = false, options = {}) {
     if (this.model?.perVisit) {
-      let adjustments = {};
-      if (options) {
-        // If there are options, parse them and add them to the model.
-        adjustments = parseOptions(options);
-      }
+      const adjustments = parseOptions(options, this.model.version, green);
+      const { gridIntensity, ...variables } = adjustments;
 
       return {
         co2: this.model.perVisit(
@@ -221,21 +216,9 @@ class CO2 {
           gridIntensity: {
             description:
               "The grid intensity (grams per kilowatt-hour) used to calculate this CO2 estimate.",
-            network:
-              adjustments?.gridIntensity?.network?.value ??
-              GLOBAL_GRID_INTENSITY,
-            dataCenter: green
-              ? RENEWABLES_GRID_INTENSITY
-              : adjustments?.gridIntensity?.dataCenter?.value ??
-                GLOBAL_GRID_INTENSITY,
-            production: GLOBAL_GRID_INTENSITY,
-            device:
-              adjustments?.gridIntensity?.device?.value ??
-              GLOBAL_GRID_INTENSITY,
+            ...adjustments.gridIntensity,
           },
-          dataReloadRatio: adjustments?.dataReloadRatio ?? 0.02,
-          firstVisitPercentage: adjustments?.firstVisitPercentage ?? 0.75,
-          returnVisitPercentage: adjustments?.returnVisitPercentage ?? 0.25,
+          ...variables,
         },
       };
     } else {
