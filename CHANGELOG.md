@@ -16,12 +16,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add ability to create adaptors which provide access to external data sources #134
 - Add access to the Electricity Maps API free tier #134
-- Add the Sustainable Web Design Rating system #205
-- Add the updated Sustainable Web Design Model version 4 #119
 - Allow access to individual models and their internal functions #195
 <!-- - _(Add a summary of your feature, and if relevant the issue, in your PR for merging into `main`)_ -->
 
 ## Released
+
+### [0.16.0] - 2024-07-01
+
+#### _Added_
+
+- Add the Sustainable Web Design Rating system #205
+- Add the updated Sustainable Web Design Model version 4 #119
+
+#### Changed
+
+- Automated monthly update of annual average grid intensity data.
 
 ### [0.15.0] - 2024-05-03
 
