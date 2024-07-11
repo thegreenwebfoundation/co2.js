@@ -227,6 +227,18 @@ class CO2 {
       );
     }
   }
+
+  SustainableWebDesignV3() {
+    return new SustainableWebDesignV3();
+  }
+
+  SustainableWebDesignV4() {
+    return new SustainableWebDesignV4();
+  }
+
+  OneByte() {
+    return new OneByte();
+  }
 }
 
 export { CO2 };
