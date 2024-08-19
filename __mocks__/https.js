@@ -11,7 +11,7 @@ https.get.mockImplementation((url, options, callback) => {
     stream.emit(
       "data",
       Buffer.from(
-        `{"google.com": {"url":"google.com","hosted_by":"Google Inc.","hosted_by_website":"https://www.google.com","partner":null,"green":true}}`
+        `{"google.com": {"url":"google.com","hosted_by":"Google Inc.","hosted_by_website":"https://www.google.com","partner":null,"green":true}, "pchome.com": {"url":"pchome.com","green":false} }`
       )
     );
   } else {

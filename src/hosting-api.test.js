@@ -42,6 +42,34 @@ describe("hostingAPI", () => {
       );
       expect(res).toEqual(true);
     });
+    it("handles the verbose=true option", async () => {
+      // @ts-ignore
+      fetch.mockImplementation(() =>
+        Promise.resolve({
+          json: () =>
+            Promise.resolve({
+              url: "google.com",
+              hosted_by: "Google Inc.",
+              hosted_by_website: "https://www.google.com",
+              green: true,
+            }),
+        })
+      );
+      const res = await hosting.check("google.com", { verbose: true });
+      expect(fetch).toHaveBeenCalledTimes(1);
+      expect(fetch).toHaveBeenLastCalledWith(
+        expect.any(String),
+        expect.objectContaining({
+          headers: { "User-Agent": "co2js/1.2.34 " },
+        })
+      );
+      expect(res).toMatchObject({
+        green: true,
+        hosted_by: "Google Inc.",
+        hosted_by_website: "https://www.google.com",
+        url: "google.com",
+      });
+    });
   });
   describe("implicitly checking multiple domains with #check", () => {
     it("using the API", async () => {
@@ -71,6 +99,42 @@ describe("hostingAPI", () => {
         })
       );
       expect(res).toContain("google.com");
+    });
+    it("handles the verbose=true option", async () => {
+      // @ts-ignore
+      fetch.mockImplementation(() =>
+        Promise.resolve({
+          json: () =>
+            Promise.resolve({
+              "google.com": {
+                url: "google.com",
+                hosted_by: "Google Inc.",
+                hosted_by_website: "https://www.google.com",
+                green: true,
+              },
+              "kochindustries.com": {
+                url: "kochindustries.com",
+                green: false,
+              },
+            }),
+        })
+      );
+      const res = await hosting.check(["google.com", "kochindustries.com"], {
+        verbose: true,
+      });
+      expect(fetch).toHaveBeenCalledTimes(1);
+      expect(res).toEqual({
+        "google.com": expect.objectContaining({
+          green: true,
+          hosted_by: "Google Inc.",
+          hosted_by_website: "https://www.google.com",
+          url: "google.com",
+        }),
+        "kochindustries.com": expect.objectContaining({
+          url: "kochindustries.com",
+          green: false,
+        }),
+      });
     });
   });
 });

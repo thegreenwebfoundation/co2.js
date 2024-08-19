@@ -6,6 +6,8 @@ import {
   RETURNING_VISITOR_PERCENTAGE,
 } from "../constants/index.js";
 
+// Shared type definitions to be used across different files
+
 /**
  * @param {number} num
  */

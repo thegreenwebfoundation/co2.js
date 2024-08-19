@@ -131,9 +131,16 @@
  * @property {number} co2
  * @property {number} transferSize
  *
+ * @typedef DomainCheckOptions options to control the behavior when checking a domain
+ * @property {string=} userAgentIdentifier - Optional. The app, site, or organisation that is making the request.
+ * @property {boolean=} verbose - Optional. Whether to return a verbose response.
+ * @property {string[]=} db - Optional. A database list to use for lookups.
+ *
  * @typedef PerDomainCheckResponse
  * @property {string} url
  * @property {boolean} green
+ * @property {string=} hosted_by
+ * @property {string=} hosted_by_website
  *
  * @typedef MultiDomainCheckResponse
  * @type {Record<string, PerDomainCheckResponse>}

@@ -10,7 +10,8 @@ This lets us keep the total library small, and dependencies minimal.
 
 import https from "https";
 
-import hostingJSON from "./hosting-json.node.js";
+import hostingJSON from "./hosting-json.js";
+import hostingJSONNode from "./hosting-json.node.js";
 import { getApiRequestHeaders } from "./helpers/index.js";
 
 /**
@@ -51,65 +52,90 @@ async function getBody(url, userAgentIdentifier) {
 
 /**
  * Check if a domain is hosted by a green web host.
- * @param {string|string[]} domain - The domain to check, or an array of domains to be checked.
- * @param {(string[] | null)=} db - Optional. A database object to use for lookups.
+ * @param {string | string[]} domain - The domain to check, or an array of domains to be checked.
+ * @param {(string[] | DomainCheckOptions)=} optionsOrDb - Optional. An object of domain check options, or a database list to use for lookups.
  * @param {string=} userAgentIdentifier - Optional. The app, site, or organisation that is making the request.
- * @returns {Promise<boolean|string[]>} - A boolean if a string was provided, or an array of booleans if an array of domains was provided.
+ * @returns {Promise<boolean | string[] | MultiDomainCheckResponse>} - A boolean if a string was provided, or an array of booleans if an array of domains was provided.
+ *   if a string was provided for `domain`: a boolean indicating whether the domain is hosted by a green web host if `options.verbose` is false,
+ *     otherwise an object representing the domain host information.
+ *   if an array was provided for `domain`: an array of domains that are hosted by a green web host if `options.verbose` is false,
+ *     otherwise a dictionary of domain to host information.
  */
 
-function check(domain, db, userAgentIdentifier) {
+function check(domain, optionsOrDb, userAgentIdentifier) {
+  let db,
+    /** @type {DomainCheckOptions | undefined} */
+    options = {};
+  if (Array.isArray(optionsOrDb)) {
+    db = optionsOrDb;
+  } else {
+    options = optionsOrDb;
+    if (userAgentIdentifier) {
+      options = { ...options, userAgentIdentifier };
+    }
+    db = optionsOrDb?.db;
+  }
+
+  console.log({ db, options });
+
+  if (db && options?.verbose) {
+    throw new Error("verbose mode cannot be used with a local lookup database");
+  }
   if (db) {
     return hostingJSON.check(domain, db);
   }
-
   // is it a single domain or an array of them?
   if (typeof domain === "string") {
-    return checkAgainstAPI(domain, userAgentIdentifier);
+    return checkAgainstAPI(domain, options);
   } else {
-    return checkDomainsAgainstAPI(domain, userAgentIdentifier);
+    return checkDomainsAgainstAPI(domain, options);
   }
 }
 
 /**
  * Check if a domain is hosted by a green web host by querying the Green Web Foundation API.
  * @param {string} domain - The domain to check.
- * @param {string=} userAgentIdentifier - Optional. The app, site, or organisation that is making the request.
- * @returns {Promise<boolean>} - A boolean indicating whether the domain is hosted by a green web host.
+ * @param {DomainCheckOptions} options
+ * @returns {Promise<boolean>} - A boolean indicating whether the domain is hosted by a green web host if `options.verbose` is false,
+ * otherwise an object representing the domain host information.
  */
-async function checkAgainstAPI(domain, userAgentIdentifier) {
+async function checkAgainstAPI(domain, options = {}) {
   const res = JSON.parse(
     await getBody(
       `https://api.thegreenwebfoundation.org/greencheck/${domain}`,
-      userAgentIdentifier
+      options.userAgentIdentifier
     )
   );
-  return res.green;
+  return options.verbose ? res : res.green;
 }
 
 /**
  * Check if an array of domains is hosted by a green web host by querying the Green Web Foundation API.
  * @param {string[]} domains - An array of domains to check.
- * @param {string=} userAgentIdentifier - Optional. The app, site, or organisation that is making the request.
- * @returns {Promise<string[]>} - An array of domains that are hosted by a green web host.
+ * @param {DomainCheckOptions} options
+ * @returns {Promise<string[] | MultiDomainCheckResponse>} - An array of domains that are hosted by a green web host if `options.verbose` is false,
+ * otherwise a dictionary of domain to host information.
  */
-async function checkDomainsAgainstAPI(domains, userAgentIdentifier) {
+async function checkDomainsAgainstAPI(domains, options = {}) {
   try {
     const allGreenCheckResults = JSON.parse(
       await getBody(
         `https://api.thegreenwebfoundation.org/v2/greencheckmulti/${JSON.stringify(
           domains
         )}`,
-        userAgentIdentifier
+        options.userAgentIdentifier
       )
     );
-    return hostingJSON.greenDomainsFromResults(allGreenCheckResults);
+    return options.verbose
+      ? allGreenCheckResults
+      : hostingJSON.greenDomainsFromResults(allGreenCheckResults);
   } catch (e) {
-    return [];
+    return options.verbose ? {} : [];
   }
 }
 
 export default {
   check,
   greendomains: hostingJSON.greenDomainsFromResults,
-  loadJSON: hostingJSON.loadJSON,
+  loadJSON: hostingJSONNode.loadJSON,
 };
