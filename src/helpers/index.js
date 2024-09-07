@@ -23,7 +23,7 @@ const formatNumber = (num) => parseFloat(num.toFixed(2));
 
 const lessThanEqualTo = (num, limit) => num <= limit;
 
-function parseOptions(options = {}, version = 3, green = false) {
+function parseByteTraceOptions(options = {}, version = 3, green = false) {
   const globalGridIntensity =
     version === 4 ? SWDM4_GLOBAL_GRID_INTENSITY : SWDM3_GLOBAL_GRID_INTENSITY;
   // CHeck that it is an object
@@ -131,6 +131,44 @@ function parseOptions(options = {}, version = 3, green = false) {
     };
   }
 
+  if (
+    options?.greenHostingFactor ||
+    (options.greenHostingFactor === 0 && version === 4)
+  ) {
+    if (typeof options.greenHostingFactor === "number") {
+      if (options.greenHostingFactor >= 0 && options.greenHostingFactor <= 1) {
+        adjustments.greenHostingFactor = options.greenHostingFactor;
+      } else {
+        adjustments.greenHostingFactor = 0;
+        console.warn(
+          `The returnVisitPercentage option must be a number between 0 and 1. You passed in ${options.returnVisitPercentage}. \nFalling back to default value.`
+        );
+      }
+    } else {
+      adjustments.greenHostingFactor = 0;
+      console.warn(
+        `The returnVisitPercentage option must be a number. You passed in a ${typeof options.returnVisitPercentage}. \nFalling back to default value.`
+      );
+    }
+  } else if (version === 4) {
+    adjustments.greenHostingFactor = 0;
+  }
+
+  if (green) {
+    adjustments.greenHostingFactor = 1;
+  }
+
+  return adjustments;
+}
+
+function parseVisitTraceOptions(options = {}, version = 3, green = false) {
+  // CHeck that it is an object
+  if (typeof options !== "object") {
+    throw new Error("Options must be an object");
+  }
+
+  const adjustments = parseByteTraceOptions(options, version, green);
+
   if (options?.dataReloadRatio || options.dataReloadRatio === 0) {
     if (typeof options.dataReloadRatio === "number") {
       if (options.dataReloadRatio >= 0 && options.dataReloadRatio <= 1) {
@@ -215,33 +253,6 @@ function parseOptions(options = {}, version = 3, green = false) {
     );
   }
 
-  if (
-    options?.greenHostingFactor ||
-    (options.greenHostingFactor === 0 && version === 4)
-  ) {
-    if (typeof options.greenHostingFactor === "number") {
-      if (options.greenHostingFactor >= 0 && options.greenHostingFactor <= 1) {
-        adjustments.greenHostingFactor = options.greenHostingFactor;
-      } else {
-        adjustments.greenHostingFactor = 0;
-        console.warn(
-          `The returnVisitPercentage option must be a number between 0 and 1. You passed in ${options.returnVisitPercentage}. \nFalling back to default value.`
-        );
-      }
-    } else {
-      adjustments.greenHostingFactor = 0;
-      console.warn(
-        `The returnVisitPercentage option must be a number. You passed in a ${typeof options.returnVisitPercentage}. \nFalling back to default value.`
-      );
-    }
-  } else if (version === 4) {
-    adjustments.greenHostingFactor = 0;
-  }
-
-  if (green) {
-    adjustments.greenHostingFactor = 1;
-  }
-
   return adjustments;
 }
 
@@ -299,7 +310,8 @@ function outputRating(co2e, swdmVersion) {
 
 export {
   formatNumber,
-  parseOptions,
+  parseByteTraceOptions,
+  parseVisitTraceOptions,
   getApiRequestHeaders,
   lessThanEqualTo,
   outputRating,
