@@ -1,6 +1,6 @@
 {
     "name": "@greenweb/co2js",
-    "version": "0.16.0",
+    "version": "0.16.1",
     "exports": "./dist/esm/index.js",
     "exclude": [
         "!dist/**"

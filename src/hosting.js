@@ -3,6 +3,10 @@
 import hostingAPI from "./hosting-api.js";
 
 /**
+ * @module hosting
+ */
+
+/**
  * Check if a domain is hosted by a green web host.
  * @param {string|array} domain - The domain to check, or an array of domains to be checked.
  * @param {string} optionsOrAgentId - Optional. An object of domain check options, or a string
@@ -17,6 +21,4 @@ function check(domain, optionsOrAgentId) {
   return hostingAPI.check(domain, optionsOrAgentId);
 }
 
-export default {
-  check,
-};
+export default check;
