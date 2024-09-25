@@ -64,10 +64,9 @@ import SustainableWebDesignV3 from "./sustainable-web-design-v3.js";
 import SustainableWebDesignV4 from "./sustainable-web-design-v4.js";
 
 import {
-  GLOBAL_GRID_INTENSITY,
-  RENEWABLES_GRID_INTENSITY,
-} from "./constants/index.js";
-import { parseOptions } from "./helpers/index.js";
+  parseByteTraceOptions,
+  parseVisitTraceOptions,
+} from "./helpers/index.js";
 
 class CO2 {
   constructor(options) {
@@ -152,7 +151,11 @@ class CO2 {
    * @return {CO2EstimateTraceResultPerByte} the amount of CO2 in grammes
    */
   perByteTrace(bytes, green = false, options = {}) {
-    const adjustments = parseOptions(options, this.model.version, green);
+    const adjustments = parseByteTraceOptions(
+      options,
+      this.model.version,
+      green
+    );
 
     // Filter out the trace items that aren't relevant to this function.
     const { gridIntensity, ...traceVariables } = adjustments;
@@ -197,7 +200,11 @@ class CO2 {
    */
   perVisitTrace(bytes, green = false, options = {}) {
     if (this.model?.perVisit) {
-      const adjustments = parseOptions(options, this.model.version, green);
+      const adjustments = parseVisitTraceOptions(
+        options,
+        this.model.version,
+        green
+      );
       const { gridIntensity, ...variables } = adjustments;
 
       return {
