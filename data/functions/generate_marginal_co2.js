@@ -1,17 +1,71 @@
+/**
+ * @fileoverview This script generates marginal CO2 emissions intensity data for countries using UNFCCC data.
+ * It processes the data from a CSV file and saves it in various formats for use in the CO2.js library.
+ * @author Chris Adams
+ * @version 1.0.0
+ */
+
 const fs = require("fs");
+
+/**
+ * Reads the UNFCCC CSV file containing grid factors data.
+ * @type {Buffer}
+ */
 const csv = fs.readFileSync(
   "data/IFI_Default_Grid_Factors_2021_v3.1_unfccc.csv"
 );
+
+
+/**
+ * Utility function to parse CSV rows.
+ * @type {function}
+ */
 const parseCSVRow = require("../utils/parseCSVRow");
+
+
+/**
+ * Utility function to get country codes.
+ * @type {function}
+ */
 const getCountryCodes = require("../utils/getCountryCodes");
+
+/**
+ * The type of intensity data being processed (marginal).
+ * @constant {string}
+ */
 const type = "marginal";
+
+/**
+ * The source of the data (UNFCCC).
+ * @constant {string}
+ */
 const source = "UNFCCC";
+
+/**
+ * The year of the data.
+ * @constant {string}
+ */
 const year = "2021";
 
+
+/**
+ * Converts the CSV data to an array of strings, each representing a row.
+ * @type {string[]}
+ */
 const array = csv.toString().split("\n");
 
-/* Store the converted result into an array */
+
+/**
+ * Object to store the converted CSV data.
+ * @type {Object.<string, Object>}
+ */
 const csvToJsonResult = {};
+
+
+/**
+ * Object to store the grid intensity results for each country.
+ * @type {Object.<string, string>}
+ */
 const gridIntensityResults = {};
 
 /* Store the CSV column headers into seprate variable */
@@ -79,20 +133,35 @@ for (let currentArrayString of array.slice(5)) {
 const json = JSON.stringify(csvToJsonResult);
 const gridIntensityJson = JSON.stringify(gridIntensityResults);
 
-// This saves the country code and emissions data only, for use in the CO2.js library
+
+/**
+ * Saves the country code and emissions data for use in the CO2.js library.
+ * @type {void}
+ */
 fs.writeFileSync(
   "data/output/marginal-intensities-2021.js",
-  `const data = ${gridIntensityJson}; 
+  `
+  const data = ${gridIntensityJson}; 
   const type = "${type}";
-const year = "${year}";
-export { data, type, year }; 
-export default { data, type, year };`
+  const year = "${year}";
+  export { data, type, year }; 
+  export default { data, type, year };
+  `
 );
-// Save a minified version to the src folder so that it can be easily imported into the library
+
+
+/**
+ * Saves a minified version of the data for easy import into the library.
+ * @type {void}
+ */
 fs.writeFileSync(
   "src/data/marginal-intensities-2021.min.js",
   `const data = ${gridIntensityJson}; const type = "${type}"; const year = "${year}"; export { data, type, year }; export default { data, type, year };`
 );
 
-// This saves the full data set as a JSON file for reference.
+
+/**
+ * Saves the full data set as a JSON file for reference.
+ * @type {void}
+ */
 fs.writeFileSync("data/output/marginal-intensities-2021.json", json);
