@@ -27,7 +27,7 @@ describe("OneByte", () => {
 
       expect(instance.perByte(MILLION, true)).toBeCloseTo(
         ONEBYTE.MILLION_GREEN,
-        5,
+        5
       );
     });
   });

@@ -25,7 +25,7 @@ describe("sustainable web design model version 4", () => {
           dataCenter: expect.any(Number),
           network: expect.any(Number),
           device: expect.any(Number),
-        }),
+        })
       );
       expect(result.dataCenter).toBeCloseTo(27.17, 3);
       expect(result.network).toBeCloseTo(29.146, 3);
@@ -39,7 +39,7 @@ describe("sustainable web design model version 4", () => {
           dataCenter: expect.any(Number),
           network: expect.any(Number),
           device: expect.any(Number),
-        }),
+        })
       );
       expect(result.dataCenter).toBeCloseTo(0, 3);
       expect(result.network).toBeCloseTo(0, 3);
@@ -60,7 +60,7 @@ describe("sustainable web design model version 4", () => {
           dataCenter: expect.any(Number),
           network: expect.any(Number),
           device: expect.any(Number),
-        }),
+        })
       );
       expect(result.dataCenter).toBeCloseTo(5.5, 3);
       expect(result.network).toBeCloseTo(11.8, 3);
@@ -76,7 +76,7 @@ describe("sustainable web design model version 4", () => {
           dataCenter: expect.any(Number),
           network: expect.any(Number),
           device: expect.any(Number),
-        }),
+        })
       );
       expect(result.dataCenter).toBeCloseTo(5.928, 3);
       expect(result.network).toBeCloseTo(6.422, 3);
@@ -90,7 +90,7 @@ describe("sustainable web design model version 4", () => {
           dataCenter: expect.any(Number),
           network: expect.any(Number),
           device: expect.any(Number),
-        }),
+        })
       );
       expect(result.dataCenter).toBeCloseTo(0, 3);
       expect(result.network).toBeCloseTo(0, 3);
@@ -138,49 +138,49 @@ describe("sustainable web design model version 4", () => {
           networkCO2e: expect.any(Number),
           consumerDeviceCO2e: expect.any(Number),
           total: expect.any(Number),
-        }),
+        })
       );
 
       expect(result.dataCenterOperationalCO2e).toBeCloseTo(
         SWDV4.DC_OPERATIONAL_EMISSIONS_GB,
-        3,
+        3
       );
       expect(result.networkOperationalCO2e).toBeCloseTo(
         SWDV4.NETWORK_OPERATIONAL_EMISSIONS_GB,
-        3,
+        3
       );
       expect(result.consumerDeviceOperationalCO2e).toBeCloseTo(
         SWDV4.DEVICE_OPERATIONAL_EMISSIONS_GB,
-        3,
+        3
       );
       expect(result.totalOperationalCO2e).toBeCloseTo(
         SWDV4.TOTAL_OPERATIONAL_EMISSIONS_GB,
-        3,
+        3
       );
       expect(result.dataCenterEmbodiedCO2e).toBeCloseTo(
         SWDV4.DC_EMBODIED_EMISSIONS_GB,
-        3,
+        3
       );
       expect(result.networkEmbodiedCO2e).toBeCloseTo(
         SWDV4.NETWORK_EMBODIED_EMISSIONS_GB,
-        3,
+        3
       );
       expect(result.consumerDeviceEmbodiedCO2e).toBeCloseTo(
         SWDV4.DEVICE_EMBODIED_EMISSIONS_GB,
-        3,
+        3
       );
       expect(result.totalEmbodiedCO2e).toBeCloseTo(
         SWDV4.TOTAL_EMBODIED_EMISSIONS_GB,
-        3,
+        3
       );
       expect(result.dataCenterCO2e).toBeCloseTo(SWDV4.TOTAL_DC_EMISSIONS_GB, 3);
       expect(result.networkCO2e).toBeCloseTo(
         SWDV4.TOTAL_NETWORK_EMISSIONS_GB,
-        3,
+        3
       );
       expect(result.consumerDeviceCO2e).toBeCloseTo(
         SWDV4.TOTAL_DEVICE_EMISSIONS_GB,
-        3,
+        3
       );
       expect(result.total).toBeCloseTo(SWDV4.PERBYTE_EMISSIONS_GB, 3);
     });
@@ -192,7 +192,7 @@ describe("sustainable web design model version 4", () => {
         expect.objectContaining({
           rating: expect.any(String),
           total: expect.any(Number),
-        }),
+        })
       );
 
       expect(result.rating).toBe("F");
@@ -216,7 +216,7 @@ describe("sustainable web design model version 4", () => {
           networkCO2e: expect.any(Number),
           consumerDeviceCO2e: expect.any(Number),
           total: expect.any(Number),
-        }),
+        })
       );
 
       expect(result.rating).toBe("F");
@@ -280,49 +280,49 @@ describe("sustainable web design model version 4", () => {
           firstVisitCO2e: expect.any(Number),
           returnVisitCO2e: expect.any(Number),
           total: expect.any(Number),
-        }),
+        })
       );
 
       expect(result.dataCenterOperationalCO2e).toBeCloseTo(
         SWDV4.DC_OPERATIONAL_EMISSIONS_GB,
-        3,
+        3
       );
       expect(result.networkOperationalCO2e).toBeCloseTo(
         SWDV4.NETWORK_OPERATIONAL_EMISSIONS_GB,
-        3,
+        3
       );
       expect(result.consumerDeviceOperationalCO2e).toBeCloseTo(
         SWDV4.DEVICE_OPERATIONAL_EMISSIONS_GB,
-        3,
+        3
       );
       expect(result.totalOperationalCO2e).toBeCloseTo(
         SWDV4.TOTAL_OPERATIONAL_EMISSIONS_GB,
-        3,
+        3
       );
       expect(result.dataCenterEmbodiedCO2e).toBeCloseTo(
         SWDV4.DC_EMBODIED_EMISSIONS_GB,
-        3,
+        3
       );
       expect(result.networkEmbodiedCO2e).toBeCloseTo(
         SWDV4.NETWORK_EMBODIED_EMISSIONS_GB,
-        3,
+        3
       );
       expect(result.consumerDeviceEmbodiedCO2e).toBeCloseTo(
         SWDV4.DEVICE_EMBODIED_EMISSIONS_GB,
-        3,
+        3
       );
       expect(result.totalEmbodiedCO2e).toBeCloseTo(
         SWDV4.TOTAL_EMBODIED_EMISSIONS_GB,
-        3,
+        3
       );
       expect(result.dataCenterCO2e).toBeCloseTo(SWDV4.TOTAL_DC_EMISSIONS_GB, 3);
       expect(result.networkCO2e).toBeCloseTo(
         SWDV4.TOTAL_NETWORK_EMISSIONS_GB,
-        3,
+        3
       );
       expect(result.consumerDeviceCO2e).toBeCloseTo(
         SWDV4.TOTAL_DEVICE_EMISSIONS_GB,
-        3,
+        3
       );
       expect(result.firstVisitCO2e).toBeCloseTo(148.2, 3);
       expect(result.returnVisitCO2e).toBeCloseTo(118.56, 3);
@@ -336,7 +336,7 @@ describe("sustainable web design model version 4", () => {
         expect.objectContaining({
           rating: expect.any(String),
           total: expect.any(Number),
-        }),
+        })
       );
 
       expect(result.rating).toBe("F");
@@ -362,7 +362,7 @@ describe("sustainable web design model version 4", () => {
           firstVisitCO2e: expect.any(Number),
           returnVisitCO2e: expect.any(Number),
           total: expect.any(Number),
-        }),
+        })
       );
 
       expect(result.rating).toBe("F");

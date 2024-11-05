@@ -12,14 +12,14 @@ describe("hostingJSON", () => {
     "..",
     "data",
     "fixtures",
-    "url2green.test.json",
+    "url2green.test.json"
   );
   const jsonPathGz = path.resolve(
     __dirname,
     "..",
     "data",
     "fixtures",
-    "url2green.test.json.gz",
+    "url2green.test.json.gz"
   );
   describe("checking a single domain with #check", () => {
     test("against the list of domains as JSON", async () => {

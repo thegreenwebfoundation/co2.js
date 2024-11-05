@@ -65,16 +65,16 @@ describe("sustainable web design model version 3", () => {
 
       expect(result.dataCenterCO2).toBeCloseTo(
         SWDV3.MILLION_GREY_DATACENTERS,
-        3,
+        3
       );
       expect(result.consumerDeviceCO2).toBeCloseTo(
         SWDV3.MILLION_GREY_DEVICES,
-        3,
+        3
       );
       expect(result.networkCO2).toBeCloseTo(SWDV3.MILLION_GREY_NETWORKS, 3);
       expect(result.productionCO2).toBeCloseTo(
         SWDV3.MILLION_GREY_PRODUCTION,
-        3,
+        3
       );
       expect(result.total).toBeCloseTo(SWDV3.MILLION_GREY, 3);
     });
@@ -93,7 +93,7 @@ describe("sustainable web design model version 3", () => {
 
     it("should calculate the correct energy", () => {
       expect(swd.energyPerVisit(averageWebsiteInBytes)).toBe(
-        0.0013807057305600004,
+        0.0013807057305600004
       );
     });
   });
@@ -119,7 +119,7 @@ describe("sustainable web design model version 3", () => {
   describe("annualEmissionsInGrams", () => {
     it("should calculate the corrent energy in grams", () => {
       expect(swd.annualEmissionsInGrams(averageWebsiteInBytes)).toBe(
-        27092582400,
+        27092582400
       );
     });
   });

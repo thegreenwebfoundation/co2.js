@@ -26,7 +26,7 @@ describe("hostingAPI", () => {
         expect.any(String),
         expect.objectContaining({
           headers: { "User-Agent": "co2js/1.2.34 " },
-        }),
+        })
       );
       expect(res).toEqual(true);
     });
@@ -38,7 +38,7 @@ describe("hostingAPI", () => {
         expect.any(String),
         expect.objectContaining({
           headers: { "User-Agent": "co2js/1.2.34 TestRunner" },
-        }),
+        })
       );
       expect(res).toEqual(true);
     });
@@ -60,7 +60,7 @@ describe("hostingAPI", () => {
         expect.any(String),
         expect.objectContaining({
           headers: { "User-Agent": "co2js/1.2.34 " },
-        }),
+        })
       );
       expect(res).toMatchObject({
         green: true,
@@ -87,14 +87,14 @@ describe("hostingAPI", () => {
     it("sets the correct user agent header", async () => {
       const res = await hosting.check(
         ["google.com", "kochindustries.com"],
-        requestHeaderComment,
+        requestHeaderComment
       );
       expect(fetch).toHaveBeenCalledTimes(1);
       expect(fetch).toHaveBeenLastCalledWith(
         expect.any(String),
         expect.objectContaining({
           headers: { "User-Agent": "co2js/1.2.34 TestRunner" },
-        }),
+        })
       );
       expect(res).toContain("google.com");
     });
