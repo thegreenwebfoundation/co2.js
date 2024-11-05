@@ -1,5 +1,7 @@
 "use strict";
 
+import { describe, expect, it } from "vitest";
+
 import { MILLION, ONEBYTE } from "./constants/test-constants.js";
 
 import OneByte from "./1byte.js";
@@ -25,7 +27,7 @@ describe("OneByte", () => {
 
       expect(instance.perByte(MILLION, true)).toBeCloseTo(
         ONEBYTE.MILLION_GREEN,
-        5
+        5,
       );
     });
   });

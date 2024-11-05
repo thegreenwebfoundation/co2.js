@@ -3,9 +3,9 @@
 import https from "https";
 import path from "path";
 
-import hosting from "./hosting-node.js";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
-jest.mock("https");
+import hosting from "./hosting-node.js";
 
 process.env.CO2JS_VERSION = "1.2.34";
 const requestHeaderComment = "TestRunner";
@@ -15,21 +15,21 @@ const jsonPath = path.resolve(
   "..",
   "data",
   "fixtures",
-  "url2green.test.json"
+  "url2green.test.json",
 );
 
 describe("hosting", () => {
   let httpsGetSpy;
   beforeEach(() => {
-    httpsGetSpy = jest.spyOn(https, "get");
-    jest.clearAllMocks();
+    httpsGetSpy = vi.spyOn(https, "get");
+    vi.clearAllMocks();
   });
   describe("checking domains against a db snapshot", () => {
     it("returns a list of green domains, when passed a database array", async () => {
       const db = await hosting.loadJSON(jsonPath);
       const greenDomains = await hosting.check(
         ["www.thegreenwebfoundation.org", "fonts.googleapis.com"],
-        db
+        db,
       );
 
       expect(greenDomains).toHaveLength(2);
@@ -38,7 +38,7 @@ describe("hosting", () => {
       const db = await hosting.loadJSON(jsonPath);
       const greenDomains = await hosting.check(
         ["www.thegreenwebfoundation.org", "fonts.googleapis.com"],
-        { db }
+        { db },
       );
 
       expect(greenDomains).toHaveLength(2);
@@ -48,10 +48,10 @@ describe("hosting", () => {
       await expect(() => {
         hosting.check(
           ["www.thegreenwebfoundation.org", "fonts.googleapis.com"],
-          { verbose: true, db }
+          { verbose: true, db },
         );
       }).toThrowError(
-        "verbose mode cannot be used with a local lookup database"
+        "verbose mode cannot be used with a local lookup database",
       );
     });
   });
@@ -81,7 +81,7 @@ describe("hosting", () => {
         expect.objectContaining({
           headers: { "User-Agent": "co2js/1.2.34 TestRunner" },
         }),
-        expect.any(Function)
+        expect.any(Function),
       );
     });
     it("sets the correct user agent header when passed as a parameter", async () => {
@@ -92,7 +92,7 @@ describe("hosting", () => {
         expect.objectContaining({
           headers: { "User-Agent": "co2js/1.2.34 TestRunner" },
         }),
-        expect.any(Function)
+        expect.any(Function),
       );
     });
   });

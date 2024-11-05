@@ -1,5 +1,7 @@
 "use strict";
 
+import { describe, expect, test } from "vitest";
+
 import path from "path";
 
 import { hosting } from "@tgwf/url2green";
@@ -9,7 +11,7 @@ const dbPath = path.resolve(
   "..",
   "data",
   "fixtures",
-  "url2green.test.db"
+  "url2green.test.db",
 );
 
 describe("hostingDatabase", () => {
@@ -23,7 +25,7 @@ describe("hostingDatabase", () => {
     test("tries to use a local database if available", async () => {
       const res = await hosting.check(
         ["google.com", "kochindustries.com"],
-        dbPath
+        dbPath,
       );
       expect(res).toContain("google.com");
     });

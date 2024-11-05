@@ -1,5 +1,7 @@
 "use strict";
 
+import { describe, expect, test } from "vitest";
+
 import hosting from "./hosting-json.js";
 import hostingNode from "./hosting-json.node.js";
 import path from "path";
@@ -10,14 +12,14 @@ describe("hostingJSON", () => {
     "..",
     "data",
     "fixtures",
-    "url2green.test.json"
+    "url2green.test.json",
   );
   const jsonPathGz = path.resolve(
     __dirname,
     "..",
     "data",
     "fixtures",
-    "url2green.test.json.gz"
+    "url2green.test.json.gz",
   );
   describe("checking a single domain with #check", () => {
     test("against the list of domains as JSON", async () => {
