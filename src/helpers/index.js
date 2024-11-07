@@ -69,8 +69,8 @@ function parseOptions(options = {}, version = 3, green = false) {
       }
     } else {
       adjustments.gridIntensity[segment] = {
-        value: globalGridIntensity
-      }
+        value: globalGridIntensity,
+      };
     }
   }
 
