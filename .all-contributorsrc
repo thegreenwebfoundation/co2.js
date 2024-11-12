@@ -141,7 +141,25 @@
       "contributions": [
         "code"
       ]
-    }
+    },
+    {
+      "login": "dsubject",
+      "name": "Dani Subject",
+      "avatar_url": "https://avatars.githubusercontent.com/u/33845418?s=64&v=4",
+      "profile": "https://github.com/dsubject",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Malay-dev",
+      "name": "Malay Kumar",
+      "avatar_url": "https://avatars.githubusercontent.com/u/91375797?s=64&v=4",
+      "profile": "https://github.com/Malay-dev",
+      "contributions": [
+        "doc"
+      ]
+    },
   ],
   "contributorsPerLine": 7,
   "linkToUsage": false
