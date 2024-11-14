@@ -24,7 +24,7 @@ Internally, you may want to use this library to create a _carbon budget_ for you
 
 For user facing applications, CO2.js could be used to check & block the uploading of carbon intensive files. Or, to present users with information about the carbon impact of their online activities (such as browsing a website).
 
-The above a just a few examples of the many and varied ways CO2.js can be applied to provide carbon estimates for data transfer. If you’re using CO2.js in production we’d love to hear how! [Contact us](https://www.thegreenwebfoundation.org/support-form/) via our website.
+The above are just a few examples of the many and varied ways CO2.js can be applied to provide carbon estimates for data transfer. If you’re using CO2.js in production we’d love to hear how! [Contact us](https://www.thegreenwebfoundation.org/support-form/) via our website.
 
 ## Installation
 
