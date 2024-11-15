@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add ability to create adaptors which provide access to external data sources #134
 - Add access to the Electricity Maps API free tier #134
 - Allow access to individual models and their internal functions #195
+- Update the Github actions testing matrix to Node 18,20, and 22 #242
 <!-- - _(Add a summary of your feature, and if relevant the issue, in your PR for merging into `main`)_ -->
 
 ## Released
