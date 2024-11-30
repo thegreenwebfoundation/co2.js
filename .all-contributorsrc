@@ -160,6 +160,25 @@
         "doc"
       ]
     },
+    {
+      "login": "samuelIkoli",
+      "name": "Samuel Ikoli",
+      "avatar_url": "https://avatars.githubusercontent.com/u/98848723?v=4",
+      "profile": "https://github.com/samuelIkoli",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "APJohns",
+      "name": "Ash Johns",
+      "avatar_url": "https://avatars.githubusercontent.com/u/18357173?v=4",
+      "profile": "https://github.com/APJohns",
+      "contributions": [
+        "bug",
+        "code"
+      ]
+    }
   ],
   "contributorsPerLine": 7,
   "linkToUsage": false
