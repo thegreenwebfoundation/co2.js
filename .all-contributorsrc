@@ -178,6 +178,25 @@
         "bug",
         "code"
       ]
+    },
+    {
+      "login": "mgriffin-scottlogic",
+      "name": "Matthew Griffin",
+      "avatar_url": "https://avatars.githubusercontent.com/u/117279304?v=4",
+      "profile": "https://github.com/mgriffin-scottlogic",
+      "contributions": [
+        "doc",
+        "code"
+      ]
+    },
+    {
+      "login": "hanopcan",
+      "name": "Hannah",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11687898?v=4",
+      "profile": "https://github.com/hanopcan",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,

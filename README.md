@@ -1,9 +1,7 @@
 # CO2.js
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
-[![All Contributors](https://img.shields.io/badge/all_contributors-14-orange.svg?style=flat-square)](#contributors-)
-
+[![All Contributors](https://img.shields.io/badge/all_contributors-18-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <img src="https://github.com/thegreenwebfoundation/co2.js/actions/workflows/unittests.yml/badge.svg" />
@@ -159,6 +157,12 @@ To contribute changes back to this project, please follow the steps outlined in 
       <td align="center" valign="top" width="14.28%"><a href="https://greengumption.co.uk/"><img src="https://avatars.githubusercontent.com/u/26165947?v=4?s=100" width="100px;" alt="JamieB"/><br /><sub><b>JamieB</b></sub></a><br /><a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=JamieBeevor" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/p-gerard"><img src="https://avatars.githubusercontent.com/u/97036756?v=4?s=100" width="100px;" alt="p-gerard"/><br /><sub><b>p-gerard</b></sub></a><br /><a href="https://github.com/thegreenwebfoundation/co2.js/issues?q=author%3Ap-gerard" title="Bug reports">🐛</a> <a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=p-gerard" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/sfishel18"><img src="https://avatars.githubusercontent.com/u/294695?v=4?s=100" width="100px;" alt="Simon Fishel"/><br /><sub><b>Simon Fishel</b></sub></a><br /><a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=sfishel18" title="Code">💻</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/dsubject"><img src="https://avatars.githubusercontent.com/u/33845418?s=64&v=4?s=100" width="100px;" alt="Dani Subject"/><br /><sub><b>Dani Subject</b></sub></a><br /><a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=dsubject" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Malay-dev"><img src="https://avatars.githubusercontent.com/u/91375797?s=64&v=4?s=100" width="100px;" alt="Malay Kumar"/><br /><sub><b>Malay Kumar</b></sub></a><br /><a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=Malay-dev" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/samuelIkoli"><img src="https://avatars.githubusercontent.com/u/98848723?v=4?s=100" width="100px;" alt="Samuel Ikoli"/><br /><sub><b>Samuel Ikoli</b></sub></a><br /><a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=samuelIkoli" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/APJohns"><img src="https://avatars.githubusercontent.com/u/18357173?v=4?s=100" width="100px;" alt="Ash Johns"/><br /><sub><b>Ash Johns</b></sub></a><br /><a href="https://github.com/thegreenwebfoundation/co2.js/issues?q=author%3AAPJohns" title="Bug reports">🐛</a> <a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=APJohns" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
