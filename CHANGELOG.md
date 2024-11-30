@@ -17,10 +17,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add ability to create adaptors which provide access to external data sources #134
 - Add access to the Electricity Maps API free tier #134
 - Allow access to individual models and their internal functions #195
-- Update the Github actions testing matrix to Node 18,20, and 22 #242
 <!-- - _(Add a summary of your feature, and if relevant the issue, in your PR for merging into `main`)_ -->
 
 ## Released
+
+### [0.16.3] - 2024-11-30
+
+#### Fixed
+
+- Include all gridIntensity values when running the perVisitTrace or perByteTrace functions. #237
+
+### [0.16.2] - 2024-11-12
+
+#### _Added_
+
+- Add JSDoc comments to data generation scripts and outputs #230
+- Added basic error handling to data fetch in emissions script #221
+
+#### Fixed
+
+- Bump url2green version #238
+
+#### Changed
+
+- Automated monthly update of annual average grid intensity data.
+
+### [0.16.1] - 2024-09-10
+
+#### Changed
+
+- _[Experimental]_ Add minimum capability to publish CO2.js to JSR.
+- Automated monthly update of annual average grid intensity data.
 
 ### [0.16.0] - 2024-07-01
 
