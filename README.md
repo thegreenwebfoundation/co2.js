@@ -1,7 +1,7 @@
 # CO2.js
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-20-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-21-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <img src="https://github.com/thegreenwebfoundation/co2.js/actions/workflows/unittests.yml/badge.svg" />
@@ -165,6 +165,7 @@ To contribute changes back to this project, please follow the steps outlined in 
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/APJohns"><img src="https://avatars.githubusercontent.com/u/18357173?v=4?s=100" width="100px;" alt="Ash Johns"/><br /><sub><b>Ash Johns</b></sub></a><br /><a href="https://github.com/thegreenwebfoundation/co2.js/issues?q=author%3AAPJohns" title="Bug reports">🐛</a> <a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=APJohns" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/mgriffin-scottlogic"><img src="https://avatars.githubusercontent.com/u/117279304?v=4?s=100" width="100px;" alt="Matthew Griffin"/><br /><sub><b>Matthew Griffin</b></sub></a><br /><a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=mgriffin-scottlogic" title="Documentation">📖</a> <a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=mgriffin-scottlogic" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/hanopcan"><img src="https://avatars.githubusercontent.com/u/11687898?v=4?s=100" width="100px;" alt="Hannah"/><br /><sub><b>Hannah</b></sub></a><br /><a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=hanopcan" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/alexzurbonsen"><img src="https://avatars.githubusercontent.com/u/82914459?v=4?s=100" width="100px;" alt="Alex"/><br /><sub><b>Alex</b></sub></a><br /><a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=alexzurbonsen" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
