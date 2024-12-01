@@ -1,7 +1,9 @@
 # CO2.js
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-21-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <img src="https://github.com/thegreenwebfoundation/co2.js/actions/workflows/unittests.yml/badge.svg" />
@@ -34,12 +36,12 @@ You can install CO2.js as a dependency for your projects using NPM.
 npm install @tgwf/co2
 ```
 
-### Using Skypack
+### Using esm.sh
 
-You can import the CO2.js library into projects using Skypack.
+You can import the CO2.js library into projects using esm.sh.
 
 ```js
-import tgwf from "https://cdn.skypack.dev/@tgwf/co2";
+import tgwf from "https://esm.sh/@tgwf/co2@latest";
 ```
 
 ## Using a JS CDN
