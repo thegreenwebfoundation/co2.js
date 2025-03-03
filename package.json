@@ -46,7 +46,7 @@
   "devDependencies": {
     "@tgwf/url2green": "^0.4.1",
     "all-contributors-cli": "^6.26.1",
-    "esbuild": "^0.14.47",
+    "esbuild": "^0.25.0",
     "esbuild-jest": "^0.5.0",
     "esbuild-plugin-glob": "^1.1.2",
     "eslint": "^8.15.0",
