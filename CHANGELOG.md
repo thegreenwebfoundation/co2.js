@@ -21,6 +21,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Released
 
+### [0.16.7] - 2025-04-18
+
+#### Changed
+
+- Automated monthly update of annual average grid intensity data.
+- Bump esbuild from 0.14.54 to 0.25.0
+
+### [0.16.6] - 2025-02-10
+
+#### Changed
+
+- Automated monthly update of annual average grid intensity data.
+
+### [0.16.5] - 2025-01-20
+
+#### Changed
+
+- Automated monthly update of annual average grid intensity data.
+
+### [0.16.4] - 2024-12-10
+
+#### Changed
+
+- Separate options parsing for byteTrace and visitTrace functions in #226
+- Automated monthly update of annual average grid intensity data.
+
 ### [0.16.3] - 2024-11-30
 
 #### Fixed
