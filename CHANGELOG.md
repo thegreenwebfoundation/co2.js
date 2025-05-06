@@ -21,6 +21,60 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Released
 
+### [0.16.7] - 2025-04-18
+
+#### Changed
+
+- Automated monthly update of annual average grid intensity data.
+- Bump esbuild from 0.14.54 to 0.25.0
+
+### [0.16.6] - 2025-02-10
+
+#### Changed
+
+- Automated monthly update of annual average grid intensity data.
+
+### [0.16.5] - 2025-01-20
+
+#### Changed
+
+- Automated monthly update of annual average grid intensity data.
+
+### [0.16.4] - 2024-12-10
+
+#### Changed
+
+- Separate options parsing for byteTrace and visitTrace functions in #226
+- Automated monthly update of annual average grid intensity data.
+
+### [0.16.3] - 2024-11-30
+
+#### Fixed
+
+- Include all gridIntensity values when running the perVisitTrace or perByteTrace functions. #237
+
+### [0.16.2] - 2024-11-12
+
+#### _Added_
+
+- Add JSDoc comments to data generation scripts and outputs #230
+- Added basic error handling to data fetch in emissions script #221
+
+#### Fixed
+
+- Bump url2green version #238
+
+#### Changed
+
+- Automated monthly update of annual average grid intensity data.
+
+### [0.16.1] - 2024-09-10
+
+#### Changed
+
+- _[Experimental]_ Add minimum capability to publish CO2.js to JSR.
+- Automated monthly update of annual average grid intensity data.
+
 ### [0.16.0] - 2024-07-01
 
 #### _Added_

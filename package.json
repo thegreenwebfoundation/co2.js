@@ -1,6 +1,6 @@
 {
   "name": "@tgwf/co2",
-  "version": "0.16.1",
+  "version": "0.16.7",
   "description": "Work out the co2 of your digital services",
   "main": "dist/cjs/index-node.js",
   "module": "dist/esm/index.js",
@@ -44,9 +44,9 @@
   "author": "Chris Adams",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@tgwf/url2green": "^0.4.0",
+    "@tgwf/url2green": "^0.4.1",
     "all-contributors-cli": "^6.26.1",
-    "esbuild": "^0.14.47",
+    "esbuild": "^0.25.0",
     "esbuild-jest": "^0.5.0",
     "esbuild-plugin-glob": "^1.1.2",
     "eslint": "^8.15.0",
