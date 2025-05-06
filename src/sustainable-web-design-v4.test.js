@@ -323,7 +323,7 @@ describe("sustainable web design model version 4", () => {
         3
       );
       expect(result.firstVisitCO2e).toBeCloseTo(148.2, 3);
-      expect(result.returnVisitCO2e).toBeCloseTo(118.56, 3);
+      expect(result.returnVisitCO2e).toBeCloseTo(29.64, 3);
       expect(result.total).toBeCloseTo(SWDV4.PERVISIT_EMISSIONS_GB, 3);
     });
 

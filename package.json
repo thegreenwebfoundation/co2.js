@@ -14,7 +14,7 @@
     }
   },
   "scripts": {
-    "test": "jest src",
+    "test": "jest src --silent",
     "test:watch": "jest --watch src",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
