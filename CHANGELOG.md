@@ -21,6 +21,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Released
 
+### [0.16.8] - 2025-05-12
+
+#### Fixed
+
+- Corrected the implementation of `dataReloadRatio` in Sustainable Web Design Model v4 to be a multiplier rather than the inverse.
+
+#### Changed
+
+- Automated monthly update of annual average grid intensity data.
+
 ### [0.16.7] - 2025-04-18
 
 #### Changed
