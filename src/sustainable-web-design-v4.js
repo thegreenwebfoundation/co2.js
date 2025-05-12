@@ -268,6 +268,9 @@ class SustainableWebDesign {
       returnViewRatio = options.returnVisitPercentage;
     }
 
+    // NOTE: Our current implementation of the SWDMv4 calculation diverges slightly from the original calculation that is shown on the SWDM website https://sustainablewebdesign.org/estimating-digital-emissions/
+    // The original calculation uses "Data Cache Ratio" representing the portion of data that is loaded from cache for returning visitors.
+    // Our implementation uses "Data Reload Ratio" representing the portion of data that is downloaded again for returning visitors.
     if (options.dataReloadRatio || options.dataReloadRatio === 0) {
       dataReloadRatio = options.dataReloadRatio;
     }
