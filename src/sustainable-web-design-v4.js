@@ -268,6 +268,9 @@ class SustainableWebDesign {
       returnViewRatio = options.returnVisitPercentage;
     }
 
+    // NOTE: Our current implementation of the SWDMv4 calculation diverges slightly from the original calculation that is shown on the SWDM website https://sustainablewebdesign.org/estimating-digital-emissions/
+    // The original calculation uses "Data Cache Ratio" representing the portion of data that is loaded from cache for returning visitors.
+    // Our implementation uses "Data Reload Ratio" representing the portion of data that is downloaded again for returning visitors.
     if (options.dataReloadRatio || options.dataReloadRatio === 0) {
       dataReloadRatio = options.dataReloadRatio;
     }
@@ -284,14 +287,7 @@ class SustainableWebDesign {
 
     // NOTE: First visit emissions are calculated as the sum of all three segments with caching applied.
 
-    const returnVisitEmissions =
-      (operationalEmissions.dataCenter * (1 - greenHostingFactor) +
-        embodiedEmissions.dataCenter +
-        operationalEmissions.network +
-        embodiedEmissions.network +
-        operationalEmissions.device +
-        embodiedEmissions.device) *
-      (1 - dataReloadRatio);
+    const returnVisitEmissions = firstVisitEmissions * dataReloadRatio;
 
     // NOTE: The total emissions account for the percentage of first and return visits.
     const total =
