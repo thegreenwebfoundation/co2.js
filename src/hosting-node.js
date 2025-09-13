@@ -61,7 +61,7 @@ async function getBody(url, userAgentIdentifier) {
  *     otherwise a dictionary of domain to host information.
  */
 
-function check(domain, optionsOrDb, userAgentIdentifier) {
+export function check(domain, optionsOrDb, userAgentIdentifier) {
   let db,
     options = {};
   if (!db && Array.isArray(optionsOrDb)) {
