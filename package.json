@@ -1,6 +1,6 @@
 {
   "name": "@tgwf/co2",
-  "version": "0.13.10",
+  "version": "0.16.9",
   "description": "Work out the co2 of your digital services",
   "main": "dist/cjs/index-node.js",
   "module": "dist/esm/index.js",
@@ -22,7 +22,7 @@
     }
   },
   "scripts": {
-    "test": "jest src",
+    "test": "jest src --silent",
     "test:watch": "jest --watch src",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
@@ -37,7 +37,8 @@
     "intensity-data:average": "node data/functions/generate_average_co2.js",
     "intensity-data:marginal": "node data/functions/generate_marginal_co2.js",
     "intensity-data": "npm run intensity-data:average && npm run intensity-data:marginal && npm run format-data",
-    "format-data": "cd data && prettier --write '**/*.{js,json}'"
+    "format-data": "cd data && prettier --write '**/*.{js,json}'",
+    "version": "npm run build"
   },
   "keywords": [
     "sustainability",
@@ -51,9 +52,9 @@
   "author": "Chris Adams",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@tgwf/url2green": "^0.4.0",
+    "@tgwf/url2green": "^0.4.1",
     "all-contributors-cli": "^6.26.1",
-    "esbuild": "^0.14.47",
+    "esbuild": "^0.25.0",
     "esbuild-jest": "^0.5.0",
     "esbuild-plugin-glob": "^1.1.2",
     "eslint": "^8.15.0",
@@ -63,7 +64,6 @@
     "jest": "^28.1.0",
     "nock": "^13.2.4",
     "np": "^8.0.4",
-    "pagexray": "^4.4.2",
     "prettier": "^2.6.2"
   },
   "jest": {

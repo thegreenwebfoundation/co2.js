@@ -2,7 +2,7 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-21-orange.svg?style=flat-square)](#contributors-)
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
@@ -24,7 +24,7 @@ Internally, you may want to use this library to create a _carbon budget_ for you
 
 For user facing applications, CO2.js could be used to check & block the uploading of carbon intensive files. Or, to present users with information about the carbon impact of their online activities (such as browsing a website).
 
-The above a just a few examples of the many and varied ways CO2.js can be applied to provide carbon estimates for data transfer. If you’re using CO2.js in production we’d love to hear how! [Contact us](https://www.thegreenwebfoundation.org/support-form/) via our website.
+The above are just a few examples of the many and varied ways CO2.js can be applied to provide carbon estimates for data transfer. If you’re using CO2.js in production we’d love to hear how! [Contact us](https://www.thegreenwebfoundation.org/support-form/) via our website.
 
 ## Installation
 
@@ -36,12 +36,12 @@ You can install CO2.js as a dependency for your projects using NPM.
 npm install @tgwf/co2
 ```
 
-### Using Skypack
+### Using esm.sh
 
-You can import the CO2.js library into projects using Skypack.
+You can import the CO2.js library into projects using esm.sh.
 
 ```js
-import tgwf from "https://cdn.skypack.dev/@tgwf/co2";
+import tgwf from "https://esm.sh/@tgwf/co2@latest";
 ```
 
 ## Using a JS CDN
@@ -135,6 +135,8 @@ See LICENCE for more.
 
 ## Contributors
 
+To contribute changes back to this project, please follow the steps outlined in the [CONTRIBUTING.md](/CONTRIBUTING.md) file in this repository.
+
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -156,6 +158,16 @@ See LICENCE for more.
       <td align="center" valign="top" width="14.28%"><a href="https://vasquezruiz.com/"><img src="https://avatars.githubusercontent.com/u/108420?v=4?s=100" width="100px;" alt="Raymundo Vásquez Ruiz"/><br /><sub><b>Raymundo Vásquez Ruiz</b></sub></a><br /><a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=raymundovr" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://greengumption.co.uk/"><img src="https://avatars.githubusercontent.com/u/26165947?v=4?s=100" width="100px;" alt="JamieB"/><br /><sub><b>JamieB</b></sub></a><br /><a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=JamieBeevor" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/p-gerard"><img src="https://avatars.githubusercontent.com/u/97036756?v=4?s=100" width="100px;" alt="p-gerard"/><br /><sub><b>p-gerard</b></sub></a><br /><a href="https://github.com/thegreenwebfoundation/co2.js/issues?q=author%3Ap-gerard" title="Bug reports">🐛</a> <a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=p-gerard" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/sfishel18"><img src="https://avatars.githubusercontent.com/u/294695?v=4?s=100" width="100px;" alt="Simon Fishel"/><br /><sub><b>Simon Fishel</b></sub></a><br /><a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=sfishel18" title="Code">💻</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/dsubject"><img src="https://avatars.githubusercontent.com/u/33845418?s=64&v=4?s=100" width="100px;" alt="Dani Subject"/><br /><sub><b>Dani Subject</b></sub></a><br /><a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=dsubject" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Malay-dev"><img src="https://avatars.githubusercontent.com/u/91375797?s=64&v=4?s=100" width="100px;" alt="Malay Kumar"/><br /><sub><b>Malay Kumar</b></sub></a><br /><a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=Malay-dev" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/samuelIkoli"><img src="https://avatars.githubusercontent.com/u/98848723?v=4?s=100" width="100px;" alt="Samuel Ikoli"/><br /><sub><b>Samuel Ikoli</b></sub></a><br /><a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=samuelIkoli" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/APJohns"><img src="https://avatars.githubusercontent.com/u/18357173?v=4?s=100" width="100px;" alt="Ash Johns"/><br /><sub><b>Ash Johns</b></sub></a><br /><a href="https://github.com/thegreenwebfoundation/co2.js/issues?q=author%3AAPJohns" title="Bug reports">🐛</a> <a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=APJohns" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/mgriffin-scottlogic"><img src="https://avatars.githubusercontent.com/u/117279304?v=4?s=100" width="100px;" alt="Matthew Griffin"/><br /><sub><b>Matthew Griffin</b></sub></a><br /><a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=mgriffin-scottlogic" title="Documentation">📖</a> <a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=mgriffin-scottlogic" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/hanopcan"><img src="https://avatars.githubusercontent.com/u/11687898?v=4?s=100" width="100px;" alt="Hannah"/><br /><sub><b>Hannah</b></sub></a><br /><a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=hanopcan" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/alexzurbonsen"><img src="https://avatars.githubusercontent.com/u/82914459?v=4?s=100" width="100px;" alt="Alex"/><br /><sub><b>Alex</b></sub></a><br /><a href="https://github.com/thegreenwebfoundation/co2.js/commits?author=alexzurbonsen" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>

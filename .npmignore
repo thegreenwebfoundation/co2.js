@@ -14,6 +14,7 @@ public
 # Test files
 src/**/*.test.js
 src/constants/test-constants.js
+__mocks__/
 
 # Data
 # exclude mode data

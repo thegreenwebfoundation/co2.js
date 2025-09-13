@@ -1,6 +1,7 @@
 "use strict";
 
-import hosting from "./hosting-json.node.js";
+import hosting from "./hosting-json.js";
+import hostingNode from "./hosting-json.node.js";
 import path from "path";
 
 describe("hostingJSON", () => {
@@ -20,19 +21,19 @@ describe("hostingJSON", () => {
   );
   describe("checking a single domain with #check", () => {
     test("against the list of domains as JSON", async () => {
-      const db = await hosting.loadJSON(jsonPath);
+      const db = await hostingNode.loadJSON(jsonPath);
       const res = await hosting.check("google.com", db);
       expect(res).toEqual(true);
     });
     test("against the list of domains as JSON loaded from a gzipped JSON", async () => {
-      const db = await hosting.loadJSON(jsonPathGz);
+      const db = await hostingNode.loadJSON(jsonPathGz);
       const res = await hosting.check("google.com", db);
       expect(res).toEqual(true);
     });
   });
   describe("implicitly checking multiple domains with #check", () => {
     test("against the list of domains as JSON", async () => {
-      const db = await hosting.loadJSON(jsonPath);
+      const db = await hostingNode.loadJSON(jsonPath);
       const domains = ["google.com", "kochindustries.com"];
 
       const res = await hosting.check(domains, db);

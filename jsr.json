@@ -1,0 +1,8 @@
+{
+    "name": "@greenweb/co2js",
+    "version": "0.16.2",
+    "exports": "./mod.ts",
+    "exclude": [
+        "!dist/**"
+    ]
+}

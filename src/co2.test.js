@@ -1,153 +1,27 @@
 "use strict";
 
-import fs from "fs";
-import path from "path";
-import { MILLION, ONEBYTE, SWD } from "./constants/test-constants.js";
-
-import pagexray from "pagexray";
+import { MILLION, SWDV3 } from "./constants/test-constants.js";
 
 import CO2 from "./co2.js";
 import { averageIntensity, marginalIntensity } from "./index.js";
+import { SWDV4 } from "./constants/index.js";
+
+const TwnGridIntensityValue = averageIntensity.data["TWN"];
+const SWDM4_GLOBAL_GRID_INTENSITY = SWDV4.GLOBAL_GRID_INTENSITY;
 
 describe("co2", () => {
-  let har, co2;
-
-  describe("1 byte model", () => {
-    const { TGWF_GREY_VALUE, TGWF_GREEN_VALUE, TGWF_MIXED_VALUE } = ONEBYTE;
-
-    beforeEach(() => {
-      co2 = new CO2({ model: "1byte" });
-      har = JSON.parse(
-        fs.readFileSync(
-          path.resolve(__dirname, "../data/fixtures/tgwf.har"),
-          "utf8"
-        )
-      );
-    });
-
-    describe("perPage", () => {
-      it("returns CO2 for total transfer for page", () => {
-        const pages = pagexray.convert(har);
-        const pageXrayRun = pages[0];
-
-        expect(co2.perPage(pageXrayRun).toFixed(5)).toBe(
-          TGWF_GREY_VALUE.toFixed(5)
-        );
-      });
-      it("returns lower CO2 for page served from green site", () => {
-        const pages = pagexray.convert(har);
-        const pageXrayRun = pages[0];
-        let green = [
-          "www.thegreenwebfoundation.org",
-          "fonts.googleapis.com",
-          "ajax.googleapis.com",
-          "assets.digitalclimatestrike.net",
-          "cdnjs.cloudflare.com",
-          "graphite.thegreenwebfoundation.org",
-          "analytics.thegreenwebfoundation.org",
-          "fonts.gstatic.com",
-          "api.thegreenwebfoundation.org",
-        ];
-        expect(co2.perPage(pageXrayRun, green)).toBeLessThan(TGWF_GREY_VALUE);
-      });
-      it("returns a lower CO2 number where *some* domains use green power", () => {
-        const pages = pagexray.convert(har);
-        const pageXrayRun = pages[0];
-        // green can be true, or a array containing entries
-        let green = [
-          "www.thegreenwebfoundation.org",
-          "fonts.googleapis.com",
-          "ajax.googleapis.com",
-          "assets.digitalclimatestrike.net",
-          "cdnjs.cloudflare.com",
-          "graphite.thegreenwebfoundation.org",
-          "analytics.thegreenwebfoundation.org",
-          "fonts.gstatic.com",
-          "api.thegreenwebfoundation.org",
-        ];
-        expect(co2.perPage(pageXrayRun, green).toFixed(5)).toBe(
-          TGWF_MIXED_VALUE.toFixed(5)
-        );
-      });
-    });
-    describe("perDomain", () => {
-      it("shows object listing Co2 for each domain", () => {
-        const pages = pagexray.convert(har);
-        const pageXrayRun = pages[0];
-        const res = co2.perDomain(pageXrayRun);
-
-        const domains = [
-          "thegreenwebfoundation.org",
-          "www.thegreenwebfoundation.org",
-          "maxcdn.bootstrapcdn.com",
-          "fonts.googleapis.com",
-          "ajax.googleapis.com",
-          "assets.digitalclimatestrike.net",
-          "cdnjs.cloudflare.com",
-          "graphite.thegreenwebfoundation.org",
-          "analytics.thegreenwebfoundation.org",
-          "fonts.gstatic.com",
-          "api.thegreenwebfoundation.org",
-        ];
-
-        for (let obj of res) {
-          expect(domains.indexOf(obj.domain)).toBeGreaterThan(-1);
-          expect(typeof obj.co2).toBe("number");
-        }
-      });
-      it("shows lower Co2 for green domains", () => {
-        const pages = pagexray.convert(har);
-        const pageXrayRun = pages[0];
-
-        const greenDomains = [
-          "www.thegreenwebfoundation.org",
-          "fonts.googleapis.com",
-          "ajax.googleapis.com",
-          "assets.digitalclimatestrike.net",
-          "cdnjs.cloudflare.com",
-          "graphite.thegreenwebfoundation.org",
-          "analytics.thegreenwebfoundation.org",
-          "fonts.gstatic.com",
-          "api.thegreenwebfoundation.org",
-        ];
-        const res = co2.perDomain(pageXrayRun);
-        const resWithGreen = co2.perDomain(pageXrayRun, greenDomains);
-
-        for (let obj of res) {
-          expect(typeof obj.co2).toBe("number");
-        }
-        for (let obj of greenDomains) {
-          let index = 0;
-          expect(resWithGreen[index].co2).toBeLessThan(res[index].co2);
-          index++;
-        }
-      });
-    });
-  });
+  let co2;
 
   describe("Sustainable Web Design model as simple option", () => {
     // the SWD model should have slightly higher values as
     // we include more of the system in calculations for the
     // same levels of data transfer
 
-    const {
-      MILLION_GREEN,
-      MILLION_GREY,
-      TGWF_GREY_VALUE,
-      TGWF_MIXED_VALUE,
-      MILLION_PERVISIT_GREY,
-      MILLION_PERVISIT_GREEN,
-    } = SWD;
+    const { MILLION_PERVISIT_GREY, MILLION_PERVISIT_GREEN } = SWDV3;
 
     // We're not passing in a model parameter here to check that SWD is used by default
     beforeEach(() => {
       co2 = new CO2();
-      har = JSON.parse(
-        fs.readFileSync(
-          path.resolve(__dirname, "../data/fixtures/tgwf.har"),
-          "utf8"
-        )
-      );
     });
 
     describe("perVisit", () => {
@@ -172,105 +46,6 @@ describe("co2", () => {
       });
     });
 
-    describe("perPage", () => {
-      it("returns CO2 for total transfer for page", () => {
-        const pages = pagexray.convert(har);
-        const pageXrayRun = pages[0];
-
-        expect(parseFloat(co2.perPage(pageXrayRun).toFixed(5))).toBeCloseTo(
-          parseFloat(TGWF_GREY_VALUE.toFixed(5)),
-          3
-        );
-      });
-      it("returns lower CO2 for page served from green site", () => {
-        const pages = pagexray.convert(har);
-        const pageXrayRun = pages[0];
-        let green = [
-          "www.thegreenwebfoundation.org",
-          "fonts.googleapis.com",
-          "ajax.googleapis.com",
-          "assets.digitalclimatestrike.net",
-          "cdnjs.cloudflare.com",
-          "graphite.thegreenwebfoundation.org",
-          "analytics.thegreenwebfoundation.org",
-          "fonts.gstatic.com",
-          "api.thegreenwebfoundation.org",
-        ];
-        expect(co2.perPage(pageXrayRun, green)).toBeLessThan(TGWF_GREY_VALUE);
-      });
-      it("returns a lower CO2 number where *some* domains use green power", () => {
-        const pages = pagexray.convert(har);
-        const pageXrayRun = pages[0];
-        // green can be true, or a array containing entries
-        let green = [
-          "www.thegreenwebfoundation.org",
-          "fonts.googleapis.com",
-          "ajax.googleapis.com",
-          "assets.digitalclimatestrike.net",
-          "cdnjs.cloudflare.com",
-          "graphite.thegreenwebfoundation.org",
-          "analytics.thegreenwebfoundation.org",
-          "fonts.gstatic.com",
-          "api.thegreenwebfoundation.org",
-        ];
-        expect(
-          parseFloat(co2.perPage(pageXrayRun, green).toFixed(5))
-        ).toBeCloseTo(parseFloat(TGWF_MIXED_VALUE.toFixed(5)), 3);
-      });
-    });
-    describe("perDomain", () => {
-      it("shows object listing Co2 for each domain", () => {
-        const pages = pagexray.convert(har);
-        const pageXrayRun = pages[0];
-        const res = co2.perDomain(pageXrayRun);
-
-        const domains = [
-          "thegreenwebfoundation.org",
-          "www.thegreenwebfoundation.org",
-          "maxcdn.bootstrapcdn.com",
-          "fonts.googleapis.com",
-          "ajax.googleapis.com",
-          "assets.digitalclimatestrike.net",
-          "cdnjs.cloudflare.com",
-          "graphite.thegreenwebfoundation.org",
-          "analytics.thegreenwebfoundation.org",
-          "fonts.gstatic.com",
-          "api.thegreenwebfoundation.org",
-        ];
-
-        for (let obj of res) {
-          expect(domains.indexOf(obj.domain)).toBeGreaterThan(-1);
-          expect(typeof obj.co2).toBe("number");
-        }
-      });
-      it("shows lower Co2 for green domains", () => {
-        const pages = pagexray.convert(har);
-        const pageXrayRun = pages[0];
-
-        const greenDomains = [
-          "www.thegreenwebfoundation.org",
-          "fonts.googleapis.com",
-          "ajax.googleapis.com",
-          "assets.digitalclimatestrike.net",
-          "cdnjs.cloudflare.com",
-          "graphite.thegreenwebfoundation.org",
-          "analytics.thegreenwebfoundation.org",
-          "fonts.gstatic.com",
-          "api.thegreenwebfoundation.org",
-        ];
-        const res = co2.perDomain(pageXrayRun);
-        const resWithGreen = co2.perDomain(pageXrayRun, greenDomains);
-
-        for (let obj of res) {
-          expect(typeof obj.co2).toBe("number");
-        }
-        for (let obj of greenDomains) {
-          let index = 0;
-          expect(resWithGreen[index].co2).toBeLessThan(res[index].co2);
-          index++;
-        }
-      });
-    });
     describe("Returning results by segment", () => {
       const {
         MILLION_GREY,
@@ -290,7 +65,7 @@ describe("co2", () => {
         MILLION_GREY_DATACENTERS,
         MILLION_GREY_PRODUCTION,
         MILLION_GREEN_DATACENTERS,
-      } = SWD;
+      } = SWDV3;
       describe("perVisit", () => {
         it("returns an object with devices, networks, data centers, and production emissions shown separately, as well as the total emissions", () => {
           co2 = new CO2({ results: "segment" });
@@ -438,6 +213,22 @@ describe("co2", () => {
         `The perVisit() method is not supported in the model you are using. Try using perByte() instead.\nSee https://developers.thegreenwebfoundation.org/co2js/methods/ to learn more about the methods available in CO2.js.`
       );
     });
+
+    it("throws an error if using the rating system with OneByte", () => {
+      expect(() => {
+        co2 = new CO2({ model: "1byte", rating: true });
+      }).toThrowError(
+        `The rating system is not supported in the model you are using. Try using the Sustainable Web Design model instead.\nSee https://developers.thegreenwebfoundation.org/co2js/models/ to learn more about the models available in CO2.js.`
+      );
+    });
+
+    it("throws an error if the rating parameter is not a boolean", () => {
+      expect(() => {
+        co2 = new CO2({ rating: "false" });
+      }).toThrowError(
+        `The rating option must be a boolean. Please use true or false.\nSee https://developers.thegreenwebfoundation.org/co2js/options/ to learn more about the options available in CO2.js.`
+      );
+    });
   });
 
   // Test that grid intensity data can be imported and used
@@ -476,6 +267,33 @@ describe("co2", () => {
         co2.perVisit(MILLION, true)
       );
     });
+
+    it("returns the expected properties", () => {
+      expect(co2.perByteTrace(MILLION)).toHaveProperty("co2");
+      expect(co2.perByteTrace(MILLION)).toHaveProperty("variables");
+      expect(co2.perByteTrace(MILLION)).toHaveProperty("green");
+      expect(co2.perByteTrace(MILLION)).toHaveProperty(
+        "variables.gridIntensity"
+      );
+      expect(co2.perByteTrace(MILLION)).not.toHaveProperty(
+        "variables.firstVisitPercentage"
+      );
+      expect(co2.perVisitTrace(MILLION)).toHaveProperty("co2");
+      expect(co2.perVisitTrace(MILLION)).toHaveProperty("variables");
+      expect(co2.perVisitTrace(MILLION)).toHaveProperty("green");
+      expect(co2.perVisitTrace(MILLION)).toHaveProperty(
+        "variables.gridIntensity"
+      );
+      expect(co2.perVisitTrace(MILLION)).toHaveProperty(
+        "variables.firstVisitPercentage"
+      );
+      expect(co2.perVisitTrace(MILLION)).toHaveProperty(
+        "variables.returnVisitPercentage"
+      );
+      expect(co2.perVisitTrace(MILLION)).toHaveProperty(
+        "variables.dataReloadRatio"
+      );
+    });
   });
 
   describe("Using custom grid intensity", () => {
@@ -484,7 +302,7 @@ describe("co2", () => {
       expect(
         co2.perVisitTrace(MILLION, false, {
           gridIntensity: {
-            device: 565.629,
+            device: 678.87,
             dataCenter: { country: "TWN" },
           },
         }).co2
@@ -493,7 +311,7 @@ describe("co2", () => {
       expect(
         co2.perByteTrace(MILLION, false, {
           gridIntensity: {
-            device: 565.629,
+            device: 678.87,
             dataCenter: { country: "TWN" },
             network: { country: "TWN" },
           },
@@ -508,7 +326,7 @@ describe("co2", () => {
       MILLION_PERBYTE_GREY_DEVICE_GRID_INTENSITY_CHANGE,
       MILLION_GREY,
       MILLION_PERVISIT_GREY,
-    } = SWD;
+    } = SWDV3;
     const co2 = new CO2();
     it("expects an object or number", () => {
       expect(
@@ -542,7 +360,7 @@ describe("co2", () => {
           co2
             .perVisitTrace(MILLION, false, {
               gridIntensity: {
-                device: 561,
+                device: TwnGridIntensityValue,
               },
             })
             .co2.toPrecision(5)
@@ -559,7 +377,7 @@ describe("co2", () => {
           co2
             .perByteTrace(MILLION, false, {
               gridIntensity: {
-                device: 561,
+                device: TwnGridIntensityValue,
               },
             })
             .co2.toPrecision(4)
@@ -608,7 +426,7 @@ describe("co2", () => {
       MILLION_PERBYTE_GREY_DATACENTER_GRID_INTENSITY_CHANGE,
       MILLION_GREY,
       MILLION_PERVISIT_GREY,
-    } = SWD;
+    } = SWDV3;
     const co2 = new CO2();
     it("expects an object or number", () => {
       expect(
@@ -641,7 +459,7 @@ describe("co2", () => {
           co2
             .perVisitTrace(MILLION, false, {
               gridIntensity: {
-                dataCenter: 561,
+                dataCenter: TwnGridIntensityValue,
               },
             })
             .co2.toPrecision(5)
@@ -657,7 +475,7 @@ describe("co2", () => {
           co2
             .perByteTrace(MILLION, false, {
               gridIntensity: {
-                dataCenter: 561,
+                dataCenter: TwnGridIntensityValue,
               },
             })
             .co2.toPrecision(5)
@@ -706,7 +524,7 @@ describe("co2", () => {
       MILLION_PERBYTE_GREY_NETWORK_GRID_INTENSITY_CHANGE,
       MILLION_GREY,
       MILLION_PERVISIT_GREY,
-    } = SWD;
+    } = SWDV3;
     const co2 = new CO2();
     it("expects an object or number", () => {
       expect(
@@ -740,14 +558,14 @@ describe("co2", () => {
           co2
             .perVisitTrace(MILLION, false, {
               gridIntensity: {
-                network: 561,
+                network: TwnGridIntensityValue,
               },
             })
             .co2.toPrecision(5)
         )
       ).toBeCloseTo(
         parseFloat(
-          MILLION_PERVISIT_GREY_NETWORK_GRID_INTENSITY_CHANGE.toPrecision(5)
+          MILLION_PERVISIT_GREY_NETWORK_GRID_INTENSITY_CHANGE.toFixed(5)
         ),
         3
       );
@@ -756,7 +574,7 @@ describe("co2", () => {
           co2
             .perByteTrace(MILLION, false, {
               gridIntensity: {
-                network: 561,
+                network: TwnGridIntensityValue,
               },
             })
             .co2.toPrecision(5)
@@ -800,7 +618,7 @@ describe("co2", () => {
   });
 
   describe("Using custom caching values in SWD", () => {
-    const { MILLION_PERVISIT_GREY } = SWD;
+    const { MILLION_PERVISIT_GREY } = SWDV3;
     const co2 = new CO2();
     it("uses the custom value", () => {
       expect(
@@ -848,7 +666,7 @@ describe("co2", () => {
   });
 
   describe("Using custom first and return visitor figures in SWD", () => {
-    const { MILLION_PERVISIT_GREY, MILLION_GREY } = SWD;
+    const { MILLION_PERVISIT_GREY, MILLION_GREY } = SWDV3;
     const co2 = new CO2();
 
     it("uses the custom values", () => {
@@ -959,9 +777,9 @@ describe("co2", () => {
       });
       const { dataCenter, network, device } =
         perByteTraceResult.variables.gridIntensity;
-      expect(dataCenter).toBe(0);
-      expect(network).toBe(0);
-      expect(device).toBe(0);
+      expect(dataCenter).toStrictEqual({ value: 0 });
+      expect(network).toStrictEqual({ value: 0 });
+      expect(device).toStrictEqual({ value: 0 });
     });
 
     it("expects perVisitTrace to support values equal to 0", () => {
@@ -982,9 +800,9 @@ describe("co2", () => {
       expect(dataReloadRatio).toBe(0);
       expect(firstVisitPercentage).toBe(0);
       expect(returnVisitPercentage).toBe(0);
-      expect(dataCenter).toBe(0);
-      expect(network).toBe(0);
-      expect(device).toBe(0);
+      expect(dataCenter).toStrictEqual({ value: 0 });
+      expect(network).toStrictEqual({ value: 0 });
+      expect(device).toStrictEqual({ value: 0 });
     });
     it("expects perByteTrace segments to be 0 when grid intensity is 0", () => {
       const perByteTraceResult = co2.perByteTrace(1000000, false, {
@@ -1057,6 +875,154 @@ describe("co2", () => {
       expect(co2Result["dataCenterCO2 - subsequent"]).toBe(0);
       expect(co2Result["networkCO2 - subsequent"]).toBe(0);
       expect(co2Result["consumerDeviceCO2 - subsequent"]).toBe(0);
+    });
+  });
+
+  describe("Returning SWD results with rating", () => {
+    const co2NoRating = new CO2();
+    const co2Rating = new CO2({ rating: true });
+    const co2RatingSegmented = new CO2({ rating: true, results: "segment" });
+
+    it("does not return a rating when rating is false", () => {
+      expect(co2NoRating.perVisit(MILLION)).not.toHaveProperty("rating");
+    });
+
+    it("returns a rating when rating is true", () => {
+      expect(co2Rating.perVisit(MILLION)).toHaveProperty("rating");
+    });
+
+    it("returns a rating when rating is true and results are segmented", () => {
+      expect(co2RatingSegmented.perByte(MILLION)).toHaveProperty("rating");
+      expect(co2RatingSegmented.perByte(MILLION)).toHaveProperty("networkCO2");
+    });
+  });
+
+  describe("Switch versions of the Sustainable Web Design model", () => {
+    const co2 = new CO2({ model: "swd" });
+    const co2SWDV4 = new CO2({ model: "swd", version: 4 });
+
+    it("uses the SWD model version 3 by default", () => {
+      expect(co2.model.version).toBe(3);
+    });
+
+    it("uses the SWD model version 4 when specified", () => {
+      expect(co2SWDV4.model.version).toBe(4);
+    });
+  });
+
+  describe("Using the perByteTrace method in SWDM v4", () => {
+    const co2 = new CO2({ model: "swd", version: 4 });
+    it("returns the expected object", () => {
+      const res = co2.perByteTrace(MILLION);
+      expect(res).toHaveProperty("variables");
+      expect(res).toHaveProperty("co2");
+      expect(res).toHaveProperty("green");
+
+      expect(res.variables).toHaveProperty("bytes");
+      expect(res.variables).toHaveProperty("gridIntensity");
+      expect(res.variables).toHaveProperty("greenHostingFactor");
+      expect(res.variables).not.toHaveProperty("dataReloadRatio");
+
+      expect(res.variables.gridIntensity).toHaveProperty("device");
+      expect(res.variables.gridIntensity).toHaveProperty("dataCenter");
+      expect(res.variables.gridIntensity).toHaveProperty("network");
+
+      expect(res.co2).toBeGreaterThan(0);
+      expect(res.variables.greenHostingFactor).toBe(0);
+      expect(res.green).toBe(false);
+      expect(res.variables.gridIntensity.device.value).toBe(
+        SWDM4_GLOBAL_GRID_INTENSITY
+      );
+      expect(res.variables.gridIntensity.dataCenter.value).toBe(
+        SWDM4_GLOBAL_GRID_INTENSITY
+      );
+      expect(res.variables.gridIntensity.network.value).toBe(
+        SWDM4_GLOBAL_GRID_INTENSITY
+      );
+    });
+    it("returns the expected object when adjustments are made", () => {
+      const res = co2.perByteTrace(MILLION, false, {
+        gridIntensity: {
+          dataCenter: 300,
+          network: 200,
+          device: { country: "TWN" },
+        },
+        greenHostingFactor: 0.5,
+      });
+
+      expect(res.variables.greenHostingFactor).toBe(0.5);
+      expect(res.green).toBe(false);
+      expect(res.variables.gridIntensity.device.country).toBe("TWN");
+      expect(res.variables.gridIntensity.dataCenter.value).toBe(300);
+      expect(res.variables.gridIntensity.network.value).toBe(200);
+    });
+    it("returns the expected greenHosting factor when green is set", () => {
+      const res = co2.perByteTrace(MILLION, true, {
+        greenHostingFactor: 0.5,
+      });
+
+      expect(res.variables.greenHostingFactor).toBe(1);
+    });
+  });
+
+  describe("Using the perVisitTrace method in SWDM v4", () => {
+    const co2 = new CO2({ model: "swd", version: 4 });
+    it("returns the expected object", () => {
+      const res = co2.perVisitTrace(MILLION);
+      // console.log(res);
+      expect(res).toHaveProperty("variables");
+      expect(res).toHaveProperty("co2");
+      expect(res).toHaveProperty("green");
+
+      expect(res.variables).toHaveProperty("bytes");
+      expect(res.variables).toHaveProperty("gridIntensity");
+      expect(res.variables).toHaveProperty("greenHostingFactor");
+      expect(res.variables).toHaveProperty("firstVisitPercentage");
+      expect(res.variables).toHaveProperty("returnVisitPercentage");
+      expect(res.variables).toHaveProperty("dataReloadRatio");
+
+      expect(res.variables.gridIntensity).toHaveProperty("device");
+      expect(res.variables.gridIntensity).toHaveProperty("dataCenter");
+      expect(res.variables.gridIntensity).toHaveProperty("network");
+
+      expect(res.co2).toBeGreaterThan(0);
+      expect(res.variables.greenHostingFactor).toBe(0);
+      expect(res.green).toBe(false);
+      expect(res.variables.firstVisitPercentage).toBe(1);
+      expect(res.variables.returnVisitPercentage).toBe(0);
+      expect(res.variables.dataReloadRatio).toBe(0);
+      expect(res.variables.gridIntensity.device.value).toBe(
+        SWDM4_GLOBAL_GRID_INTENSITY
+      );
+      expect(res.variables.gridIntensity.dataCenter.value).toBe(
+        SWDM4_GLOBAL_GRID_INTENSITY
+      );
+      expect(res.variables.gridIntensity.network.value).toBe(
+        SWDM4_GLOBAL_GRID_INTENSITY
+      );
+    });
+    it("returns the expected object when adjustments are made", () => {
+      const res = co2.perByteTrace(MILLION, false, {
+        gridIntensity: {
+          dataCenter: 300,
+          network: 200,
+          device: { country: "TWN" },
+        },
+        greenHostingFactor: 0.5,
+      });
+
+      expect(res.variables.greenHostingFactor).toBe(0.5);
+      expect(res.green).toBe(false);
+      expect(res.variables.gridIntensity.device.country).toBe("TWN");
+      expect(res.variables.gridIntensity.dataCenter.value).toBe(300);
+      expect(res.variables.gridIntensity.network.value).toBe(200);
+    });
+    it("returns the expected greenHosting factor when green is set", () => {
+      const res = co2.perByteTrace(MILLION, true, {
+        greenHostingFactor: 0.5,
+      });
+
+      expect(res.variables.greenHostingFactor).toBe(1);
     });
   });
 });

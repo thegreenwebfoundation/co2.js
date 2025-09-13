@@ -1,50 +1,77 @@
 "use strict";
 
+import { getApiRequestHeaders } from "./helpers/index.js";
+import hostingJSON from "./hosting-json.js";
+
 /**
- * Check if a string or array of domains has been provided
+ * Check if a string or array of domains is hosted by a green web host by querying the Green Web Foundation API.
  * @param {string|array} domain - The domain to check, or an array of domains to be checked.
+ * @param {string | DomainCheckOptions} optionsOrAgentId - Optional. An object of domain check options, or a string
+ *   representing the app, site, or organisation that is making the request.
  */
 
-function check(domain) {
+function check(domain, optionsOrAgentId) {
+  const options =
+    typeof optionsOrAgentId === "string"
+      ? { userAgentIdentifier: optionsOrAgentId }
+      : optionsOrAgentId;
+
+  if (options?.db && options.verbose) {
+    throw new Error("verbose mode cannot be used with a local lookup database");
+  }
   // is it a single domain or an array of them?
   if (typeof domain === "string") {
-    return checkAgainstAPI(domain);
+    return checkAgainstAPI(domain, options);
   } else {
-    return checkDomainsAgainstAPI(domain);
+    return checkDomainsAgainstAPI(domain, options);
   }
 }
 
 /**
  * Check if a domain is hosted by a green web host by querying the Green Web Foundation API.
  * @param {string} domain - The domain to check.
- * @returns {boolean} - A boolean indicating whether the domain is hosted by a green web host.
+ * @param {DomainCheckOptions} options
+ * @returns - A boolean indicating whether the domain is hosted by a green web host if `options.verbose` is false,
+ *   otherwise an object representing the domain host information.
  */
-async function checkAgainstAPI(domain) {
+async function checkAgainstAPI(domain, options = {}) {
   const req = await fetch(
-    `https://api.thegreenwebfoundation.org/greencheck/${domain}`
+    `https://api.thegreenwebfoundation.org/greencheck/${domain}`,
+    {
+      headers: getApiRequestHeaders(options.userAgentIdentifier),
+    }
   );
+  if (options?.db) {
+    return hostingJSON.check(domain, options.db);
+  }
   const res = await req.json();
-  return res.green;
+  return options.verbose ? res : res.green;
 }
 
 /**
  * Check if an array of domains is hosted by a green web host by querying the Green Web Foundation API.
  * @param {array} domains - An array of domains to check.
- * @returns {array} - An array of domains that are hosted by a green web host.
+ * @param {DomainCheckOptions} options
+ * @returns - An array of domains that are hosted by a green web host if `options.verbose` is false,
+ *   otherwise a dictionary of domain to host information.
  */
 
-async function checkDomainsAgainstAPI(domains) {
+async function checkDomainsAgainstAPI(domains, options = {}) {
   try {
     const apiPath = "https://api.thegreenwebfoundation.org/v2/greencheckmulti";
     const domainsString = JSON.stringify(domains);
 
-    const req = await fetch(`${apiPath}/${domainsString}`);
+    const req = await fetch(`${apiPath}/${domainsString}`, {
+      headers: getApiRequestHeaders(options.userAgentIdentifier),
+    });
 
     const allGreenCheckResults = await req.json();
 
-    return greenDomainsFromResults(allGreenCheckResults);
+    return options.verbose
+      ? allGreenCheckResults
+      : greenDomainsFromResults(allGreenCheckResults);
   } catch (e) {
-    return [];
+    return options.verbose ? {} : [];
   }
 }
 

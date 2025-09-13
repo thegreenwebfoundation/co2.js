@@ -2,16 +2,16 @@
 
 /**
  * @typedef {Object} CO2EstimateTraceResultPerByte
- * @property {number} co2 - The CO2 estimate in grams/kilowatt-hour
+ * @property {number|CO2EstimateComponentsPerByte} co2 - The CO2 estimate in grams or its separate components
  * @property {boolean} green - Whether the domain is green or not
- * @property {TraceResultVariables} variables - The variables used to calculate the CO2 estimate
+ * @property {TraceResultVariablesPerByte} variables - The variables used to calculate the CO2 estimate
  */
 
 /**
  * @typedef {Object} CO2EstimateTraceResultPerVisit
- * @property {number} co2 - The CO2 estimate in grams/kilowatt-hour
+ * @property {number|CO2EstimateComponentsPerVisit} co2 - The CO2 estimate in grams or its separate components
  * @property {boolean} green - Whether the domain is green or not
- * @property {TraceResultVariables} variables - The variables used to calculate the CO2 estimate
+ * @property {TraceResultVariablesPerVisit} variables - The variables used to calculate the CO2 estimate
  */
 
 /**
@@ -35,32 +35,77 @@
  * @property {number} production - The production grid intensity set by the user or the default
  */
 
+/**
+ * @typedef {Object} CO2EstimateComponentsPerByte
+ * @property {number} networkCO2 - The CO2 estimate for networking in grams
+ * @property {number} dataCenterCO2 - The CO2 estimate for data centers in grams
+ * @property {number} consumerDeviceCO2 - The CO2 estimate for consumer devices in grams
+ * @property {number} productionCO2 - The CO2 estimate for device production in grams
+ * @property {string} rating - The rating of the CO2 estimate based on the Sustainable Web Design Model
+ * @property {number} total - The total CO2 estimate in grams
+ */
+
+/**
+ * @typedef {Object} CO2EstimateComponentsPerVisit
+ * @property {number} 'networkCO2 - first' - The CO2 estimate for networking in grams on first visit
+ * @property {number} 'networkCO2 - subsequent' - The CO2 estimate for networking in grams on subsequent visits
+ * @property {number} 'dataCenterCO2 - first' - The CO2 estimate for data centers in grams on first visit
+ * @property {number} 'dataCenterCO2 - subsequent' - The CO2 estimate for data centers in grams on subsequent visits
+ * @property {number} 'consumerDeviceCO2 - first' - The CO2 estimate for consumer devices in grams on first visit
+ * @property {number} 'consumerDeviceCO2 - subsequent' - The CO2 estimate for consumer devices in grams on subsequent visits
+ * @property {number} 'productionCO2 - first' - The CO2 estimate for device production in grams on first visit
+ * @property {number} 'productionCO2 - subsequent' - The CO2 estimate for device production in grams on subsequent visits
+ * @property {string} rating - The rating of the CO2 estimate based on the Sustainable Web Design Model
+ * @property {number} total - The total CO2 estimate in grams
+ */
+
 import OneByte from "./1byte.js";
-import SustainableWebDesign from "./sustainable-web-design.js";
+import SustainableWebDesignV3 from "./sustainable-web-design-v3.js";
+import SustainableWebDesignV4 from "./sustainable-web-design-v4.js";
 
 import {
-  GLOBAL_GRID_INTENSITY,
-  RENEWABLES_GRID_INTENSITY,
-} from "./constants/index.js";
-import { parseOptions } from "./helpers/index.js";
+  parseByteTraceOptions,
+  parseVisitTraceOptions,
+} from "./helpers/index.js";
 
 class CO2 {
   constructor(options) {
-    this.model = new SustainableWebDesign();
+    this.model = new SustainableWebDesignV3();
     // Using optional chaining allows an empty object to be passed
     // in without breaking the code.
     if (options?.model === "1byte") {
       this.model = new OneByte();
     } else if (options?.model === "swd") {
-      this.model = new SustainableWebDesign();
+      this.model = new SustainableWebDesignV3();
+      if (options?.version === 4) {
+        this.model = new SustainableWebDesignV4();
+      }
     } else if (options?.model) {
       throw new Error(
         `"${options.model}" is not a valid model. Please use "1byte" for the OneByte model, and "swd" for the Sustainable Web Design model.\nSee https://developers.thegreenwebfoundation.org/co2js/models/ to learn more about the models available in CO2.js.`
       );
     }
 
+    if (options?.rating && typeof options.rating !== "boolean") {
+      throw new Error(
+        `The rating option must be a boolean. Please use true or false.\nSee https://developers.thegreenwebfoundation.org/co2js/options/ to learn more about the options available in CO2.js.`
+      );
+    }
+
+    // This flag checks to see if the model itself has a rating system.
+    const allowRatings = !!this.model.allowRatings;
+
     /** @private */
     this._segment = options?.results === "segment";
+    // This flag is set by the user to enable the rating system.
+    this._rating = options?.rating === true;
+
+    // The rating system is only supported in the Sustainable Web Design Model.
+    if (!allowRatings && this._rating) {
+      throw new Error(
+        `The rating system is not supported in the model you are using. Try using the Sustainable Web Design model instead.\nSee https://developers.thegreenwebfoundation.org/co2js/models/ to learn more about the models available in CO2.js.`
+      );
+    }
   }
 
   /**
@@ -70,10 +115,10 @@ class CO2 {
    *
    * @param {number} bytes
    * @param {boolean} green
-   * @return {number} the amount of CO2 in grammes
+   * @return {number|CO2EstimateComponentsPerByte} the amount of CO2 in grammes or its separate components
    */
   perByte(bytes, green = false) {
-    return this.model.perByte(bytes, green, this._segment);
+    return this.model.perByte(bytes, green, this._segment, this._rating);
   }
 
   /**
@@ -83,11 +128,11 @@ class CO2 {
    *
    * @param {number} bytes
    * @param {boolean} green
-   * @return {number} the amount of CO2 in grammes
+   * @return {number|CO2EstimateComponentsPerVisit} the amount of CO2 in grammes or its separate components
    */
   perVisit(bytes, green = false) {
     if (this.model?.perVisit) {
-      return this.model.perVisit(bytes, green, this._segment);
+      return this.model.perVisit(bytes, green, this._segment, this._rating);
     } else {
       throw new Error(
         `The perVisit() method is not supported in the model you are using. Try using perByte() instead.\nSee https://developers.thegreenwebfoundation.org/co2js/methods/ to learn more about the methods available in CO2.js.`
@@ -106,13 +151,28 @@ class CO2 {
    * @return {CO2EstimateTraceResultPerByte} the amount of CO2 in grammes
    */
   perByteTrace(bytes, green = false, options = {}) {
-    let adjustments = {};
-    if (options) {
-      // If there are options, parse them and add them to the model.
-      adjustments = parseOptions(options);
-    }
+    const adjustments = parseByteTraceOptions(
+      options,
+      this.model.version,
+      green
+    );
+
+    // Filter out the trace items that aren't relevant to this function.
+    const { gridIntensity, ...traceVariables } = adjustments;
+    const {
+      dataReloadRatio,
+      firstVisitPercentage,
+      returnVisitPercentage,
+      ...otherVariables
+    } = traceVariables;
     return {
-      co2: this.model.perByte(bytes, green, this._segment, adjustments),
+      co2: this.model.perByte(
+        bytes,
+        green,
+        this._segment,
+        this._rating,
+        adjustments
+      ),
       green,
       variables: {
         description:
@@ -121,16 +181,9 @@ class CO2 {
         gridIntensity: {
           description:
             "The grid intensity (grams per kilowatt-hour) used to calculate this CO2 estimate.",
-          network:
-            adjustments?.gridIntensity?.network?.value ?? GLOBAL_GRID_INTENSITY,
-          dataCenter: green
-            ? RENEWABLES_GRID_INTENSITY
-            : adjustments?.gridIntensity?.dataCenter?.value ??
-              GLOBAL_GRID_INTENSITY,
-          production: GLOBAL_GRID_INTENSITY,
-          device:
-            adjustments?.gridIntensity?.device?.value ?? GLOBAL_GRID_INTENSITY,
+          ...adjustments.gridIntensity,
         },
+        ...otherVariables,
       },
     };
   }
@@ -147,14 +200,21 @@ class CO2 {
    */
   perVisitTrace(bytes, green = false, options = {}) {
     if (this.model?.perVisit) {
-      let adjustments = {};
-      if (options) {
-        // If there are options, parse them and add them to the model.
-        adjustments = parseOptions(options);
-      }
+      const adjustments = parseVisitTraceOptions(
+        options,
+        this.model.version,
+        green
+      );
+      const { gridIntensity, ...variables } = adjustments;
 
       return {
-        co2: this.model.perVisit(bytes, green, this._segment, adjustments),
+        co2: this.model.perVisit(
+          bytes,
+          green,
+          this._segment,
+          this._rating,
+          adjustments
+        ),
         green,
         variables: {
           description:
@@ -163,130 +223,28 @@ class CO2 {
           gridIntensity: {
             description:
               "The grid intensity (grams per kilowatt-hour) used to calculate this CO2 estimate.",
-            network:
-              adjustments?.gridIntensity?.network?.value ??
-              GLOBAL_GRID_INTENSITY,
-            dataCenter: green
-              ? RENEWABLES_GRID_INTENSITY
-              : adjustments?.gridIntensity?.dataCenter?.value ??
-                GLOBAL_GRID_INTENSITY,
-            production: GLOBAL_GRID_INTENSITY,
-            device:
-              adjustments?.gridIntensity?.device?.value ??
-              GLOBAL_GRID_INTENSITY,
+            ...adjustments.gridIntensity,
           },
-          dataReloadRatio: adjustments?.dataReloadRatio ?? 0.02,
-          firstVisitPercentage: adjustments?.firstVisitPercentage ?? 0.75,
-          returnVisitPercentage: adjustments?.returnVisitPercentage ?? 0.25,
+          ...variables,
         },
       };
     } else {
       throw new Error(
-        `The perVisitDetailed() method is not supported in the model you are using. Try using perByte() instead.\nSee https://developers.thegreenwebfoundation.org/co2js/methods/ to learn more about the methods available in CO2.js.`
+        `The perVisitTrace() method is not supported in the model you are using. Try using perByte() instead.\nSee https://developers.thegreenwebfoundation.org/co2js/methods/ to learn more about the methods available in CO2.js.`
       );
     }
   }
 
-  perDomain(pageXray, greenDomains) {
-    const co2PerDomain = [];
-    for (let domain of Object.keys(pageXray.domains)) {
-      let co2;
-      if (greenDomains && greenDomains.indexOf(domain) > -1) {
-        co2 = this.perByte(pageXray.domains[domain].transferSize, true);
-      } else {
-        co2 = this.perByte(pageXray.domains[domain].transferSize);
-      }
-      co2PerDomain.push({
-        domain,
-        co2,
-        transferSize: pageXray.domains[domain].transferSize,
-      });
-    }
-    co2PerDomain.sort((a, b) => b.co2 - a.co2);
-
-    return co2PerDomain;
+  SustainableWebDesignV3() {
+    return new SustainableWebDesignV3();
   }
 
-  perPage(pageXray, green) {
-    // Accept an xray object, and if we receive a boolean as the second
-    // argument, we assume every request we make is sent to a server
-    // running on renwewable power.
-
-    // if we receive an array of domains, return a number accounting the
-    // reduced CO2 from green hosted domains
-
-    const domainCO2 = this.perDomain(pageXray, green);
-    let totalCO2 = 0;
-    for (let domain of domainCO2) {
-      totalCO2 += domain.co2;
-    }
-    return totalCO2;
+  SustainableWebDesignV4() {
+    return new SustainableWebDesignV4();
   }
 
-  perContentType(pageXray, greenDomains) {
-    const co2PerContentType = {};
-    for (let asset of pageXray.assets) {
-      const domain = new URL(asset.url).domain;
-      const transferSize = asset.transferSize;
-      const co2ForTransfer = this.perByte(
-        transferSize,
-        greenDomains && greenDomains.indexOf(domain) > -1
-      );
-      const contentType = asset.type;
-      if (!co2PerContentType[contentType]) {
-        co2PerContentType[contentType] = { co2: 0, transferSize: 0 };
-      }
-      co2PerContentType[contentType].co2 += co2ForTransfer;
-      co2PerContentType[contentType].transferSize += transferSize;
-    }
-    // restructure and sort
-    const all = [];
-    for (let type of Object.keys(co2PerContentType)) {
-      all.push({
-        type,
-        co2: co2PerContentType[type].co2,
-        transferSize: co2PerContentType[type].transferSize,
-      });
-    }
-    all.sort((a, b) => b.co2 - a.co2);
-    return all;
-  }
-
-  dirtiestResources(pageXray, greenDomains) {
-    const allAssets = [];
-    for (let asset of pageXray.assets) {
-      const domain = new URL(asset.url).domain;
-      const transferSize = asset.transferSize;
-      const co2ForTransfer = this.perByte(
-        transferSize,
-        greenDomains && greenDomains.indexOf(domain) > -1
-      );
-      allAssets.push({ url: asset.url, co2: co2ForTransfer, transferSize });
-    }
-    allAssets.sort((a, b) => b.co2 - a.co2);
-
-    return allAssets.slice(0, allAssets.length > 10 ? 10 : allAssets.length);
-  }
-
-  perParty(pageXray, greenDomains) {
-    let firstParty = 0;
-    let thirdParty = 0;
-    // calculate co2 per first/third party
-    const firstPartyRegEx = pageXray.firstPartyRegEx;
-    for (let d of Object.keys(pageXray.domains)) {
-      if (!d.match(firstPartyRegEx)) {
-        thirdParty += this.perByte(
-          pageXray.domains[d].transferSize,
-          greenDomains && greenDomains.indexOf(d) > -1
-        );
-      } else {
-        firstParty += this.perByte(
-          pageXray.domains[d].transferSize,
-          greenDomains && greenDomains.indexOf(d) > -1
-        );
-      }
-    }
-    return { firstParty, thirdParty };
+  OneByte() {
+    return new OneByte();
   }
 }
 
