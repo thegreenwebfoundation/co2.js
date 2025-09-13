@@ -27,6 +27,7 @@ Thank you for considering contributing to CO2.js. Open source is at the heart of
 
 - Push the changes made in your branch to your fork of this repository.
 - Submit a [pull request](https://github.com/thegreenwebfoundation/co2.js/pulls) to the CO2.js repository in the `thegreenwebfoundation` organization.
+  - Please ensure that you *only* merge any pull requests into the `next` branch of this repo.
   - When opening a new pull request, you'll see a template. Please follow it. It asks you to state:
     - the type of change (choose from a list)
     - link to the related issue
