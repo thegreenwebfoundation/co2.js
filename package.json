@@ -11,6 +11,10 @@
     ".": {
       "import": "./dist/esm/index.js",
       "require": "./dist/cjs/index-node.js"
+    },
+    "./data": {
+      "import": "./dist/esm/data.js",
+      "require": "./dist/cjs/data.js"
     }
   },
   "scripts": {
