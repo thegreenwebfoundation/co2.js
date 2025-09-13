@@ -7,7 +7,7 @@ import hostingAPI from "./hosting-api.js";
  * @param {string|array} domain - The domain to check, or an array of domains to be checked.
  * @returns {boolean|array} - A boolean if a string was provided, or an array of booleans if an array of domains was provided.
  */
-function check(domain) {
+export function check(domain) {
   return hostingAPI.check(domain);
 }
 

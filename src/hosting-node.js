@@ -49,7 +49,7 @@ async function getBody(url) {
  * @returns {boolean|array} - A boolean if a string was provided, or an array of booleans if an array of domains was provided.
  */
 
-function check(domain, db) {
+export function check(domain, db) {
   if (db) {
     return hostingJSON.check(domain, db);
   }
