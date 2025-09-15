@@ -6,7 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
-# Mac 
+# Mac
 .DS_Store
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
@@ -109,3 +109,6 @@ public/index.js
 # don't track workspace files
 *.vscode
 *.code-workspace
+
+# don't track data files
+data/functions/files
