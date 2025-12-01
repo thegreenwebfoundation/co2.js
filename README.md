@@ -122,6 +122,7 @@ CO2.js releases will be communicated through the following channels:
 | W3C Slack Sustainability Channel                                                                | ✅                   | ❌                     |
 | ClimateAction.Tech Slack                                                                        | ✅                   | ❌                     |
 | [Green Web Foundation LinkedIn Account](https://www.linkedin.com/company/green-web-foundation/) | ✅                   | ❌                     |
+| [CO2.js Mailing List](https://www.thegreenwebfoundation.org/co2-js/#stay-updated) | ✅                   | ❌                     |
 
 ## Licenses
 
