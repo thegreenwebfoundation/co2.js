@@ -84,7 +84,7 @@ class CO2 {
       console.warn(`------
 WARNING: We are changing the default estimation model in CO2.js to Sustainable Web Design v4 in the next version (v0.18) of CO2.js. This change will take place in February 2026.
 
-If you would like to keep using Sustainable Web Design v3, please make sure to explicitly set it in your code. See https://developers.thegreenwebfoundation.org/co2js/models/#using-the-sustainable-web-design-model-default-v0110 for details.
+If you would like to keep using Sustainable Web Design v3, please make sure to explicitly set it in your code. See https://developers.thegreenwebfoundation.org/co2js/models/#using-sustainable-web-design-model-version-3 for details.
 ------
   `);
     } else if (options?.model) {
