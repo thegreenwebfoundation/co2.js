@@ -10,7 +10,7 @@
 
 One day, the internet will be powered by renewable energy. Until that day comes, there’ll be a CO2 cost that comes with every byte of data that’s uploaded or downloaded. By being able to calculate these emissions, developers can be empowered to create more efficient, lower carbon apps, websites, and software.
 
-## [Documentation](https://developers.thegreenwebfoundation.org/co2js/overview/) | [Changelog](/CHANGELOG.md) | [Roadmap](https://github.com/orgs/thegreenwebfoundation/projects/3/views/1)
+## [Documentation](https://developers.thegreenwebfoundation.org/co2js/overview/) | [Changelog](/CHANGELOG.md) | [Roadmap](https://developers.thegreenwebfoundation.org/co2js/roadmap/)
 
 ## What is CO2.js?
 
@@ -122,6 +122,7 @@ CO2.js releases will be communicated through the following channels:
 | W3C Slack Sustainability Channel                                                                | ✅                   | ❌                     |
 | ClimateAction.Tech Slack                                                                        | ✅                   | ❌                     |
 | [Green Web Foundation LinkedIn Account](https://www.linkedin.com/company/green-web-foundation/) | ✅                   | ❌                     |
+| [CO2.js Mailing List](https://www.thegreenwebfoundation.org/co2-js/#stay-updated) | ✅                   | ❌                     |
 
 ## Licenses
 
