@@ -70,14 +70,16 @@ import {
 
 class CO2 {
   constructor(options) {
-    this.model = new SustainableWebDesignV3();
+    this.model = new SustainableWebDesignV4();
     // Using optional chaining allows an empty object to be passed
     // in without breaking the code.
     if (options?.model === "1byte") {
       this.model = new OneByte();
     } else if (options?.model === "swd") {
-      this.model = new SustainableWebDesignV3();
-      if (options?.version === 4) {
+      this.model = new SustainableWebDesignV4();
+      if (options?.version === 3) {
+        this.model = new SustainableWebDesignV3();
+      } else if (options?.version === 4) {
         this.model = new SustainableWebDesignV4();
       }
     } else if (!options?.model) {
