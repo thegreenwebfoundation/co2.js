@@ -86,6 +86,10 @@ class CO2 {
       throw new Error(
         `"${options.model}" is not a valid model. Please use "1byte" for the OneByte model, and "swd" for the Sustainable Web Design model.\nSee https://developers.thegreenwebfoundation.org/co2js/models/ to learn more about the models available in CO2.js.`
       );
+    } else if (!options?.model && options?.version) {
+      throw new Error(
+        `"Specified version ${options?.version} but an estimation model is missing. Please specify a model to use for the version you have set.`
+      );
     }
 
     if (options?.rating && typeof options.rating !== "boolean") {
