@@ -21,6 +21,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Released
 
+### [0.17.0] - 2025-12-02
+
+#### Changes
+* Add `data` and `hosting` subpath exports
+* Add warning about switching default model to SWDMv4
+
+#### Security
+* Bump tar-fs from 2.1.3 to 2.1.4 by @dependabot[bot] in https://github.com/thegreenwebfoundation/co2.js/pull/265
+* Bump js-yaml by @dependabot[bot] in https://github.com/thegreenwebfoundation/co2.js/pull/268
+
 ### [0.16.8] - 2025-05-12
 
 #### Fixed

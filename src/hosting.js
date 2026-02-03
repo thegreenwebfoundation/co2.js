@@ -17,7 +17,8 @@ import hostingAPI from "./hosting-api.js";
  *   if an array was provided for `domain`: an array of domains that are hosted by a green web host if `options.verbose` is false,
  *     otherwise a dictionary of domain to host information.
  */
-function check(domain, optionsOrAgentId) {
+
+export function check(domain, optionsOrAgentId) {
   return hostingAPI.check(domain, optionsOrAgentId);
 }
 

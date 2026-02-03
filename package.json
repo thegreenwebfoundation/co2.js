@@ -1,6 +1,6 @@
 {
   "name": "@tgwf/co2",
-  "version": "0.16.9",
+  "version": "0.17.0",
   "description": "Work out the co2 of your digital services",
   "main": "dist/cjs/index-node.js",
   "module": "dist/esm/index.js",
@@ -11,6 +11,14 @@
     ".": {
       "import": "./dist/esm/index.js",
       "require": "./dist/cjs/index-node.js"
+    },
+    "./data": {
+      "import": "./dist/esm/data.js",
+      "require": "./dist/cjs/data.js"
+    },
+    "./hosting": {
+      "import": "./dist/esm/hosting.js",
+      "require": "./dist/cjs/hosting-node.js"
     }
   },
   "scripts": {
