@@ -1,0 +1,4 @@
+export const data = {"AE":{"carbonIntensity":{"value":348,"unit":"gCO2eq/kWh"},"renewableEnergy":{"value":9,"unit":"%"},"carbonFreeEnergy":{"value":31,"unit":"%"}},"AF":{"carbonIntensity":{"value":120,"unit":"gCO2eq/kWh"},"renewableEnergy":{"value":87,"unit":"%"},"carbonFreeEnergy":{"value":87,"unit":"%"}},"AG":{"carbonIntensity":{"value":665,"unit":"gCO2eq/kWh"},"renewableEnergy":{"value":5,"unit":"%"},"carbonFreeEnergy":{"value":5,"unit":"%"}},"ZW":{"carbonIntensity":{"value":419,"unit":"gCO2eq/kWh"},"renewableEnergy":{"value":50,"unit":"%"},"carbonFreeEnergy":{"value":50,"unit":"%"}}}
+    export const methodology = "https://www.electricitymaps.com/data/methodology"
+    export default { data, methodology };
+    
