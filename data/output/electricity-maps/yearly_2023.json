@@ -1,0 +1,22 @@
+{
+  "AE": {
+    "carbonIntensity": { "value": 391, "unit": "gCO2eq/kWh" },
+    "renewableEnergy": { "value": 5, "unit": "%" },
+    "carbonFreeEnergy": { "value": 21, "unit": "%" }
+  },
+  "AF": {
+    "carbonIntensity": { "value": 120, "unit": "gCO2eq/kWh" },
+    "renewableEnergy": { "value": 87, "unit": "%" },
+    "carbonFreeEnergy": { "value": 87, "unit": "%" }
+  },
+  "AG": {
+    "carbonIntensity": { "value": 664, "unit": "gCO2eq/kWh" },
+    "renewableEnergy": { "value": 6, "unit": "%" },
+    "carbonFreeEnergy": { "value": 6, "unit": "%" }
+  },
+  "ZW": {
+    "carbonIntensity": { "value": 263, "unit": "gCO2eq/kWh" },
+    "renewableEnergy": { "value": 70, "unit": "%" },
+    "carbonFreeEnergy": { "value": 70, "unit": "%" }
+  }
+}

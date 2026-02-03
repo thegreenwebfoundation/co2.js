@@ -1,0 +1,24 @@
+export const data = {
+  AE: {
+    carbonIntensity: { value: 406, unit: "gCO2eq/kWh" },
+    renewableEnergy: { value: 5, unit: "%" },
+    carbonFreeEnergy: { value: 18, unit: "%" },
+  },
+  AF: {
+    carbonIntensity: { value: 121, unit: "gCO2eq/kWh" },
+    renewableEnergy: { value: 86, unit: "%" },
+    carbonFreeEnergy: { value: 86, unit: "%" },
+  },
+  AG: {
+    carbonIntensity: { value: 664, unit: "gCO2eq/kWh" },
+    renewableEnergy: { value: 6, unit: "%" },
+    carbonFreeEnergy: { value: 6, unit: "%" },
+  },
+  ZW: {
+    carbonIntensity: { value: 273, unit: "gCO2eq/kWh" },
+    renewableEnergy: { value: 69, unit: "%" },
+    carbonFreeEnergy: { value: 69, unit: "%" },
+  },
+};
+export const methodology = "https://www.electricitymaps.com/data/methodology";
+export default { data, methodology };
