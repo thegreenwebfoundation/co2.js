@@ -3,7 +3,6 @@ import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import { zones } from "../fixtures/electricity-maps-zones.js";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
 const years = ["2025"];
 const emapsAPIKey = process.env.EMAPS_API_KEY;
 
