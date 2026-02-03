@@ -1,6 +1,6 @@
-import { mkdir, writeFile, access, readFile } from "fs/promises";
-import { join, dirname } from "path";
-import { fileURLToPath } from "url";
+import { mkdir, writeFile } from "fs/promises";
+import { existsSync } from "fs";
+import { join } from "path";
 import { zones } from "../fixtures/electricity-maps-zones.js";
 
 const years = ["2021", "2022", "2023", "2024", "2025"];
@@ -15,15 +15,30 @@ async function downloadDataFiles() {
   for (const year of years) {
     const yearlyData = {};
 
+    const jsDataPath = join(dataDir, `yearly_${year}.js`);
+    const yearlyDataPath = join(dataDir, `yearly_${year}.json`);
+    const jsDataSrcPath = join(
+      "src",
+      "data",
+      "electricity-maps",
+      `yearly_${year}.js`
+    );
+
+    const filesAlreadyExist =
+      (await existsSync(jsDataPath)) &&
+      (await existsSync(yearlyDataPath)) &&
+      (await existsSync(jsDataSrcPath));
+
     for (const zone of Object.keys(zones)) {
       const apiUrlCarbonIntensity = `https://api.electricitymaps.com/v3/carbon-intensity/past?temporalGranularity=yearly&zone=${zone}&datetime=${year}-12-31T12:00Z`;
       const apiUrlRenewable = `https://api.electricitymaps.com/v3/renewable-energy/past?temporalGranularity=yearly&zone=${zone}&datetime=${year}-12-31T12:00Z`;
       const apiUrlCarbonFree = `https://api.electricitymaps.com/v3/carbon-free-energy/past?temporalGranularity=yearly&zone=${zone}&datetime=${year}-12-31T12:00Z`;
 
-      try {
-        await access(filePath);
-        console.debug(`File already exists: ${filePath}`);
-      } catch {
+      if (filesAlreadyExist) {
+        console.log(
+          `Files already exist: ${jsDataPath}, ${yearlyDataPath}, ${jsDataSrcPath}`
+        );
+      } else {
         console.log(`Fetching data for ${zone} in ${year}`);
         const zoneData = {
           carbonIntensity: {
@@ -88,21 +103,17 @@ async function downloadDataFiles() {
       }
     }
 
-    const jsYearlyData = `export const data = ${JSON.stringify(yearlyData)}
+    if (!filesAlreadyExist) {
+      const jsYearlyData = `export const data = ${JSON.stringify(yearlyData)}
     export const methodology = "https://www.electricitymaps.com/data/methodology"
     export default { data, methodology };
     `;
-    await writeFile(join(dataDir, `yearly_${year}.js`), jsYearlyData);
-    await writeFile(
-      join(dataDir, `yearly_${year}.json`),
-      JSON.stringify(yearlyData)
-    );
+      await writeFile(jsDataPath, jsYearlyData);
+      await writeFile(yearlyDataPath, JSON.stringify(yearlyData));
 
-    await writeFile(
-      join("src", "data", "electricity-maps", `yearly_${year}.js`),
-      jsYearlyData
-    );
-    console.log(`Files saved successfully`);
+      await writeFile(jsDataSrcPath, jsYearlyData);
+      console.log(`Files saved successfully`);
+    }
   }
 }
 
