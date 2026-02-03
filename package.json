@@ -16,6 +16,10 @@
       "import": "./dist/esm/data.js",
       "require": "./dist/cjs/data.js"
     },
+    "./data/electricity-maps": {
+      "import": "./dist/esm/data/electricity-maps/index.js",
+      "require": "./dist/cjs/data/electricity-maps/index.js"
+    },
     "./hosting": {
       "import": "./dist/esm/hosting.js",
       "require": "./dist/cjs/hosting-node.js"
