@@ -41,6 +41,7 @@ async function downloadDataFiles() {
       } else {
         console.log(`Fetching data for ${zone} in ${year}`);
         const zoneData = {
+          zone: zones[zone],
           carbonIntensity: {
             value: undefined,
             unit: "gCO2eq/kWh",
