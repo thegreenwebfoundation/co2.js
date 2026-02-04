@@ -70,14 +70,16 @@ import {
 
 class CO2 {
   constructor(options) {
-    this.model = new SustainableWebDesignV3();
+    this.model = new SustainableWebDesignV4();
     // Using optional chaining allows an empty object to be passed
     // in without breaking the code.
     if (options?.model === "1byte") {
       this.model = new OneByte();
     } else if (options?.model === "swd") {
-      this.model = new SustainableWebDesignV3();
-      if (options?.version === 4) {
+      this.model = new SustainableWebDesignV4();
+      if (options?.version === 3) {
+        this.model = new SustainableWebDesignV3();
+      } else if (options?.version === 4) {
         this.model = new SustainableWebDesignV4();
       }
     } else if (!options?.model) {
@@ -90,6 +92,10 @@ If you would like to keep using Sustainable Web Design v3, please make sure to e
     } else if (options?.model) {
       throw new Error(
         `"${options.model}" is not a valid model. Please use "1byte" for the OneByte model, and "swd" for the Sustainable Web Design model.\nSee https://developers.thegreenwebfoundation.org/co2js/models/ to learn more about the models available in CO2.js.`
+      );
+    } else if (!options?.model && options?.version) {
+      throw new Error(
+        `"Specified version ${options?.version} but an estimation model is missing. Please specify a model to use for the version you have set.`
       );
     }
 

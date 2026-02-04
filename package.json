@@ -1,6 +1,6 @@
 {
   "name": "@tgwf/co2",
-  "version": "0.17.0",
+  "version": "0.17.1-0",
   "description": "Work out the co2 of your digital services",
   "main": "dist/cjs/index-node.js",
   "module": "dist/esm/index.js",
