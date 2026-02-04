@@ -3,7 +3,7 @@ import { existsSync } from "fs";
 import { join } from "path";
 import { zones } from "../fixtures/electricity-maps-zones.js";
 
-const years = ["2021", "2022", "2023"];
+const years = ["2021", "2022", "2023", "2024", "2025"];
 const emapsAPIKey = process.env.EMAPS_API_KEY;
 
 async function downloadDataFiles() {
