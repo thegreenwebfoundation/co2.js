@@ -140,6 +140,15 @@ The average carbon intensity data from Ember is published under the Creative Com
 
 The marginal intensity data is published by the Green Web Foundation, under the Creative Commons ShareAlike Attribution Licence ([CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)). ([What does this mean?](https://www.tldrlegal.com/license/creative-commons-attribution-share-alike-cc-sa))
 
+Electricity Maps Grid Intensity Data - The annual grid intensity data is republished from Electricity Maps under the [Open Database License (ODbL)](https://opendatacommons.org/licenses/odbl/summary/). Users of this data through CO2.js must:
+
+- Attribute: Credit Electricity Maps as the source
+- Share-Alike: Keep derivative works under the same license
+- Keep open: Provide unrestricted versions if using DRM
+
+For full details on Electricity Maps methodology see: https://www.electricitymaps.com/data/methodology
+For full detail on the ODbL see: https://opendatacommons.org/licenses/odbl/summary/
+
 See LICENCE for more.
 
 ## Contributors
