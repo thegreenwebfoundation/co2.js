@@ -13,17 +13,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > - **Security** in case of vulnerabilities.
 
 ## Unreleased
-
-- Add ability to create adaptors which provide access to external data sources #134
-- Add access to the Electricity Maps API free tier #134
-- Allow access to individual models and their internal functions #195
+- Add carbon.txt validator lookup functionality #273
+- Add subpath exports for estimation models #271
 <!-- - _(Add a summary of your feature, and if relevant the issue, in your PR for merging into `main`)_ -->
 
 ## Released
 
+### [0.18.0-alpha2]
+
+#### Added
+* Annual grid carbon intensity, renewable percentage, carbon free percentage data from Electricity Maps for the years 2021 - 2025.
+
+### [0.18.0-alpha] - 2025-12-08
+
+#### Changed
+* Default carbon estimation model is now the Sustainaable Web Design Model version 4.
+
 ### [0.17.0] - 2025-12-02
 
-#### Changes
+#### Changed
 * Add `data` and `hosting` subpath exports
 * Add warning about switching default model to SWDMv4
 

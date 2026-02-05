@@ -203,7 +203,7 @@ Marginal Carbon intensity data
 
 The marginal carbon intensity data bundled in CO2.js is published by the Green Web Foundation under the same permissive CC-BY-SA license as the average carbon intensity data. This data is largely based on the operating marginal intensity data published by International Financial Institutions Technical Working group (the IFI TWG) project within the United Nations Framework Convention on Climate Change (the UNFCCC), to harmonize project-level greenhouse gas emissions accounting.
 
-The data used in this report is provided on an ‘as is’ basis. Data is assembled using the best available data at the time of publication. Every effort has been made to ensure accuracy, and where possible we compare multiple sources to confirm their agreement. We take no responsibility for errors. 
+The data used in this report is provided on an ‘as is’ basis. Data is assembled using the best available data at the time of publication. Every effort has been made to ensure accuracy, and where possible we compare multiple sources to confirm their agreement. We take no responsibility for errors.
 
 
 For further information about the methodology used, see the following links
@@ -212,4 +212,14 @@ https://developers.thegreenwebfoundation.org/co2js/data/
 https://unfccc.int/climate-action/sectoral-engagement/ifis-harmonization-of-standards-for-ghg-accounting
 https://unfccc.int/sites/default/files/resource/IFITWG_Methodological_approach_to_common_dataset.pdf
 
+Electricity Maps Grid Intensity Data
+-----------------------------------------------------------------
 
+Electricity Maps Grid Intensity Data - The annual grid intensity data is republished from Electricity Maps under the Open Database License (ODbL). Users of this data through CO2.js must:
+
+- Attribute: Credit Electricity Maps as the source
+- Share-Alike: Keep derivative works under the same license
+- Keep open: Provide unrestricted versions if using DRM
+
+For full details on Electricity Maps methodology see: https://www.electricitymaps.com/data/methodology
+For full detail on the ODbL see: https://opendatacommons.org/licenses/odbl/summary/
