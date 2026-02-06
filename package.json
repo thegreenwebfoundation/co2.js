@@ -59,17 +59,17 @@
   "devDependencies": {
     "@tgwf/url2green": "^0.4.1",
     "all-contributors-cli": "^6.26.1",
-    "esbuild": "^0.25.0",
+    "esbuild": "^0.27.3",
     "esbuild-jest": "^0.5.0",
     "esbuild-plugin-glob": "^1.1.2",
-    "eslint": "^8.15.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-jest": "^26.1.5",
-    "eslint-plugin-prettier": "^4.0.0",
-    "jest": "^28.1.0",
-    "nock": "^13.2.4",
-    "np": "^8.0.4",
-    "prettier": "^2.6.2"
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-jest": "^29.12.2",
+    "eslint-plugin-prettier": "^5.5.5",
+    "jest": "^30.2.0",
+    "nock": "^14.0.10",
+    "np": "^11.0.2",
+    "prettier": "^3.8.1"
   },
   "jest": {
     "transform": {
