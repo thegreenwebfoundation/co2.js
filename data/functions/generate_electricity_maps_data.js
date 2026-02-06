@@ -104,8 +104,14 @@ async function downloadDataFiles() {
       }
     }
 
+    const jsDocComments = `/**
+     * @constant {Object.<zoneId: string, {zone: {zoneName: string, countryName?: string, displayName?: string}, carbonIntensity: {value: number, unit: string}, renewableEnergy: {value: number, unit: string}, carbonFreeEnergy: {value: number, unit: string}}>} data - Yearly electricity grid data for various zones and countries.
+     * @constant {string} methodology - URL to the Electricity Maps methodology documentation.
+     */`;
+
     if (!filesAlreadyExist) {
-      const jsYearlyData = `export const data = ${JSON.stringify(yearlyData)}
+      const jsYearlyData = `${jsDocComments}
+    export const data = ${JSON.stringify(yearlyData)}
     export const methodology = "https://www.electricitymaps.com/data/methodology"
     export default { data, methodology };
     `;
