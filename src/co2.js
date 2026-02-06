@@ -84,17 +84,17 @@ class CO2 {
       }
     } else if (options?.model) {
       throw new Error(
-        `"${options.model}" is not a valid model. Please use "1byte" for the OneByte model, and "swd" for the Sustainable Web Design model.\nSee https://developers.thegreenwebfoundation.org/co2js/models/ to learn more about the models available in CO2.js.`
+        `"${options.model}" is not a valid model. Please use "1byte" for the OneByte model, and "swd" for the Sustainable Web Design model.\nSee https://developers.thegreenwebfoundation.org/co2js/models/ to learn more about the models available in CO2.js.`,
       );
     } else if (!options?.model && options?.version) {
       throw new Error(
-        `"Specified version ${options?.version} but an estimation model is missing. Please specify a model to use for the version you have set.`
+        `"Specified version ${options?.version} but an estimation model is missing. Please specify a model to use for the version you have set.`,
       );
     }
 
     if (options?.rating && typeof options.rating !== "boolean") {
       throw new Error(
-        `The rating option must be a boolean. Please use true or false.\nSee https://developers.thegreenwebfoundation.org/co2js/options/ to learn more about the options available in CO2.js.`
+        `The rating option must be a boolean. Please use true or false.\nSee https://developers.thegreenwebfoundation.org/co2js/options/ to learn more about the options available in CO2.js.`,
       );
     }
 
@@ -109,7 +109,7 @@ class CO2 {
     // The rating system is only supported in the Sustainable Web Design Model.
     if (!allowRatings && this._rating) {
       throw new Error(
-        `The rating system is not supported in the model you are using. Try using the Sustainable Web Design model instead.\nSee https://developers.thegreenwebfoundation.org/co2js/models/ to learn more about the models available in CO2.js.`
+        `The rating system is not supported in the model you are using. Try using the Sustainable Web Design model instead.\nSee https://developers.thegreenwebfoundation.org/co2js/models/ to learn more about the models available in CO2.js.`,
       );
     }
   }
@@ -141,7 +141,7 @@ class CO2 {
       return this.model.perVisit(bytes, green, this._segment, this._rating);
     } else {
       throw new Error(
-        `The perVisit() method is not supported in the model you are using. Try using perByte() instead.\nSee https://developers.thegreenwebfoundation.org/co2js/methods/ to learn more about the methods available in CO2.js.`
+        `The perVisit() method is not supported in the model you are using. Try using perByte() instead.\nSee https://developers.thegreenwebfoundation.org/co2js/methods/ to learn more about the methods available in CO2.js.`,
       );
     }
   }
@@ -160,7 +160,7 @@ class CO2 {
     const adjustments = parseByteTraceOptions(
       options,
       this.model.version,
-      green
+      green,
     );
 
     // Filter out the trace items that aren't relevant to this function.
@@ -177,7 +177,7 @@ class CO2 {
         green,
         this._segment,
         this._rating,
-        adjustments
+        adjustments,
       ),
       green,
       variables: {
@@ -209,7 +209,7 @@ class CO2 {
       const adjustments = parseVisitTraceOptions(
         options,
         this.model.version,
-        green
+        green,
       );
       const { gridIntensity, ...variables } = adjustments;
 
@@ -219,7 +219,7 @@ class CO2 {
           green,
           this._segment,
           this._rating,
-          adjustments
+          adjustments,
         ),
         green,
         variables: {
@@ -236,7 +236,7 @@ class CO2 {
       };
     } else {
       throw new Error(
-        `The perVisitTrace() method is not supported in the model you are using. Try using perByte() instead.\nSee https://developers.thegreenwebfoundation.org/co2js/methods/ to learn more about the methods available in CO2.js.`
+        `The perVisitTrace() method is not supported in the model you are using. Try using perByte() instead.\nSee https://developers.thegreenwebfoundation.org/co2js/methods/ to learn more about the methods available in CO2.js.`,
       );
     }
   }
