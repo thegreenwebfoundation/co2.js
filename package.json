@@ -1,6 +1,6 @@
 {
   "name": "@tgwf/co2",
-  "version": "0.17.0",
+  "version": "0.17.3-0",
   "description": "Work out the co2 of your digital services",
   "main": "dist/cjs/index-node.js",
   "module": "dist/esm/index.js",
@@ -15,6 +15,10 @@
     "./data": {
       "import": "./dist/esm/data.js",
       "require": "./dist/cjs/data.js"
+    },
+    "./data/electricity-maps": {
+      "import": "./dist/esm/data/electricity-maps/index.js",
+      "require": "./dist/cjs/data/electricity-maps/index.js"
     },
     "./hosting": {
       "import": "./dist/esm/hosting.js",
@@ -36,7 +40,8 @@
     "gitpod": "npm run build && cp ./dist/iife/index.js ./public && npm run serve",
     "intensity-data:average": "node data/functions/generate_average_co2.js",
     "intensity-data:marginal": "node data/functions/generate_marginal_co2.js",
-    "intensity-data": "npm run intensity-data:average && npm run intensity-data:marginal && npm run format-data",
+    "intensity-data:emaps": "node --env-file=.env data/functions/generate_electricity_maps_data.js",
+    "intensity-data": "npm run intensity-data:average && npm run intensity-data:marginal && npm run intensity-data:emaps && npm run format-data",
     "format-data": "cd data && prettier --write '**/*.{js,json}'",
     "version": "npm run build"
   },
@@ -54,16 +59,16 @@
   "devDependencies": {
     "@tgwf/url2green": "^0.4.1",
     "all-contributors-cli": "^6.26.1",
-    "esbuild": "^0.25.0",
+    "esbuild": "^0.27.3",
     "esbuild-jest": "^0.5.0",
     "esbuild-plugin-glob": "^1.1.2",
     "eslint": "^8.15.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-jest": "^26.1.5",
     "eslint-plugin-prettier": "^4.0.0",
-    "jest": "^28.1.0",
-    "nock": "^13.2.4",
-    "np": "^8.0.4",
+    "jest": "^30.2.0",
+    "nock": "^14.0.10",
+    "np": "^11.0.2",
     "prettier": "^2.6.2"
   },
   "jest": {

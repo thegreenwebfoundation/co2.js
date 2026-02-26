@@ -50,9 +50,7 @@ describe("hosting", () => {
           ["www.thegreenwebfoundation.org", "fonts.googleapis.com"],
           { verbose: true, db }
         );
-      }).toThrowError(
-        "verbose mode cannot be used with a local lookup database"
-      );
+      }).toThrow("verbose mode cannot be used with a local lookup database");
     });
   });
   describe("checking a single domain with #check", () => {
