@@ -19,6 +19,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Released
 
+### [0.18.0] - 2026-02-26
+
+#### Added
+* Annual grid carbon intensity, renewable percentage, carbon free percentage data from Electricity Maps for the years 2021 - 2025.
+
+#### Changed
+* Default carbon estimation model is now the Sustainaable Web Design Model version 4.
+
 ### [0.18.0-alpha2]
 
 #### Added
