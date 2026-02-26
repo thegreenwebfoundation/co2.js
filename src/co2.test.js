@@ -30,18 +30,18 @@ describe("co2", () => {
       it("returns a CO2 number for data transfer per visit with caching assumptions from the Sustainable Web Design model", () => {
         co2.perVisit(GIGABYTE);
         expect(parseFloat(co2.perVisit(GIGABYTE).toFixed(5))).toBeCloseTo(
-          parseFloat(PERBYTE_EMISSIONS_GB),
+          parseFloat(PERBYTE_EMISSIONS_GB)
         );
       });
 
       it("returns a lower CO2 number for data transfer from domains using entirely 'green' power", () => {
         expect(
-          parseFloat(co2.perVisit(GIGABYTE, false).toFixed(5)),
+          parseFloat(co2.perVisit(GIGABYTE, false).toFixed(5))
         ).toBeCloseTo(parseFloat(PERBYTE_EMISSIONS_GB.toFixed(5)), 3);
 
         expect(parseFloat(co2.perVisit(GIGABYTE, true).toFixed(5))).toBeCloseTo(
           parseFloat(PERBYTE_EMISSIONS_GB_GREEN.toFixed(5)),
-          3,
+          3
         );
       });
     });
@@ -71,46 +71,46 @@ describe("co2", () => {
           co2 = new CO2({ model: "swd", version: 3, results: "segment" });
           const res = co2.perVisit(MILLION);
           expect(
-            parseFloat(res["consumerDeviceCO2 - first"].toFixed(5)),
+            parseFloat(res["consumerDeviceCO2 - first"].toFixed(5))
           ).toBeCloseTo(
-            parseFloat(MILLION_PERVISIT_GREY_DEVICES_FIRST.toFixed(5)),
+            parseFloat(MILLION_PERVISIT_GREY_DEVICES_FIRST.toFixed(5))
           );
           expect(parseFloat(res["networkCO2 - first"].toFixed(5))).toBeCloseTo(
-            parseFloat(MILLION_PERVISIT_GREY_NETWORKS_FIRST.toFixed(5)),
+            parseFloat(MILLION_PERVISIT_GREY_NETWORKS_FIRST.toFixed(5))
           );
           expect(
-            parseFloat(res["dataCenterCO2 - first"].toFixed(5)),
+            parseFloat(res["dataCenterCO2 - first"].toFixed(5))
           ).toBeCloseTo(
-            parseFloat(MILLION_PERVISIT_GREY_DATACENTERS_FIRST.toFixed(5)),
+            parseFloat(MILLION_PERVISIT_GREY_DATACENTERS_FIRST.toFixed(5))
           );
           expect(
-            parseFloat(res["productionCO2 - first"].toFixed(5)),
+            parseFloat(res["productionCO2 - first"].toFixed(5))
           ).toBeCloseTo(
-            parseFloat(MILLION_PERVISIT_GREY_PRODUCTION_FIRST.toFixed(5)),
+            parseFloat(MILLION_PERVISIT_GREY_PRODUCTION_FIRST.toFixed(5))
           );
           expect(
-            parseFloat(res["consumerDeviceCO2 - subsequent"].toFixed(5)),
+            parseFloat(res["consumerDeviceCO2 - subsequent"].toFixed(5))
           ).toBeCloseTo(
-            parseFloat(MILLION_PERVISIT_GREY_DEVICES_SECOND.toFixed(5)),
+            parseFloat(MILLION_PERVISIT_GREY_DEVICES_SECOND.toFixed(5))
           );
           expect(
-            parseFloat(res["networkCO2 - subsequent"].toFixed(5)),
+            parseFloat(res["networkCO2 - subsequent"].toFixed(5))
           ).toBeCloseTo(
-            parseFloat(MILLION_PERVISIT_GREY_NETWORKS_SECOND.toFixed(5)),
+            parseFloat(MILLION_PERVISIT_GREY_NETWORKS_SECOND.toFixed(5))
           );
           expect(
-            parseFloat(res["dataCenterCO2 - subsequent"].toFixed(5)),
+            parseFloat(res["dataCenterCO2 - subsequent"].toFixed(5))
           ).toBeCloseTo(
-            parseFloat(MILLION_PERVISIT_GREY_DATACENTERS_SECOND.toFixed(5)),
+            parseFloat(MILLION_PERVISIT_GREY_DATACENTERS_SECOND.toFixed(5))
           );
           expect(
-            parseFloat(res["productionCO2 - subsequent"].toFixed(5)),
+            parseFloat(res["productionCO2 - subsequent"].toFixed(5))
           ).toBeCloseTo(
-            parseFloat(MILLION_PERVISIT_GREY_PRODUCTION_SECOND.toFixed(5)),
+            parseFloat(MILLION_PERVISIT_GREY_PRODUCTION_SECOND.toFixed(5))
           );
           expect(parseFloat(res.total.toFixed(5))).toBeCloseTo(
             parseFloat(MILLION_PERVISIT_GREY.toFixed(5)),
-            3,
+            3
           );
         });
         it("returns adjusted data center and total emissions for when green, other values remain the same as grey", () => {
@@ -119,35 +119,35 @@ describe("co2", () => {
           // Since the data center emissions are the only ones that change, we can just check those
           // and the total. To check the rest stay the same as grey, we can just check the device results.
           expect(
-            parseFloat(res["consumerDeviceCO2 - first"].toFixed(5)),
+            parseFloat(res["consumerDeviceCO2 - first"].toFixed(5))
           ).toBeCloseTo(
             parseFloat(MILLION_PERVISIT_GREY_DEVICES_FIRST.toFixed(5)),
-            3,
+            3
           );
 
           expect(
-            parseFloat(res["dataCenterCO2 - first"].toFixed(5)),
+            parseFloat(res["dataCenterCO2 - first"].toFixed(5))
           ).toBeCloseTo(
             parseFloat(MILLION_PERVISIT_GREEN_DATACENTERS_FIRST.toFixed(5)),
-            3,
+            3
           );
 
           expect(
-            parseFloat(res["consumerDeviceCO2 - subsequent"].toFixed(5)),
+            parseFloat(res["consumerDeviceCO2 - subsequent"].toFixed(5))
           ).toBeCloseTo(
             parseFloat(MILLION_PERVISIT_GREY_DEVICES_SECOND.toFixed(5)),
-            3,
+            3
           );
           expect(
-            parseFloat(res["dataCenterCO2 - subsequent"].toFixed(5)),
+            parseFloat(res["dataCenterCO2 - subsequent"].toFixed(5))
           ).toBeCloseTo(
             parseFloat(MILLION_PERVISIT_GREEN_DATACENTERS_SECOND.toFixed(5)),
-            3,
+            3
           );
 
           expect(parseFloat(res.total.toFixed(5))).toBeCloseTo(
             parseFloat(MILLION_PERVISIT_GREEN.toFixed(5)),
-            3,
+            3
           );
         });
       });
@@ -157,15 +157,15 @@ describe("co2", () => {
           const res = co2.perByte(MILLION, true);
           expect(parseFloat(res["consumerDeviceCO2"].toFixed(5))).toBeCloseTo(
             parseFloat(MILLION_GREY_DEVICES.toFixed(5)),
-            3,
+            3
           );
           expect(parseFloat(res["dataCenterCO2"].toFixed(5))).toBeCloseTo(
             parseFloat(MILLION_GREEN_DATACENTERS.toFixed(5)),
-            3,
+            3
           );
           expect(parseFloat(res.total.toFixed(5))).toBeCloseTo(
             parseFloat(MILLION_GREEN.toFixed(5)),
-            3,
+            3
           );
         });
         it("returns an object with devices, networks, data centers, and production emissions shown separately, as well as the total emissions", () => {
@@ -173,23 +173,23 @@ describe("co2", () => {
           const res = co2.perByte(MILLION);
           expect(parseFloat(res["consumerDeviceCO2"].toFixed(5))).toBeCloseTo(
             parseFloat(MILLION_GREY_DEVICES.toFixed(5)),
-            3,
+            3
           );
           expect(parseFloat(res["networkCO2"].toFixed(5))).toBeCloseTo(
             parseFloat(MILLION_GREY_NETWORKS.toFixed(5)),
-            3,
+            3
           );
           expect(parseFloat(res["dataCenterCO2"].toFixed(5))).toBeCloseTo(
             parseFloat(MILLION_GREY_DATACENTERS.toFixed(5)),
-            3,
+            3
           );
           expect(parseFloat(res["productionCO2"].toFixed(5))).toBeCloseTo(
             parseFloat(MILLION_GREY_PRODUCTION.toFixed(5)),
-            3,
+            3
           );
           expect(parseFloat(res.total.toFixed(5))).toBeCloseTo(
             parseFloat(MILLION_GREY.toFixed(5)),
-            3,
+            3
           );
         });
       });
@@ -200,7 +200,7 @@ describe("co2", () => {
     // Test for error if incorrect model is passed
     it("throws an error if model is not valid", () => {
       expect(() => (co2 = new CO2({ model: "1direction" }))).toThrow(
-        `"1direction" is not a valid model. Please use "1byte" for the OneByte model, and "swd" for the Sustainable Web Design model.\nSee https://developers.thegreenwebfoundation.org/co2js/models/ to learn more about the models available in CO2.js.`,
+        `"1direction" is not a valid model. Please use "1byte" for the OneByte model, and "swd" for the Sustainable Web Design model.\nSee https://developers.thegreenwebfoundation.org/co2js/models/ to learn more about the models available in CO2.js.`
       );
     });
 
@@ -210,7 +210,7 @@ describe("co2", () => {
         co2 = new CO2({ model: "1byte" });
         co2.perVisit(10);
       }).toThrow(
-        `The perVisit() method is not supported in the model you are using. Try using perByte() instead.\nSee https://developers.thegreenwebfoundation.org/co2js/methods/ to learn more about the methods available in CO2.js.`,
+        `The perVisit() method is not supported in the model you are using. Try using perByte() instead.\nSee https://developers.thegreenwebfoundation.org/co2js/methods/ to learn more about the methods available in CO2.js.`
       );
     });
 
@@ -218,7 +218,7 @@ describe("co2", () => {
       expect(() => {
         co2 = new CO2({ model: "1byte", rating: true });
       }).toThrow(
-        `The rating system is not supported in the model you are using. Try using the Sustainable Web Design model instead.\nSee https://developers.thegreenwebfoundation.org/co2js/models/ to learn more about the models available in CO2.js.`,
+        `The rating system is not supported in the model you are using. Try using the Sustainable Web Design model instead.\nSee https://developers.thegreenwebfoundation.org/co2js/models/ to learn more about the models available in CO2.js.`
       );
     });
 
@@ -226,7 +226,7 @@ describe("co2", () => {
       expect(() => {
         co2 = new CO2({ version: 3 });
       }).toThrow(
-        `Specified version 3 but an estimation model is missing. Please specify a model to use for the version you have set.`,
+        `Specified version 3 but an estimation model is missing. Please specify a model to use for the version you have set.`
       );
     });
 
@@ -234,7 +234,7 @@ describe("co2", () => {
       expect(() => {
         co2 = new CO2({ rating: "false" });
       }).toThrow(
-        `The rating option must be a boolean. Please use true or false.\nSee https://developers.thegreenwebfoundation.org/co2js/options/ to learn more about the options available in CO2.js.`,
+        `The rating option must be a boolean. Please use true or false.\nSee https://developers.thegreenwebfoundation.org/co2js/options/ to learn more about the options available in CO2.js.`
       );
     });
   });
@@ -259,20 +259,20 @@ describe("co2", () => {
     it("perByteTrace is the same as perByte", () => {
       expect(co2.perByteTrace(MILLION).co2).toBe(co2.perByte(MILLION));
       expect(co2.perByteTrace(MILLION, true).co2).toBe(
-        co2.perByte(MILLION, true),
+        co2.perByte(MILLION, true)
       );
       expect(co2.perByteTrace(MILLION, true, {}).co2).toBe(
-        co2.perByte(MILLION, true),
+        co2.perByte(MILLION, true)
       );
     });
 
     it("perVisitTrace is the same as perVisit", () => {
       expect(co2.perVisitTrace(MILLION).co2).toBe(co2.perVisit(MILLION));
       expect(co2.perVisitTrace(MILLION, true).co2).toBe(
-        co2.perVisit(MILLION, true),
+        co2.perVisit(MILLION, true)
       );
       expect(co2.perVisitTrace(MILLION, true, {}).co2).toBe(
-        co2.perVisit(MILLION, true),
+        co2.perVisit(MILLION, true)
       );
     });
 
@@ -281,25 +281,25 @@ describe("co2", () => {
       expect(co2.perByteTrace(MILLION)).toHaveProperty("variables");
       expect(co2.perByteTrace(MILLION)).toHaveProperty("green");
       expect(co2.perByteTrace(MILLION)).toHaveProperty(
-        "variables.gridIntensity",
+        "variables.gridIntensity"
       );
       expect(co2.perByteTrace(MILLION)).not.toHaveProperty(
-        "variables.firstVisitPercentage",
+        "variables.firstVisitPercentage"
       );
       expect(co2.perVisitTrace(MILLION)).toHaveProperty("co2");
       expect(co2.perVisitTrace(MILLION)).toHaveProperty("variables");
       expect(co2.perVisitTrace(MILLION)).toHaveProperty("green");
       expect(co2.perVisitTrace(MILLION)).toHaveProperty(
-        "variables.gridIntensity",
+        "variables.gridIntensity"
       );
       expect(co2.perVisitTrace(MILLION)).toHaveProperty(
-        "variables.firstVisitPercentage",
+        "variables.firstVisitPercentage"
       );
       expect(co2.perVisitTrace(MILLION)).toHaveProperty(
-        "variables.returnVisitPercentage",
+        "variables.returnVisitPercentage"
       );
       expect(co2.perVisitTrace(MILLION)).toHaveProperty(
-        "variables.dataReloadRatio",
+        "variables.dataReloadRatio"
       );
     });
   });
@@ -313,7 +313,7 @@ describe("co2", () => {
             device: 678.87,
             dataCenter: { country: "TWN" },
           },
-        }).co2,
+        }).co2
       ).toBeGreaterThan(0);
 
       expect(
@@ -323,7 +323,7 @@ describe("co2", () => {
             dataCenter: { country: "TWN" },
             network: { country: "TWN" },
           },
-        }).co2,
+        }).co2
       ).toBeGreaterThan(0);
     });
   });
@@ -339,8 +339,8 @@ describe("co2", () => {
                 device: "561",
               },
             })
-            .co2.toPrecision(5),
-        ),
+            .co2.toPrecision(5)
+        )
       ).toBeGreaterThan(0);
 
       expect(
@@ -351,8 +351,8 @@ describe("co2", () => {
                 device: "561",
               },
             })
-            .co2.toPrecision(5),
-        ),
+            .co2.toPrecision(5)
+        )
       ).toBeGreaterThan(0);
     });
 
@@ -365,8 +365,8 @@ describe("co2", () => {
                 device: TwnGridIntensityValue,
               },
             })
-            .co2.toPrecision(5),
-        ),
+            .co2.toPrecision(5)
+        )
       ).toBeGreaterThan(0);
 
       expect(
@@ -377,8 +377,8 @@ describe("co2", () => {
                 device: TwnGridIntensityValue,
               },
             })
-            .co2.toPrecision(4),
-        ),
+            .co2.toPrecision(4)
+        )
       ).toBeGreaterThan(0);
     });
 
@@ -393,8 +393,8 @@ describe("co2", () => {
                 },
               },
             })
-            .co2.toFixed(5),
-        ),
+            .co2.toFixed(5)
+        )
       ).toBeGreaterThan(0);
     });
   });
@@ -549,13 +549,13 @@ describe("co2", () => {
       expect(res.variables.greenHostingFactor).toBe(0);
       expect(res.green).toBe(false);
       expect(res.variables.gridIntensity.device.value).toBe(
-        SWDM4_GLOBAL_GRID_INTENSITY,
+        SWDM4_GLOBAL_GRID_INTENSITY
       );
       expect(res.variables.gridIntensity.dataCenter.value).toBe(
-        SWDM4_GLOBAL_GRID_INTENSITY,
+        SWDM4_GLOBAL_GRID_INTENSITY
       );
       expect(res.variables.gridIntensity.network.value).toBe(
-        SWDM4_GLOBAL_GRID_INTENSITY,
+        SWDM4_GLOBAL_GRID_INTENSITY
       );
     });
     it("returns the expected object when adjustments are made", () => {
@@ -610,13 +610,13 @@ describe("co2", () => {
       expect(res.variables.returnVisitPercentage).toBe(0);
       expect(res.variables.dataReloadRatio).toBe(0);
       expect(res.variables.gridIntensity.device.value).toBe(
-        SWDM4_GLOBAL_GRID_INTENSITY,
+        SWDM4_GLOBAL_GRID_INTENSITY
       );
       expect(res.variables.gridIntensity.dataCenter.value).toBe(
-        SWDM4_GLOBAL_GRID_INTENSITY,
+        SWDM4_GLOBAL_GRID_INTENSITY
       );
       expect(res.variables.gridIntensity.network.value).toBe(
-        SWDM4_GLOBAL_GRID_INTENSITY,
+        SWDM4_GLOBAL_GRID_INTENSITY
       );
     });
     it("returns the expected object when adjustments are made", () => {

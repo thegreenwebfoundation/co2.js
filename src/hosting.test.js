@@ -15,7 +15,7 @@ const jsonPath = path.resolve(
   "..",
   "data",
   "fixtures",
-  "url2green.test.json",
+  "url2green.test.json"
 );
 
 describe("hosting", () => {
@@ -29,7 +29,7 @@ describe("hosting", () => {
       const db = await hosting.loadJSON(jsonPath);
       const greenDomains = await hosting.check(
         ["www.thegreenwebfoundation.org", "fonts.googleapis.com"],
-        db,
+        db
       );
 
       expect(greenDomains).toHaveLength(2);
@@ -38,7 +38,7 @@ describe("hosting", () => {
       const db = await hosting.loadJSON(jsonPath);
       const greenDomains = await hosting.check(
         ["www.thegreenwebfoundation.org", "fonts.googleapis.com"],
-        { db },
+        { db }
       );
 
       expect(greenDomains).toHaveLength(2);
@@ -48,7 +48,7 @@ describe("hosting", () => {
       await expect(() => {
         hosting.check(
           ["www.thegreenwebfoundation.org", "fonts.googleapis.com"],
-          { verbose: true, db },
+          { verbose: true, db }
         );
       }).toThrow("verbose mode cannot be used with a local lookup database");
     });
@@ -79,7 +79,7 @@ describe("hosting", () => {
         expect.objectContaining({
           headers: { "User-Agent": "co2js/1.2.34 TestRunner" },
         }),
-        expect.any(Function),
+        expect.any(Function)
       );
     });
     it("sets the correct user agent header when passed as a parameter", async () => {
@@ -90,7 +90,7 @@ describe("hosting", () => {
         expect.objectContaining({
           headers: { "User-Agent": "co2js/1.2.34 TestRunner" },
         }),
-        expect.any(Function),
+        expect.any(Function)
       );
     });
   });
