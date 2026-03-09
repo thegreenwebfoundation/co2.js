@@ -23,6 +23,10 @@
     "./hosting": {
       "import": "./dist/esm/hosting.js",
       "require": "./dist/cjs/hosting-node.js"
+    },
+    "./carbon-txt": {
+      "import": "./dist/esm/carbon-txt.js",
+      "require": "./dist/cjs/carbon-txt-node.js"
     }
   },
   "scripts": {
