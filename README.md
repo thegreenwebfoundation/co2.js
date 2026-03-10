@@ -12,14 +12,6 @@ One day, the internet will be powered by renewable energy. Until that day comes,
 
 ## [Documentation](https://developers.thegreenwebfoundation.org/co2js/overview/) | [Changelog](/CHANGELOG.md) | [Roadmap](https://developers.thegreenwebfoundation.org/co2js/roadmap/)
 
-> [!IMPORTANT]
-> Important note about upcoming changes in CO2.js v0.18
-In the next release of CO2.js (v0.18 – February 2026) we will be changing the default carbon estimation model to Sustainable Web Design Model version 4. If you are using CO2.js to perform carbon estimation, and are not explicitly declaring the model and version to use then you will be impacted by this change.
->
-> You can install a PREVIEW release to test your code to see how this change will effect you. To do so, use the `npm install @tgwf/co2@next` command.
->
-> We have detailed the impacts of this change for users of CO2.js in this GitHub issue – [Impact of changing from v3 to v4](https://github.com/thegreenwebfoundation/co2.js/issues/209#issuecomment-3624614392)
-
 ## What is CO2.js?
 
 CO2.js is a JavaScript library that enables developers a way to estimate the emissions related to use of their apps, websites, and software.
