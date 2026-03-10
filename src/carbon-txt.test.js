@@ -57,7 +57,7 @@ describe("carbon-txt.js", () => {
       ],
       logs: [
         "Attempting to resolve domain: fershad.com",
-        "Trying a DNS delegated lookup for domain fershad.com",
+        "Trying a DNS delegated lookup for domain example.com",
         "Checking if a carbon.txt file is reachable at https://example.com/carbon.txt",
         "New Carbon text file found at: https://example.com/carbon.txt",
         "TOML parsing failed.",
