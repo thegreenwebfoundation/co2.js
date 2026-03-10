@@ -147,7 +147,7 @@ describe("carbon-txt.js", () => {
         json: jest.fn().mockResolvedValue(mockInvalidDomainReponse),
       });
 
-      const result = await check("example.com");
+      const result = await check("https://example.com");
 
       expect(result).toEqual({
         success: false,
@@ -177,7 +177,7 @@ describe("carbon-txt.js", () => {
     });
 
     it("sends the correct user agent when one is set", async () => {
-      await check("example.com", { userAgentId: "test-agent" });
+      await check("example.com", { userAgentIdentifier: "test-agent" });
       expect(fetch).toHaveBeenCalledTimes(1);
       expect(fetch).toHaveBeenLastCalledWith(
         expect.any(String),
