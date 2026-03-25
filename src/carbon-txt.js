@@ -53,17 +53,21 @@ export async function check(domain, options) {
   const agentId = options?.userAgentIdentifier;
   const verbose = options?.verbose || false;
 
-  const req = await fetch(
-    `https://carbon-txt-api.greenweb.org/api/validate/domain/`,
-    {
-      headers: getApiRequestHeaders(agentId),
-      method: "POST",
-      body: JSON.stringify({ domain }),
-    }
-  );
+  try {
+    const req = await fetch(
+      `https://carbon-txt-api.greenweb.org/api/validate/domain/`,
+      {
+        headers: getApiRequestHeaders(agentId),
+        method: "POST",
+        body: JSON.stringify({ domain }),
+      }
+    );
 
-  const res = await req.json();
-  return processResponse(res, verbose);
+    const res = await req.json();
+    return processResponse(res, verbose);
+  } catch (error) {
+    return { success: false, errors: [error.message] };
+  }
 }
 
 export default check;
