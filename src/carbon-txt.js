@@ -39,7 +39,7 @@ const processResponse = (res, verbose = false) => {
 
 /**
  * Perform a domain lookup using the Green Web Foundation carbon.txt validator endpoint
- * @param {string} domain - The domain to check, or an array of domains to be checked.
+ * @param {string} domain - The domain to check.
  * @param {string} options - Optional. An object of domain check options, or a string
  * @param {string} options.userAgentIdentifier - Optional. A string representing the app, site, or organisation that is making the request.
  * @param {string} options.verbose - Optional. A boolean indicating whether to return verbose results.
