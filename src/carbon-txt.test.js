@@ -191,4 +191,34 @@ describe("carbon-txt.js", () => {
       );
     });
   });
+
+  describe("it accepts an options object", () => {
+    it("accepts a verbose option", async () => {
+      await check("example.com", { verbose: true });
+      expect(fetch).toHaveBeenCalledTimes(1);
+    });
+
+    it("accepts a user agent identifier option", async () => {
+      await check("example.com", { userAgentIdentifier: "test-agent" });
+      expect(fetch).toHaveBeenCalledTimes(1);
+      expect(fetch).toHaveBeenLastCalledWith(
+        expect.any(String),
+        expect.objectContaining({
+          headers: { "User-Agent": "co2js/1.2.34 test-agent" },
+        })
+      );
+    });
+
+    it("accepts a custom url", async () => {
+      await check("example.com", { url: "https://mycarbontxtvalidator.com" });
+      expect(fetch).toHaveBeenCalledTimes(1);
+      expect(fetch).toHaveBeenLastCalledWith(
+        "https://mycarbontxtvalidator.com",
+        expect.objectContaining({
+          headers: { "User-Agent": "co2js/1.2.34 " },
+          method: "POST",
+        })
+      );
+    });
+  });
 });

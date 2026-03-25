@@ -43,6 +43,7 @@ const processResponse = (res, verbose = false) => {
  * @param {string} options - Optional. An object of domain check options, or a string
  * @param {string} options.userAgentIdentifier - Optional. A string representing the app, site, or organisation that is making the request.
  * @param {string} options.verbose - Optional. A boolean indicating whether to return verbose results.
+ * @param {string} options.url - Optional. A string representing the URL of the carbon.txt validator endpoint.
  */
 
 export async function check(domain, options) {
@@ -52,16 +53,15 @@ export async function check(domain, options) {
 
   const agentId = options?.userAgentIdentifier;
   const verbose = options?.verbose || false;
+  const validatorUrl =
+    options?.url || "https://carbon-txt-api.greenweb.org/api/validate/domain/";
 
   try {
-    const req = await fetch(
-      `https://carbon-txt-api.greenweb.org/api/validate/domain/`,
-      {
-        headers: getApiRequestHeaders(agentId),
-        method: "POST",
-        body: JSON.stringify({ domain }),
-      }
-    );
+    const req = await fetch(validatorUrl, {
+      headers: getApiRequestHeaders(agentId),
+      method: "POST",
+      body: JSON.stringify({ domain }),
+    });
 
     const res = await req.json();
     return processResponse(res, verbose);
