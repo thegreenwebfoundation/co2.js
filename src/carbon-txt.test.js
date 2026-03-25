@@ -85,22 +85,26 @@ describe("carbon-txt.js", () => {
       expect(result).toEqual({
         success: true,
         url: "https://example.com/carbon.txt",
-        disclosures: [
-          {
-            doc_type: "web-page",
-            url: "https://www.sampledoc.com/disclosure",
-            domain: null,
-            valid_until: null,
-            title: "A sample disclosure",
-          },
-        ],
-        upstream: [
-          {
-            domain: "www.example.com",
-            name: null,
-            service_type: "cdn",
-          },
-        ],
+        org: {
+          disclosures: [
+            {
+              doc_type: "web-page",
+              url: "https://www.sampledoc.com/disclosure",
+              domain: null,
+              valid_until: null,
+              title: "A sample disclosure",
+            },
+          ],
+        },
+        upstream: {
+          services: [
+            {
+              domain: "www.example.com",
+              name: null,
+              service_type: "cdn",
+            },
+          ],
+        },
       });
     });
 
