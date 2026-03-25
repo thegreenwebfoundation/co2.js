@@ -32,8 +32,8 @@ const processResponse = (res, verbose = false) => {
   return {
     success: true,
     url: res.url,
-    disclosures: res?.data?.org?.disclosures,
-    upstream: res?.data?.upstream?.services,
+    org: { disclosures: res?.data?.org?.disclosures },
+    upstream: { services: res?.data?.upstream?.services },
   };
 };
 
