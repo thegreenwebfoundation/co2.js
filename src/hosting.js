@@ -22,4 +22,4 @@ export function check(domain, optionsOrAgentId) {
   return hostingAPI.check(domain, optionsOrAgentId);
 }
 
-export default check;
+export default { check };
