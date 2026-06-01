@@ -43,7 +43,8 @@ const processResponse = (res, verbose = false) => {
  * @param {string} options - Optional. An object of domain check options, or a string
  * @param {string} options.userAgentIdentifier - Optional. A string representing the app, site, or organisation that is making the request.
  * @param {string} options.verbose - Optional. A boolean indicating whether to return verbose results.
- * @param {string} options.url - Optional. A string representing the URL of the carbon.txt validator endpoint.
+ * @param {string} options.customValidator - Optional. A string representing the URL of the carbon.txt validator endpoint.
+ * @param {string} options.apiKey - Optional. A string representing the API key to use for the request.
  */
 
 export async function check(domain, options) {
@@ -53,12 +54,22 @@ export async function check(domain, options) {
 
   const agentId = options?.userAgentIdentifier;
   const verbose = options?.verbose || false;
+  const apiKey = options?.apiKey || null;
+
+  if (!apiKey) {
+    throw new Error("A valid API key is required.");
+  }
+
   const validatorUrl =
-    options?.url || "https://carbon-txt-api.greenweb.org/api/validate/domain/";
+    options?.customValidator ||
+    "https://carbon-txt-api.greenweb.org/api/validate/domain/";
 
   try {
     const req = await fetch(validatorUrl, {
-      headers: getApiRequestHeaders(agentId),
+      headers: {
+        ...getApiRequestHeaders(agentId),
+        "x-api-key": apiKey,
+      },
       method: "POST",
       body: JSON.stringify({ domain }),
     });

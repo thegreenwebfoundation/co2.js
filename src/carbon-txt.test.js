@@ -4,9 +4,30 @@ import check from "./carbon-txt.js";
 process.env.CO2JS_VERSION = "1.2.34";
 global.fetch = jest.fn();
 
+const apiKey = "abc123";
+
 describe("carbon-txt.js", () => {
   beforeEach(() => {
     jest.clearAllMocks();
+  });
+
+  describe("requires a valid API key", () => {
+    it("should throw an error if no API key is provided", async () => {
+      await expect(check("example.com")).rejects.toThrow(
+        "A valid API key is required."
+      );
+    });
+
+    it("sends the API key in the request headers", async () => {
+      await check("example.com", { apiKey });
+      expect(fetch).toHaveBeenCalledTimes(1);
+      expect(fetch).toHaveBeenLastCalledWith(
+        expect.any(String),
+        expect.objectContaining({
+          headers: { "User-Agent": "co2js/1.2.34 ", "x-api-key": "abc123" },
+        })
+      );
+    });
   });
 
   describe("should validate a single domain", () => {
@@ -80,7 +101,7 @@ describe("carbon-txt.js", () => {
         json: jest.fn().mockResolvedValue(mockSuccessResponse),
       });
 
-      const result = await check("example.com");
+      const result = await check("example.com", { apiKey });
 
       expect(result).toEqual({
         success: true,
@@ -114,7 +135,7 @@ describe("carbon-txt.js", () => {
         json: jest.fn().mockResolvedValue(mockSuccessResponse),
       });
 
-      const result = await check("example.com", { verbose: true });
+      const result = await check("example.com", { verbose: true, apiKey });
 
       expect(result).toEqual(mockSuccessResponse);
     });
@@ -125,7 +146,7 @@ describe("carbon-txt.js", () => {
         json: jest.fn().mockResolvedValue(mockFailResponse),
       });
 
-      const result = await check("example.com");
+      const result = await check("example.com", { apiKey });
 
       expect(result).toEqual({
         success: false,
@@ -141,7 +162,7 @@ describe("carbon-txt.js", () => {
         json: jest.fn().mockResolvedValue(mockFailResponse),
       });
 
-      const result = await check("example.com", { verbose: true });
+      const result = await check("example.com", { verbose: true, apiKey });
 
       expect(result).toEqual(mockFailResponse);
     });
@@ -151,7 +172,7 @@ describe("carbon-txt.js", () => {
         json: jest.fn().mockResolvedValue(mockInvalidDomainReponse),
       });
 
-      const result = await check("https://example.com");
+      const result = await check("https://example.com", { apiKey });
 
       expect(result).toEqual({
         success: false,
@@ -162,31 +183,34 @@ describe("carbon-txt.js", () => {
 
   describe("should throw error if", () => {
     it("invalid domain is provided", async () => {
-      await expect(check(null)).rejects.toThrow();
-      await expect(check(undefined)).rejects.toThrow();
-      await expect(check(123)).rejects.toThrow();
+      await expect(check(null, { apiKey })).rejects.toThrow();
+      await expect(check(undefined, { apiKey })).rejects.toThrow();
+      await expect(check(123, { apiKey })).rejects.toThrow();
     });
   });
 
   describe("it sends the correct user agent", () => {
     it("sends the correct user agent when none is set", async () => {
-      await check("example.com");
+      await check("example.com", { apiKey });
       expect(fetch).toHaveBeenCalledTimes(1);
       expect(fetch).toHaveBeenLastCalledWith(
         expect.any(String),
         expect.objectContaining({
-          headers: { "User-Agent": "co2js/1.2.34 " },
+          headers: { "User-Agent": "co2js/1.2.34 ", "x-api-key": "abc123" },
         })
       );
     });
 
     it("sends the correct user agent when one is set", async () => {
-      await check("example.com", { userAgentIdentifier: "test-agent" });
+      await check("example.com", { userAgentIdentifier: "test-agent", apiKey });
       expect(fetch).toHaveBeenCalledTimes(1);
       expect(fetch).toHaveBeenLastCalledWith(
         expect.any(String),
         expect.objectContaining({
-          headers: { "User-Agent": "co2js/1.2.34 test-agent" },
+          headers: {
+            "User-Agent": "co2js/1.2.34 test-agent",
+            "x-api-key": "abc123",
+          },
         })
       );
     });
@@ -194,28 +218,34 @@ describe("carbon-txt.js", () => {
 
   describe("it accepts an options object", () => {
     it("accepts a verbose option", async () => {
-      await check("example.com", { verbose: true });
+      await check("example.com", { verbose: true, apiKey });
       expect(fetch).toHaveBeenCalledTimes(1);
     });
 
     it("accepts a user agent identifier option", async () => {
-      await check("example.com", { userAgentIdentifier: "test-agent" });
+      await check("example.com", { userAgentIdentifier: "test-agent", apiKey });
       expect(fetch).toHaveBeenCalledTimes(1);
       expect(fetch).toHaveBeenLastCalledWith(
         expect.any(String),
         expect.objectContaining({
-          headers: { "User-Agent": "co2js/1.2.34 test-agent" },
+          headers: {
+            "User-Agent": "co2js/1.2.34 test-agent",
+            "x-api-key": "abc123",
+          },
         })
       );
     });
 
     it("accepts a custom url", async () => {
-      await check("example.com", { url: "https://mycarbontxtvalidator.com" });
+      await check("example.com", {
+        customValidator: "https://mycarbontxtvalidator.com",
+        apiKey,
+      });
       expect(fetch).toHaveBeenCalledTimes(1);
       expect(fetch).toHaveBeenLastCalledWith(
         "https://mycarbontxtvalidator.com",
         expect.objectContaining({
-          headers: { "User-Agent": "co2js/1.2.34 " },
+          headers: { "User-Agent": "co2js/1.2.34 ", "x-api-key": "abc123" },
           method: "POST",
         })
       );
