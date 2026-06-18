@@ -8,9 +8,9 @@ async function check(domain, db) {
   // is it a single domain or an array of them?
   if (typeof domain === "string") {
     return checkInJSON(domain, db);
-  } else {
-    return checkDomainsInJSON(domain, db);
-  }
+  } 
+  
+  return checkDomainsInJSON(domain, db);
 }
 
 /**
@@ -20,10 +20,7 @@ async function check(domain, db) {
  * @returns {boolean} - A boolean indicating whether the domain is hosted by a green web host.
  */
 function checkInJSON(domain, db) {
-  if (db.indexOf(domain) > -1) {
-    return true;
-  }
-  return false;
+  return db.indexOf(domain) > -1
 }
 
 /**
@@ -34,7 +31,6 @@ function checkInJSON(domain, db) {
 function greenDomainsFromResults(greenResults) {
   const entries = Object.entries(greenResults);
   const greenEntries = entries.filter(([key, val]) => val.green);
-
   return greenEntries.map(([key, val]) => val.url);
 }
 
@@ -45,14 +41,7 @@ function greenDomainsFromResults(greenResults) {
  * @returns {array} - An array of domains that are hosted by a green web host.
  */
 function checkDomainsInJSON(domains, db) {
-  let greenDomains = [];
-
-  for (let domain of domains) {
-    if (db.indexOf(domain) > -1) {
-      greenDomains.push(domain);
-    }
-  }
-  return greenDomains;
+  return domains.filter(domain => db.indexOf(domain) > -1);
 }
 
 /**
@@ -63,9 +52,9 @@ function find(domain, db) {
   // is it a single domain or an array of them?
   if (typeof domain === "string") {
     return findInJSON(domain, db);
-  } else {
-    return findDomainsInJSON(domain, db);
   }
+
+  return findDomainsInJSON(domain, db);
 }
 
 /**
