@@ -1,0 +1,84 @@
+"use strict";
+
+import { getApiRequestHeaders } from "./helpers/index.js";
+
+/**
+ * @module carbontxt-validator
+ */
+
+/**
+ * Process the response from the carbon.txt validator API
+ * @param {object} res - The response object from the API
+ * @param {boolean} verbose - Optional. Whether to return verbose results
+ * @returns {object} - The processed response object
+ */
+const processResponse = (res, verbose = false) => {
+  // This captures errors when an invalid domain is sent to the API
+  if (!res.success && !res.errors) {
+    return {
+      success: false,
+      errors: [res.detail[0].msg],
+    };
+  }
+
+  if (verbose) {
+    return res;
+  }
+
+  if (!res.success) {
+    return { success: false, errors: res.errors };
+  }
+
+  return {
+    success: true,
+    url: res.url,
+    org: { disclosures: res?.data?.org?.disclosures },
+    upstream: { services: res?.data?.upstream?.services },
+  };
+};
+
+/**
+ * Perform a domain lookup using the Green Web Foundation carbon.txt validator endpoint
+ * @param {string} domain - The domain to check.
+ * @param {string} options - Optional. An object of domain check options, or a string
+ * @param {string} options.userAgentIdentifier - Optional. A string representing the app, site, or organisation that is making the request.
+ * @param {string} options.verbose - Optional. A boolean indicating whether to return verbose results.
+ * @param {string} options.customValidator - Optional. A string representing the URL of the carbon.txt validator endpoint.
+ * @param {string} options.apiKey - Optional. A string representing the API key to use for the request.
+ */
+
+export async function check(domain, options) {
+  if (typeof domain !== "string") {
+    throw new Error("Invalid domain. Domain must be a string.");
+  }
+
+  const agentId = options?.userAgentIdentifier;
+  const verbose = options?.verbose || false;
+  const apiKey = options?.apiKey || null;
+
+  if (!apiKey) {
+    throw new Error("A valid API key is required.");
+  }
+
+  const validatorUrl =
+    options?.customValidator ||
+    "https://carbon-txt-api.greenweb.org/api/validate/domain/";
+
+  try {
+    const req = await fetch(validatorUrl, {
+      headers: {
+        ...getApiRequestHeaders(agentId),
+        "x-api-key": apiKey,
+      },
+      method: "POST",
+      body: JSON.stringify({ domain }),
+    });
+
+    const res = await req.json();
+    return processResponse(res, verbose);
+  } catch (error) {
+    return { success: false, errors: [error.message] };
+  }
+}
+
+export default check;
