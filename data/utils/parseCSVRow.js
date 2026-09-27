@@ -1,29 +1,40 @@
 /**
- * Parses a string from a comma separated CSV file and returns an array of values.
- * @param {string} currentArrayString - The string to parse.
- * @returns {array} - Returns an array of values.
+ * Parses one physical line of a comma-separated row.
+ * A comma inside double quotes stays in the field. A doubled quote inside a
+ * quoted field is one literal quote. A pipe character is data, not a column break.
+ * @param {string} currentArrayString - The row to parse. Newlines inside quotes are not joined here; callers still split the file on newline first.
+ * @returns {string[]} The fields in that row.
  */
 
 const parseCSVRow = (currentArrayString) => {
-	let string = "";
-	let quoteFlag = 0;
-	// Iterate over the current array element and generate a string
-	for (let character of currentArrayString) {
-  
-	  // The next set of if statements helps setup the current array element to be split by columns (comma delimited)
-		  // However, some textual cells may contain commas, so we need to check for those and ignore them.
-		  // We do this by looking for textual cells that are enclosed in double quotes, and setting the quoteFlag to 1 when we encounter one.
-	  if (character === '"' && quoteFlag === 0) {
-		quoteFlag = 1;
-	  } else if (character === '"' && quoteFlag == 1) {
-		quoteFlag = 0;
-	  }
-  
-	  // If we encounter a comma, and the quoteFlag is 0, then we know that we have reached the end of a column. We replace the comma with a pipe character to help us split the string later.
-	  if (character === "," && quoteFlag === 0) character = "|";
-	  if (character !== '"') string += character;
-	}
-	return string.split("|");
+  const fields = [];
+  let field = "";
+  let inQuotes = false;
+
+  for (let index = 0; index < currentArrayString.length; index++) {
+    const character = currentArrayString[index];
+
+    if (character === '"') {
+      if (inQuotes && currentArrayString[index + 1] === '"') {
+        field += '"';
+        index += 1;
+      } else {
+        inQuotes = !inQuotes;
+      }
+      continue;
+    }
+
+    if (character === "," && !inQuotes) {
+      fields.push(field);
+      field = "";
+      continue;
+    }
+
+    field += character;
   }
+
+  fields.push(field);
+  return fields;
+};
 
 module.exports = parseCSVRow;
