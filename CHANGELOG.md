@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 - Add carbon.txt validator lookup functionality #273
 - Add subpath exports for estimation models #271
+- Fix SWDM v4 segment results ignoring green hosting, so the segments now add up to the total #295
 <!-- - _(Add a summary of your feature, and if relevant the issue, in your PR for merging into `main`)_ -->
 
 ## Released

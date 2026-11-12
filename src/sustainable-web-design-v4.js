@@ -72,6 +72,20 @@ function getGreenHostingFactor(green, options) {
   }
   return 0;
 }
+
+/**
+ * Apply the green hosting factor to the data center's operational emissions
+ * @param {object} operationalEmissions
+ * @param {number} greenHostingFactor
+ * @returns {object}
+ */
+function applyGreenHostingFactor(operationalEmissions, greenHostingFactor) {
+  return {
+    ...operationalEmissions,
+    dataCenter: operationalEmissions.dataCenter * (1 - greenHostingFactor),
+  };
+}
+
 class SustainableWebDesign {
   constructor(options) {
     this.allowRatings = true;
@@ -198,14 +212,15 @@ class SustainableWebDesign {
       return 0;
     }
 
-    const operationalEmissions = this.operationalEmissions(bytes, options);
+    const operationalEmissions = applyGreenHostingFactor(
+      this.operationalEmissions(bytes, options),
+      getGreenHostingFactor(green, options)
+    );
     const embodiedEmissions = this.embodiedEmissions(bytes);
-    const greenHostingFactor = getGreenHostingFactor(green, options);
 
     const totalEmissions = {
       dataCenter:
-        operationalEmissions.dataCenter * (1 - greenHostingFactor) +
-        embodiedEmissions.dataCenter,
+        operationalEmissions.dataCenter + embodiedEmissions.dataCenter,
       network: operationalEmissions.network + embodiedEmissions.network,
       device: operationalEmissions.device + embodiedEmissions.device,
     };
@@ -252,8 +267,10 @@ class SustainableWebDesign {
     let firstViewRatio = 1;
     let returnViewRatio = 0;
     let dataReloadRatio = 0;
-    const greenHostingFactor = getGreenHostingFactor(green, options);
-    const operationalEmissions = this.operationalEmissions(bytes, options);
+    const operationalEmissions = applyGreenHostingFactor(
+      this.operationalEmissions(bytes, options),
+      getGreenHostingFactor(green, options)
+    );
     const embodiedEmissions = this.embodiedEmissions(bytes);
 
     if (bytes < 1) {
@@ -278,7 +295,7 @@ class SustainableWebDesign {
     // NOTE: First visit emissions are calculated as the sum of all three segments without any caching.
 
     const firstVisitEmissions =
-      operationalEmissions.dataCenter * (1 - greenHostingFactor) +
+      operationalEmissions.dataCenter +
       embodiedEmissions.dataCenter +
       operationalEmissions.network +
       embodiedEmissions.network +
