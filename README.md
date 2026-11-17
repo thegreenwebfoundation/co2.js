@@ -54,7 +54,6 @@ You can find the package at [https://www.jsdelivr.com/package/npm/@tgwf/co2](htt
 
 - CommonJS compatible build `https://cdn.jsdelivr.net/npm/@tgwf/co2@latest/dist/cjs/index-node.min.js`
 - ES Modules compatible build `https://cdn.jsdelivr.net/npm/@tgwf/co2@latest/dist/esm/index.js`
-- IIFE compatible build `https://cdn.jsdelivr.net/npm/@tgwf/co2@latest/dist/iife/index.js`
 
 ### Unpkgd
 
@@ -62,7 +61,10 @@ You can find the package at [https://unpkg.com/browse/@tgwf/co2@latest/](https:/
 
 - CommonJS compatible build `https://unpkg.com/@tgwf/co2@latest/dist/cjs/index-node.min.js`
 - ES Modules compatible build `https://unpkg.com/@tgwf/co2@latest/dist/esm/index.js`
-- IIFE compatible build `https://unpkg.com/@tgwf/co2@latest/dist/iife/index.js`
+
+### IIFE build
+
+The npm package does not include an IIFE build. For a browser script, download the [prebuilt IIFE from GitHub](https://github.com/thegreenwebfoundation/co2.js/blob/main/dist/iife/index.js) and host it on your site, or build it from source using the steps below.
 
 ### Build it yourself
 
@@ -70,7 +72,7 @@ You can also build the CO2.js library from the source code. To do this:
 
 1. Go to the [CO2.js repository](https://github.com/thegreenwebfoundation/co2.js) on GitHub.
 1. Clone or fork the repository.
-1. Navigate to the folder on your machine and run `npm run build` in your terminal.
+1. Open the cloned folder and run `npm ci`, then `npm run build`.
 1. Once the build has finished running, you will find a `/dist` folder has been created. Inside you can find:
 
    - `dist/cjs` - A CommonJS compatible build.
