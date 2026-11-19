@@ -15,6 +15,9 @@ const {
 describe("sustainable web design model version 4", () => {
   const swd = new SustainableWebDesign();
 
+  const segmentsSum = (result) =>
+    result.dataCenterCO2e + result.networkCO2e + result.consumerDeviceCO2e;
+
   describe("operational emissions", () => {
     it("returns the expected emissions for 1GB data transfer", () => {
       const result = swd.operationalEmissions(GIGABYTE);
@@ -219,6 +222,42 @@ describe("sustainable web design model version 4", () => {
 
       expect(result.rating).toBe("F");
     });
+
+    it("applies green hosting to the data center segments, so they add up to the total", () => {
+      const result = swd.perByte(GIGABYTE, true, true);
+      const greyResult = swd.perByte(GIGABYTE, false, true);
+
+      expect(result.dataCenterOperationalCO2e).toBe(0);
+      expect(result.dataCenterCO2e).toBeCloseTo(
+        result.dataCenterEmbodiedCO2e,
+        10
+      );
+      expect(result.networkCO2e).toBeCloseTo(greyResult.networkCO2e, 10);
+      expect(result.consumerDeviceCO2e).toBeCloseTo(
+        greyResult.consumerDeviceCO2e,
+        10
+      );
+      expect(segmentsSum(result)).toBeCloseTo(result.total, 10);
+      expect(
+        result.totalOperationalCO2e + result.totalEmbodiedCO2e
+      ).toBeCloseTo(result.total, 10);
+    });
+
+    it("applies a green hosting factor of 0.5 to the data center segments", () => {
+      const result = swd.perByte(GIGABYTE, false, true, false, {
+        greenHostingFactor: 0.5,
+      });
+      const greyResult = swd.perByte(GIGABYTE, false, true);
+
+      expect(result.dataCenterOperationalCO2e).toBeCloseTo(
+        greyResult.dataCenterOperationalCO2e * 0.5,
+        10
+      );
+      expect(segmentsSum(result)).toBeCloseTo(result.total, 10);
+      expect(
+        result.totalOperationalCO2e + result.totalEmbodiedCO2e
+      ).toBeCloseTo(result.total, 10);
+    });
   });
 
   describe("emissions per visit", () => {
@@ -364,6 +403,20 @@ describe("sustainable web design model version 4", () => {
       );
 
       expect(result.rating).toBe("F");
+    });
+
+    it("applies green hosting to the data center segments, so they add up to the first visit emissions", () => {
+      const result = swd.perVisit(GIGABYTE, true, true, false, {
+        firstVisitPercentage: 0.75,
+        returnVisitPercentage: 0.25,
+        dataReloadRatio: 0.2,
+      });
+
+      expect(result.dataCenterOperationalCO2e).toBe(0);
+      expect(segmentsSum(result)).toBeCloseTo(result.firstVisitCO2e, 10);
+      expect(
+        result.totalOperationalCO2e + result.totalEmbodiedCO2e
+      ).toBeCloseTo(result.firstVisitCO2e, 10);
     });
   });
 
